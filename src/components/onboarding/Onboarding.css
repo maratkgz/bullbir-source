@@ -1,0 +1,73 @@
+.onb-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-5);
+  background: var(--bg);
+  gap: var(--space-6);
+}
+
+.onb-progress { display: flex; gap: var(--space-2); }
+.onb-dot {
+  width: 28px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--border);
+  transition: background 0.3s ease;
+}
+.onb-dot.active { background: var(--primary); }
+
+.onb-step {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+.onb-step h1 { font-size: var(--text-2xl); }
+
+.onb-options { display: flex; flex-direction: column; gap: var(--space-3); width: 100%; }
+.onb-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-weight: 600;
+  font-size: var(--text-md);
+  transition: all 0.2s ease;
+}
+.onb-option:hover { border-color: var(--primary); }
+.onb-option.selected { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
+.onb-flag { font-size: 24px; }
+
+.onb-themes { display: flex; gap: var(--space-4); width: 100%; }
+.onb-theme {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.onb-theme.selected { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+.onb-theme-preview { width: 100%; height: 80px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); }
+.onb-light-preview { background: linear-gradient(135deg, #f7f8fc, #ffffff); }
+.onb-dark-preview { background: linear-gradient(135deg, #0d0d17, #1a1a2e); }
+
+.onb-actions { display: flex; gap: var(--space-3); width: 100%; }
+.onb-actions .btn { flex: 1; }
+
+.onb-step .input { width: 100%; }
