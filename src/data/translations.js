@@ -53,6 +53,7 @@ export const translations = {
     'nav.goals': 'Goals',
     'nav.pomodoro': 'Pomodoro',
     'nav.reminders': 'Reminders',
+    'nav.more': 'More',
     'nav.settings': 'Settings',
 
     // Auth
@@ -434,6 +435,7 @@ export const translations = {
     'nav.goals': 'Максаттар',
     'nav.pomodoro': 'Помодоро',
     'nav.reminders': 'Эскертмелер',
+    'nav.more': 'Дагы',
     'nav.settings': 'Орнотуулар',
 
     'auth.login': 'Кирүү',
@@ -798,6 +800,7 @@ export const translations = {
     'nav.goals': 'Цели',
     'nav.pomodoro': 'Помодоро',
     'nav.reminders': 'Напоминания',
+    'nav.more': 'Ещё',
     'nav.settings': 'Настройки',
 
     'auth.login': 'Войти',
