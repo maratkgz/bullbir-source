@@ -4,12 +4,12 @@ import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyCjHfzF_FY3qxWBy2uBaVXc2h5S0ToMBQw',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'bir-121da.firebaseapp.com',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'bir-121da',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'bir-121da.firebasestorage.app',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '634337853404',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:634337853404:web:b16dbfffbb28f21d225919',
 }
 
 // True only when every required key is present.
