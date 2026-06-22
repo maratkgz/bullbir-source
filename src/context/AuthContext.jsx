@@ -13,7 +13,7 @@ import {
   reload,
 } from 'firebase/auth'
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
-import { auth, db, googleProvider, appleProvider, firebaseReady } from '../firebase/config'
+import { auth, db, googleProvider, firebaseReady } from '../firebase/config'
 
 const AuthContext = createContext(null)
 
@@ -92,12 +92,6 @@ export function AuthProvider({ children }) {
     return cred.user
   }, [])
 
-  const loginWithApple = useCallback(async () => {
-    const cred = await signInWithPopup(auth, appleProvider)
-    await ensureUserDoc(cred.user)
-    return cred.user
-  }, [])
-
   const setupRecaptcha = useCallback((containerId) => {
     if (window.recaptchaVerifier) return window.recaptchaVerifier
     window.recaptchaVerifier = new RecaptchaVerifier(auth, containerId, {
@@ -153,7 +147,6 @@ export function AuthProvider({ children }) {
     register,
     login,
     loginWithGoogle,
-    loginWithApple,
     sendPhoneCode,
     resendVerification,
     checkVerified,
