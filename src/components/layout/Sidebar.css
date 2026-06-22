@@ -1,0 +1,86 @@
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  height: 100vh;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) var(--space-3);
+  gap: var(--space-2);
+  z-index: var(--z-sidebar);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.sidebar-brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  letter-spacing: -0.03em;
+  background: linear-gradient(120deg, var(--text) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 11px var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  min-height: 44px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.sidebar-link:hover { background: var(--surface-hover); color: var(--text); }
+.sidebar-link.active { color: var(--primary); background: var(--primary-light); font-weight: 600; }
+
+.sidebar-indicator {
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+}
+
+.sidebar-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* Tablet: icon-only rail */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar { width: 72px; align-items: center; padding: var(--space-5) var(--space-2); }
+  .sidebar-brand-name,
+  .sidebar-label { display: none; }
+  .sidebar-brand { justify-content: center; }
+  .sidebar-link { justify-content: center; padding: 11px; width: 48px; }
+  .sidebar-indicator { left: -8px; }
+}
+
+/* Mobile: hidden (bottom nav takes over) */
+@media (max-width: 767px) {
+  .sidebar { display: none; }
+}
