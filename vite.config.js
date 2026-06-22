@@ -7,11 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-<<<<<<< HEAD
       includeAssets: ['logo.png', 'favicon-32.png', 'icons/apple-touch-icon.png', 'offline.html'],
-=======
-      includeAssets: ['logo.svg', 'icons/apple-touch-icon.png', 'offline.html'],
->>>>>>> 083f128bb8a8eb5d0cedfb1139764d8481a62bbb
       manifest: {
         name: 'BullBir',
         short_name: 'BullBir',
