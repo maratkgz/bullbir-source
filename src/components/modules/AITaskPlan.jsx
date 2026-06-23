@@ -9,12 +9,12 @@ import { useToast } from '../ui/Toast'
 // ── Category detection ──────────────────────────────────────────────────────
 function detectCategory(text) {
   const t = text.toLowerCase()
-  if (/english|язык|тил|spanish|french|german|korean|japanese|chinese|speak|слов|vocab|грамматик/.test(t)) return 'language'
-  if (/бегать|run|fitness|спорт|gym|тренаж|похудеть|weight|workout|зарядка|физ/.test(t)) return 'fitness'
-  if (/накопить|сберечь|save|деньги|money|бюджет|budget|откладыв|финанс/.test(t)) return 'savings'
-  if (/код|coding|программ|javascript|python|developer|react|swift|flutter|it/.test(t)) return 'coding'
-  if (/читать|book|книг|read|роман|страниц/.test(t)) return 'reading'
-  if (/медитац|yoga|wellness|здоровье|sleep|сон|stress|стресс|mindful/.test(t)) return 'wellness'
+  if (/english|англи|язык|тил|spanish|french|german|korean|japanese|chinese|speak|слов|vocab|грамматик|тildi|тілін|тілді/.test(t)) return 'language'
+  if (/бегать|run|fitness|спорт|gym|тренаж|похудеть|weight|workout|зарядка|физ|арыктоо|машыгуу/.test(t)) return 'fitness'
+  if (/накопить|сберечь|save|деньги|money|бюджет|budget|откладыв|финанс|топтоо|накоплен/.test(t)) return 'savings'
+  if (/код|coding|программ|javascript|python|developer|react|swift|flutter|\bit\b|разработ|програм/.test(t)) return 'coding'
+  if (/читать|book|книг|read|роман|страниц|китеп|окуу/.test(t)) return 'reading'
+  if (/медитац|yoga|wellness|здоровье|sleep|сон|stress|стресс|mindful|ден.со/.test(t)) return 'wellness'
   return 'general'
 }
 
@@ -29,11 +29,21 @@ const TEMPLATES = {
       `Listen to a podcast episode`, `Write a diary entry`, `Final self-assessment`,
     ].slice(0, n),
     ru: (g, n) => [
-      `Выучить 30 новых слов — блок 1`, `Грамматика: базовые правила`, `20 минут аудирования`,
-      `Разговорная практика (15 минут)`, `Повторение слов из блока 1`, `Выучить 30 новых слов — блок 2`,
-      `Грамматика: продвинутый уровень`, `Посмотреть видео без субтитров`, `Написать текст на изучаемом языке`,
-      `Тест на знание лексики`, `Выучить 30 новых слов — блок 3`, `Практика диалога`,
-      `Прослушать подкаст`, `Написать дневниковую запись`, `Финальная самооценка`,
+      `Установить приложение и выучить 20 слов по теме «Знакомство»`,
+      `Грамматика: артикли и базовые времена — разобрать правила`,
+      `Слушать 20 минут: подкаст или аудиоурок для начинающих`,
+      `Разговорная практика: выучить 10 фраз для повседневной речи`,
+      `Повторить всё из недели 1 — пройти мини-тест на карточках`,
+      `Выучить 25 слов по теме «Еда и покупки»`,
+      `Грамматика: прошедшее время — разобрать и написать 5 предложений`,
+      `Посмотреть серию сериала с субтитрами на изучаемом языке`,
+      `Написать короткий текст о себе (7–10 предложений)`,
+      `Аудирование 30 минут: Ted Talk или YouTube на изучаемом языке`,
+      `Выучить 25 слов по теме «Работа и учёба»`,
+      `Грамматика: будущее время и условные предложения`,
+      `Прослушать подкаст и записать 5 новых услышанных слов`,
+      `Написать дневниковую запись на изучаемом языке (прошедший день)`,
+      `Финальный тест: лексика + грамматика + 5-минутный монолог`,
     ].slice(0, n),
     kg: (g, n) => [
       `30 жаңы сөз үйрөнүү — 1-блок`, `Грамматика: негизги эрежелер`, `20 мүнөт угуу практикасы`,
@@ -156,9 +166,48 @@ const TEMPLATES = {
     ].slice(0, n),
   },
   general: {
-    en: (g, n) => Array.from({ length: n }, (_, i) => `Step ${i + 1}: ${g.slice(0, 40)} — milestone ${i + 1}`),
-    ru: (g, n) => Array.from({ length: n }, (_, i) => `Шаг ${i + 1}: продвижение к цели «${g.slice(0, 35)}»`),
-    kg: (g, n) => Array.from({ length: n }, (_, i) => `Кадам ${i + 1}: «${g.slice(0, 35)}» максатына карай`),
+    en: (g, n) => [
+      `Research and define exactly what success looks like for: ${g.slice(0, 35)}`,
+      `Break the goal into 3 smaller milestones and write them down`,
+      `Complete the first concrete action step`,
+      `Review progress — what's working, what needs adjustment`,
+      `Complete milestone 1 and document what you learned`,
+      `Identify the biggest obstacle and create a plan to overcome it`,
+      `Complete milestone 2`,
+      `Get feedback or accountability — share progress with someone`,
+      `Push through the hardest part — consistency check`,
+      `Complete milestone 3`,
+      `Final review — measure results vs. original goal`,
+      `Plan the next phase or celebrate achieving the goal 🎉`,
+    ].slice(0, n),
+    ru: (g, n) => [
+      `Чётко сформулировать результат: как выглядит успех для «${g.slice(0, 30)}»`,
+      `Разбить цель на 3 этапа — записать конкретные шаги`,
+      `Выполнить первое конкретное действие по цели`,
+      `Проверить прогресс: что работает, что нужно изменить`,
+      `Завершить первый этап и зафиксировать что узнал(а)`,
+      `Найти главное препятствие и составить план его преодоления`,
+      `Завершить второй этап`,
+      `Поделиться прогрессом — найти поддержку или напарника`,
+      `Пройти самый сложный отрезок — проверить постоянство`,
+      `Завершить третий этап`,
+      `Итоговая проверка — сравнить результаты с начальной целью`,
+      `Спланировать следующий этап или отпраздновать достижение 🎉`,
+    ].slice(0, n),
+    kg: (g, n) => [
+      `«${g.slice(0, 30)}» максаты үчүн ийгиликтүү натыйжаны так аныктоо`,
+      `Максатты 3 этапка бөлүп, конкреттүү кадамдарды жазуу`,
+      `Биринчи конкреттүү аракетти аткаруу`,
+      `Прогрессти текшерүү: эмне иштейт, эмнени өзгөртүү керек`,
+      `Биринчи этапты аяктап, үйрөнгөндөрдү жазуу`,
+      `Эң чоң тоскоолдукту табып, аны жеңүү планын түзүү`,
+      `Экинчи этапты аяктоо`,
+      `Прогрессти бөлүшүү — колдоо же өнөктөш табуу`,
+      `Эң кыйын бөлүктөн өтүү — туруктуулукту текшерүү`,
+      `Үчүнчү этапты аяктоо`,
+      `Жыйынтыктоо — натыйжаларды баштапкы максат менен салыштыруу`,
+      `Кийинки этапты пландоо же жетишкендикти белгилөө 🎉`,
+    ].slice(0, n),
   },
 }
 
