@@ -148,6 +148,16 @@ export const NAV_ITEMS = [
       </svg>
     ),
   },
+  {
+    to: '/app/profile',
+    key: 'nav.profile',
+    icon: (
+      <svg {...I()}>
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+      </svg>
+    ),
+  },
 ]
 
 // Items shown in the mobile bottom nav (max 5).

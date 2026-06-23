@@ -30,6 +30,7 @@ import Settings from './components/settings/Settings'
 import ShiftTracker from './components/modules/ShiftTracker'
 import SavingsGoals from './components/modules/SavingsGoals'
 import PersonalProgress from './components/modules/PersonalProgress'
+import Profile from './components/modules/Profile'
 
 // Redirect already-authenticated users away from auth pages.
 function PublicRoute({ children }) {
@@ -97,6 +98,7 @@ export default function App() {
           <Route path="shifts" element={<ShiftTracker />} />
           <Route path="savings" element={<SavingsGoals />} />
           <Route path="progress" element={<PersonalProgress />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/app/dashboard" replace />} />

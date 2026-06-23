@@ -119,6 +119,7 @@ function UserMenu() {
               <span className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>{user?.email || user?.phoneNumber}</span>
             </div>
             <hr className="divider" />
+            <button className="nav-menu-item" onClick={() => { navigate('/app/profile'); setOpen(false) }}>{t('nav.profile')}</button>
             <button className="nav-menu-item" onClick={() => { navigate('/app/settings'); setOpen(false) }}>{t('nav.settings')}</button>
             <button className="nav-menu-item danger" onClick={logout}>{t('auth.logout')}</button>
           </motion.div>
