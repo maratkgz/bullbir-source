@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
-import { Analytics } from '@vercel/analytics/react'
+import { inject as injectAnalytics } from '@vercel/analytics'
 
 import { AuthProvider } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
@@ -13,6 +13,8 @@ import './styles/global.css'
 
 // Auto-update the service worker without forcing a reload.
 registerSW({ immediate: true })
+
+injectAnalytics()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,6 +29,5 @@ createRoot(document.getElementById('root')).render(
         </ToastProvider>
       </ThemeProvider>
     </LangProvider>
-    <Analytics />
   </StrictMode>,
 )
