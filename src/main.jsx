@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
+import { Analytics } from '@vercel/analytics/react'
 
 import { AuthProvider } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
@@ -26,5 +27,6 @@ createRoot(document.getElementById('root')).render(
         </ToastProvider>
       </ThemeProvider>
     </LangProvider>
+    <Analytics />
   </StrictMode>,
 )
