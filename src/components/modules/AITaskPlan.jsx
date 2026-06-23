@@ -169,25 +169,75 @@ const DURATIONS = [
   { key: '6m', label: { en: '6 months', ru: '6 месяцев', kg: '6 ай' }, weeks: 24 },
 ]
 
-function generatePlan(goalText, weeks, lang) {
+// ── Gemini API call ──────────────────────────────────────────────────────────
+const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`
+
+async function generateWithGemini(goalText, weeks, lang) {
+  const today = new Date().toISOString().split('T')[0]
+  const endDate = new Date(Date.now() + weeks * 7 * 86400000).toISOString().split('T')[0]
+  const count = Math.min(15, Math.max(6, Math.floor(weeks * 1.3)))
+
+  const langInstruction = {
+    en: 'Write all task titles in English.',
+    ru: 'Пиши все названия задач на русском языке.',
+    kg: 'Бардык тапшырмалардын аталыштарын кыргыз тилинде жаз.',
+  }[lang] || 'Write in the same language as the goal.'
+
+  const prompt = `You are a personal productivity coach. Create a detailed, actionable task plan.
+
+Goal: "${goalText}"
+Duration: ${weeks} weeks (${today} → ${endDate})
+Number of tasks: ${count}
+${langInstruction}
+
+Rules:
+- Each task must be specific and actionable (not vague like "study more")
+- Spread tasks evenly across the timeframe
+- First tasks should be easier/foundational, later ones more advanced
+- Assign priority: first 3 tasks = "high", middle = "medium", last tasks = "low"
+- Deadlines must be between ${today} and ${endDate} in YYYY-MM-DD format
+
+Respond ONLY with a raw JSON array, no markdown fences, no explanation:
+[{"title":"...","deadline":"YYYY-MM-DD","priority":"high|medium|low"},...]`
+
+  const res = await fetch(GEMINI_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.8, maxOutputTokens: 2000 },
+    }),
+  })
+
+  if (!res.ok) throw new Error(`Gemini ${res.status}`)
+  const data = await res.json()
+  const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || ''
+  // Strip markdown fences if model added them anyway
+  const cleaned = raw.replace(/```json|```/g, '').trim()
+  const tasks = JSON.parse(cleaned)
+  return tasks.map((task, i) => ({
+    title: task.title,
+    deadline: task.deadline || endDate,
+    priority: task.priority || (i < 3 ? 'high' : i < 8 ? 'medium' : 'low'),
+    status: 'todo',
+  }))
+}
+
+// ── Fallback: template-based generation (used when no API key or API fails) ──
+function generateFallback(goalText, weeks, lang) {
   const category = detectCategory(goalText)
   const count = Math.min(15, Math.max(5, Math.floor(weeks * 1.2)))
   const templates = TEMPLATES[category]?.[lang] || TEMPLATES[category]?.ru || TEMPLATES.general.ru
   const titles = typeof templates === 'function' ? templates(goalText, count) : templates(goalText, count)
-
   const now = new Date()
-  const end = new Date(now.getTime() + weeks * 7 * 24 * 60 * 60 * 1000)
-  const totalMs = end - now
-
-  return titles.map((title, i) => {
-    const dueDate = new Date(now.getTime() + (totalMs / (titles.length + 1)) * (i + 1))
-    return {
-      title,
-      deadline: dueDate.toISOString().split('T')[0],
-      priority: i < 3 ? 'high' : i < 8 ? 'medium' : 'low',
-      status: 'todo',
-    }
-  })
+  const totalMs = weeks * 7 * 86400000
+  return titles.map((title, i) => ({
+    title,
+    deadline: new Date(now.getTime() + (totalMs / (titles.length + 1)) * (i + 1)).toISOString().split('T')[0],
+    priority: i < 3 ? 'high' : i < 8 ? 'medium' : 'low',
+    status: 'todo',
+  }))
 }
 
 function SkeletonCard() {
@@ -207,18 +257,39 @@ export default function AITaskPlan() {
 
   const [goal, setGoal] = useState('')
   const [duration, setDuration] = useState('1m')
-  const [step, setStep] = useState('form') // form | thinking | preview
+  const [step, setStep] = useState('form') // form | thinking | preview | error
   const [plan, setPlan] = useState([])
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const generate = () => {
+  const generate = async () => {
     if (!goal.trim()) return
     setStep('thinking')
+    setErrorMsg('')
     const dur = DURATIONS.find(d => d.key === duration)
-    setTimeout(() => {
-      const tasks = generatePlan(goal.trim(), dur.weeks, lang)
+    try {
+      let tasks
+      if (GEMINI_KEY) {
+        tasks = await generateWithGemini(goal.trim(), dur.weeks, lang)
+      } else {
+        // No key — use templates
+        await new Promise(r => setTimeout(r, 1400))
+        tasks = generateFallback(goal.trim(), dur.weeks, lang)
+      }
       setPlan(tasks.map((t, i) => ({ ...t, id: i })))
       setStep('preview')
-    }, 1600)
+    } catch (err) {
+      console.error('Gemini error:', err)
+      // Graceful fallback to templates
+      try {
+        const tasks = generateFallback(goal.trim(), dur.weeks, lang)
+        setPlan(tasks.map((t, i) => ({ ...t, id: i })))
+        setStep('preview')
+        toast.info('⚠️ AI недоступен — использованы шаблоны')
+      } catch {
+        setErrorMsg(err.message || 'Ошибка генерации')
+        setStep('error')
+      }
+    }
   }
 
   const updateTask = (id, field, value) =>
@@ -295,6 +366,18 @@ export default function AITaskPlan() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </motion.div>
+        )}
+
+        {/* ── Error ── */}
+        {step === 'error' && (
+          <motion.div key="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="ai-form-wrap">
+            <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
+              <p style={{ fontSize: 32 }}>⚠️</p>
+              <p style={{ fontWeight: 600, marginTop: 8 }}>Ошибка генерации</p>
+              <p className="text-muted" style={{ fontSize: 'var(--text-sm)', marginTop: 4 }}>{errorMsg}</p>
+              <button className="btn btn-primary" style={{ marginTop: 'var(--space-4)' }} onClick={() => setStep('form')}>Попробовать снова</button>
             </div>
           </motion.div>
         )}
