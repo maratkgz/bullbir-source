@@ -158,6 +158,25 @@ export const NAV_ITEMS = [
       </svg>
     ),
   },
+  {
+    to: '/app/ai-plan',
+    key: 'nav.aiPlan',
+    icon: (
+      <svg {...I()}>
+        <path d="M12 2L9 9H2l5.5 4-2 7L12 16l6.5 4-2-7L22 9h-7z" />
+      </svg>
+    ),
+  },
+  {
+    to: '/app/completion-history',
+    key: 'nav.history',
+    icon: (
+      <svg {...I()}>
+        <path d="M12 8v4l3 3M3.05 11a9 9 0 1 0 .5-3" />
+        <path d="M3 4v4h4" />
+      </svg>
+    ),
+  },
 ]
 
 // Items shown in the mobile bottom nav (max 5).

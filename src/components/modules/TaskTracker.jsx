@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { serverTimestamp } from 'firebase/firestore'
 import {
   DndContext,
   useDraggable,
@@ -21,6 +22,7 @@ const COLUMNS = [
   { id: 'todo', key: 'tasks.todo' },
   { id: 'inProgress', key: 'tasks.inProgress' },
   { id: 'done', key: 'tasks.done' },
+  { id: 'skipped', key: 'tasks.skipped' },
 ]
 const PRIORITIES = ['low', 'medium', 'high']
 
@@ -29,7 +31,7 @@ function TaskCard({ task, onOpen }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id: task.id })
   const style = transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` } : undefined
   const dl = toDate(task.deadline)
-  const overdue = dl && dl < new Date(toDateKey()) && task.status !== 'done'
+  const overdue = dl && dl < new Date(toDateKey()) && task.status !== 'done' && task.status !== 'skipped'
   const subDone = (task.subtasks || []).filter((s) => s.done).length
 
   return (
@@ -40,12 +42,15 @@ function TaskCard({ task, onOpen }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ scale: 0.95, opacity: 0 }}
-      className={`task-card ${isDragging ? 'dragging' : ''}`}
+      className={`task-card ${isDragging ? 'dragging' : ''} ${overdue ? 'task-overdue' : ''}`}
       {...attributes}
       {...listeners}
       onClick={() => onOpen(task)}
     >
-      <span className={`task-title ${task.status === 'done' ? 'done' : ''}`}>{task.title}</span>
+      <span className={`task-title ${task.status === 'done' ? 'done' : ''} ${task.status === 'skipped' ? 'done' : ''}`}>
+        {task.aiGenerated && <span className="ai-tag-inline">✨</span>}
+        {task.title}
+      </span>
       <div className="task-meta">
         <span className={`prio prio-${task.priority || 'medium'}`}>{t(`tasks.${task.priority || 'medium'}`)}</span>
         {dl && (
@@ -57,6 +62,7 @@ function TaskCard({ task, onOpen }) {
         {(task.subtasks || []).length > 0 && (
           <span className="deadline-chip">{subDone}/{task.subtasks.length}</span>
         )}
+        {task.status === 'skipped' && <span className="deadline-chip" style={{ color: 'var(--text-muted)' }}>⊘ {t('tasks.skipped')}</span>}
       </div>
       {(task.tags || []).length > 0 && (
         <div className="task-tags">
@@ -66,6 +72,33 @@ function TaskCard({ task, onOpen }) {
         </div>
       )}
     </motion.div>
+  )
+}
+
+function SkipModal({ open, onClose, onConfirm }) {
+  const { t } = useLang()
+  const [reason, setReason] = useState('')
+  const submit = () => { onConfirm(reason.trim()); setReason('') }
+  const close = () => { setReason(''); onClose() }
+  return (
+    <Modal open={open} onClose={close} title={t('tasks.skipTitle')} maxWidth={420}>
+      <div className="field">
+        <label>{t('tasks.skipReason')}</label>
+        <textarea
+          className="textarea"
+          rows={3}
+          placeholder={t('tasks.skipReasonPlaceholder')}
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter' && e.metaKey) submit() }}
+          autoFocus
+        />
+      </div>
+      <div className="flex gap-3" style={{ justifyContent: 'flex-end' }}>
+        <button className="btn btn-ghost" onClick={close}>{t('common.cancel')}</button>
+        <button className="btn btn-primary" onClick={submit}>{t('tasks.skip')}</button>
+      </div>
+    </Modal>
   )
 }
 
@@ -197,6 +230,7 @@ export default function TaskTracker() {
   const { items, loading, add, update, remove } = useCollection('tasks')
   const { t } = useLang()
   const toast = useToast()
+  const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const [view, setView] = useState('board')
   const [modalOpen, setModalOpen] = useState(false)
@@ -222,8 +256,10 @@ export default function TaskTracker() {
     [items, filterPrio],
   )
 
+  const [skipTask, setSkipTask] = useState(null)
+
   const byCol = useMemo(() => {
-    const map = { todo: [], inProgress: [], done: [] }
+    const map = { todo: [], inProgress: [], done: [], skipped: [] }
     filtered.forEach((tk) => { (map[tk.status] || map.todo).push(tk) })
     return map
   }, [filtered])
@@ -231,7 +267,9 @@ export default function TaskTracker() {
   const onDragEnd = ({ active, over }) => {
     if (!over) return
     const task = items.find((x) => x.id === active.id)
-    if (task && task.status !== over.id) update(task.id, { status: over.id })
+    if (!task || task.status === over.id) return
+    const extra = over.id === 'done' ? { completedAt: serverTimestamp() } : over.id === 'skipped' ? { skippedAt: serverTimestamp() } : {}
+    update(task.id, { status: over.id, ...extra })
   }
 
   const openNew = () => { setEditing(null); setModalOpen(true) }
@@ -245,6 +283,20 @@ export default function TaskTracker() {
   }
   const del = async (id) => { await remove(id); toast.success(t('common.saved')); setModalOpen(false) }
 
+  const markDone = async (task) => {
+    if (task.status === 'done') {
+      await update(task.id, { status: 'todo', completedAt: null })
+    } else {
+      await update(task.id, { status: 'done', completedAt: serverTimestamp() })
+    }
+  }
+
+  const confirmSkip = async (reason) => {
+    if (!skipTask) return
+    await update(skipTask.id, { status: 'skipped', skippedAt: serverTimestamp(), skipReason: reason || '' })
+    setSkipTask(null)
+  }
+
   return (
     <div>
       <div className="page-header">
@@ -253,6 +305,7 @@ export default function TaskTracker() {
           <button className={view === 'list' ? 'active' : ''} onClick={() => setView('list')}>{t('tasks.list')}</button>
         </div>
         <div className="flex gap-3 items-center">
+          <button className="btn btn-ghost" style={{ fontSize: 'var(--text-sm)' }} onClick={() => navigate('/app/ai-plan')}>✨ AI</button>
           <select className="select" style={{ width: 'auto' }} value={filterPrio} onChange={(e) => setFilterPrio(e.target.value)}>
             <option value="all">{t('common.all')}</option>
             {PRIORITIES.map((p) => <option key={p} value={p}>{t(`tasks.${p}`)}</option>)}
@@ -266,7 +319,7 @@ export default function TaskTracker() {
       ) : view === 'board' ? (
         <DndContext sensors={sensors} onDragEnd={onDragEnd}>
           <div className="kanban">
-            {COLUMNS.map((col) => (
+            {COLUMNS.filter(c => c.id !== 'skipped').map((col) => (
               <Column key={col.id} col={col} tasks={byCol[col.id]} onOpen={openEdit} />
             ))}
           </div>
@@ -274,16 +327,27 @@ export default function TaskTracker() {
       ) : (
         <div className="list-stack">
           {filtered.map((task) => (
-            <div key={task.id} className="task-card" onClick={() => openEdit(task)} style={{ cursor: 'pointer' }}>
+            <div key={task.id} className={`task-card ${task.status === 'skipped' ? 'task-skipped-row' : ''}`} onClick={() => openEdit(task)} style={{ cursor: 'pointer' }}>
               <div className="flex items-center gap-3">
                 <button
                   className={`checkbox ${task.status === 'done' ? 'checked' : ''}`}
-                  onClick={(e) => { e.stopPropagation(); update(task.id, { status: task.status === 'done' ? 'todo' : 'done' }) }}
+                  onClick={(e) => { e.stopPropagation(); markDone(task) }}
                 >
                   {task.status === 'done' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5" /></svg>}
                 </button>
-                <span className={`task-title ${task.status === 'done' ? 'done' : ''}`} style={{ flex: 1 }}>{task.title}</span>
+                <span className={`task-title ${task.status === 'done' || task.status === 'skipped' ? 'done' : ''}`} style={{ flex: 1 }}>
+                  {task.aiGenerated && <span className="ai-tag-inline">✨</span>}
+                  {task.title}
+                </span>
                 <span className={`prio prio-${task.priority || 'medium'}`}>{t(`tasks.${task.priority || 'medium'}`)}</span>
+                {task.status !== 'done' && task.status !== 'skipped' && (
+                  <button
+                    className="btn btn-ghost btn-icon"
+                    title={t('tasks.skip')}
+                    style={{ color: 'var(--text-muted)', fontSize: 18, lineHeight: 1 }}
+                    onClick={(e) => { e.stopPropagation(); setSkipTask(task) }}
+                  >⊘</button>
+                )}
               </div>
             </div>
           ))}
@@ -291,6 +355,7 @@ export default function TaskTracker() {
       )}
 
       <TaskModal open={modalOpen} onClose={() => setModalOpen(false)} task={editing} onSave={save} onDelete={del} />
+      <SkipModal open={!!skipTask} onClose={() => setSkipTask(null)} onConfirm={confirmSkip} />
     </div>
   )
 }

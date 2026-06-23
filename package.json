@@ -1,7 +1,7 @@
 {
   "name": "bullbir",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "BullBir — all-in-one personal productivity web app (PWA)",
   "scripts": {
@@ -16,6 +16,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
+    "@vercel/analytics": "^2.0.1",
     "date-fns": "^3.6.0",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",
