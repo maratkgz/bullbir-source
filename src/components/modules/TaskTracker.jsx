@@ -276,25 +276,52 @@ export default function TaskTracker() {
   const openEdit = (task) => { setEditing(task); setModalOpen(true) }
 
   const save = async (data) => {
-    if (editing) await update(editing.id, data)
-    else await add(data)
-    toast.success(t('common.saved'))
-    setModalOpen(false)
+    // Strip Firestore-internal fields — pass only editable data
+    const { id: _id, createdAt: _ca, updatedAt: _ua, completedAt: _co, skippedAt: _sk, skipReason: _sr, ...clean } = data
+    try {
+      if (editing) await update(editing.id, clean)
+      else await add(clean)
+      toast.success(t('common.saved'))
+      setModalOpen(false)
+    } catch (e) {
+      console.error('save error', e)
+      toast.error(t('common.error'))
+    }
   }
-  const del = async (id) => { await remove(id); toast.success(t('common.saved')); setModalOpen(false) }
+
+  const del = async (id) => {
+    try {
+      await remove(id)
+      toast.success(t('common.saved'))
+      setModalOpen(false)
+    } catch (e) {
+      console.error('delete error', e)
+      toast.error(t('common.error'))
+    }
+  }
 
   const markDone = async (task) => {
-    if (task.status === 'done') {
-      await update(task.id, { status: 'todo', completedAt: null })
-    } else {
-      await update(task.id, { status: 'done', completedAt: serverTimestamp() })
+    try {
+      if (task.status === 'done') {
+        await update(task.id, { status: 'todo', completedAt: null })
+      } else {
+        await update(task.id, { status: 'done', completedAt: serverTimestamp() })
+      }
+    } catch (e) {
+      console.error('markDone error', e)
+      toast.error(t('common.error'))
     }
   }
 
   const confirmSkip = async (reason) => {
     if (!skipTask) return
-    await update(skipTask.id, { status: 'skipped', skippedAt: serverTimestamp(), skipReason: reason || '' })
-    setSkipTask(null)
+    try {
+      await update(skipTask.id, { status: 'skipped', skippedAt: serverTimestamp(), skipReason: reason || '' })
+      setSkipTask(null)
+    } catch (e) {
+      console.error('skip error', e)
+      toast.error(t('common.error'))
+    }
   }
 
   return (
