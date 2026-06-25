@@ -32,6 +32,16 @@ export const NAV_ITEMS = [
     ),
   },
   {
+    to: '/app/habits',
+    key: 'nav.habits',
+    icon: (
+      <svg {...I()}>
+        <path d="M12 2l1.5 4.5H18l-3.75 2.75 1.5 4.5L12 11l-3.75 2.75 1.5-4.5L6 6.5h4.5Z" />
+        <path d="M5 17c0 2.2 3.1 4 7 4s7-1.8 7-4" />
+      </svg>
+    ),
+  },
+  {
     to: '/app/journal',
     key: 'nav.journal',
     icon: (

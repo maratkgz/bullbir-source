@@ -33,6 +33,8 @@ import PersonalProgress from './components/modules/PersonalProgress'
 import Profile from './components/modules/Profile'
 import AITaskPlan from './components/modules/AITaskPlan'
 import CompletionHistory from './components/modules/CompletionHistory'
+import Habits from './components/modules/Habits'
+import Landing from './components/Landing'
 
 // Redirect already-authenticated users away from auth pages.
 function PublicRoute({ children }) {
@@ -78,6 +80,7 @@ export default function App() {
       <AnimatePresence>{!online && <Offline key="offline" />}</AnimatePresence>
 
       <Routes location={location}>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
@@ -103,9 +106,10 @@ export default function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="ai-plan" element={<AITaskPlan />} />
           <Route path="completion-history" element={<CompletionHistory />} />
+          <Route path="habits" element={<Habits />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/app/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   )
