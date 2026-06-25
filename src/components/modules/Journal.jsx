@@ -244,7 +244,7 @@ function EntryModal({ open, onClose, entry, onSave }) {
 }
 
 export default function Journal() {
-  const { items, loading, add, update, remove } = useCollection('entries', { orderField: 'createdAt', direction: 'desc' })
+  const { items, loading, add, update, remove } = useCollection('journalEntries', { orderField: 'createdAt', direction: 'desc' })
   const { t } = useLang()
   const toast = useToast()
   const [modalOpen, setModalOpen] = useState(false)
