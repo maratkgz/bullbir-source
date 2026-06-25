@@ -220,7 +220,40 @@ const DURATIONS = [
 
 // ── Gemini API call ──────────────────────────────────────────────────────────
 const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`
+
+const GEMINI_MODELS = [
+  'gemini-1.5-flash',
+  'gemini-1.5-flash-latest',
+  'gemini-pro',
+]
+
+async function callGemini(prompt) {
+  for (const model of GEMINI_MODELS) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(GEMINI_KEY)}`
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.8, maxOutputTokens: 2000 },
+        }),
+      })
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}))
+        console.warn(`Gemini ${model} → ${res.status}:`, errData?.error?.message)
+        continue
+      }
+      const data = await res.json()
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text
+      if (!text) continue
+      return text
+    } catch (e) {
+      console.warn(`Gemini ${model} fetch error:`, e.message)
+    }
+  }
+  throw new Error('Все модели Gemini недоступны. Проверьте API ключ.')
+}
 
 async function generateWithGemini(goalText, weeks, lang) {
   const today = new Date().toISOString().split('T')[0]
@@ -236,33 +269,22 @@ async function generateWithGemini(goalText, weeks, lang) {
   const prompt = `You are a personal productivity coach. Create a detailed, actionable task plan.
 
 Goal: "${goalText}"
-Duration: ${weeks} weeks (${today} → ${endDate})
+Duration: ${weeks} weeks (${today} to ${endDate})
 Number of tasks: ${count}
 ${langInstruction}
 
 Rules:
-- Each task must be specific and actionable (not vague like "study more")
+- Each task must be SPECIFIC and actionable (bad: "study more", good: "Learn 20 words on topic Travel using Anki app")
+- Include HOW to do the task, not just WHAT
 - Spread tasks evenly across the timeframe
-- First tasks should be easier/foundational, later ones more advanced
-- Assign priority: first 3 tasks = "high", middle = "medium", last tasks = "low"
-- Deadlines must be between ${today} and ${endDate} in YYYY-MM-DD format
+- First tasks: foundational/easy. Last tasks: advanced/review
+- Priority: first 3 = "high", middle = "medium", last = "low"
+- Deadlines in YYYY-MM-DD format between ${today} and ${endDate}
 
-Respond ONLY with a raw JSON array, no markdown fences, no explanation:
+Respond ONLY with a raw JSON array, no markdown, no explanation:
 [{"title":"...","deadline":"YYYY-MM-DD","priority":"high|medium|low"},...]`
 
-  const res = await fetch(GEMINI_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.8, maxOutputTokens: 2000 },
-    }),
-  })
-
-  if (!res.ok) throw new Error(`Gemini ${res.status}`)
-  const data = await res.json()
-  const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || ''
-  // Strip markdown fences if model added them anyway
+  const raw = await callGemini(prompt)
   const cleaned = raw.replace(/```json|```/g, '').trim()
   const tasks = JSON.parse(cleaned)
   return tasks.map((task, i) => ({
