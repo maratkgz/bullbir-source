@@ -221,38 +221,31 @@ const DURATIONS = [
 // ── Gemini API call ──────────────────────────────────────────────────────────
 const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY
 
-const GEMINI_MODELS = [
-  'gemini-1.5-flash',
-  'gemini-1.5-flash-latest',
-  'gemini-pro',
-]
-
 async function callGemini(prompt) {
-  for (const model of GEMINI_MODELS) {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(GEMINI_KEY)}`
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.8, maxOutputTokens: 2000 },
-        }),
-      })
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}))
-        console.warn(`Gemini ${model} → ${res.status}:`, errData?.error?.message)
-        continue
-      }
-      const data = await res.json()
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text
-      if (!text) continue
-      return text
-    } catch (e) {
-      console.warn(`Gemini ${model} fetch error:`, e.message)
-    }
+  const model = 'gemini-1.5-flash'
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_KEY}`
+
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.8, maxOutputTokens: 2000 },
+    }),
+  })
+
+  if (res.status === 429) {
+    throw new Error('RATE_LIMIT')
   }
-  throw new Error('Все модели Gemini недоступны. Проверьте API ключ.')
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}))
+    throw new Error(errData?.error?.message || `Ошибка ${res.status}`)
+  }
+
+  const data = await res.json()
+  const text = data.candidates?.[0]?.content?.parts?.[0]?.text
+  if (!text) throw new Error('Пустой ответ от Gemini')
+  return text
 }
 
 async function generateWithGemini(goalText, weeks, lang) {
@@ -333,7 +326,7 @@ export default function AITaskPlan() {
   const [errorMsg, setErrorMsg] = useState('')
 
   const generate = async () => {
-    if (!goal.trim()) return
+    if (!goal.trim() || step === 'thinking') return
     setStep('thinking')
     setErrorMsg('')
     const dur = DURATIONS.find(d => d.key === duration)
@@ -342,20 +335,23 @@ export default function AITaskPlan() {
       if (GEMINI_KEY) {
         tasks = await generateWithGemini(goal.trim(), dur.weeks, lang)
       } else {
-        // No key — use templates
         await new Promise(r => setTimeout(r, 1400))
         tasks = generateFallback(goal.trim(), dur.weeks, lang)
       }
       setPlan(tasks.map((t, i) => ({ ...t, id: i })))
       setStep('preview')
     } catch (err) {
-      console.error('Gemini error:', err)
-      // Graceful fallback to templates
+      if (err.message === 'RATE_LIMIT') {
+        setErrorMsg('Превышен лимит запросов Gemini (бесплатный тариф: 15 запросов/мин). Подождите 1 минуту и попробуйте снова.')
+        setStep('error')
+        return
+      }
+      // Fallback to templates for other errors
       try {
         const tasks = generateFallback(goal.trim(), dur.weeks, lang)
         setPlan(tasks.map((t, i) => ({ ...t, id: i })))
         setStep('preview')
-        toast.info('⚠️ AI недоступен — использованы шаблоны')
+        toast.info('AI временно недоступен — использован шаблонный план')
       } catch {
         setErrorMsg(err.message || 'Ошибка генерации')
         setStep('error')
