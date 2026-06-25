@@ -2,76 +2,125 @@ import { useState, useMemo, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { serverTimestamp } from 'firebase/firestore'
-import {
-  DndContext,
-  useDraggable,
-  useDroppable,
-  PointerSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core'
 import { useCollection } from '../../hooks/useCollection'
 import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
-import EmptyState from '../ui/EmptyState'
 import { toDate, toDateKey } from '../../utils/format'
 
-const COLUMNS = [
-  { id: 'todo', key: 'tasks.todo' },
-  { id: 'inProgress', key: 'tasks.inProgress' },
-  { id: 'done', key: 'tasks.done' },
-  { id: 'skipped', key: 'tasks.skipped' },
-]
 const PRIORITIES = ['low', 'medium', 'high']
+const TIME_GROUPS = [
+  { id: 'morning', label_ru: 'Утро', label_en: 'Morning', label_kg: 'Эртең', icon: '☀️', color: '#f0c45a' },
+  { id: 'day',     label_ru: 'День', label_en: 'Day',     label_kg: 'Күндүз', icon: '🌤️', color: '#9a8cff' },
+  { id: 'evening', label_ru: 'Вечер', label_en: 'Evening', label_kg: 'Кеч', icon: '🌙', color: '#5ad1a5' },
+  { id: 'none',    label_ru: 'Другое', label_en: 'Other',  label_kg: 'Башка', icon: '📋', color: '#7a7a8c' },
+]
 
-function TaskCard({ task, onOpen }) {
-  const { t } = useLang()
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id: task.id })
-  const style = transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` } : undefined
-  const dl = toDate(task.deadline)
-  const overdue = dl && dl < new Date(toDateKey()) && task.status !== 'done' && task.status !== 'skipped'
-  const subDone = (task.subtasks || []).filter((s) => s.done).length
+function getGroupLabel(g, lang) {
+  if (lang === 'ru') return g.label_ru
+  if (lang === 'kg') return g.label_kg
+  return g.label_en
+}
+
+function ProgressRing({ done, total }) {
+  const pct = total === 0 ? 0 : Math.round((done / total) * 100)
+  return (
+    <div className="tasks-progress-card card">
+      <div
+        className="tasks-ring"
+        style={{ background: `conic-gradient(#7c5cff ${pct}%, #1f1f2b 0)` }}
+      >
+        <div className="tasks-ring-inner">
+          <span className="tasks-ring-pct">{pct}%</span>
+        </div>
+      </div>
+      <div>
+        <div className="tasks-progress-title">
+          {pct === 100 ? '🎉' : '⚡'} {pct === 100 ? 'День завершён!' : 'Прогресс дня'}
+        </div>
+        <div className="tasks-progress-sub" style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
+          Выполнено {done} из {total} задач
+        </div>
+      </div>
+      <div className="tasks-ring-count">
+        <span style={{ fontSize: 'var(--text-2xl)', fontWeight: 800 }}>{done}</span>
+        <span style={{ color: 'var(--text-muted)' }}>/{total}</span>
+      </div>
+    </div>
+  )
+}
+
+function TaskRow({ task, onCheck, onEdit, onSkip }) {
+  const { t, lang } = useLang()
+  const done = task.status === 'done'
+  const skipped = task.status === 'skipped'
+  const pct = (task.subtasks || []).length > 0
+    ? Math.round(((task.subtasks || []).filter(s => s.done).length / task.subtasks.length) * 100)
+    : null
 
   return (
     <motion.div
-      ref={setNodeRef}
-      style={style}
+      className={`task-row-item${done ? ' done' : ''}${skipped ? ' skipped' : ''}`}
+      initial={{ opacity: 0, x: -8 }}
+      animate={{ opacity: 1, x: 0 }}
       layout
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ scale: 0.95, opacity: 0 }}
-      className={`task-card ${isDragging ? 'dragging' : ''} ${overdue ? 'task-overdue' : ''}`}
-      {...attributes}
-      {...listeners}
-      onClick={() => onOpen(task)}
     >
-      <span className={`task-title ${task.status === 'done' ? 'done' : ''} ${task.status === 'skipped' ? 'done' : ''}`}>
-        {task.aiGenerated && <span className="ai-tag-inline">✨</span>}
-        {task.title}
-      </span>
-      <div className="task-meta">
-        <span className={`prio prio-${task.priority || 'medium'}`}>{t(`tasks.${task.priority || 'medium'}`)}</span>
-        {dl && (
-          <span className={`deadline-chip ${overdue ? 'overdue' : ''}`}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path d="M12 8v4l3 2" /></svg>
-            {dl.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
-          </span>
+      <button
+        className={`task-checkbox${done ? ' checked' : ''}`}
+        onClick={(e) => { e.stopPropagation(); onCheck(task) }}
+      >
+        {done && (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
         )}
-        {(task.subtasks || []).length > 0 && (
-          <span className="deadline-chip">{subDone}/{task.subtasks.length}</span>
+      </button>
+
+      <div className="task-row-content" onClick={() => onEdit(task)}>
+        <span className={`task-row-title${done || skipped ? ' muted' : ''}`}>
+          {task.aiGenerated && <span className="ai-tag-mini">✨</span>}
+          {task.title}
+        </span>
+        {pct !== null && (
+          <div className="task-sub-progress">
+            <div className="task-sub-bar" style={{ width: `${pct}%` }} />
+          </div>
         )}
-        {task.status === 'skipped' && <span className="deadline-chip" style={{ color: 'var(--text-muted)' }}>⊘ {t('tasks.skipped')}</span>}
       </div>
-      {(task.tags || []).length > 0 && (
-        <div className="task-tags">
-          {task.tags.map((tag) => (
-            <span key={tag} className="tag-chip">#{tag}</span>
-          ))}
-        </div>
+
+      {task.priority === 'high' && !done && !skipped && (
+        <span className="task-prio-badge high">!</span>
+      )}
+      {task.aiGenerated && !done && (
+        <span style={{ fontSize: 11, color: '#9a8cff', fontWeight: 700 }}>AI</span>
+      )}
+      {skipped && (
+        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>⊘</span>
+      )}
+      {!done && !skipped && (
+        <button
+          className="task-skip-btn"
+          onClick={(e) => { e.stopPropagation(); onSkip(task) }}
+          title={t('tasks.skip')}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M9 18l6-6-6-6"/>
+            <path d="M15 18l6-6-6-6"/>
+          </svg>
+        </button>
       )}
     </motion.div>
+  )
+}
+
+function GroupHeader({ group, count, total, lang }) {
+  return (
+    <div className="task-group-header">
+      <span className="task-group-icon">{group.icon}</span>
+      <span className="task-group-label" style={{ color: group.color }}>{getGroupLabel(group, lang)}</span>
+      <span className="task-group-count">{count}/{total}</span>
+      <div className="task-group-line" />
+    </div>
   )
 }
 
@@ -84,17 +133,9 @@ function SkipModal({ open, onClose, onConfirm }) {
     <Modal open={open} onClose={close} title={t('tasks.skipTitle')} maxWidth={420}>
       <div className="field">
         <label>{t('tasks.skipReason')}</label>
-        <textarea
-          className="textarea"
-          rows={3}
-          placeholder={t('tasks.skipReasonPlaceholder')}
-          value={reason}
-          onChange={(e) => setReason(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter' && e.metaKey) submit() }}
-          autoFocus
-        />
+        <textarea className="textarea" rows={3} placeholder={t('tasks.skipReasonPlaceholder')} value={reason} onChange={(e) => setReason(e.target.value)} autoFocus />
       </div>
-      <div className="flex gap-3" style={{ justifyContent: 'flex-end' }}>
+      <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
         <button className="btn btn-ghost" onClick={close}>{t('common.cancel')}</button>
         <button className="btn btn-primary" onClick={submit}>{t('tasks.skip')}</button>
       </div>
@@ -102,32 +143,12 @@ function SkipModal({ open, onClose, onConfirm }) {
   )
 }
 
-function Column({ col, tasks, onOpen }) {
-  const { t } = useLang()
-  const { setNodeRef, isOver } = useDroppable({ id: col.id })
-  return (
-    <div ref={setNodeRef} className="kanban-col" style={isOver ? { outline: '2px dashed var(--primary)' } : undefined}>
-      <div className="kanban-col-head">
-        <h3>{t(col.key)}</h3>
-        <span className="kanban-count">{tasks.length}</span>
-      </div>
-      <div className="kanban-list">
-        <AnimatePresence>
-          {tasks.map((task) => (
-            <TaskCard key={task.id} task={task} onOpen={onOpen} />
-          ))}
-        </AnimatePresence>
-      </div>
-    </div>
-  )
-}
-
 function emptyTask() {
-  return { title: '', description: '', priority: 'medium', tags: [], deadline: '', subtasks: [], status: 'todo' }
+  return { title: '', description: '', priority: 'medium', tags: [], deadline: '', subtasks: [], status: 'todo', timeGroup: 'day' }
 }
 
 function TaskModal({ open, onClose, task, onSave, onDelete }) {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const [form, setForm] = useState(emptyTask())
   const [tagInput, setTagInput] = useState('')
   const [subInput, setSubInput] = useState('')
@@ -135,13 +156,7 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
   useEffect(() => {
     if (task) {
       const dl = toDate(task.deadline)
-      setForm({
-        ...emptyTask(),
-        ...task,
-        deadline: dl ? toDateKey(dl) : '',
-        tags: task.tags || [],
-        subtasks: task.subtasks || [],
-      })
+      setForm({ ...emptyTask(), ...task, deadline: dl ? toDateKey(dl) : '', tags: task.tags || [], subtasks: task.subtasks || [] })
     } else {
       setForm(emptyTask())
     }
@@ -149,78 +164,101 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
 
   const addTag = () => {
     const v = tagInput.trim()
-    if (v && !form.tags.includes(v)) setForm((f) => ({ ...f, tags: [...f.tags, v] }))
+    if (v && !form.tags.includes(v)) setForm(f => ({ ...f, tags: [...f.tags, v] }))
     setTagInput('')
   }
   const addSub = () => {
     const v = subInput.trim()
-    if (v) setForm((f) => ({ ...f, subtasks: [...f.subtasks, { title: v, done: false }] }))
+    if (v) setForm(f => ({ ...f, subtasks: [...f.subtasks, { title: v, done: false }] }))
     setSubInput('')
   }
 
   const submit = () => {
     if (!form.title.trim()) return
-    onSave({
-      ...form,
-      title: form.title.trim(),
-      deadline: form.deadline || null,
-    })
+    onSave({ ...form, title: form.title.trim(), deadline: form.deadline || null })
   }
 
   return (
     <Modal open={open} onClose={onClose} title={task ? t('common.edit') : t('tasks.new')}>
       <div className="field">
         <label>{t('common.title')}</label>
-        <input className="input" value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} autoFocus />
+        <input className="input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} autoFocus required />
       </div>
       <div className="field">
         <label>{t('common.description')}</label>
-        <textarea className="textarea" rows={3} value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} />
+        <textarea className="textarea" rows={2} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
       </div>
-      <div className="grid grid-2" style={{ gap: 'var(--space-3)' }}>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         <div className="field">
           <label>{t('tasks.priority')}</label>
-          <select className="select" value={form.priority} onChange={(e) => setForm((f) => ({ ...f, priority: e.target.value }))}>
-            {PRIORITIES.map((p) => <option key={p} value={p}>{t(`tasks.${p}`)}</option>)}
+          <select className="select" value={form.priority} onChange={e => setForm(f => ({ ...f, priority: e.target.value }))}>
+            {PRIORITIES.map(p => <option key={p} value={p}>{t(`tasks.${p}`)}</option>)}
           </select>
         </div>
         <div className="field">
           <label>{t('tasks.deadline')}</label>
-          <input type="date" className="input" value={form.deadline} onChange={(e) => setForm((f) => ({ ...f, deadline: e.target.value }))} />
+          <input type="date" className="input" value={form.deadline} onChange={e => setForm(f => ({ ...f, deadline: e.target.value }))} />
         </div>
       </div>
+
+      <div className="field">
+        <label>Время дня</label>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {TIME_GROUPS.map(g => (
+            <button
+              key={g.id}
+              type="button"
+              onClick={() => setForm(f => ({ ...f, timeGroup: g.id }))}
+              style={{
+                padding: '7px 14px', borderRadius: 99, fontSize: 13, fontWeight: 600,
+                background: form.timeGroup === g.id ? '#7c5cff' : 'var(--surface-2)',
+                color: form.timeGroup === g.id ? '#fff' : 'var(--text-secondary)',
+                border: `1px solid ${form.timeGroup === g.id ? '#7c5cff' : 'var(--border)'}`,
+                transition: 'all 0.15s',
+              }}
+            >{g.icon} {getGroupLabel(g, lang)}</button>
+          ))}
+        </div>
+      </div>
+
       <div className="field">
         <label>{t('tasks.tags')}</label>
         <div className="chip-input">
-          {form.tags.map((tag) => (
+          {form.tags.map(tag => (
             <span key={tag} className="chip-removable">#{tag}
-              <button onClick={() => setForm((f) => ({ ...f, tags: f.tags.filter((x) => x !== tag) }))}>×</button>
+              <button type="button" onClick={() => setForm(f => ({ ...f, tags: f.tags.filter(x => x !== tag) }))}>×</button>
             </span>
           ))}
-          <input className="input" style={{ flex: 1, minWidth: 120 }} value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())} placeholder={t('tasks.addTag')} />
+          <input className="input" style={{ flex: 1, minWidth: 100 }} value={tagInput} onChange={e => setTagInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addTag())} placeholder={t('tasks.addTag')} />
         </div>
       </div>
+
       <div className="field">
         <label>{t('tasks.subtasks')}</label>
         <div className="list-stack">
           {form.subtasks.map((s, i) => (
             <div key={i} className="subtask-row">
-              <button className={`checkbox ${s.done ? 'checked' : ''}`} onClick={() => setForm((f) => ({ ...f, subtasks: f.subtasks.map((x, j) => j === i ? { ...x, done: !x.done } : x) }))}>
-                {s.done && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5" /></svg>}
+              <button type="button" className={`checkbox ${s.done ? 'checked' : ''}`} onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.map((x, j) => j === i ? { ...x, done: !x.done } : x) }))}>
+                {s.done && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5"/></svg>}
               </button>
               <span style={{ flex: 1, textDecoration: s.done ? 'line-through' : 'none', color: s.done ? 'var(--text-muted)' : 'var(--text)' }}>{s.title}</span>
-              <button className="btn btn-ghost btn-icon" onClick={() => setForm((f) => ({ ...f, subtasks: f.subtasks.filter((_, j) => j !== i) }))}>×</button>
+              <button type="button" className="btn btn-ghost btn-icon" onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.filter((_, j) => j !== i) }))}>×</button>
             </div>
           ))}
           <div className="chip-input">
-            <input className="input" style={{ flex: 1 }} value={subInput} onChange={(e) => setSubInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addSub())} placeholder={t('tasks.addSubtask')} />
-            <button className="btn btn-secondary" onClick={addSub}>{t('common.add')}</button>
+            <input className="input" style={{ flex: 1 }} value={subInput} onChange={e => setSubInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addSub())} placeholder={t('tasks.addSubtask')} />
+            <button type="button" className="btn btn-secondary" onClick={addSub}>{t('common.add')}</button>
           </div>
         </div>
       </div>
-      <div className="flex gap-3" style={{ justifyContent: 'space-between' }}>
-        {task ? <button className="btn btn-danger" onClick={() => onDelete(task.id)}>{t('common.delete')}</button> : <span />}
-        <button className="btn btn-primary" onClick={submit}>{t('common.save')}</button>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, paddingTop: 4 }}>
+        {task
+          ? <button type="button" className="btn btn-danger" onClick={() => onDelete(task.id)}>{t('common.delete')}</button>
+          : <span />
+        }
+        <button type="button" className="btn btn-primary" onClick={submit}>{t('common.save')}</button>
       </div>
     </Modal>
   )
@@ -228,55 +266,62 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
 
 export default function TaskTracker() {
   const { items, loading, add, update, remove } = useCollection('tasks')
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const toast = useToast()
   const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
-  const [view, setView] = useState('board')
+  const [tab, setTab] = useState('today') // today | week | done
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState(null)
-  const [filterPrio, setFilterPrio] = useState('all')
+  const [skipTask, setSkipTask] = useState(null)
 
-  const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 180, tolerance: 6 } }),
-  )
+  const todayKey = toDateKey()
 
   useEffect(() => {
     if (params.get('new') === '1') {
-      setEditing(null)
-      setModalOpen(true)
-      params.delete('new')
-      setParams(params, { replace: true })
+      setEditing(null); setModalOpen(true)
+      params.delete('new'); setParams(params, { replace: true })
     }
   }, [params, setParams])
 
-  const filtered = useMemo(
-    () => (filterPrio === 'all' ? items : items.filter((tk) => tk.priority === filterPrio)),
-    [items, filterPrio],
+  const todayTasks = useMemo(() =>
+    items.filter(tk => {
+      const dl = toDate(tk.deadline)
+      return !dl || toDateKey(dl) === todayKey
+    }),
+    [items, todayKey]
   )
 
-  const [skipTask, setSkipTask] = useState(null)
+  const weekTasks = useMemo(() => {
+    const weekEnd = new Date(); weekEnd.setDate(weekEnd.getDate() + 7)
+    return items.filter(tk => {
+      const dl = toDate(tk.deadline)
+      return !dl || dl <= weekEnd
+    }).filter(tk => tk.status !== 'done')
+  }, [items])
 
-  const byCol = useMemo(() => {
-    const map = { todo: [], inProgress: [], done: [], skipped: [] }
-    filtered.forEach((tk) => { (map[tk.status] || map.todo).push(tk) })
+  const doneTasks = useMemo(() => items.filter(tk => tk.status === 'done'), [items])
+
+  const displayTasks = tab === 'today' ? todayTasks : tab === 'week' ? weekTasks : doneTasks
+
+  const grouped = useMemo(() => {
+    const map = {}
+    TIME_GROUPS.forEach(g => { map[g.id] = [] })
+    displayTasks.forEach(tk => {
+      const grp = tk.timeGroup || 'none'
+      if (map[grp]) map[grp].push(tk)
+      else map.none.push(tk)
+    })
     return map
-  }, [filtered])
+  }, [displayTasks])
 
-  const onDragEnd = ({ active, over }) => {
-    if (!over) return
-    const task = items.find((x) => x.id === active.id)
-    if (!task || task.status === over.id) return
-    const extra = over.id === 'done' ? { completedAt: serverTimestamp() } : over.id === 'skipped' ? { skippedAt: serverTimestamp() } : {}
-    update(task.id, { status: over.id, ...extra })
-  }
+  const doneCount = useMemo(() => todayTasks.filter(tk => tk.status === 'done').length, [todayTasks])
+  const totalCount = todayTasks.length
 
   const openNew = () => { setEditing(null); setModalOpen(true) }
   const openEdit = (task) => { setEditing(task); setModalOpen(true) }
 
   const save = async (data) => {
-    // Strip Firestore-internal fields — pass only editable data
     const { id: _id, createdAt: _ca, updatedAt: _ua, completedAt: _co, skippedAt: _sk, skipReason: _sr, ...clean } = data
     try {
       if (editing) await update(editing.id, clean)
@@ -291,24 +336,17 @@ export default function TaskTracker() {
 
   const del = async (id) => {
     try {
-      await remove(id)
-      toast.success(t('common.saved'))
-      setModalOpen(false)
+      await remove(id); toast.success(t('common.saved')); setModalOpen(false)
     } catch (e) {
-      console.error('delete error', e)
       toast.error(t('common.error'))
     }
   }
 
   const markDone = async (task) => {
     try {
-      if (task.status === 'done') {
-        await update(task.id, { status: 'todo', completedAt: null })
-      } else {
-        await update(task.id, { status: 'done', completedAt: serverTimestamp() })
-      }
+      if (task.status === 'done') await update(task.id, { status: 'todo', completedAt: null })
+      else await update(task.id, { status: 'done', completedAt: serverTimestamp() })
     } catch (e) {
-      console.error('markDone error', e)
       toast.error(t('common.error'))
     }
   }
@@ -319,70 +357,110 @@ export default function TaskTracker() {
       await update(skipTask.id, { status: 'skipped', skippedAt: serverTimestamp(), skipReason: reason || '' })
       setSkipTask(null)
     } catch (e) {
-      console.error('skip error', e)
       toast.error(t('common.error'))
     }
   }
 
+  const TABS = [
+    { id: 'today', label: t('common.today') || 'Сегодня' },
+    { id: 'week',  label: t('tasks.week') || 'Неделя' },
+    { id: 'done',  label: t('tasks.done') || 'Готово' },
+  ]
+
   return (
     <div>
-      <div className="page-header">
-        <div className="view-toggle">
-          <button className={view === 'board' ? 'active' : ''} onClick={() => setView('board')}>{t('tasks.board')}</button>
-          <button className={view === 'list' ? 'active' : ''} onClick={() => setView('list')}>{t('tasks.list')}</button>
+      {/* Header */}
+      <div className="module-header">
+        <div>
+          <h2 style={{ letterSpacing: '-0.02em' }}>{t('nav.tasks')}</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
+            {doneCount} из {totalCount} выполнено сегодня
+          </p>
         </div>
-        <div className="flex gap-3 items-center">
-          <button className="btn btn-ghost" style={{ fontSize: 'var(--text-sm)' }} onClick={() => navigate('/app/ai-plan')}>✨ AI</button>
-          <select className="select" style={{ width: 'auto' }} value={filterPrio} onChange={(e) => setFilterPrio(e.target.value)}>
-            <option value="all">{t('common.all')}</option>
-            {PRIORITIES.map((p) => <option key={p} value={p}>{t(`tasks.${p}`)}</option>)}
-          </select>
-          <button className="btn btn-primary" onClick={openNew}>+ {t('tasks.new')}</button>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <button className="btn btn-secondary btn-sm" onClick={() => navigate('/app/ai-plan')}>
+            ✨ AI план
+          </button>
+          <button className="btn btn-primary" onClick={openNew}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            {t('tasks.new')}
+          </button>
         </div>
       </div>
 
-      {!loading && items.length === 0 ? (
-        <EmptyState message={t('tasks.empty')} action={<button className="btn btn-primary" onClick={openNew}>+ {t('tasks.new')}</button>} />
-      ) : view === 'board' ? (
-        <DndContext sensors={sensors} onDragEnd={onDragEnd}>
-          <div className="kanban">
-            {COLUMNS.filter(c => c.id !== 'skipped').map((col) => (
-              <Column key={col.id} col={col} tasks={byCol[col.id]} onOpen={openEdit} />
-            ))}
+      {/* Tabs */}
+      <div className="tasks-tabs">
+        {TABS.map(tab_ => (
+          <button
+            key={tab_.id}
+            className={`tasks-tab${tab === tab_.id ? ' active' : ''}`}
+            onClick={() => setTab(tab_.id)}
+          >{tab_.label}</button>
+        ))}
+      </div>
+
+      {/* Progress ring — today only */}
+      {tab === 'today' && totalCount > 0 && (
+        <ProgressRing done={doneCount} total={totalCount} />
+      )}
+
+      {/* Task list by group */}
+      {loading ? (
+        <div className="list-stack" style={{ marginTop: 16 }}>
+          {[0,1,2,3].map(i => <div key={i} className="skeleton-pulse" style={{ height: 52 }} />)}
+        </div>
+      ) : displayTasks.length === 0 ? (
+        <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
+          <div style={{ fontSize: 48, marginBottom: 12 }}>
+            {tab === 'done' ? '🏆' : '📭'}
           </div>
-        </DndContext>
+          <h3>{tab === 'done' ? 'Нет выполненных задач' : t('tasks.empty')}</h3>
+          {tab !== 'done' && (
+            <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={openNew}>
+              + {t('tasks.new')}
+            </button>
+          )}
+        </div>
       ) : (
-        <div className="list-stack">
-          {filtered.map((task) => (
-            <div key={task.id} className={`task-card ${task.status === 'skipped' ? 'task-skipped-row' : ''}`} onClick={() => openEdit(task)} style={{ cursor: 'pointer' }}>
-              <div className="flex items-center gap-3">
-                <button
-                  className={`checkbox ${task.status === 'done' ? 'checked' : ''}`}
-                  onClick={(e) => { e.stopPropagation(); markDone(task) }}
-                >
-                  {task.status === 'done' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5" /></svg>}
-                </button>
-                <span className={`task-title ${task.status === 'done' || task.status === 'skipped' ? 'done' : ''}`} style={{ flex: 1 }}>
-                  {task.aiGenerated && <span className="ai-tag-inline">✨</span>}
-                  {task.title}
-                </span>
-                <span className={`prio prio-${task.priority || 'medium'}`}>{t(`tasks.${task.priority || 'medium'}`)}</span>
-                {task.status !== 'done' && task.status !== 'skipped' && (
-                  <button
-                    className="btn btn-ghost btn-icon"
-                    title={t('tasks.skip')}
-                    style={{ color: 'var(--text-muted)', fontSize: 18, lineHeight: 1 }}
-                    onClick={(e) => { e.stopPropagation(); setSkipTask(task) }}
-                  >⊘</button>
-                )}
+        <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {TIME_GROUPS.map(g => {
+            const tasks = grouped[g.id] || []
+            if (tasks.length === 0) return null
+            const groupDone = tasks.filter(tk => tk.status === 'done').length
+            return (
+              <div key={g.id}>
+                <GroupHeader
+                  group={g}
+                  count={groupDone}
+                  total={tasks.length}
+                  lang={lang}
+                />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 10, marginBottom: 8 }}>
+                  {tasks.map(task => (
+                    <TaskRow
+                      key={task.id}
+                      task={task}
+                      onCheck={markDone}
+                      onEdit={openEdit}
+                      onSkip={setSkipTask}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
 
-      <TaskModal open={modalOpen} onClose={() => setModalOpen(false)} task={editing} onSave={save} onDelete={del} />
-      <SkipModal open={!!skipTask} onClose={() => setSkipTask(null)} onConfirm={confirmSkip} />
+      {/* Modals */}
+      <AnimatePresence>
+        {modalOpen && (
+          <TaskModal open={modalOpen} onClose={() => { setModalOpen(false); setEditing(null) }} task={editing} onSave={save} onDelete={del} />
+        )}
+        {skipTask && (
+          <SkipModal open={!!skipTask} onClose={() => setSkipTask(null)} onConfirm={confirmSkip} />
+        )}
+      </AnimatePresence>
     </div>
   )
 }

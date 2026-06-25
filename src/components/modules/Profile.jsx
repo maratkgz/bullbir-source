@@ -282,31 +282,84 @@ export default function Profile() {
   return (
     <div>
       {/* Hero */}
-      <div className="prof-hero">
-        <button className="prof-avatar-btn" onClick={() => fileRef.current?.click()} disabled={avatarBusy}>
-          {photoURL
-            ? <img src={photoURL} alt="" className="prof-avatar-img" />
-            : <div className="prof-avatar-ph">{initial}</div>
-          }
-          <div className="prof-avatar-ov">
-            {avatarBusy
-              ? <span className="spinner" style={{ borderColor: 'white', borderTopColor: 'transparent' }} />
-              : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                  <circle cx="12" cy="13" r="4" />
-                </svg>
+      <div className="prof-cover">
+        <div className="prof-cover-glow" />
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '12px 16px' }}>
+          <button className="btn btn-secondary btn-sm" onClick={() => setTab('personal')} style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
+            ✏ {t('common.edit')}
+          </button>
+        </div>
+      </div>
+      <div className="prof-hero-body">
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: -48 }}>
+          <button className="prof-avatar-btn" onClick={() => fileRef.current?.click()} disabled={avatarBusy}>
+            {photoURL
+              ? <img src={photoURL} alt="" className="prof-avatar-img" />
+              : <div className="prof-avatar-ph">{initial}</div>
             }
-          </div>
-        </button>
-        <input ref={fileRef} type="file" accept="image/*" className="sr-only" onChange={e => { if (e.target.files?.[0]) pickAvatar(e.target.files[0]); e.target.value = '' }} />
-        <div className="prof-hero-info">
-          <h2 className="prof-hero-name">{displayName || email || t('profile.noName')}</h2>
-          <div className="prof-xp-row">
-            <span className="prof-lvl-chip">{t('profile.level')} {level}</span>
-            <div className="prof-xp-track">
-              <motion.div className="prof-xp-fill" initial={{ width: 0 }} animate={{ width: `${xpPct}%` }} transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }} />
+            <div className="prof-avatar-ov">
+              {avatarBusy
+                ? <span className="spinner" style={{ borderColor: 'white', borderTopColor: 'transparent' }} />
+                : <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              }
             </div>
-            <span className="prof-xp-label">{totalXp - prevLvlXp}/{nextLvlXp - prevLvlXp} XP</span>
+          </button>
+        </div>
+        <input ref={fileRef} type="file" accept="image/*" className="sr-only" onChange={e => { if (e.target.files?.[0]) pickAvatar(e.target.files[0]); e.target.value = '' }} />
+        <div style={{ marginTop: 12 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>{displayName || t('profile.noName')}</h2>
+          <div style={{ fontSize: 13.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 2 }}>
+            {email}{createdDate && ` · с ${createdDate}`}
+          </div>
+        </div>
+
+        {/* XP Level card */}
+        <div className="card" style={{ marginTop: 20, padding: '18px 20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 22 }}>⭐</span>
+              <span style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)' }}>
+                {t('profile.level')} {level}
+              </span>
+            </div>
+            <span style={{ fontSize: 13, fontWeight: 700, color: '#9a8cff' }}>
+              {totalXp - prevLvlXp} / {nextLvlXp - prevLvlXp} XP
+            </span>
+          </div>
+          <div style={{ height: 10, background: 'var(--bg)', borderRadius: 99, overflow: 'hidden', marginTop: 14 }}>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${xpPct}%` }}
+              transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
+              style={{ height: '100%', background: 'linear-gradient(90deg,#7c5cff,#9a8cff)', borderRadius: 99 }}
+            />
+          </div>
+          <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 10 }}>
+            До уровня {level + 1} осталось {nextLvlXp - totalXp} XP
+          </div>
+        </div>
+
+        {/* Achievements */}
+        <div style={{ marginTop: 20 }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 14 }}>
+            Достижения
+          </div>
+          <div style={{ display: 'flex', gap: 14 }}>
+            {[
+              { emoji: '🔥', label: 'Стрик', bg: '#5b4fcf' },
+              { emoji: '⭐', label: 'Лучший день', bg: '#f47a55' },
+              { emoji: '📚', label: 'Знания', bg: '#5ad1a5' },
+              { emoji: '💰', label: 'Финансы', bg: '#f0c45a' },
+            ].map(b => (
+              <div key={b.emoji} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 56, height: 56, borderRadius: 16, background: b.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{b.emoji}</div>
+                <span style={{ fontSize: 10, color: 'var(--text-muted)', fontWeight: 600, textAlign: 'center', lineHeight: 1.2 }}>{b.label}</span>
+              </div>
+            ))}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+              <div style={{ width: 56, height: 56, borderRadius: 16, background: 'var(--surface-2)', border: '1.5px dashed var(--border-strong)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, opacity: 0.5 }}>🔒</div>
+              <span style={{ fontSize: 10, color: 'var(--text-muted)', fontWeight: 600, textAlign: 'center' }}>Скоро</span>
+            </div>
           </div>
         </div>
       </div>
