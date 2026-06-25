@@ -1548,3 +1548,40 @@
 }
 .note-title-input::placeholder { color: var(--text-muted); }
 
+
+/* ============================================================
+   PERSONAL PROGRESS — REDESIGNED HERO
+   ============================================================ */
+
+.prog-hero-card {
+  background: linear-gradient(150deg, #7c5cff, #5b3fe0 65%, #3a2a9e);
+  border-radius: 24px;
+  padding: 26px 24px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+.prog-hero-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -30px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  pointer-events: none;
+}
+
+.prog-stat-card { padding: 16px 18px; }
+.prog-stat-value { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
+.prog-stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+
+
+/* ShiftTracker hero */
+.shift-hero-card {
+  background: linear-gradient(150deg, #7c5cff, #5b3fe0 65%, #3a2a9e);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+

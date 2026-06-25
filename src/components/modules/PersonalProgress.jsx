@@ -231,38 +231,65 @@ export default function PersonalProgress() {
         )}
       </AnimatePresence>
 
-      <div className="page-header">
-        <h1>{t('prog.title')}</h1>
-        <div className="view-toggle">
-          <button className={tab === 'overview' ? 'active' : ''} onClick={() => setTab('overview')}>{t('prog.overview')}</button>
-          <button className={tab === 'analytics' ? 'active' : ''} onClick={() => setTab('analytics')}>{t('prog.analytics')}</button>
+      <div className="module-header">
+        <div>
+          <h2 style={{ letterSpacing: '-0.02em' }}>{t('prog.title')}</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
+            Твой прогресс
+          </p>
+        </div>
+        <div className="tasks-tabs">
+          <button className={`tasks-tab${tab === 'overview' ? ' active' : ''}`} onClick={() => setTab('overview')}>{t('prog.overview')}</button>
+          <button className={`tasks-tab${tab === 'analytics' ? ' active' : ''}`} onClick={() => setTab('analytics')}>{t('prog.analytics')}</button>
         </div>
       </div>
 
-      {/* Level / XP card */}
-      <div className="prog-level-card">
-        <div className="prog-level-row">
-          <div className="prog-level-badge">
+      {/* Level / XP hero card */}
+      <div className="prog-hero-card" style={{ marginBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
+          {/* Conic ring */}
+          <div style={{
+            width: 130, height: 130, borderRadius: '50%', flexShrink: 0,
+            background: `conic-gradient(#fff ${allStats.xpPct}%, rgba(255,255,255,0.22) 0)`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <div style={{
+              width: 102, height: 102, borderRadius: '50%', background: '#5b3fe0',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <span style={{ fontSize: 30, fontWeight: 800, color: '#fff', lineHeight: 1, letterSpacing: '-0.04em' }}>
+                {allStats.xpPct}%
+              </span>
+              <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', fontWeight: 600, marginTop: 3 }}>
+                выполнено
+              </span>
+            </div>
+          </div>
+          {/* Stats */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <div>
-              <div className="prog-level-label">{t('prog.level')}</div>
-              <div className="prog-level-num">{allStats.level}</div>
-            </div>
-            <div style={{ marginLeft: 'var(--space-3)' }}>
-              <div style={{ fontWeight: 700, fontSize: 'var(--text-lg)' }}>{allStats.totalXP} {t('prog.xp')}</div>
-              <div style={{ fontSize: 'var(--text-sm)', opacity: 0.7 }}>
-                {allStats.xpNeeded - allStats.xpThisLevel} {t('prog.xpToNext')}
+              <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
+                {streak} <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>дней</span>
               </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', fontWeight: 500, marginTop: 2 }}>текущий стрик 🔥</div>
+            </div>
+            <div>
+              <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
+                {allStats.totalXP}
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', fontWeight: 500, marginTop: 2 }}>всего XP · Уровень {allStats.level}</div>
             </div>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: 'var(--text-sm)', opacity: 0.7 }}>{streak} {t('prog.streak')}</div>
-            <div style={{ fontWeight: 700 }}>🔥</div>
-          </div>
         </div>
-        <div className="prog-xp-bar">
-          <motion.div className="prog-xp-fill" initial={{ width: 0 }} animate={{ width: `${allStats.xpPct}%` }} />
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          background: 'rgba(255,255,255,0.16)', padding: '7px 13px', borderRadius: 99, marginTop: 18,
+        }}>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#ffb59c', flexShrink: 0 }} />
+          <span style={{ fontSize: 13, fontWeight: 600, color: '#fff' }}>
+            {allStats.xpNeeded - allStats.xpThisLevel} XP до уровня {allStats.level + 1}
+          </span>
         </div>
-        <div className="prog-xp-text">{allStats.xpPct}% to Level {allStats.level + 1}</div>
       </div>
 
       {/* Period selector */}

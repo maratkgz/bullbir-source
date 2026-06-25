@@ -158,20 +158,61 @@ export default function ShiftTracker() {
 
   return (
     <div>
-      <div className="page-header">
-        <h1>{t('shift.title')}</h1>
-        <div className="flex gap-3 items-center">
-          <select className="select" style={{ width: 'auto' }} value={currency} onChange={(e) => setCurrency(e.target.value)}>
-            {Object.keys(CURRENCIES).map((c) => <option key={c} value={c}>{c}</option>)}
+      <div className="module-header">
+        <div>
+          <h2 style={{ letterSpacing: '-0.02em' }}>{t('shift.title')}</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
+            {format(currentMonth, 'LLLL yyyy', { locale: undefined })} · {items.length} смен
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          <select className="select" style={{ width: 'auto' }} value={currency} onChange={e => setCurrency(e.target.value)}>
+            {Object.keys(CURRENCIES).map(c => <option key={c} value={c}>{c}</option>)}
           </select>
-          <div className="view-toggle">
-            <button className={view === 'calendar' ? 'active' : ''} onClick={() => setView('calendar')}>{t('shift.calendar')}</button>
-            <button className={view === 'list' ? 'active' : ''} onClick={() => setView('list')}>{t('common.all')}</button>
-            <button className={view === 'stats' ? 'active' : ''} onClick={() => setView('stats')}>{t('shift.stats')}</button>
+          <div className="tasks-tabs">
+            <button className={`tasks-tab${view === 'calendar' ? ' active' : ''}`} onClick={() => setView('calendar')}>{t('shift.calendar')}</button>
+            <button className={`tasks-tab${view === 'list' ? ' active' : ''}`} onClick={() => setView('list')}>{t('common.all')}</button>
+            <button className={`tasks-tab${view === 'stats' ? ' active' : ''}`} onClick={() => setView('stats')}>{t('shift.stats')}</button>
           </div>
-          <button className="btn btn-primary" onClick={() => openNew()}>+ {t('shift.newShift')}</button>
+          <button className="btn btn-primary" onClick={() => openNew()}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            {t('shift.newShift')}
+          </button>
         </div>
       </div>
+
+      {/* Earnings hero card */}
+      {items.length > 0 && (() => {
+        const monthStart = startOfMonth(currentMonth)
+        const monthEnd = endOfMonth(currentMonth)
+        const monthItems = items.filter(s => {
+          const d = s.date ? new Date(s.date) : null
+          return d && d >= monthStart && d <= monthEnd && s.status !== 'off'
+        })
+        const totalEarnings = monthItems.reduce((a, s) => a + (s.earnings || 0), 0)
+        const totalHours = monthItems.reduce((a, s) => a + (s.hours || 0), 0)
+        return (
+          <div className="shift-hero-card" style={{ marginBottom: 16 }}>
+            <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.8)', fontWeight: 500, position: 'relative' }}>
+              Заработано в {format(currentMonth, 'LLLL', { locale: undefined })}
+            </div>
+            <div style={{ fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginTop: 6, position: 'relative' }}>
+              {formatMoney(totalEarnings, currency)}
+            </div>
+            <div style={{ display: 'flex', gap: 24, marginTop: 18, position: 'relative' }}>
+              <div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Часов</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginTop: 2 }}>{Math.round(totalHours)} ч</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Смен</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginTop: 2 }}>{monthItems.length}</div>
+              </div>
+            </div>
+            <div style={{ position: 'absolute', top: -30, right: -20, width: 130, height: 130, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', pointerEvents: 'none' }} />
+          </div>
+        )
+      })()}
 
       {/* Active shift banner */}
       <AnimatePresence>
