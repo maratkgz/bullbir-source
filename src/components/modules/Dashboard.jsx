@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useCollection } from '../../hooks/useCollection'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
@@ -32,21 +32,48 @@ function calcStreak(tasks) {
   return streak
 }
 
-const card = (i) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { delay: i * 0.06, type: 'spring', stiffness: 300, damping: 25 },
-})
+// Stagger group: fans its motion children out in sequence. When `reduce` is set
+// (prefers-reduced-motion) the stagger collapses to 0 so everything fades together.
+function groupVariants(reduce, stagger = 0.08, delayChildren = 0) {
+  return {
+    hidden: {},
+    show: {
+      transition: reduce
+        ? { staggerChildren: 0, delayChildren: 0 }
+        : { staggerChildren: stagger, delayChildren },
+    },
+  }
+}
 
-function StatCard({ icon, label, value, sub, color, to, i }) {
+// Single card entrance: fade + rise on a soft spring. Reduced-motion drops the
+// rise and swaps the spring for a short linear fade.
+function cardVariants(reduce) {
+  return {
+    hidden: { opacity: 0, y: reduce ? 0 : 18 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: reduce
+        ? { duration: 0.15 }
+        : { type: 'spring', stiffness: 300, damping: 26 },
+    },
+  }
+}
+
+// Soft hover lift — disabled entirely under reduced motion.
+function hoverLift(reduce, y = -4) {
+  return reduce ? undefined : { y, transition: { type: 'spring', stiffness: 400, damping: 22 } }
+}
+
+function StatCard({ icon, label, value, sub, color, to, variants, reduce }) {
   const navigate = useNavigate()
   return (
     <motion.div
       className="dash-stat-card card"
-      {...card(i)}
+      variants={variants}
       onClick={() => to && navigate(to)}
       style={{ cursor: to ? 'pointer' : 'default' }}
-      whileHover={to ? { y: -4 } : {}}
+      whileHover={to ? hoverLift(reduce) : undefined}
     >
       <div className="dash-stat-icon" style={{ background: (color || 'var(--primary)') + '22', color: color || 'var(--primary)' }}>
         {icon}
@@ -115,6 +142,11 @@ export default function Dashboard() {
   const name = profile?.displayName || user?.displayName || ''
   const loading = tasks.loading
 
+  const reduce = useReducedMotion()
+  const root = useMemo(() => groupVariants(reduce, 0.1), [reduce])
+  const group = useMemo(() => groupVariants(reduce, 0.06), [reduce])
+  const item = useMemo(() => cardVariants(reduce), [reduce])
+
   if (loading) {
     return (
       <div className="grid grid-3">
@@ -124,14 +156,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="dash-root">
+    <motion.div className="dash-root" variants={root} initial="hidden" animate="show">
       {/* Greeting + streak hero */}
-      <motion.div
-        className="dash-hero-card card"
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-      >
+      <motion.div className="dash-hero-card card" variants={item}>
         <div className="dash-hero-left">
           <p className="dash-greeting-sub">{new Date().toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}</p>
           <h2 className="dash-greeting">
@@ -155,9 +182,10 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Stat cards row */}
-      <div className="dash-stats-grid">
+      <motion.div className="dash-stats-grid" variants={group}>
         <StatCard
-          i={0}
+          variants={item}
+          reduce={reduce}
           icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2"/></svg>}
           label={t('dash.tasksToday')}
           value={todayTasks.length}
@@ -166,7 +194,8 @@ export default function Dashboard() {
           to="/app/tasks"
         />
         <StatCard
-          i={1}
+          variants={item}
+          reduce={reduce}
           icon={<span style={{ fontSize: 20 }}>🔥</span>}
           label={t('habits.title')}
           value={`${habitsToday.done}/${habitsToday.total}`}
@@ -175,7 +204,8 @@ export default function Dashboard() {
           to="/app/habits"
         />
         <StatCard
-          i={2}
+          variants={item}
+          reduce={reduce}
           icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>}
           label={t('nav.goals')}
           value={activeGoals}
@@ -184,31 +214,32 @@ export default function Dashboard() {
           to="/app/goals"
         />
         <StatCard
-          i={3}
+          variants={item}
+          reduce={reduce}
           icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 17l5-5 4 4 8-8M16 8h4v4"/></svg>}
           label={t('dash.balance')}
           value={formatMoney(balance, txns.items[0]?.currency || 'KGS')}
           color={balance >= 0 ? '#22c55e' : '#ef4444'}
           to="/app/finance"
         />
-      </div>
+      </motion.div>
 
       {/* Quick actions */}
       <div className="section-title" style={{ marginBottom: 'var(--space-3)' }}>{t('dash.quickActions')}</div>
-      <div className="quick-actions" style={{ marginBottom: 'var(--space-6)' }}>
+      <motion.div className="quick-actions" style={{ marginBottom: 'var(--space-6)' }} variants={group}>
         {[
           { label: t('dash.newTask'), to: '/app/tasks', icon: 'M12 5v14M5 12h14', color: '#7c5cff' },
           { label: t('habits.newTitle'), to: '/app/habits', icon: 'M12 2l1.5 4.5H18l-3.75 2.75 1.5 4.5L12 11l-3.75 2.75 1.5-4.5L6 6.5h4.5Z', color: '#f97316' },
           { label: t('dash.logMood'), to: '/app/mood', icon: 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01', color: '#ec4899' },
           { label: t('dash.addTxn'), to: '/app/finance', icon: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', color: '#10b981' },
-        ].map((qa, i) => (
+        ].map((qa) => (
           <motion.button
             key={qa.label}
             className="quick-action"
             onClick={() => navigate(qa.to)}
-            {...card(i)}
-            whileHover={{ y: -4 }}
-            whileTap={{ scale: 0.97 }}
+            variants={item}
+            whileHover={hoverLift(reduce)}
+            whileTap={reduce ? undefined : { scale: 0.97 }}
           >
             <span className="qa-icon" style={{ background: qa.color + '22', color: qa.color }}>
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -218,12 +249,12 @@ export default function Dashboard() {
             {qa.label}
           </motion.button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Today tasks + mood */}
-      <div className="dash-bottom-grid">
+      <motion.div className="dash-bottom-grid" variants={group}>
         {/* Today's tasks */}
-        <motion.div className="card" {...card(4)}>
+        <motion.div className="card" variants={item}>
           <div className="widget-head" style={{ marginBottom: 'var(--space-3)' }}>
             <h3>{t('dash.tasksToday')}</h3>
             <button className="btn btn-ghost" style={{ fontSize: 'var(--text-sm)', padding: '4px 8px', minHeight: 'unset' }} onClick={() => navigate('/app/tasks')}>
@@ -257,13 +288,13 @@ export default function Dashboard() {
         </motion.div>
 
         {/* Mood + quote */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+        <motion.div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }} variants={group}>
           <motion.div
             className="card dash-mood-card"
-            {...card(5)}
+            variants={item}
             onClick={() => navigate('/app/mood')}
             style={{ cursor: 'pointer' }}
-            whileHover={{ y: -2 }}
+            whileHover={hoverLift(reduce, -2)}
           >
             <div className="widget-head">
               <h3>{t('dash.mood')}</h3>
@@ -287,11 +318,11 @@ export default function Dashboard() {
             )}
           </motion.div>
 
-          <motion.div className="card dquote" {...card(6)}>
+          <motion.div className="card dquote" variants={item}>
             <div className="dquote-text">"{quote()}"</div>
           </motion.div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
