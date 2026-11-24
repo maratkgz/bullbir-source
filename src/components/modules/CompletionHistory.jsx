@@ -4,6 +4,8 @@ import { useCollection } from '../../hooks/useCollection'
 import { useLang } from '../../context/LangContext'
 import { toDate, toDateKey } from '../../utils/format'
 import EmptyState from '../ui/EmptyState'
+import { Ban, Check, TriangleAlert } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 function getColor(rate, count) {
   if (count === 0) return 'var(--bg-card)'
@@ -85,8 +87,8 @@ function Heatmap({ tasks, t }) {
           ) : (
             <>
               <span>✓ {tooltip.done} {t('hist.done')}</span>
-              <span>⊘ {tooltip.skipped} {t('hist.skipped')}</span>
-              {tooltip.overdue > 0 && <span style={{ color: '#ef4444' }}>⚠ {tooltip.overdue} {t('hist.overdue')}</span>}
+              <span><Icon icon={Ban} size="1em" /> {tooltip.skipped} {t('hist.skipped')}</span>
+              {tooltip.overdue > 0 && <span style={{ color: '#ef4444' }}><Icon icon={TriangleAlert} size="1em" /> {tooltip.overdue} {t('hist.overdue')}</span>}
             </>
           )}
         </div>
@@ -121,7 +123,6 @@ export default function CompletionHistory() {
   const filtered = useMemo(() => {
     if (filter === 'done') return tasks.filter(t => t.status === 'done')
     if (filter === 'skipped') return tasks.filter(t => t.status === 'skipped')
-    if (filter === 'ai') return tasks.filter(t => t.aiGenerated)
     return tasks
   }, [tasks, filter])
 
@@ -129,12 +130,10 @@ export default function CompletionHistory() {
     const done = tasks.filter(t => t.status === 'done').length
     const skipped = tasks.filter(t => t.status === 'skipped').length
     const total = done + skipped
-    const aiDone = tasks.filter(t => t.aiGenerated && t.status === 'done').length
     return {
       done,
       skipRate: total > 0 ? Math.round((skipped / total) * 100) : 0,
       streak: streak(tasks),
-      aiDone,
     }
   }, [tasks])
 
@@ -163,9 +162,9 @@ export default function CompletionHistory() {
   }
 
   const statusIcon = (status) => {
-    if (status === 'done') return <span style={{ color: '#22c55e' }}>✓</span>
-    if (status === 'skipped') return <span style={{ color: 'var(--text-muted)' }}>⊘</span>
-    return <span style={{ color: '#ef4444' }}>⚠</span>
+    if (status === 'done') return <span style={{ color: '#22c55e' }}><Icon icon={Check} size="1em" label={t('hist.done')} /></span>
+    if (status === 'skipped') return <span style={{ color: 'var(--text-muted)' }}><Icon icon={Ban} size="1em" label={t('hist.skipped')} /></span>
+    return <span style={{ color: '#ef4444' }}><Icon icon={TriangleAlert} size="1em" label={t('hist.overdue')} /></span>
   }
 
   if (loading) return <div className="page-loading">{t('common.loading')}</div>
@@ -190,10 +189,6 @@ export default function CompletionHistory() {
           <span className="hist-metric-val" style={{ color: 'var(--primary)' }}>{metrics.streak}</span>
           <span className="hist-metric-label">{t('hist.streak')} ({t('hist.days')})</span>
         </motion.div>
-        <motion.div className="hist-metric-card" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }}>
-          <span className="hist-metric-val">✨ {metrics.aiDone}</span>
-          <span className="hist-metric-label">{t('hist.aiDone')}</span>
-        </motion.div>
       </div>
 
       {/* Heatmap */}
@@ -215,7 +210,6 @@ export default function CompletionHistory() {
           { key: 'all', label: t('hist.all') },
           { key: 'done', label: t('hist.done') },
           { key: 'skipped', label: t('hist.skipped') },
-          { key: 'ai', label: '✨ AI' },
         ].map(f => (
           <button key={f.key} className={`hist-filter-btn ${filter === f.key ? 'active' : ''}`} onClick={() => setFilter(f.key)}>
             {f.label}
@@ -234,14 +228,13 @@ export default function CompletionHistory() {
                 <span className="hist-day-label">{dateLabel(dateKey)}</span>
                 <span className="hist-day-count">
                   <span style={{ color: '#22c55e' }}>✓ {dayTasks.filter(t => t.status === 'done').length}</span>
-                  {dayTasks.some(t => t.status === 'skipped') && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}>⊘ {dayTasks.filter(t => t.status === 'skipped').length}</span>}
+                  {dayTasks.some(t => t.status === 'skipped') && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}><Icon icon={Ban} size="1em" /> {dayTasks.filter(t => t.status === 'skipped').length}</span>}
                 </span>
               </div>
               {dayTasks.map(task => (
                 <div key={task.id} className="hist-task-row">
                   <span className="hist-task-icon">{statusIcon(task.status)}</span>
                   <span className="hist-task-title">
-                    {task.aiGenerated && <span style={{ opacity: 0.7, marginRight: 4 }}>✨</span>}
                     {task.title}
                   </span>
                   <span className={`prio prio-${task.priority || 'medium'}`} style={{ fontSize: 'var(--text-xs)' }}>

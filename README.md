@@ -57,7 +57,7 @@ All user data lives under `users/{uid}`:
 ```
 users/{uid}                         # profile, onboardingDone, language, theme
 users/{uid}/tasks/{id}              # title, description, status, priority, tags[], deadline, subtasks[]
-users/{uid}/journals/{YYYY-MM-DD}   # content (HTML), mood, private
+users/{uid}/journalEntries/{id}     # content (HTML), mood, private
 users/{uid}/events/{id}            # title, date, time, allDay, category, color
 users/{uid}/transactions/{id}      # type, amount, category, note, date, currency
 users/{uid}/moods/{YYYY-MM-DD}     # value (0-4), note
@@ -66,20 +66,33 @@ users/{uid}/goals/{id}             # title, description, milestones[], archived
 users/{uid}/habits/{id}            # title, log{ YYYY-MM-DD: true }
 users/{uid}/pomodoro/{id}          # minutes, date
 users/{uid}/reminders/{id}         # title, date, time, done
+users/{uid}/shifts/{id}            # shift tracker entries
+users/{uid}/savingsGoals/{id}      # savings goals
+users/{uid}/mandalas/{id}          # title, center{cell}, directions[8]{cell, actions[8]{cell}}
+                                    #   cell = text, done, deadline, note, milestones[{id,text,done,deadline}]
 ```
 
-### Suggested Firestore security rules
+## Security
 
+The rules live in the repo and **must be deployed** — they are not applied automatically:
+
+```bash
+npm i -g firebase-tools
+firebase login
+firebase use <your-project-id>
+firebase deploy --only firestore:rules,storage
 ```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{db}/documents {
-    match /users/{uid}/{document=**} {
-      allow read, write: if request.auth != null && request.auth.uid == uid;
-    }
-  }
-}
-```
+
+- `firestore.rules` — each user can read/write only `users/{their uid}`; module data requires a
+  verified email (or phone-only account); only the known collections are allowed; everything else
+  is denied. When adding a module/collection, add its name to `isKnownCollection` **and** to
+  `USER_COLLECTIONS` in `src/firebase/account.js`.
+- `storage.rules` — only `avatars/{uid}`, owner-only, images under 2 MB.
+- `vercel.json` — security headers (CSP, HSTS, X-Frame-Options, nosniff, Referrer-Policy,
+  Permissions-Policy, COOP). If you add a new external host (API, CDN, custom auth domain),
+  add it to the CSP or it will be blocked.
+- Logout clears the Firestore offline cache; deleting an account deletes all of its Firestore data
+  and the avatar (`src/firebase/account.js`).
 
 ## Project structure
 

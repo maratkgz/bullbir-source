@@ -5,6 +5,8 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import { toDateKey } from '../../utils/format'
 import Modal from '../ui/Modal'
+import { Check, Flame, Pencil, Plus, Sprout, Trash2 } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const EMOJIS = ['💪','📚','🏃','🧘','💧','🥗','😴','✍️','🎯','🎵','🧠','❤️','🌅','🚴','🏋️','🧹','🌿','☕','🎨','📝','🤸','🦷']
 const COLORS = ['#7c5cff','#06b6d4','#10b981','#f59e0b','#ef4444','#ec4899','#8b5cf6','#14b8a6','#f97316','#3b82f6']
@@ -174,7 +176,7 @@ export default function Habits() {
           </p>
         </div>
         <button className="btn btn-primary" onClick={openNew}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          <Icon icon={Plus} size={18} />
           {t('habits.newTitle')}
         </button>
       </div>
@@ -194,7 +196,7 @@ export default function Habits() {
           animate={{ opacity: 1, y: 0 }}
           style={{ textAlign: 'center', padding: 'var(--space-9) var(--space-5)' }}
         >
-          <div style={{ fontSize: 56, marginBottom: 'var(--space-3)' }}>🌱</div>
+          <div style={{ fontSize: 56, marginBottom: 'var(--space-3)' }}><Icon icon={Sprout} size="1em" /></div>
           <h3 style={{ marginBottom: 'var(--space-2)' }}>{t('habits.emptyTitle')}</h3>
           <p className="text-muted" style={{ fontSize: 'var(--text-sm)', marginBottom: 'var(--space-5)' }}>{t('habits.emptyHint')}</p>
           <button className="btn btn-primary" onClick={openNew}>{t('habits.newTitle')}</button>
@@ -211,7 +213,7 @@ export default function Habits() {
                   {d.label}
                 </div>
               ))}
-              <div className="habits-grid-streak-col">🔥</div>
+              <div className="habits-grid-streak-col"><Icon icon={Flame} size="1em" label={t('habits.daysStreak')} /></div>
               <div style={{ width: 32 }} />
             </div>
 
@@ -242,11 +244,11 @@ export default function Habits() {
                           style={done ? { background: habit.color, borderColor: habit.color } : {}}
                           onClick={() => toggleDay(habit, d.key)}
                           title={d.key}
+                          aria-label={`Отметить ${d.key}`}
+                          aria-pressed={done}
                         >
                           {done && (
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5">
-                              <path d="M20 6L9 17l-5-5"/>
-                            </svg>
+                            <Icon icon={Check} size={10} style={{ color: '#fff' }} />
                           )}
                         </button>
                       </div>
@@ -256,11 +258,11 @@ export default function Habits() {
                     {streak}
                   </div>
                   <div style={{ display: 'flex', gap: 4 }}>
-                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0 }} onClick={() => openEdit(habit)}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0 }} onClick={() => openEdit(habit)} aria-label="Изменить привычку">
+                      <Icon icon={Pencil} size={14} />
                     </button>
-                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0, color: 'var(--error)' }} onClick={() => setConfirmDel(habit)}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0, color: 'var(--error)' }} onClick={() => setConfirmDel(habit)} aria-label="Удалить привычку">
+                      <Icon icon={Trash2} size={14} />
                     </button>
                   </div>
                 </motion.div>
@@ -291,7 +293,7 @@ export default function Habits() {
                       <div className="habits-card-name">{habit.title}</div>
                       <div className="habits-card-meta">
                         {streak > 0 ? (
-                          <span style={{ color: 'var(--accent)', fontWeight: 700 }}>🔥 {streak} {t('habits.daysStreak')}</span>
+                          <span style={{ color: 'var(--accent)', fontWeight: 700 }}><Icon icon={Flame} size="1em" /> {streak} {t('habits.daysStreak')}</span>
                         ) : (
                           <span className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>{t('habits.noStreak')}</span>
                         )}
@@ -303,17 +305,18 @@ export default function Habits() {
                       className="btn btn-icon btn-ghost"
                       style={{ color: 'var(--text-muted)' }}
                       onClick={() => openEdit(habit)}
+                      aria-label="Изменить привычку"
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                      <Icon icon={Pencil} size={16} />
                     </button>
                     <button
                       className={`habits-check-btn${doneToday ? ' done' : ''}`}
                       style={doneToday ? { background: habit.color, borderColor: habit.color } : {}}
                       onClick={() => toggleDay(habit, today)}
+                      aria-label="Отметить сегодня"
+                      aria-pressed={doneToday}
                     >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={doneToday ? 'white' : 'currentColor'} strokeWidth="2.5">
-                        <path d="M20 6L9 17l-5-5"/>
-                      </svg>
+                      <Icon icon={Check} size={18} />
                     </button>
                   </div>
                 </motion.div>

@@ -3,6 +3,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BOTTOM_NAV_ITEMS, NAV_ITEMS } from './navItems'
 import { useLang } from '../../context/LangContext'
+import { Ellipsis } from 'lucide-react'
+import Icon from '../ui/Icon'
 import './BottomNav.css'
 
 const MORE_ITEMS = NAV_ITEMS.filter(
@@ -38,9 +40,7 @@ export default function BottomNav() {
           onClick={() => setShowMore((v) => !v)}
         >
           <span className="bottom-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="5" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" />
-            </svg>
+            <Icon icon={Ellipsis} size={22} />
           </span>
           <span className="bottom-label">{t('nav.more')}</span>
         </button>

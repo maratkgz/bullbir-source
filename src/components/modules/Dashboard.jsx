@@ -6,6 +6,9 @@ import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { formatMoney, toDate, toDateKey } from '../../utils/format'
 import { SkeletonCard } from '../ui/Skeleton'
+import { CircleCheck, DollarSign, Flame, Hand, ListChecks, PartyPopper, Plus, SmilePlus, Target, TrendingUp } from 'lucide-react'
+import Icon from '../ui/Icon'
+import { MODULE_ICONS } from '../../config/moduleIcons'
 
 const MOOD_EMOJI = ['😔', '😕', '😐', '🙂', '😄']
 const MOOD_COLORS = ['#ef4444','#f97316','#fbbf24','#84cc16','#22c55e']
@@ -162,17 +165,17 @@ export default function Dashboard() {
         <div className="dash-hero-left">
           <p className="dash-greeting-sub">{new Date().toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}</p>
           <h2 className="dash-greeting">
-            {t(greetingKey())}{name ? `, ${name}` : ''} 👋
+            {t(greetingKey())}{name ? `, ${name}` : ''} <Icon icon={Hand} size="1em" />
           </h2>
           <p className="text-muted" style={{ fontSize: 'var(--text-sm)', marginTop: 4 }}>
             {completedToday > 0
-              ? `✅ ${completedToday} ${t('dash.completedToday')}`
+              ? <><Icon icon={CircleCheck} size="1em" /> {completedToday} {t('dash.completedToday')}</>
               : t('dash.noTasksToday')}
           </p>
         </div>
         {streak > 0 && (
           <div className="dash-streak-badge">
-            <span style={{ fontSize: 32 }}>🔥</span>
+            <span style={{ fontSize: 32 }}><Icon icon={Flame} size="1em" /></span>
             <div>
               <div className="dash-streak-num">{streak}</div>
               <div className="dash-streak-label" style={{ fontSize: 'var(--text-xs)', opacity: 0.8 }}>{t('prog.streak')}</div>
@@ -186,7 +189,7 @@ export default function Dashboard() {
         <StatCard
           variants={item}
           reduce={reduce}
-          icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2"/></svg>}
+          icon={<Icon icon={ListChecks} />}
           label={t('dash.tasksToday')}
           value={todayTasks.length}
           sub={completedToday > 0 ? `+${completedToday} ${t('dash.completedToday')}` : null}
@@ -196,7 +199,7 @@ export default function Dashboard() {
         <StatCard
           variants={item}
           reduce={reduce}
-          icon={<span style={{ fontSize: 20 }}>🔥</span>}
+          icon={<Icon icon={Flame} />}
           label={t('habits.title')}
           value={`${habitsToday.done}/${habitsToday.total}`}
           sub={t('habits.doneToday')}
@@ -206,7 +209,7 @@ export default function Dashboard() {
         <StatCard
           variants={item}
           reduce={reduce}
-          icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>}
+          icon={<Icon icon={Target} />}
           label={t('nav.goals')}
           value={activeGoals}
           sub={t('dash.activeGoals') || 'active'}
@@ -216,7 +219,7 @@ export default function Dashboard() {
         <StatCard
           variants={item}
           reduce={reduce}
-          icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 17l5-5 4 4 8-8M16 8h4v4"/></svg>}
+          icon={<Icon icon={TrendingUp} />}
           label={t('dash.balance')}
           value={formatMoney(balance, txns.items[0]?.currency || 'KGS')}
           color={balance >= 0 ? '#22c55e' : '#ef4444'}
@@ -228,10 +231,10 @@ export default function Dashboard() {
       <div className="section-title" style={{ marginBottom: 'var(--space-3)' }}>{t('dash.quickActions')}</div>
       <motion.div className="quick-actions" style={{ marginBottom: 'var(--space-6)' }} variants={group}>
         {[
-          { label: t('dash.newTask'), to: '/app/tasks', icon: 'M12 5v14M5 12h14', color: '#7c5cff' },
-          { label: t('habits.newTitle'), to: '/app/habits', icon: 'M12 2l1.5 4.5H18l-3.75 2.75 1.5 4.5L12 11l-3.75 2.75 1.5-4.5L6 6.5h4.5Z', color: '#f97316' },
-          { label: t('dash.logMood'), to: '/app/mood', icon: 'M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01', color: '#ec4899' },
-          { label: t('dash.addTxn'), to: '/app/finance', icon: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6', color: '#10b981' },
+          { label: t('dash.newTask'), to: '/app/tasks', icon: Plus, color: '#7c5cff' },
+          { label: t('habits.newTitle'), to: '/app/habits', icon: MODULE_ICONS.habits, color: '#f97316' },
+          { label: t('dash.logMood'), to: '/app/mood', icon: MODULE_ICONS.mood, color: '#ec4899' },
+          { label: t('dash.addTxn'), to: '/app/finance', icon: DollarSign, color: '#10b981' },
         ].map((qa) => (
           <motion.button
             key={qa.label}
@@ -242,9 +245,7 @@ export default function Dashboard() {
             whileTap={reduce ? undefined : { scale: 0.97 }}
           >
             <span className="qa-icon" style={{ background: qa.color + '22', color: qa.color }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d={qa.icon} />
-              </svg>
+              <Icon icon={qa.icon} size={22} />
             </span>
             {qa.label}
           </motion.button>
@@ -263,7 +264,7 @@ export default function Dashboard() {
           </div>
           {todayTasks.length === 0 ? (
             <p className="text-muted" style={{ fontSize: 'var(--text-sm)', textAlign: 'center', padding: 'var(--space-5) 0' }}>
-              🎉 {t('dash.allDone') || 'All done for today!'}
+              <Icon icon={PartyPopper} size="1em" /> {t('dash.allDone') || 'All done for today!'}
             </p>
           ) : (
             <div className="list-stack">
@@ -312,7 +313,7 @@ export default function Dashboard() {
               </div>
             ) : (
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginTop: 4 }}>
-                <span style={{ fontSize: 36 }}>🤔</span>
+                <span style={{ fontSize: 36 }}><Icon icon={SmilePlus} size="1em" /></span>
                 <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{t('mood.howAreYou')}</p>
               </div>
             )}

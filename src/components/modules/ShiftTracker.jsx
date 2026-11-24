@@ -13,12 +13,14 @@ import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import EmptyState from '../ui/EmptyState'
 import { formatMoney, toDateKey, CURRENCIES } from '../../utils/format'
+import { CircleOff, Clock, Moon, Plus, Sun } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const SHIFT_TYPES = {
-  day:    { emoji: '☀️',  color: '#22c55e', key: 'shift.day' },
-  night:  { emoji: '🌙',  color: '#7c6ff7', key: 'shift.night' },
-  off:    { emoji: '⚪',  color: '#9ca3af', key: 'shift.off' },
-  custom: { emoji: '🟠',  color: '#ff6b35', key: 'shift.custom' },
+  day:    { icon: Sun, color: '#22c55e', key: 'shift.day' },
+  night:  { icon: Moon, color: '#7c6ff7', key: 'shift.night' },
+  off:    { icon: CircleOff, color: '#9ca3af', key: 'shift.off' },
+  custom: { icon: Clock, color: '#ff6b35', key: 'shift.custom' },
 }
 
 const WELLBEING = ['😫', '😕', '😐', '🙂', '😄']
@@ -175,7 +177,7 @@ export default function ShiftTracker() {
             <button className={`tasks-tab${view === 'stats' ? ' active' : ''}`} onClick={() => setView('stats')}>{t('shift.stats')}</button>
           </div>
           <button className="btn btn-primary" onClick={() => openNew()}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            <Icon icon={Plus} size={16} />
             {t('shift.newShift')}
           </button>
         </div>
@@ -280,7 +282,7 @@ export default function ShiftTracker() {
                     {shift && (
                       <span className="shift-dot" title={t(SHIFT_TYPES[shift.shiftType]?.key || 'shift.day')}
                         style={{ color: SHIFT_TYPES[shift.shiftType]?.color }}>
-                        {SHIFT_TYPES[shift.shiftType]?.emoji}
+                        <Icon icon={SHIFT_TYPES[shift.shiftType]?.icon} size="1em" />
                       </span>
                     )}
                   </div>
@@ -311,7 +313,7 @@ export default function ShiftTracker() {
                     <motion.div key={s.id} layout initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }}
                       className="shift-row" onClick={() => openEdit(s)}>
                       <span className="shift-row-type" style={{ background: `${st.color}22`, color: st.color }}>
-                        {st.emoji} {t(st.key)}
+                        <Icon icon={st.icon} size="1em" /> {t(st.key)}
                       </span>
                       <div style={{ flex: 1 }}>
                         <strong style={{ fontSize: 'var(--text-sm)' }}>{s.date}</strong>
@@ -406,7 +408,7 @@ export default function ShiftTracker() {
           {TEMPLATES.map((tpl) => (
             <button key={tpl.type} className="btn btn-secondary" style={{ fontSize: 'var(--text-sm)', padding: '6px 12px' }}
               onClick={() => setForm((f) => ({ ...f, shiftType: tpl.type, startTime: tpl.start, endTime: tpl.end }))}>
-              {SHIFT_TYPES[tpl.type].emoji} {tpl.label}
+              <Icon icon={SHIFT_TYPES[tpl.type].icon} size="1em" /> {tpl.label}
             </button>
           ))}
         </div>

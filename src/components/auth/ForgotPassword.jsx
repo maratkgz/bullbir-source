@@ -5,6 +5,8 @@ import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import AuthShell from './AuthShell'
+import { Check } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 export default function ForgotPassword() {
   const { resetPassword } = useAuth()
@@ -46,9 +48,7 @@ export default function ForgotPassword() {
           style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', alignItems: 'center' }}
         >
           <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 6 9 17l-5-5" />
-            </svg>
+            <Icon icon={Check} size={28} />
           </div>
           <p className="text-secondary">{t('auth.resetSent')}</p>
         </motion.div>

@@ -6,19 +6,16 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import AuthShell from './AuthShell'
 import OAuthButtons from './OAuthButtons'
+import { Eye, EyeOff } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 function EyeButton({ shown, onClick }) {
   return (
-    <button type="button" className="input-eye" onClick={onClick} tabIndex={-1} aria-label="toggle">
+    <button type="button" className="input-eye" onClick={onClick} tabIndex={-1} aria-label={shown ? 'Скрыть пароль' : 'Показать пароль'}>
       {shown ? (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
+        <Icon icon={Eye} />
       ) : (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9.9 4.2A10.9 10.9 0 0 1 12 4c6.5 0 10 7 10 7a18 18 0 0 1-2.2 3.2M6.6 6.6A18 18 0 0 0 2 11s3.5 7 10 7a10.9 10.9 0 0 0 4-.7M3 3l18 18" />
-        </svg>
+        <Icon icon={EyeOff} />
       )}
     </button>
   )

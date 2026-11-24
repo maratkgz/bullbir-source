@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { serverTimestamp } from 'firebase/firestore'
 import { useCollection } from '../../hooks/useCollection'
@@ -7,13 +7,15 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { toDate, toDateKey } from '../../utils/format'
+import { Ban, Check, ChevronRight, ClipboardList, CloudSun, Inbox, Moon, PartyPopper, Plus, Sun, Trophy, Zap } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const PRIORITIES = ['low', 'medium', 'high']
 const TIME_GROUPS = [
-  { id: 'morning', label_ru: 'Утро', label_en: 'Morning', label_kg: 'Эртең', icon: '☀️', color: '#f0c45a' },
-  { id: 'day',     label_ru: 'День', label_en: 'Day',     label_kg: 'Күндүз', icon: '🌤️', color: '#9a8cff' },
-  { id: 'evening', label_ru: 'Вечер', label_en: 'Evening', label_kg: 'Кеч', icon: '🌙', color: '#5ad1a5' },
-  { id: 'none',    label_ru: 'Другое', label_en: 'Other',  label_kg: 'Башка', icon: '📋', color: '#7a7a8c' },
+  { id: 'morning', label_ru: 'Утро', label_en: 'Morning', label_kg: 'Эртең', icon: Sun, color: '#f0c45a' },
+  { id: 'day',     label_ru: 'День', label_en: 'Day',     label_kg: 'Күндүз', icon: CloudSun, color: '#9a8cff' },
+  { id: 'evening', label_ru: 'Вечер', label_en: 'Evening', label_kg: 'Кеч', icon: Moon, color: '#5ad1a5' },
+  { id: 'none',    label_ru: 'Другое', label_en: 'Other',  label_kg: 'Башка', icon: ClipboardList, color: '#7a7a8c' },
 ]
 
 function getGroupLabel(g, lang) {
@@ -36,7 +38,7 @@ function ProgressRing({ done, total }) {
       </div>
       <div>
         <div className="tasks-progress-title">
-          {pct === 100 ? '🎉' : '⚡'} {pct === 100 ? 'День завершён!' : 'Прогресс дня'}
+          {pct === 100 ? <Icon icon={PartyPopper} size="1em" /> : <Icon icon={Zap} size="1em" />} {pct === 100 ? 'День завершён!' : 'Прогресс дня'}
         </div>
         <div className="tasks-progress-sub" style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
           Выполнено {done} из {total} задач
@@ -68,17 +70,16 @@ function TaskRow({ task, onCheck, onEdit, onSkip }) {
       <button
         className={`task-checkbox${done ? ' checked' : ''}`}
         onClick={(e) => { e.stopPropagation(); onCheck(task) }}
+        aria-label={done ? 'Отметить как невыполненную' : 'Отметить как выполненную'}
+        aria-pressed={done}
       >
         {done && (
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
+          <Icon icon={Check} size={13} style={{ color: '#fff' }} />
         )}
       </button>
 
       <div className="task-row-content" onClick={() => onEdit(task)}>
         <span className={`task-row-title${done || skipped ? ' muted' : ''}`}>
-          {task.aiGenerated && <span className="ai-tag-mini">✨</span>}
           {task.title}
         </span>
         {pct !== null && (
@@ -91,22 +92,17 @@ function TaskRow({ task, onCheck, onEdit, onSkip }) {
       {task.priority === 'high' && !done && !skipped && (
         <span className="task-prio-badge high">!</span>
       )}
-      {task.aiGenerated && !done && (
-        <span style={{ fontSize: 11, color: '#9a8cff', fontWeight: 700 }}>AI</span>
-      )}
       {skipped && (
-        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>⊘</span>
+        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}><Icon icon={Ban} size="1em" label="Пропущена" /></span>
       )}
       {!done && !skipped && (
         <button
           className="task-skip-btn"
           onClick={(e) => { e.stopPropagation(); onSkip(task) }}
           title={t('tasks.skip')}
+          aria-label="Пропустить задачу"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6"/>
-            <path d="M15 18l6-6-6-6"/>
-          </svg>
+          <Icon icon={ChevronRight} size={16} />
         </button>
       )}
     </motion.div>
@@ -116,7 +112,7 @@ function TaskRow({ task, onCheck, onEdit, onSkip }) {
 function GroupHeader({ group, count, total, lang }) {
   return (
     <div className="task-group-header">
-      <span className="task-group-icon">{group.icon}</span>
+      <span className="task-group-icon"><Icon icon={group.icon} size="1em" /></span>
       <span className="task-group-label" style={{ color: group.color }}>{getGroupLabel(group, lang)}</span>
       <span className="task-group-count">{count}/{total}</span>
       <div className="task-group-line" />
@@ -217,7 +213,7 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
                 border: `1px solid ${form.timeGroup === g.id ? '#7c5cff' : 'var(--border)'}`,
                 transition: 'all 0.15s',
               }}
-            >{g.icon} {getGroupLabel(g, lang)}</button>
+            ><Icon icon={g.icon} size="1em" /> {getGroupLabel(g, lang)}</button>
           ))}
         </div>
       </div>
@@ -239,8 +235,8 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
         <div className="list-stack">
           {form.subtasks.map((s, i) => (
             <div key={i} className="subtask-row">
-              <button type="button" className={`checkbox ${s.done ? 'checked' : ''}`} onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.map((x, j) => j === i ? { ...x, done: !x.done } : x) }))}>
-                {s.done && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5"/></svg>}
+              <button type="button" aria-label="Отметить подзадачу" aria-pressed={s.done} className={`checkbox ${s.done ? 'checked' : ''}`} onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.map((x, j) => j === i ? { ...x, done: !x.done } : x) }))}>
+                {s.done && <Icon icon={Check} size={12} />}
               </button>
               <span style={{ flex: 1, textDecoration: s.done ? 'line-through' : 'none', color: s.done ? 'var(--text-muted)' : 'var(--text)' }}>{s.title}</span>
               <button type="button" className="btn btn-ghost btn-icon" onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.filter((_, j) => j !== i) }))}>×</button>
@@ -268,7 +264,6 @@ export default function TaskTracker() {
   const { items, loading, add, update, remove } = useCollection('tasks')
   const { t, lang } = useLang()
   const toast = useToast()
-  const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const [tab, setTab] = useState('today') // today | week | done
   const [modalOpen, setModalOpen] = useState(false)
@@ -378,11 +373,8 @@ export default function TaskTracker() {
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
-          <button className="btn btn-secondary btn-sm" onClick={() => navigate('/app/ai-plan')}>
-            ✨ AI план
-          </button>
           <button className="btn btn-primary" onClick={openNew}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            <Icon icon={Plus} size={18} />
             {t('tasks.new')}
           </button>
         </div>
@@ -412,7 +404,7 @@ export default function TaskTracker() {
       ) : displayTasks.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
           <div style={{ fontSize: 48, marginBottom: 12 }}>
-            {tab === 'done' ? '🏆' : '📭'}
+            {tab === 'done' ? <Icon icon={Trophy} size="1em" /> : <Icon icon={Inbox} size="1em" />}
           </div>
           <h3>{tab === 'done' ? 'Нет выполненных задач' : t('tasks.empty')}</h3>
           {tab !== 'done' && (

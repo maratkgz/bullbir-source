@@ -29,27 +29,31 @@ export default defineConfig({
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/offline\.html$/],
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
+        // Firebase/Google API responses are deliberately NOT cached by the service worker:
+        // they carry private user data, and Firestore already has its own offline cache
+        // (which logout clears). Only static assets are cached here. Old installs may still
+        // have a 'firebase-api' cache — signOutAndClear() deletes it.
+        // Routes are limited to our own origin + Google Fonts: a cross-origin request handled by
+        // the SW is governed by the SW's CSP `connect-src`, so third-party auth scripts
+        // (apis.google.com, gstatic reCAPTCHA) must bypass the SW entirely.
         runtimeCaching: [
           {
-            urlPattern: ({ url }) =>
-              url.hostname.includes('googleapis.com') ||
-              url.hostname.includes('firebaseio.com') ||
-              url.hostname.includes('firebasestorage.app'),
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'firebase-api',
-              networkTimeoutSeconds: 5,
-              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-          {
-            urlPattern: ({ request }) =>
-              ['style', 'script', 'worker', 'font'].includes(request.destination),
+            urlPattern: ({ request, sameOrigin }) =>
+              sameOrigin && ['style', 'script', 'worker', 'font'].includes(request.destination),
             handler: 'CacheFirst',
             options: {
               cacheName: 'static-assets',
               expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            urlPattern: ({ url }) =>
+              url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
             },
           },
         ],

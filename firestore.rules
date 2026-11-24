@@ -1,0 +1,87 @@
+rules_version = '2';
+
+// BullBir — Firestore security rules.
+// Deploy: `firebase deploy --only firestore:rules` (or paste into Firebase Console → Firestore → Rules).
+//
+// Model: every piece of data lives under users/{uid}/... and is readable/writable ONLY by that uid.
+// Everything not explicitly matched below is denied.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    // Mirrors the client `isVerified` gate (AuthContext): verified email, or phone-only account.
+    function isVerified() {
+      return request.auth.token.get('email_verified', false) == true
+        || (request.auth.token.get('phone_number', null) != null
+            && request.auth.token.get('email', null) == null);
+    }
+
+    // Collections the app is allowed to store. Keep in sync with USER_COLLECTIONS
+    // in src/firebase/account.js. Anything else is rejected.
+    function isKnownCollection(col) {
+      return col in [
+        'tasks', 'journalEntries', 'events', 'transactions', 'moods', 'notes',
+        'goals', 'habits', 'pomodoro', 'reminders', 'shifts', 'savingsGoals',
+        'mandalas', 'aiState'
+      ];
+    }
+
+    // Admins are listed in /admins/{uid}; that collection is edited only in the Firebase
+    // console (client writes are denied below), so nobody can make themselves an admin.
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Guard against abuse: cap the number of top-level fields per document.
+    function reasonableSize() {
+      return request.resource.data.size() <= 60;
+    }
+
+    // Root profile doc. Created right after sign-up, before the email is verified.
+    match /users/{uid} {
+      allow read, delete: if isOwner(uid);
+      allow create, update: if isOwner(uid) && reasonableSize();
+    }
+
+    // Per-user module data — only after verification.
+    match /users/{uid}/{col}/{docId} {
+      allow read, delete: if isOwner(uid) && isVerified() && isKnownCollection(col);
+      allow create, update: if isOwner(uid) && isVerified() && isKnownCollection(col)
+        && reasonableSize();
+    }
+
+    // A user may only check whether they themselves are an admin.
+    match /admins/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
+    }
+
+    // Assistant knowledge library edited from the in-app admin page. Readable by every
+    // verified user (it is shared content, not personal data); writable by admins only.
+    match /aiDomains/{id} {
+      allow read: if signedIn() && isVerified();
+      allow delete: if isAdmin();
+      allow create, update: if isAdmin() && reasonableSize()
+        && request.resource.data.id == id
+        && (request.resource.data.get('disabled', false) == true
+            || request.resource.data.directions.size() == 8);
+    }
+    match /aiIntents/{id} {
+      allow read: if signedIn() && isVerified();
+      allow delete: if isAdmin();
+      allow create, update: if isAdmin() && reasonableSize() && request.resource.data.id == id;
+    }
+
+    // Deny-by-default for everything else.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

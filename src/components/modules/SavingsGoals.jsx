@@ -8,6 +8,8 @@ import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import EmptyState from '../ui/EmptyState'
 import { formatMoney, toDateKey, CURRENCIES } from '../../utils/format'
+import { ChevronDown, ChevronUp, Pencil, Trophy } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const EMOJIS = ['🎯', '📱', '✈️', '🚗', '🏠', '💻', '🎸', '📚', '👟', '💍', '🐾', '🌴', '🏋️', '🎮', '💎', '🛍️', '🍕', '🎓', '🚀', '❤️', '🌟', '⚡', '🌊', '🏆']
 
@@ -221,11 +223,8 @@ export default function SavingsGoals() {
                     <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => setContribModal(g.id)}>
                       + {t('sav.contribute')}
                     </button>
-                    <button className="btn btn-ghost btn-icon" onClick={() => openEdit(g)} title={t('common.edit')}>
-                      <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5Z" />
-                      </svg>
+                    <button className="btn btn-ghost btn-icon" onClick={() => openEdit(g)} title={t('common.edit')} aria-label="Изменить цель">
+                      <Icon icon={Pencil} size={16} />
                     </button>
                   </div>
                 </motion.div>
@@ -239,7 +238,7 @@ export default function SavingsGoals() {
       {archived.length > 0 && (
         <div style={{ marginTop: 'var(--space-6)' }}>
           <button className="btn btn-ghost" style={{ marginBottom: 'var(--space-3)' }} onClick={() => setShowArchived((v) => !v)}>
-            🏆 {t('sav.archived')} ({archived.length}) {showArchived ? '▲' : '▼'}
+            <Icon icon={Trophy} size="1em" /> {t('sav.archived')} ({archived.length}) {showArchived ? <Icon icon={ChevronUp} size="1em" /> : <Icon icon={ChevronDown} size="1em" />}
           </button>
           <AnimatePresence>
             {showArchived && (

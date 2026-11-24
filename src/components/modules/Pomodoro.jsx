@@ -5,6 +5,8 @@ import { useCollection } from '../../hooks/useCollection'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useLang } from '../../context/LangContext'
 import { toDate, toDateKey } from '../../utils/format'
+import { Check, Coffee, Pause, Play, RotateCcw, SkipForward } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const DURATIONS = [25, 45, 60]
 
@@ -91,7 +93,7 @@ export default function Pomodoro() {
         {/* Task label */}
         <div style={{ textAlign: 'center', marginTop: 12 }}>
           <div style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 600 }}>
-            {mode === 'break' ? '☕ Время отдыха' : 'Сейчас в фокусе'}
+            {mode === 'break' ? <><Icon icon={Coffee} size="1em" /> Время отдыха</> : 'Сейчас в фокусе'}
           </div>
           {mode === 'focus' && (
             <input
@@ -142,27 +144,23 @@ export default function Pomodoro() {
 
         {/* Controls */}
         <div className="pomo-controls">
-          <button className="pomo-ctrl-btn secondary" onClick={() => reset()} title="Сбросить">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-              <path d="M3 3v5h5"/>
-            </svg>
+          <button className="pomo-ctrl-btn secondary" onClick={() => reset()} title="Сбросить" aria-label="Сбросить таймер">
+            <Icon icon={RotateCcw} size={22} />
           </button>
           <motion.button
             className={`pomo-ctrl-btn main${mode === 'break' ? ' break-btn' : ''}`}
             whileTap={{ scale: 0.94 }}
             onClick={() => setRunning(r => !r)}
+            aria-label={running ? 'Пауза' : 'Запустить таймер'}
           >
             {running ? (
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+              <Icon icon={Pause} size={32} />
             ) : (
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
+              <Icon icon={Play} size={32} />
             )}
           </motion.button>
-          <button className="pomo-ctrl-btn secondary" onClick={complete} title="Пропустить">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 4l10 8-10 8V4z"/><path d="M19 5v14"/>
-            </svg>
+          <button className="pomo-ctrl-btn secondary" onClick={complete} title="Пропустить" aria-label="Пропустить сессию">
+            <Icon icon={SkipForward} size={22} />
           </button>
         </div>
       </div>
@@ -239,7 +237,7 @@ export default function Pomodoro() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {todayItems.slice(-6).reverse().map((item, i) => (
                 <div key={item.id} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 9, background: 'rgba(124,92,255,0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9a8cff', fontSize: 16 }}>✓</div>
+                  <div style={{ width: 32, height: 32, borderRadius: 9, background: 'rgba(124,92,255,0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9a8cff', fontSize: 16 }}><Icon icon={Check} size="1em" /></div>
                   <div style={{ flex: 1, fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)' }}>
                     {item.task || `Сессия ${todayItems.length - i}`}
                   </div>

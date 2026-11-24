@@ -9,6 +9,8 @@ import { useCollection } from '../../hooks/useCollection'
 import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import { toDateKey } from '../../utils/format'
+import { Flame } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const MOODS = [
   { value: 0, emoji: '😔', key: 'mood.veryBad' },
@@ -85,7 +87,7 @@ export default function MoodTracker() {
       <div className="card">
         <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-4)' }}>
           <span className="streak-badge">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-1 5-2 6 2 0 4 2 4 5a4 4 0 0 1-8 0c0-2 1-3 1-3s3 1 2-3c2 1 4 4 1 6 3-1 5-4 5-7 0-4-3-6-4-7Z" /></svg>
+            <Icon icon={Flame} size={18} />
             {streak} {t('mood.streak')}
           </span>
           <div className="view-toggle">

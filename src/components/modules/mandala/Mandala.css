@@ -1,0 +1,279 @@
+/* ===== Mandala chart (9×9) ===== */
+
+.mandala-hint {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  margin: 0 0 var(--space-3);
+}
+
+.mandala-back { margin: 0 0 6px -8px; }
+
+.mandala-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.mandala-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+.mandala-zoom span { min-width: 40px; text-align: center; }
+
+/* Scroll container: the grid keeps its 9×9 shape and scrolls when zoomed past the width. */
+.mandala-scroll {
+  container-type: inline-size;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
+  padding: 4px 2px 12px;
+  margin: 0 -2px;
+}
+
+.mandala-grid {
+  --block-gap: 6px;
+  --cell-gap: 3px;
+  --block-chrome: 8px; /* per block: 2 × 3px padding + 2 × 1px border */
+  /* Fit 9 cells (+ gaps, block padding/borders) to the container at 100 %, then scale by zoom. */
+  --cell-base: clamp(
+    28px,
+    calc((100cqi - 2 * var(--block-gap) - 6 * var(--cell-gap) - 3 * var(--block-chrome) - 4px) / 9),
+    86px
+  );
+  --cell: calc(var(--cell-base) * var(--zoom, 1));
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: var(--block-gap);
+  width: max-content;
+  margin: 0 auto;
+}
+
+.mandala-block {
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell));
+  grid-auto-rows: var(--cell);
+  gap: var(--cell-gap);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--c, var(--primary)) 7%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--c, var(--primary)) 22%, var(--border-subtle));
+}
+.mandala-block--center {
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  border-color: var(--primary-border);
+  box-shadow: var(--shadow-ring);
+}
+
+.mandala-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  border-radius: calc(var(--radius-sm) * var(--zoom, 1));
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: clamp(8px, calc(var(--cell) * 0.13), 13px);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.mandala-cell:hover { border-color: var(--c, var(--primary)); transform: translateY(-1px); }
+.mandala-cell:focus-visible { outline: 2px solid var(--c, var(--primary)); outline-offset: 1px; }
+
+.mandala-cell-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.mandala-cell.is-empty { color: var(--text-muted); border-style: dashed; background: transparent; font-size: clamp(10px, calc(var(--cell) * 0.22), 18px); }
+.mandala-cell.is-done {
+  background: color-mix(in srgb, var(--success) 16%, var(--surface));
+  border-color: color-mix(in srgb, var(--success) 45%, transparent);
+}
+.mandala-cell.is-done .mandala-cell-text { color: var(--text-secondary); }
+.mandala-cell.is-overdue { border-color: var(--error); }
+
+.mandala-cell--direction {
+  background: color-mix(in srgb, var(--c) 22%, var(--surface));
+  border-color: color-mix(in srgb, var(--c) 55%, transparent);
+  font-weight: 700;
+}
+.mandala-cell--direction.is-empty { background: color-mix(in srgb, var(--c) 8%, transparent); }
+
+.mandala-cell--center {
+  background: var(--gradient-primary);
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(9px, calc(var(--cell) * 0.15), 15px);
+}
+.mandala-cell--center.is-empty { color: #fff; }
+.mandala-cell--center.is-done { background: linear-gradient(120deg, var(--success), #2fa77d); }
+
+.mandala-cell-meta {
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.mandala-badge {
+  font-size: clamp(7px, calc(var(--cell) * 0.1), 10px);
+  font-family: var(--font-mono);
+  padding: 0 3px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--c, var(--primary)) 30%, transparent);
+  color: var(--text);
+}
+.mandala-badge--done { background: var(--success); color: #fff; }
+.mandala-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--warning); }
+.mandala-cell.is-overdue .mandala-dot { background: var(--error); }
+
+/* Direction cells carry a progress bar along the bottom edge. */
+.mandala-dir-wrap { position: relative; }
+.mandala-dir-bar {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 3px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--c, var(--primary)) 20%, transparent);
+  pointer-events: none;
+  overflow: hidden;
+}
+.mandala-dir-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--p, 0%);
+  background: var(--c, var(--primary));
+}
+
+/* Legend: progress per direction */
+.mandala-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.mandala-legend-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 10px 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--c);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+}
+.mandala-legend-item:hover { background: var(--surface-hover); }
+.mandala-legend-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mandala-legend-pct { font-family: var(--font-mono); color: var(--text-secondary); }
+.mandala-legend-bar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--c) var(--p), color-mix(in srgb, var(--c) 18%, transparent) var(--p));
+}
+
+/* List of mandalas */
+.mandala-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+.mandala-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.mandala-card:hover { transform: translateY(-2px); border-color: var(--primary-border); }
+.mandala-card-body { min-width: 0; }
+.mandala-card-title { font-weight: 700; font-size: var(--text-base); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mandala-card-meta { font-size: var(--text-sm); color: var(--text-muted); margin-top: 2px; }
+
+.mandala-ring { flex-shrink: 0; }
+.mandala-ring-bg { fill: none; stroke: var(--border); stroke-width: 4; }
+.mandala-ring-fg {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.4s ease;
+}
+.mandala-ring text { font-size: 11px; font-weight: 700; fill: var(--text); font-family: var(--font-mono); }
+
+/* Empty state */
+.mandala-empty { text-align: center; padding: var(--space-7) var(--space-4); }
+.mandala-empty p { color: var(--text-muted); max-width: 440px; margin: 8px auto 20px; }
+.mandala-empty-art {
+  display: grid;
+  grid-template-columns: repeat(3, 22px);
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+.mandala-empty-art span { height: 22px; border-radius: 6px; background: var(--primary-light); border: 1px solid var(--primary-border); }
+.mandala-empty-art span.is-core { background: var(--gradient-primary); border: none; }
+
+/* Editor */
+.mandala-editor { display: flex; flex-direction: column; gap: var(--space-4); }
+.mandala-field { display: flex; flex-direction: column; gap: 6px; }
+.mandala-field > span { font-size: var(--text-sm); color: var(--text-secondary); font-weight: 600; }
+.mandala-field-row { display: flex; gap: var(--space-4); align-items: flex-end; flex-wrap: wrap; }
+.mandala-field--inline { flex: 1; min-width: 160px; }
+.mandala-check { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-sm); cursor: pointer; padding-bottom: 10px; }
+.mandala-check input, .mandala-ms-row input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--success); }
+
+.mandala-ms { display: flex; flex-direction: column; gap: 6px; }
+.mandala-ms-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+}
+.mandala-ms-row.is-done .mandala-ms-text { text-decoration: line-through; color: var(--text-muted); }
+.mandala-ms-text { flex: 1; min-width: 0; font-size: var(--text-sm); word-break: break-word; }
+.mandala-ms-date { width: auto !important; padding: 4px 6px !important; font-size: var(--text-xs) !important; height: auto !important; }
+.mandala-ms-add { display: flex; gap: 6px; }
+.mandala-ms-add .input { flex: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mandala-cell, .mandala-card, .mandala-ring-fg { transition: none; }
+}

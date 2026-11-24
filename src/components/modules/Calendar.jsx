@@ -10,6 +10,8 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { toDate, toDateKey } from '../../utils/format'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const CATEGORIES = [
   { id: 'personal', color: '#5b4fcf' },
@@ -92,9 +94,9 @@ export default function Calendar() {
     <div>
       <div className="page-header">
         <div className="flex items-center gap-3">
-          <button className="btn btn-ghost btn-icon" onClick={navPrev}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="m15 18-6-6 6-6" /></svg></button>
+          <button className="btn btn-ghost btn-icon" onClick={navPrev} aria-label="Назад"><Icon icon={ChevronLeft} /></button>
           <span className="date-label" style={{ minWidth: 180 }}>{label}</span>
-          <button className="btn btn-ghost btn-icon" onClick={navNext}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="m9 18 6-6-6-6" /></svg></button>
+          <button className="btn btn-ghost btn-icon" onClick={navNext} aria-label="Вперёд"><Icon icon={ChevronRight} /></button>
         </div>
         <div className="flex items-center gap-3">
           <div className="view-toggle">

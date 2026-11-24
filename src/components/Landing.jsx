@@ -2,15 +2,14 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useLang } from '../context/LangContext'
 import Logo from './ui/Logo'
+import Icon from './ui/Icon'
+import { MODULE_ICONS } from '../config/moduleIcons'
+import { Flame, ListChecks, Target, Wallet } from 'lucide-react'
 
-const FEATURES = [
-  { key: 'tasks',   icon: '✅', path: 'M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2' },
-  { key: 'habits',  icon: '🔥', path: 'M12 2c0 0-5 6-5 10a5 5 0 0 0 10 0c0-4-5-10-5-10zM9 12a3 3 0 0 0 3 3' },
-  { key: 'goals',   icon: '🎯', path: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12M12 9a3 3 0 1 0 0 6' },
-  { key: 'finance', icon: '💰', path: 'M3 17l5-5 4 4 8-8M16 8h4v4' },
-  { key: 'journal', icon: '📓', path: 'M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2ZM8 7h7M8 11h7' },
-  { key: 'ai',      icon: '🤖', path: 'M12 2L9 9H2l5.5 4-2 7L12 16l6.5 4-2-7L22 9h-7z' },
-]
+const FEATURES = ['tasks', 'habits', 'goals', 'finance', 'journal', 'mandala'].map((key) => ({
+  key,
+  icon: MODULE_ICONS[key],
+}))
 
 const STATS = [
   { key: 'users', value: '10K+' },
@@ -91,7 +90,7 @@ export default function Landing() {
               <div className="land-preview-content">
                 {/* mock streak card */}
                 <div className="land-mock-card land-mock-hero">
-                  <div style={{ fontSize: 28 }}>🔥</div>
+                  <div style={{ fontSize: 28 }}><Icon icon={Flame} size="1em" /></div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 13 }}>14-day streak</div>
                     <div style={{ fontSize: 11, opacity: 0.7 }}>Keep going!</div>
@@ -99,9 +98,9 @@ export default function Landing() {
                 </div>
                 {/* mock stat row */}
                 <div className="land-mock-stats">
-                  {[['✅','8 Tasks','done'],['🎯','3 Goals','active'],['💰','Budget','on track']].map(([ic,lb,sub]) => (
+                  {[[ListChecks,'8 Tasks','done'],[Target,'3 Goals','active'],[Wallet,'Budget','on track']].map(([ic,lb,sub]) => (
                     <div key={lb} className="land-mock-stat">
-                      <span style={{ fontSize: 18 }}>{ic}</span>
+                      <span style={{ fontSize: 18 }}><Icon icon={ic} size="1em" /></span>
                       <div>
                         <div style={{ fontWeight: 700, fontSize: 11 }}>{lb}</div>
                         <div style={{ fontSize: 10, opacity: 0.6 }}>{sub}</div>
@@ -114,7 +113,7 @@ export default function Landing() {
                   <div key={name} className="land-mock-habit">
                     <span style={{ fontSize: 16 }}>{ic}</span>
                     <span style={{ flex: 1, fontSize: 12, fontWeight: 600 }}>{name}</span>
-                    <span style={{ fontSize: 11, color: col, fontWeight: 700 }}>🔥 {days}</span>
+                    <span style={{ fontSize: 11, color: col, fontWeight: 700 }}><Icon icon={Flame} size="1em" /> {days}</span>
                     <div className="land-mock-dot" style={{ background: col }} />
                   </div>
                 ))}
@@ -162,9 +161,7 @@ export default function Landing() {
                 whileHover={{ y: -6, boxShadow: '0 16px 48px rgba(124,92,255,0.18)' }}
               >
                 <div className="land-feat-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d={f.path} />
-                  </svg>
+                  <Icon icon={f.icon} size={24} />
                 </div>
                 <h3>{t(`land.feat.${f.key}`)}</h3>
                 <p className="text-muted">{t(`land.feat.${f.key}Sub`)}</p>

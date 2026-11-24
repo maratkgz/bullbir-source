@@ -2,27 +2,29 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Logo from '../ui/Logo'
 import { useLang } from '../../context/LangContext'
+import { ArrowLeft, Flame, Grid3x3, ListChecks, Wallet } from 'lucide-react'
+import Icon from '../ui/Icon'
 import './Auth.css'
 
 const BRAND_FEATS = [
-  { icon: '✅', text: 'Tasks, habits & goals in one place' },
-  { icon: '🔥', text: 'Build streaks that actually stick' },
-  { icon: '💰', text: 'Track your finances effortlessly' },
-  { icon: '🤖', text: 'AI-powered personal plans' },
+  { icon: ListChecks, text: 'Tasks, habits & goals in one place' },
+  { icon: Flame, text: 'Build streaks that actually stick' },
+  { icon: Wallet, text: 'Track your finances effortlessly' },
+  { icon: Grid3x3, text: 'Mandala 9×9: one goal, 64 concrete actions' },
 ]
 
 const BRAND_FEATS_RU = [
-  { icon: '✅', text: 'Задачи, привычки и цели в одном месте' },
-  { icon: '🔥', text: 'Серии, которые реально работают' },
-  { icon: '💰', text: 'Финансы под контролем' },
-  { icon: '🤖', text: 'AI-планы для любой цели' },
+  { icon: ListChecks, text: 'Задачи, привычки и цели в одном месте' },
+  { icon: Flame, text: 'Серии, которые реально работают' },
+  { icon: Wallet, text: 'Финансы под контролем' },
+  { icon: Grid3x3, text: 'Мандала 9×9: одна цель — 64 действия' },
 ]
 
 const BRAND_FEATS_KG = [
-  { icon: '✅', text: 'Тапшырмалар, адаттар, максаттар' },
-  { icon: '🔥', text: 'Реалдуу серия куруу' },
-  { icon: '💰', text: 'Финансыңызды башкаруу' },
-  { icon: '🤖', text: 'AI менен жеке пландоо' },
+  { icon: ListChecks, text: 'Тапшырмалар, адаттар, максаттар' },
+  { icon: Flame, text: 'Реалдуу серия куруу' },
+  { icon: Wallet, text: 'Финансыңызды башкаруу' },
+  { icon: Grid3x3, text: 'Мандала 9×9: бир максат — 64 аракет' },
 ]
 
 export default function AuthShell({ title, subtitle, children, footer, showBack }) {
@@ -54,7 +56,7 @@ export default function AuthShell({ title, subtitle, children, footer, showBack 
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 + i * 0.08 }}
             >
-              <div className="auth-brand-feat-icon">{f.icon}</div>
+              <div className="auth-brand-feat-icon"><Icon icon={f.icon} size="1em" /></div>
               <span className="auth-brand-feat-text">{f.text}</span>
             </motion.div>
           ))}
@@ -72,9 +74,7 @@ export default function AuthShell({ title, subtitle, children, footer, showBack 
           <div className="auth-toprow">
             {showBack ? (
               <Link to="/login" className="auth-back-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <path d="M19 12H5M12 5l-7 7 7 7"/>
-                </svg>
+                <Icon icon={ArrowLeft} size={16} />
                 {lang === 'ru' ? 'Назад' : lang === 'kg' ? 'Артка' : 'Back'}
               </Link>
             ) : <div />}

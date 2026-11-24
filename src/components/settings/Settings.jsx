@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { deleteUser } from 'firebase/auth'
+import { deleteAccountAndData } from '../../firebase/account'
 import { useAuth } from '../../context/AuthContext'
 import { useTheme } from '../../context/ThemeContext'
 import { useLang } from '../../context/LangContext'
@@ -17,18 +17,26 @@ export default function Settings() {
   const { canInstall, installed, promptInstall } = usePWAInstall()
   const toast = useToast()
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const [deletePassword, setDeletePassword] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const name = profile?.displayName || user?.displayName || ''
   const initial = (name || user?.email || 'U').charAt(0).toUpperCase()
+  const hasPasswordLogin = !!user?.providerData?.some((p) => p.providerId === 'password')
+
+  const closeDelete = () => {
+    setConfirmDelete(false)
+    setDeletePassword('')
+  }
 
   const onDelete = async () => {
+    setIsDeleting(true)
     try {
-      if (user) await deleteUser(user)
-      toast.success(t('common.done'))
+      await deleteAccountAndData({ password: deletePassword })
     } catch (err) {
       toast.error(tError(err))
     } finally {
-      setConfirmDelete(false)
+      setIsDeleting(false)
     }
   }
 
@@ -89,11 +97,28 @@ export default function Settings() {
         <button className="btn btn-danger btn-block" onClick={() => setConfirmDelete(true)}>{t('set.deleteAccount')}</button>
       </div>
 
-      <Modal open={confirmDelete} onClose={() => setConfirmDelete(false)} title={t('set.deleteAccount')}>
-        <p className="text-secondary">{t('set.deleteAccount')}?</p>
+      <Modal open={confirmDelete} onClose={closeDelete} title={t('set.deleteAccount')}>
+        <p className="text-secondary">{t('set.deleteWarn')}</p>
+        {hasPasswordLogin && (
+          <input
+            className="input"
+            type="password"
+            autoComplete="current-password"
+            placeholder={t('set.deletePassword')}
+            value={deletePassword}
+            onChange={(e) => setDeletePassword(e.target.value)}
+            style={{ margin: 'var(--space-3) 0' }}
+          />
+        )}
         <div className="flex gap-3 justify-between">
-          <button className="btn btn-ghost" onClick={() => setConfirmDelete(false)}>{t('common.cancel')}</button>
-          <button className="btn btn-danger" onClick={onDelete}>{t('common.delete')}</button>
+          <button className="btn btn-ghost" onClick={closeDelete}>{t('common.cancel')}</button>
+          <button
+            className="btn btn-danger"
+            onClick={onDelete}
+            disabled={isDeleting || (hasPasswordLogin && !deletePassword)}
+          >
+            {t('common.delete')}
+          </button>
         </div>
       </Modal>
     </motion.div>

@@ -6,13 +6,13 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import AuthShell from './AuthShell'
 import OAuthButtons from './OAuthButtons'
+import { Check } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 function Rule({ ok, label }) {
   return (
     <span className={`pw-rule ${ok ? 'ok' : ''}`}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-        {ok ? <path d="M20 6 9 17l-5-5" /> : <circle cx="12" cy="12" r="9" />}
-      </svg>
+      <Icon icon={Check} size={14} />
       {label}
     </span>
   )

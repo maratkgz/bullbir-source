@@ -8,28 +8,30 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { formatMoney, toDate, toDateKey, CURRENCIES } from '../../utils/format'
+import { ArrowDown, ArrowUp, Briefcase, CarTaxiFront, Clapperboard, Gift, Package, Pill, Plus, Receipt, ShoppingBag, ThumbsUp, TriangleAlert, UtensilsCrossed, Wallet } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const CATEGORIES = {
   income: [
-    { id: 'salary',  emoji: '💼' },
-    { id: 'gift',    emoji: '🎁' },
-    { id: 'other',   emoji: '💰' },
+    { id: 'salary',  icon: Briefcase },
+    { id: 'gift',    icon: Gift },
+    { id: 'other',   icon: Wallet },
   ],
   expense: [
-    { id: 'food',       emoji: '🍔' },
-    { id: 'transport',  emoji: '🚕' },
-    { id: 'shopping',   emoji: '🛍️' },
-    { id: 'bills',      emoji: '🧾' },
-    { id: 'fun',        emoji: '🎬' },
-    { id: 'health',     emoji: '💊' },
-    { id: 'other',      emoji: '📦' },
+    { id: 'food',       icon: UtensilsCrossed },
+    { id: 'transport',  icon: CarTaxiFront },
+    { id: 'shopping',   icon: ShoppingBag },
+    { id: 'bills',      icon: Receipt },
+    { id: 'fun',        icon: Clapperboard },
+    { id: 'health',     icon: Pill },
+    { id: 'other',      icon: Package },
   ],
 }
 
 const CAT_COLORS = ['#7c5cff', '#5ad1a5', '#f0a45a', '#e06a9a', '#9a8cff', '#f0c45a', '#7a7a8c']
 
-function catEmoji(type, id) {
-  return [...CATEGORIES.income, ...CATEGORIES.expense].find(c => c.id === id)?.emoji || '📦'
+function catIcon(type, id) {
+  return [...CATEGORIES.income, ...CATEGORIES.expense].find(c => c.id === id)?.icon || Package
 }
 
 function catLabel(t, id) {
@@ -109,7 +111,7 @@ export default function Finance() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('fin.title')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {monthLabel}{budget > 0 && (inBudget ? ' · ты в рамках бюджета 👍' : ' · бюджет превышен ⚠️')}
+            {monthLabel}{budget > 0 && (inBudget ? <> · ты в рамках бюджета <Icon icon={ThumbsUp} size="1em" /></> : <> · бюджет превышен <Icon icon={TriangleAlert} size="1em" /></>)}
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -118,7 +120,7 @@ export default function Finance() {
           </select>
           <button className="btn btn-ghost btn-sm" onClick={exportCSV}>{t('fin.export')}</button>
           <button className="btn btn-primary" onClick={() => setModalOpen(true)}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            <Icon icon={Plus} size={18} />
             {t('fin.newTxn')}
           </button>
         </div>
@@ -159,9 +161,7 @@ export default function Finance() {
         {/* Income */}
         <div className="card fin-stat-card">
           <div className="fin-stat-icon income">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round"/>
-            </svg>
+            <Icon icon={ArrowUp} />
           </div>
           <div className="fin-stat-amt">{formatMoney(income, currency)}</div>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('fin.income') || 'доходы'}</div>
@@ -170,9 +170,7 @@ export default function Finance() {
         {/* Expense */}
         <div className="card fin-stat-card">
           <div className="fin-stat-icon expense">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round"/>
-            </svg>
+            <Icon icon={ArrowDown} />
           </div>
           <div className="fin-stat-amt">{formatMoney(expense, currency)}</div>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('fin.expense') || 'расходы'}</div>
@@ -207,7 +205,7 @@ export default function Finance() {
                   <div key={id}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 7 }}>
                       <span style={{ fontSize: 13.5, fontWeight: 600, color: 'var(--text-secondary)' }}>
-                        {catEmoji('expense', id)} {catLabel(t, id)}
+                        <Icon icon={catIcon('expense', id)} size="1em" /> {catLabel(t, id)}
                       </span>
                       <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>
                         {formatMoney(value, currency)}
@@ -253,7 +251,7 @@ export default function Finance() {
                       className="fin-txn-row"
                       style={{ borderBottom: i < items.length - 1 ? '1px solid var(--border-subtle)' : 'none' }}
                     >
-                      <div className="fin-txn-icon">{catEmoji(x.type, x.category)}</div>
+                      <div className="fin-txn-icon"><Icon icon={catIcon(x.type, x.category)} size="1em" /></div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>
                           {x.note || catLabel(t, x.category)}
@@ -285,7 +283,7 @@ export default function Finance() {
 
       {items.length === 0 && (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>💰</div>
+          <div style={{ fontSize: 48, marginBottom: 12 }}><Icon icon={Wallet} size="1em" /></div>
           <h3>{t('fin.empty') || 'Добавьте первую операцию'}</h3>
           <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setModalOpen(true)}>
             + {t('fin.newTxn')}
@@ -325,7 +323,7 @@ export default function Finance() {
                   color: form.category === c.id ? '#fff' : 'var(--text-secondary)',
                   border: `1px solid ${form.category === c.id ? '#7c5cff' : 'var(--border)'}`,
                 }}
-              >{c.emoji} {catLabel(t, c.id)}</button>
+              ><Icon icon={c.icon} size="1em" /> {catLabel(t, c.id)}</button>
             ))}
           </div>
         </div>

@@ -3,7 +3,6 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut as fbSignOut,
   sendEmailVerification,
   sendPasswordResetEmail,
   updateProfile,
@@ -14,6 +13,7 @@ import {
 } from 'firebase/auth'
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { auth, db, googleProvider, firebaseReady } from '../firebase/config'
+import { signOutAndClear } from '../firebase/account'
 
 const AuthContext = createContext(null)
 
@@ -51,6 +51,16 @@ export function AuthProvider({ children }) {
       return undefined
     }
     const unsub = onAuthStateChanged(auth, async (u) => {
+      if (u?.emailVerified) {
+        // A token minted before verification lacks email_verified and the rules would deny
+        // every module read/write until it expires — refresh it once if stale.
+        try {
+          const { claims } = await u.getIdTokenResult()
+          if (!claims.email_verified) await u.getIdToken(true)
+        } catch {
+          // Offline: the SDK refreshes the token on its own once back online.
+        }
+      }
       setUser(u)
       if (u) {
         try {
@@ -115,6 +125,8 @@ export function AuthProvider({ children }) {
   const checkVerified = useCallback(async () => {
     if (!auth.currentUser) return false
     await reload(auth.currentUser)
+    // Security rules read `email_verified` from the ID token, which reload() does not refresh.
+    if (auth.currentUser.emailVerified) await auth.currentUser.getIdToken(true)
     setUser({ ...auth.currentUser })
     return auth.currentUser.emailVerified
   }, [])
@@ -133,8 +145,9 @@ export function AuthProvider({ children }) {
     await refreshProfile()
   }, [refreshProfile])
 
+  // Signs out AND wipes the offline Firestore cache + SW API cache (shared-device safety).
   const logout = useCallback(async () => {
-    await fbSignOut(auth)
+    await signOutAndClear()
   }, [])
 
   const value = {

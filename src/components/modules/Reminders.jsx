@@ -7,6 +7,8 @@ import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import EmptyState from '../ui/EmptyState'
 import { toDate, toDateKey } from '../../utils/format'
+import { Check } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 export default function Reminders() {
   const { items, add, update, remove } = useCollection('reminders', { orderField: 'date', direction: 'asc' })
@@ -83,8 +85,8 @@ export default function Reminders() {
           <AnimatePresence>
             {items.map((r) => (
               <motion.div key={r.id} layout initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="rem-row">
-                <button className={`checkbox ${r.done ? 'checked' : ''}`} onClick={() => update(r.id, { done: !r.done })}>
-                  {r.done && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6 9 17l-5-5" /></svg>}
+                <button aria-label="Отметить напоминание" aria-pressed={r.done} className={`checkbox ${r.done ? 'checked' : ''}`} onClick={() => update(r.id, { done: !r.done })}>
+                  {r.done && <Icon icon={Check} size={12} />}
                 </button>
                 <div style={{ flex: 1 }}>
                   <span style={{ textDecoration: r.done ? 'line-through' : 'none', color: r.done ? 'var(--text-muted)' : 'var(--text)' }}>{r.title}</span>

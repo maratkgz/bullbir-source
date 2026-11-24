@@ -5,6 +5,8 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { toDateKey } from '../../utils/format'
+import { NotebookPen, PenLine } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const MOODS = [
   { value: 0, emoji: '😔', label: 'Плохо',   color: '#e06a9a', height: 25 },
@@ -279,7 +281,7 @@ export default function Journal() {
           </p>
         </div>
         <button className="btn btn-primary" onClick={openNew}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <Icon icon={PenLine} size={18} />
           Новая запись
         </button>
       </div>
@@ -297,7 +299,7 @@ export default function Journal() {
         </div>
       ) : items.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>📔</div>
+          <div style={{ fontSize: 48, marginBottom: 12 }}><Icon icon={NotebookPen} size="1em" /></div>
           <h3>Начни вести дневник</h3>
           <p style={{ color: 'var(--text-muted)', marginTop: 8 }}>Фиксируй мысли, настроение и события каждого дня</p>
           <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={openNew}>

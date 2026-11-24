@@ -18,8 +18,8 @@ behavior, drive the app manually (dev server + browser) rather than looking for 
 
 Firebase keys go in a gitignored `.env.local` (copy from `.env.local.example`):
 `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`,
-`VITE_FIREBASE_STORAGE_BUCKET`, `VITE_FIREBASE_MESSAGING_SENDER_ID`, `VITE_FIREBASE_APP_ID`,
-plus `VITE_GEMINI_API_KEY` (used by the AI Task Plan module). The app boots and renders auth
+`VITE_FIREBASE_STORAGE_BUCKET`, `VITE_FIREBASE_MESSAGING_SENDER_ID`, `VITE_FIREBASE_APP_ID`.
+The app boots and renders auth
 screens even without keys — `firebaseReady` (`src/firebase/config.js`) gates all network calls, and
 a `demo-*` fallback config is used when real keys are absent so `initializeApp` doesn't throw.
 
@@ -71,14 +71,30 @@ language blocks in `translations.js`, not just `en`.
 `<html>`; all colors are CSS custom properties defined per-theme in `src/styles/variables.css`.
 Persisted via `useLocalStorage`, defaults to OS `prefers-color-scheme`.
 
+### Security
+`firestore.rules` / `storage.rules` (deployed with `firebase deploy --only firestore:rules,storage`)
+allow-list the per-user collections — a new collection must be added to `isKnownCollection` in
+`firestore.rules` AND `USER_COLLECTIONS` in `src/firebase/account.js` (used by export + account
+deletion), or writes are denied. `src/firebase/account.js` also owns logout (`signOutAndClear`
+wipes the Firestore IndexedDB cache) and `deleteAccountAndData`. CSP + security headers are in
+`vercel.json`; a new external host must be added to the CSP. The service worker intentionally does
+not cache Firebase/Google API responses.
+
+### Mandala (9×9)
+`src/components/modules/mandala/` — one doc per chart in `users/{uid}/mandalas`. Pure data logic in
+`mandalaModel.js` (immutable updates, input caps); `MandalaGrid` renders 9 blocks, `RING_POSITIONS`
+maps direction/action index → clockwise position in a 3×3 block.
+
+### Icons
+All UI icons are Lucide via `src/components/ui/Icon.jsx` (`<Icon icon={Plus} />`, default size 20,
+stroke 1.75, `currentColor`, decorative unless `label` is passed; `size="1em"` to match surrounding
+text). Import icons one by one from `lucide-react` — never the whole package. Module icons live in
+`src/config/moduleIcons.js` (nav, landing). Icon-only buttons need an `aria-label`. User-chosen emoji
+(goal/habit/savings pickers) and mood-scale faces stay emoji on purpose: they are stored user data.
+
 ### Local persistence
 `useLocalStorage` (`src/hooks/useLocalStorage.js`) is the generic localStorage-backed `useState`
 used for language/theme and other client-only preferences (not Firestore data).
-
-### AI Task Plan
-`src/components/modules/AITaskPlan.jsx` calls the Gemini `generateContent` REST API directly from
-the client using `VITE_GEMINI_API_KEY` — no backend proxy. Treat this key as a client-exposed key
-(same trust model as the Firebase web API key).
 
 ### PWA / offline
 `vite-plugin-pwa` (config in `vite.config.js`) generates the manifest and service worker

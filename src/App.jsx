@@ -31,9 +31,11 @@ import ShiftTracker from './components/modules/ShiftTracker'
 import SavingsGoals from './components/modules/SavingsGoals'
 import PersonalProgress from './components/modules/PersonalProgress'
 import Profile from './components/modules/Profile'
-import AITaskPlan from './components/modules/AITaskPlan'
 import CompletionHistory from './components/modules/CompletionHistory'
 import Habits from './components/modules/Habits'
+import Mandala from './components/modules/mandala/Mandala'
+import Assistant from './components/modules/assistant/Assistant'
+import AiAdmin from './components/admin/AiAdmin'
 import Landing from './components/Landing'
 
 // Redirect already-authenticated users away from auth pages.
@@ -81,7 +83,7 @@ export default function App() {
 
       <Routes location={location}>
         <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+        <Route path="/login"element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
         <Route path="/verify-email" element={<VerifyRoute />} />
@@ -104,9 +106,11 @@ export default function App() {
           <Route path="savings" element={<SavingsGoals />} />
           <Route path="progress" element={<PersonalProgress />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="ai-plan" element={<AITaskPlan />} />
           <Route path="completion-history" element={<CompletionHistory />} />
           <Route path="habits" element={<Habits />} />
+          <Route path="mandala" element={<Mandala />} />
+          <Route path="assistant" element={<Assistant />} />
+          <Route path="admin/ai" element={<AiAdmin />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

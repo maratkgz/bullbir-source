@@ -9,6 +9,8 @@ import { useCollection } from '../../hooks/useCollection'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useLang } from '../../context/LangContext'
 import { toDateKey, formatMoney } from '../../utils/format'
+import { BookMarked, BookOpen, Briefcase, Building2, CircleCheck, Flame, Globe, Medal, NotebookPen, PartyPopper, PiggyBank, Rainbow, Smile, Sparkles, Star, Target, TrendingUp, Trophy, Wallet } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 // XP rewards per activity type
 const XP_TASK = 5
@@ -27,21 +29,21 @@ function xpForLevel(lv) {
 }
 
 const BADGES = [
-  { id: 'first_task',    icon: '✅', name: 'First Step',      desc: 'Complete 1 task',          check: (d) => d.tasksDone >= 1 },
-  { id: 'tasks_10',      icon: '🔥', name: 'On Fire',         desc: 'Complete 10 tasks',         check: (d) => d.tasksDone >= 10 },
-  { id: 'tasks_100',     icon: '💯', name: 'Century',         desc: 'Complete 100 tasks',        check: (d) => d.tasksDone >= 100 },
-  { id: 'first_mood',    icon: '😊', name: 'Feeling Good',    desc: 'Log your first mood',       check: (d) => d.moodDays >= 1 },
-  { id: 'mood_7',        icon: '🌈', name: 'Mood Streak',     desc: '7 mood check-ins',          check: (d) => d.moodDays >= 7 },
-  { id: 'mood_30',       icon: '🌟', name: 'Mindful Month',   desc: '30 mood check-ins',         check: (d) => d.moodDays >= 30 },
-  { id: 'first_journal', icon: '📝', name: 'First Entry',     desc: 'Write your first journal',  check: (d) => d.journalDays >= 1 },
-  { id: 'journal_7',     icon: '📖', name: 'Storyteller',     desc: '7 journal entries',         check: (d) => d.journalDays >= 7 },
-  { id: 'journal_30',    icon: '📚', name: 'Diarist',         desc: '30 journal entries',        check: (d) => d.journalDays >= 30 },
-  { id: 'first_shift',   icon: '💼', name: 'Work Hard',       desc: 'Complete a shift',          check: (d) => d.shiftsWorked >= 1 },
-  { id: 'shifts_10',     icon: '🏢', name: 'Professional',    desc: 'Complete 10 shifts',        check: (d) => d.shiftsWorked >= 10 },
-  { id: 'savings_goal',  icon: '💰', name: 'Goal Getter',     desc: 'Reach a savings goal',      check: (d) => d.savingsCompleted >= 1 },
-  { id: 'level_5',       icon: '⭐', name: 'Rising Star',     desc: 'Reach Level 5',             check: (d) => d.level >= 5 },
-  { id: 'level_10',      icon: '🏆', name: 'Champion',        desc: 'Reach Level 10',            check: (d) => d.level >= 10 },
-  { id: 'all_around',    icon: '🌍', name: 'All Rounder',     desc: 'Use 5 different modules',   check: (d) => d.modulesUsed >= 5 },
+  { id: 'first_task',    icon: CircleCheck, name: 'First Step',      desc: 'Complete 1 task',          check: (d) => d.tasksDone >= 1 },
+  { id: 'tasks_10',      icon: Flame, name: 'On Fire',         desc: 'Complete 10 tasks',         check: (d) => d.tasksDone >= 10 },
+  { id: 'tasks_100',     icon: Medal, name: 'Century',         desc: 'Complete 100 tasks',        check: (d) => d.tasksDone >= 100 },
+  { id: 'first_mood',    icon: Smile, name: 'Feeling Good',    desc: 'Log your first mood',       check: (d) => d.moodDays >= 1 },
+  { id: 'mood_7',        icon: Rainbow, name: 'Mood Streak',     desc: '7 mood check-ins',          check: (d) => d.moodDays >= 7 },
+  { id: 'mood_30',       icon: Sparkles, name: 'Mindful Month',   desc: '30 mood check-ins',         check: (d) => d.moodDays >= 30 },
+  { id: 'first_journal', icon: NotebookPen, name: 'First Entry',     desc: 'Write your first journal',  check: (d) => d.journalDays >= 1 },
+  { id: 'journal_7',     icon: BookOpen, name: 'Storyteller',     desc: '7 journal entries',         check: (d) => d.journalDays >= 7 },
+  { id: 'journal_30',    icon: BookMarked, name: 'Diarist',         desc: '30 journal entries',        check: (d) => d.journalDays >= 30 },
+  { id: 'first_shift',   icon: Briefcase, name: 'Work Hard',       desc: 'Complete a shift',          check: (d) => d.shiftsWorked >= 1 },
+  { id: 'shifts_10',     icon: Building2, name: 'Professional',    desc: 'Complete 10 shifts',        check: (d) => d.shiftsWorked >= 10 },
+  { id: 'savings_goal',  icon: PiggyBank, name: 'Goal Getter',     desc: 'Reach a savings goal',      check: (d) => d.savingsCompleted >= 1 },
+  { id: 'level_5',       icon: Star, name: 'Rising Star',     desc: 'Reach Level 5',             check: (d) => d.level >= 5 },
+  { id: 'level_10',      icon: Trophy, name: 'Champion',        desc: 'Reach Level 10',            check: (d) => d.level >= 10 },
+  { id: 'all_around',    icon: Globe, name: 'All Rounder',     desc: 'Use 5 different modules',   check: (d) => d.modulesUsed >= 5 },
 ]
 
 const PIE_COLORS = ['#5b4fcf', '#ff6b35', '#22c55e', '#f59e0b', '#7c6ff7', '#ef4444']
@@ -222,7 +224,7 @@ export default function PersonalProgress() {
           <motion.div className="prog-levelup-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setShowLevelUp(false)}>
             <motion.div initial={{ scale: 0.5 }} animate={{ scale: [0.5, 1.1, 1] }} transition={{ duration: 0.5 }}>
-              <div style={{ fontSize: 40, marginBottom: 8 }}>🎉</div>
+              <div style={{ fontSize: 40, marginBottom: 8 }}><Icon icon={PartyPopper} size="1em" /></div>
               <div className="prog-levelup-num">{allStats.level}</div>
               <div style={{ fontSize: 'var(--text-xl)', fontWeight: 700, marginTop: 8 }}>{t('prog.levelUp')}</div>
               <p style={{ opacity: 0.7, marginTop: 8 }}>{t('prog.level')} {allStats.level}</p>
@@ -271,7 +273,7 @@ export default function PersonalProgress() {
               <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
                 {streak} <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>дней</span>
               </div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', fontWeight: 500, marginTop: 2 }}>текущий стрик 🔥</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)', fontWeight: 500, marginTop: 2 }}>текущий стрик <Icon icon={Flame} size="1em" /></div>
             </div>
             <div>
               <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
@@ -375,7 +377,7 @@ export default function PersonalProgress() {
                   initial={false}
                   animate={b.unlocked ? { scale: [1, 1.1, 1] } : {}}
                   transition={{ duration: 0.4 }}>
-                  <div className="badge-icon">{b.icon}</div>
+                  <div className="badge-icon"><Icon icon={b.icon} size="1em" /></div>
                   <div className="badge-name">{b.name}</div>
                   <div className="badge-desc">{b.desc}</div>
                 </motion.div>
@@ -389,7 +391,7 @@ export default function PersonalProgress() {
         <>
           {/* Finance overview */}
           <div className="analytics-block">
-            <div className="analytics-block-title">💰 {t('nav.finance')}</div>
+            <div className="analytics-block-title"><Icon icon={Wallet} size="1em" /> {t('nav.finance')}</div>
             <div className="fin-stats" style={{ marginBottom: 'var(--space-4)' }}>
               <div className="card fin-stat income">
                 <span className="text-secondary">{t('fin.income')}</span>
@@ -425,7 +427,7 @@ export default function PersonalProgress() {
 
           {/* Productivity */}
           <div className="analytics-block">
-            <div className="analytics-block-title">✅ {t('prog.totalTasks')}</div>
+            <div className="analytics-block-title"><Icon icon={CircleCheck} size="1em" /> {t('prog.totalTasks')}</div>
             {taskChart.some((d) => d.tasks > 0) ? (
               <div className="card">
                 <span className="section-title">{t('tasks.title')} (8 {t('cal.week')}s)</span>
@@ -450,7 +452,7 @@ export default function PersonalProgress() {
 
           {/* Habits */}
           <div className="analytics-block">
-            <div className="analytics-block-title">🎯 {t('goals.habits')}</div>
+            <div className="analytics-block-title"><Icon icon={Target} size="1em" /> {t('goals.habits')}</div>
             <div className="grid grid-2">
               <div className="card prog-stat-card">
                 <div className="prog-stat-value" style={{ color: 'var(--primary)' }}>{periodStats.habitsDone}</div>
@@ -465,7 +467,7 @@ export default function PersonalProgress() {
 
           {/* Wellness summary */}
           <div className="analytics-block">
-            <div className="analytics-block-title">🌟 {t('prog.wellnessIndex')}</div>
+            <div className="analytics-block-title"><Icon icon={Sparkles} size="1em" /> {t('prog.wellnessIndex')}</div>
             <div className="card">
               {(() => {
                 const scores = []
@@ -482,7 +484,7 @@ export default function PersonalProgress() {
                       {index}
                     </motion.div>
                     <div style={{ color, fontWeight: 600, marginTop: 4 }}>
-                      {index >= 70 ? '🌟 Excellent' : index >= 40 ? '😊 Good' : index > 0 ? '💪 Growing' : '—'}
+                      {index >= 70 ? <><Icon icon={Sparkles} size="1em" /> Excellent</> : index >= 40 ? <><Icon icon={Smile} size="1em" /> Good</> : index > 0 ? <><Icon icon={TrendingUp} size="1em" /> Growing</> : '—'}
                     </div>
                     <div className="progress-bar" style={{ marginTop: 'var(--space-3)' }}>
                       <motion.div className="progress-fill" initial={{ width: 0 }} animate={{ width: `${index}%` }}

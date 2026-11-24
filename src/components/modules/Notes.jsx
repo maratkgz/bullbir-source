@@ -7,6 +7,8 @@ import { useToast } from '../ui/Toast'
 import RichEditor from '../ui/RichEditor'
 import EmptyState from '../ui/EmptyState'
 import { useIsMobile } from '../../hooks/useMediaQuery'
+import { Pin, Plus, Search } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 export default function Notes() {
   const { items, loading, add, update, remove } = useCollection('notes', { orderField: 'updatedAt' })
@@ -74,7 +76,7 @@ export default function Notes() {
     >
       {n.pinned && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="#9a8cff"><path d="M16 3l5 5-4 1-4 4-1 5-2-2-4 4-1-1 4-4-2-2 5-1 4-4Z"/></svg>
+          <Icon icon={Pin} size={13} />
           <span style={{ fontSize: 10, fontWeight: 700, color: '#9a8cff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Закреплено</span>
         </div>
       )}
@@ -95,12 +97,12 @@ export default function Notes() {
       <div className="module-header" style={{ marginBottom: 14 }}>
         <h2 style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em' }}>{t('notes.title')}</h2>
         <button className="btn btn-primary" onClick={() => createNote()}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          <Icon icon={Plus} size={16} />
           {t('notes.new')}
         </button>
       </div>
       <div style={{ position: 'relative', marginBottom: 14 }}>
-        <svg style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <Icon icon={Search} size={16} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }} />
         <input className="input" style={{ paddingLeft: 38 }} value={search} onChange={e => setSearch(e.target.value)} placeholder={t('notes.search')} />
       </div>
       {pinned.length > 0 && (

@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useIsMobile } from '../../hooks/useMediaQuery'
 import { useLang } from '../../context/LangContext'
 import BottomSheet from './BottomSheet'
+import { X } from 'lucide-react'
+import Icon from './Icon'
 import './Modal.css'
 
 export default function Modal({ open, onClose, title, children, maxWidth = 520 }) {
@@ -56,9 +58,7 @@ export default function Modal({ open, onClose, title, children, maxWidth = 520 }
             <div className="modal-header">
               {title && <h3>{title}</h3>}
               <button className="btn btn-ghost btn-icon" onClick={onClose} aria-label={t('common.close')}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
+                <Icon icon={X} />
               </button>
             </div>
             <div className="modal-body">{children}</div>

@@ -5,6 +5,8 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { toDateKey } from '../../utils/format'
+import { Check, PartyPopper, Plus, Target, Trophy } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const GOAL_COLORS = [
   '#7c5cff', '#5ad1a5', '#f0a45a', '#e06a9a', '#9a8cff', '#f0c45a', '#60b8ff'
@@ -61,7 +63,7 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onDelete, onClick }) {
               background: '#5ad1a5', border: '2px solid var(--bg)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 10, color: '#fff',
-            }}>✓</span>
+            }}><Icon icon={Check} size="1em" /></span>
           )}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -69,7 +71,7 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onDelete, onClick }) {
             {goal.title}
           </div>
           {isCompleted
-            ? <div style={{ fontSize: 12.5, color: '#5ad1a5', fontWeight: 600, marginTop: 1 }}>Завершено 🎉</div>
+            ? <div style={{ fontSize: 12.5, color: '#5ad1a5', fontWeight: 600, marginTop: 1 }}>Завершено <Icon icon={PartyPopper} size="1em" /></div>
             : ms.length > 0
               ? <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 1 }}>{done} из {ms.length}</div>
               : goal.deadline
@@ -113,8 +115,10 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onDelete, onClick }) {
                 className={`task-checkbox${m.done ? ' checked' : ''}`}
                 style={{ width: 20, height: 20, borderRadius: 6 }}
                 onClick={e => { e.stopPropagation(); onToggleMilestone(goal, i) }}
+                aria-label="Отметить этап"
+                aria-pressed={m.done}
               >
-                {m.done && <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>}
+                {m.done && <Icon icon={Check} size={11} style={{ color: '#fff' }} />}
               </button>
               <span style={{ flex: 1, fontSize: 13.5, fontWeight: 500, color: m.done ? 'var(--text-muted)' : 'var(--text)', textDecoration: m.done ? 'line-through' : 'none' }}>{m.title}</span>
             </div>
@@ -255,7 +259,7 @@ export default function Goals() {
           </p>
         </div>
         <button className="btn btn-primary" onClick={() => setModalOpen(true)}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          <Icon icon={Plus} size={18} />
           {t('goals.newGoal')}
         </button>
       </div>
@@ -271,7 +275,7 @@ export default function Goals() {
 
       {display.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>{tab === 'done' ? '🏆' : '🎯'}</div>
+          <div style={{ fontSize: 48, marginBottom: 12 }}>{tab === 'done' ? <Icon icon={Trophy} size="1em" /> : <Icon icon={Target} size="1em" />}</div>
           <h3>{tab === 'done' ? 'Нет завершённых целей' : t('goals.empty')}</h3>
           {tab === 'active' && (
             <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setModalOpen(true)}>

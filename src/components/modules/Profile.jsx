@@ -5,7 +5,6 @@ import {
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
-  deleteUser,
 } from 'firebase/auth'
 import { doc, updateDoc, collection, getDocs } from 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
@@ -13,9 +12,12 @@ import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { useTheme } from '../../context/ThemeContext'
 import { auth, db, storage, firebaseReady } from '../../firebase/config'
+import { USER_COLLECTIONS, deleteAccountAndData, validateAvatar, AVATAR_TYPES } from '../../firebase/account'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
+import { BookOpen, Camera, Check, Download, Flame, Mail, Moon, Pencil, Phone, Sparkles, Star, Sun, Wallet } from 'lucide-react'
+import Icon from '../ui/Icon'
 
 const XP = { task: 5, journal: 10, mood: 5, shift: 15, goal: 50, habit: 3 }
 const calcLevel = (xp) => Math.floor(Math.sqrt(xp / 50)) + 1
@@ -113,11 +115,8 @@ function Field({ label, value, onSave, type = 'text', maxLength, hint, readOnly 
         <div className="prof-fstatus">
           <SaveIcon status={status} />
           {!status && !readOnly && !editing && (
-            <button className="prof-edit-btn" onClick={() => setEditing(true)}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z" />
-              </svg>
+            <button className="prof-edit-btn" onClick={() => setEditing(true)} aria-label="Изменить">
+              <Icon icon={Pencil} size={14} />
             </button>
           )}
         </div>
@@ -129,7 +128,7 @@ function Field({ label, value, onSave, type = 'text', maxLength, hint, readOnly 
 
 export default function Profile() {
   const { user, profile, refreshProfile, resendVerification } = useAuth()
-  const { t, lang, setLang, languages } = useLang()
+  const { t, tError, lang, setLang, languages } = useLang()
   const { isDark, toggleTheme } = useTheme()
   const toast = useToast()
 
@@ -210,6 +209,11 @@ export default function Profile() {
 
   const pickAvatar = async (file) => {
     if (!file || !firebaseReady) return
+    const invalid = validateAvatar(file)
+    if (invalid) {
+      toast.error(t(invalid === 'size' ? 'profile.avatar.tooBig' : 'profile.avatar.badType'))
+      return
+    }
     setAvatarBusy(true)
     try {
       const r = sRef(storage, `avatars/${user.uid}`)
@@ -239,20 +243,16 @@ export default function Profile() {
 
   const doDelete = async () => {
     try {
-      if (hasEmail && delPw) {
-        await reauthenticateWithCredential(auth.currentUser, EmailAuthProvider.credential(email, delPw))
-      }
-      await deleteUser(auth.currentUser)
-    } catch (e) { toast.error(e.message) }
+      await deleteAccountAndData({ password: delPw })
+    } catch (e) { toast.error(tError(e)) }
   }
 
   const exportData = async () => {
     if (!firebaseReady) return
     toast.info(t('profile.data.exporting'))
     try {
-      const cols = ['tasks', 'journalEntries', 'moods', 'shifts', 'savingsGoals', 'habits', 'transactions']
       const out = { at: new Date().toISOString(), user: { uid: user.uid, email, displayName } }
-      for (const c of cols) {
+      for (const c of USER_COLLECTIONS) {
         const snap = await getDocs(collection(db, 'users', user.uid, c))
         out[c] = snap.docs.map(d => ({ id: d.id, ...d.data() }))
       }
@@ -286,7 +286,7 @@ export default function Profile() {
         <div className="prof-cover-glow" />
         <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '12px 16px' }}>
           <button className="btn btn-secondary btn-sm" onClick={() => setTab('personal')} style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
-            ✏ {t('common.edit')}
+            <Icon icon={Pencil} size="1em" /> {t('common.edit')}
           </button>
         </div>
       </div>
@@ -300,12 +300,12 @@ export default function Profile() {
             <div className="prof-avatar-ov">
               {avatarBusy
                 ? <span className="spinner" style={{ borderColor: 'white', borderTopColor: 'transparent' }} />
-                : <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                : <Icon icon={Camera} style={{ color: '#fff' }} />
               }
             </div>
           </button>
         </div>
-        <input ref={fileRef} type="file" accept="image/*" className="sr-only" onChange={e => { if (e.target.files?.[0]) pickAvatar(e.target.files[0]); e.target.value = '' }} />
+        <input ref={fileRef} type="file" accept={AVATAR_TYPES.join(',')} className="sr-only" onChange={e => { if (e.target.files?.[0]) pickAvatar(e.target.files[0]); e.target.value = '' }} />
         <div style={{ marginTop: 12 }}>
           <h2 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>{displayName || t('profile.noName')}</h2>
           <div style={{ fontSize: 13.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 2 }}>
@@ -317,7 +317,7 @@ export default function Profile() {
         <div className="card" style={{ marginTop: 20, padding: '18px 20px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span style={{ fontSize: 22 }}>⭐</span>
+              <span style={{ fontSize: 22 }}><Icon icon={Star} size="1em" /></span>
               <span style={{ fontSize: 16, fontWeight: 800, color: 'var(--text)' }}>
                 {t('profile.level')} {level}
               </span>
@@ -346,13 +346,13 @@ export default function Profile() {
           </div>
           <div style={{ display: 'flex', gap: 14 }}>
             {[
-              { emoji: '🔥', label: 'Стрик', bg: '#5b4fcf' },
-              { emoji: '⭐', label: 'Лучший день', bg: '#f47a55' },
-              { emoji: '📚', label: 'Знания', bg: '#5ad1a5' },
-              { emoji: '💰', label: 'Финансы', bg: '#f0c45a' },
+              { emoji: Flame, label: 'Стрик', bg: '#5b4fcf' },
+              { emoji: Star, label: 'Лучший день', bg: '#f47a55' },
+              { emoji: BookOpen, label: 'Знания', bg: '#5ad1a5' },
+              { emoji: Wallet, label: 'Финансы', bg: '#f0c45a' },
             ].map(b => (
-              <div key={b.emoji} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-                <div style={{ width: 56, height: 56, borderRadius: 16, background: b.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{b.emoji}</div>
+              <div key={b.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                <div style={{ width: 56, height: 56, borderRadius: 16, background: b.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}><Icon icon={b.emoji} size="1em" /></div>
                 <span style={{ fontSize: 10, color: 'var(--text-muted)', fontWeight: 600, textAlign: 'center', lineHeight: 1.2 }}>{b.label}</span>
               </div>
             ))}
@@ -411,7 +411,7 @@ export default function Profile() {
                   <span className="prof-field-label">{t('profile.field.phone')}</span>
                   <div className="prof-field-body">
                     <span className="prof-fval">{phone}</span>
-                    <span className="prof-badge success">✓</span>
+                    <span className="prof-badge success"><Icon icon={Check} size="1em" /></span>
                   </div>
                 </div>
               )}
@@ -482,9 +482,9 @@ export default function Profile() {
               <span className="prof-card-title">{t('profile.security.linked')}</span>
               <div className="prof-provider-list">
                 {[
-                  { label: 'Email', linked: hasEmail, icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> },
+                  { label: 'Email', linked: hasEmail, icon: <Icon icon={Mail} size={18} /> },
                   { label: 'Google', linked: hasGoogle, icon: <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8a12 12 0 0 1 0-24c3 0 5.8 1.1 7.9 3l5.7-5.7A20 20 0 1 0 24 44c11 0 20-8.9 20-20 0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8A12 12 0 0 1 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7A20 20 0 0 0 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2A12 12 0 0 1 12.7 28l-6.6 5.1A20 20 0 0 0 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3a12 12 0 0 1-4.1 5.6l6.2 5.2C39.6 35.6 44 30.4 44 24c0-1.2-.1-2.3-.4-3.5z"/></svg> },
-                  ...(phone ? [{ label: t('profile.field.phone'), linked: true, icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.128.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.572 2.81.7A2 2 0 0 1 22 16.92z"/></svg> }] : []),
+                  ...(phone ? [{ label: t('profile.field.phone'), linked: true, icon: <Icon icon={Phone} size={18} /> }] : []),
                 ].map(({ label, linked, icon }) => (
                   <div key={label} className="prof-provider">
                     {icon}
@@ -509,10 +509,10 @@ export default function Profile() {
             <div className="card prof-card-inner">
               <span className="prof-card-title">{t('profile.appearance.theme')}</span>
               <div className="prof-choice-row">
-                {[['light', '☀️', !isDark], ['dark', '🌙', isDark]].map(([k, emoji, active]) => (
+                {[['light', Sun, !isDark], ['dark', Moon, isDark]].map(([k, emoji, active]) => (
                   <button key={k} className={`prof-choice-btn ${active ? 'active' : ''}`}
                     onClick={() => { if ((k === 'dark' && !isDark) || (k === 'light' && isDark)) toggleTheme() }}>
-                    {emoji} {t(`profile.appearance.${k}`)}
+                    <Icon icon={emoji} size="1em" /> {t(`profile.appearance.${k}`)}
                   </button>
                 ))}
               </div>
@@ -623,7 +623,7 @@ export default function Profile() {
               <span className="prof-card-title">{t('profile.data.export')}</span>
               <p className="text-muted" style={{ fontSize: 'var(--text-sm)', margin: '8px 0 16px' }}>{t('profile.data.exportDesc')}</p>
               <button className="btn btn-secondary" onClick={exportData}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <Icon icon={Download} size={16} />
                 {t('profile.data.exportBtn')}
               </button>
             </div>
@@ -636,7 +636,7 @@ export default function Profile() {
 
             <div className="card prof-card-inner">
               <span className="prof-card-title">{t('profile.data.plan')}</span>
-              <div className="prof-plan-badge">✨ {t('profile.data.free')}</div>
+              <div className="prof-plan-badge"><Icon icon={Sparkles} size="1em" /> {t('profile.data.free')}</div>
             </div>
           </>}
 
