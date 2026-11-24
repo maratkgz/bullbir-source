@@ -1,9 +1,62 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
-export default defineConfig({
+// Server-only variables the local /api needs (never VITE_-prefixed, so never shipped to the browser).
+const SERVER_ENV_KEYS = [
+  'NODE_ENV', 'FIREBASE_PROJECT_ID', 'APP_ORIGINS', 'AUTH_PEPPER',
+  'FIRESTORE_EMULATOR_HOST', 'FIREBASE_AUTH_EMULATOR_HOST',
+  'FIREBASE_SERVICE_ACCOUNT_BASE64', 'UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'RESEND_API_KEY', 'MAIL_FROM',
+  'FIREBASE_HASH_SIGNER_KEY', 'FIREBASE_HASH_SALT_SEPARATOR', 'FIREBASE_HASH_ROUNDS', 'FIREBASE_HASH_MEM_COST',
+]
+
+/**
+ * Dev only: serve /api/auth/* from the same router Vercel uses (server/router.ts), loaded through
+ * Vite's SSR pipeline so TypeScript edits apply without a restart.
+ */
+function localApi(mode) {
+  return {
+    name: 'bullbir-local-api',
+    apply: 'serve',
+    configureServer(server) {
+      const env = loadEnv(mode, process.cwd(), '')
+      for (const key of SERVER_ENV_KEYS) {
+        if (env[key] !== undefined && process.env[key] === undefined) process.env[key] = env[key]
+      }
+      // Local development must never reach the real Firebase project: emulators only.
+      const usesEmulator = Boolean(process.env.FIRESTORE_EMULATOR_HOST && process.env.FIREBASE_AUTH_EMULATOR_HOST)
+      if (!usesEmulator) {
+        server.config.logger.warn('[local-api] /api/auth is disabled: set FIRESTORE_EMULATOR_HOST and FIREBASE_AUTH_EMULATOR_HOST in .env.local (see .env.example)')
+      }
+      server.middlewares.use(async (req, res, next) => {
+        if (!req.url?.startsWith('/api/auth/')) return next()
+        const fail = (message) => {
+          res.statusCode = 503
+          res.setHeader('Content-Type', 'application/json; charset=utf-8')
+          res.end(JSON.stringify({ error: { code: 'service_unavailable', message } }))
+        }
+        if (!usesEmulator) return fail('Local API needs the Firebase emulators')
+        try {
+          const { createHandler } = await server.ssrLoadModule('/server/router.ts')
+          const { routes } = await server.ssrLoadModule('/server/routes/index.ts')
+          await createHandler(routes)(req, res)
+        } catch (err) {
+          // Module load / env errors: print the cause in the terminal, keep the browser response JSON.
+          server.config.logger.error(`[local-api] ${err instanceof Error ? err.message : String(err)}`)
+          if (!res.headersSent) fail('Local API failed to start — see the dev server terminal')
+        }
+      })
+    },
+  }
+}
+
+export default defineConfig(({ mode }) => ({
+  test: {
+    // Emulator suites run only via `npm run test:emulator` (vitest.emulator.config.js).
+    exclude: ['**/node_modules/**', '**/dist/**', 'tests/emulator/**'],
+  },
   plugins: [
+    localApi(mode),
     react(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -27,7 +80,8 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/offline\.html$/],
+        // /api/* must reach the server (e.g. OAuth callbacks), never the cached app shell.
+        navigateFallbackDenylist: [/^\/offline\.html$/, /^\/api\//],
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
         // Firebase/Google API responses are deliberately NOT cached by the service worker:
         // they carry private user data, and Firestore already has its own offline cache
@@ -77,4 +131,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))

@@ -52,6 +52,11 @@ export default function Login() {
       await login({ email, password })
       navigate('/app/dashboard')
     } catch (err) {
+      if (err.code === 'auth/email-unverified') {
+        toast.success(tError(err))
+        navigate('/verify-email')
+        return
+      }
       fail(err)
     } finally {
       setLoading(false)

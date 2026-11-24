@@ -49,9 +49,10 @@ function PublicRoute({ children }) {
 }
 
 function VerifyRoute() {
-  const { user, loading, isVerified, onboardingDone } = useAuth()
+  const { user, loading, isVerified, onboardingDone, pendingEmail } = useAuth()
   if (loading) return <Splash />
-  if (!user) return <Navigate to="/login" replace />
+  // Reachable signed in but unverified, or right after sign-up (no session yet, pendingEmail).
+  if (!user) return pendingEmail ? <VerifyEmail /> : <Navigate to="/login" replace />
   if (isVerified) return <Navigate to={onboardingDone ? '/app/dashboard' : '/onboarding'} replace />
   return <VerifyEmail />
 }

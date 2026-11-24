@@ -1,7 +1,9 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider } from 'firebase/auth'
-import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { connectAuthEmulator, getAuth, GoogleAuthProvider } from 'firebase/auth'
+import {
+  connectFirestoreEmulator, initializeFirestore, persistentLocalCache, persistentMultipleTabManager,
+} from 'firebase/firestore'
+import { connectStorageEmulator, getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -12,8 +14,12 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 }
 
-// True only when every required key is present.
-export const firebaseReady = Object.values(firebaseConfig).every(
+// Local development against the Firebase Emulator Suite (`npm run emulators`). Dev server only —
+// a production build can never point at the emulators, and they never touch the real project.
+export const useEmulators = import.meta.env.DEV && import.meta.env.VITE_USE_EMULATORS === 'true'
+
+// True only when every required key is present (or the emulators are used).
+export const firebaseReady = useEmulators || Object.values(firebaseConfig).every(
   (v) => typeof v === 'string' && v.length > 0,
 )
 
@@ -35,7 +41,7 @@ if (!firebaseReady) {
   )
 }
 
-export const app = initializeApp(firebaseReady ? firebaseConfig : fallbackConfig)
+export const app = initializeApp(firebaseReady && !useEmulators ? firebaseConfig : fallbackConfig)
 export const auth = getAuth(app)
 
 // Firestore with offline persistence enabled.
@@ -44,5 +50,11 @@ export const db = initializeFirestore(app, {
 })
 
 export const storage = getStorage(app)
+
+if (useEmulators) {
+  connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true })
+  connectFirestoreEmulator(db, '127.0.0.1', 8080)
+  connectStorageEmulator(storage, '127.0.0.1', 9199)
+}
 
 export const googleProvider = new GoogleAuthProvider()

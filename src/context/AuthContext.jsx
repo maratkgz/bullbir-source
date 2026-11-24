@@ -1,21 +1,22 @@
-import { createContext, useContext, useEffect, useState, useCallback } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import {
   onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  updateProfile,
-  signInWithPopup,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-  reload,
+  setPersistence,
+  inMemoryPersistence,
+  signInWithCustomToken,
+  signOut,
 } from 'firebase/auth'
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
-import { auth, db, googleProvider, firebaseReady } from '../firebase/config'
+import { auth, db, firebaseReady } from '../firebase/config'
 import { signOutAndClear } from '../firebase/account'
+import { authGet, authPost, authDelete } from '../auth/api'
+
+// Session lives in our httpOnly cookie (/api/auth). Firebase Auth is only an invisible bridge
+// to Firestore/Storage rules: custom token, in-memory persistence, re-minted after every reload.
 
 const AuthContext = createContext(null)
+const PENDING_EMAIL_KEY = 'bb.pendingEmail'
+const REBRIDGE_MIN_INTERVAL_MS = 30 * 1000
 
 export function useAuth() {
   const ctx = useContext(AuthContext)
@@ -23,141 +24,327 @@ export function useAuth() {
   return ctx
 }
 
-async function ensureUserDoc(user, extra = {}) {
-  const ref = doc(db, 'users', user.uid)
-  const snap = await getDoc(ref)
-  if (!snap.exists()) {
-    await setDoc(ref, {
-      email: user.email || null,
-      displayName: user.displayName || extra.displayName || null,
-      photoURL: user.photoURL || null,
-      onboardingDone: false,
-      createdAt: serverTimestamp(),
-      ...extra,
-    })
-    return { onboardingDone: false }
+function notAllowedYet() {
+  const err = new Error('This sign-in method is being moved to the new system')
+  err.code = 'auth/operation-not-allowed'
+  return err
+}
+
+function readPendingEmail() {
+  try {
+    return sessionStorage.getItem(PENDING_EMAIL_KEY)
+  } catch {
+    return null
   }
-  return snap.data()
+}
+
+function writePendingEmail(email) {
+  try {
+    if (email) sessionStorage.setItem(PENDING_EMAIL_KEY, email)
+    else sessionStorage.removeItem(PENDING_EMAIL_KEY)
+  } catch {
+    // Storage blocked (private mode): pendingEmail just won't survive a reload.
+  }
+}
+
+function devWarn(message, err) {
+  if (import.meta.env.DEV) {
+    // eslint-disable-next-line no-console
+    console.warn(`[BullBir] ${message}`, err?.code || err?.message || err)
+  }
+}
+
+let persistencePromise = null
+function ensureInMemoryPersistence() {
+  if (!persistencePromise) persistencePromise = setPersistence(auth, inMemoryPersistence)
+  return persistencePromise
+}
+
+/** Signs the Firebase bridge in for the current cookie session. @returns {Promise<boolean>} */
+async function signInBridge() {
+  if (!firebaseReady) return false
+  try {
+    await ensureInMemoryPersistence()
+    const { token } = await authPost('firebase-token')
+    await signInWithCustomToken(auth, token)
+    return true
+  } catch (err) {
+    devWarn('Firebase bridge sign-in failed:', err)
+    return false
+  }
+}
+
+async function ensureUserDoc(apiUser) {
+  const ref = doc(db, 'users', apiUser.uid)
+  const snap = await getDoc(ref)
+  if (snap.exists()) return snap.data()
+  await setDoc(ref, {
+    email: apiUser.email || null,
+    displayName: apiUser.displayName || null,
+    photoURL: null,
+    onboardingDone: false,
+    createdAt: serverTimestamp(),
+  })
+  return { onboardingDone: false }
+}
+
+/** Shapes our API user like the Firebase User fields the app reads. */
+function toAppUser(apiUser, profile) {
+  return {
+    uid: apiUser.uid,
+    email: apiUser.email,
+    emailVerified: !!apiUser.emailVerified,
+    displayName: profile?.displayName ?? apiUser.displayName ?? null,
+    photoURL: profile?.photoURL ?? null,
+    phoneNumber: null,
+    providerData: (apiUser.providers || []).map((p) => ({ providerId: p })),
+    metadata: {
+      creationTime: apiUser.createdAt ?? null,
+      lastSignInTime: apiUser.lastLoginAt ?? null,
+    },
+  }
+}
+
+async function fetchMe() {
+  try {
+    const { user } = await authGet('me')
+    return user
+  } catch (err) {
+    if (err.status === 401) return null
+    throw err
+  }
 }
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null)
+  const [apiUser, setApiUser] = useState(null)
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [pendingEmail, setPendingEmailState] = useState(readPendingEmail)
+  // Registration password, kept in memory only (never in storage): verify-email needs it again.
+  const registrationPasswordRef = useRef(null)
+  const [hasRegistrationPassword, setHasRegistrationPassword] = useState(false)
+  const apiUserRef = useRef(null)
+  const bridgingRef = useRef(false)
+  const lastRebridgeAtRef = useRef(0)
 
-  useEffect(() => {
-    if (!firebaseReady) {
-      setLoading(false)
-      return undefined
-    }
-    const unsub = onAuthStateChanged(auth, async (u) => {
-      if (u?.emailVerified) {
-        // A token minted before verification lacks email_verified and the rules would deny
-        // every module read/write until it expires — refresh it once if stale.
-        try {
-          const { claims } = await u.getIdTokenResult()
-          if (!claims.email_verified) await u.getIdToken(true)
-        } catch {
-          // Offline: the SDK refreshes the token on its own once back online.
-        }
-      }
-      setUser(u)
-      if (u) {
-        try {
-          const data = await ensureUserDoc(u)
-          setProfile(data)
-        } catch {
-          setProfile(null)
-        }
-      } else {
-        setProfile(null)
-      }
-      setLoading(false)
-    })
-    return unsub
+  const setPendingEmail = useCallback((email) => {
+    writePendingEmail(email)
+    setPendingEmailState(email)
   }, [])
 
+  const registrationNameRef = useRef(null)
+  const setRegistrationPassword = useCallback((password, name = null) => {
+    registrationPasswordRef.current = password || null
+    registrationNameRef.current = password ? name || null : null
+    setHasRegistrationPassword(!!password)
+  }, [])
+
+  const clearSession = useCallback(() => {
+    apiUserRef.current = null
+    setApiUser(null)
+    setProfile(null)
+  }, [])
+
+  // Bridge first, then publish the user, so data hooks never subscribe before request.auth exists.
+  const bootstrap = useCallback(async (nextUser) => {
+    bridgingRef.current = true
+    try {
+      const bridged = await signInBridge()
+      let nextProfile = null
+      if (bridged) {
+        try {
+          nextProfile = await ensureUserDoc(nextUser)
+        } catch (err) {
+          devWarn('Could not load the profile:', err)
+        }
+      }
+      apiUserRef.current = nextUser
+      setApiUser(nextUser)
+      setProfile(nextProfile)
+    } finally {
+      bridgingRef.current = false
+    }
+  }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const me = await fetchMe()
+        if (cancelled) return
+        if (me) {
+          await bootstrap(me)
+        } else if (firebaseReady) {
+          // A leftover (pre-migration, persisted) Firebase session must never outlive ours.
+          await auth.authStateReady()
+          if (auth.currentUser) await signOut(auth).catch(() => undefined)
+        }
+      } catch (err) {
+        devWarn('Could not restore the session:', err)
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [bootstrap])
+
+  // Bridge dropped while we think we're signed in: the server revokes Firebase refresh tokens on
+  // logout / session revoke / logout-all. Still signed in with us → re-bridge; otherwise sign out.
+  useEffect(() => {
+    if (!firebaseReady) return undefined
+    return onAuthStateChanged(auth, async (fbUser) => {
+      if (fbUser || !apiUserRef.current || bridgingRef.current) return
+      try {
+        const me = await fetchMe()
+        if (!me) {
+          clearSession()
+          return
+        }
+        const now = Date.now()
+        if (now - lastRebridgeAtRef.current < REBRIDGE_MIN_INTERVAL_MS) return
+        lastRebridgeAtRef.current = now
+        bridgingRef.current = true
+        try {
+          await signInBridge()
+        } finally {
+          bridgingRef.current = false
+        }
+      } catch (err) {
+        devWarn('Session re-check failed:', err)
+      }
+    })
+  }, [clearSession])
+
   const refreshProfile = useCallback(async () => {
-    if (!auth.currentUser) return
-    const snap = await getDoc(doc(db, 'users', auth.currentUser.uid))
+    const uid = apiUserRef.current?.uid
+    if (!uid || !auth.currentUser) return
+    const snap = await getDoc(doc(db, 'users', uid))
     if (snap.exists()) setProfile(snap.data())
   }, [])
 
   const register = useCallback(async ({ email, password, name }) => {
-    const cred = await createUserWithEmailAndPassword(auth, email, password)
-    if (name) await updateProfile(cred.user, { displayName: name })
-    await ensureUserDoc(cred.user, { displayName: name || null })
-    await sendEmailVerification(cred.user)
-    return cred.user
-  }, [])
+    await authPost('register', { email, password, ...(name ? { name } : {}) })
+    setRegistrationPassword(password, name)
+    setPendingEmail(email)
+  }, [setPendingEmail, setRegistrationPassword])
 
-  const login = useCallback(async ({ email, password }) => {
-    const cred = await signInWithEmailAndPassword(auth, email, password)
-    return cred.user
-  }, [])
+  // The account is created only when the code AND the registration password match.
+  const verifyEmail = useCallback(async (code, password) => {
+    const email = apiUserRef.current?.email ?? pendingEmail
+    const pw = password || registrationPasswordRef.current
+    const { user } = await authPost('verify-email', { email, code, password: pw })
+    await bootstrap(user)
+    setRegistrationPassword(null)
+    setPendingEmail(null)
+    return user
+  }, [bootstrap, pendingEmail, setPendingEmail, setRegistrationPassword])
 
-  const loginWithGoogle = useCallback(async () => {
-    const cred = await signInWithPopup(auth, googleProvider)
-    await ensureUserDoc(cred.user)
-    return cred.user
-  }, [])
-
-  const setupRecaptcha = useCallback((containerId) => {
-    if (window.recaptchaVerifier) return window.recaptchaVerifier
-    window.recaptchaVerifier = new RecaptchaVerifier(auth, containerId, {
-      size: 'invisible',
-    })
-    return window.recaptchaVerifier
-  }, [])
-
-  const sendPhoneCode = useCallback(
-    async (phoneNumber, containerId) => {
-      const verifier = setupRecaptcha(containerId)
-      return signInWithPhoneNumber(auth, phoneNumber, verifier)
-    },
-    [setupRecaptcha],
-  )
-
-  const resendVerification = useCallback(async () => {
-    if (auth.currentUser) await sendEmailVerification(auth.currentUser)
-  }, [])
+  // A new code re-creates the pending registration, so it needs the password (and name) again.
+  const resendVerification = useCallback(async (password) => {
+    const email = apiUserRef.current?.email ?? pendingEmail
+    if (!email) return
+    const pw = password || registrationPasswordRef.current
+    if (!pw) {
+      const err = new Error('Password required')
+      err.code = 'auth/missing-password'
+      throw err
+    }
+    const name = registrationNameRef.current
+    await authPost('verify-email/resend', { email, password: pw, ...(name ? { name } : {}) })
+  }, [pendingEmail])
 
   const checkVerified = useCallback(async () => {
-    if (!auth.currentUser) return false
-    await reload(auth.currentUser)
-    // Security rules read `email_verified` from the ID token, which reload() does not refresh.
-    if (auth.currentUser.emailVerified) await auth.currentUser.getIdToken(true)
-    setUser({ ...auth.currentUser })
-    return auth.currentUser.emailVerified
+    const me = await fetchMe()
+    if (!me) return false
+    const wasVerified = !!apiUserRef.current?.emailVerified
+    // Verified elsewhere: re-mint the bridge so the bb_ev claim reaches the rules.
+    if (me.emailVerified && !wasVerified) await bootstrap(me)
+    else {
+      apiUserRef.current = me
+      setApiUser(me)
+    }
+    return !!me.emailVerified
+  }, [bootstrap])
+
+  const login = useCallback(async ({ email, password }) => {
+    let user
+    try {
+      user = (await authPost('login', { email, password })).user
+    } catch (err) {
+      // Imported account with an unconfirmed address: the server mailed a code. Continue on the
+      // verify screen exactly like a fresh registration (password kept in memory only).
+      if (err.apiCode === 'email_unverified') {
+        setRegistrationPassword(password, null)
+        setPendingEmail(email)
+      }
+      throw err
+    }
+    setRegistrationPassword(null)
+    setPendingEmail(null)
+    await bootstrap(user)
+    return user
+  }, [bootstrap, setPendingEmail, setRegistrationPassword])
+
+  const loginWithGoogle = useCallback(async () => {
+    throw notAllowedYet()
   }, [])
 
-  const resetPassword = useCallback(async (email) => {
-    await sendPasswordResetEmail(auth, email)
+  const sendPhoneCode = useCallback(async () => {
+    throw notAllowedYet()
+  }, [])
+
+  const resetPassword = useCallback(async () => {
+    throw notAllowedYet()
   }, [])
 
   const completeOnboarding = useCallback(async (data = {}) => {
-    if (!auth.currentUser) return
-    await setDoc(
-      doc(db, 'users', auth.currentUser.uid),
-      { onboardingDone: true, ...data },
-      { merge: true },
-    )
+    const uid = apiUserRef.current?.uid
+    if (!uid) return
+    await setDoc(doc(db, 'users', uid), { onboardingDone: true, ...data }, { merge: true })
     await refreshProfile()
   }, [refreshProfile])
 
-  // Signs out AND wipes the offline Firestore cache + SW API cache (shared-device safety).
+  // Ends the server session, then signs the bridge out and wipes offline caches.
   const logout = useCallback(async () => {
+    setRegistrationPassword(null)
+    setPendingEmail(null)
+    await authPost('logout').catch(() => undefined)
     await signOutAndClear()
+  }, [setPendingEmail, setRegistrationPassword])
+
+  const logoutAll = useCallback(async () => {
+    await authPost('logout-all')
+    setRegistrationPassword(null)
+    setPendingEmail(null)
+    await signOutAndClear()
+  }, [setPendingEmail, setRegistrationPassword])
+
+  const listSessions = useCallback(async () => {
+    const { sessions } = await authGet('sessions')
+    return sessions
   }, [])
+
+  const revokeSession = useCallback(async (id) => {
+    await authDelete(`sessions/${encodeURIComponent(id)}`)
+    // Revoking the current session clears our cookie — finish the sign-out locally too.
+    if (!(await fetchMe())) await signOutAndClear()
+  }, [])
+
+  const user = useMemo(() => (apiUser ? toAppUser(apiUser, profile) : null), [apiUser, profile])
 
   const value = {
     user,
     profile,
     loading,
     firebaseReady,
-    isVerified: !!user && (user.emailVerified || (!!user.phoneNumber && !user.email)),
+    isVerified: !!user && user.emailVerified,
     onboardingDone: !!profile?.onboardingDone,
+    pendingEmail,
+    hasRegistrationPassword,
     register,
+    verifyEmail,
     login,
     loginWithGoogle,
     sendPhoneCode,
@@ -167,6 +354,9 @@ export function AuthProvider({ children }) {
     completeOnboarding,
     refreshProfile,
     logout,
+    logoutAll,
+    listSessions,
+    revokeSession,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

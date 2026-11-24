@@ -98,9 +98,11 @@ async function reauthenticate(user, password) {
   }
 }
 
-// Mirrors isVerified() in firestore.rules — unverified users cannot read subcollections.
-function canAccessUserData(user) {
-  return user.emailVerified || (!!user.phoneNumber && !user.email)
+// Mirrors isVerified() in firestore.rules (`bb_ev` claim from our server's custom token) —
+// unverified users cannot read subcollections. Receives the Firebase bridge user.
+async function canAccessUserData(user) {
+  const { claims } = await user.getIdTokenResult()
+  return claims.bb_ev === true
 }
 
 async function deleteCollection(uid, name) {
@@ -124,7 +126,7 @@ export async function deleteAccountAndData({ password } = {}) {
 
   const { uid } = user
   // Unverified accounts could never write module data (rules), so there is nothing to wipe.
-  if (canAccessUserData(user)) {
+  if (await canAccessUserData(user)) {
     for (const name of USER_COLLECTIONS) {
       await deleteCollection(uid, name)
     }

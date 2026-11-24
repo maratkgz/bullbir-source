@@ -9,6 +9,9 @@ import OAuthButtons from './OAuthButtons'
 import { Check } from 'lucide-react'
 import Icon from '../ui/Icon'
 
+const PW_MIN = 10
+const PW_MAX = 128
+
 function Rule({ ok, label }) {
   return (
     <span className={`pw-rule ${ok ? 'ok' : ''}`}>
@@ -33,7 +36,8 @@ export default function Register() {
 
   const checks = useMemo(
     () => ({
-      length: password.length >= 8,
+      // Server rule (docs/auth-api.md): 10–128 characters.
+      length: password.length >= PW_MIN && password.length <= PW_MAX,
       upper: /[A-Z]/.test(password),
       number: /\d/.test(password),
       match: password.length > 0 && password === confirm,
@@ -93,7 +97,7 @@ export default function Register() {
         </div>
         <div className="field">
           <label htmlFor="password">{t('auth.password')}</label>
-          <input id="password" type="password" className="input" autoComplete="new-password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+          <input id="password" type="password" className="input" autoComplete="new-password" required maxLength={PW_MAX} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
         </div>
         <div className="field">
           <label htmlFor="confirm">{t('auth.confirmPassword')}</label>
