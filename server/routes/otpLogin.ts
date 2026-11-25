@@ -13,7 +13,7 @@ import { emailKey, emailSchema } from '../auth/email.js'
 import { mailer } from '../auth/mailer.js'
 import { consumeCode, issueCode } from '../auth/otp.js'
 import { revokeAllSessions } from '../auth/sessions.js'
-import { findUserByEmail, getUser, markEmailVerified } from '../auth/users.js'
+import { claimUnverifiedAccount, findUserByEmail, getUser } from '../auth/users.js'
 
 const code = z.string().regex(/^\d{6}$/)
 
@@ -54,9 +54,8 @@ export const verifyLoginCode: Route = {
     // Account deleted or its address changed since the code was issued → same answer as a wrong code.
     if (!user || user.email !== body.email) throw invalidCode()
     if (!user.emailVerified) {
-      await markEmailVerified(uid)
-      // Pre-hijack defence: someone may have registered this address before its owner did. Now that
-      // the owner has proven it, end every session opened before (TODO(lead): also drop passwordHash).
+      // Pre-hijack defence: wipe credentials of whoever created the record, end their sessions.
+      await claimUnverifiedAccount(uid)
       await revokeAllSessions(uid)
     }
     return startSession(ctx, { ...user, emailVerified: true })

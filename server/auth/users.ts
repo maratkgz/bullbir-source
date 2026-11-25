@@ -9,6 +9,7 @@ import { now, toIso } from './time.js'
 
 export const USERS = 'users_auth'
 export const EMAILS = 'auth_emails'
+export const ACCOUNTS = 'auth_accounts'
 
 export type AuthUser = {
   uid: string
@@ -118,16 +119,22 @@ export async function createVerifiedUser(input: {
       const userRef = db.collection(USERS).doc(existingUid)
       const snap = await tx.get(userRef)
       if (!snap.exists || snap.get('emailVerified') === true) return null
-      const providers = new Set([...(snap.get('providers') ?? []), 'password'])
+      // Take-over of an UNVERIFIED record (e.g. imported, possibly pre-registered by someone else):
+      // the mailbox owner gets a clean account — old password and provider links are wiped.
+      const links = await tx.get(db.collection(ACCOUNTS).where('uid', '==', existingUid))
+      for (const link of links.docs) tx.delete(link.ref)
       tx.update(userRef, {
         emailVerified: true,
         passwordHash: input.passwordHash,
         legacyPassword: null,
-        providers: [...providers],
+        providers: ['password'],
         updatedAt: ts,
         passwordChangedAt: ts,
       })
-      return fromDoc(existingUid, { ...snap.data(), emailVerified: true, passwordHash: input.passwordHash, providers: [...providers] })
+      return fromDoc(existingUid, {
+        ...snap.data(), emailVerified: true, passwordHash: input.passwordHash, legacyPassword: null,
+        providers: ['password'], passwordChangedAt: ts,
+      })
     }
     const uid = newUid()
     const doc = {
@@ -157,15 +164,40 @@ export async function completeLegacyMigration(uid: string, passwordHash: string)
   const ref = db.collection(USERS).doc(uid)
   await db.runTransaction(async (tx) => {
     const snap = await tx.get(ref)
+    // Apply only to an untouched imported account: never overwrite a password set meanwhile
+    // (reset/change) and never revive a disabled account.
     if (!snap.exists || snap.get('legacyPassword') == null) return
+    if (snap.get('passwordHash') != null || (snap.get('status') ?? 'active') !== 'active') return
     const ts = new Date(now())
     // passwordChangedAt stays: the password itself did not change, sessions remain valid.
     tx.update(ref, { passwordHash, legacyPassword: null, migratedAt: ts, updatedAt: ts })
   })
 }
 
-export async function markEmailVerified(uid: string): Promise<void> {
-  await adminDb().collection(USERS).doc(uid).update({ emailVerified: true, updatedAt: new Date(now()) })
+/**
+ * The mailbox owner proved an UNVERIFIED account's address with an emailed code (code login).
+ * Whoever created the record may know its password or have linked a provider, so all old
+ * credentials go: password, legacy hash, provider links. The owner can set a password later.
+ * Callers must also end all sessions (revokeAllSessions).
+ */
+export async function claimUnverifiedAccount(uid: string): Promise<void> {
+  const db = adminDb()
+  const ref = db.collection(USERS).doc(uid)
+  await db.runTransaction(async (tx) => {
+    const snap = await tx.get(ref)
+    if (!snap.exists || snap.get('emailVerified') === true) return
+    const links = await tx.get(db.collection(ACCOUNTS).where('uid', '==', uid))
+    const ts = new Date(now())
+    for (const link of links.docs) tx.delete(link.ref)
+    tx.update(ref, {
+      emailVerified: true,
+      passwordHash: null,
+      legacyPassword: null,
+      providers: [],
+      passwordChangedAt: ts,
+      updatedAt: ts,
+    })
+  })
 }
 
 export async function recordLogin(uid: string): Promise<void> {

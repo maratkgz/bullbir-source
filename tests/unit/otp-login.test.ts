@@ -13,7 +13,7 @@ const m = vi.hoisted(() => ({
   consumeCode: vi.fn(),
   findUserByEmail: vi.fn(),
   getUser: vi.fn(),
-  markEmailVerified: vi.fn(),
+  claimUnverifiedAccount: vi.fn(),
   recordLogin: vi.fn(),
   createSession: vi.fn(),
   revokeAllSessions: vi.fn(),
@@ -32,7 +32,7 @@ vi.mock('../../server/auth/mailer.js', () => ({ mailer: () => ({ send: m.send })
 vi.mock('../../server/auth/users.js', () => ({
   findUserByEmail: m.findUserByEmail,
   getUser: m.getUser,
-  markEmailVerified: m.markEmailVerified,
+  claimUnverifiedAccount: m.claimUnverifiedAccount,
   recordLogin: m.recordLogin,
   createVerifiedUser: vi.fn(),
   isAddressTaken: vi.fn(),
@@ -132,7 +132,7 @@ describe('POST otp/verify', () => {
     expect(res.headers).toEqual({ 'Set-Cookie': COOKIE })
     expect(res.body).toEqual({ user: { uid: 'u1', email: EMAIL, emailVerified: true } })
     expect(m.recordLogin).toHaveBeenCalledWith('u1')
-    expect(m.markEmailVerified).not.toHaveBeenCalled()
+    expect(m.claimUnverifiedAccount).not.toHaveBeenCalled()
     expect(m.revokeAllSessions).not.toHaveBeenCalled()
   })
 
@@ -140,7 +140,7 @@ describe('POST otp/verify', () => {
     m.consumeCode.mockResolvedValue({ uid: 'u1' })
     m.getUser.mockResolvedValueOnce(user({ emailVerified: false })).mockResolvedValue(user())
     const res = await verifyLoginCode.handler(ctx({ email: EMAIL, code: '123456' }))
-    expect(m.markEmailVerified).toHaveBeenCalledWith('u1')
+    expect(m.claimUnverifiedAccount).toHaveBeenCalledWith('u1')
     expect(m.revokeAllSessions).toHaveBeenCalledWith('u1')
     const revokeOrder = m.revokeAllSessions.mock.invocationCallOrder[0] ?? Infinity
     const createOrder = m.createSession.mock.invocationCallOrder[0] ?? -Infinity
@@ -166,7 +166,7 @@ describe('POST otp/verify', () => {
     m.getUser.mockResolvedValue(user({ email: 'other@mail.com' }))
     expect(await errorCode(verifyLoginCode.handler(ctx({ email: EMAIL, code: '123456' })))).toBe('invalid_code')
     expect(m.createSession).not.toHaveBeenCalled()
-    expect(m.markEmailVerified).not.toHaveBeenCalled()
+    expect(m.claimUnverifiedAccount).not.toHaveBeenCalled()
   })
 
   it.each(['12345', '1234567', 'abcdef', ''])('rejects malformed code %j without consuming', async (bad) => {

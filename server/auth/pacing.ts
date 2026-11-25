@@ -7,11 +7,15 @@ export function setMinResponseMsForTests(ms: number | undefined): void {
   minResponseMs = ms ?? 1000
 }
 
-/** Runs `work`, then waits until at least the floor has passed — also when `work` throws. */
-export async function withMinDuration<T>(work: () => Promise<T>): Promise<T> {
+/**
+ * Runs `work`, then waits until at least the floor has passed — also when `work` throws.
+ * `floorMs` lowers the floor for latency-sensitive endpoints (tests can force 0 for all).
+ */
+export async function withMinDuration<T>(work: () => Promise<T>, floorMs?: number): Promise<T> {
   const started = Date.now()
+  const floor = Math.min(floorMs ?? minResponseMs, minResponseMs)
   const pad = async () => {
-    const left = minResponseMs - (Date.now() - started)
+    const left = floor - (Date.now() - started)
     if (left > 0) await new Promise((resolve) => setTimeout(resolve, left))
   }
   try {

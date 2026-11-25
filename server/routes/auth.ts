@@ -134,23 +134,31 @@ export const login: Route = {
   ipLimits: [LIMITS.loginPerIp],
   async handler(ctx) {
     const body = await parseBody(ctx.req, z.object({ email: emailSchema, password }))
-    const key = emailKey(body.email)
-    const lockIfFails = await reserveAttempt(key)
-    const user = await findUserByEmail(body.email)
-    // Same work whether or not the account exists (dummy hash), same answer on every failure.
-    const ok = !tooLong(body.password) && (await checkLoginPassword(user, body.password))
-    if (!ok || !user || user.status !== 'active') {
-      throw lockIfFails ?? new AppError('invalid_credentials', 'Wrong email or password')
-    }
-    await clearFailures(key)
-    if (!user.emailVerified) {
-      // An imported account whose address was never confirmed. The password is right, but the
-      // mailbox is not proven: mail a code (same pending-registration flow) instead of a session.
-      await sendRegistrationMail(body.email, body.password, user.displayName)
-      throw new AppError('email_unverified', 'Confirm your email to continue')
-    }
-    return startSession(ctx, user)
+    return withMinDuration(() => passwordLogin(ctx, body.email, body.password), LOGIN_MIN_MS)
   },
+}
+
+/** Login floor: hides the cost difference between unknown, migrated and legacy accounts. */
+const LOGIN_MIN_MS = 500
+
+async function passwordLogin(ctx: RequestContext, email: string, plain: string): Promise<RouteResult> {
+  const key = emailKey(email)
+  const lockIfFails = await reserveAttempt(key)
+  const user = await findUserByEmail(email)
+  // Same work whether or not the account exists (dummy hash), same answer on every failure.
+  const ok = !tooLong(plain) && (await checkLoginPassword(user, plain))
+  if (!ok || !user || user.status !== 'active') {
+    throw lockIfFails ?? new AppError('invalid_credentials', 'Wrong email or password')
+  }
+  await clearFailures(key)
+  if (!user.emailVerified) {
+    // An imported account whose address was never confirmed. The password is right, but the
+    // mailbox is not proven: mail a code (same pending-registration flow) instead of a session.
+    await enforceLimit(LIMITS.codeRequestPerEmail, key, ctx.limiter)
+    await sendRegistrationMail(email, plain, user.displayName)
+    throw new AppError('email_unverified', 'Confirm your email to continue')
+  }
+  return startSession(ctx, user)
 }
 
 export const logout: Route = {

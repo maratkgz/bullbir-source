@@ -14,10 +14,15 @@
 //   users_auth/{uid}                 same shape as registerPendingUser + legacyPassword
 //   auth_emails/{sha256(email:…)}    { uid, createdAt }
 //   auth_accounts/google.com:{sub}   { uid, provider, email, linkedAt }
-// Never prints password hashes, salts or full email addresses.
+//     — only when the account email is verified AND equals the Google profile email; otherwise an
+//       attacker's unverified account for victim@x with the attacker's Google linked would later
+//       allow Google sign-in as the victim.
+// stdout carries counts only. Per-user details (uid, masked email, reason) go to a 0600 report
+// file in the OS temp dir. Never prints password hashes, salts or full email addresses.
 import { createHash } from 'node:crypto'
-import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { readFile, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export const USERS = 'users_auth'
@@ -25,6 +30,9 @@ export const EMAILS = 'auth_emails'
 export const ACCOUNTS = 'auth_accounts'
 const KNOWN_PROVIDERS = new Set(['password', 'google.com', 'phone'])
 const BASE64_ANY = /^[A-Za-z0-9+/_-]+={0,2}$/
+const EMULATOR_HOST = /^(127\.0\.0\.1|localhost|\[::1\]):\d+$/
+const DEMO_PROJECT_PREFIX = 'demo-'
+const REPORT_FILE_MODE = 0o600
 
 // ---------------------------------------------------------------- pure helpers (unit-tested)
 
@@ -41,6 +49,14 @@ export function maskEmail(email: string): string {
   const at = email.lastIndexOf('@')
   if (at <= 0) return '***'
   return `${email[0]}***@${email.slice(at + 1)}`
+}
+
+const DOC_PATH = /\b(users_auth|auth_emails|auth_accounts)\/[^\s'"`,;)\]}]+/g
+const EMAIL_LIKE = /[^\s@'"`<>()[\]{},;:]+@[^\s@'"`<>()[\]{},;:]+/g
+
+/** Strips Firestore document ids of our collections and anything email-like from a message. */
+export function redactErrorMessage(message: string): string {
+  return message.replace(DOC_PATH, '$1/<redacted>').replace(EMAIL_LIKE, '<email>')
 }
 
 /** Canonical standard base64, or null if the value is not base64 at all. */
@@ -68,6 +84,19 @@ export type ExportedUser = {
   providerUserInfo?: unknown
 }
 
+export type GoogleLinkSkipReason = 'google_link_unverified' | 'google_link_email_mismatch'
+
+export type ReportReason =
+  | 'disabled'
+  | 'no_email'
+  | 'duplicate_email'
+  | GoogleLinkSkipReason
+  | 'email_taken'
+  | 'google_taken'
+  | 'error'
+
+export type ReportEntry = { uid: string; maskedEmail: string | null; reason: ReportReason; message?: string }
+
 export type PlannedUser = {
   uid: string
   email: string
@@ -79,6 +108,8 @@ export type PlannedUser = {
   createdAtMs: number | null
   lastLoginAtMs: number | null
   google: { sub: string; email: string | null } | null
+  /** Set when the export had a Google link that we refuse to import. */
+  googleLinkSkipped: GoogleLinkSkipReason | null
 }
 
 export type ImportPlan = {
@@ -88,6 +119,19 @@ export type ImportPlan = {
   disabled: string[] // uids — not imported, so a disabled account is not silently re-enabled
   invalid: number // records without a usable uid
   duplicateEmails: { masked: string; uids: string[] }[]
+  googleLinkSkipped: string[] // uids (of `ready`) imported WITHOUT their Google link
+  limitedOut: number // importable users left out by --limit
+  details: ReportEntry[] // per-user reasons — report file only, never stdout
+}
+
+/**
+ * A Google link may be imported only if the account email is verified and equals the Google
+ * profile email (normalized the same way). Returns null when the link is allowed.
+ */
+export function googleLinkRefusal(emailVerified: boolean, accountEmail: string, googleEmail: string | null): GoogleLinkSkipReason | null {
+  if (!emailVerified) return 'google_link_unverified'
+  if (googleEmail === null || normalizeEmail(googleEmail) !== normalizeEmail(accountEmail)) return 'google_link_email_mismatch'
+  return null
 }
 
 function msOrNull(value: unknown): number | null {
@@ -104,58 +148,117 @@ function toPlanned(raw: ExportedUser, uid: string, email: string): PlannedUser {
   const hash = toStandardBase64(raw.passwordHash)
   const salt = toStandardBase64(raw.salt)
   const legacyPassword = hash && salt ? { hash, salt } : null
+  const emailVerified = raw.emailVerified === true
+
+  const g = infos.find((p) => p.providerId === 'google.com' && typeof p.rawId === 'string' && p.rawId.length > 0)
+  const candidate = g
+    ? { sub: String(g.rawId), email: typeof g.email === 'string' ? normalizeEmail(g.email) : null }
+    : null
+  const googleLinkSkipped = candidate ? googleLinkRefusal(emailVerified, email, candidate.email) : null
+  const google = googleLinkSkipped ? null : candidate
 
   const providers = new Set<string>()
   for (const p of infos) if (typeof p.providerId === 'string' && KNOWN_PROVIDERS.has(p.providerId)) providers.add(p.providerId)
   if (legacyPassword) providers.add('password')
-
-  const g = infos.find((p) => p.providerId === 'google.com' && typeof p.rawId === 'string' && p.rawId.length > 0)
-  const google = g
-    ? { sub: String(g.rawId), email: typeof g.email === 'string' ? normalizeEmail(g.email) : null }
-    : null
+  if (!google) providers.delete('google.com')
 
   return {
     uid,
     email,
     emailKey: emailKey(email),
-    emailVerified: raw.emailVerified === true,
+    emailVerified,
     displayName: typeof raw.displayName === 'string' && raw.displayName.trim() ? raw.displayName.trim().slice(0, 80) : null,
     providers: [...providers].sort(),
     legacyPassword,
     createdAtMs: msOrNull(raw.createdAt),
     lastLoginAtMs: msOrNull(raw.lastSignedInAt),
     google,
+    googleLinkSkipped,
   }
 }
 
-/** Pure: decides what to import. No I/O. */
+function validUid(value: unknown): string | null {
+  return typeof value === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(value) ? value : null
+}
+
+function maskedOrNull(value: unknown): string | null {
+  return typeof value === 'string' && value.includes('@') ? maskEmail(normalizeEmail(value)) : null
+}
+
+/**
+ * Pure: decides what to import. No I/O. Duplicate detection always covers the whole file;
+ * `limit` only caps how many of the remaining importable users are taken.
+ */
 export function planImport(users: readonly ExportedUser[], limit?: number): ImportPlan {
-  const slice = typeof limit === 'number' ? users.slice(0, limit) : users
-  const plan: ImportPlan = { total: slice.length, ready: [], withoutEmail: [], disabled: [], invalid: 0, duplicateEmails: [] }
+  const details: ReportEntry[] = []
+  const withoutEmail: string[] = []
+  const disabled: string[] = []
+  let invalid = 0
   const byEmail = new Map<string, PlannedUser[]>()
 
-  for (const raw of slice) {
-    const uid = typeof raw.localId === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(raw.localId) ? raw.localId : null
-    if (!uid) { plan.invalid++; continue }
-    if (raw.disabled === true) { plan.disabled.push(uid); continue }
+  for (const raw of users) {
+    const uid = validUid(raw.localId)
+    if (!uid) { invalid++; continue }
+    if (raw.disabled === true) {
+      disabled.push(uid)
+      details.push({ uid, maskedEmail: maskedOrNull(raw.email), reason: 'disabled' })
+      continue
+    }
     const email = typeof raw.email === 'string' ? normalizeEmail(raw.email) : ''
-    if (!email.includes('@')) { plan.withoutEmail.push(uid); continue }
-    const planned = toPlanned(raw, uid, email)
-    byEmail.set(email, [...(byEmail.get(email) ?? []), planned])
+    if (!email.includes('@')) {
+      withoutEmail.push(uid)
+      details.push({ uid, maskedEmail: null, reason: 'no_email' })
+      continue
+    }
+    byEmail.set(email, [...(byEmail.get(email) ?? []), toPlanned(raw, uid, email)])
   }
 
+  const importable: PlannedUser[] = []
+  const duplicateEmails: ImportPlan['duplicateEmails'] = []
   for (const [email, group] of byEmail) {
-    if (group.length === 1 && group[0]) plan.ready.push(group[0])
-    else plan.duplicateEmails.push({ masked: maskEmail(email), uids: group.map((u) => u.uid) })
+    if (group.length === 1 && group[0]) { importable.push(group[0]); continue }
+    const masked = maskEmail(email)
+    duplicateEmails.push({ masked, uids: group.map((u) => u.uid) })
+    for (const u of group) details.push({ uid: u.uid, maskedEmail: masked, reason: 'duplicate_email' })
   }
-  return plan
+
+  const ready = typeof limit === 'number' ? importable.slice(0, limit) : importable
+  const googleLinkSkipped: string[] = []
+  for (const u of ready) {
+    if (!u.googleLinkSkipped) continue
+    googleLinkSkipped.push(u.uid)
+    details.push({ uid: u.uid, maskedEmail: maskEmail(u.email), reason: u.googleLinkSkipped })
+  }
+
+  return {
+    total: users.length,
+    ready,
+    withoutEmail,
+    disabled,
+    invalid,
+    duplicateEmails,
+    googleLinkSkipped,
+    limitedOut: importable.length - ready.length,
+    details,
+  }
 }
 
 export function parseExport(text: string): ExportedUser[] {
-  const data: unknown = JSON.parse(text)
+  let data: unknown
+  try {
+    data = JSON.parse(text)
+  } catch {
+    // Never echo the parser message: newer Node versions quote a snippet of the file.
+    throw new Error('Export file is not valid JSON')
+  }
   const users = (data as { users?: unknown })?.users
   if (!Array.isArray(users)) throw new Error('Not a Firebase auth export: expected { "users": [...] }')
   return users.filter((u): u is ExportedUser => typeof u === 'object' && u !== null)
+}
+
+/** "bullbir-migration-report-2026-11-25T10-20-30-123Z.json" — safe on every filesystem. */
+export function reportFileName(now: Date): string {
+  return `bullbir-migration-report-${now.toISOString().replace(/[:.]/g, '-')}.json`
 }
 
 // ---------------------------------------------------------------- CLI
@@ -192,23 +295,36 @@ export function parseArgs(argv: readonly string[]): CliOptions {
   return opts
 }
 
-/** Production writes need an explicit, separate confirmation flag. */
-export function writeRefusal(opts: CliOptions, env: Record<string, string | undefined>): string | null {
-  if (!opts.apply) return null
-  if (env.FIRESTORE_EMULATOR_HOST) return null
-  if (opts.confirmProduction) return null
-  return 'Refusing to --apply: FIRESTORE_EMULATOR_HOST is not set, so this would write to a REAL project. '
-    + 'Run on the emulator first; for production add --i-understand-production.'
+type Env = Record<string, string | undefined>
+
+export function resolveProjectId(opts: CliOptions, env: Env): string | undefined {
+  return opts.project ?? env.FIREBASE_PROJECT_ID ?? env.GCLOUD_PROJECT
+}
+
+/**
+ * Writes without --i-understand-production are allowed only against a local emulator
+ * (FIRESTORE_EMULATOR_HOST = 127.0.0.1|localhost|[::1]:port) AND a "demo-*" project id.
+ */
+export function writeRefusal(opts: CliOptions, env: Env): string | null {
+  if (!opts.apply || opts.confirmProduction) return null
+  const onLocalEmulator = EMULATOR_HOST.test(env.FIRESTORE_EMULATOR_HOST ?? '')
+  const demoProject = (resolveProjectId(opts, env) ?? '').startsWith(DEMO_PROJECT_PREFIX)
+  if (onLocalEmulator && demoProject) return null
+  const why = !onLocalEmulator
+    ? 'FIRESTORE_EMULATOR_HOST is not set to a local emulator (127.0.0.1, localhost or [::1] with a port)'
+    : `the project id does not start with "${DEMO_PROJECT_PREFIX}"`
+  return `Refusing to --apply: ${why}, so this could write to a REAL project. `
+    + `Run on the local emulator with a ${DEMO_PROJECT_PREFIX}* project first; for production add --i-understand-production.`
 }
 
 type Outcome = 'imported' | 'would_import' | 'exists' | 'email_taken' | 'google_taken' | 'error'
+type Counts = Record<Outcome | 'google_link_skipped', number>
 
 type Db = import('firebase-admin/firestore').Firestore
 
-async function openDb(project: string | undefined): Promise<Db> {
+async function openDb(projectId: string | undefined): Promise<Db> {
   const { initializeApp, applicationDefault, getApps } = await import('firebase-admin/app')
   const { getFirestore } = await import('firebase-admin/firestore')
-  const projectId = project ?? process.env.FIREBASE_PROJECT_ID ?? process.env.GCLOUD_PROJECT
   if (!projectId) throw new Error('Set --project or FIREBASE_PROJECT_ID')
   const name = 'migrate-users'
   const existing = getApps().find((a) => a.name === name)
@@ -257,6 +373,7 @@ async function importOne(db: Db, u: PlannedUser, write: boolean): Promise<Outcom
   })
 }
 
+/** Counts only — per-user details live in the report file. */
 function printPlan(plan: ImportPlan, opts: CliOptions): void {
   const out = (line: string) => process.stdout.write(`${line}\n`)
   out(`Mode: ${opts.apply ? 'APPLY (writes)' : 'DRY RUN (no writes)'}${opts.offline ? ', offline' : ''}`)
@@ -264,12 +381,38 @@ function printPlan(plan: ImportPlan, opts: CliOptions): void {
   out(`Ready to import: ${plan.ready.length}`)
   out(`  with legacy password: ${plan.ready.filter((u) => u.legacyPassword).length}`)
   out(`  with Google link:     ${plan.ready.filter((u) => u.google).length}`)
+  out(`  Google link skipped (unverified or email mismatch): ${plan.googleLinkSkipped.length}`)
+  out(`Not taken because of --limit: ${plan.limitedOut}`)
   out(`Invalid records (no uid): ${plan.invalid}`)
-  out(`Disabled (skipped): ${plan.disabled.length}${plan.disabled.length ? ` → ${plan.disabled.join(', ')}` : ''}`)
+  out(`Disabled (skipped): ${plan.disabled.length}`)
   out(`Without email (skipped, phone-only?): ${plan.withoutEmail.length}`)
-  for (const uid of plan.withoutEmail) out(`  - ${uid}`)
   out(`Duplicate emails (all skipped): ${plan.duplicateEmails.length}`)
-  for (const d of plan.duplicateEmails) out(`  - ${d.masked}: ${d.uids.join(', ')}`)
+}
+
+async function writeReport(report: unknown): Promise<string> {
+  const path = join(tmpdir(), reportFileName(new Date()))
+  // 'wx': never follow/overwrite an existing file; 0600: owner-only (best effort on Windows).
+  await writeFile(path, `${JSON.stringify(report, null, 2)}\n`, { encoding: 'utf8', mode: REPORT_FILE_MODE, flag: 'wx' })
+  return path
+}
+
+async function runImport(db: Db, plan: ImportPlan, apply: boolean): Promise<{ counts: Counts; entries: ReportEntry[] }> {
+  const counts: Counts = { imported: 0, would_import: 0, exists: 0, email_taken: 0, google_taken: 0, error: 0, google_link_skipped: plan.googleLinkSkipped.length }
+  const entries: ReportEntry[] = []
+  for (const [i, u] of plan.ready.entries()) {
+    let outcome: Outcome
+    try {
+      outcome = await importOne(db, u, apply)
+    } catch (err) {
+      outcome = 'error'
+      const message = redactErrorMessage(err instanceof Error ? err.message : 'unknown error')
+      process.stderr.write(`  ! record ${i + 1}: ${message}\n`)
+      entries.push({ uid: u.uid, maskedEmail: maskEmail(u.email), reason: 'error', message })
+    }
+    counts[outcome]++
+    if (outcome === 'email_taken' || outcome === 'google_taken') entries.push({ uid: u.uid, maskedEmail: maskEmail(u.email), reason: outcome })
+  }
+  return { counts, entries }
 }
 
 async function main(argv: readonly string[]): Promise<number> {
@@ -279,25 +422,30 @@ async function main(argv: readonly string[]): Promise<number> {
 
   const plan = planImport(parseExport(await readFile(resolve(opts.file), 'utf8')), opts.limit)
   printPlan(plan, opts)
-  if (opts.offline) return 0
 
-  const db = await openDb(opts.project)
-  const counts: Record<Outcome, number> = { imported: 0, would_import: 0, exists: 0, email_taken: 0, google_taken: 0, error: 0 }
-  const conflicts: string[] = []
-  for (const u of plan.ready) {
-    let outcome: Outcome
-    try {
-      outcome = await importOne(db, u, opts.apply)
-    } catch (err) {
-      outcome = 'error'
-      process.stderr.write(`  ! ${u.uid}: ${err instanceof Error ? err.message : 'unknown error'}\n`)
-    }
-    counts[outcome]++
-    if (outcome === 'email_taken' || outcome === 'google_taken') conflicts.push(`${u.uid} (${outcome}, ${maskEmail(u.email)})`)
+  let counts: Counts | null = null
+  let entries: ReportEntry[] = []
+  if (!opts.offline) {
+    const result = await runImport(await openDb(resolveProjectId(opts, process.env)), plan, opts.apply)
+    counts = result.counts
+    entries = result.entries
+    process.stdout.write(`\nFirestore results: ${JSON.stringify(counts)}\n`)
+    process.stdout.write(`Conflicts: ${counts.email_taken + counts.google_taken}\n`)
   }
-  process.stdout.write(`\nFirestore results: ${JSON.stringify(counts)}\n`)
-  for (const c of conflicts) process.stdout.write(`  conflict: ${c}\n`)
-  return counts.error > 0 ? 1 : 0
+
+  const reportPath = await writeReport({
+    generatedAt: new Date().toISOString(),
+    mode: opts.apply ? 'apply' : 'dry-run',
+    offline: opts.offline,
+    total: plan.total,
+    ready: plan.ready.length,
+    invalid: plan.invalid,
+    limitedOut: plan.limitedOut,
+    counts,
+    entries: [...plan.details, ...entries],
+  })
+  process.stdout.write(`Report (per-user details, keep private): ${reportPath}\n`)
+  return counts && counts.error > 0 ? 1 : 0
 }
 
 const isEntryPoint = process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -305,7 +453,7 @@ if (isEntryPoint) {
   main(process.argv.slice(2)).then(
     (code) => { process.exitCode = code },
     (err: unknown) => {
-      process.stderr.write(`${err instanceof Error ? err.message : 'Failed'}\n`)
+      process.stderr.write(`${redactErrorMessage(err instanceof Error ? err.message : 'Failed')}\n`)
       process.exitCode = 1
     },
   )

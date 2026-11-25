@@ -370,18 +370,61 @@ suite('lazy migration of imported Firebase accounts (emulator)', () => {
       expect((await userDoc(u.uid)).emailVerified).toBe(false)
     })
 
-    // KNOWN GAP (reported): a Google link imported with the squatter's record survives the takeover,
-    // so the squatter's Google account would still sign in to the owner's uid. Flip to `it` once fixed.
-    it.fails('takeover also drops a Google link that came with the squatter’s record', async () => {
+    it('take-over deletes every auth_accounts link of the old record and resets providers', async () => {
       const u = await seedLegacyUser({ emailVerified: false })
-      const linkRef = adminDb().collection('auth_accounts').doc('google.com:squatter-sub-1')
-      await linkRef.create({ uid: u.uid, provider: 'google.com', email: 'squatter@gmail.test', linkedAt: new Date() })
-      await adminDb().collection('users_auth').doc(u.uid).update({ providers: ['google.com', 'password'] })
+      const db = adminDb()
+      const links = ['google.com:squatter-sub-1', 'google.com:squatter-sub-2'].map((id) => db.collection('auth_accounts').doc(id))
+      for (const ref of links) {
+        await ref.create({ uid: u.uid, provider: 'google.com', email: 'squatter@gmail.test', linkedAt: new Date() })
+      }
+      const otherLink = db.collection('auth_accounts').doc('google.com:someone-else')
+      await otherLink.create({ uid: 'SomeoneElseUid0000000000000', provider: 'google.com', email: 'x@gmail.test', linkedAt: new Date() })
+      await db.collection('users_auth').doc(u.uid).update({ providers: ['google.com', 'password'] })
 
-      expect((await ownerTakesOver(u.email)).status).toBe(200)
-      const link = await linkRef.get()
-      expect(link.exists && link.get('uid') === u.uid).toBe(false)
+      const v = await ownerTakesOver(u.email)
+      expect(v.status, v.text).toBe(200)
+      expect(v.json.user).toMatchObject({ uid: u.uid, providers: ['password'] })
+      for (const ref of links) expect((await ref.get()).exists).toBe(false)
+      expect((await db.collection('auth_accounts').where('uid', '==', u.uid).get()).size).toBe(0)
+      expect((await otherLink.get()).exists).toBe(true) // unrelated links untouched
+      expect((await userDoc(u.uid)).providers).toEqual(['password'])
     })
+  })
+
+  // ------------------------------------------------------------------ disabled / code limit
+
+  it('disabled legacy user → invalid_credentials, legacyPassword untouched, no mail', async () => {
+    const u = await seedLegacyUser()
+    await adminDb().collection('users_auth').doc(u.uid).update({ status: 'disabled' })
+    const r = await login(u.email, OLD_PASSWORD)
+    expect(r.status).toBe(401)
+    expect(errorCode(r)).toBe('invalid_credentials')
+    expect(r.setCookie).toBeUndefined()
+    const doc = await userDoc(u.uid)
+    expect(doc.legacyPassword).toEqual({ hash: u.hash, salt: u.salt })
+    expect(doc.passwordHash).toBeNull()
+    expect(doc.migratedAt).toBeUndefined()
+    expect(doc.status).toBe('disabled')
+    expect(mail.sent).toHaveLength(0)
+  })
+
+  it('email_unverified mails at most 3 codes per 15 min, then 429 without mail', async () => {
+    const u = await seedLegacyUser({ emailVerified: false })
+    for (let i = 0; i < 3; i++) {
+      const r = await login(u.email, OLD_PASSWORD)
+      expect(r.status, `attempt #${i + 1}`).toBe(403)
+      expect(errorCode(r)).toBe('email_unverified')
+    }
+    expect(mail.kindsFor(u.email)).toEqual(['verify-code', 'verify-code', 'verify-code'])
+    const fourth = await login(u.email, OLD_PASSWORD)
+    expect(fourth.status).toBe(429)
+    expect(errorCode(fourth)).toBe('rate_limited')
+    expect(fourth.setCookie).toBeUndefined()
+    expect(mail.sent).toHaveLength(3)
+    // The last mailed code still completes verification for the same uid.
+    const v = await call('POST', 'verify-email', { body: { email: u.email, code: mail.lastCode(u.email), password: OLD_PASSWORD } })
+    expect(v.status, v.text).toBe(200)
+    expect((v.json.user as { uid: string }).uid).toBe(u.uid)
   })
 
   // ------------------------------------------------------------------ 7. uid preserved in bridge

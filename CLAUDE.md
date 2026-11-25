@@ -12,9 +12,16 @@ npm run preview       # preview the production build
 npm run lint           # eslint .
 ```
 
-There is no test runner configured (no unit/e2e test framework in `package.json`). `TEST_PLAN.md` /
-`test-report.md` are manual QA notes from prior sessions, not automated suites. When asked to verify
-behavior, drive the app manually (dev server + browser) rather than looking for a test command.
+```bash
+npm test              # Vitest unit tests (tests/unit), no emulator needed
+npm run test:emulator # rules + auth API tests on Firebase emulators (project demo-bullbir; needs Java 21)
+npm run emulators     # start auth/firestore/storage emulators (demo-bullbir) for local dev
+npm run typecheck     # tsc -p tsconfig.server.json (api/, server/, tests/, scripts/ — TS strict)
+npm run migrate:users -- <export.json> [--offline|--apply]  # stage 3 import, see docs/migration-runbook.md
+```
+
+There are no frontend/e2e tests: for UI behaviour, drive the app manually (dev server + browser).
+`TEST_PLAN.md` / `test-report.md` are manual QA notes from prior sessions.
 
 Firebase keys go in a gitignored `.env.local` (copy from `.env.local.example`):
 `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`,
@@ -37,7 +44,8 @@ Auth/data hooks assume Lang/Theme/Toast are already available.
 Three sequential gates, each redirecting to the previous step if unmet, checked via `useAuth()`
 (`src/context/AuthContext.jsx`) in `src/App.jsx` and `PrivateRoute`:
 1. `user` (signed in) → else `/login`
-2. `isVerified` = `emailVerified || (phoneNumber && !email)` → else `/verify-email`
+2. `isVerified` = `user.emailVerified` from our auth API (`/api/auth/me`) → else `/verify-email`
+   (Firestore/Storage rules enforce the same via the custom-token claim `bb_ev`)
 3. `onboardingDone` (from the Firestore `users/{uid}` doc) → else `/onboarding`
 
 Only after all three does `/app/*` (wrapped in `AppLayout`) render. `PublicRoute`/`VerifyRoute`/
@@ -45,6 +53,16 @@ Only after all three does `/app/*` (wrapped in `AppLayout`) render. `PublicRoute
 added by: creating `src/components/modules/Foo.jsx`, adding a `<Route path="foo">` under `/app` in
 `App.jsx`, and adding an entry to `NAV_ITEMS` in `src/components/layout/navItems.jsx` (and to
 `BOTTOM_NAV_ITEMS` if it should also appear in the mobile bottom nav, max 5 items).
+
+### Auth (own server, Firebase Auth only as a bridge)
+Own auth API: `api/auth/[...route].ts` (Vercel function, single router) + `server/` (TypeScript
+strict; env validated in `server/env.ts`). Sessions are an httpOnly `__Host-session` cookie; the
+client (`src/auth/`, `AuthContext`) gets a Firebase custom token from `/api/auth/firebase-token` with
+claim `bb_ev` (= email verified) and signs in to Firebase only so Firestore/Storage work — rules check
+`bb_ev`, not `email_verified`. Contract and error codes: `docs/auth-api.md`; decision:
+`docs/adr/001-own-auth.md`; staged plan: `docs/auth-migration-plan.md`. Local dev: copy
+`.env.example` to `.env.local` (with `VITE_USE_EMULATORS=true`), run `npm run emulators` + `npm run
+dev`; mailed codes are printed in the dev-server terminal as `[dev-mail]`.
 
 ### Data layer — per-user Firestore collections
 All user data lives under `users/{uid}/...` (see the collection list in `README.md`). Two generic

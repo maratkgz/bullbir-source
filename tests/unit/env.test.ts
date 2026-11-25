@@ -20,6 +20,10 @@ const productionEnv = (): Record<string, string | undefined> => ({
   UPSTASH_REDIS_REST_TOKEN: 'upstash-token',
   RESEND_API_KEY: 're_test_key',
   MAIL_FROM: 'BullBir <no-reply@bullbir.app>',
+  FIREBASE_HASH_SIGNER_KEY: Buffer.alloc(64, 7).toString('base64'),
+  FIREBASE_HASH_SALT_SEPARATOR: 'Bw==',
+  FIREBASE_HASH_ROUNDS: '8',
+  FIREBASE_HASH_MEM_COST: '14',
   VERCEL_ENV: 'production',
 })
 
@@ -49,7 +53,7 @@ describe('parseEnv', () => {
     expect(env.UPSTASH_REDIS_REST_URL).toBe('https://example.upstash.io')
   })
 
-  it.each(['FIREBASE_SERVICE_ACCOUNT_BASE64', 'UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'RESEND_API_KEY', 'MAIL_FROM'])(
+  it.each(['FIREBASE_SERVICE_ACCOUNT_BASE64', 'UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'RESEND_API_KEY', 'MAIL_FROM', 'FIREBASE_HASH_SIGNER_KEY', 'FIREBASE_HASH_ROUNDS', 'FIREBASE_HASH_MEM_COST'])(
     'production mode requires %s',
     (name) => {
       const source = { ...productionEnv(), [name]: undefined }
