@@ -25,12 +25,6 @@ export function useAuth() {
   return ctx
 }
 
-function notAllowedYet() {
-  const err = new Error('This sign-in method is being moved to the new system')
-  err.code = 'auth/operation-not-allowed'
-  return err
-}
-
 function readPendingEmail() {
   try {
     return sessionStorage.getItem(PENDING_EMAIL_KEY)
@@ -97,7 +91,6 @@ function toAppUser(apiUser, profile) {
     emailVerified: !!apiUser.emailVerified,
     displayName: profile?.displayName ?? apiUser.displayName ?? null,
     photoURL: profile?.photoURL ?? null,
-    phoneNumber: null,
     providerData: (apiUser.providers || []).map((p) => ({ providerId: p })),
     metadata: {
       creationTime: apiUser.createdAt ?? null,
@@ -339,10 +332,6 @@ export function AuthProvider({ children }) {
     return new Promise(() => {})
   }, [])
 
-  const sendPhoneCode = useCallback(async () => {
-    throw notAllowedYet()
-  }, [])
-
   // Forgot password: the server always answers 202 (no account enumeration).
   const requestPasswordReset = useCallback(async (email) => {
     await authPost('password/reset-request', { email })
@@ -434,7 +423,6 @@ export function AuthProvider({ children }) {
     requestLoginCode,
     loginWithCode,
     loginWithGoogle,
-    sendPhoneCode,
     resendVerification,
     checkVerified,
     resetPassword: requestPasswordReset,

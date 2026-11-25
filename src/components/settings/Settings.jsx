@@ -50,7 +50,7 @@ export default function Settings() {
           </div>
           <div>
             <strong style={{ fontSize: 'var(--text-md)' }}>{name || '—'}</strong>
-            <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{user?.email || user?.phoneNumber}</p>
+            <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{user?.email}</p>
           </div>
         </div>
       </div>

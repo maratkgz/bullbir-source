@@ -111,7 +111,7 @@ function UserMenu() {
           <motion.div className="nav-menu nav-menu-right" initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
             <div className="nav-menu-head">
               <strong>{profile?.displayName || user?.displayName || ''}</strong>
-              <span className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>{user?.email || user?.phoneNumber}</span>
+              <span className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>{user?.email}</span>
             </div>
             <hr className="divider" />
             <button className="nav-menu-item" onClick={() => { navigate('/app/profile'); setOpen(false) }}>{t('nav.profile')}</button>

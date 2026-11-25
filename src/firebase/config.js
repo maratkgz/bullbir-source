@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { connectAuthEmulator, getAuth, GoogleAuthProvider } from 'firebase/auth'
+import { connectAuthEmulator, inMemoryPersistence, initializeAuth } from 'firebase/auth'
 import {
   connectFirestoreEmulator, initializeFirestore, persistentLocalCache, persistentMultipleTabManager,
 } from 'firebase/firestore'
@@ -42,7 +42,10 @@ if (!firebaseReady) {
 }
 
 export const app = initializeApp(firebaseReady && !useEmulators ? firebaseConfig : fallbackConfig)
-export const auth = getAuth(app)
+// Firebase Auth is only the bridge to Firestore/Storage (custom tokens from our server). No
+// popup/redirect resolver: nothing loads apis.google.com or a hidden iframe, so the CSP can stay
+// tight. In-memory persistence: after a reload the bridge is re-minted from our session cookie.
+export const auth = initializeAuth(app, { persistence: inMemoryPersistence })
 
 // Firestore with offline persistence enabled.
 export const db = initializeFirestore(app, {
@@ -56,5 +59,3 @@ if (useEmulators) {
   connectFirestoreEmulator(db, '127.0.0.1', 8080)
   connectStorageEmulator(storage, '127.0.0.1', 9199)
 }
-
-export const googleProvider = new GoogleAuthProvider()

@@ -34,14 +34,14 @@ function EyeButton({ shown, onClick }) {
 }
 
 export default function Login() {
-  const { login, sendPhoneCode } = useAuth()
+  const { login } = useAuth()
   const { t, tError } = useLang()
   const toast = useToast()
   const navigate = useNavigate()
   const location = useLocation()
   const oauthErrorShown = useRef(false)
 
-  const [mode, setMode] = useState('email') // 'email' | 'phone' | 'code'
+  const [mode, setMode] = useState('email') // 'email' | 'code'
   // Too many wrong passwords: point to the email-code sign-in (works during a lockout).
   const [lockedOut, setLockedOut] = useState(false)
   const [email, setEmail] = useState('')
@@ -49,11 +49,6 @@ export default function Login() {
   const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
   const [shake, setShake] = useState(false)
-
-  // phone
-  const [phone, setPhone] = useState('+996')
-  const [confirmation, setConfirmation] = useState(null)
-  const [code, setCode] = useState('')
 
   const fail = (err) => {
     toast.error(tError(err))
@@ -85,33 +80,6 @@ export default function Login() {
         return
       }
       if (err.code === 'auth/too-many-requests') setLockedOut(true)
-      fail(err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const onSendCode = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      const conf = await sendPhoneCode(phone, 'recaptcha-container')
-      setConfirmation(conf)
-      toast.success(t('auth.codeSent'))
-    } catch (err) {
-      fail(err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const onVerifyCode = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      await confirmation.confirm(code)
-      navigate('/app/dashboard')
-    } catch (err) {
       fail(err)
     } finally {
       setLoading(false)
@@ -190,11 +158,8 @@ export default function Login() {
               <button type="button" className="btn btn-ghost btn-block" onClick={() => setMode('code')}>
                 {t('auth.useEmailCode')}
               </button>
-              <button type="button" className="btn btn-ghost btn-block" onClick={() => setMode('phone')}>
-                {t('auth.usePhone')}
-              </button>
             </motion.form>
-          ) : mode === 'code' ? (
+          ) : (
             <EmailCodeLogin
               key="code"
               initialEmail={email}
@@ -202,64 +167,12 @@ export default function Login() {
               onSuccess={() => navigate('/app/dashboard')}
               fail={fail}
             />
-          ) : (
-            <motion.form
-              key="phone"
-              className="auth-form"
-              onSubmit={confirmation ? onVerifyCode : onSendCode}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {!confirmation ? (
-                <div className="field">
-                  <label htmlFor="phone">{t('auth.phone')}</label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    className="input"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+996 700 000 000"
-                  />
-                </div>
-              ) : (
-                <div className="field">
-                  <label htmlFor="code">{t('auth.enterCode')}</label>
-                  <input
-                    id="code"
-                    inputMode="numeric"
-                    maxLength={6}
-                    className="input mono"
-                    style={{ textAlign: 'center', letterSpacing: '0.4em', fontSize: 'var(--text-lg)' }}
-                    required
-                    value={code}
-                    onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
-                    placeholder="000000"
-                  />
-                </div>
-              )}
-              <button className="btn btn-primary btn-block" disabled={loading}>
-                {loading ? (
-                  <span className="spinner" />
-                ) : confirmation ? (
-                  t('auth.verifyCode')
-                ) : (
-                  t('auth.sendCode')
-                )}
-              </button>
-              <button type="button" className="btn btn-ghost btn-block" onClick={() => setMode('email')}>
-                {t('auth.useEmail')}
-              </button>
-            </motion.form>
           )}
         </AnimatePresence>
       </motion.div>
 
       <div className="auth-divider">{t('auth.continueWith')}</div>
       <OAuthButtons />
-      <div id="recaptcha-container" />
     </AuthShell>
   )
 }

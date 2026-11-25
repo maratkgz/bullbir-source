@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { updateProfile } from 'firebase/auth'
 import { doc, updateDoc, collection, getDocs } from 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { useTheme } from '../../context/ThemeContext'
-import { auth, db, storage, firebaseReady } from '../../firebase/config'
+import { db, storage, firebaseReady } from '../../firebase/config'
 import { USER_COLLECTIONS, validateAvatar, AVATAR_TYPES } from '../../firebase/account'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useToast } from '../ui/Toast'
@@ -193,7 +192,7 @@ export default function Profile() {
 
   const displayName = profile?.displayName || user?.displayName || ''
   const email = user?.email || ''
-  const phone = user?.phoneNumber || profile?.phone || ''
+  const phone = profile?.phone || ''
   const photoURL = user?.photoURL || null
   const initial = (displayName || email || '?').charAt(0).toUpperCase()
 
@@ -204,7 +203,6 @@ export default function Profile() {
 
   const saveField = async (field, value) => {
     if (!firebaseReady) throw new Error('not ready')
-    if (field === 'displayName') await updateProfile(auth.currentUser, { displayName: value })
     await updateDoc(doc(db, 'users', user.uid), { [field]: value })
     await refreshProfile()
   }
@@ -221,7 +219,6 @@ export default function Profile() {
       const r = sRef(storage, `avatars/${user.uid}`)
       await uploadBytes(r, file)
       const url = await getDownloadURL(r)
-      await updateProfile(auth.currentUser, { photoURL: url })
       await updateDoc(doc(db, 'users', user.uid), { photoURL: url })
       await refreshProfile()
       toast.success(t('profile.avatar.updated'))
