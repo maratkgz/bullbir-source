@@ -721,27 +721,31 @@ suite('sign in with Google (emulator, fake Google)', () => {
     expect(await sessions()).toHaveLength(0)
   })
 
-  it('unknown provider → plain 404 JSON', async () => {
+  it('unknown provider → back to /login with oauth_failed (a page navigation, never raw JSON)', async () => {
     const r = await call(new Browser(), 'GET', 'oauth/facebook/start')
-    expect(r.status).toBe(404)
-    expect((r.json.error as { code?: string }).code).toBe('not_found')
+    expect(r.status).toBe(302)
+    expect(r.location).toBe('/login?error=oauth_failed')
   })
 
   // ------------------------------------------------------------------ 12. rate limits
 
-  it('start: 20 per 10 min per IP, the 21st → 429; another IP is unaffected', async () => {
+  it('start: 20 per 10 min per IP, the 21st → /login?error=oauth_unavailable; another IP is unaffected', async () => {
     const ip = nextIp()
     for (let i = 0; i < 20; i++) expect((await start(new Browser(ip))).status, `start #${i + 1}`).toBe(302)
     const r = await start(new Browser(ip))
-    expect(r.status).toBe(429)
+    expect(r.status).toBe(302)
+    expect(r.location).toBe('/login?error=oauth_unavailable')
     expect(r.headers['retry-after']).toBeDefined()
-    expect((await start(new Browser())).status).toBe(302)
+    const other = await start(new Browser())
+    expect(other.location?.startsWith('https://accounts.google.com/')).toBe(true)
   })
 
-  it('callback: 20 per 10 min per IP, the 21st → 429', async () => {
+  it('callback: 20 per 10 min per IP, the 21st → /login?error=oauth_unavailable', async () => {
     const ip = nextIp()
     for (let i = 0; i < 20; i++) expect((await callback(new Browser(ip), { error: 'access_denied' })).status).toBe(302)
-    expect((await callback(new Browser(ip), { error: 'access_denied' })).status).toBe(429)
+    const limited = await callback(new Browser(ip), { error: 'access_denied' })
+    expect(limited.status).toBe(302)
+    expect(limited.location).toBe('/login?error=oauth_unavailable')
   })
 
   // ------------------------------------------------------------------ 13. logs

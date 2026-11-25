@@ -173,6 +173,14 @@ export function createHandler(
       else if (safe.status >= 500) log.error('request failed', { requestId, path, errorCode: safe.code })
       const headers: HeaderMap = { 'X-Request-Id': requestId }
       if (safe.retryAfter) headers['Retry-After'] = String(safe.retryAfter)
+      if (method === 'GET' && path.startsWith('oauth/')) {
+        // OAuth routes are top-level page navigations: show the login page with a translated
+        // message instead of raw JSON (rate limit, timeout, unknown provider...).
+        const reason = safe.code === 'service_unavailable' || safe.code === 'rate_limited' ? 'oauth_unavailable' : 'oauth_failed'
+        status = 302
+        safeSend(res, 302, null, { ...headers, Location: `/login?error=${reason}` }, requestId)
+        return
+      }
       safeSend(res, safe.status, { error: { code: safe.code, message: safe.message, requestId } }, headers, requestId)
     } finally {
       log.info('request', { requestId, method, path, status, ms: Date.now() - started, ip: ipPrefix(ip) })

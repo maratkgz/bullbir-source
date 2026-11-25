@@ -30,6 +30,15 @@ function localApi(mode) {
       if (!usesEmulator) {
         server.config.logger.warn('[local-api] /api/auth is disabled: set FIRESTORE_EMULATOR_HOST and FIREBASE_AUTH_EMULATOR_HOST in .env.local (see .env.example)')
       }
+      // Without running emulators every request would hang until the 8 s handler timeout.
+      let lastCheck = { at: 0, ok: false }
+      const emulatorsUp = async () => {
+        if (Date.now() - lastCheck.at < 5000) return lastCheck.ok
+        const ping = (host) => fetch(`http://${host}/`, { signal: AbortSignal.timeout(1000) }).then(() => true, () => false)
+        const ok = (await ping(process.env.FIRESTORE_EMULATOR_HOST)) && (await ping(process.env.FIREBASE_AUTH_EMULATOR_HOST))
+        lastCheck = { at: Date.now(), ok }
+        return ok
+      }
       server.middlewares.use(async (req, res, next) => {
         if (!req.url?.startsWith('/api/auth/')) return next()
         const fail = (message) => {
@@ -38,6 +47,10 @@ function localApi(mode) {
           res.end(JSON.stringify({ error: { code: 'service_unavailable', message } }))
         }
         if (!usesEmulator) return fail('Local API needs the Firebase emulators')
+        if (!(await emulatorsUp())) {
+          server.config.logger.warn('[local-api] Firebase emulators are not running — start them with: npm run emulators')
+          return fail('Firebase emulators are not running. Start them in a second terminal: npm run emulators')
+        }
         try {
           const { createHandler } = await server.ssrLoadModule('/server/router.ts')
           const { routes } = await server.ssrLoadModule('/server/routes/index.ts')
