@@ -8,6 +8,7 @@ import { adminAuth, adminDb } from '../firebaseAdmin.js'
 import { AppError } from '../errors.js'
 import { readSessionToken, sessionCookie } from './cookies.js'
 import { randomId, randomToken, sha256Hex } from './crypto.js'
+import { bumpCredentialVersion } from './credentials.js'
 import { deviceLabel } from './device.js'
 import { DAY_MS, MINUTE_MS, now, toIso, toMs } from './time.js'
 
@@ -145,6 +146,8 @@ export async function revokeSession(uid: string, publicId: string, currentId: st
  */
 export async function revokeAllSessions(uid: string): Promise<void> {
   const db = adminDb()
+  // First lock out every Firebase token issued so far (rules check the credential version).
+  await bumpCredentialVersion(uid)
   const snap = await db.collection(SESSIONS).where('uid', '==', uid).get()
   const writer = db.bulkWriter()
   for (const d of snap.docs) void writer.delete(d.ref)

@@ -5,7 +5,7 @@ import {
   initializeTestEnvironment,
   type RulesTestEnvironment,
 } from '@firebase/rules-unit-testing'
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
+import { deleteDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 import { readFile } from 'node:fs/promises'
 
 const projectId = 'demo-bullbir'
@@ -91,10 +91,89 @@ rulesDescribe('Firestore security rules', () => {
     'auth_accounts/provider-subject',
     'security_events/event-id',
     'auth_throttle/some-key',
+    'auth_state/alice',
+    'auth_state/bob',
   ])('denies client access to server-only document %s', async (path) => {
     const db = verified('alice')
     await assertFails(getDoc(doc(db, path)))
     await assertFails(setDoc(doc(db, path), { value: 'must not persist' }))
+  })
+
+  // Credential version: after a password reset/change, email change, "sign out everywhere" or
+  // deletion the server bumps auth_state/{uid}.cv; bridge tokens carry it as `bb_cv`.
+  describe('credential version (auth_state cv vs bb_cv)', () => {
+    const CV = 1000
+    const withCv = (uid: string, bbCv?: number) =>
+      env.authenticatedContext(uid, bbCv === undefined ? { bb_ev: true } : { bb_ev: true, bb_cv: bbCv }).firestore()
+
+    async function seed(cv: number | null): Promise<void> {
+      await env.withSecurityRulesDisabled(async (ctx) => {
+        const db = ctx.firestore()
+        await setDoc(doc(db, 'users/alice'), { email: 'alice@example.test', displayName: 'Alice' })
+        await setDoc(doc(db, 'users/alice/tasks/t1'), { title: 'Private task' })
+        if (cv !== null) await setDoc(doc(db, 'auth_state/alice'), { cv })
+      })
+    }
+
+    it('no auth_state doc → access as before (also without a bb_cv claim)', async () => {
+      await seed(null)
+      for (const db of [withCv('alice'), withCv('alice', 0)]) {
+        await assertSucceeds(getDoc(doc(db, 'users/alice')))
+        await assertSucceeds(updateDoc(doc(db, 'users/alice'), { displayName: 'Alice B' }))
+        await assertSucceeds(getDoc(doc(db, 'users/alice/tasks/t1')))
+        await assertSucceeds(setDoc(doc(db, 'users/alice/tasks/t2'), { title: 'New' }))
+      }
+    })
+
+    it.each([
+      ['bb_cv 999', 999],
+      ['no bb_cv claim', undefined],
+    ])('stale token (%s) is denied reads and writes on the root profile and module data', async (_label, bbCv) => {
+      await seed(CV)
+      const db = withCv('alice', bbCv)
+      await assertFails(getDoc(doc(db, 'users/alice')))
+      await assertFails(updateDoc(doc(db, 'users/alice'), { displayName: 'Hijacked' }))
+      await assertFails(getDoc(doc(db, 'users/alice/tasks/t1')))
+      await assertFails(setDoc(doc(db, 'users/alice/tasks/t1'), { title: 'Overwritten' }))
+      await assertFails(setDoc(doc(db, 'users/alice/tasks/t2'), { title: 'Injected' }))
+      await assertFails(deleteDoc(doc(db, 'users/alice/tasks/t1')))
+      await assertFails(deleteDoc(doc(db, 'users/alice')))
+    })
+
+    it('stale token cannot (re)create a deleted root profile', async () => {
+      await env.withSecurityRulesDisabled(async (ctx) => { await setDoc(doc(ctx.firestore(), 'auth_state/alice'), { cv: CV }) })
+      await assertFails(setDoc(doc(withCv('alice', 999), 'users/alice'), { email: 'alice@example.test' }))
+      await assertSucceeds(setDoc(doc(withCv('alice', CV), 'users/alice'), { email: 'alice@example.test' }))
+    })
+
+    it.each([
+      ['bb_cv equal to cv', CV],
+      ['bb_cv newer than cv', CV + 1],
+    ])('current token (%s) is allowed', async (_label, bbCv) => {
+      await seed(CV)
+      const db = withCv('alice', bbCv)
+      await assertSucceeds(getDoc(doc(db, 'users/alice')))
+      await assertSucceeds(updateDoc(doc(db, 'users/alice'), { displayName: 'Alice B' }))
+      await assertSucceeds(getDoc(doc(db, 'users/alice/tasks/t1')))
+      await assertSucceeds(setDoc(doc(db, 'users/alice/tasks/t2'), { title: 'New' }))
+      await assertSucceeds(deleteDoc(doc(db, 'users/alice/tasks/t1')))
+    })
+
+    it('a bumped cv of one user does not affect another user', async () => {
+      await seed(CV)
+      const bob = withCv('bob', 0)
+      await assertSucceeds(setDoc(doc(bob, 'users/bob/tasks/t1'), { title: 'Bob task' }))
+      await assertSucceeds(getDoc(doc(bob, 'users/bob/tasks/t1')))
+    })
+
+    it('the client cannot read or lower its own credential version', async () => {
+      await seed(CV)
+      const db = withCv('alice', CV)
+      await assertFails(getDoc(doc(db, 'auth_state/alice')))
+      await assertFails(setDoc(doc(db, 'auth_state/alice'), { cv: 0 }))
+      await assertFails(updateDoc(doc(db, 'auth_state/alice'), { cv: 0 }))
+      await assertFails(deleteDoc(doc(db, 'auth_state/alice')))
+    })
   })
 
   it('keeps admin records read-only to clients', async () => {

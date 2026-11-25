@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth'
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { auth, db, firebaseReady } from '../firebase/config'
-import { signOutAndClear } from '../firebase/account'
+import { signOutAndClear, deleteAccountAndData } from '../firebase/account'
 import { authGet, authPost, authDelete } from '../auth/api'
 
 // Session lives in our httpOnly cookie (/api/auth). Firebase Auth is only an invisible bridge
@@ -127,6 +127,15 @@ export function AuthProvider({ children }) {
   const apiUserRef = useRef(null)
   const bridgingRef = useRef(false)
   const lastRebridgeAtRef = useRef(0)
+  // Bumped after every successful bridge sign-in: a listener that failed with permission-denied
+  // is dead, so data hooks list this in their effect deps to re-subscribe with the new token.
+  const [bridgeEpoch, setBridgeEpoch] = useState(0)
+
+  const bridge = useCallback(async () => {
+    const ok = await signInBridge()
+    if (ok) setBridgeEpoch((n) => n + 1)
+    return ok
+  }, [])
 
   const setPendingEmail = useCallback((email) => {
     writePendingEmail(email)
@@ -150,7 +159,7 @@ export function AuthProvider({ children }) {
   const bootstrap = useCallback(async (nextUser) => {
     bridgingRef.current = true
     try {
-      const bridged = await signInBridge()
+      const bridged = await bridge()
       let nextProfile = null
       if (bridged) {
         try {
@@ -165,7 +174,21 @@ export function AuthProvider({ children }) {
     } finally {
       bridgingRef.current = false
     }
-  }, [])
+  }, [bridge])
+
+  // The server bumped the credential version (password / email change): the current bridge
+  // token is rejected by the rules, so re-mint it right away and publish the updated user.
+  const rebridge = useCallback(async (nextUser) => {
+    bridgingRef.current = true
+    lastRebridgeAtRef.current = Date.now()
+    try {
+      await bridge()
+      apiUserRef.current = nextUser
+      setApiUser(nextUser)
+    } finally {
+      bridgingRef.current = false
+    }
+  }, [bridge])
 
   useEffect(() => {
     let cancelled = false
@@ -191,32 +214,39 @@ export function AuthProvider({ children }) {
     }
   }, [bootstrap])
 
-  // Bridge dropped while we think we're signed in: the server revokes Firebase refresh tokens on
-  // logout / session revoke / logout-all. Still signed in with us → re-bridge; otherwise sign out.
+  // Bridge dropped or rejected while we think we're signed in: the server revokes Firebase refresh
+  // tokens / bumps the credential version on logout-all, session revoke, password or email change.
+  // Still signed in with us → one re-bridge (at most every 30 s); /me says 401 → sign out.
+  // Data listeners call this on `permission-denied`.
+  const recoverBridge = useCallback(async () => {
+    if (!firebaseReady || !apiUserRef.current || bridgingRef.current) return
+    try {
+      const me = await fetchMe()
+      if (!me) {
+        // Route gates redirect to /login; an explicit logout() already wipes the caches.
+        clearSession()
+        return
+      }
+      const now = Date.now()
+      if (now - lastRebridgeAtRef.current < REBRIDGE_MIN_INTERVAL_MS) return
+      lastRebridgeAtRef.current = now
+      bridgingRef.current = true
+      try {
+        await bridge()
+      } finally {
+        bridgingRef.current = false
+      }
+    } catch (err) {
+      devWarn('Session re-check failed:', err)
+    }
+  }, [bridge, clearSession])
+
   useEffect(() => {
     if (!firebaseReady) return undefined
-    return onAuthStateChanged(auth, async (fbUser) => {
-      if (fbUser || !apiUserRef.current || bridgingRef.current) return
-      try {
-        const me = await fetchMe()
-        if (!me) {
-          clearSession()
-          return
-        }
-        const now = Date.now()
-        if (now - lastRebridgeAtRef.current < REBRIDGE_MIN_INTERVAL_MS) return
-        lastRebridgeAtRef.current = now
-        bridgingRef.current = true
-        try {
-          await signInBridge()
-        } finally {
-          bridgingRef.current = false
-        }
-      } catch (err) {
-        devWarn('Session re-check failed:', err)
-      }
+    return onAuthStateChanged(auth, (fbUser) => {
+      if (!fbUser) recoverBridge()
     })
-  }, [clearSession])
+  }, [recoverBridge])
 
   const refreshProfile = useCallback(async () => {
     const uid = apiUserRef.current?.uid
@@ -313,8 +343,40 @@ export function AuthProvider({ children }) {
     throw notAllowedYet()
   }, [])
 
-  const resetPassword = useCallback(async () => {
-    throw notAllowedYet()
+  // Forgot password: the server always answers 202 (no account enumeration).
+  const requestPasswordReset = useCallback(async (email) => {
+    await authPost('password/reset-request', { email })
+  }, [])
+
+  // Sets the new password and starts a fresh session (all other sessions are ended).
+  const confirmPasswordReset = useCallback(async (email, code, newPassword) => {
+    const { user } = await authPost('password/reset-confirm', { email, code, newPassword })
+    setRegistrationPassword(null)
+    setPendingEmail(null)
+    await bootstrap(user)
+    return user
+  }, [bootstrap, setPendingEmail, setRegistrationPassword])
+
+  const changePassword = useCallback(async (currentPassword, newPassword) => {
+    const { user } = await authPost('password/change', { currentPassword, newPassword })
+    await rebridge(user)
+    return user
+  }, [rebridge])
+
+  // Mails a code to the NEW address. Needs the current password (passwordless → password_not_set).
+  const requestEmailChange = useCallback(async (newEmail, currentPassword) => {
+    await authPost('email/change-request', { newEmail, currentPassword })
+  }, [])
+
+  const confirmEmailChange = useCallback(async (newEmail, code) => {
+    const { user } = await authPost('email/change-confirm', { newEmail, code })
+    await rebridge(user)
+    return user
+  }, [rebridge])
+
+  // Irreversible; ends with a hard navigation to '/'.
+  const deleteAccount = useCallback(async (currentPassword) => {
+    await deleteAccountAndData({ password: currentPassword })
   }, [])
 
   const completeOnboarding = useCallback(async (data = {}) => {
@@ -370,7 +432,15 @@ export function AuthProvider({ children }) {
     sendPhoneCode,
     resendVerification,
     checkVerified,
-    resetPassword,
+    resetPassword: requestPasswordReset,
+    requestPasswordReset,
+    confirmPasswordReset,
+    changePassword,
+    requestEmailChange,
+    confirmEmailChange,
+    deleteAccount,
+    recoverBridge,
+    bridgeEpoch,
     completeOnboarding,
     refreshProfile,
     logout,

@@ -42,6 +42,8 @@ const common = z.object({
   FIREBASE_PROJECT_ID: z.string().min(1),
   /** Comma-separated origins allowed to call the API (CSRF check), e.g. https://bullbir.app */
   APP_ORIGINS: originList,
+  /** Storage bucket (e.g. bullbir.firebasestorage.app) — lets the server delete avatars on account deletion. */
+  FIREBASE_STORAGE_BUCKET: z.string().optional(),
   /** Google sign-in (stage 5). Optional: without them Google answers "unavailable". */
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),

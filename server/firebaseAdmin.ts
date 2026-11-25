@@ -4,6 +4,7 @@
 import { cert, getApps, initializeApp, type App, type ServiceAccount } from 'firebase-admin/app'
 import { getAuth, type Auth } from 'firebase-admin/auth'
 import { getFirestore, type Firestore } from 'firebase-admin/firestore'
+import { getStorage } from 'firebase-admin/storage'
 import { z } from 'zod'
 import { EnvError, getEnv } from './env.js'
 
@@ -39,6 +40,16 @@ function app(): App {
     { credential: cert(decodeServiceAccount(env.FIREBASE_SERVICE_ACCOUNT_BASE64)), projectId: env.FIREBASE_PROJECT_ID },
     APP_NAME,
   )
+}
+
+/**
+ * The Storage bucket, if configured (FIREBASE_STORAGE_BUCKET; in the emulator it defaults to
+ * `<project>.appspot.com`, matching the client's fallback config). Null when unknown.
+ */
+export function adminBucket(): ReturnType<ReturnType<typeof getStorage>['bucket']> | null {
+  const env = getEnv()
+  const name = env.FIREBASE_STORAGE_BUCKET || (env.mode === 'emulator' ? `${env.FIREBASE_PROJECT_ID}.appspot.com` : '')
+  return name ? getStorage(app()).bucket(name) : null
 }
 
 export function adminAuth(): Auth {

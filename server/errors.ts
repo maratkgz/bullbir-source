@@ -18,6 +18,8 @@ export type ErrorCode =
   | 'weak_password'
   | 'breached_password'
   | 'email_unverified'
+  | 'password_not_set'
+  | 'reauth_required'
 
 const STATUS: Record<ErrorCode, number> = {
   bad_request: 400,
@@ -37,6 +39,8 @@ const STATUS: Record<ErrorCode, number> = {
   weak_password: 400,
   breached_password: 400,
   email_unverified: 403,
+  password_not_set: 400,
+  reauth_required: 401,
 }
 
 export class AppError extends Error {

@@ -15,7 +15,7 @@ import { useAuth } from '../context/AuthContext'
 
 // Real-time CRUD for users/{uid}/{name}
 export function useCollection(name, { orderField = 'createdAt', direction = 'desc' } = {}) {
-  const { user } = useAuth()
+  const { user, recoverBridge, bridgeEpoch } = useAuth()
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -34,10 +34,15 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
         setItems(snap.docs.map((d) => ({ id: d.id, ...d.data() })))
         setLoading(false)
       },
-      () => setLoading(false),
+      (err) => {
+        setLoading(false)
+        // Bridge token outdated (credentials changed elsewhere): re-mint it; bridgeEpoch then
+        // changes and this effect re-subscribes.
+        if (err?.code === 'permission-denied') recoverBridge?.()
+      },
     )
     return unsub
-  }, [path, orderField, direction])
+  }, [path, orderField, direction, bridgeEpoch, recoverBridge])
 
   const add = useCallback(
     async (data) => {

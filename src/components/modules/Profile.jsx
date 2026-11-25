@@ -1,25 +1,25 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  updateProfile,
-  updatePassword,
-  reauthenticateWithCredential,
-  EmailAuthProvider,
-} from 'firebase/auth'
+import { updateProfile } from 'firebase/auth'
 import { doc, updateDoc, collection, getDocs } from 'firebase/firestore'
 import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { useTheme } from '../../context/ThemeContext'
 import { auth, db, storage, firebaseReady } from '../../firebase/config'
-import { USER_COLLECTIONS, deleteAccountAndData, validateAvatar, AVATAR_TYPES } from '../../firebase/account'
+import { USER_COLLECTIONS, validateAvatar, AVATAR_TYPES } from '../../firebase/account'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { BookOpen, Camera, Check, Download, Flame, Mail, Moon, Pencil, Phone, Sparkles, Star, Sun, Wallet } from 'lucide-react'
 import Icon from '../ui/Icon'
+import PasswordCard from './profile/PasswordCard'
+import EmailCard from './profile/EmailCard'
 
-const XP = { task: 5, journal: 10, mood: 5, shift: 15, goal: 50, habit: 3 }
+// Lets the "sign in again" toast be read before the hard redirect to /login.
+const REAUTH_LOGOUT_DELAY_MS = 2000
+
+const XP ={ task: 5, journal: 10, mood: 5, shift: 15, goal: 50, habit: 3 }
 const calcLevel = (xp) => Math.floor(Math.sqrt(xp / 50)) + 1
 const xpForLvl = (n) => (n - 1) * (n - 1) * 50
 
@@ -127,7 +127,7 @@ function Field({ label, value, onSave, type = 'text', maxLength, hint, readOnly 
 }
 
 export default function Profile() {
-  const { user, profile, refreshProfile, resendVerification } = useAuth()
+  const { user, profile, refreshProfile, resendVerification, deleteAccount, logout } = useAuth()
   const { t, tError, lang, setLang, languages } = useLang()
   const { isDark, toggleTheme } = useTheme()
   const toast = useToast()
@@ -135,10 +135,8 @@ export default function Profile() {
   const [tab, setTab] = useState('personal')
   const [totalXp, setTotalXp] = useState(0)
   const [avatarBusy, setAvatarBusy] = useState(false)
-  const [pwForm, setPwForm] = useState({ cur: '', next: '', confirm: '' })
-  const [pwErr, setPwErr] = useState('')
-  const [pwBusy, setPwBusy] = useState(false)
   const [delModal, setDelModal] = useState(false)
+  const [delBusy, setDelBusy] = useState(false)
   const [delPw, setDelPw] = useState('')
   const [delText, setDelText] = useState('')
   const [bioLen, setBioLen] = useState(0)
@@ -181,7 +179,9 @@ export default function Profile() {
         xp += goals.docs.filter(d => d.data().archived && d.data().current >= d.data().target).length * XP.goal
         habits.docs.forEach(d => { xp += (d.data().completedDates?.length || 0) * XP.habit })
         setTotalXp(xp)
-      } catch {}
+      } catch {
+        // XP is decorative: offline or a transient permission error just leaves the last value.
+      }
     })()
   }, [user])
 
@@ -227,24 +227,18 @@ export default function Profile() {
     finally { setAvatarBusy(false) }
   }
 
-  const changePw = async () => {
-    if (pwForm.next !== pwForm.confirm) { setPwErr(t('auth.passwordMatch')); return }
-    if (pwForm.next.length < 6) { setPwErr(t('auth.passwordShort')); return }
-    setPwErr(''); setPwBusy(true)
-    try {
-      const cred = EmailAuthProvider.credential(email, pwForm.cur)
-      await reauthenticateWithCredential(auth.currentUser, cred)
-      await updatePassword(auth.currentUser, pwForm.next)
-      setPwForm({ cur: '', next: '', confirm: '' })
-      toast.success(t('profile.security.pwChanged'))
-    } catch (e) { setPwErr(e.message) }
-    finally { setPwBusy(false) }
+  // Server says the session is too old for a sensitive action (passwordless account): sign in again.
+  const onAuthError = (err) => {
+    toast.error(tError(err))
+    if (err?.code === 'auth/requires-recent-login') setTimeout(logout, REAUTH_LOGOUT_DELAY_MS)
   }
 
   const doDelete = async () => {
+    setDelBusy(true)
     try {
-      await deleteAccountAndData({ password: delPw })
-    } catch (e) { toast.error(tError(e)) }
+      await deleteAccount(delPw)
+    } catch (e) { onAuthError(e) }
+    finally { setDelBusy(false) }
   }
 
   const exportData = async () => {
@@ -459,24 +453,8 @@ export default function Profile() {
 
           {/* ── Security ── */}
           {tab === 'security' && <>
-            {hasEmail ? (
-              <div className="card prof-card-inner">
-                <span className="prof-card-title">{t('profile.security.password')}</span>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 12 }}>
-                  <input className="input" type="password" placeholder={t('profile.security.currentPw')} value={pwForm.cur} onChange={e => setPwForm(p => ({ ...p, cur: e.target.value }))} />
-                  <input className="input" type="password" placeholder={t('profile.security.newPw')} value={pwForm.next} onChange={e => setPwForm(p => ({ ...p, next: e.target.value }))} />
-                  <input className="input" type="password" placeholder={t('profile.security.confirmPw')} value={pwForm.confirm} onChange={e => setPwForm(p => ({ ...p, confirm: e.target.value }))} />
-                  {pwErr && <p style={{ color: 'var(--error)', fontSize: 'var(--text-sm)' }}>{pwErr}</p>}
-                  <button className="btn btn-primary" disabled={pwBusy || !pwForm.cur || !pwForm.next || !pwForm.confirm} onClick={changePw}>
-                    {pwBusy ? <span className="spinner" /> : t('profile.security.changePw')}
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="card prof-card-inner">
-                <p className="text-muted">{t('profile.security.googleOnly')}</p>
-              </div>
-            )}
+            <EmailCard email={email} hasPassword={hasEmail} onAuthError={onAuthError} />
+            <PasswordCard hasPassword={hasEmail} email={email} onAuthError={onAuthError} />
 
             <div className="card prof-card-inner">
               <span className="prof-card-title">{t('profile.security.linked')}</span>
@@ -647,12 +625,14 @@ export default function Profile() {
       <Modal open={delModal} onClose={() => { setDelModal(false); setDelPw(''); setDelText('') }} title={t('profile.security.deleteBtn')}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <p style={{ color: 'var(--error)', fontSize: 'var(--text-sm)' }}>{t('profile.security.deleteWarn')}</p>
-          {hasEmail && (
-            <input className="input" type="password" placeholder={t('profile.security.currentPw')} value={delPw} onChange={e => setDelPw(e.target.value)} />
+          {hasEmail ? (
+            <input className="input" type="password" autoComplete="current-password" placeholder={t('profile.security.currentPw')} value={delPw} onChange={e => setDelPw(e.target.value)} />
+          ) : (
+            <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{t('profile.security.needPassword')}</p>
           )}
           <input className="input" placeholder={`${t('profile.security.typeConfirm')}: "${confirmWord}"`} value={delText} onChange={e => setDelText(e.target.value)} />
-          <button className="btn" style={{ background: 'var(--error)', color: '#fff', border: 'none' }} disabled={delText !== confirmWord} onClick={doDelete}>
-            {t('profile.security.deleteBtn')}
+          <button className="btn" style={{ background: 'var(--error)', color: '#fff', border: 'none' }} disabled={delBusy || !hasEmail || !delPw || delText !== confirmWord} onClick={doDelete}>
+            {delBusy ? <span className="spinner" /> : t('profile.security.deleteBtn')}
           </button>
         </div>
       </Modal>

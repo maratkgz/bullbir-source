@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { deleteAccountAndData } from '../../firebase/account'
 import { useAuth } from '../../context/AuthContext'
 import { useTheme } from '../../context/ThemeContext'
 import { useLang } from '../../context/LangContext'
@@ -11,7 +11,7 @@ import Modal from '../ui/Modal'
 const APP_VERSION = '1.0.0'
 
 export default function Settings() {
-  const { user, profile, logout } = useAuth()
+  const { user, profile, logout, deleteAccount } = useAuth()
   const { theme, setTheme } = useTheme()
   const { lang, setLang, languages, t, tError } = useLang()
   const { canInstall, installed, promptInstall } = usePWAInstall()
@@ -32,7 +32,7 @@ export default function Settings() {
   const onDelete = async () => {
     setIsDeleting(true)
     try {
-      await deleteAccountAndData({ password: deletePassword })
+      await deleteAccount(deletePassword)
     } catch (err) {
       toast.error(tError(err))
     } finally {
@@ -99,7 +99,7 @@ export default function Settings() {
 
       <Modal open={confirmDelete} onClose={closeDelete} title={t('set.deleteAccount')}>
         <p className="text-secondary">{t('set.deleteWarn')}</p>
-        {hasPasswordLogin && (
+        {hasPasswordLogin ? (
           <input
             className="input"
             type="password"
@@ -109,13 +109,18 @@ export default function Settings() {
             onChange={(e) => setDeletePassword(e.target.value)}
             style={{ margin: 'var(--space-3) 0' }}
           />
+        ) : (
+          <p className="text-muted" style={{ fontSize: 'var(--text-sm)', margin: 'var(--space-3) 0' }}>
+            {t('profile.security.needPassword')}{' '}
+            <Link to="/app/profile" className="auth-link" onClick={closeDelete}>{t('set.openProfile')}</Link>
+          </p>
         )}
         <div className="flex gap-3 justify-between">
           <button className="btn btn-ghost" onClick={closeDelete}>{t('common.cancel')}</button>
           <button
             className="btn btn-danger"
             onClick={onDelete}
-            disabled={isDeleting || (hasPasswordLogin && !deletePassword)}
+            disabled={isDeleting || !hasPasswordLogin || !deletePassword}
           >
             {t('common.delete')}
           </button>

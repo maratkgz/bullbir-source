@@ -1,34 +1,11 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { useAuth } from '../../context/AuthContext'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLang } from '../../context/LangContext'
-import { useToast } from '../ui/Toast'
 import AuthShell from './AuthShell'
-import { Check } from 'lucide-react'
-import Icon from '../ui/Icon'
+import PasswordResetForm from './PasswordResetForm'
 
 export default function ForgotPassword() {
-  const { resetPassword } = useAuth()
-  const { t, tError } = useLang()
-  const toast = useToast()
-  const [email, setEmail] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [sent, setSent] = useState(false)
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      await resetPassword(email)
-      setSent(true)
-      toast.success(t('auth.resetSent'))
-    } catch (err) {
-      toast.error(tError(err))
-    } finally {
-      setLoading(false)
-    }
-  }
+  const { t } = useLang()
+  const navigate = useNavigate()
 
   return (
     <AuthShell
@@ -40,29 +17,7 @@ export default function ForgotPassword() {
         </Link>
       }
     >
-      {sent ? (
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', alignItems: 'center' }}
-        >
-          <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-            <Icon icon={Check} size={28} />
-          </div>
-          <p className="text-secondary">{t('auth.resetSent')}</p>
-        </motion.div>
-      ) : (
-        <form className="auth-form" onSubmit={onSubmit}>
-          <div className="field">
-            <label htmlFor="email">{t('auth.email')}</label>
-            <input id="email" type="email" className="input" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
-          </div>
-          <button className="btn btn-primary btn-block" disabled={loading}>
-            {loading ? <span className="spinner" /> : t('auth.sendResetLink')}
-          </button>
-        </form>
-      )}
+      <PasswordResetForm onSuccess={() => navigate('/app/dashboard', { replace: true })} />
     </AuthShell>
   )
 }

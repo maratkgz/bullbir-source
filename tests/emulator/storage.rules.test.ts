@@ -7,11 +7,13 @@ import {
   type RulesTestEnvironment,
 } from '@firebase/rules-unit-testing'
 import { deleteObject, getBytes, ref, uploadBytes } from 'firebase/storage'
+import { doc, setDoc } from 'firebase/firestore'
 import { readFile } from 'node:fs/promises'
 
 const projectId = 'demo-bullbir'
 const storageHost = process.env.FIREBASE_STORAGE_EMULATOR_HOST
-const storageDescribe = storageHost ? describe : describe.skip
+const firestoreHost = process.env.FIRESTORE_EMULATOR_HOST
+const storageDescribe = storageHost && firestoreHost ? describe : describe.skip
 let env: RulesTestEnvironment
 
 // Smallest valid PNG header + a few bytes is enough: rules look at size and contentType only.
@@ -25,13 +27,20 @@ storageDescribe('Storage security rules', () => {
     const [host, portText] = storageHost.replace(/^https?:\/\//, '').split(':')
     const port = Number(portText)
     if (!host || !Number.isInteger(port)) throw new Error('Invalid FIREBASE_STORAGE_EMULATOR_HOST')
+    // Firestore too: the avatar rules read auth_state/{uid} cross-service.
+    const [fsHost, fsPortText] = String(firestoreHost).split(':')
+    if (!fsHost || !Number.isInteger(Number(fsPortText))) throw new Error('Invalid FIRESTORE_EMULATOR_HOST')
     env = await initializeTestEnvironment({
       projectId,
       storage: { host, port, rules: await readFile('storage.rules', 'utf8') },
+      firestore: { host: fsHost, port: Number(fsPortText), rules: await readFile('firestore.rules', 'utf8') },
     })
   })
 
-  beforeEach(async () => env.clearStorage())
+  beforeEach(async () => {
+    await env.clearStorage()
+    await env.clearFirestore()
+  })
   afterAll(async () => env?.cleanup())
 
   // `bb_ev` = verified email, set by our server's custom token (the only Firebase session source).
@@ -95,6 +104,51 @@ storageDescribe('Storage security rules', () => {
       await assertFails(uploadBytes(ref(storageOf('alice'), 'avatars/alice'), PNG, { contentType }))
     },
   )
+
+  // Credential version (cross-service read of auth_state/{uid} from Firestore).
+  describe('credential version (auth_state cv vs bb_cv)', () => {
+    const CV = 1000
+    const avatarAs = (uid: string, bbCv?: number) =>
+      ref(env.authenticatedContext(uid, bbCv === undefined ? { bb_ev: true } : { bb_ev: true, bb_cv: bbCv }).storage(), `avatars/${uid}`)
+
+    async function seedAvatar(cv: number | null): Promise<void> {
+      await assertSucceeds(uploadBytes(avatarAs('alice'), PNG, png)) // before any cv exists
+      if (cv !== null) {
+        await env.withSecurityRulesDisabled(async (ctx) => {
+          await setDoc(doc(ctx.firestore(), 'auth_state/alice'), { cv })
+        })
+      }
+    }
+
+    it('no auth_state doc → allowed as before', async () => {
+      await seedAvatar(null)
+      await assertSucceeds(getBytes(avatarAs('alice', 0)))
+      await assertSucceeds(uploadBytes(avatarAs('alice', 0), PNG, png))
+      await assertSucceeds(deleteObject(avatarAs('alice', 0)))
+    })
+
+    it.each([
+      ['bb_cv 999', 999],
+      ['no bb_cv claim', undefined],
+    ])('stale token (%s) cannot read, overwrite or delete the avatar', async (_label, bbCv) => {
+      await seedAvatar(CV)
+      await assertFails(getBytes(avatarAs('alice', bbCv)))
+      await assertFails(uploadBytes(avatarAs('alice', bbCv), PNG, png))
+      await assertFails(deleteObject(avatarAs('alice', bbCv)))
+    })
+
+    it('current token (bb_cv == cv) can read, overwrite and delete', async () => {
+      await seedAvatar(CV)
+      await assertSucceeds(getBytes(avatarAs('alice', CV)))
+      await assertSucceeds(uploadBytes(avatarAs('alice', CV), PNG, png))
+      await assertSucceeds(deleteObject(avatarAs('alice', CV)))
+    })
+
+    it('another user’s cv does not matter', async () => {
+      await seedAvatar(CV)
+      await assertSucceeds(uploadBytes(avatarAs('bob', 0), PNG, png))
+    })
+  })
 
   it.each(['avatars/alice/extra.png', 'uploads/alice/a.png', 'alice.png', 'users/alice/avatar.png'])(
     'denies reads and writes on other path %s',

@@ -164,7 +164,7 @@ export default function ShiftTracker() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('shift.title')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {format(currentMonth, 'LLLL yyyy', { locale: undefined })} · {items.length} смен
+            {format(month, 'LLLL yyyy', { locale: undefined })} · {items.length} смен
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
@@ -185,8 +185,8 @@ export default function ShiftTracker() {
 
       {/* Earnings hero card */}
       {items.length > 0 && (() => {
-        const monthStart = startOfMonth(currentMonth)
-        const monthEnd = endOfMonth(currentMonth)
+        const monthStart = startOfMonth(month)
+        const monthEnd = endOfMonth(month)
         const monthItems = items.filter(s => {
           const d = s.date ? new Date(s.date) : null
           return d && d >= monthStart && d <= monthEnd && s.status !== 'off'
@@ -196,7 +196,7 @@ export default function ShiftTracker() {
         return (
           <div className="shift-hero-card" style={{ marginBottom: 16 }}>
             <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.8)', fontWeight: 500, position: 'relative' }}>
-              Заработано в {format(currentMonth, 'LLLL', { locale: undefined })}
+              Заработано в {format(month, 'LLLL', { locale: undefined })}
             </div>
             <div style={{ fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginTop: 6, position: 'relative' }}>
               {formatMoney(totalEarnings, currency)}

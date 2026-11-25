@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext'
 
 // Real-time single document at users/{uid}/{name}/{id}
 export function useDoc(name, id) {
-  const { user } = useAuth()
+  const { user, recoverBridge, bridgeEpoch } = useAuth()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -24,10 +24,13 @@ export function useDoc(name, id) {
         setData(snap.exists() ? { id: snap.id, ...snap.data() } : null)
         setLoading(false)
       },
-      () => setLoading(false),
+      (err) => {
+        setLoading(false)
+        if (err?.code === 'permission-denied') recoverBridge?.()
+      },
     )
     return unsub
-  }, [path])
+  }, [path, bridgeEpoch, recoverBridge])
 
   const save = useCallback(
     async (payload) => {

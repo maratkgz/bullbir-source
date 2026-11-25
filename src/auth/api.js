@@ -11,6 +11,8 @@ const CODE_MAP = {
   invalid_code: 'auth/invalid-verification-code',
   unauthorized: 'auth/unauthorized',
   email_unverified: 'auth/email-unverified',
+  password_not_set: 'auth/password-not-set',
+  reauth_required: 'auth/requires-recent-login',
 }
 
 /**
@@ -21,7 +23,7 @@ const CODE_MAP = {
 function toClientCode(apiCode, body) {
   if (apiCode && CODE_MAP[apiCode]) return CODE_MAP[apiCode]
   if (apiCode === 'validation_failed') {
-    const hasEmail = !!body && typeof body === 'object' && 'email' in body
+    const hasEmail = !!body && typeof body === 'object' && ('email' in body || 'newEmail' in body)
     return hasEmail ? 'auth/invalid-email' : 'auth/internal'
   }
   return 'auth/internal'

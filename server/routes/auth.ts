@@ -8,6 +8,7 @@ import { enforceLimit } from '../rateLimit.js'
 import type { RequestContext, Route, RouteResult } from '../router.js'
 import { parseBody } from '../validate.js'
 import { clearSessionCookie } from '../auth/cookies.js'
+import { credentialVersion } from '../auth/credentials.js'
 import { emailKey, emailSchema } from '../auth/email.js'
 import { mailer } from '../auth/mailer.js'
 import { consumeCode, issueCode } from '../auth/otp.js'
@@ -50,7 +51,9 @@ export async function startSession(ctx: RequestContext, user: AuthUser): Promise
  * The signed-in user, or 401. Ends sessions whose account vanished, was disabled, or changed its
  * password after the session started.
  */
-export async function currentUser(ctx: RequestContext): Promise<{ user: AuthUser; sessionId: string }> {
+export async function currentUser(
+  ctx: RequestContext,
+): Promise<{ user: AuthUser; sessionId: string; sessionCreatedAt: number }> {
   const session = await requireSession(ctx.req)
   const user = await getUser(session.uid)
   const changedAt = toMs(user?.passwordChangedAt) ?? 0
@@ -58,7 +61,7 @@ export async function currentUser(ctx: RequestContext): Promise<{ user: AuthUser
     await deleteSessionByToken(ctx.req)
     throw new AppError('unauthorized', 'Not signed in')
   }
-  return { user, sessionId: session.id }
+  return { user, sessionId: session.id, sessionCreatedAt: session.createdAt }
 }
 
 /** Stores a pending registration inside a fresh code and mails it — or mails a notice if taken. */
@@ -196,7 +199,11 @@ export const firebaseToken: Route = {
   path: 'firebase-token',
   async handler(ctx) {
     const { user } = await currentUser(ctx)
-    const token = await adminAuth().createCustomToken(user.uid, { bb_ev: user.emailVerified })
+    // bb_cv: credential version — rules reject tokens older than the last credential change.
+    const token = await adminAuth().createCustomToken(user.uid, {
+      bb_ev: user.emailVerified,
+      bb_cv: await credentialVersion(user.uid),
+    })
     return { body: { token } }
   },
 }

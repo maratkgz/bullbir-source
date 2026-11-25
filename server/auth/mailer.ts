@@ -9,6 +9,11 @@ export type AuthMail =
   | { kind: 'login-code'; to: string; code: string; device: string; at: string }
   | { kind: 'already-registered'; to: string }
   | { kind: 'provider-linked'; to: string; provider: string; device: string; at: string }
+  | { kind: 'reset-code'; to: string; code: string; device: string; at: string }
+  | { kind: 'email-change-code'; to: string; code: string; device: string; at: string }
+  | { kind: 'email-changed'; to: string; newEmail: string; device: string; at: string }
+  | { kind: 'password-changed'; to: string; device: string; at: string }
+  | { kind: 'account-deleted'; to: string; device: string; at: string }
 
 export interface Mailer {
   send(mail: AuthMail): Promise<void>
@@ -45,6 +50,51 @@ function render(mail: AuthMail): { subject: string; text: string } {
           + 'If this was not you, sign in with your password or an email code and sign out everywhere.\n\n'
           + `К вашему аккаунту BullBir добавлен вход через ${mail.provider} (${mail.device}, ${mail.at} UTC).\n`
           + 'Если это были не вы — войдите паролем или кодом из почты и нажмите «Выйти везде».',
+      }
+    case 'reset-code':
+      return {
+        subject: 'BullBir: password reset code',
+        text: `Your BullBir password reset code: ${mail.code}\n`
+          + `It expires in ${CODE_TTL_MINUTES} minutes and works only in the browser that asked for it.\n`
+          + `Requested from: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Код для сброса пароля BullBir: ${mail.code}\n`
+          + `Действует ${CODE_TTL_MINUTES} минут и только в том браузере, где его запросили.\n`
+          + `Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + 'BullBir staff will never ask you for this code. If you did not ask to reset your password, ignore this email.\n'
+          + 'Сотрудники BullBir никогда не попросят этот код. Если вы не сбрасывали пароль — проигнорируйте письмо.',
+      }
+    case 'email-change-code':
+      return {
+        subject: 'BullBir: confirm your new email',
+        text: `Code to confirm this address for your BullBir account: ${mail.code}\n`
+          + `It expires in ${CODE_TTL_MINUTES} minutes. Requested from: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Код для подтверждения этого адреса в аккаунте BullBir: ${mail.code}\n`
+          + `Действует ${CODE_TTL_MINUTES} минут. Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + 'If you did not ask for this, ignore this email. / Если вы этого не запрашивали — проигнорируйте письмо.',
+      }
+    case 'email-changed':
+      return {
+        subject: 'BullBir: your account email was changed',
+        text: `The email of your BullBir account was changed to ${mail.newEmail} (${mail.device}, ${mail.at} UTC).\n`
+          + 'If this was not you, contact support right away.\n\n'
+          + `Почта вашего аккаунта BullBir изменена на ${mail.newEmail} (${mail.device}, ${mail.at} UTC).\n`
+          + 'Если это были не вы — срочно напишите в поддержку.',
+      }
+    case 'password-changed':
+      return {
+        subject: 'BullBir: your password was changed',
+        text: `The password of your BullBir account was changed (${mail.device}, ${mail.at} UTC). All other devices were signed out.\n`
+          + 'If this was not you, reset your password with "Forgot password" right away.\n\n'
+          + `Пароль вашего аккаунта BullBir изменён (${mail.device}, ${mail.at} UTC). На остальных устройствах выполнен выход.\n`
+          + 'Если это были не вы — срочно сбросьте пароль через «Забыли пароль?».',
+      }
+    case 'account-deleted':
+      return {
+        subject: 'BullBir: your account was deleted',
+        text: `Your BullBir account and all its data were deleted (${mail.device}, ${mail.at} UTC).\n`
+          + 'If this was not you, contact support right away.\n\n'
+          + `Ваш аккаунт BullBir и все его данные удалены (${mail.device}, ${mail.at} UTC).\n`
+          + 'Если это были не вы — срочно напишите в поддержку.',
       }
     case 'already-registered':
       return {
