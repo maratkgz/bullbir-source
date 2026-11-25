@@ -21,9 +21,14 @@ export function newUid(): string {
   return uid
 }
 
-/** 6-digit numeric code, uniformly random (no modulo bias). */
+/** Numeric code of `digits` digits, uniformly random (no modulo bias). */
+export function numericCode(digits: number): string {
+  return String(randomInt(0, 10 ** digits)).padStart(digits, '0')
+}
+
+/** 6-digit numeric code. */
 export function sixDigitCode(): string {
-  return String(randomInt(0, 1_000_000)).padStart(6, '0')
+  return numericCode(6)
 }
 
 export function sha256Hex(value: string): string {

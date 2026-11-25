@@ -6,6 +6,7 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import AuthShell from './AuthShell'
 import OAuthButtons from './OAuthButtons'
+import EmailCodeLogin from './EmailCodeLogin'
 import { Eye, EyeOff } from 'lucide-react'
 import Icon from '../ui/Icon'
 
@@ -27,7 +28,9 @@ export default function Login() {
   const toast = useToast()
   const navigate = useNavigate()
 
-  const [mode, setMode] = useState('email') // 'email' | 'phone'
+  const [mode, setMode] = useState('email') // 'email' | 'phone' | 'code'
+  // Too many wrong passwords: point to the email-code sign-in (works during a lockout).
+  const [lockedOut, setLockedOut] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPw, setShowPw] = useState(false)
@@ -57,6 +60,7 @@ export default function Login() {
         navigate('/verify-email')
         return
       }
+      if (err.code === 'auth/too-many-requests') setLockedOut(true)
       fail(err)
     } finally {
       setLoading(false)
@@ -151,10 +155,29 @@ export default function Login() {
               <button className="btn btn-primary btn-block" disabled={loading}>
                 {loading ? <span className="spinner" /> : t('auth.login')}
               </button>
+              {lockedOut && (
+                <p style={{ textAlign: 'center', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>
+                  {t('auth.lockedOutHint')}{' '}
+                  <button type="button" className="auth-link" style={{ padding: 0 }} onClick={() => setMode('code')}>
+                    {t('auth.useEmailCode')}
+                  </button>
+                </p>
+              )}
+              <button type="button" className="btn btn-ghost btn-block" onClick={() => setMode('code')}>
+                {t('auth.useEmailCode')}
+              </button>
               <button type="button" className="btn btn-ghost btn-block" onClick={() => setMode('phone')}>
                 {t('auth.usePhone')}
               </button>
             </motion.form>
+          ) : mode === 'code' ? (
+            <EmailCodeLogin
+              key="code"
+              initialEmail={email}
+              onBack={() => setMode('email')}
+              onSuccess={() => navigate('/app/dashboard')}
+              fail={fail}
+            />
           ) : (
             <motion.form
               key="phone"

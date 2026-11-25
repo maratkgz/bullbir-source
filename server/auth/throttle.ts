@@ -53,6 +53,16 @@ export async function reserveAttempt(key: string): Promise<AppError | null> {
   })
 }
 
+/**
+ * The owner proved the mailbox (code login): lift the current lock and failures, but KEEP the
+ * escalation level, so an attacker still guessing the password keeps hitting doubling locks.
+ */
+export async function liftLock(key: string): Promise<void> {
+  const ref = adminDb().collection(THROTTLE).doc(key)
+  const snap = await ref.get()
+  if (snap.exists) await ref.update({ failures: 0, lockedUntil: null })
+}
+
 /** A successful login: forget the attempts (also lifts a lock this very attempt set). */
 export async function clearFailures(key: string): Promise<void> {
   await adminDb().collection(THROTTLE).doc(key).delete()

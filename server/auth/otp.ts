@@ -1,8 +1,10 @@
 // One-time 6-digit codes sent by email.
 //   otp_codes/{purpose}_{emailKey} → { purpose, codeHmac, expiresAt, attempts, createdAt, data }
-// One live code per purpose and address (a new request replaces the old one). The code itself is
-// never stored — only HMAC(pepper, docId:code). A code works once, for 10 minutes, and burns after
-// 5 failed attempts. Every failure gives the same answer (`invalid_code`).
+// Registration codes: 6 digits, one live code per address (a new request replaces it).
+// Login codes: 8 digits, one live code per address AND browser (see OtpOptions.challenge).
+// The code itself is never stored — only HMAC(pepper, docId:code). A code works once, for
+// 10 minutes, and burns after 5 failed attempts. Every failure gives the same answer
+// (`invalid_code`). Expired documents are removed by the Firestore TTL policy on `expiresAt`.
 //
 // `data` carries what the code authorises. For registration it is the PENDING account
 // (argon2 hash + name): the account is created only when the mailbox owner enters the code
@@ -10,7 +12,7 @@
 import { adminDb } from '../firebaseAdmin.js'
 import { getEnv } from '../env.js'
 import { AppError } from '../errors.js'
-import { hmacHex, safeEqualHex, sixDigitCode } from './crypto.js'
+import { hmacHex, numericCode, safeEqualHex } from './crypto.js'
 import { MINUTE_MS, now, toMs } from './time.js'
 
 export const OTP = 'otp_codes'
@@ -25,8 +27,15 @@ export type OtpData = {
   displayName?: string | null
 }
 
-function docId(purpose: OtpPurpose, key: string): string {
-  return `${purpose}_${key}`
+/**
+ * Optional binding of a code to one browser: `challenge` is the SHA-256 of a random value kept in
+ * that browser's HttpOnly cookie. Each browser then has its own code document, so nobody else can
+ * replace, guess against or burn it without that cookie.
+ */
+export type OtpOptions = { challenge?: string; digits?: number }
+
+function docId(purpose: OtpPurpose, key: string, challenge?: string): string {
+  return challenge ? `${purpose}_${key}_${challenge}` : `${purpose}_${key}`
 }
 
 function codeHmac(id: string, code: string): string {
@@ -34,9 +43,9 @@ function codeHmac(id: string, code: string): string {
 }
 
 /** Creates (or replaces) the code and returns it — the caller emails it and forgets it. */
-export async function issueCode(purpose: OtpPurpose, key: string, data: OtpData): Promise<string> {
-  const id = docId(purpose, key)
-  const code = sixDigitCode()
+export async function issueCode(purpose: OtpPurpose, key: string, data: OtpData, options: OtpOptions = {}): Promise<string> {
+  const id = docId(purpose, key, options.challenge)
+  const code = numericCode(options.digits ?? 6)
   const t = now()
   await adminDb().collection(OTP).doc(id).set({
     purpose,
@@ -59,9 +68,10 @@ export async function consumeCode(
   key: string,
   code: string,
   extraCheck?: (data: OtpData) => Promise<boolean>,
+  options: OtpOptions = {},
 ): Promise<OtpData> {
   const db = adminDb()
-  const id = docId(purpose, key)
+  const id = docId(purpose, key, options.challenge)
   const ref = db.collection(OTP).doc(id)
   const candidate = codeHmac(id, code)
 

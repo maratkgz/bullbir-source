@@ -287,6 +287,19 @@ export function AuthProvider({ children }) {
     return user
   }, [bootstrap, setPendingEmail, setRegistrationPassword])
 
+  // Sign-in with a one-time email code. The server always answers 202 (no account enumeration).
+  const requestLoginCode = useCallback(async (email) => {
+    await authPost('otp/request', { email })
+  }, [])
+
+  const loginWithCode = useCallback(async (email, code) => {
+    const { user } = await authPost('otp/verify', { email, code })
+    setRegistrationPassword(null)
+    setPendingEmail(null)
+    await bootstrap(user)
+    return user
+  }, [bootstrap, setPendingEmail, setRegistrationPassword])
+
   const loginWithGoogle = useCallback(async () => {
     throw notAllowedYet()
   }, [])
@@ -346,6 +359,8 @@ export function AuthProvider({ children }) {
     register,
     verifyEmail,
     login,
+    requestLoginCode,
+    loginWithCode,
     loginWithGoogle,
     sendPhoneCode,
     resendVerification,

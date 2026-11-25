@@ -6,6 +6,7 @@ import { log } from '../log.js'
 
 export type AuthMail =
   | { kind: 'verify-code'; to: string; code: string }
+  | { kind: 'login-code'; to: string; code: string; device: string; at: string }
   | { kind: 'already-registered'; to: string }
 
 export interface Mailer {
@@ -22,6 +23,19 @@ function render(mail: AuthMail): { subject: string; text: string } {
         text: `Your BullBir confirmation code: ${mail.code}\nIt expires in ${CODE_TTL_MINUTES} minutes.\n\n`
           + `Ваш код подтверждения BullBir: ${mail.code}\nДействует ${CODE_TTL_MINUTES} минут.\n\n`
           + 'If you did not request it, ignore this email. / Если вы его не запрашивали — просто проигнорируйте письмо.',
+      }
+    case 'login-code':
+      // No code in the subject (lock-screen previews); request context helps spot phishing.
+      return {
+        subject: 'BullBir: your sign-in code',
+        text: `Your BullBir sign-in code: ${mail.code}\n`
+          + `It expires in ${CODE_TTL_MINUTES} minutes and works only in the browser that asked for it.\n`
+          + `Requested from: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Ваш код для входа в BullBir: ${mail.code}\n`
+          + `Действует ${CODE_TTL_MINUTES} минут и только в том браузере, где его запросили.\n`
+          + `Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + 'BullBir staff will never ask you for this code. If you did not try to sign in, ignore this email — your account is safe.\n'
+          + 'Сотрудники BullBir никогда не попросят этот код. Если вы не пытались войти — проигнорируйте письмо, аккаунт в безопасности.',
       }
     case 'already-registered':
       return {

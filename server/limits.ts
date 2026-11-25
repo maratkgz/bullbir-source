@@ -12,6 +12,10 @@ export const LIMITS = {
   registerPerIp: { name: 'register-ip', limit: 5, windowSeconds: HOUR },
   codeRequestPerIp: { name: 'code-req-ip', limit: 10, windowSeconds: HOUR },
   codeRequestPerEmail: { name: 'code-req-email', limit: 3, windowSeconds: 15 * MINUTE },
+  /** Email-code sign-in: per address+IP (so others can't use up the owner's budget) and overall. */
+  otpSendCooldown: { name: 'otp-send-cooldown', limit: 1, windowSeconds: MINUTE },
+  otpRequestPerEmailIp: { name: 'otp-req-email-ip', limit: 3, windowSeconds: 15 * MINUTE },
+  otpRequestPerEmail: { name: 'otp-req-email', limit: 10, windowSeconds: HOUR },
   codeVerifyPerIp: { name: 'code-verify-ip', limit: 30, windowSeconds: 10 * MINUTE },
   /** Survives code re-issue, so replacing a code does not reset the guessing budget. */
   codeVerifyPerEmail: { name: 'code-verify-email', limit: 10, windowSeconds: HOUR },
