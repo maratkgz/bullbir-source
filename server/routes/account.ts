@@ -22,7 +22,8 @@ import { checkLoginPassword } from '../auth/passwordCheck.js'
 import { revokeAllSessions } from '../auth/sessions.js'
 import { clearFailures, reserveAttempt } from '../auth/throttle.js'
 import { claimUnverifiedAccount, findUserByEmail, getUser, type AuthUser } from '../auth/users.js'
-import { currentUser, startSession } from './auth.js'
+import { recordEvent } from '../auth/events.js'
+import { assertNewPassword, currentUser, startSession } from './auth.js'
 
 const password = z.string().min(1).max(PASSWORD_MAX * 4)
 const code = z.string().regex(new RegExp(`^\\d{${EMAIL_CODE_DIGITS}}$`))
@@ -97,7 +98,7 @@ export const resetConfirm: Route = {
   ipLimits: [LIMITS.codeVerifyPerIp],
   async handler(ctx) {
     const body = await parseBody(ctx.req, z.object({ email: emailSchema, code, newPassword: password }))
-    await assertAcceptablePassword(body.newPassword)
+    await assertNewPassword(ctx, body.newPassword)
     return withMinDuration(async () => {
       const challenge = requireChallenge(ctx.req)
       const key = emailKey(body.email)
@@ -114,6 +115,7 @@ export const resetConfirm: Route = {
       await dropPendingCodes(user.uid)
       await clearFailures(key)
       const result = await freshSessionOnly(ctx, user.uid, [clearOtpCookie()])
+      await recordEvent(ctx, { uid: user.uid, type: 'password_reset' })
       await sendQuietly({ kind: 'password-changed', to: user.email, device: deviceLabel(ctx.req), at: mailTimestamp() })
       return result
     }, VERIFY_MIN_MS)
@@ -129,11 +131,12 @@ export const passwordChange: Route = {
     const { user } = await currentUser(ctx)
     const body = await parseBody(ctx.req, z.object({ currentPassword: password, newPassword: password }))
     if (!hasPassword(user)) throw new AppError('password_not_set', 'This account has no password yet')
-    await assertAcceptablePassword(body.newPassword)
+    await assertNewPassword(ctx, body.newPassword)
     await reauthenticate(user, body.currentPassword)
     await setPassword(user.uid, await hashPassword(body.newPassword))
     await dropPendingCodes(user.uid)
     const result = await freshSessionOnly(ctx, user.uid)
+    await recordEvent(ctx, { uid: user.uid, type: 'password_changed' })
     await sendQuietly({ kind: 'password-changed', to: user.email, device: deviceLabel(ctx.req), at: mailTimestamp() })
     return result
   },
@@ -186,6 +189,7 @@ export const emailChangeConfirm: Route = {
       if (data.uid !== user.uid) throw invalidCode()
       if (!(await changeAccountEmail(user.uid, user.email, body.newEmail))) throw invalidCode()
       await dropPendingCodes(user.uid)
+      await recordEvent(ctx, { uid: user.uid, type: 'email_changed' })
       // Tell the OLD address — the owner must learn about it even if the session was stolen.
       await sendQuietly({
         kind: 'email-changed', to: user.email, newEmail: body.newEmail, device: deviceLabel(ctx.req), at: mailTimestamp(),
@@ -205,6 +209,8 @@ export const accountDelete: Route = {
     const body = await parseBody(ctx.req, z.object({ currentPassword: password.optional() }))
     await reauthenticate(user, body.currentPassword)
     await deleteAccount(user.uid, user.email)
+    // Without uid: the user's journal is deleted with the account; this only counts deletions.
+    await recordEvent(ctx, { type: 'account_deleted' })
     await sendQuietly({ kind: 'account-deleted', to: user.email, device: deviceLabel(ctx.req), at: mailTimestamp() })
     log.info('account deleted', { requestId: ctx.requestId })
     return { body: { ok: true }, headers: { 'Set-Cookie': clearSessionCookie() } }

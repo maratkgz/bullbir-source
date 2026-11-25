@@ -5,6 +5,7 @@ import { adminAuth, adminBucket, adminDb } from '../firebaseAdmin.js'
 import { log } from '../log.js'
 import { tombstoneCredentials } from './credentials.js'
 import { emailKey } from './email.js'
+import { SECURITY_EVENTS } from './events.js'
 import { OTP } from './otp.js'
 import { SESSIONS, revokeFirebaseTokens } from './sessions.js'
 import { THROTTLE } from './throttle.js'
@@ -136,6 +137,7 @@ export async function deleteAccount(uid: string, email: string): Promise<void> {
   await deleteWhere(SESSIONS, 'uid', uid)
   await db.recursiveDelete(db.collection('users').doc(uid))
   await deleteWhere(ACCOUNTS, 'uid', uid)
+  await deleteWhere(SECURITY_EVENTS, 'uid', uid)
   await dropPendingCodes(uid)
   await db.collection(THROTTLE).doc(emailKey(email)).delete()
   try {

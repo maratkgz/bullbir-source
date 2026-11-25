@@ -24,6 +24,7 @@ import { revokeAllSessions } from '../auth/sessions.js'
 import { liftLock } from '../auth/throttle.js'
 import { now } from '../auth/time.js'
 import { claimUnverifiedAccount, findUserByEmail, getUser } from '../auth/users.js'
+import { recordEvent } from '../auth/events.js'
 import { startSession } from './auth.js'
 
 export const LOGIN_CODE_DIGITS = 8
@@ -104,6 +105,7 @@ async function verify(ctx: RequestContext, email: string, value: string): Promis
     await claimUnverifiedAccount(uid)
   }
   await liftLock(key)
+  await recordEvent(ctx, { uid, type: 'login_success', meta: { method: 'code' } })
   const fresh = (await getUser(uid)) ?? user
   const result = await startSession(ctx, fresh)
   const cookies = [result.headers?.['Set-Cookie'], clearOtpCookie()].flat().filter((c): c is string => !!c)

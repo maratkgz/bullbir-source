@@ -412,6 +412,11 @@ export function AuthProvider({ children }) {
     if (!(await fetchMe())) await signOutAndClear()
   }, [])
 
+  const listSecurityEvents = useCallback(async () => {
+    const { events } = await authGet('security-events')
+    return events
+  }, [])
+
   const user = useMemo(() => (apiUser ? toAppUser(apiUser, profile) : null), [apiUser, profile])
 
   const value = {
@@ -447,6 +452,7 @@ export function AuthProvider({ children }) {
     logoutAll,
     listSessions,
     revokeSession,
+    listSecurityEvents,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

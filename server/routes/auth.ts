@@ -9,6 +9,8 @@ import type { RequestContext, Route, RouteResult } from '../router.js'
 import { parseBody } from '../validate.js'
 import { clearSessionCookie } from '../auth/cookies.js'
 import { credentialVersion } from '../auth/credentials.js'
+import { recordEvent } from '../auth/events.js'
+import { isAppError } from '../errors.js'
 import { emailKey, emailSchema } from '../auth/email.js'
 import { mailer } from '../auth/mailer.js'
 import { consumeCode, issueCode } from '../auth/otp.js'
@@ -76,13 +78,23 @@ async function sendRegistrationMail(email: string, password: string, displayName
   await mailer().send({ kind: 'verify-code', to: email, code: value })
 }
 
+/** Password policy for a new password; a breached-password rejection is journaled (no uid). */
+export async function assertNewPassword(ctx: RequestContext, value: string): Promise<void> {
+  try {
+    await assertAcceptablePassword(value)
+  } catch (err) {
+    if (isAppError(err) && err.code === 'breached_password') await recordEvent(ctx, { type: 'breached_password_rejected' })
+    throw err
+  }
+}
+
 export const register: Route = {
   method: 'POST',
   path: 'register',
   ipLimits: [LIMITS.registerPerIp],
   async handler(ctx) {
     const body = await parseBody(ctx.req, z.object({ email: emailSchema, password, name: name.optional() }))
-    await assertAcceptablePassword(body.password)
+    await assertNewPassword(ctx, body.password)
     await enforceLimit(LIMITS.codeRequestPerEmail, emailKey(body.email), ctx.limiter)
     return withMinDuration(async () => {
       await sendRegistrationMail(body.email, body.password, body.name ?? null)
@@ -127,6 +139,7 @@ export const verifyEmail: Route = {
     })
     if (!user) throw new AppError('invalid_code', 'Invalid or expired code')
     await revokeAllSessions(user.uid) // a taken-over legacy record must not keep old sessions
+    await recordEvent(ctx, { uid: user.uid, type: 'register', meta: { method: 'password' } })
     return startSession(ctx, user)
   },
 }
@@ -151,6 +164,9 @@ async function passwordLogin(ctx: RequestContext, email: string, plain: string):
   // Same work whether or not the account exists (dummy hash), same answer on every failure.
   const ok = !tooLong(plain) && (await checkLoginPassword(user, plain))
   if (!ok || !user || user.status !== 'active') {
+    await recordEvent(ctx, lockIfFails
+      ? { uid: user?.uid, type: 'login_locked', meta: { retryAfterSec: lockIfFails.retryAfter ?? 0 } }
+      : { uid: user?.uid, type: 'login_failure', meta: { method: 'password', reason: user ? 'wrong_credentials' : 'unknown_account' } })
     throw lockIfFails ?? new AppError('invalid_credentials', 'Wrong email or password')
   }
   await clearFailures(key)
@@ -161,6 +177,7 @@ async function passwordLogin(ctx: RequestContext, email: string, plain: string):
     await sendRegistrationMail(email, plain, user.displayName)
     throw new AppError('email_unverified', 'Confirm your email to continue')
   }
+  await recordEvent(ctx, { uid: user.uid, type: 'login_success', meta: { method: 'password' } })
   return startSession(ctx, user)
 }
 
@@ -169,7 +186,10 @@ export const logout: Route = {
   path: 'logout',
   async handler(ctx) {
     const uid = await deleteSessionByToken(ctx.req)
-    if (uid) await revokeFirebaseTokens(uid)
+    if (uid) {
+      await revokeFirebaseTokens(uid)
+      await recordEvent(ctx, { uid, type: 'logout' })
+    }
     return { body: { ok: true }, headers: { 'Set-Cookie': clearSessionCookie() } }
   },
 }
@@ -180,6 +200,7 @@ export const logoutAll: Route = {
   async handler(ctx) {
     const { user } = await currentUser(ctx)
     await revokeAllSessions(user.uid)
+    await recordEvent(ctx, { uid: user.uid, type: 'logout_all' })
     return { body: { ok: true }, headers: { 'Set-Cookie': clearSessionCookie() } }
   },
 }

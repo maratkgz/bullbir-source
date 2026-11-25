@@ -11,6 +11,10 @@ import { MemoryRateLimiter } from '../../server/rateLimit.js'
 import type { RequestContext, RouteResult } from '../../server/router.js'
 import { createOAuthRoutes, type OAuthRouteDeps } from '../../server/routes/oauth.js'
 import { AppError } from '../../server/errors.js'
+import { setEventSinkForTests } from '../../server/auth/events.js'
+
+// The security journal is unit-tested separately; here it must not touch Firestore.
+setEventSinkForTests(async () => {})
 
 const ORIGIN = 'https://bullbir.app'
 const CLIENT_ID = 'cid.apps.googleusercontent.com'

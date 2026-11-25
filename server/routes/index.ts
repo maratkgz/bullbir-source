@@ -6,6 +6,7 @@ import { sessionsList, sessionsRevoke } from './sessions.js'
 import { otpLoginRoutes } from './otpLogin.js'
 import { oauthCallback, oauthStart } from './oauth.js'
 import { accountRoutes } from './account.js'
+import { securityEvents } from './events.js'
 
 export const routes: readonly Route[] = [
   health,
@@ -23,4 +24,5 @@ export const routes: readonly Route[] = [
   oauthStart,
   oauthCallback,
   ...accountRoutes,
+  securityEvents,
 ]

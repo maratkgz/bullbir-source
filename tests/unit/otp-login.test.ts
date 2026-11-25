@@ -51,6 +51,8 @@ const { emailKey } = await import('../../server/auth/email.js')
 const { sha256Hex } = await import('../../server/auth/crypto.js')
 const { captureLogs } = await import('../../server/log.js')
 const { setMinResponseMsForTests } = await import('../../server/auth/pacing.js')
+const { setEventSinkForTests } = await import('../../server/auth/events.js')
+setEventSinkForTests(async () => {})
 setMinResponseMsForTests(0)
 
 const EMAIL = 'ann@mail.com'

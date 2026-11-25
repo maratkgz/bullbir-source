@@ -8,6 +8,7 @@
 import { LIMITS } from '../limits.js'
 import { deviceLabel } from '../auth/device.js'
 import { mailer } from '../auth/mailer.js'
+import { recordEvent } from '../auth/events.js'
 import { log } from '../log.js'
 import type { RequestContext, Route, RouteResult } from '../router.js'
 import type { LimitRule } from '../rateLimit.js'
@@ -157,7 +158,12 @@ export function createOAuthRoutes(deps: OAuthRouteDeps = {}): { start: Route; ca
         const account = await resolveAccount(identity)
         const session = await startSession(account.uid, ctx)
         // Only when an EXISTING account gained a new way in — not for a brand-new signup.
-        if (account.linked && !account.created) await notifyLinked(ctx, identity.email, id)
+        if (account.linked && !account.created) {
+          await notifyLinked(ctx, identity.email, id)
+          await recordEvent(ctx, { uid: account.uid, type: 'oauth_linked', meta: { provider: 'google' } })
+        }
+        if (account.created) await recordEvent(ctx, { uid: account.uid, type: 'register', meta: { method: 'oauth', provider: 'google' } })
+        await recordEvent(ctx, { uid: account.uid, type: 'login_success', meta: { method: 'oauth', provider: 'google' } })
         log.info('oauth sign-in', { requestId: ctx.requestId, provider: id, created: account.created, linked: account.linked })
         return redirect(SUCCESS_PATH, [clear, session])
       } catch (err) {

@@ -15,6 +15,8 @@ import { BookOpen, Camera, Check, Download, Flame, Mail, Moon, Pencil, Phone, Sp
 import Icon from '../ui/Icon'
 import PasswordCard from './profile/PasswordCard'
 import EmailCard from './profile/EmailCard'
+import DevicesCard from './profile/DevicesCard'
+import SecurityActivityCard from './profile/SecurityActivityCard'
 
 // Lets the "sign in again" toast be read before the hard redirect to /login.
 const REAUTH_LOGOUT_DELAY_MS = 2000
@@ -472,6 +474,9 @@ export default function Profile() {
                 ))}
               </div>
             </div>
+
+            <DevicesCard onAuthError={onAuthError} />
+            <SecurityActivityCard />
 
             <div className="card prof-card-inner prof-danger-zone">
               <span className="prof-card-title" style={{ color: 'var(--error)' }}>{t('profile.security.danger')}</span>
