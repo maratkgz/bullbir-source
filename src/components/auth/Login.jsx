@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
@@ -9,6 +9,17 @@ import OAuthButtons from './OAuthButtons'
 import EmailCodeLogin from './EmailCodeLogin'
 import { Eye, EyeOff } from 'lucide-react'
 import Icon from '../ui/Icon'
+
+// Error codes the server's Google callback may append as /login?error=<code>.
+const OAUTH_ERRORS = new Set([
+  'oauth_cancelled',
+  'oauth_failed',
+  'oauth_email_unverified',
+  'oauth_email_missing',
+  'oauth_link_unverified',
+  'oauth_account_exists',
+  'oauth_unavailable',
+])
 
 function EyeButton({ shown, onClick }) {
   return (
@@ -27,6 +38,8 @@ export default function Login() {
   const { t, tError } = useLang()
   const toast = useToast()
   const navigate = useNavigate()
+  const location = useLocation()
+  const oauthErrorShown = useRef(false)
 
   const [mode, setMode] = useState('email') // 'email' | 'phone' | 'code'
   // Too many wrong passwords: point to the email-code sign-in (works during a lockout).
@@ -47,6 +60,17 @@ export default function Login() {
     setShake(true)
     setTimeout(() => setShake(false), 500)
   }
+
+  // Google sign-in came back with ?error=oauth_*: show it once, then drop the param so a
+  // reload doesn't repeat it.
+  useEffect(() => {
+    const code = new URLSearchParams(location.search).get('error')
+    if (!code || !code.startsWith('oauth_') || oauthErrorShown.current) return
+    oauthErrorShown.current = true
+    fail(OAUTH_ERRORS.has(code) ? code : 'oauth_failed')
+    navigate(location.pathname, { replace: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run for the incoming URL only
+  }, [location.search])
 
   const onEmailSubmit = async (e) => {
     e.preventDefault()

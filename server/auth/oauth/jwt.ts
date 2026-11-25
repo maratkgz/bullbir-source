@@ -62,7 +62,7 @@ export class JwksCache {
   private readonly fetchImpl: FetchLike
   private readonly clock: () => number
 
-  constructor(url: string, fetchImpl: FetchLike = (input, init) => fetch(input, init), clock: () => number = Date.now) {
+  constructor(url: string, fetchImpl: FetchLike = (input, init) => fetch(input, { ...init, redirect: 'error' }), clock: () => number = Date.now) {
     this.url = url
     this.fetchImpl = fetchImpl
     this.clock = clock

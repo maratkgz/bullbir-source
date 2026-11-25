@@ -17,6 +17,7 @@ import { authGet, authPost, authDelete } from '../auth/api'
 const AuthContext = createContext(null)
 const PENDING_EMAIL_KEY = 'bb.pendingEmail'
 const REBRIDGE_MIN_INTERVAL_MS = 30 * 1000
+const GOOGLE_START_URL = '/api/auth/oauth/google/start'
 
 export function useAuth() {
   const ctx = useContext(AuthContext)
@@ -300,8 +301,12 @@ export function AuthProvider({ children }) {
     return user
   }, [bootstrap, setPendingEmail, setRegistrationPassword])
 
-  const loginWithGoogle = useCallback(async () => {
-    throw notAllowedYet()
+  // Google sign-in is a top-level navigation to our server (OAuth code + PKCE); the server
+  // redirects back to /app with a session cookie, or to /login?error=oauth_*. The promise never
+  // settles so the caller keeps its loading state until the page unloads.
+  const loginWithGoogle = useCallback(() => {
+    window.location.assign(GOOGLE_START_URL)
+    return new Promise(() => {})
   }, [])
 
   const sendPhoneCode = useCallback(async () => {

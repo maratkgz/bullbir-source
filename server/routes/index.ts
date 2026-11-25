@@ -4,6 +4,7 @@ import { health } from './health.js'
 import { firebaseToken, login, logout, logoutAll, me, register, resendVerification, verifyEmail } from './auth.js'
 import { sessionsList, sessionsRevoke } from './sessions.js'
 import { otpLoginRoutes } from './otpLogin.js'
+import { oauthCallback, oauthStart } from './oauth.js'
 
 export const routes: readonly Route[] = [
   health,
@@ -18,4 +19,6 @@ export const routes: readonly Route[] = [
   sessionsList,
   sessionsRevoke,
   ...otpLoginRoutes,
+  oauthStart,
+  oauthCallback,
 ]

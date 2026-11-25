@@ -8,6 +8,7 @@ export type AuthMail =
   | { kind: 'verify-code'; to: string; code: string }
   | { kind: 'login-code'; to: string; code: string; device: string; at: string }
   | { kind: 'already-registered'; to: string }
+  | { kind: 'provider-linked'; to: string; provider: string; device: string; at: string }
 
 export interface Mailer {
   send(mail: AuthMail): Promise<void>
@@ -36,6 +37,14 @@ function render(mail: AuthMail): { subject: string; text: string } {
           + `Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
           + 'BullBir staff will never ask you for this code. If you did not try to sign in, ignore this email — your account is safe.\n'
           + 'Сотрудники BullBir никогда не попросят этот код. Если вы не пытались войти — проигнорируйте письмо, аккаунт в безопасности.',
+      }
+    case 'provider-linked':
+      return {
+        subject: `BullBir: ${mail.provider} sign-in was added`,
+        text: `${mail.provider} sign-in was added to your BullBir account (${mail.device}, ${mail.at} UTC).\n`
+          + 'If this was not you, sign in with your password or an email code and sign out everywhere.\n\n'
+          + `К вашему аккаунту BullBir добавлен вход через ${mail.provider} (${mail.device}, ${mail.at} UTC).\n`
+          + 'Если это были не вы — войдите паролем или кодом из почты и нажмите «Выйти везде».',
       }
     case 'already-registered':
       return {

@@ -5,10 +5,13 @@
 //                                  302 to /app — or 302 to /login?error=oauth_… on any failure.
 // Both are top-level browser navigations, so failures redirect instead of returning JSON.
 // GET skips the router's Origin check; the callback is protected by state bound to the cookie.
+import { LIMITS } from '../limits.js'
+import { deviceLabel } from '../auth/device.js'
+import { mailer } from '../auth/mailer.js'
 import { log } from '../log.js'
 import type { RequestContext, Route, RouteResult } from '../router.js'
 import type { LimitRule } from '../rateLimit.js'
-import { createSession } from '../auth/sessions.js'
+import { createSession, deleteSessionByToken } from '../auth/sessions.js'
 import { now } from '../auth/time.js'
 import { getUser, recordLogin } from '../auth/users.js'
 import { resolveOAuthAccount, type ResolvedAccount } from '../auth/oauth/accounts.js'
@@ -17,9 +20,8 @@ import { assertCallbackMatches, clearFlowCookie, flowCookie, newFlow, openFlow, 
 import { isOAuthError, OAuthError, type OAuthFailure, type OAuthIdentity } from '../auth/oauth/provider.js'
 import { AppError } from '../errors.js'
 
-// Candidates for server/limits.ts.
-export const OAUTH_START_LIMIT: LimitRule = { name: 'oauth-start-ip', limit: 20, windowSeconds: 10 * 60 }
-export const OAUTH_CALLBACK_LIMIT: LimitRule = { name: 'oauth-callback-ip', limit: 20, windowSeconds: 10 * 60 }
+export const OAUTH_START_LIMIT: LimitRule = LIMITS.oauthStartPerIp
+export const OAUTH_CALLBACK_LIMIT: LimitRule = LIMITS.oauthCallbackPerIp
 
 const SUCCESS_PATH = '/app'
 const MAX_PARAM_LENGTH = 2048
@@ -47,7 +49,11 @@ export type OAuthRouteDeps = {
 }
 
 async function defaultStartSession(uid: string, ctx: RequestContext): Promise<string> {
-  if (!(await getUser(uid))) throw new OAuthError('invalid_state', 'Linked account no longer exists')
+  const user = await getUser(uid)
+  // Same rule as password and code login: disabled accounts never get a session.
+  if (!user || user.status !== 'active') throw new OAuthError('invalid_state', 'Account missing or disabled')
+  // Same as every login: drop any session the browser presented, then issue a fresh token.
+  await deleteSessionByToken(ctx.req)
   await recordLogin(uid)
   return createSession(uid, ctx.req, ctx.ipPrefix)
 }
@@ -101,6 +107,7 @@ export function createOAuthRoutes(deps: OAuthRouteDeps = {}): { start: Route; ca
   const start: Route = {
     method: 'GET',
     path: 'oauth/:provider/start',
+    noHead: true,
     ipLimits: [OAUTH_START_LIMIT],
     async handler(ctx) {
       const id = knownProvider(ctx)
@@ -124,6 +131,7 @@ export function createOAuthRoutes(deps: OAuthRouteDeps = {}): { start: Route; ca
   const callback: Route = {
     method: 'GET',
     path: 'oauth/:provider/callback',
+    noHead: true,
     ipLimits: [OAUTH_CALLBACK_LIMIT],
     async handler(ctx) {
       const id = knownProvider(ctx)
@@ -148,6 +156,8 @@ export function createOAuthRoutes(deps: OAuthRouteDeps = {}): { start: Route; ca
         const identity = await provider.verifyIdToken(idToken, { nonce: flow.nonce })
         const account = await resolveAccount(identity)
         const session = await startSession(account.uid, ctx)
+        // Only when an EXISTING account gained a new way in — not for a brand-new signup.
+        if (account.linked && !account.created) await notifyLinked(ctx, identity.email, id)
         log.info('oauth sign-in', { requestId: ctx.requestId, provider: id, created: account.created, linked: account.linked })
         return redirect(SUCCESS_PATH, [clear, session])
       } catch (err) {
@@ -157,6 +167,21 @@ export function createOAuthRoutes(deps: OAuthRouteDeps = {}): { start: Route; ca
   }
 
   return { start, callback }
+}
+
+/** Tell the owner a new sign-in method was added; a mail failure must not block the sign-in. */
+async function notifyLinked(ctx: RequestContext, email: string, providerId: string): Promise<void> {
+  try {
+    await mailer().send({
+      kind: 'provider-linked',
+      to: email,
+      provider: providerId === 'google' ? 'Google' : providerId,
+      device: deviceLabel(ctx.req),
+      at: new Date(now()).toISOString().slice(0, 16).replace('T', ' '),
+    })
+  } catch (err) {
+    log.error('link notice mail failed', { requestId: ctx.requestId, err })
+  }
 }
 
 const defaults = createOAuthRoutes()

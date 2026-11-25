@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { accountId, decideLink } from '../../server/auth/oauth/accounts.js'
+import { accountId, decideLink, isGoogleMailbox } from '../../server/auth/oauth/accounts.js'
 import { OAuthError } from '../../server/auth/oauth/provider.js'
 
-const verified = { emailVerified: true }
-const unverified = { emailVerified: false }
+const verified = { emailVerified: true, email: 'ann@gmail.com' }
+const unverified = { emailVerified: false, email: 'ann@gmail.com' }
+const verifiedCorp = { emailVerified: true, email: 'ann@corp.example' }
 
 describe('account linking rules', () => {
   it('1. an existing link for this sub signs in, whatever the email says', () => {
@@ -27,7 +28,25 @@ describe('account linking rules', () => {
       .toEqual({ action: 'refuse', reason: 'link_unverified' })
   })
 
-  it('3. creates an account when nothing matches', () => {
+  it('2. never auto-links a non-Google mailbox (domain may have changed hands)', () => {
+    expect(decideLink({ linkedUid: null, existingUser: { uid: 'u2', emailVerified: true }, identity: verifiedCorp }))
+      .toEqual({ action: 'refuse', reason: 'link_unverified' })
+  })
+
+  it('2. refuses to link a disabled account', () => {
+    expect(decideLink({ linkedUid: null, existingUser: { uid: 'u2', emailVerified: true, active: false }, identity: verified }))
+      .toEqual({ action: 'refuse', reason: 'invalid_state' })
+  })
+
+  it('recognises Google mailboxes only', () => {
+    expect(isGoogleMailbox('a@gmail.com')).toBe(true)
+    expect(isGoogleMailbox('a@GoogleMail.com')).toBe(true)
+    expect(isGoogleMailbox('a@gmail.com.evil.test')).toBe(false)
+    expect(isGoogleMailbox('gmail.com@corp.example')).toBe(false)
+  })
+
+  it('3. creates an account when nothing matches (any domain)', () => {
+    expect(decideLink({ linkedUid: null, existingUser: null, identity: verifiedCorp })).toEqual({ action: 'create' })
     expect(decideLink({ linkedUid: null, existingUser: null, identity: verified })).toEqual({ action: 'create' })
   })
 })

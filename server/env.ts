@@ -42,6 +42,11 @@ const common = z.object({
   FIREBASE_PROJECT_ID: z.string().min(1),
   /** Comma-separated origins allowed to call the API (CSRF check), e.g. https://bullbir.app */
   APP_ORIGINS: originList,
+  /** Google sign-in (stage 5). Optional: without them Google answers "unavailable". */
+  GOOGLE_CLIENT_ID: z.string().optional(),
+  GOOGLE_CLIENT_SECRET: z.string().optional(),
+  /** Origin Google redirects back to; must be one of APP_ORIGINS (default: the first one). */
+  OAUTH_REDIRECT_BASE: z.string().optional(),
   /** Server-side secret mixed into HMACs of one-time codes. Base64, ≥ 32 random bytes. */
   AUTH_PEPPER: base64Bytes(MIN_PEPPER_BYTES),
 })

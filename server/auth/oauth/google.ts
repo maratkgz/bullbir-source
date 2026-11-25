@@ -39,9 +39,12 @@ function identityFrom(claims: Record<string, unknown>): OAuthIdentity {
 }
 
 export function googleProvider(config: GoogleConfig, deps: GoogleDeps = {}): OAuthProvider {
-  const fetchImpl: FetchLike = deps.fetch ?? ((input, init) => fetch(input, init))
+  // redirect: 'error' — never follow a redirect with the client secret in the body.
+  const fetchImpl: FetchLike = deps.fetch ?? ((input, init) => fetch(input, { ...init, redirect: 'error' }))
   const now = deps.now ?? Date.now
-  const jwks = deps.jwks ?? (sharedJwks ??= new JwksCache(GOOGLE_JWKS_URL))
+  // An injected fetch (tests) must also serve the keys — never fall back to the real Google.
+  const jwks = deps.jwks
+    ?? (deps.fetch ? new JwksCache(GOOGLE_JWKS_URL, deps.fetch, now) : (sharedJwks ??= new JwksCache(GOOGLE_JWKS_URL)))
 
   return {
     id: 'google',

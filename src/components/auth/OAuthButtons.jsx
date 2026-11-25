@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
@@ -19,6 +19,15 @@ export default function OAuthButtons() {
   const { t, tError } = useLang()
   const toast = useToast()
   const [busy, setBusy] = useState(null)
+
+  // Google sign-in leaves the page; if the user comes Back (bfcache restore), clear the spinner.
+  useEffect(() => {
+    const onPageShow = (e) => {
+      if (e.persisted) setBusy(null)
+    }
+    window.addEventListener('pageshow', onPageShow)
+    return () => window.removeEventListener('pageshow', onPageShow)
+  }, [])
 
   const run = async (provider, fn) => {
     setBusy(provider)

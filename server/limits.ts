@@ -16,6 +16,9 @@ export const LIMITS = {
   otpSendCooldown: { name: 'otp-send-cooldown', limit: 1, windowSeconds: MINUTE },
   otpRequestPerEmailIp: { name: 'otp-req-email-ip', limit: 3, windowSeconds: 15 * MINUTE },
   otpRequestPerEmail: { name: 'otp-req-email', limit: 10, windowSeconds: HOUR },
+  /** Google (and later Apple) sign-in: top-level navigations, per IP. */
+  oauthStartPerIp: { name: 'oauth-start-ip', limit: 20, windowSeconds: 10 * MINUTE },
+  oauthCallbackPerIp: { name: 'oauth-callback-ip', limit: 20, windowSeconds: 10 * MINUTE },
   codeVerifyPerIp: { name: 'code-verify-ip', limit: 30, windowSeconds: 10 * MINUTE },
   /** Survives code re-issue, so replacing a code does not reset the guessing budget. */
   codeVerifyPerEmail: { name: 'code-verify-email', limit: 10, windowSeconds: HOUR },

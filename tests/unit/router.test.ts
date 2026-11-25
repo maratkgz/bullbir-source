@@ -145,6 +145,17 @@ describe('createHandler', () => {
     expect(errorOf(json).code).toBe('method_not_allowed')
   })
 
+  it('answers 503 when a handler hangs (e.g. database unreachable) instead of waiting forever', async () => {
+    const hang: Route = { method: 'GET', path: 'hang', handler: () => new Promise(() => {}) }
+    const res = fakeRes()
+    const started = Date.now()
+    await createHandler([hang], { limiter: () => limiter, timeoutMs: 50 })(fakeReq('GET', '/api/auth/hang'), res)
+    expect(res.statusCode).toBe(503)
+    expect(JSON.parse(res.body).error.code).toBe('service_unavailable')
+    expect(Number(res.headers['retry-after'])).toBeGreaterThanOrEqual(1)
+    expect(Date.now() - started).toBeLessThan(2000)
+  })
+
   it('405 lists the allowed methods in an Allow header', async () => {
     const { res } = await call('POST', '/api/auth/health', { origin: ALLOWED_ORIGIN })
     expect(res.headers.allow).toBe('GET')

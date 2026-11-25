@@ -20,19 +20,31 @@ export type LinkDecision =
   | { action: 'sign_in'; uid: string }
   | { action: 'link'; uid: string }
   | { action: 'create' }
-  | { action: 'refuse'; reason: 'link_unverified' }
+  | { action: 'refuse'; reason: 'link_unverified' | 'invalid_state' }
 
 export type LinkInput = {
   linkedUid: string | null
-  existingUser: { uid: string; emailVerified: boolean } | null
-  identity: Pick<OAuthIdentity, 'emailVerified'>
+  existingUser: { uid: string; emailVerified: boolean; active?: boolean } | null
+  identity: Pick<OAuthIdentity, 'emailVerified' | 'email'>
+}
+
+/**
+ * Domains where Google itself is the mailbox provider. For any other domain a Google account can be
+ * created by whoever controls the domain TODAY (e.g. a corporate domain that changed hands), so an
+ * existing account there is never linked automatically — its owner signs in another way first.
+ */
+const GOOGLE_MAIL_DOMAINS = new Set(['gmail.com', 'googlemail.com'])
+
+export function isGoogleMailbox(email: string): boolean {
+  return GOOGLE_MAIL_DOMAINS.has(email.slice(email.lastIndexOf('@') + 1).toLowerCase())
 }
 
 /** Pure decision — the security rule lives here and is unit-tested. */
 export function decideLink({ linkedUid, existingUser, identity }: LinkInput): LinkDecision {
   if (linkedUid) return { action: 'sign_in', uid: linkedUid }
   if (existingUser) {
-    return identity.emailVerified && existingUser.emailVerified
+    if (existingUser.active === false) return { action: 'refuse', reason: 'invalid_state' }
+    return identity.emailVerified && existingUser.emailVerified && isGoogleMailbox(identity.email)
       ? { action: 'link', uid: existingUser.uid }
       : { action: 'refuse', reason: 'link_unverified' }
   }
@@ -78,7 +90,13 @@ export async function resolveOAuthAccount(identity: OAuthIdentity): Promise<Reso
     let existingUser: LinkInput['existingUser'] = null
     if (typeof linked !== 'string' && typeof indexUid === 'string') {
       const user = await tx.get(db.collection(USERS).doc(indexUid))
-      if (user.exists) existingUser = { uid: indexUid, emailVerified: user.get('emailVerified') === true }
+      if (user.exists) {
+        existingUser = {
+          uid: indexUid,
+          emailVerified: user.get('emailVerified') === true,
+          active: (user.get('status') ?? 'active') === 'active',
+        }
+      }
     }
 
     const decision = decideLink({ linkedUid: typeof linked === 'string' ? linked : null, existingUser, identity })
@@ -89,7 +107,7 @@ export async function resolveOAuthAccount(identity: OAuthIdentity): Promise<Reso
       case 'sign_in':
         return { uid: decision.uid, created: false, linked: false }
       case 'refuse':
-        throw new OAuthError(decision.reason, 'Email not verified on both sides')
+        throw new OAuthError(decision.reason, 'Account cannot be linked automatically')
       case 'link':
         tx.create(linkRef, { uid: decision.uid, ...linkDoc })
         tx.update(db.collection(USERS).doc(decision.uid), {

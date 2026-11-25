@@ -41,6 +41,8 @@ export type Route = {
   /** Extra per-IP limits for this route (the global per-IP ceiling always applies). */
   ipLimits?: readonly LimitRule[]
   handler: (ctx: RequestContext) => Promise<RouteResult>
+  /** Don't answer HEAD with this GET route (it has side effects, e.g. the OAuth callback). */
+  noHead?: boolean
 }
 
 type Match = { route: Route; params: Record<string, string> }
@@ -78,7 +80,7 @@ function findRoute(routes: readonly Route[], method: string, path: string): Matc
   for (const route of routes) {
     const params = matchPath(route.path, path)
     if (!params) continue
-    if (route.method === wanted) return { route, params }
+    if (route.method === wanted && !(method === 'HEAD' && route.noHead)) return { route, params }
     allow.push(route.method)
   }
   return allow.length ? { allow } : null
@@ -94,6 +96,14 @@ function relativePath(url: string | undefined): string {
 function safeSend(res: ApiResponse, status: number, body: unknown, headers: HeaderMap, requestId: string): void {
   if (res.headersSent || res.writableEnded) return
   try {
+    if (status >= 300 && status < 400) {
+      // Redirects (OAuth): headers only, no JSON body.
+      res.statusCode = status
+      res.setHeader('Cache-Control', 'no-store')
+      for (const [k, v] of Object.entries(headers)) res.setHeader(k, v)
+      res.end()
+      return
+    }
     sendJson(res, status, body, headers)
   } catch (err) {
     log.error('failed to send response', { requestId, err })
@@ -101,8 +111,26 @@ function safeSend(res: ApiResponse, status: number, body: unknown, headers: Head
   }
 }
 
-export function createHandler(routes: readonly Route[], deps: { limiter?: () => RateLimiter } = {}) {
+/**
+ * Upper bound for one handler. Firestore/Redis retries can otherwise hold a request for ~45 s
+ * when a dependency is down; the user gets a clear 503 instead of an endless spinner.
+ */
+export const HANDLER_TIMEOUT_MS = 8000
+
+function withTimeout<T>(work: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new AppError('service_unavailable', 'Service temporarily unavailable', { retryAfter: 30 })), ms)
+  })
+  return Promise.race([work, timeout]).finally(() => clearTimeout(timer))
+}
+
+export function createHandler(
+  routes: readonly Route[],
+  deps: { limiter?: () => RateLimiter; timeoutMs?: number } = {},
+) {
   const limiterOf = deps.limiter ?? rateLimiter
+  const timeoutMs = deps.timeoutMs ?? HANDLER_TIMEOUT_MS
 
   return async function handle(req: ApiRequest, res: ApiResponse): Promise<void> {
     const requestId = randomUUID()
@@ -132,7 +160,10 @@ export function createHandler(routes: readonly Route[], deps: { limiter?: () => 
       assertAllowedOrigin(req, env.APP_ORIGINS)
       for (const rule of match.route.ipLimits ?? []) await enforceLimit(rule, ipKey, limiter)
 
-      const result = await match.route.handler({ req, env, ipKey, ipPrefix: ipPrefix(ip), limiter, requestId, params: match.params })
+      const result = await withTimeout(
+        match.route.handler({ req, env, ipKey, ipPrefix: ipPrefix(ip), limiter, requestId, params: match.params }),
+        timeoutMs,
+      )
       status = result.status ?? 200
       safeSend(res, status, result.body, { ...result.headers, 'X-Request-Id': requestId }, requestId)
     } catch (err) {
