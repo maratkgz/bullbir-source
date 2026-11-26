@@ -43,6 +43,26 @@ export function reportError(kind, error, component) {
   }
 }
 
+/**
+ * Reports a failed Firestore read/write (collection name only, never the uid or document data)
+ * and re-throws so callers keep their own error handling (toasts).
+ * @param {string} op   e.g. 'listen', 'add', 'update', 'remove', 'save'
+ * @param {string} name collection name
+ */
+export function reportDataError(op, name, error) {
+  reportError('error', error, `firestore ${op} ${name}`)
+}
+
+/** Runs a Firestore write, reporting and re-throwing its error. */
+export async function reportingWrite(op, name, write) {
+  try {
+    return await write()
+  } catch (err) {
+    reportDataError(op, name, err)
+    throw err
+  }
+}
+
 /** Global listeners: uncaught errors and unhandled promise rejections. */
 export function installGlobalErrorReporting() {
   window.addEventListener('error', (event) => {

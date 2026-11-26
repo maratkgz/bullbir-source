@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore'
 import { db, firebaseReady } from '../firebase/config'
 import { useAuth } from '../context/AuthContext'
+import { reportDataError, reportingWrite } from '../monitoring/reportError'
 
 // Real-time CRUD for users/{uid}/{name}
 export function useCollection(name, { orderField = 'createdAt', direction = 'desc' } = {}) {
@@ -48,41 +49,42 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
       (err) => {
         setLoading(false)
         setError(err)
+        reportDataError('listen', name, err)
         // Bridge token outdated (credentials changed elsewhere): re-mint it; bridgeEpoch then
         // changes and this effect re-subscribes. Recovery is deduped and capped in AuthContext.
         if (err?.code === 'permission-denied') recoverBridge?.(bridgeEpoch)
       },
     )
     return unsub
-  }, [path, orderField, direction, bridgeEpoch, recoverBridge])
+  }, [path, name, orderField, direction, bridgeEpoch, recoverBridge])
 
   const add = useCallback(
     async (data) => {
       if (!path) return null
-      const ref = await addDoc(collection(db, path), {
+      const ref = await reportingWrite('add', name, () => addDoc(collection(db, path), {
         ...data,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
-      })
+      }))
       return ref.id
     },
-    [path],
+    [path, name],
   )
 
   const update = useCallback(
     async (id, data) => {
       if (!path) return
-      await updateDoc(doc(db, path, id), { ...data, updatedAt: serverTimestamp() })
+      await reportingWrite('update', name, () => updateDoc(doc(db, path, id), { ...data, updatedAt: serverTimestamp() }))
     },
-    [path],
+    [path, name],
   )
 
   const remove = useCallback(
     async (id) => {
       if (!path) return
-      await deleteDoc(doc(db, path, id))
+      await reportingWrite('remove', name, () => deleteDoc(doc(db, path, id)))
     },
-    [path],
+    [path, name],
   )
 
   return useMemo(

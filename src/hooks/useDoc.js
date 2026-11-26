@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { doc, onSnapshot, setDoc, serverTimestamp } from 'firebase/firestore'
 import { db, firebaseReady } from '../firebase/config'
 import { useAuth } from '../context/AuthContext'
+import { reportDataError, reportingWrite } from '../monitoring/reportError'
 
 // Real-time single document at users/{uid}/{name}/{id}
 export function useDoc(name, id) {
@@ -37,22 +38,23 @@ export function useDoc(name, id) {
       (err) => {
         setLoading(false)
         setError(err)
+        reportDataError('listen', name, err)
         if (err?.code === 'permission-denied') recoverBridge?.(bridgeEpoch)
       },
     )
     return unsub
-  }, [path, bridgeEpoch, recoverBridge])
+  }, [path, name, bridgeEpoch, recoverBridge])
 
   const save = useCallback(
     async (payload) => {
       if (!path) return
-      await setDoc(
+      await reportingWrite('save', name, () => setDoc(
         doc(db, path),
         { ...payload, updatedAt: serverTimestamp() },
         { merge: true },
-      )
+      ))
     },
-    [path],
+    [path, name],
   )
 
   return useMemo(() => ({ data, loading, error, save }), [data, loading, error, save])
