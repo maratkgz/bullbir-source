@@ -91,7 +91,7 @@ export default function App() {
       <AnimatePresence>{!online && <Offline key="offline" />}</AnimatePresence>
 
       <Routes location={location}>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<PublicRoute><Landing /></PublicRoute>} />
         <Route path="/login"element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
