@@ -26,7 +26,7 @@ export function requireChallenge(req: IncomingMessage): string {
 
 export { clearOtpCookie }
 
-/** "2026-11-25 06:42" — shown in security mails. */
+/** "2026-11-25 06:42 UTC" — shown in security mails. */
 export function mailTimestamp(): string {
-  return new Date(now()).toISOString().slice(0, 16).replace('T', ' ')
+  return `${new Date(now()).toISOString().slice(0, 16).replace('T', ' ')} UTC`
 }

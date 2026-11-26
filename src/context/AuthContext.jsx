@@ -1,22 +1,23 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState, useCallback } from 'react'
-import {
-  onAuthStateChanged,
-  setPersistence,
-  inMemoryPersistence,
-  signInWithCustomToken,
-  signOut,
-} from 'firebase/auth'
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { auth, db, firebaseReady } from '../firebase/config'
 import { signOutAndClear, deleteAccountAndData } from '../firebase/account'
 import { authGet, authPost, authDelete } from '../auth/api'
+import { readSignedInHint, subscribeSignOut, writeSignedInHint } from '../auth/sessionSignals'
+import { useToast } from '../components/ui/Toast'
+import { useLang } from './LangContext'
+import {
+  devWarn, ensureUserDoc, fetchMe, isUnauthorized, probeSession, toAppUser,
+} from './auth/session'
+import { useBridge } from './auth/useBridge'
+import { useRegistrationDraft } from './auth/useRegistrationDraft'
+import { useSessionRestore } from './auth/useSessionRestore'
 
 // Session lives in our httpOnly cookie (/api/auth). Firebase Auth is only an invisible bridge
 // to Firestore/Storage rules: custom token, in-memory persistence, re-minted after every reload.
 
 const AuthContext = createContext(null)
-const PENDING_EMAIL_KEY = 'bb.pendingEmail'
-const REBRIDGE_MIN_INTERVAL_MS = 30 * 1000
 const GOOGLE_START_URL = '/api/auth/oauth/google/start'
 
 export function useAuth() {
@@ -25,214 +26,146 @@ export function useAuth() {
   return ctx
 }
 
-function readPendingEmail() {
-  try {
-    return sessionStorage.getItem(PENDING_EMAIL_KEY)
-  } catch {
-    return null
-  }
+// Pass-through calls with no client state. The server answers 202 to the request-* calls
+// (no account enumeration).
+const requestLoginCode = async (email) => { await authPost('otp/request', { email }) }
+const requestPasswordReset = async (email) => { await authPost('password/reset-request', { email }) }
+// Mails a code to the NEW address. Needs the current password (passwordless → password_not_set).
+const requestEmailChange = async (newEmail, currentPassword) => {
+  await authPost('email/change-request', { newEmail, currentPassword })
 }
+const listSessions = async () => (await authGet('sessions')).sessions
+const listSecurityEvents = async () => (await authGet('security-events')).events
 
-function writePendingEmail(email) {
-  try {
-    if (email) sessionStorage.setItem(PENDING_EMAIL_KEY, email)
-    else sessionStorage.removeItem(PENDING_EMAIL_KEY)
-  } catch {
-    // Storage blocked (private mode): pendingEmail just won't survive a reload.
-  }
-}
-
-function devWarn(message, err) {
-  if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
-    console.warn(`[BullBir] ${message}`, err?.code || err?.message || err)
-  }
-}
-
-let persistencePromise = null
-function ensureInMemoryPersistence() {
-  if (!persistencePromise) persistencePromise = setPersistence(auth, inMemoryPersistence)
-  return persistencePromise
-}
-
-/** Signs the Firebase bridge in for the current cookie session. @returns {Promise<boolean>} */
-async function signInBridge() {
-  if (!firebaseReady) return false
-  try {
-    await ensureInMemoryPersistence()
-    const { token } = await authPost('firebase-token')
-    await signInWithCustomToken(auth, token)
-    return true
-  } catch (err) {
-    devWarn('Firebase bridge sign-in failed:', err)
-    return false
-  }
-}
-
-async function ensureUserDoc(apiUser) {
-  const ref = doc(db, 'users', apiUser.uid)
-  const snap = await getDoc(ref)
-  if (snap.exists()) return snap.data()
-  await setDoc(ref, {
-    email: apiUser.email || null,
-    displayName: apiUser.displayName || null,
-    photoURL: null,
-    onboardingDone: false,
-    createdAt: serverTimestamp(),
-  })
-  return { onboardingDone: false }
-}
-
-/** Shapes our API user like the Firebase User fields the app reads. */
-function toAppUser(apiUser, profile) {
-  return {
-    uid: apiUser.uid,
-    email: apiUser.email,
-    emailVerified: !!apiUser.emailVerified,
-    displayName: profile?.displayName ?? apiUser.displayName ?? null,
-    photoURL: profile?.photoURL ?? null,
-    providerData: (apiUser.providers || []).map((p) => ({ providerId: p })),
-    metadata: {
-      creationTime: apiUser.createdAt ?? null,
-      lastSignInTime: apiUser.lastLoginAt ?? null,
-    },
-  }
-}
-
-async function fetchMe() {
-  try {
-    const { user } = await authGet('me')
-    return user
-  } catch (err) {
-    if (err.status === 401) return null
-    throw err
-  }
+// Google sign-in is a top-level navigation to our server (OAuth code + PKCE); the server
+// redirects back to /app with a session cookie, or to /login?error=oauth_*. The promise never
+// settles so the caller keeps its loading state until the page unloads (OAuthButtons resets it
+// on a bfcache restore).
+const loginWithGoogle = () => {
+  window.location.assign(GOOGLE_START_URL)
+  return new Promise(() => {})
 }
 
 export function AuthProvider({ children }) {
+  const { t } = useLang()
+  const toast = useToast()
+  const {
+    pendingEmail, hasRegistrationPassword, passwordRef, nameRef,
+    setPendingEmail, setRegistrationPassword, clearDraft,
+  } = useRegistrationDraft()
   const [apiUser, setApiUser] = useState(null)
   const [profile, setProfile] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [pendingEmail, setPendingEmailState] = useState(readPendingEmail)
-  // Registration password, kept in memory only (never in storage): verify-email needs it again.
-  const registrationPasswordRef = useRef(null)
-  const [hasRegistrationPassword, setHasRegistrationPassword] = useState(false)
+  // 'idle' | 'loading' | 'ready' | 'error' — routes wait on 'loading' and show retry on 'error'
+  // instead of mistaking a missing profile for "onboarding not done".
+  const [profileStatus, setProfileStatusState] = useState('idle')
+  const profileStatusRef = useRef('idle')
+  const profileLoadRef = useRef(null)
   const apiUserRef = useRef(null)
-  const bridgingRef = useRef(false)
-  const lastRebridgeAtRef = useRef(0)
-  // Bumped after every successful bridge sign-in: a listener that failed with permission-denied
-  // is dead, so data hooks list this in their effect deps to re-subscribe with the new token.
-  const [bridgeEpoch, setBridgeEpoch] = useState(0)
+  const signingOutRef = useRef(false)
 
-  const bridge = useCallback(async () => {
-    const ok = await signInBridge()
-    if (ok) setBridgeEpoch((n) => n + 1)
-    return ok
+  const setProfileStatus = useCallback((status) => {
+    profileStatusRef.current = status
+    setProfileStatusState(status)
   }, [])
 
-  const setPendingEmail = useCallback((email) => {
-    writePendingEmail(email)
-    setPendingEmailState(email)
+  const publishUser = useCallback((nextUser) => {
+    apiUserRef.current = nextUser
+    setApiUser(nextUser)
   }, [])
 
-  const registrationNameRef = useRef(null)
-  const setRegistrationPassword = useCallback((password, name = null) => {
-    registrationPasswordRef.current = password || null
-    registrationNameRef.current = password ? name || null : null
-    setHasRegistrationPassword(!!password)
-  }, [])
+  // Only once the server session is gone: wipe caches, tell the other tabs, hard-reload to /login.
+  const finishSignOut = useCallback(async ({ broadcast = true } = {}) => {
+    if (signingOutRef.current) return
+    signingOutRef.current = true
+    clearDraft()
+    await signOutAndClear({ broadcast })
+  }, [clearDraft])
 
-  const clearSession = useCallback(() => {
-    apiUserRef.current = null
-    setApiUser(null)
-    setProfile(null)
-  }, [])
+  const { bridgeEpoch, bridgeError, runBridge, recoverBridge, resetBridgeErrors } = useBridge({
+    apiUserRef,
+    signingOutRef,
+    onSignedOut: finishSignOut,
+  })
+
+  /** Loads (or creates) users/{uid}; concurrent calls share one load. @returns {Promise<boolean>} */
+  const loadProfile = useCallback((forUser) => {
+    if (profileLoadRef.current) return profileLoadRef.current
+    setProfileStatus('loading')
+    const load = ensureUserDoc(forUser)
+      .then((data) => {
+        if (apiUserRef.current?.uid !== forUser.uid) return false
+        setProfile(data)
+        setProfileStatus('ready')
+        return true
+      })
+      .catch((err) => {
+        devWarn('Could not load the profile:', err)
+        setProfileStatus('error')
+        return false
+      })
+      .finally(() => {
+        profileLoadRef.current = null
+      })
+    profileLoadRef.current = load
+    return load
+  }, [setProfileStatus])
 
   // Bridge first, then publish the user, so data hooks never subscribe before request.auth exists.
   const bootstrap = useCallback(async (nextUser) => {
-    bridgingRef.current = true
-    try {
-      const bridged = await bridge()
-      let nextProfile = null
-      if (bridged) {
-        try {
-          nextProfile = await ensureUserDoc(nextUser)
-        } catch (err) {
-          devWarn('Could not load the profile:', err)
-        }
-      }
-      apiUserRef.current = nextUser
-      setApiUser(nextUser)
-      setProfile(nextProfile)
-    } finally {
-      bridgingRef.current = false
-    }
-  }, [bridge])
+    resetBridgeErrors()
+    if (apiUserRef.current?.uid !== nextUser.uid) setProfile(null)
+    setProfileStatus('loading')
+    const bridged = await runBridge()
+    apiUserRef.current = nextUser
+    writeSignedInHint(true)
+    if (bridged) await loadProfile(nextUser)
+    // No Firebase config at all: nothing to load, keep the old "no profile yet" behaviour.
+    else setProfileStatus(firebaseReady ? 'error' : 'ready')
+    setApiUser(nextUser)
+  }, [loadProfile, resetBridgeErrors, runBridge, setProfileStatus])
 
   // The server bumped the credential version (password / email change): the current bridge
   // token is rejected by the rules, so re-mint it right away and publish the updated user.
   const rebridge = useCallback(async (nextUser) => {
-    bridgingRef.current = true
-    lastRebridgeAtRef.current = Date.now()
-    try {
-      await bridge()
-      apiUserRef.current = nextUser
-      setApiUser(nextUser)
-    } finally {
-      bridgingRef.current = false
-    }
-  }, [bridge])
+    await runBridge({ fresh: true })
+    publishUser(nextUser)
+  }, [publishUser, runBridge])
+
+  // /me said 401 on start: a leftover (pre-migration) Firebase session must never outlive ours.
+  const onAnonymous = useCallback(async () => {
+    writeSignedInHint(false)
+    if (!firebaseReady) return
+    await auth.authStateReady()
+    if (auth.currentUser) await signOut(auth).catch(() => undefined)
+  }, [])
+
+  const { loading, sessionUnknown, retryRestore } = useSessionRestore({ bootstrap, onAnonymous })
+
+  // Profile failed to load (bridge down, offline): try again after every new bridge token.
+  useEffect(() => {
+    const current = apiUserRef.current
+    if (current && profileStatusRef.current === 'error') loadProfile(current)
+  }, [bridgeEpoch, loadProfile])
+
+  /** Retry button / back online: re-bridge if needed, then load the profile again. */
+  const retryProfile = useCallback(async () => {
+    const current = apiUserRef.current
+    if (!current || profileStatusRef.current !== 'error') return
+    setProfileStatus('loading')
+    const bridged = auth.currentUser ? true : await runBridge()
+    if (bridged) await loadProfile(current)
+    else setProfileStatus('error')
+  }, [loadProfile, runBridge, setProfileStatus])
+
+  const retrySession = useCallback(
+    () => (apiUserRef.current ? retryProfile() : retryRestore()),
+    [retryProfile, retryRestore],
+  )
 
   useEffect(() => {
-    let cancelled = false
-    ;(async () => {
-      try {
-        const me = await fetchMe()
-        if (cancelled) return
-        if (me) {
-          await bootstrap(me)
-        } else if (firebaseReady) {
-          // A leftover (pre-migration, persisted) Firebase session must never outlive ours.
-          await auth.authStateReady()
-          if (auth.currentUser) await signOut(auth).catch(() => undefined)
-        }
-      } catch (err) {
-        devWarn('Could not restore the session:', err)
-      } finally {
-        if (!cancelled) setLoading(false)
-      }
-    })()
-    return () => {
-      cancelled = true
-    }
-  }, [bootstrap])
-
-  // Bridge dropped or rejected while we think we're signed in: the server revokes Firebase refresh
-  // tokens / bumps the credential version on logout-all, session revoke, password or email change.
-  // Still signed in with us → one re-bridge (at most every 30 s); /me says 401 → sign out.
-  // Data listeners call this on `permission-denied`.
-  const recoverBridge = useCallback(async () => {
-    if (!firebaseReady || !apiUserRef.current || bridgingRef.current) return
-    try {
-      const me = await fetchMe()
-      if (!me) {
-        // Route gates redirect to /login; an explicit logout() already wipes the caches.
-        clearSession()
-        return
-      }
-      const now = Date.now()
-      if (now - lastRebridgeAtRef.current < REBRIDGE_MIN_INTERVAL_MS) return
-      lastRebridgeAtRef.current = now
-      bridgingRef.current = true
-      try {
-        await bridge()
-      } finally {
-        bridgingRef.current = false
-      }
-    } catch (err) {
-      devWarn('Session re-check failed:', err)
-    }
-  }, [bridge, clearSession])
+    window.addEventListener('online', retryProfile)
+    return () => window.removeEventListener('online', retryProfile)
+  }, [retryProfile])
 
   useEffect(() => {
     if (!firebaseReady) return undefined
@@ -241,12 +174,25 @@ export function AuthProvider({ children }) {
     })
   }, [recoverBridge])
 
+  // Another tab signed out (logout, logout-all, account deleted): follow it.
+  useEffect(() => subscribeSignOut(() => {
+    if (!apiUserRef.current) {
+      clearDraft()
+      return
+    }
+    publishUser(null)
+    finishSignOut({ broadcast: false })
+  }), [clearDraft, finishSignOut, publishUser])
+
   const refreshProfile = useCallback(async () => {
     const uid = apiUserRef.current?.uid
     if (!uid || !auth.currentUser) return
     const snap = await getDoc(doc(db, 'users', uid))
-    if (snap.exists()) setProfile(snap.data())
-  }, [])
+    if (snap.exists()) {
+      setProfile(snap.data())
+      setProfileStatus('ready')
+    }
+  }, [setProfileStatus])
 
   const register = useCallback(async ({ email, password, name }) => {
     await authPost('register', { email, password, ...(name ? { name } : {}) })
@@ -257,27 +203,26 @@ export function AuthProvider({ children }) {
   // The account is created only when the code AND the registration password match.
   const verifyEmail = useCallback(async (code, password) => {
     const email = apiUserRef.current?.email ?? pendingEmail
-    const pw = password || registrationPasswordRef.current
+    const pw = password || passwordRef.current
     const { user } = await authPost('verify-email', { email, code, password: pw })
     await bootstrap(user)
-    setRegistrationPassword(null)
-    setPendingEmail(null)
+    clearDraft()
     return user
-  }, [bootstrap, pendingEmail, setPendingEmail, setRegistrationPassword])
+  }, [bootstrap, clearDraft, passwordRef, pendingEmail])
 
   // A new code re-creates the pending registration, so it needs the password (and name) again.
   const resendVerification = useCallback(async (password) => {
     const email = apiUserRef.current?.email ?? pendingEmail
     if (!email) return
-    const pw = password || registrationPasswordRef.current
+    const pw = password || passwordRef.current
     if (!pw) {
       const err = new Error('Password required')
       err.code = 'auth/missing-password'
       throw err
     }
-    const name = registrationNameRef.current
+    const name = nameRef.current
     await authPost('verify-email/resend', { email, password: pw, ...(name ? { name } : {}) })
-  }, [pendingEmail])
+  }, [nameRef, passwordRef, pendingEmail])
 
   const checkVerified = useCallback(async () => {
     const me = await fetchMe()
@@ -285,12 +230,9 @@ export function AuthProvider({ children }) {
     const wasVerified = !!apiUserRef.current?.emailVerified
     // Verified elsewhere: re-mint the bridge so the bb_ev claim reaches the rules.
     if (me.emailVerified && !wasVerified) await bootstrap(me)
-    else {
-      apiUserRef.current = me
-      setApiUser(me)
-    }
+    else publishUser(me)
     return !!me.emailVerified
-  }, [bootstrap])
+  }, [bootstrap, publishUser])
 
   const login = useCallback(async ({ email, password }) => {
     let user
@@ -305,46 +247,25 @@ export function AuthProvider({ children }) {
       }
       throw err
     }
-    setRegistrationPassword(null)
-    setPendingEmail(null)
+    clearDraft()
     await bootstrap(user)
     return user
-  }, [bootstrap, setPendingEmail, setRegistrationPassword])
-
-  // Sign-in with a one-time email code. The server always answers 202 (no account enumeration).
-  const requestLoginCode = useCallback(async (email) => {
-    await authPost('otp/request', { email })
-  }, [])
+  }, [bootstrap, clearDraft, setPendingEmail, setRegistrationPassword])
 
   const loginWithCode = useCallback(async (email, code) => {
     const { user } = await authPost('otp/verify', { email, code })
-    setRegistrationPassword(null)
-    setPendingEmail(null)
+    clearDraft()
     await bootstrap(user)
     return user
-  }, [bootstrap, setPendingEmail, setRegistrationPassword])
-
-  // Google sign-in is a top-level navigation to our server (OAuth code + PKCE); the server
-  // redirects back to /app with a session cookie, or to /login?error=oauth_*. The promise never
-  // settles so the caller keeps its loading state until the page unloads.
-  const loginWithGoogle = useCallback(() => {
-    window.location.assign(GOOGLE_START_URL)
-    return new Promise(() => {})
-  }, [])
-
-  // Forgot password: the server always answers 202 (no account enumeration).
-  const requestPasswordReset = useCallback(async (email) => {
-    await authPost('password/reset-request', { email })
-  }, [])
+  }, [bootstrap, clearDraft])
 
   // Sets the new password and starts a fresh session (all other sessions are ended).
   const confirmPasswordReset = useCallback(async (email, code, newPassword) => {
     const { user } = await authPost('password/reset-confirm', { email, code, newPassword })
-    setRegistrationPassword(null)
-    setPendingEmail(null)
+    clearDraft()
     await bootstrap(user)
     return user
-  }, [bootstrap, setPendingEmail, setRegistrationPassword])
+  }, [bootstrap, clearDraft])
 
   const changePassword = useCallback(async (currentPassword, newPassword) => {
     const { user } = await authPost('password/change', { currentPassword, newPassword })
@@ -352,20 +273,22 @@ export function AuthProvider({ children }) {
     return user
   }, [rebridge])
 
-  // Mails a code to the NEW address. Needs the current password (passwordless → password_not_set).
-  const requestEmailChange = useCallback(async (newEmail, currentPassword) => {
-    await authPost('email/change-request', { newEmail, currentPassword })
-  }, [])
-
   const confirmEmailChange = useCallback(async (newEmail, code) => {
     const { user } = await authPost('email/change-confirm', { newEmail, code })
     await rebridge(user)
     return user
   }, [rebridge])
 
-  // Irreversible; ends with a hard navigation to '/'.
+  // Irreversible; ends with a hard navigation to '/'. Listener errors during the delete must not
+  // trigger a recovery sign-out racing it.
   const deleteAccount = useCallback(async (currentPassword) => {
-    await deleteAccountAndData({ password: currentPassword })
+    signingOutRef.current = true
+    try {
+      await deleteAccountAndData({ password: currentPassword })
+    } catch (err) {
+      signingOutRef.current = false
+      throw err
+    }
   }, [])
 
   const completeOnboarding = useCallback(async (data = {}) => {
@@ -375,43 +298,49 @@ export function AuthProvider({ children }) {
     await refreshProfile()
   }, [refreshProfile])
 
-  // Ends the server session, then signs the bridge out and wipes offline caches.
+  // Ends the server session first. Only a 2xx or a 401 (already gone) lets us sign out locally:
+  // with a still-valid cookie a local wipe would just sign the user back in on reload.
+  // @returns {Promise<boolean>} false when the server could not be reached (a toast says so)
   const logout = useCallback(async () => {
-    setRegistrationPassword(null)
-    setPendingEmail(null)
-    await authPost('logout').catch(() => undefined)
-    await signOutAndClear()
-  }, [setPendingEmail, setRegistrationPassword])
+    try {
+      await authPost('logout')
+    } catch (err) {
+      const nothingToEnd = !apiUserRef.current && !readSignedInHint()
+      if (!isUnauthorized(err) && !nothingToEnd) {
+        devWarn('Sign-out failed:', err)
+        toast.error(t('auth.logoutFailed'))
+        return false
+      }
+    }
+    await finishSignOut()
+    return true
+  }, [finishSignOut, t, toast])
 
+  // Same rule as logout; errors are re-thrown for the caller's toast (DevicesCard).
   const logoutAll = useCallback(async () => {
-    await authPost('logout-all')
-    setRegistrationPassword(null)
-    setPendingEmail(null)
-    await signOutAndClear()
-  }, [setPendingEmail, setRegistrationPassword])
-
-  const listSessions = useCallback(async () => {
-    const { sessions } = await authGet('sessions')
-    return sessions
-  }, [])
+    try {
+      await authPost('logout-all')
+    } catch (err) {
+      if (!isUnauthorized(err)) throw err
+    }
+    await finishSignOut()
+  }, [finishSignOut])
 
   const revokeSession = useCallback(async (id) => {
     await authDelete(`sessions/${encodeURIComponent(id)}`)
     // Revoking the current session clears our cookie — finish the sign-out locally too.
-    if (!(await fetchMe())) await signOutAndClear()
-  }, [])
-
-  const listSecurityEvents = useCallback(async () => {
-    const { events } = await authGet('security-events')
-    return events
-  }, [])
+    if ((await probeSession()).status === 'anon') await finishSignOut()
+  }, [finishSignOut])
 
   const user = useMemo(() => (apiUser ? toAppUser(apiUser, profile) : null), [apiUser, profile])
 
   const value = {
     user,
     profile,
+    profileStatus,
     loading,
+    sessionUnknown,
+    retrySession,
     firebaseReady,
     isVerified: !!user && user.emailVerified,
     onboardingDone: !!profile?.onboardingDone,
@@ -425,7 +354,6 @@ export function AuthProvider({ children }) {
     loginWithGoogle,
     resendVerification,
     checkVerified,
-    resetPassword: requestPasswordReset,
     requestPasswordReset,
     confirmPasswordReset,
     changePassword,
@@ -434,6 +362,7 @@ export function AuthProvider({ children }) {
     deleteAccount,
     recoverBridge,
     bridgeEpoch,
+    bridgeError,
     completeOnboarding,
     refreshProfile,
     logout,

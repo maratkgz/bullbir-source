@@ -43,6 +43,8 @@ export type Route = {
   handler: (ctx: RequestContext) => Promise<RouteResult>
   /** Don't answer HEAD with this GET route (it has side effects, e.g. the OAuth callback). */
   noHead?: boolean
+  /** Longer than the default handler timeout, for slow multi-step routes (account deletion). */
+  timeoutMs?: number
 }
 
 type Match = { route: Route; params: Record<string, string> }
@@ -162,7 +164,7 @@ export function createHandler(
 
       const result = await withTimeout(
         match.route.handler({ req, env, ipKey, ipPrefix: ipPrefix(ip), limiter, requestId, params: match.params }),
-        timeoutMs,
+        match.route.timeoutMs ?? timeoutMs,
       )
       status = result.status ?? 200
       safeSend(res, status, result.body, { ...result.headers, 'X-Request-Id': requestId }, requestId)
@@ -170,7 +172,7 @@ export function createHandler(
       const safe = isAppError(err) ? err : new AppError('internal', 'Internal error')
       status = safe.status
       if (!isAppError(err)) log.error('unhandled error', { requestId, path, err })
-      else if (safe.status >= 500) log.error('request failed', { requestId, path, errorCode: safe.code })
+      else if (safe.status >= 500) log.error('request failed', { requestId, path, failure: safe.code })
       const headers: HeaderMap = { 'X-Request-Id': requestId }
       if (safe.retryAfter) headers['Retry-After'] = String(safe.retryAfter)
       if (method === 'GET' && path.startsWith('oauth/')) {
@@ -181,7 +183,8 @@ export function createHandler(
         safeSend(res, 302, null, { ...headers, Location: `/login?error=${reason}` }, requestId)
         return
       }
-      safeSend(res, safe.status, { error: { code: safe.code, message: safe.message, requestId } }, headers, requestId)
+      const error = { code: safe.code, message: safe.message, requestId, ...(safe.fields ? { fields: safe.fields } : {}) }
+      safeSend(res, safe.status, { error }, headers, requestId)
     } finally {
       log.info('request', { requestId, method, path, status, ms: Date.now() - started, ip: ipPrefix(ip) })
     }

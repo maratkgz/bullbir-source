@@ -6,6 +6,7 @@ import {
 } from 'firebase/firestore'
 import { auth, db } from './config'
 import { authPost } from '../auth/api'
+import { broadcastSignOut, writeSignedInHint } from '../auth/sessionSignals'
 
 // Every per-user subcollection under users/{uid}. Keep in sync with firestore.rules.
 export const USER_COLLECTIONS = [
@@ -48,14 +49,30 @@ async function clearLocalData() {
   }
 }
 
-/** Sign out, wipe local copies of user data, and hard-reload to the login page. */
-export async function signOutAndClear() {
+/** Waits for queued offline writes, at most PENDING_WRITES_TIMEOUT_MS. */
+async function flushPendingWrites() {
+  let timer
+  const timeout = new Promise((resolve) => {
+    timer = setTimeout(resolve, PENDING_WRITES_TIMEOUT_MS)
+  })
+  try {
+    await Promise.race([waitForPendingWrites(db).catch(() => undefined), timeout])
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+/**
+ * Sign out, wipe local copies of user data, and hard-reload to the login page. Call it only once
+ * the server session is gone (logout answered 2xx/401): otherwise the cookie signs the user back in.
+ * @param {{ broadcast?: boolean }} [options] false when another tab already announced the sign-out
+ */
+export async function signOutAndClear({ broadcast = true } = {}) {
+  writeSignedInHint(false)
+  if (broadcast) broadcastSignOut()
   // Give queued offline writes a chance to reach the server before the cache is wiped.
-  await Promise.race([
-    waitForPendingWrites(db).catch(() => undefined),
-    new Promise((resolve) => setTimeout(resolve, PENDING_WRITES_TIMEOUT_MS)),
-  ])
-  await signOut(auth)
+  await flushPendingWrites()
+  await signOut(auth).catch(() => undefined)
   await clearLocalData()
   window.location.replace('/login')
 }
@@ -74,6 +91,8 @@ export async function deleteAccountAndData({ password }) {
     throw err
   }
   await authPost('account/delete', { currentPassword: password })
+  writeSignedInHint(false)
+  broadcastSignOut()
   await clearLocalData()
   window.location.replace('/')
 }

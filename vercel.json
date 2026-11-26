@@ -40,5 +40,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/auth/[...route].ts": {
+      "maxDuration": 30
+    }
+  }
 }

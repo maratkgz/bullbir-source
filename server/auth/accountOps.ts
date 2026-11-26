@@ -7,7 +7,7 @@ import { tombstoneCredentials } from './credentials.js'
 import { emailKey } from './email.js'
 import { SECURITY_EVENTS } from './events.js'
 import { OTP } from './otp.js'
-import { SESSIONS, revokeFirebaseTokens } from './sessions.js'
+import { SESSIONS, deleteAll, revokeFirebaseTokens } from './sessions.js'
 import { THROTTLE } from './throttle.js'
 import { now } from './time.js'
 import { ACCOUNTS, EMAILS, USERS, findUserByEmail, isAddressTaken } from './users.js'
@@ -30,9 +30,7 @@ export async function setPassword(uid: string, passwordHash: string): Promise<vo
 async function deleteWhere(collection: string, field: string, value: string): Promise<void> {
   const db = adminDb()
   const snap = await db.collection(collection).where(field, '==', value).get()
-  const writer = db.bulkWriter()
-  for (const doc of snap.docs) void writer.delete(doc.ref)
-  await writer.close()
+  await deleteAll(snap.docs.map((d) => d.ref))
 }
 
 /** Drops codes still waiting for this account (login / reset / email change) after a credential change. */
@@ -85,7 +83,7 @@ async function syncFirebaseEmail(uid: string, email: string): Promise<void> {
     await adminAuth().updateUser(uid, { email, emailVerified: true })
   } catch (err) {
     const code = (err as { code?: string }).code
-    if (code !== 'auth/user-not-found') log.error('firebase email sync failed', { errorCode: code ?? 'unknown' })
+    if (code !== 'auth/user-not-found') log.error('firebase email sync failed', { failure: code ?? 'unknown' })
   }
 }
 

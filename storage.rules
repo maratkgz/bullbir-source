@@ -14,9 +14,14 @@ service firebase.storage {
         || request.auth.token.get('bb_cv', 0) >= firestore.get(/databases/(default)/documents/auth_state/$(uid)).data.cv;
     }
 
+    // Only Firebase sessions minted by our auth server (custom tokens).
+    function viaOurServer() {
+      return request.auth != null && request.auth.token.firebase.sign_in_provider == 'custom';
+    }
+
     match /avatars/{uid} {
-      allow read, delete: if request.auth != null && request.auth.uid == uid && freshCredentials(uid);
-      allow write: if request.auth != null && request.auth.uid == uid && freshCredentials(uid)
+      allow read, delete: if viaOurServer() && request.auth.uid == uid && freshCredentials(uid);
+      allow write: if viaOurServer() && request.auth.uid == uid && freshCredentials(uid)
         && request.auth.token.get('bb_ev', false) == true
         && request.resource.size < 2 * 1024 * 1024
         && request.resource.contentType.matches('image/(png|jpeg|webp|gif)');

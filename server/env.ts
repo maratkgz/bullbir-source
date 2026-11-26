@@ -76,7 +76,7 @@ const production = common.extend({
   APP_ORIGINS: productionOrigins,
   /** Service account JSON, base64-encoded (Firebase Console → Project settings → Service accounts). */
   FIREBASE_SERVICE_ACCOUNT_BASE64: z.string().min(1),
-  UPSTASH_REDIS_REST_URL: z.url(),
+  UPSTASH_REDIS_REST_URL: z.url().refine((v) => v.startsWith('https://'), { message: 'must be an https URL' }),
   UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
   /** Resend API key (resend.com → API Keys) and a sender on a verified domain. */
   RESEND_API_KEY: z.string().min(1),

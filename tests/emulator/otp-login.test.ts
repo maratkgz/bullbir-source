@@ -261,7 +261,7 @@ suite('sign in with an email code (emulator)', () => {
     const sent = loginMails(u.email)[0]!
     expect(sent.code).toMatch(/^\d{8}$/)
     expect(sent.device).toBe('Firefox · Linux')
-    expect(sent.at).toMatch(/^\d{4}-\d\d-\d\d \d\d:\d\d$/)
+    expect(sent.at).toMatch(/^\d{4}-\d\d-\d\d \d\d:\d\d UTC$/)
     expect(r.text).not.toContain(sent.code)
 
     const v = await verifyCode(b, u.email, sent.code)

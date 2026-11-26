@@ -19,8 +19,17 @@ export async function credentialVersion(uid: string): Promise<number> {
 }
 
 export async function bumpCredentialVersion(uid: string): Promise<void> {
-  const t = now()
-  await adminDb().collection(AUTH_STATE).doc(uid).set({ cv: t, updatedAt: new Date(t) })
+  const db = adminDb()
+  const ref = db.collection(AUTH_STATE).doc(uid)
+  await db.runTransaction(async (tx) => {
+    const snap = await tx.get(ref)
+    const current = snap.get('cv')
+    const t = now()
+    // Strictly increasing, whatever the instance clock says; a tombstone stays a tombstone.
+    const next = typeof current === 'number' ? Math.max(current + 1, t) : t
+    if (typeof current === 'number' && current >= TOMBSTONE_CV) return
+    tx.set(ref, { cv: Math.min(next, TOMBSTONE_CV - 1), updatedAt: new Date(t) })
+  })
 }
 
 export async function tombstoneCredentials(uid: string): Promise<void> {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import {
   collection,
   query,
@@ -18,10 +18,20 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
   const { user, recoverBridge, bridgeEpoch } = useAuth()
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
+  // Last listener error (Firestore error with `.code`), null while the listener is healthy.
+  const [error, setError] = useState(null)
 
   const path = user ? `users/${user.uid}/${name}` : null
+  const pathRef = useRef(path)
 
   useEffect(() => {
+    // New path (or none): never show the previous user's / collection's items. A re-subscribe
+    // on the same path (new bridge token) keeps them to avoid a flash of empty content.
+    if (pathRef.current !== path) {
+      pathRef.current = path
+      setItems([])
+    }
+    setError(null)
     if (!firebaseReady || !path) {
       setLoading(false)
       return undefined
@@ -32,13 +42,15 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
       q,
       (snap) => {
         setItems(snap.docs.map((d) => ({ id: d.id, ...d.data() })))
+        setError(null)
         setLoading(false)
       },
       (err) => {
         setLoading(false)
+        setError(err)
         // Bridge token outdated (credentials changed elsewhere): re-mint it; bridgeEpoch then
-        // changes and this effect re-subscribes.
-        if (err?.code === 'permission-denied') recoverBridge?.()
+        // changes and this effect re-subscribes. Recovery is deduped and capped in AuthContext.
+        if (err?.code === 'permission-denied') recoverBridge?.(bridgeEpoch)
       },
     )
     return unsub
@@ -74,7 +86,7 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
   )
 
   return useMemo(
-    () => ({ items, loading, add, update, remove }),
-    [items, loading, add, update, remove],
+    () => ({ items, loading, error, add, update, remove }),
+    [items, loading, error, add, update, remove],
   )
 }

@@ -6,6 +6,7 @@
 // Both are top-level browser navigations, so failures redirect instead of returning JSON.
 // GET skips the router's Origin check; the callback is protected by state bound to the cookie.
 import { LIMITS } from '../limits.js'
+import { mailTimestamp } from '../auth/challenge.js'
 import { deviceLabel } from '../auth/device.js'
 import { mailer } from '../auth/mailer.js'
 import { recordEvent } from '../auth/events.js'
@@ -183,7 +184,7 @@ async function notifyLinked(ctx: RequestContext, email: string, providerId: stri
       to: email,
       provider: providerId === 'google' ? 'Google' : providerId,
       device: deviceLabel(ctx.req),
-      at: new Date(now()).toISOString().slice(0, 16).replace('T', ' '),
+      at: mailTimestamp(),
     })
   } catch (err) {
     log.error('link notice mail failed', { requestId: ctx.requestId, err })

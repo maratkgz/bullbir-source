@@ -59,6 +59,9 @@ export const translations = {
     // Auth
     'auth.login': 'Log in',
     'auth.logout': 'Log out',
+    'auth.logoutFailed': "Couldn't sign out — check your connection and try again",
+    'auth.sessionUnavailable.title': "Can't load your account",
+    'auth.sessionUnavailable.body': "We couldn't reach BullBir. Your data is safe — check your connection and try again.",
     'auth.register': 'Sign up',
     'auth.email': 'Email',
     'auth.password': 'Password',
@@ -755,6 +758,8 @@ export const translations = {
     'fb.auth/unauthorized': 'Your session has ended — please log in again',
     'fb.auth/email-unverified': 'Confirm your email: we sent you a 6-digit code',
     'fb.auth/internal': 'Something went wrong on our side. Please try again.',
+    'fb.auth/service-unavailable': 'Service temporarily unavailable, try again in a moment',
+    'fb.auth/invalid-input': 'Check the entered data and try again',
     'fb.default': 'Something went wrong. Please try again.',
   },
 
@@ -806,6 +811,9 @@ export const translations = {
 
     'auth.login': 'Кирүү',
     'auth.logout': 'Чыгуу',
+    'auth.logoutFailed': 'Чыгуу мүмкүн болгон жок — туташууну текшерип, кайталаңыз',
+    'auth.sessionUnavailable.title': 'Аккаунтуңузду жүктөө мүмкүн эмес',
+    'auth.sessionUnavailable.body': 'BullBir менен байланыш жок. Маалыматтарыңыз коопсуз — туташууну текшерип, кайталаңыз.',
     'auth.register': 'Катталуу',
     'auth.email': 'Электрондук почта',
     'auth.password': 'Сырсөз',
@@ -1486,6 +1494,8 @@ export const translations = {
     'fb.auth/unauthorized': 'Сеансыңыз бүттү — кайра кириңиз',
     'fb.auth/email-unverified': 'Почтаңызды ырастаңыз: 6 сандуу код жөнөттүк',
     'fb.auth/internal': 'Биз тараптан ката кетти. Кайра аракет кылыңыз.',
+    'fb.auth/service-unavailable': 'Кызмат убактылуу жеткиликсиз, бир аздан кийин кайталаңыз',
+    'fb.auth/invalid-input': 'Киргизилген маалыматты текшерип, кайталаңыз',
     'fb.default': 'Ката кетти. Кайра аракет кылыңыз.',
   },
 
@@ -1537,6 +1547,9 @@ export const translations = {
 
     'auth.login': 'Войти',
     'auth.logout': 'Выйти',
+    'auth.logoutFailed': 'Не удалось выйти — проверьте соединение и попробуйте снова',
+    'auth.sessionUnavailable.title': 'Не удаётся загрузить аккаунт',
+    'auth.sessionUnavailable.body': 'Нет связи с BullBir. Ваши данные в безопасности — проверьте соединение и попробуйте снова.',
     'auth.register': 'Регистрация',
     'auth.email': 'Эл. почта',
     'auth.password': 'Пароль',
@@ -2217,6 +2230,8 @@ export const translations = {
     'fb.auth/unauthorized': 'Сеанс завершён — войдите снова',
     'fb.auth/email-unverified': 'Подтвердите почту: мы отправили 6-значный код',
     'fb.auth/internal': 'Что-то пошло не так на нашей стороне. Попробуйте снова.',
+    'fb.auth/service-unavailable': 'Сервис временно недоступен, попробуйте чуть позже',
+    'fb.auth/invalid-input': 'Проверьте введённые данные и попробуйте снова',
     'fb.default': 'Что-то пошло не так. Попробуйте снова.',
   },
 }

@@ -8,7 +8,7 @@ import { useOnlineStatus } from './hooks/useOnlineStatus'
 import Splash from './components/ui/Splash'
 import Offline from './components/Offline'
 import AppLayout from './components/layout/AppLayout'
-import PrivateRoute from './components/auth/PrivateRoute'
+import PrivateRoute, { SessionUnavailable } from './components/auth/PrivateRoute'
 
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
@@ -38,30 +38,38 @@ import Assistant from './components/modules/assistant/Assistant'
 import AiAdmin from './components/admin/AiAdmin'
 import Landing from './components/Landing'
 
+// Where a verified user belongs. Only a loaded profile can say "onboarding not done"; while it is
+// loading or failed, /app's PrivateRoute waits or shows the retry screen.
+function homeFor({ profileStatus, onboardingDone }) {
+  return profileStatus === 'ready' && !onboardingDone ? '/onboarding' : '/app/dashboard'
+}
+
 // Redirect already-authenticated users away from auth pages.
 function PublicRoute({ children }) {
-  const { user, loading, isVerified, onboardingDone } = useAuth()
-  if (loading) return <Splash />
-  if (user && isVerified) {
-    return <Navigate to={onboardingDone ? '/app/dashboard' : '/onboarding'} replace />
-  }
+  const auth = useAuth()
+  if (auth.loading) return <Splash />
+  if (auth.user && auth.isVerified) return <Navigate to={homeFor(auth)} replace />
   return children
 }
 
 function VerifyRoute() {
-  const { user, loading, isVerified, onboardingDone, pendingEmail } = useAuth()
+  const auth = useAuth()
+  const { user, loading, isVerified, pendingEmail } = auth
   if (loading) return <Splash />
   // Reachable signed in but unverified, or right after sign-up (no session yet, pendingEmail).
   if (!user) return pendingEmail ? <VerifyEmail /> : <Navigate to="/login" replace />
-  if (isVerified) return <Navigate to={onboardingDone ? '/app/dashboard' : '/onboarding'} replace />
+  if (isVerified) return <Navigate to={homeFor(auth)} replace />
   return <VerifyEmail />
 }
 
 function OnboardingRoute() {
-  const { user, loading, isVerified, onboardingDone } = useAuth()
+  const { user, loading, sessionUnknown, isVerified, profileStatus, onboardingDone } = useAuth()
   if (loading) return <Splash />
+  if (sessionUnknown) return <SessionUnavailable />
   if (!user) return <Navigate to="/login" replace />
   if (!isVerified) return <Navigate to="/verify-email" replace />
+  if (profileStatus === 'idle' || profileStatus === 'loading') return <Splash />
+  if (profileStatus === 'error') return <SessionUnavailable />
   if (onboardingDone) return <Navigate to="/app/dashboard" replace />
   return <Onboarding />
 }

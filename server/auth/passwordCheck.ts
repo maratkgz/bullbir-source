@@ -32,7 +32,7 @@ let running = 0
 const waiting: Array<() => void> = []
 
 async function withLegacySlot<T>(work: () => Promise<T>): Promise<T> {
-  if (running >= MAX_PARALLEL_LEGACY) await new Promise<void>((resolve) => waiting.push(resolve))
+  while (running >= MAX_PARALLEL_LEGACY) await new Promise<void>((resolve) => waiting.push(resolve))
   running++
   try {
     return await work()

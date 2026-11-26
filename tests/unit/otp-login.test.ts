@@ -137,7 +137,7 @@ describe('POST otp/request', () => {
     expect(m.issueCode).toHaveBeenCalledWith('login', emailKey(EMAIL), { uid: 'u1' }, { challenge: sha256Hex(challenge), digits: LOGIN_CODE_DIGITS })
     expect(LOGIN_CODE_DIGITS).toBe(8)
     expect(m.send).toHaveBeenCalledWith({
-      kind: 'login-code', to: EMAIL, code: CODE, device: expect.any(String), at: expect.stringMatching(/^\d{4}-\d\d-\d\d \d\d:\d\d$/),
+      kind: 'login-code', to: EMAIL, code: CODE, device: expect.any(String), at: expect.stringMatching(/^\d{4}-\d\d-\d\d \d\d:\d\d UTC$/),
     })
   })
 

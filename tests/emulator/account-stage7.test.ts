@@ -397,7 +397,7 @@ suite('stage 7 — account operations (emulator)', () => {
       expect(mail.kindsFor(u.email)).toEqual(['reset-code', 'password-changed'])
       const notice = mailsOf('password-changed', u.email)[0]!
       expect(notice.device).toBeTruthy()
-      expect(notice.at).toMatch(/^\d{4}-\d\d-\d\d \d\d:\d\d$/)
+      expect(notice.at).toMatch(/^\d{4}-\d\d-\d\d \d\d:\d\d UTC$/)
 
       const old = await login(u.email, PASSWORD)
       expect(old.status).toBe(401) // not 429: the lock is gone

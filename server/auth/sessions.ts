@@ -68,11 +68,17 @@ export async function findSession(req: IncomingMessage): Promise<Session | null>
   const lastSeen = toMs(snap.get('lastSeenAt')) ?? 0
   if (t - lastSeen >= TOUCH_EVERY_MS) {
     const nextIdle = t + IDLE_MS
-    await ref.update({
+    try {
+      await ref.update({
       lastSeenAt: new Date(t),
       idleExpiresAt: new Date(nextIdle),
       expiresAt: new Date(Math.min(nextIdle, absolute)),
     })
+    } catch (err) {
+      // Deleted meanwhile (logout / revoke in another tab): the session is gone.
+      if ((err as { code?: number }).code === 5) return null
+      throw err
+    }
   }
   return {
     id: ref.id,
@@ -137,6 +143,9 @@ export async function revokeSession(uid: string, publicId: string, currentId: st
   if (!doc) throw new AppError('not_found', 'Session not found')
   await doc.ref.delete()
   await revokeFirebaseTokens(uid)
+  // The revoked device may still hold a bridge token: cut its Firestore access now (other
+  // devices re-mint their token automatically).
+  await bumpCredentialVersion(uid)
   return doc.id === currentId
 }
 
@@ -144,13 +153,21 @@ export async function revokeSession(uid: string, publicId: string, currentId: st
  * Signs the user out everywhere: deletes every session and revokes Firebase refresh tokens, so
  * an already-open tab on another device loses its Firestore access when its ID token expires.
  */
+/** Deletes documents in bulk; throws if any delete failed (no silently surviving session). */
+export async function deleteAll(refs: FirebaseFirestore.DocumentReference[]): Promise<void> {
+  if (refs.length === 0) return
+  const writer = adminDb().bulkWriter()
+  const results = refs.map((ref) => writer.delete(ref))
+  await writer.close()
+  const failed = (await Promise.allSettled(results)).filter((r) => r.status === 'rejected')
+  if (failed.length) throw new Error(`bulk delete failed for ${failed.length} document(s)`)
+}
+
 export async function revokeAllSessions(uid: string): Promise<void> {
   const db = adminDb()
   // First lock out every Firebase token issued so far (rules check the credential version).
   await bumpCredentialVersion(uid)
   const snap = await db.collection(SESSIONS).where('uid', '==', uid).get()
-  const writer = db.bulkWriter()
-  for (const d of snap.docs) void writer.delete(d.ref)
-  await writer.close()
+  await deleteAll(snap.docs.map((d) => d.ref))
   await revokeFirebaseTokens(uid)
 }

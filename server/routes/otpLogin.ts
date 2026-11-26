@@ -15,6 +15,7 @@ import type { RequestContext, Route, RouteResult } from '../router.js'
 import { parseBody } from '../validate.js'
 import { clearOtpCookie, otpCookie, readOtpChallenge } from '../auth/cookies.js'
 import { randomToken, sha256Hex } from '../auth/crypto.js'
+import { EMAIL_CODE_DIGITS, mailTimestamp } from '../auth/challenge.js'
 import { deviceLabel } from '../auth/device.js'
 import { emailKey, emailSchema } from '../auth/email.js'
 import { mailer } from '../auth/mailer.js'
@@ -22,12 +23,11 @@ import { CODE_TTL_MS, consumeCode, issueCode } from '../auth/otp.js'
 import { withMinDuration } from '../auth/pacing.js'
 import { revokeAllSessions } from '../auth/sessions.js'
 import { liftLock } from '../auth/throttle.js'
-import { now } from '../auth/time.js'
 import { claimUnverifiedAccount, findUserByEmail, getUser } from '../auth/users.js'
 import { recordEvent } from '../auth/events.js'
 import { startSession } from './auth.js'
 
-export const LOGIN_CODE_DIGITS = 8
+export const LOGIN_CODE_DIGITS = EMAIL_CODE_DIGITS
 const code = z.string().regex(new RegExp(`^\\d{${LOGIN_CODE_DIGITS}}$`))
 const VERIFY_MIN_MS = 300
 
@@ -46,7 +46,7 @@ async function sendLoginCode(ctx: RequestContext, email: string, challenge: stri
       to: user.email,
       code: value,
       device: deviceLabel(ctx.req),
-      at: new Date(now()).toISOString().slice(0, 16).replace('T', ' '),
+      at: mailTimestamp(),
     })
   } catch (err) {
     // A mail outage must not turn this endpoint into an "account exists" oracle.
@@ -62,7 +62,7 @@ export const requestLoginCode: Route = {
     const body = await parseBody(ctx.req, z.object({ email: emailSchema }))
     const key = emailKey(body.email)
     // Per address+IP, so others can't use up the owner's budget; plus an overall cap per address.
-    await enforceLimit(LIMITS.otpSendCooldown, `${key}:${ctx.ipKey}`, ctx.limiter)
+    await enforceLimit(LIMITS.otpSendCooldown, `login:${key}:${ctx.ipKey}`, ctx.limiter)
     await enforceLimit(LIMITS.otpRequestPerEmailIp, `${key}:${ctx.ipKey}`, ctx.limiter)
     await enforceLimit(LIMITS.otpRequestPerEmail, key, ctx.limiter)
     const challenge = randomToken()

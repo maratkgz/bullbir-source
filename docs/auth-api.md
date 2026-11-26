@@ -6,7 +6,7 @@ automatically (`credentials: 'same-origin'`). Mutating requests (POST/DELETE) mu
 
 ## Errors
 
-Every error is `{"error": {"code", "message", "requestId"}}`. `message` is for logs/debugging only —
+Every error is `{"error": {"code", "message", "requestId"}}`; `validation_failed` adds `fields` (names of the failing fields, never their values). `message` is for logs/debugging only —
 the UI maps `code` to translated text. 429 and 503 also send `Retry-After` (seconds).
 
 | code | HTTP | meaning |
@@ -21,7 +21,7 @@ the UI maps `code` to translated text. 429 and 503 also send `Retry-After` (seco
 | `origin_rejected` | 403 | foreign or missing Origin |
 | `email_unverified` | 403 | `login`: password is correct but the (imported) account's email was never confirmed — a verification code was mailed; continue with `verify-email` |
 | `password_not_set` | 400 | the account has no password (Google / email-code only) — set one via password reset |
-| `reauth_required` | 401 | sensitive action on a passwordless account with a session older than 10 min — sign in again |
+| `reauth_required` | 401 | reserved (not returned today) |
 | `rate_limited` | 429 | too many attempts (also used while an account is temporarily locked) |
 | `service_unavailable` | 503 | dependency down (limiter, mail) |
 | `internal` | 500 | bug — details only in server logs |
@@ -48,14 +48,16 @@ the UI maps `code` to translated text. 429 and 503 also send `Retry-After` (seco
 | `POST password/reset-request` | `{email}` | `202 {"status":"code_sent"}` + cookie `__Host-otp` | Forgot password. Same answer/cookie/timing (≥ 1 s) for every address; an 8-digit code (mail kind `reset-code`) only for an existing active account. Same limits as `otp/request`. |
 | `POST password/reset-confirm` | `{email, code, newPassword}` (needs `__Host-otp`) | `200 {"user"}` + new session cookie | Password policy first (`weak_password`, `breached_password`). Proves the mailbox: an unverified account is confirmed (old credentials/links wiped). Sets the password, ends **all** sessions + Firebase tokens, lifts the lockout, starts a fresh session. Failures → `invalid_code`. |
 | `POST password/change` | `{currentPassword, newPassword}` (session) | `200 {"user"}` + new session cookie | Wrong current password → `invalid_credentials` (counts toward the lockout). Account without a password (Google / code only) → `password_not_set` (use reset to set one). Ends all other sessions + Firebase tokens; this browser gets a new session. |
-| `POST email/change-request` | `{newEmail, currentPassword?}` (session) | `202 {"status":"code_sent"}` + cookie `__Host-otp` | Re-auth: `currentPassword` required if the account has a password (`invalid_credentials`), otherwise the session must be younger than 10 min (`reauth_required`). Mails an 8-digit code to the NEW address; if it is already taken, the new address gets an "already registered" notice instead — same answer. |
+| `POST email/change-request` | `{newEmail, currentPassword?}` (session) | `202 {"status":"code_sent"}` + cookie `__Host-otp` | Re-auth: `currentPassword` is required (`invalid_credentials` if wrong; counts toward the lockout). Accounts without a password (Google / code only) get `password_not_set` — they set one via password reset first. Mails an 8-digit code to the NEW address; if it is already taken, the new address gets an "already registered" notice instead — same answer. |
 | `POST email/change-confirm` | `{newEmail, code}` (session + `__Host-otp`) | `200 {"user"}` + new session cookie | Moves the account to the new address (verified), notifies the OLD address, ends all other sessions + Firebase tokens. Taken meanwhile / wrong code → `invalid_code`. |
-| `POST account/delete` | `{currentPassword?}` (session) | `200 {"ok":true}` + cookie cleared | Same re-auth rule as email change. Deletes `users/{uid}` with all sub-collections, the account records (`users_auth`, `auth_emails`, `auth_accounts`, codes, lock), all sessions and the user's Firebase Auth record. The client deletes the avatar in Storage and its local cache first. Irreversible. |
+| `POST account/delete` | `{currentPassword}` (session) | `200 {"ok":true}` + cookie cleared | Same re-auth rule as email change (password required; passwordless → `password_not_set`). Up to 25 s. Deletes `users/{uid}` with all sub-collections, the account records (`users_auth`, `auth_emails`, `auth_accounts`, codes, lock), the security journal, all sessions, the avatar in Storage and the user's Firebase Auth record; the client then clears its local cache. The account is disabled and its address released first, so an interrupted deletion never leaves a usable account. Irreversible. |
 | `POST logout` | – | `200 {"ok":true}` + cookie cleared | Works without a session. Also revokes Firebase refresh tokens (other devices silently re-bridge). |
 | `POST logout-all` | – | `200 {"ok":true}` + cookie cleared | All sessions + Firebase refresh tokens revoked. |
 | `GET me` | – | `200 {"user"}` | `401 unauthorized` without a session. |
 | `GET sessions` | – | `200 {"sessions":[{id, current, device, ipPrefix, createdAt, lastSeenAt}]}` | |
 | `DELETE sessions/:id` | – | `200 {"ok":true}` | Revoking the current one also clears the cookie. Revokes Firebase refresh tokens. |
+| `GET health` | – | `200 {"ok":true}` | Liveness check; reveals nothing. |
+| `GET security-events` | – (session) | `200 {"events":[{type, at, device, ipPrefix}]}` | The caller's latest 50 security events, newest first (no uid/meta). |
 | `POST firebase-token` | – | `200 {"token"}` | Custom token for `signInWithCustomToken`; claim `bb_ev` = emailVerified. |
 
 ## Session cookie

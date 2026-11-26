@@ -6,15 +6,14 @@
 //                                                       verified the address; otherwise refuse
 //   3. no account at all                              → create one (verified, no password) + link
 import { FieldValue } from 'firebase-admin/firestore'
-import { adminAuth, adminDb } from '../../firebaseAdmin.js'
-import { log } from '../../log.js'
+import { adminDb } from '../../firebaseAdmin.js'
 import { newUid } from '../crypto.js'
 import { emailKey } from '../email.js'
 import { now } from '../time.js'
-import { EMAILS, USERS } from '../users.js'
+import { ACCOUNTS, EMAILS, USERS, existsInLegacyAuth } from '../users.js'
 import { OAuthError, type OAuthIdentity } from './provider.js'
 
-export const ACCOUNTS = 'auth_accounts'
+export { ACCOUNTS }
 
 export type LinkDecision =
   | { action: 'sign_in'; uid: string }
@@ -55,18 +54,6 @@ export function decideLink({ linkedUid, existingUser, identity }: LinkInput): Li
 export function accountId(providerId: string, sub: string): string {
   if (!sub || sub.includes('/') || providerId.includes('/')) throw new OAuthError('invalid_token', 'Unusable subject')
   return `${providerId}:${sub}`
-}
-
-/** Address still only in Firebase Auth (not yet imported, stage 3)? Then don't create a twin. */
-async function existsInLegacyAuth(email: string): Promise<boolean> {
-  try {
-    await adminAuth().getUserByEmail(email)
-    return true
-  } catch (err) {
-    if ((err as { code?: string }).code === 'auth/user-not-found') return false
-    log.error('legacy account lookup failed', { err })
-    throw err
-  }
 }
 
 export type ResolvedAccount = { uid: string; created: boolean; linked: boolean }

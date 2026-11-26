@@ -8,7 +8,7 @@ export async function parseBody<S extends z.ZodType>(req: ApiRequest, schema: S)
   const result = schema.safeParse(await readJson(req))
   if (!result.success) {
     const fields = [...new Set(result.error.issues.map((i) => i.path.join('.') || '(body)'))]
-    throw new AppError('validation_failed', `Invalid fields: ${fields.join(', ')}`)
+    throw new AppError('validation_failed', `Invalid fields: ${fields.join(', ')}`, { fields })
   }
   return result.data
 }

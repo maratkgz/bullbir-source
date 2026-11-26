@@ -17,7 +17,7 @@ import { emailKey, emailSchema } from '../auth/email.js'
 import { mailer, type AuthMail } from '../auth/mailer.js'
 import { consumeCode, issueCode } from '../auth/otp.js'
 import { withMinDuration } from '../auth/pacing.js'
-import { assertAcceptablePassword, hashPassword, PASSWORD_MAX } from '../auth/password.js'
+import { hashPassword, PASSWORD_MAX } from '../auth/password.js'
 import { checkLoginPassword } from '../auth/passwordCheck.js'
 import { revokeAllSessions } from '../auth/sessions.js'
 import { clearFailures, reserveAttempt } from '../auth/throttle.js'
@@ -78,7 +78,7 @@ export const resetRequest: Route = {
   async handler(ctx) {
     const body = await parseBody(ctx.req, z.object({ email: emailSchema }))
     const key = emailKey(body.email)
-    await enforceLimit(LIMITS.otpSendCooldown, `${key}:${ctx.ipKey}`, ctx.limiter)
+    await enforceLimit(LIMITS.otpSendCooldown, `reset:${key}:${ctx.ipKey}`, ctx.limiter)
     await enforceLimit(LIMITS.resetPerEmail, key, ctx.limiter)
     const challenge = newChallenge()
     return withMinDuration(async (): Promise<RouteResult> => {
@@ -204,6 +204,7 @@ export const emailChangeConfirm: Route = {
 export const accountDelete: Route = {
   method: 'POST',
   path: 'account/delete',
+  timeoutMs: 25_000,
   async handler(ctx) {
     const { user } = await currentUser(ctx)
     const body = await parseBody(ctx.req, z.object({ currentPassword: password.optional() }))

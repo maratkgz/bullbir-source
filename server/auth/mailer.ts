@@ -36,19 +36,19 @@ function render(mail: AuthMail): { subject: string; text: string } {
         subject: 'BullBir: your sign-in code',
         text: `Your BullBir sign-in code: ${mail.code}\n`
           + `It expires in ${CODE_TTL_MINUTES} minutes and works only in the browser that asked for it.\n`
-          + `Requested from: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Requested from: ${mail.device}, ${mail.at}.\n\n`
           + `Ваш код для входа в BullBir: ${mail.code}\n`
           + `Действует ${CODE_TTL_MINUTES} минут и только в том браузере, где его запросили.\n`
-          + `Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Запрос: ${mail.device}, ${mail.at}.\n\n`
           + 'BullBir staff will never ask you for this code. If you did not try to sign in, ignore this email — your account is safe.\n'
           + 'Сотрудники BullBir никогда не попросят этот код. Если вы не пытались войти — проигнорируйте письмо, аккаунт в безопасности.',
       }
     case 'provider-linked':
       return {
         subject: `BullBir: ${mail.provider} sign-in was added`,
-        text: `${mail.provider} sign-in was added to your BullBir account (${mail.device}, ${mail.at} UTC).\n`
+        text: `${mail.provider} sign-in was added to your BullBir account (${mail.device}, ${mail.at}).\n`
           + 'If this was not you, sign in with your password or an email code and sign out everywhere.\n\n'
-          + `К вашему аккаунту BullBir добавлен вход через ${mail.provider} (${mail.device}, ${mail.at} UTC).\n`
+          + `К вашему аккаунту BullBir добавлен вход через ${mail.provider} (${mail.device}, ${mail.at}).\n`
           + 'Если это были не вы — войдите паролем или кодом из почты и нажмите «Выйти везде».',
       }
     case 'reset-code':
@@ -56,10 +56,10 @@ function render(mail: AuthMail): { subject: string; text: string } {
         subject: 'BullBir: password reset code',
         text: `Your BullBir password reset code: ${mail.code}\n`
           + `It expires in ${CODE_TTL_MINUTES} minutes and works only in the browser that asked for it.\n`
-          + `Requested from: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Requested from: ${mail.device}, ${mail.at}.\n\n`
           + `Код для сброса пароля BullBir: ${mail.code}\n`
           + `Действует ${CODE_TTL_MINUTES} минут и только в том браузере, где его запросили.\n`
-          + `Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Запрос: ${mail.device}, ${mail.at}.\n\n`
           + 'BullBir staff will never ask you for this code. If you did not ask to reset your password, ignore this email.\n'
           + 'Сотрудники BullBir никогда не попросят этот код. Если вы не сбрасывали пароль — проигнорируйте письмо.',
       }
@@ -67,33 +67,33 @@ function render(mail: AuthMail): { subject: string; text: string } {
       return {
         subject: 'BullBir: confirm your new email',
         text: `Code to confirm this address for your BullBir account: ${mail.code}\n`
-          + `It expires in ${CODE_TTL_MINUTES} minutes. Requested from: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `It expires in ${CODE_TTL_MINUTES} minutes. Requested from: ${mail.device}, ${mail.at}.\n\n`
           + `Код для подтверждения этого адреса в аккаунте BullBir: ${mail.code}\n`
-          + `Действует ${CODE_TTL_MINUTES} минут. Запрос: ${mail.device}, ${mail.at} (UTC).\n\n`
+          + `Действует ${CODE_TTL_MINUTES} минут. Запрос: ${mail.device}, ${mail.at}.\n\n`
           + 'If you did not ask for this, ignore this email. / Если вы этого не запрашивали — проигнорируйте письмо.',
       }
     case 'email-changed':
       return {
         subject: 'BullBir: your account email was changed',
-        text: `The email of your BullBir account was changed to ${mail.newEmail} (${mail.device}, ${mail.at} UTC).\n`
+        text: `The email of your BullBir account was changed to ${mail.newEmail} (${mail.device}, ${mail.at}).\n`
           + 'If this was not you, contact support right away.\n\n'
-          + `Почта вашего аккаунта BullBir изменена на ${mail.newEmail} (${mail.device}, ${mail.at} UTC).\n`
+          + `Почта вашего аккаунта BullBir изменена на ${mail.newEmail} (${mail.device}, ${mail.at}).\n`
           + 'Если это были не вы — срочно напишите в поддержку.',
       }
     case 'password-changed':
       return {
         subject: 'BullBir: your password was changed',
-        text: `The password of your BullBir account was changed (${mail.device}, ${mail.at} UTC). All other devices were signed out.\n`
+        text: `The password of your BullBir account was changed (${mail.device}, ${mail.at}). All other devices were signed out.\n`
           + 'If this was not you, reset your password with "Forgot password" right away.\n\n'
-          + `Пароль вашего аккаунта BullBir изменён (${mail.device}, ${mail.at} UTC). На остальных устройствах выполнен выход.\n`
+          + `Пароль вашего аккаунта BullBir изменён (${mail.device}, ${mail.at}). На остальных устройствах выполнен выход.\n`
           + 'Если это были не вы — срочно сбросьте пароль через «Забыли пароль?».',
       }
     case 'account-deleted':
       return {
         subject: 'BullBir: your account was deleted',
-        text: `Your BullBir account and all its data were deleted (${mail.device}, ${mail.at} UTC).\n`
+        text: `Your BullBir account and all its data were deleted (${mail.device}, ${mail.at}).\n`
           + 'If this was not you, contact support right away.\n\n'
-          + `Ваш аккаунт BullBir и все его данные удалены (${mail.device}, ${mail.at} UTC).\n`
+          + `Ваш аккаунт BullBir и все его данные удалены (${mail.device}, ${mail.at}).\n`
           + 'Если это были не вы — срочно напишите в поддержку.',
       }
     case 'already-registered':

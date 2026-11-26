@@ -48,13 +48,16 @@ export class AppError extends Error {
   readonly status: number
   /** Seconds the client should wait (only for rate_limited). */
   readonly retryAfter: number | undefined
+  /** Names of the request fields that failed validation (never their values). */
+  readonly fields: string[] | undefined
 
-  constructor(code: ErrorCode, message?: string, options: { retryAfter?: number } = {}) {
+  constructor(code: ErrorCode, message?: string, options: { retryAfter?: number; fields?: string[] } = {}) {
     super(message ?? code)
     this.name = 'AppError'
     this.code = code
     this.status = STATUS[code]
     this.retryAfter = options.retryAfter
+    this.fields = options.fields
   }
 }
 

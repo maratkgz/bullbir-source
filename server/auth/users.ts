@@ -81,7 +81,7 @@ export async function findUserByEmail(email: string): Promise<AuthUser | null> {
  * Accounts that still live only in Firebase Auth (imported in stage 3). Until then, an address
  * known there counts as taken, so nobody can create a duplicate account for it.
  */
-async function existsInLegacyAuth(email: string): Promise<boolean> {
+export async function existsInLegacyAuth(email: string): Promise<boolean> {
   try {
     await adminAuth().getUserByEmail(email)
     return true
@@ -97,6 +97,21 @@ export async function isAddressTaken(email: string): Promise<boolean> {
   const user = await findUserByEmail(email)
   if (user) return user.emailVerified
   return existsInLegacyAuth(email)
+}
+
+function newAccountDoc(input: { email: string; passwordHash: string; displayName: string | null }, ts: Date) {
+  return {
+    email: input.email,
+    emailVerified: true,
+    passwordHash: input.passwordHash,
+    displayName: input.displayName,
+    providers: ['password'],
+    status: 'active',
+    createdAt: ts,
+    updatedAt: ts,
+    lastLoginAt: null,
+    passwordChangedAt: ts,
+  }
 }
 
 /**
@@ -118,7 +133,15 @@ export async function createVerifiedUser(input: {
     if (typeof existingUid === 'string') {
       const userRef = db.collection(USERS).doc(existingUid)
       const snap = await tx.get(userRef)
-      if (!snap.exists || snap.get('emailVerified') === true) return null
+      if (snap.exists && snap.get('emailVerified') === true) return null
+      if (!snap.exists) {
+        // Corrupt index (points at nothing): repair it by creating the account fresh.
+        const uid = newUid()
+        const doc = newAccountDoc(input, ts)
+        tx.set(indexRef, { uid, createdAt: ts })
+        tx.create(db.collection(USERS).doc(uid), doc)
+        return fromDoc(uid, doc)
+      }
       // Take-over of an UNVERIFIED record (e.g. imported, possibly pre-registered by someone else):
       // the mailbox owner gets a clean account — old password and provider links are wiped.
       const links = await tx.get(db.collection(ACCOUNTS).where('uid', '==', existingUid))
@@ -137,18 +160,7 @@ export async function createVerifiedUser(input: {
       })
     }
     const uid = newUid()
-    const doc = {
-      email: input.email,
-      emailVerified: true,
-      passwordHash: input.passwordHash,
-      displayName: input.displayName,
-      providers: ['password'],
-      status: 'active',
-      createdAt: ts,
-      updatedAt: ts,
-      lastLoginAt: null,
-      passwordChangedAt: ts,
-    }
+    const doc = newAccountDoc(input, ts)
     tx.create(indexRef, { uid, createdAt: ts })
     tx.create(db.collection(USERS).doc(uid), doc)
     return fromDoc(uid, doc)
