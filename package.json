@@ -55,6 +55,11 @@
     "vitest": "^2.1.9"
   },
   "engines": {
-    "node": ">=22"
+    "node": "24.x"
+  },
+  "overrides": {
+    "jwks-rsa": {
+      "jose": "5.10.0"
+    }
   }
 }
