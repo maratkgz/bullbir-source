@@ -16,12 +16,22 @@ const serviceAccountSchema = z.object({
   private_key: z.string().min(1),
 })
 
-function decodeServiceAccount(base64: string): ServiceAccount {
+/**
+ * Accepts the service-account JSON either base64-encoded (recommended) or pasted as-is — pasting
+ * the file's text into the Vercel dashboard is easier and just as safe (the variable is Sensitive).
+ * Surrounding quotes/whitespace from copy-paste are tolerated.
+ */
+function decodeServiceAccount(value: string): ServiceAccount {
+  const trimmed = value.trim().replace(/^['"]|['"]$/g, '').trim()
   let parsed: unknown
   try {
-    parsed = JSON.parse(Buffer.from(base64, 'base64').toString('utf8'))
+    parsed = trimmed.startsWith('{')
+      ? JSON.parse(trimmed)
+      : JSON.parse(Buffer.from(trimmed.replace(/\s+/g, ''), 'base64').toString('utf8'))
   } catch {
-    throw new EnvError(['FIREBASE_SERVICE_ACCOUNT_BASE64: not base64-encoded JSON'])
+    // Diagnostics without the key material: only the shape of the value.
+    const shape = `length ${trimmed.length}, starts with ${JSON.stringify(trimmed.slice(0, 1))}`
+    throw new EnvError([`FIREBASE_SERVICE_ACCOUNT_BASE64: neither JSON nor base64 JSON (${shape})`])
   }
   const result = serviceAccountSchema.safeParse(parsed)
   // Report field names only — the key material must never reach a log.
