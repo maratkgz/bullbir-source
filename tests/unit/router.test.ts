@@ -156,6 +156,16 @@ describe('createHandler', () => {
     expect(Date.now() - started).toBeLessThan(2000)
   })
 
+  it('serves Vercel-rewritten requests (/api/auth-router?__path=a/b) like /api/auth/a/b', async () => {
+    const nested = await call('DELETE', '/api/auth-router?__path=sessions/abc', { origin: ALLOWED_ORIGIN })
+    expect(nested.res.statusCode).toBe(200)
+    expect(nested.json).toEqual({ deleted: 'abc' })
+    const single = await call('GET', '/api/auth-router?__path=health&x=1')
+    expect(single.res.statusCode).toBe(200)
+    const missing = await call('GET', '/api/auth-router')
+    expect(missing.res.statusCode).toBe(404)
+  })
+
   it('405 lists the allowed methods in an Allow header', async () => {
     const { res } = await call('POST', '/api/auth/health', { origin: ALLOWED_ORIGIN })
     expect(res.headers.allow).toBe('GET')

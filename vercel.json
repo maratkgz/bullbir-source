@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/api/auth/:path*",
+      "destination": "/api/auth-router?__path=:path*"
+    },
+    {
       "source": "/((?!api(?:/|$)|.*\\.).*)",
       "destination": "/index.html"
     }
@@ -42,7 +46,7 @@
     }
   ],
   "functions": {
-    "api/auth/[...route].ts": {
+    "api/auth-router.ts": {
       "maxDuration": 30
     }
   }

@@ -89,9 +89,20 @@ function findRoute(routes: readonly Route[], method: string, path: string): Matc
 }
 
 /** Path below /api/auth/ without query or trailing slashes. Never throws. */
+/** On Vercel every /api/auth/* request is rewritten to this function with the path in `__path`. */
+export const VERCEL_FUNCTION_PATH = '/api/auth-router'
+const PATH_PARAM = '__path'
+
 function relativePath(url: string | undefined): string {
-  const pathname = (url ?? '/').split('?')[0] ?? '/'
-  return pathname.startsWith(API_PREFIX) ? pathname.slice(API_PREFIX.length).replace(/\/+$/, '') : ''
+  const [pathname = '/', query = ''] = (url ?? '/').split('?')
+  if (pathname.startsWith(API_PREFIX)) return pathname.slice(API_PREFIX.length).replace(/\/+$/, '')
+  if (pathname === VERCEL_FUNCTION_PATH || pathname === `${VERCEL_FUNCTION_PATH}/`) {
+    // Vercel's file routing doesn't match multi-segment catch-alls for plain functions, so
+    // vercel.json rewrites /api/auth/:path* here; the original path arrives as a parameter.
+    const raw = new URLSearchParams(query).get(PATH_PARAM) ?? ''
+    return raw.replace(/^\/+|\/+$/g, '')
+  }
+  return ''
 }
 
 /** Sends unless the response is already on its way; a broken socket must not crash the function. */
