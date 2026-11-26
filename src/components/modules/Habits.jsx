@@ -55,7 +55,7 @@ function HabitModal({ habit, onSave, onClose }) {
   }
 
   return (
-    <Modal title={habit ? t('habits.editTitle') : t('habits.newTitle')} onClose={onClose}>
+    <Modal open title={habit ? t('habits.editTitle') : t('habits.newTitle')} onClose={onClose}>
       <form className="auth-form" onSubmit={handleSubmit}>
         <div className="field">
           <label>{t('common.title')}</label>
@@ -336,7 +336,7 @@ export default function Habits() {
       {/* Delete confirm */}
       <AnimatePresence>
         {confirmDel && (
-          <Modal title={t('habits.deleteTitle')} onClose={() => setConfirmDel(null)}>
+          <Modal open title={t('habits.deleteTitle')} onClose={() => setConfirmDel(null)}>
             <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-5)' }}>
               {t('habits.deleteConfirm').replace('{name}', confirmDel.title)}
             </p>
