@@ -7,6 +7,7 @@ import { otpLoginRoutes } from './otpLogin.js'
 import { oauthCallback, oauthStart } from './oauth.js'
 import { accountRoutes } from './account.js'
 import { securityEvents } from './events.js'
+import { clientErrors } from './clientErrors.js'
 
 export const routes: readonly Route[] = [
   health,
@@ -25,4 +26,5 @@ export const routes: readonly Route[] = [
   oauthCallback,
   ...accountRoutes,
   securityEvents,
+  clientErrors,
 ]

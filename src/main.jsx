@@ -8,10 +8,15 @@ import { ThemeProvider } from './context/ThemeContext'
 import { LangProvider } from './context/LangContext'
 import { ToastProvider } from './components/ui/Toast'
 import App from './App'
+import ErrorBoundary from './components/ErrorBoundary'
+import { installGlobalErrorReporting } from './monitoring/reportError'
 import './styles/global.css'
 
 // Auto-update the service worker without forcing a reload.
 registerSW({ immediate: true })
+
+// Crash reports from users' devices go to the server logs (no user content).
+installGlobalErrorReporting()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -20,7 +25,9 @@ createRoot(document.getElementById('root')).render(
         <ToastProvider>
           <AuthProvider>
             <BrowserRouter>
-              <App />
+              <ErrorBoundary>
+                <App />
+              </ErrorBoundary>
             </BrowserRouter>
           </AuthProvider>
         </ToastProvider>

@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import ErrorBoundary from '../ErrorBoundary'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import BottomNav from './BottomNav'
@@ -23,17 +24,18 @@ export default function AppLayout() {
       <div className="app-main">
         <Navbar title={titleKey === 'appName' ? 'BullBir' : t(titleKey)} />
         <main className="app-content">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.22 }}
-            >
+          {/* Enter animation only. An exit animation with AnimatePresence mode="wait" could stall on
+              iOS Safari (fast taps, app backgrounded) and leave the section blank. */}
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.22 }}
+          >
+            <ErrorBoundary resetKey={location.pathname}>
               <Outlet />
-            </motion.div>
-          </AnimatePresence>
+            </ErrorBoundary>
+          </motion.div>
         </main>
       </div>
       <BottomNav />
