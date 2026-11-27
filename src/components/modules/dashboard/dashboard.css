@@ -1,0 +1,222 @@
+/* Dashboard (home). Mobile-first; breakpoints from src/styles/breakpoints.js
+   (md 600 · lg 900 · xl 1200). Selectors that sit on a `.card` are written as
+   `.card.dash-…` on purpose: global.css loads after modules.css, so a plain
+   `.dash-…` background would lose to `.card { background: var(--surface) }`. */
+
+.dash-root { display: flex; flex-direction: column; gap: var(--space-5); min-width: 0; }
+.dash-root .today-wrap { margin-bottom: 0; }
+.dash-nowrap { white-space: nowrap; }
+.dash-inline-icon { display: inline-block; vertical-align: -0.125em; }
+
+/* ── Greeting hero ── */
+.card.dash-hero-card {
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2);
+  padding: clamp(18px, 2vw + 10px, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #fff;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(124, 92, 255, 0.45) 0%, transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(236, 72, 153, 0.18) 0%, transparent 60%),
+    var(--gradient-hero);
+  box-shadow: 0 10px 30px -12px rgba(18, 12, 48, 0.55);
+}
+.dash-greeting-sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+.dash-greeting {
+  color: #fff;
+  font-size: clamp(1.375rem, 1rem + 1.8vw, 2.125rem);
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+.dash-greeting-wave {
+  display: inline-block;
+  vertical-align: -0.1em;
+  color: #fcd34d;
+  transform-origin: 70% 80%;
+}
+.dash-hero-status { color: rgba(255, 255, 255, 0.78); font-size: var(--text-sm); line-height: 1.5; }
+
+.dash-streak-badge {
+  display: inline-flex; align-items: center; flex-wrap: wrap;
+  gap: 4px var(--space-2);
+  max-width: 100%;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+}
+.dash-streak-icon { color: #fb923c; flex-shrink: 0; }
+.dash-streak-num { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 800; line-height: 1; }
+.dash-streak-label { font-size: var(--text-xs); color: rgba(255, 255, 255, 0.8); min-width: 0; overflow-wrap: anywhere; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dash-greeting-wave { animation: dash-wave 2.4s ease-in-out 0.6s 1; }
+}
+@keyframes dash-wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+}
+
+/* ── Stat cards: 2 columns on phones, 4 from lg ── */
+.dash-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+@media (min-width: 900px) {
+  .dash-stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+}
+.dash-stat-cell { min-width: 0; display: flex; }
+.card.dash-stat-card {
+  container-type: inline-size;
+  display: block;
+  flex: 1;
+  min-width: 0;
+  min-height: var(--touch-target);
+  padding: clamp(12px, 1vw + 8px, 20px);
+  color: var(--text);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.dash-stat-inner { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); min-width: 0; }
+@container (min-width: 210px) {
+  .dash-stat-inner { flex-direction: row; align-items: center; gap: var(--space-3); }
+}
+.dash-stat-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--stat-color);
+  background: color-mix(in srgb, var(--stat-color) 14%, transparent);
+}
+.dash-stat-body { display: flex; flex-direction: column; min-width: 0; width: 100%; }
+.dash-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 0.95rem + 0.8vw, var(--text-xl));
+  font-weight: 700; line-height: 1.15;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dash-stat-label, .dash-stat-sub {
+  overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+.dash-stat-label { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.35; margin-top: 2px; }
+.dash-stat-sub { font-size: var(--text-xs); color: var(--text-muted); line-height: 1.35; margin-top: 2px; }
+
+/* ── Quick actions ── */
+.dash-section { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.dash-section-title { font-size: var(--text-md); color: var(--text-secondary); font-weight: 700; }
+.dash-qa-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+@media (min-width: 600px) { .dash-qa-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.dash-qa-grid > * { min-width: 0; display: flex; }
+.dash-qa {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-2);
+  min-height: 96px;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text);
+  font-weight: 600; font-size: var(--text-sm); line-height: 1.3;
+  text-align: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.dash-qa:active { transform: scale(0.97); }
+.dash-qa-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--qa-color);
+  background: color-mix(in srgb, var(--qa-color) 14%, transparent);
+}
+.dash-qa-label { max-width: 100%; overflow-wrap: anywhere; }
+
+/* ── Bottom: today's tasks + mood/quote ── */
+.dash-bottom-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+@media (min-width: 900px) {
+  .dash-bottom-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+}
+.dash-side-col { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+.dash-widget-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.dash-widget-head h3 { font-size: var(--text-md); min-width: 0; overflow-wrap: anywhere; }
+.dash-tasks-card .dash-widget-head { margin-bottom: var(--space-2); }
+
+.dash-more-link {
+  display: inline-flex; align-items: center; gap: 2px; flex-shrink: 0;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  margin-right: calc(var(--space-2) * -1);
+  border-radius: var(--radius-sm);
+  color: var(--primary); font-size: var(--text-sm); font-weight: 600;
+}
+.dash-empty { font-size: var(--text-sm); color: var(--text-muted); text-align: center; padding: var(--space-5) 0; }
+
+.dash-task-list { display: flex; flex-direction: column; }
+.dash-task-row {
+  display: flex; align-items: center; gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  min-width: 0;
+}
+.dash-task-row:last-child { border-bottom: none; }
+.dash-task-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dash-task-name { flex: 1; min-width: 0; font-size: var(--text-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dash-task-date { font-size: var(--text-xs); color: var(--text-muted); flex-shrink: 0; }
+.dash-task-more { font-size: var(--text-sm); color: var(--text-muted); text-align: center; padding-top: var(--space-2); }
+
+.card.dash-mood-card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  color: var(--text);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.dash-mood-body { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.dash-mood-emoji { font-size: 40px; line-height: 1; }
+.dash-mood-empty-icon { color: var(--primary); flex-shrink: 0; }
+.dash-mood-when { font-size: var(--text-sm); color: var(--text-secondary); min-width: 0; overflow-wrap: anywhere; }
+
+.card.dash-quote {
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #fff;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(124, 92, 255, 0.35) 0%, transparent 60%),
+    var(--gradient-hero);
+}
+.dash-quote-text {
+  font-family: var(--font-display);
+  font-size: var(--text-md); font-style: italic; line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+/* Focus ring for the link tiles (cards clip nothing, so the outline is visible). */
+.dash-stat-card:focus-visible, .dash-qa:focus-visible, .dash-mood-card:focus-visible, .dash-more-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Hover only where a real pointer can hover — never sticks on touch screens. */
+@media (hover: hover) {
+  .card.dash-stat-card:hover,
+  .card.dash-mood-card:hover { border-color: var(--primary); box-shadow: var(--shadow-card); transform: translateY(-3px); }
+  .dash-qa:hover { border-color: color-mix(in srgb, var(--qa-color) 45%, transparent); box-shadow: var(--shadow-card); transform: translateY(-4px); }
+  .dash-more-link:hover { background: var(--primary-light); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card.dash-stat-card, .card.dash-mood-card, .dash-qa { transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+  .card.dash-stat-card:hover, .card.dash-mood-card:hover, .dash-qa:hover, .dash-qa:active { transform: none; }
+}

@@ -1,41 +1,25 @@
 import { useMemo } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useCollection } from '../../hooks/useCollection'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { formatMoney, toDate, toDateKey } from '../../utils/format'
 import { SkeletonCard } from '../ui/Skeleton'
-import { CircleCheck, DollarSign, Flame, Hand, ListChecks, PartyPopper, Plus, SmilePlus, Target, TrendingUp } from 'lucide-react'
+import { ChevronRight, DollarSign, Flame, ListChecks, PartyPopper, Plus, SmilePlus, Target, TrendingUp } from 'lucide-react'
 import Icon from '../ui/Icon'
 import { MODULE_ICONS } from '../../config/moduleIcons'
 import TodayCard from './dashboard/TodayCard'
+import DashHero from './dashboard/DashHero'
+import StatCard from './dashboard/StatCard'
+import { calcStreak, greetingName } from './dashboard/dashboardModel'
 import { todayFromSearch } from '../../ai/engine/weekPlan'
+import './dashboard/dashboard.css'
 
 const MOOD_EMOJI = ['😔', '😕', '😐', '🙂', '😄']
 const MOOD_COLORS = ['#ef4444','#f97316','#fbbf24','#84cc16','#22c55e']
-
-function greetingKey() {
-  const h = new Date().getHours()
-  if (h < 12) return 'dash.greetingMorning'
-  if (h < 18) return 'dash.greetingAfternoon'
-  return 'dash.greetingEvening'
-}
-
-function calcStreak(tasks) {
-  const doneDays = new Set(
-    tasks
-      .filter(t => t.status === 'done' && toDate(t.updatedAt))
-      .map(t => toDateKey(toDate(t.updatedAt)))
-  )
-  let streak = 0
-  const d = new Date()
-  while (doneDays.has(toDateKey(d))) {
-    streak++
-    d.setDate(d.getDate() - 1)
-  }
-  return streak
-}
+const PRIORITY_COLORS = { high: '#ef4444', medium: '#f59e0b' }
+const MAX_TASK_ROWS = 5
 
 // Stagger group: fans its motion children out in sequence. When `reduce` is set
 // (prefers-reduced-motion) the stagger collapses to 0 so everything fades together.
@@ -51,7 +35,8 @@ function groupVariants(reduce, stagger = 0.08, delayChildren = 0) {
 }
 
 // Single card entrance: fade + rise on a soft spring. Reduced-motion drops the
-// rise and swaps the spring for a short linear fade.
+// rise and swaps the spring for a short linear fade. Hover effects live in CSS
+// under @media (hover: hover) so touch screens never get a stuck "lifted" card.
 function cardVariants(reduce) {
   return {
     hidden: { opacity: 0, y: reduce ? 0 : 18 },
@@ -65,37 +50,9 @@ function cardVariants(reduce) {
   }
 }
 
-// Soft hover lift — disabled entirely under reduced motion.
-function hoverLift(reduce, y = -4) {
-  return reduce ? undefined : { y, transition: { type: 'spring', stiffness: 400, damping: 22 } }
-}
-
-function StatCard({ icon, label, value, sub, color, to, variants, reduce }) {
-  const navigate = useNavigate()
-  return (
-    <motion.div
-      className="dash-stat-card card"
-      variants={variants}
-      onClick={() => to && navigate(to)}
-      style={{ cursor: to ? 'pointer' : 'default' }}
-      whileHover={to ? hoverLift(reduce) : undefined}
-    >
-      <div className="dash-stat-icon" style={{ background: (color || 'var(--primary)') + '22', color: color || 'var(--primary)' }}>
-        {icon}
-      </div>
-      <div>
-        <div className="dash-stat-value">{value}</div>
-        <div className="dash-stat-label">{label}</div>
-        {sub && <div className="dash-stat-sub">{sub}</div>}
-      </div>
-    </motion.div>
-  )
-}
-
 export default function Dashboard() {
   const { profile, user } = useAuth()
-  const { t, quote } = useLang()
-  const navigate = useNavigate()
+  const { t, tp, lang, quote } = useLang()
   const location = useLocation()
   // Dev-only ?today=YYYY-MM-DD override to try the Sunday review flow.
   const today = useMemo(() => todayFromSearch(location.search, import.meta.env.DEV), [location.search])
@@ -147,8 +104,10 @@ export default function Dashboard() {
     [txns.items],
   )
 
-  const name = profile?.displayName || user?.displayName || ''
+  const name = greetingName(profile, user)
   const loading = tasks.loading
+  // Plural forms come from tp() once LangContext provides it; until then the plain key.
+  const activeGoalsLabel = typeof tp === 'function' ? tp('dash.activeGoals', activeGoals) : t('dash.activeGoals')
 
   const reduce = useReducedMotion()
   const root = useMemo(() => groupVariants(reduce, 0.1), [reduce])
@@ -157,48 +116,32 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="grid grid-3">
+      <div className="dash-stats-grid">
         {[0, 1, 2, 3, 4, 5].map(i => <SkeletonCard key={i} />)}
       </div>
     )
   }
 
+  const quickActions = [
+    { label: t('dash.newTask'), to: '/app/tasks', icon: Plus, color: '#7c5cff' },
+    { label: t('habits.newTitle'), to: '/app/habits', icon: MODULE_ICONS.habits, color: '#f97316' },
+    { label: t('dash.logMood'), to: '/app/mood', icon: MODULE_ICONS.mood, color: '#ec4899' },
+    { label: t('dash.addTxn'), to: '/app/finance', icon: DollarSign, color: '#10b981' },
+  ]
+
   return (
     <motion.div className="dash-root" variants={root} initial="hidden" animate="show">
-      {/* Greeting + streak hero */}
-      <motion.div className="dash-hero-card card" variants={item}>
-        <div className="dash-hero-left">
-          <p className="dash-greeting-sub">{new Date().toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}</p>
-          <h2 className="dash-greeting">
-            {t(greetingKey())}{name ? `, ${name}` : ''} <Icon icon={Hand} size="1em" />
-          </h2>
-          <p className="text-muted" style={{ fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {completedToday > 0
-              ? <><Icon icon={CircleCheck} size="1em" /> {completedToday} {t('dash.completedToday')}</>
-              : t('dash.noTasksToday')}
-          </p>
-        </div>
-        {streak > 0 && (
-          <div className="dash-streak-badge">
-            <span style={{ fontSize: 32 }}><Icon icon={Flame} size="1em" /></span>
-            <div>
-              <div className="dash-streak-num">{streak}</div>
-              <div className="dash-streak-label" style={{ fontSize: 'var(--text-xs)', opacity: 0.8 }}>{t('prog.streak')}</div>
-            </div>
-          </div>
-        )}
-      </motion.div>
+      <DashHero name={name} completedToday={completedToday} streak={streak} variants={item} />
 
       {/* My day: weekly review banner, 3 tasks for today, morning checklist */}
       <motion.div variants={item}>
         <TodayCard today={today} />
       </motion.div>
 
-      {/* Stat cards row */}
+      {/* Stat cards: 2 columns on phones, 4 from tablets/laptops */}
       <motion.div className="dash-stats-grid" variants={group}>
         <StatCard
           variants={item}
-          reduce={reduce}
           icon={<Icon icon={ListChecks} />}
           label={t('dash.tasksToday')}
           value={todayTasks.length}
@@ -208,7 +151,6 @@ export default function Dashboard() {
         />
         <StatCard
           variants={item}
-          reduce={reduce}
           icon={<Icon icon={Flame} />}
           label={t('habits.title')}
           value={`${habitsToday.done}/${habitsToday.total}`}
@@ -218,120 +160,101 @@ export default function Dashboard() {
         />
         <StatCard
           variants={item}
-          reduce={reduce}
           icon={<Icon icon={Target} />}
           label={t('nav.goals')}
           value={activeGoals}
-          sub={t('dash.activeGoals') || 'active'}
+          sub={activeGoalsLabel}
           color="#10b981"
           to="/app/goals"
         />
         <StatCard
           variants={item}
-          reduce={reduce}
           icon={<Icon icon={TrendingUp} />}
           label={t('dash.balance')}
-          value={formatMoney(balance, txns.items[0]?.currency || 'KGS')}
+          value={formatMoney(balance, txns.items[0]?.currency || 'KGS', lang)}
           color={balance >= 0 ? '#22c55e' : '#ef4444'}
           to="/app/finance"
         />
       </motion.div>
 
       {/* Quick actions */}
-      <div className="section-title" style={{ marginBottom: 'var(--space-3)' }}>{t('dash.quickActions')}</div>
-      <motion.div className="quick-actions" style={{ marginBottom: 'var(--space-6)' }} variants={group}>
-        {[
-          { label: t('dash.newTask'), to: '/app/tasks', icon: Plus, color: '#7c5cff' },
-          { label: t('habits.newTitle'), to: '/app/habits', icon: MODULE_ICONS.habits, color: '#f97316' },
-          { label: t('dash.logMood'), to: '/app/mood', icon: MODULE_ICONS.mood, color: '#ec4899' },
-          { label: t('dash.addTxn'), to: '/app/finance', icon: DollarSign, color: '#10b981' },
-        ].map((qa) => (
-          <motion.button
-            key={qa.label}
-            className="quick-action"
-            onClick={() => navigate(qa.to)}
-            variants={item}
-            whileHover={hoverLift(reduce)}
-            whileTap={reduce ? undefined : { scale: 0.97 }}
-          >
-            <span className="qa-icon" style={{ background: qa.color + '22', color: qa.color }}>
-              <Icon icon={qa.icon} size={22} />
-            </span>
-            {qa.label}
-          </motion.button>
-        ))}
-      </motion.div>
+      <section className="dash-section" aria-labelledby="dash-qa-title">
+        <h3 id="dash-qa-title" className="dash-section-title">{t('dash.quickActions')}</h3>
+        <motion.div className="dash-qa-grid" variants={group}>
+          {quickActions.map((qa) => (
+            <motion.div key={qa.to + qa.label} variants={item}>
+              <Link to={qa.to} className="dash-qa" style={{ '--qa-color': qa.color }}>
+                <span className="dash-qa-icon" aria-hidden="true">
+                  <Icon icon={qa.icon} size={22} />
+                </span>
+                <span className="dash-qa-label">{qa.label}</span>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
 
       {/* Today tasks + mood */}
       <motion.div className="dash-bottom-grid" variants={group}>
         {/* Today's tasks */}
-        <motion.div className="card" variants={item}>
-          <div className="widget-head" style={{ marginBottom: 'var(--space-3)' }}>
+        <motion.div className="card dash-tasks-card" variants={item}>
+          <div className="dash-widget-head">
             <h3>{t('dash.tasksToday')}</h3>
-            <button className="btn btn-ghost" style={{ fontSize: 'var(--text-sm)', padding: '4px 8px', minHeight: 'unset' }} onClick={() => navigate('/app/tasks')}>
-              {t('common.all')} →
-            </button>
+            <Link to="/app/tasks" className="dash-more-link">
+              {t('common.all')} <Icon icon={ChevronRight} size={16} />
+            </Link>
           </div>
           {todayTasks.length === 0 ? (
-            <p className="text-muted" style={{ fontSize: 'var(--text-sm)', textAlign: 'center', padding: 'var(--space-5) 0' }}>
-              <Icon icon={PartyPopper} size="1em" /> {t('dash.allDone') || 'All done for today!'}
+            <p className="dash-empty">
+              <Icon icon={PartyPopper} size="1em" className="dash-inline-icon" /> {t('dash.allDone') || 'All done for today!'}
             </p>
           ) : (
-            <div className="list-stack">
-              {todayTasks.slice(0, 5).map(tk => (
-                <div key={tk.id} className="dash-task-row">
-                  <div className="dash-task-dot" style={{ background: tk.priority === 'high' ? '#ef4444' : tk.priority === 'medium' ? '#f59e0b' : 'var(--primary)' }} />
+            <ul className="dash-task-list">
+              {todayTasks.slice(0, MAX_TASK_ROWS).map(tk => (
+                <li key={tk.id} className="dash-task-row">
+                  <span className="dash-task-dot" style={{ background: PRIORITY_COLORS[tk.priority] || 'var(--primary)' }} />
                   <span className="dash-task-name">{tk.title}</span>
                   {tk.deadline && (
-                    <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', flexShrink: 0 }}>
-                      {new Date(toDate(tk.deadline)).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                    <span className="dash-task-date">
+                      {toDate(tk.deadline).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
                     </span>
                   )}
-                </div>
+                </li>
               ))}
-              {todayTasks.length > 5 && (
-                <p className="text-muted" style={{ fontSize: 'var(--text-sm)', textAlign: 'center' }}>
-                  +{todayTasks.length - 5} {t('common.more') || 'more'}
-                </p>
+              {todayTasks.length > MAX_TASK_ROWS && (
+                <li className="dash-task-more">
+                  +{todayTasks.length - MAX_TASK_ROWS} {t('common.more') || 'more'}
+                </li>
               )}
-            </div>
+            </ul>
           )}
         </motion.div>
 
         {/* Mood + quote */}
-        <motion.div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }} variants={group}>
-          <motion.div
-            className="card dash-mood-card"
-            variants={item}
-            onClick={() => navigate('/app/mood')}
-            style={{ cursor: 'pointer' }}
-            whileHover={hoverLift(reduce, -2)}
-          >
-            <div className="widget-head">
-              <h3>{t('dash.mood')}</h3>
-              {todayMood && <span style={{ fontSize: 'var(--text-sm)', color: MOOD_COLORS[todayMood.value] }}>●</span>}
-            </div>
-            {todayMood ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginTop: 4 }}>
-                <span style={{ fontSize: 42 }}>{MOOD_EMOJI[todayMood.value]}</span>
-                <div>
-                  <div style={{ fontWeight: 700, color: MOOD_COLORS[todayMood.value] }}>
-                    {['😔','😕','😐','🙂','😄'][todayMood.value]}
-                  </div>
-                  <div className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>{t('common.today')}</div>
+        <motion.div className="dash-side-col" variants={group}>
+          <motion.div variants={item}>
+            <Link to="/app/mood" className="card dash-mood-card">
+              <div className="dash-widget-head">
+                <h3>{t('dash.mood')}</h3>
+                {todayMood && <span aria-hidden="true" style={{ color: MOOD_COLORS[todayMood.value] }}>●</span>}
+              </div>
+              {todayMood ? (
+                <div className="dash-mood-body">
+                  <span className="dash-mood-emoji">{MOOD_EMOJI[todayMood.value]}</span>
+                  <span className="dash-mood-when">{t('common.today')}</span>
                 </div>
-              </div>
-            ) : (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginTop: 4 }}>
-                <span style={{ fontSize: 36 }}><Icon icon={SmilePlus} size="1em" /></span>
-                <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{t('mood.howAreYou')}</p>
-              </div>
-            )}
+              ) : (
+                <div className="dash-mood-body">
+                  <Icon icon={SmilePlus} size={36} className="dash-mood-empty-icon" />
+                  <span className="dash-mood-when">{t('mood.howAreYou')}</span>
+                </div>
+              )}
+            </Link>
           </motion.div>
 
-          <motion.div className="card dquote" variants={item}>
-            <div className="dquote-text">"{quote()}"</div>
-          </motion.div>
+          <motion.figure className="card dash-quote" variants={item}>
+            <blockquote className="dash-quote-text">“{quote()}”</blockquote>
+          </motion.figure>
         </motion.div>
       </motion.div>
     </motion.div>
