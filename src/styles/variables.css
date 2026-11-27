@@ -36,10 +36,10 @@
   --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Type scale */
-  --text-xs: 11px;
-  --text-sm: 13px;
-  --text-base: 15px;
+  /* Type scale: body 16px, readable text never below 14px; xs is only for badges/captions. */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
   --text-md: 17px;
   --text-lg: 20px;
   --text-xl: 24px;

@@ -4,6 +4,8 @@
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  /* No horizontal page scroll anywhere (clip keeps position: sticky working). */
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
@@ -30,10 +32,12 @@ h1,h2,h3,h4,h5 {
   color: var(--text);
   letter-spacing: -0.02em;
 }
-h1 { font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.03em; }
-h2 { font-size: var(--text-2xl); font-weight: 800; }
-h3 { font-size: var(--text-xl); }
-h4 { font-size: var(--text-lg); }
+/* Fluid headings: smaller on phones, full size from desktop. */
+h1 { font-size: clamp(26px, 1.1rem + 2.4vw, var(--text-3xl)); font-weight: 800; letter-spacing: -0.03em; }
+h2 { font-size: clamp(22px, 1rem + 1.6vw, var(--text-2xl)); font-weight: 800; }
+h3 { font-size: clamp(19px, 0.95rem + 0.9vw, var(--text-xl)); }
+h4 { font-size: clamp(17px, 0.95rem + 0.5vw, var(--text-lg)); }
+h1, h2, h3, h4 { overflow-wrap: anywhere; }
 
 p { color: var(--text); line-height: 1.6; }
 a { color: inherit; text-decoration: none; }
@@ -43,6 +47,15 @@ ul,ol { list-style: none; }
 img,svg { display: block; max-width: 100%; }
 
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* Touch screens: every control is at least 44×44px. */
+@media (pointer: coarse) {
+  .btn, .btn-sm, .btn-icon { min-height: var(--touch-target); }
+  .btn-icon { min-width: var(--touch-target); }
+  .input, select, textarea { min-height: var(--touch-target); }
+  input[type='checkbox'], input[type='radio'] { width: 22px; height: 22px; }
+}
 ::selection { background: var(--primary-light); color: var(--primary); }
 
 /* Scrollbar */
@@ -76,20 +89,16 @@ img,svg { display: block; max-width: 100%; }
   box-shadow: var(--shadow-btn);
   border: none;
 }
-.btn-primary:not(:disabled):hover { filter: brightness(1.08); }
 
 .btn-secondary {
   background: var(--surface-2);
   color: var(--text);
   border: 1px solid var(--border);
 }
-.btn-secondary:hover { background: var(--surface-hover); border-color: var(--border-strong); }
 
 .btn-ghost { background: transparent; color: var(--text-secondary); }
-.btn-ghost:hover { background: var(--surface-hover); color: var(--text); }
 
 .btn-danger { background: var(--error-light); color: var(--error); }
-.btn-danger:hover { filter: brightness(1.1); }
 
 .btn-block { width: 100%; }
 .btn-icon { padding: 10px; min-width: 44px; min-height: 44px; }
@@ -233,7 +242,6 @@ img,svg { display: block; max-width: 100%; }
   box-shadow: var(--shadow-btn); z-index: var(--z-nav);
   transition: transform 0.2s ease;
 }
-.fab:hover { transform: scale(1.06); }
 @media (max-width: 599px) { .fab { bottom: calc(var(--bottom-nav-h) + var(--space-4) + env(safe-area-inset-bottom)); } }
 
 /* ── Skeleton ── */
@@ -252,4 +260,13 @@ img,svg { display: block; max-width: 100%; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Hover effects only for a real mouse/trackpad (no sticky hover on phones). */
+@media (hover: hover) {
+  .btn-primary:not(:disabled):hover { filter: brightness(1.08); }
+  .btn-secondary:hover { background: var(--surface-hover); border-color: var(--border-strong); }
+  .btn-ghost:hover { background: var(--surface-hover); color: var(--text); }
+  .btn-danger:hover { filter: brightness(1.1); }
+  .fab:hover { transform: scale(1.06); }
 }

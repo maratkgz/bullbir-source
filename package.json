@@ -6,6 +6,7 @@
   "description": "BullBir — all-in-one personal productivity web app (PWA)",
   "scripts": {
     "dev": "vite",
+    "dev:phone": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
