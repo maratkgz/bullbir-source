@@ -1,4 +1,17 @@
+/* Breakpoints (mobile-first, min-width) — the one list lives in src/styles/breakpoints.js.
+   Media queries can't read variables, so CSS uses these numbers literally:
+   sm 360 · md 600 · lg 900 · xl 1200 · 2xl 1600 (xs = below 360). */
 :root {
+  /* Layout frame */
+  --page-pad-x: clamp(16px, 2.5vw + 6px, 40px);
+  --page-pad-y: clamp(16px, 1.5vw + 10px, 32px);
+  --content-max: 1440px;
+  --bottom-nav-h: 64px;
+  --touch-target: 44px;
+  --sidebar-w-icons: 72px;
+  --sidebar-w-compact: 208px;
+  --sidebar-w-full: 248px;
+
   /* Radii */
   --radius-sm: 8px;
   --radius-md: 14px;

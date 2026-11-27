@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { breakpointFor, down, up } from '../styles/breakpoints'
 
 export function useMediaQuery(queryStr) {
   const [matches, setMatches] = useState(() =>
@@ -16,5 +17,23 @@ export function useMediaQuery(queryStr) {
   return matches
 }
 
-export const useIsMobile = () => useMediaQuery('(max-width: 767px)')
-export const useIsTablet = () => useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
+/** Current breakpoint name ('xs' … '2xl'), updated on resize. */
+export function useBreakpoint() {
+  const [name, setName] = useState(() =>
+    typeof window !== 'undefined' ? breakpointFor(window.innerWidth) : 'lg',
+  )
+
+  useEffect(() => {
+    const onResize = () => setName(breakpointFor(window.innerWidth))
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  return name
+}
+
+/** Phones (xs/sm): bottom navigation, bottom sheets instead of centred dialogs. */
+export const useIsMobile = () => useMediaQuery(down('md'))
+/** md: icon-only sidebar. */
+export const useIsTablet = () => useMediaQuery(`${up('md')} and ${down('lg')}`)
