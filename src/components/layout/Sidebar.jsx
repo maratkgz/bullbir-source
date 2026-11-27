@@ -13,7 +13,7 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <NavLink to="/app/dashboard" className="sidebar-brand">
+      <NavLink to="/app/dashboard" className="sidebar-brand" aria-label="BullBir">
         <Logo size={32} animated />
         <span className="sidebar-brand-name">BullBir</span>
       </NavLink>
@@ -22,7 +22,8 @@ export default function Sidebar() {
         {NAV_ITEMS.map((item) => {
           const active = location.pathname === item.to
           return (
-            <NavLink key={item.to} to={item.to} className={`sidebar-link ${active ? 'active' : ''}`}>
+            <NavLink key={item.to} to={item.to} className={`sidebar-link ${active ? 'active' : ''}`}
+              aria-label={t(item.key)} title={t(item.key)}>
               {active && (
                 <motion.span layoutId="sidebar-indicator" className="sidebar-indicator" transition={{ type: 'spring', stiffness: 400, damping: 30 }} />
               )}
@@ -33,7 +34,8 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <NavLink to="/app/settings" className={`sidebar-link ${location.pathname === '/app/settings' ? 'active' : ''}`}>
+      <NavLink to="/app/settings" className={`sidebar-link ${location.pathname === '/app/settings' ? 'active' : ''}`}
+        aria-label={t('nav.settings')} title={t('nav.settings')}>
         <span className="sidebar-icon">
           <Icon icon={Settings} size={22} />
         </span>

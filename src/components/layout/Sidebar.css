@@ -52,7 +52,9 @@
   min-height: 44px;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.sidebar-link:hover { background: var(--surface-hover); color: var(--text); }
+@media (hover: hover) {
+  .sidebar-link:hover { background: var(--surface-hover); color: var(--text); }
+}
 .sidebar-link.active {
   background: var(--primary-light);
   color: var(--text);
@@ -88,15 +90,29 @@
   border-radius: 99px;
 }
 
-/* Tablet: icon-only */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .sidebar { width: 72px; align-items: center; padding: 20px 8px; }
-  .sidebar-brand-name, .sidebar-label { display: none; }
+/* Mobile-first (breakpoints: src/styles/breakpoints.js).
+   xs/sm: hidden — phones use the bottom navigation. */
+.sidebar { display: none; }
+
+/* md (600+): icon-only rail */
+@media (min-width: 600px) {
+  .sidebar { display: flex; width: var(--sidebar-w-icons); align-items: center; padding: 20px 8px; }
+  .sidebar-brand-name, .sidebar-label, .sidebar-badge { display: none; }
   .sidebar-brand { justify-content: center; padding: 0; }
   .sidebar-link { justify-content: center; padding: 11px; width: 48px; gap: 0; }
 }
 
-/* Mobile: hidden */
-@media (max-width: 767px) {
-  .sidebar { display: none; }
+/* lg (900+): compact sidebar with icons and labels */
+@media (min-width: 900px) {
+  .sidebar { width: var(--sidebar-w-compact); align-items: stretch; padding: 20px 10px; }
+  .sidebar-brand-name, .sidebar-label, .sidebar-badge { display: revert; }
+  .sidebar-brand { justify-content: flex-start; padding: 0 8px; }
+  .sidebar-link { justify-content: flex-start; width: auto; gap: 10px; padding: 10px 12px; font-size: 14px; }
+}
+
+/* xl (1200+): full sidebar */
+@media (min-width: 1200px) {
+  .sidebar { width: var(--sidebar-w-full); padding: 24px 14px; }
+  .sidebar-brand { padding: 0 10px; }
+  .sidebar-link { gap: 13px; padding: 11px 14px; font-size: 14.5px; }
 }

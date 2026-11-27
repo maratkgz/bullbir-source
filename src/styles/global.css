@@ -234,7 +234,7 @@ img,svg { display: block; max-width: 100%; }
   transition: transform 0.2s ease;
 }
 .fab:hover { transform: scale(1.06); }
-@media (max-width: 767px) { .fab { bottom: calc(80px + env(safe-area-inset-bottom)); } }
+@media (max-width: 599px) { .fab { bottom: calc(var(--bottom-nav-h) + var(--space-4) + env(safe-area-inset-bottom)); } }
 
 /* ── Skeleton ── */
 .skeleton-pulse {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BOTTOM_NAV_ITEMS, NAV_ITEMS } from './navItems'
@@ -16,6 +16,14 @@ export default function BottomNav() {
   const location = useLocation()
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
+
+  // Esc closes the "More" sheet, like every other overlay.
+  useEffect(() => {
+    if (!showMore) return undefined
+    const onKey = (e) => { if (e.key === 'Escape') setShowMore(false) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [showMore])
 
   const mainItems = BOTTOM_NAV_ITEMS.slice(0, 4)
 
