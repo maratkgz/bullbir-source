@@ -10,9 +10,10 @@ import { imageToDataUrl, AVATAR_IMAGE, BANNER_IMAGE } from '../../utils/imageRes
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
-import { BookOpen, Camera, Check, Download, Flame, ImagePlus, Mail, Moon, Pencil, Phone, Sparkles, Star, Sun, Trash2, Wallet } from 'lucide-react'
+import { BookOpen, Camera, Check, Download, Flame, Mail, Moon, Pencil, Phone, Sparkles, Star, Sun, Wallet } from 'lucide-react'
 import Icon from '../ui/Icon'
 import PasswordCard from './profile/PasswordCard'
+import CoverMenu from './profile/CoverMenu'
 import EmailCard from './profile/EmailCard'
 import DevicesCard from './profile/DevicesCard'
 import SecurityActivityCard from './profile/SecurityActivityCard'
@@ -290,20 +291,8 @@ export default function Profile() {
       {/* Hero */}
       <div className="prof-cover" style={bannerURL ? { backgroundImage: `url(${bannerURL})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}>
         {!bannerURL && <div className="prof-cover-glow" />}
-        <div className="prof-cover-actions">
-          {bannerURL && (
-            <button type="button" className="btn btn-secondary btn-sm prof-cover-btn" onClick={removeBanner}
-              aria-label={t('profile.banner.remove')} title={t('profile.banner.remove')}>
-              <Icon icon={Trash2} size="1em" />
-            </button>
-          )}
-          <button type="button" className="btn btn-secondary btn-sm prof-cover-btn" onClick={() => bannerRef.current?.click()} disabled={bannerBusy}>
-            {bannerBusy
-              ? <span className="spinner" style={{ width: 14, height: 14, borderColor: 'white', borderTopColor: 'transparent' }} />
-              : <Icon icon={ImagePlus} size="1em" />}
-            {t('profile.banner.change')}
-          </button>
-        </div>
+        <CoverMenu hasCover={!!bannerURL} busy={bannerBusy} t={t}
+          onChange={() => bannerRef.current?.click()} onRemove={removeBanner} />
       </div>
       <input ref={bannerRef} type="file" accept={AVATAR_TYPES.join(',')} className="sr-only"
         onChange={e => { if (e.target.files?.[0]) pickImage(e.target.files[0], 'bannerURL'); e.target.value = '' }} />

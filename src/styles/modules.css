@@ -1554,6 +1554,27 @@
 .cal-day-type { font-size: var(--text-xs); }
 .cal-del { color: var(--error); }
 
-/* Profile cover: user photo or default gradient, buttons readable on both */
-.prof-cover-actions { position: relative; z-index: 1; display: flex; justify-content: flex-end; gap: var(--space-2); padding: 12px 16px; }
-.prof-cover-btn { background: rgba(0,0,0,0.35) !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #fff !important; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+/* Profile cover: the whole cover is tappable (no buttons drawn over the photo) */
+.prof-cover-menu { position: absolute; inset: 0; z-index: 1; }
+.prof-cover-hit {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  background: transparent; cursor: pointer; border-radius: inherit;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.prof-cover-hit:active { background: rgba(0,0,0,0.12); }
+@media (hover: hover) { .prof-cover-hit:hover { background: rgba(0,0,0,0.08); } }
+.prof-cover-spin { width: 22px; height: 22px; border-color: #fff; border-top-color: transparent; }
+.prof-cover-pop {
+  position: absolute; right: 12px; bottom: 12px; min-width: 180px; /* inside the cover (it clips overflow) */
+  background: var(--surface); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-pop); padding: 4px;
+  display: flex; flex-direction: column;
+}
+.prof-cover-pop button {
+  display: flex; align-items: center; gap: var(--space-2);
+  min-height: var(--touch-target); padding: 0 var(--space-3);
+  border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: 600; color: var(--text); text-align: left;
+}
+.prof-cover-pop button.danger { color: var(--error); }
+@media (hover: hover) { .prof-cover-pop button:hover { background: var(--surface-hover); } }
