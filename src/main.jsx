@@ -10,6 +10,8 @@ import { ToastProvider } from './components/ui/Toast'
 import App from './App'
 import ErrorBoundary from './components/ErrorBoundary'
 import { installGlobalErrorReporting } from './monitoring/reportError'
+// Vite + React app → the React entry (the "/next" entry is only for Next.js projects).
+import { Analytics } from '@vercel/analytics/react'
 import './styles/global.css'
 
 // Auto-update the service worker without forcing a reload.
@@ -28,6 +30,7 @@ createRoot(document.getElementById('root')).render(
               <ErrorBoundary>
                 <App />
               </ErrorBoundary>
+              <Analytics />
             </BrowserRouter>
           </AuthProvider>
         </ToastProvider>
