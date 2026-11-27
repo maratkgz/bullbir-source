@@ -4,7 +4,7 @@ import Icon from '../../ui/Icon'
 import { DIRECTION_COLORS, directionProgress, isOverdue } from './mandalaModel'
 import { waveDelay } from './gridLayout'
 
-const TYPE_ICONS = { habit: Repeat, milestone: Flag, quality: Sparkles }
+export const TYPE_ICONS = { habit: Repeat, milestone: Flag, quality: Sparkles }
 const HOVER = { y: -1 }
 
 function TypeIcon({ type, t }) {

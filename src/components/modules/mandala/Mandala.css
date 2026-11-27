@@ -6,50 +6,37 @@
   margin: 0 0 var(--space-3);
 }
 
-.mandala-back { margin: 0 0 6px -8px; }
+.mandala-back { margin: 0 0 6px -8px; min-height: var(--touch-target); }
 
 .mandala-toolbar {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2) var(--space-3);
   flex-wrap: wrap;
 }
+.mandala-toolbar .btn { min-height: var(--touch-target); }
 
-.mandala-zoom {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-}
-.mandala-zoom span { min-width: 40px; text-align: center; }
-
-/* Scroll container: the grid keeps its 9×9 shape and scrolls when zoomed past the width. */
+/* Full 9×9 grid (≥ 900px). The wrapper is a size container: cells, their text and padding are
+   sized in cqi so the whole grid always fits the available width — no zoom, no sideways scroll. */
 .mandala-scroll {
   container-type: inline-size;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-x pan-y pinch-zoom;
   padding: 4px 2px 12px;
-  margin: 0 -2px;
 }
 
 .mandala-grid {
-  --block-gap: 6px;
-  --cell-gap: 3px;
+  --block-gap: clamp(4px, 0.8cqi, 10px);
+  --cell-gap: clamp(2px, 0.4cqi, 5px);
   --block-chrome: 8px; /* per block: 2 × 3px padding + 2 × 1px border */
-  /* Fit 9 cells (+ gaps, block padding/borders) to the container at 100 %, then scale by zoom. */
-  --cell-base: clamp(
-    28px,
+  --cell: clamp(
+    32px,
     calc((100cqi - 2 * var(--block-gap) - 6 * var(--cell-gap) - 3 * var(--block-chrome) - 4px) / 9),
-    86px
+    132px
   );
-  --cell: calc(var(--cell-base) * var(--zoom, 1));
   display: grid;
   grid-template-columns: repeat(3, max-content);
   gap: var(--block-gap);
   width: max-content;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -76,13 +63,13 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 4px;
-  border-radius: calc(var(--radius-sm) * var(--zoom, 1));
+  padding: clamp(3px, 0.6cqi, 10px);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
   background: var(--surface);
   color: var(--text);
   font: inherit;
-  font-size: clamp(8px, calc(var(--cell) * 0.13), 13px);
+  font-size: clamp(11px, 1.25cqi, 16px);
   font-weight: 500;
   line-height: 1.2;
   text-align: center;
@@ -102,7 +89,7 @@
   word-break: break-word;
 }
 
-.mandala-cell.is-empty { color: var(--text-muted); border-style: dashed; background: transparent; font-size: clamp(10px, calc(var(--cell) * 0.22), 18px); }
+.mandala-cell.is-empty { color: var(--text-muted); border-style: dashed; background: transparent; font-size: clamp(14px, 2cqi, 24px); }
 .mandala-cell.is-done {
   background: color-mix(in srgb, var(--success) 16%, var(--surface));
   border-color: color-mix(in srgb, var(--success) 45%, transparent);
@@ -122,7 +109,7 @@
   border: none;
   color: #fff;
   font-weight: 800;
-  font-size: clamp(9px, calc(var(--cell) * 0.15), 15px);
+  font-size: clamp(12px, 1.4cqi, 18px);
 }
 .mandala-cell--center.is-empty { color: #fff; }
 .mandala-cell--center.is-done { background: linear-gradient(120deg, var(--success), #2fa77d); }
@@ -136,7 +123,7 @@
   gap: 2px;
 }
 .mandala-badge {
-  font-size: clamp(7px, calc(var(--cell) * 0.1), 10px);
+  font-size: clamp(9px, 0.95cqi, 12px);
   font-family: var(--font-mono);
   padding: 0 3px;
   border-radius: var(--radius-full);
@@ -180,6 +167,7 @@
   display: flex;
   justify-content: space-between;
   gap: var(--space-2);
+  min-height: var(--touch-target);
   padding: 10px 12px 14px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
@@ -281,7 +269,7 @@
   left: 3px;
   bottom: 2px;
   display: inline-flex;
-  font-size: clamp(8px, calc(var(--cell) * 0.13), 13px);
+  font-size: clamp(10px, 1.1cqi, 14px);
   color: var(--c, var(--primary));
   opacity: 0.85;
   pointer-events: none;
@@ -294,34 +282,6 @@
 
 .mandala-empty-actions { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
 
-/* Mobile: one 3×3 block at a time */
-.mandala-mobile { display: flex; flex-direction: column; gap: var(--space-3); }
-.mandala-mobile-head { display: flex; align-items: center; gap: var(--space-2); min-height: 36px; }
-.mandala-mobile-head .mandala-hint { margin: 0; }
-.mandala-mobile-title {
-  font-weight: 700;
-  font-size: var(--text-sm);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--c) 18%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
-}
-.mandala-block--mobile {
-  --cell: min(calc((100vw - 64px) / 3), 132px);
-  --zoom: 1;
-  gap: 6px;
-  padding: 6px;
-  width: max-content;
-  margin: 0 auto;
-}
-.mandala-block--mobile .mandala-cell { font-size: var(--text-sm); padding: 6px; }
-.mandala-block--mobile .mandala-cell-text { -webkit-line-clamp: 5; }
-.mandala-block--mobile .mandala-cell.is-empty { font-size: 22px; }
-
 @media (prefers-reduced-motion: reduce) {
-  .mandala-cell, .mandala-card, .mandala-ring-fg { transition: none; }
+  .mandala-cell, .mandala-card, .mandala-ring-fg, .mandala-tile, .mandala-action { transition: none; }
 }

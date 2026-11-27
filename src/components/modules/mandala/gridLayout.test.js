@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { emptyMandala, normalizeMandala, RING_POSITIONS } from './mandalaModel'
-import { blockCells, blockDistance, gridDistance, waveDelay, focusAtBlock, CENTER_POS } from './gridLayout'
+import { blockCells, blockDistance, gridDistance, waveDelay, focusAtBlock, directionCount, CENTER_POS } from './gridLayout'
 
 const mandala = () => {
   const m = normalizeMandala(emptyMandala('Goal'))
@@ -51,5 +51,13 @@ describe('gridLayout', () => {
   it('maps grid blocks to focus', () => {
     expect(focusAtBlock(4)).toBeNull()
     expect(focusAtBlock(RING_POSITIONS[5])).toBe(5)
+  })
+
+  it('counts done out of filled actions for a direction tile', () => {
+    const dir = mandala().directions[0]
+    const partly = { ...dir, actions: dir.actions.map((a, i) => ({ ...a, text: i < 5 ? a.text : '', done: i < 3 })) }
+    expect(directionCount(partly)).toEqual({ done: 3, total: 5 })
+    const blank = { ...dir, actions: dir.actions.map((a) => ({ ...a, text: '', done: false })) }
+    expect(directionCount(blank)).toEqual({ done: 0, total: 8 })
   })
 })

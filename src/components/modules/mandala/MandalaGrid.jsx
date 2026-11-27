@@ -37,11 +37,14 @@ export function MandalaBlock({ mandala, focus, todayKey, distanceOf, onCellClick
   )
 }
 
-/** Full 9×9 grid: centre block (goal + 8 directions) surrounded by 8 direction blocks. */
-export default function MandalaGrid({ mandala, zoom, todayKey, onOpen }) {
+/**
+ * Full 9×9 grid (≥ 900px): centre block (goal + 8 directions) surrounded by 8 direction blocks.
+ * The wrapper is a size container, so cells and their text scale with the space available.
+ */
+export default function MandalaGrid({ mandala, todayKey, onOpen }) {
   return (
     <div className="mandala-scroll">
-      <div className="mandala-grid" style={{ '--zoom': zoom }}>
+      <div className="mandala-grid">
         {BLOCK_POSITIONS.map((blockPos) => (
           <MandalaBlock
             key={blockPos}

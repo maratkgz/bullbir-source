@@ -1,50 +1,60 @@
 import { useState } from 'react'
 import { useLang } from '../../../context/LangContext'
-import { ArrowLeft } from 'lucide-react'
-import Icon from '../../ui/Icon'
-import { DIRECTION_COLORS } from './mandalaModel'
-import { blockDistance } from './gridLayout'
-import { MandalaBlock } from './MandalaGrid'
+import DirectionTiles from './DirectionTiles'
+import DirectionSheet from './DirectionSheet'
+import ActionList from './ActionList'
 
 /**
- * Mobile view: the central 3×3 (goal + 8 directions) first; tapping a direction opens its own
- * 3×3 (direction + 8 actions). Tapping the goal, or a cell inside a direction, opens the editor.
+ * Phones (< 600px): the centre 3×3 only — goal + 8 direction tiles. Tapping a direction opens a
+ * bottom sheet with its 8 actions. The sheet hides while the cell editor is open (`isEditing`)
+ * and comes back when it closes.
  */
-export default function MandalaMobile({ mandala, todayKey, onOpen }) {
+export function MandalaPhone({ mandala, todayKey, isEditing, onOpen, onToggle }) {
   const { t } = useLang()
-  const [focus, setFocus] = useState(null)
-  const dir = focus === null ? null : mandala.directions[focus]
-
-  const handleCell = (item) => {
-    if (focus === null && item.kind === 'direction') setFocus(item.d)
-    else onOpen(item.ref)
-  }
+  const [sheetDir, setSheetDir] = useState(null)
 
   return (
-    <div className="mandala-mobile">
-      <div className="mandala-mobile-head">
-        {dir ? (
-          <>
-            <button type="button" className="btn btn-ghost btn-sm" onClick={() => setFocus(null)}>
-              <Icon icon={ArrowLeft} size="1em" /> {t('mandala.mobile.back')}
-            </button>
-            <span className="mandala-mobile-title" style={{ '--c': DIRECTION_COLORS[focus] }}>
-              {dir.text || t('mandala.direction', { n: focus + 1 })}
-            </span>
-          </>
-        ) : (
-          <p className="mandala-hint">{t('mandala.mobile.hint')}</p>
-        )}
-      </div>
-      <MandalaBlock
-        key={focus === null ? 'center' : `dir-${focus}`}
-        className="mandala-block--mobile"
+    <div className="mandala-phone">
+      <p className="mandala-hint">{t('mandala.mobile.hint')}</p>
+      <DirectionTiles mandala={mandala} onSelect={setSheetDir} onOpenGoal={() => onOpen({ kind: 'center' })} />
+      <DirectionSheet
         mandala={mandala}
-        focus={focus}
+        d={sheetDir}
+        isOpen={sheetDir !== null && !isEditing}
         todayKey={todayKey}
-        distanceOf={blockDistance}
-        onCellClick={handleCell}
+        onClose={() => setSheetDir(null)}
+        onToggle={onToggle}
+        onEdit={onOpen}
       />
     </div>
+  )
+}
+
+/** Tablets (600–899px): centre 3×3 on the left, the selected direction's actions on the right. */
+export function MandalaTablet({ mandala, todayKey, onOpen, onToggle }) {
+  const { t } = useLang()
+  const [selected, setSelected] = useState(0)
+
+  return (
+    <>
+      <p className="mandala-hint">{t('mandala.tablet.hint')}</p>
+      <div className="mandala-split">
+        <DirectionTiles
+          mandala={mandala}
+          selected={selected}
+          onSelect={setSelected}
+          onOpenGoal={() => onOpen({ kind: 'center' })}
+        />
+        <ActionList
+          key={selected}
+          mandala={mandala}
+          d={selected}
+          todayKey={todayKey}
+          onToggle={onToggle}
+          onEdit={onOpen}
+          headingId="mandala-split-title"
+        />
+      </div>
+    </>
   )
 }

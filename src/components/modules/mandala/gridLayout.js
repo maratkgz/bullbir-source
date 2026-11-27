@@ -1,5 +1,5 @@
 // Pure layout helpers for the 9×9 grid and the mobile 3×3 views.
-import { RING_POSITIONS } from './mandalaModel'
+import { RING_POSITIONS, SLOTS } from './mandalaModel'
 
 export const CENTER_POS = 4
 export const BLOCK_POSITIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -48,3 +48,9 @@ export function blockCells(mandala, focus) {
 
 /** Block position (0..8) of each block in the full grid → focus (null = centre block). */
 export const focusAtBlock = (blockPos) => (blockPos === CENTER_POS ? null : INDEX_AT_POS[blockPos])
+
+/** "done/total" for a direction tile: done out of filled actions (all 8 slots when none are filled). */
+export function directionCount(dir) {
+  const filled = dir.actions.filter((a) => a.text.trim())
+  return { done: filled.filter((a) => a.done).length, total: filled.length || SLOTS }
+}

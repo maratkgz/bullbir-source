@@ -1,0 +1,252 @@
+/* ===== Mandala on phones and tablets: centre 3×3 tiles, action list, bottom sheet, ⋯ menu ===== */
+
+/* Centre 3×3: goal in the middle, 8 direction tiles around it */
+.mandala-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.mandala-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: var(--touch-target);
+  padding: 10px 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  background: color-mix(in srgb, var(--c) 20%, var(--surface));
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.mandala-tile:hover { border-color: var(--c); }
+.mandala-tile:focus-visible { outline: 2px solid var(--c, var(--primary)); outline-offset: 2px; }
+.mandala-tile.is-empty { background: color-mix(in srgb, var(--c) 8%, var(--surface)); border-style: dashed; }
+.mandala-tile.is-selected {
+  border-color: var(--c);
+  box-shadow: 0 0 0 2px var(--c);
+  background: color-mix(in srgb, var(--c) 30%, var(--surface));
+}
+
+.mandala-tile-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.25;
+  word-break: break-word;
+}
+.mandala-tile.is-empty .mandala-tile-title { color: var(--text-secondary); font-weight: 600; }
+
+.mandala-tile-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mandala-tile-bar {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 7px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--c) var(--p), color-mix(in srgb, var(--c) 22%, transparent) var(--p));
+}
+
+.mandala-tile--goal {
+  justify-content: center;
+  text-align: center;
+  border: none;
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: var(--shadow-ring);
+}
+.mandala-tile--goal .mandala-tile-title { font-weight: 800; -webkit-line-clamp: 4; }
+.mandala-tile--goal.is-done { background: linear-gradient(120deg, var(--success), #2fa77d); }
+
+/* Tablet: tiles left, selected direction's actions right */
+.mandala-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+/* Action list (tablet column and phone sheet) */
+.mandala-actions { min-width: 0; }
+.mandala-actions-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-2);
+  border-bottom: 3px solid var(--c);
+}
+.mandala-actions-title {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--text-lg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mandala-actions-count { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--text-secondary); white-space: nowrap; }
+
+.mandala-action-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+
+.mandala-action {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 52px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--c);
+  background: var(--surface);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.mandala-action.is-done { background: color-mix(in srgb, var(--success) 12%, var(--surface)); }
+.mandala-action.is-overdue { border-color: var(--error); }
+.mandala-action.is-empty { border-style: dashed; border-left-style: solid; background: transparent; }
+
+.mandala-action-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  cursor: pointer;
+}
+.mandala-action-check input { width: 22px; height: 22px; accent-color: var(--success); cursor: inherit; }
+.mandala-action-check input:disabled { cursor: not-allowed; opacity: 0.4; }
+
+.mandala-action-text {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--touch-target);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  border: none;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem; /* 16px: readable on a phone without zoom */
+  line-height: 1.35;
+  text-align: left;
+  word-break: break-word;
+  cursor: pointer;
+}
+.mandala-action-text:focus-visible { outline: 2px solid var(--c, var(--primary)); outline-offset: -2px; border-radius: var(--radius-sm); }
+.mandala-action.is-done .mandala-action-text > span:last-child { text-decoration: line-through; color: var(--text-secondary); }
+.mandala-action.is-empty .mandala-action-text { color: var(--text-muted); }
+.mandala-action-type { display: inline-flex; flex-shrink: 0; color: var(--c); }
+.mandala-action.is-done .mandala-action-type { color: var(--success); }
+.mandala-action-edit { flex-shrink: 0; color: var(--text-secondary); }
+
+/* Phone bottom sheet */
+.mandala-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.mandala-sheet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 640px;
+  max-height: 88dvh;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  border-top: 4px solid var(--c);
+  background: var(--surface);
+  box-shadow: var(--shadow-pop);
+}
+.mandala-sheet-head {
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  touch-action: none; /* the header is the drag handle */
+  cursor: grab;
+}
+.mandala-sheet-handle {
+  display: block;
+  width: 44px;
+  height: 5px;
+  margin: 0 auto var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--border);
+}
+.mandala-sheet-titlebar { display: flex; align-items: center; gap: var(--space-2); }
+.mandala-sheet-heading { flex: 1; min-width: 0; }
+.mandala-sheet-heading h3 { font-size: var(--text-lg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mandala-sheet-heading span { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--text-secondary); }
+.mandala-sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 0 var(--space-3) calc(var(--space-5) + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.mandala-sheet-dir-edit { align-self: stretch; min-height: var(--touch-target); }
+
+/* "⋯" overflow menu in the toolbar */
+.mandala-menu { position: relative; }
+.mandala-menu-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 20;
+  min-width: 180px;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-pop);
+}
+.mandala-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: 0 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+}
+.mandala-menu-item:hover, .mandala-menu-item:focus-visible { background: var(--surface-hover); outline: none; }
+.mandala-menu-item.is-danger { color: var(--error); }
+
+.mandala-phone { display: flex; flex-direction: column; gap: var(--space-1); }
+
+/* Keep "⋯" at the right end of its row so its popup (anchored right) never leaves the screen. */
+.mandala-menu { margin-left: auto; }
+@media (max-width: 599px) {
+  .mandala-toolbar { width: 100%; }
+}

@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useCollection } from '../../../hooks/useCollection'
-import { useLocalStorage } from '../../../hooks/useLocalStorage'
-import { useIsMobile } from '../../../hooks/useMediaQuery'
+import { useIsMobile, useIsTablet } from '../../../hooks/useMediaQuery'
 import { useLang } from '../../../context/LangContext'
 import { useAiLibrary } from '../../../ai/useAiLibrary'
 import { useToast } from '../../ui/Toast'
 import Modal from '../../ui/Modal'
 import { toDateKey } from '../../../utils/format'
 import MandalaGrid from './MandalaGrid'
-import MandalaMobile from './MandalaMobile'
+import { MandalaPhone, MandalaTablet } from './MandalaMobile'
+import OverflowMenu from './OverflowMenu'
 import CellEditor from './CellEditor'
 import MandalaAiFill from './MandalaAiFill'
 import MandalaPlanner from './MandalaPlanner'
@@ -18,26 +18,12 @@ import MandalaWizard from './wizard/MandalaWizard'
 import { ProgressRing, MandalaList, DirectionLegend } from './MandalaParts'
 import { mandalaPace } from '../../../ai/engine/pace'
 import { regenerateItem, regenerateDirection } from '../../../ai/engine/regenerate'
-import { CalendarDays, Sparkles, MessageCircle } from 'lucide-react'
+import { CalendarDays, Sparkles, MessageCircle, Trash2 } from 'lucide-react'
 import Icon from '../../ui/Icon'
 import { emptyMandala, normalizeMandala, getCell, patchForCell, mandalaStats } from './mandalaModel'
 import './Mandala.css'
+import './MandalaCompact.css'
 import '../assistant/Assistant.css'
-
-const ZOOM_STEPS = [0.6, 0.75, 0.9, 1, 1.2, 1.45, 1.75]
-const DEFAULT_ZOOM_INDEX = 3
-
-function ZoomControls({ index, onChange, t }) {
-  return (
-    <div className="mandala-zoom" role="group" aria-label={t('mandala.zoom')}>
-      <button type="button" className="btn btn-secondary btn-sm" disabled={index === 0}
-        onClick={() => onChange(index - 1)} aria-label={t('mandala.zoomOut')}>−</button>
-      <span>{Math.round(ZOOM_STEPS[index] * 100)}%</span>
-      <button type="button" className="btn btn-secondary btn-sm" disabled={index === ZOOM_STEPS.length - 1}
-        onClick={() => onChange(index + 1)} aria-label={t('mandala.zoomIn')}>+</button>
-    </div>
-  )
-}
 
 const editorTitle = (editing, t) => editing && {
   center: t('mandala.mainGoal'),
@@ -53,9 +39,9 @@ export default function Mandala() {
   const { t, lang } = useLang()
   const toast = useToast()
   const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
   const { domains } = useAiLibrary()
   const [params, setParams] = useSearchParams()
-  const [zoomIndex, setZoomIndex] = useLocalStorage('bb_mandala_zoom', DEFAULT_ZOOM_INDEX)
   const [editing, setEditing] = useState(null) // cell ref
   const [isSaving, setIsSaving] = useState(false)
   const [manualOpen, setManualOpen] = useState(false)
@@ -68,7 +54,6 @@ export default function Mandala() {
   const active = mandalas.find((m) => m.id === activeId) || null
   const isWizard = !activeId && params.get('new') === '1'
   const todayKey = toDateKey()
-  const safeZoomIndex = Math.min(Math.max(Number(zoomIndex) || 0, 0), ZOOM_STEPS.length - 1)
 
   const openMandala = (id) => setParams(id ? { id } : {})
   const openWizard = () => setParams({ new: '1' })
@@ -113,6 +98,9 @@ export default function Mandala() {
     if (!editing) return
     saveFields(patchForCell(active, editing, cell), () => setEditing(null))
   }
+
+  // Same update path as the editor: patchForCell stamps/clears doneAt and keeps other fields.
+  const toggleDone = (ref, cell) => saveFields(patchForCell(active, ref, { ...cell, done: !cell.done }))
 
   const regenerate = (reason) => {
     if (!active || !editing || editing.kind === 'center') return
@@ -170,10 +158,10 @@ export default function Mandala() {
             <ProgressRing value={stats.progress} size={48} />
             <button type="button" className="btn btn-secondary btn-sm" onClick={() => setAiOpen(true)}><Icon icon={Sparkles} size="1em" /> {t('ai.fill.button')}</button>
             <button type="button" className="btn btn-secondary btn-sm" onClick={() => setPlanOpen(true)}><Icon icon={CalendarDays} size="1em" /> {t('mandala.launchPlan')}</button>
-            {!isMobile && <ZoomControls index={safeZoomIndex} onChange={setZoomIndex} t={t} />}
-            <button type="button" className="btn btn-ghost btn-sm" onClick={() => setConfirmDelete(true)}>
-              {t('common.delete')}
-            </button>
+            <OverflowMenu
+              label={t('mandala.moreActions')}
+              items={[{ id: 'delete', label: t('common.delete'), icon: Trash2, danger: true, onSelect: () => setConfirmDelete(true) }]}
+            />
           </div>
         )}
         {!active && !isWizard && (
@@ -206,15 +194,19 @@ export default function Mandala() {
               })}
             </p>
           )}
-          {isMobile ? (
-            <MandalaMobile key={active.id} mandala={active} todayKey={todayKey} onOpen={setEditing} />
-          ) : (
+          {isMobile && (
+            <MandalaPhone key={active.id} mandala={active} todayKey={todayKey} isEditing={!!editing} onOpen={setEditing} onToggle={toggleDone} />
+          )}
+          {isTablet && (
+            <MandalaTablet key={active.id} mandala={active} todayKey={todayKey} onOpen={setEditing} onToggle={toggleDone} />
+          )}
+          {!isMobile && !isTablet && (
             <>
               <p className="mandala-hint">{t('mandala.hint')}</p>
-              <MandalaGrid key={active.id} mandala={active} zoom={ZOOM_STEPS[safeZoomIndex]} todayKey={todayKey} onOpen={setEditing} />
+              <MandalaGrid key={active.id} mandala={active} todayKey={todayKey} onOpen={setEditing} />
+              <DirectionLegend mandala={active} onOpen={setEditing} t={t} />
             </>
           )}
-          <DirectionLegend mandala={active} onOpen={setEditing} t={t} />
         </>
       )}
 
