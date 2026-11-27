@@ -129,7 +129,7 @@ export default function SavingsGoals() {
 
   async function deleteGoal(id) {
     await remove(id)
-    toast.success(t('common.deleted') || t('common.done'))
+    toast.success(t('common.deleted'))
     setGoalModal(false)
   }
 
@@ -223,7 +223,7 @@ export default function SavingsGoals() {
                     <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => setContribModal(g.id)}>
                       + {t('sav.contribute')}
                     </button>
-                    <button className="btn btn-ghost btn-icon" onClick={() => openEdit(g)} title={t('common.edit')} aria-label="Изменить цель">
+                    <button className="btn btn-ghost btn-icon" onClick={() => openEdit(g)} title={t('common.edit')} aria-label={t('sav.editGoal')}>
                       <Icon icon={Pencil} size={16} />
                     </button>
                   </div>

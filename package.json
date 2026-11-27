@@ -10,6 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
+    "i18n:check": "node scripts/i18n-check.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:emulator": "firebase emulators:exec --only auth,firestore,storage --project demo-bullbir \"vitest run -c vitest.emulator.config.js\"",

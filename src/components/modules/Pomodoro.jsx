@@ -28,7 +28,7 @@ function beep() {
 
 export default function Pomodoro() {
   const { items, add } = useCollection('pomodoro', { orderField: 'createdAt' })
-  const { t } = useLang()
+  const { t, tp } = useLang()
   const [settings, setSettings] = useLocalStorage('bullbir_pomodoro', { focus: 25, break: 5, sound: true })
   const [mode, setMode] = useState('focus') // focus | break
   const [secondsLeft, setSecondsLeft] = useState(settings.focus * 60)
@@ -87,18 +87,18 @@ export default function Pomodoro() {
       <div className="pomo-center">
         {/* Session badge */}
         <div className="pomo-session-badge">
-          Сессия {sessionNum} из 4
+          {t('pomo.sessionOf', { n: sessionNum, total: 4 })}
         </div>
 
         {/* Task label */}
         <div style={{ textAlign: 'center', marginTop: 12 }}>
           <div style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 600 }}>
-            {mode === 'break' ? <><Icon icon={Coffee} size="1em" /> Время отдыха</> : 'Сейчас в фокусе'}
+            {mode === 'break' ? <><Icon icon={Coffee} size="1em" /> {t('pomo.restTime')}</> : t('pomo.inFocus')}
           </div>
           {mode === 'focus' && (
             <input
               className="pomo-task-input"
-              placeholder="Над чем работаешь?"
+              placeholder={t('pomo.taskPlaceholder')}
               value={task}
               onChange={e => setTask(e.target.value)}
               disabled={running}
@@ -122,7 +122,7 @@ export default function Pomodoro() {
             <div className={`pomo-ring-inner${mode === 'break' ? ' break-mode' : ''}`}>
               <span className="pomo-time-display">{mm}:{ss}</span>
               <span style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 600, marginTop: 8 }}>
-                {mode === 'break' ? 'до конца перерыва' : 'осталось до перерыва'}
+                {mode === 'break' ? t('pomo.untilBreakEnd') : t('pomo.untilBreak')}
               </span>
             </div>
           </div>
@@ -144,14 +144,14 @@ export default function Pomodoro() {
 
         {/* Controls */}
         <div className="pomo-controls">
-          <button className="pomo-ctrl-btn secondary" onClick={() => reset()} title="Сбросить" aria-label="Сбросить таймер">
+          <button className="pomo-ctrl-btn secondary" onClick={() => reset()} title={t('pomo.reset')} aria-label={t('pomo.resetTimer')}>
             <Icon icon={RotateCcw} size={22} />
           </button>
           <motion.button
             className={`pomo-ctrl-btn main${mode === 'break' ? ' break-btn' : ''}`}
             whileTap={{ scale: 0.94 }}
             onClick={() => setRunning(r => !r)}
-            aria-label={running ? 'Пауза' : 'Запустить таймер'}
+            aria-label={running ? t('pomo.pause') : t('pomo.startTimer')}
           >
             {running ? (
               <Icon icon={Pause} size={32} />
@@ -159,7 +159,7 @@ export default function Pomodoro() {
               <Icon icon={Play} size={32} />
             )}
           </motion.button>
-          <button className="pomo-ctrl-btn secondary" onClick={complete} title="Пропустить" aria-label="Пропустить сессию">
+          <button className="pomo-ctrl-btn secondary" onClick={complete} title={t('pomo.skip')} aria-label={t('pomo.skipSession')}>
             <Icon icon={SkipForward} size={22} />
           </button>
         </div>
@@ -167,23 +167,23 @@ export default function Pomodoro() {
 
       {/* Right stats column */}
       <div className="pomo-sidebar">
-        <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>Сегодня</div>
+        <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>{t('common.today')}</div>
 
         <div style={{ display: 'flex', gap: 10, marginTop: 16 }}>
           <div className="card pomo-stat">
             <div style={{ fontSize: 24, fontWeight: 800, color: 'var(--text)' }}>{todaySessions}</div>
-            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>сессий</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{tp('pomo.sessionsWord', todaySessions)}</div>
           </div>
           <div className="card pomo-stat">
             <div style={{ fontSize: 24, fontWeight: 800, color: 'var(--text)' }}>
-              {todayHours > 0 ? `${todayHours}ч ${todayMins}м` : `${todayMins}м`}
+              {todayHours > 0 ? t('pomo.hm', { h: todayHours, m: todayMins }) : t('pomo.min', { m: todayMins })}
             </div>
-            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>в фокусе</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('pomo.focused')}</div>
           </div>
         </div>
 
         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)', margin: '22px 0 10px' }}>
-          Длительность фокуса
+          {t('pomo.focusDuration')}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           {DURATIONS.map(d => (
@@ -198,13 +198,13 @@ export default function Pomodoro() {
                 border: `1px solid ${settings.focus === d ? '#7c5cff' : '#23232f'}`,
                 transition: 'all 0.15s',
               }}
-            >{d}м</button>
+            >{t('pomo.min', { m: d })}</button>
           ))}
         </div>
 
         {/* Break duration */}
         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)', margin: '16px 0 10px' }}>
-          Перерыв
+          {t('pomo.break')}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           {[5, 10, 15].map(d => (
@@ -219,12 +219,12 @@ export default function Pomodoro() {
                 border: `1px solid ${settings.break === d ? '#5ad1a5' : '#23232f'}`,
                 transition: 'all 0.15s',
               }}
-            >{d}м</button>
+            >{t('pomo.min', { m: d })}</button>
           ))}
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 20 }}>
-          <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>Звук</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)' }}>{t('pomo.sound')}</span>
           <button
             className={`toggle${settings.sound ? ' on' : ''}`}
             onClick={() => setSettings(s => ({ ...s, sound: !s.sound }))}
@@ -233,15 +233,15 @@ export default function Pomodoro() {
 
         {todayItems.length > 0 && (
           <>
-            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)', margin: '22px 0 12px' }}>Сессии дня</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-muted)', margin: '22px 0 12px' }}>{t('pomo.sessions')}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {todayItems.slice(-6).reverse().map((item, i) => (
                 <div key={item.id} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{ width: 32, height: 32, borderRadius: 9, background: 'rgba(124,92,255,0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9a8cff', fontSize: 16 }}><Icon icon={Check} size="1em" /></div>
                   <div style={{ flex: 1, fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    {item.task || `Сессия ${todayItems.length - i}`}
+                    {item.task || t('pomo.sessionN', { n: todayItems.length - i })}
                   </div>
-                  <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600 }}>{item.minutes}м</span>
+                  <span style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600 }}>{t('pomo.min', { m: item.minutes })}</span>
                 </div>
               ))}
             </div>

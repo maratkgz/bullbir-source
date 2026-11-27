@@ -1,6 +1,7 @@
 import { createContext, useContext, useCallback } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { translations, LANGUAGES, QUOTES } from '../data/translations'
+import { resolvePluralKey } from '../data/i18n/plural'
 
 const LangContext = createContext(null)
 
@@ -35,6 +36,20 @@ export function LangProvider({ children }) {
     [lang],
   )
 
+  // Plural-aware t(): picks `${baseKey}.${one|few|many|other}` for n (Intl.PluralRules), falls back to
+  // `.other`, then the English forms, then t(baseKey). `{n}` is available in the string.
+  const tp = useCallback(
+    (baseKey, n, vars = {}) => {
+      const dict = translations[lang] || translations.en
+      const key =
+        resolvePluralKey((k) => dict[k] !== undefined, lang, baseKey, n) ??
+        resolvePluralKey((k) => translations.en[k] !== undefined, 'en', baseKey, n) ??
+        baseKey
+      return t(key, { ...vars, n })
+    },
+    [lang, t],
+  )
+
   // Translate a Firebase error code to the current language.
   const tError = useCallback(
     (err) => {
@@ -53,7 +68,7 @@ export function LangProvider({ children }) {
   }, [lang])
 
   return (
-    <LangContext.Provider value={{ lang, setLang, t, tError, quote, languages: LANGUAGES }}>
+    <LangContext.Provider value={{ lang, setLang, t, tp, tError, quote, languages: LANGUAGES }}>
       {children}
     </LangContext.Provider>
   )

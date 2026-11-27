@@ -264,7 +264,7 @@ export default function Habits() {
                           style={done ? { background: habit.color, borderColor: habit.color } : {}}
                           onClick={() => toggleDay(habit, d.key)}
                           title={d.key}
-                          aria-label={`Отметить ${d.key}`}
+                          aria-label={t('habits.markDay', { date: d.key })}
                           aria-pressed={done}
                         >
                           {done && (
@@ -278,10 +278,10 @@ export default function Habits() {
                     {streak}
                   </div>
                   <div style={{ display: 'flex', gap: 4 }}>
-                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0 }} onClick={() => openEdit(habit)} aria-label="Изменить привычку">
+                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0 }} onClick={() => openEdit(habit)} aria-label={t('habits.edit')}>
                       <Icon icon={Pencil} size={14} />
                     </button>
-                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0, color: 'var(--error)' }} onClick={() => setConfirmDel(habit)} aria-label="Удалить привычку">
+                    <button className="btn btn-icon btn-ghost" style={{ width: 32, height: 32, minHeight: 'unset', padding: 0, color: 'var(--error)' }} onClick={() => setConfirmDel(habit)} aria-label={t('habits.delete')}>
                       <Icon icon={Trash2} size={14} />
                     </button>
                   </div>
@@ -325,7 +325,7 @@ export default function Habits() {
                       className="btn btn-icon btn-ghost"
                       style={{ color: 'var(--text-muted)' }}
                       onClick={() => openEdit(habit)}
-                      aria-label="Изменить привычку"
+                      aria-label={t('habits.edit')}
                     >
                       <Icon icon={Pencil} size={16} />
                     </button>
@@ -333,7 +333,7 @@ export default function Habits() {
                       className="btn btn-icon btn-ghost"
                       style={{ color: 'var(--error)' }}
                       onClick={() => setConfirmDel(habit)}
-                      aria-label="Удалить привычку"
+                      aria-label={t('habits.delete')}
                     >
                       <Icon icon={Trash2} size={16} />
                     </button>
@@ -341,7 +341,7 @@ export default function Habits() {
                       className={`habits-check-btn${doneToday ? ' done' : ''}`}
                       style={doneToday ? { background: habit.color, borderColor: habit.color } : {}}
                       onClick={() => toggleDay(habit, today)}
-                      aria-label="Отметить сегодня"
+                      aria-label={t('habits.markToday')}
                       aria-pressed={doneToday}
                     >
                       <Icon icon={Check} size={18} />

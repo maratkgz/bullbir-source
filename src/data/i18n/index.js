@@ -5,8 +5,10 @@ import today from './today'
 import coach from './coach'
 import goals from './goals'
 import dashboard from './dashboard'
+import misc from './misc'
 
-export const FEATURE_PACKS = [mandala, plan, today, coach, goals, dashboard]
+// misc goes first: later packs win on a shared key, so a feature pack can override its fallbacks.
+export const FEATURE_PACKS = [misc, mandala, plan, today, coach, goals, dashboard]
 
 /** Returns new dictionaries: base strings plus every pack (packs never override base keys). */
 export function mergePacks(base, packs) {

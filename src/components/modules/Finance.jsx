@@ -36,15 +36,15 @@ function catIcon(type, id) {
 
 function catLabel(t, id) {
   const map = {
-    salary: t('fin.salary') || 'Зарплата',
-    gift: t('fin.gift') || 'Подарок',
-    food: t('fin.food') || 'Еда',
-    transport: t('fin.transport') || 'Транспорт',
-    shopping: t('fin.shopping') || 'Покупки',
-    bills: t('fin.bills') || 'Счета',
-    fun: t('fin.fun') || 'Развлечения',
-    health: t('fin.health') || 'Здоровье',
-    other: t('fin.other') || 'Другое',
+    salary: t('fin.salary'),
+    gift: t('fin.gift'),
+    food: t('fin.food'),
+    transport: t('fin.transport'),
+    shopping: t('fin.shopping'),
+    bills: t('fin.bills'),
+    fun: t('fin.fun'),
+    health: t('fin.health'),
+    other: t('fin.other'),
   }
   return map[id] || id
 }
@@ -111,7 +111,7 @@ export default function Finance() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('fin.title')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {monthLabel}{budget > 0 && (inBudget ? <> · ты в рамках бюджета <Icon icon={ThumbsUp} size="1em" /></> : <> · бюджет превышен <Icon icon={TriangleAlert} size="1em" /></>)}
+            {monthLabel}{budget > 0 && (inBudget ? <> · {t('fin.withinBudget')} <Icon icon={ThumbsUp} size="1em" /></> : <> · {t('fin.overBudget')} <Icon icon={TriangleAlert} size="1em" /></>)}
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -131,7 +131,7 @@ export default function Finance() {
         {/* Budget / Balance hero card */}
         <div className="fin-hero-card">
           <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.78)', fontWeight: 500 }}>
-            {budget > 0 ? (t('fin.budgetFree') || 'Свободно в бюджете') : (t('fin.balance') || 'Баланс')}
+            {budget > 0 ? t('fin.budgetFree') : t('fin.balance')}
           </div>
           <div className="fin-hero-amount">{formatMoney(budgetFree, currency)}</div>
           {budget > 0 && (
@@ -140,16 +140,16 @@ export default function Finance() {
                 <div className="fin-hero-fill" style={{ width: `${budgetPct}%`, background: budgetPct >= 100 ? '#e06a9a' : '#fff' }} />
               </div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginTop: 8 }}>
-                {formatMoney(expense, currency)} из {formatMoney(budget, currency)} потрачено
+                {t('fin.spentOf', { spent: formatMoney(expense, currency), budget: formatMoney(budget, currency) })}
               </div>
             </>
           )}
           {budget === 0 && (
             <div style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>Бюджет:</span>
+              <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>{t('fin.budgetLabel')}</span>
               <input
                 type="number"
-                placeholder="Установить"
+                placeholder={t('fin.setBudget')}
                 className="fin-budget-input"
                 value={budget || ''}
                 onChange={e => setBudget(parseFloat(e.target.value) || 0)}
@@ -164,7 +164,7 @@ export default function Finance() {
             <Icon icon={ArrowUp} />
           </div>
           <div className="fin-stat-amt">{formatMoney(income, currency)}</div>
-          <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('fin.income') || 'доходы'}</div>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('fin.income')}</div>
         </div>
 
         {/* Expense */}
@@ -173,18 +173,18 @@ export default function Finance() {
             <Icon icon={ArrowDown} />
           </div>
           <div className="fin-stat-amt">{formatMoney(expense, currency)}</div>
-          <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('fin.expense') || 'расходы'}</div>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 600, marginTop: 2 }}>{t('fin.expense')}</div>
         </div>
       </div>
 
       {budget > 0 && (
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
-          <button className="btn btn-ghost btn-sm" style={{ fontSize: 12 }} onClick={() => setBudget(0)}>Сбросить бюджет</button>
+          <button className="btn btn-ghost btn-sm" style={{ fontSize: 12 }} onClick={() => setBudget(0)}>{t('fin.resetBudget')}</button>
           <input
             type="number"
             className="input"
             style={{ width: 140, height: 34, fontSize: 13, marginLeft: 8 }}
-            placeholder="Изменить"
+            placeholder={t('fin.changeBudget')}
             value={budget || ''}
             onChange={e => setBudget(parseFloat(e.target.value) || 0)}
           />
@@ -198,7 +198,7 @@ export default function Finance() {
           {byCategory.length > 0 && (
             <div className="card">
               <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)', marginBottom: 18 }}>
-                {t('fin.byCategory') || 'По категориям'}
+                {t('fin.byCategory')}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {byCategory.slice(0, 6).map(({ id, value }, i) => (
@@ -230,10 +230,10 @@ export default function Finance() {
           <div className="card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>
-                {t('fin.txns') || 'Операции'}
+                {t('fin.txns')}
               </span>
               <span style={{ fontSize: 13, color: '#9a8cff', fontWeight: 600 }}>
-                {items.length} {t('fin.total') || 'всего'}
+                {items.length} {t('fin.total')}
               </span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -284,7 +284,7 @@ export default function Finance() {
       {items.length === 0 && (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
           <div style={{ fontSize: 48, marginBottom: 12 }}><Icon icon={Wallet} size="1em" /></div>
-          <h3>{t('fin.empty') || 'Добавьте первую операцию'}</h3>
+          <h3>{t('fin.empty')}</h3>
           <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setModalOpen(true)}>
             + {t('fin.newTxn')}
           </button>
@@ -292,25 +292,25 @@ export default function Finance() {
       )}
 
       {/* Add transaction modal */}
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={t('fin.newTxn') || 'Новая операция'}>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={t('fin.newTxn')}>
         <div className="tasks-tabs" style={{ marginBottom: 16 }}>
           <button
             className={`tasks-tab${form.type === 'expense' ? ' active' : ''}`}
             onClick={() => setForm(f => ({ ...f, type: 'expense', category: 'food' }))}
-          >{t('fin.expense') || 'Расход'}</button>
+          >{t('fin.expense')}</button>
           <button
             className={`tasks-tab${form.type === 'income' ? ' active' : ''}`}
             onClick={() => setForm(f => ({ ...f, type: 'income', category: 'salary' }))}
-          >{t('fin.income') || 'Доход'}</button>
+          >{t('fin.income')}</button>
         </div>
 
         <div className="field">
-          <label>{t('fin.amount') || 'Сумма'}</label>
+          <label>{t('fin.amount')}</label>
           <input type="number" className="input" value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} autoFocus placeholder="0" />
         </div>
 
         <div className="field">
-          <label>{t('fin.category') || 'Категория'}</label>
+          <label>{t('fin.category')}</label>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {CATEGORIES[form.type].map(c => (
               <button
@@ -329,17 +329,17 @@ export default function Finance() {
         </div>
 
         <div className="field">
-          <label>{t('common.description') || 'Описание'} <span style={{ color: 'var(--text-muted)' }}>({t('common.optional') || 'необязательно'})</span></label>
+          <label>{t('common.description')} <span style={{ color: 'var(--text-muted)' }}>({t('common.optional')})</span></label>
           <input className="input" value={form.note} onChange={e => setForm(f => ({ ...f, note: e.target.value }))} placeholder={catLabel(t, form.category)} />
         </div>
 
         <div className="field">
-          <label>{t('common.date') || 'Дата'}</label>
+          <label>{t('common.date')}</label>
           <input type="date" className="input" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
         </div>
 
         <button className="btn btn-primary" style={{ width: '100%', marginTop: 4 }} onClick={save}>
-          {t('common.save') || 'Сохранить'}
+          {t('common.save')}
         </button>
       </Modal>
     </div>

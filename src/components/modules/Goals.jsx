@@ -45,6 +45,7 @@ function GoalActions({ goal, isCompleted, onArchive, onEdit, onDelete }) {
 }
 
 function GoalCard({ goal, onToggleMilestone, onArchive, onEdit, onDelete, onClick }) {
+  const { t } = useLang()
   const pct = goalPct(goal)
   const ms = goal.milestones || []
   const done = ms.filter(m => m.done).length
@@ -90,11 +91,11 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onEdit, onDelete, onClic
             {goal.title}
           </div>
           {isCompleted
-            ? <div style={{ fontSize: 12.5, color: '#5ad1a5', fontWeight: 600, marginTop: 1 }}>Завершено <Icon icon={PartyPopper} size="1em" /></div>
+            ? <div style={{ fontSize: 12.5, color: '#5ad1a5', fontWeight: 600, marginTop: 1 }}>{t('goals.completed')} <Icon icon={PartyPopper} size="1em" /></div>
             : ms.length > 0
-              ? <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 1 }}>{done} из {ms.length}</div>
+              ? <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 1 }}>{t('goals.milestonesDone', { done, total: ms.length })}</div>
               : goal.deadline
-                ? <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 1 }}>До {goal.deadline}</div>
+                ? <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 1 }}>{t('goals.until', { date: goal.deadline })}</div>
                 : null
           }
         </div>
@@ -115,7 +116,7 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onEdit, onDelete, onClic
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
         <span style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 600 }}>
-          {goal.deadline ? `До ${goal.deadline}` : 'Без срока'}
+          {goal.deadline ? t('goals.until', { date: goal.deadline }) : t('goals.noDeadline')}
         </span>
         <span style={{ fontSize: 18, fontWeight: 800, color: isCompleted ? '#5ad1a5' : color }}>
           {pct}%
@@ -130,7 +131,7 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onEdit, onDelete, onClic
                 className={`task-checkbox${m.done ? ' checked' : ''}`}
                 style={{ width: 20, height: 20, borderRadius: 6 }}
                 onClick={e => { e.stopPropagation(); onToggleMilestone(goal, i) }}
-                aria-label="Отметить этап"
+                aria-label={t('goals.toggleMilestone')}
                 aria-pressed={m.done}
               >
                 {m.done && <Icon icon={Check} size={11} style={{ color: '#fff' }} />}
@@ -174,7 +175,7 @@ function GoalForm({ initial, onSave, onClose }) {
       </div>
 
       <div className="field">
-        <label>Иконка</label>
+        <label>{t('goals.icon')}</label>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           {GOAL_EMOJIS.map(em => (
             <button
@@ -191,7 +192,7 @@ function GoalForm({ initial, onSave, onClose }) {
       </div>
 
       <div className="field">
-        <label>Цвет</label>
+        <label>{t('goals.color')}</label>
         <div style={{ display: 'flex', gap: 8 }}>
           {GOAL_COLORS.map(c => (
             <button
@@ -213,7 +214,7 @@ function GoalForm({ initial, onSave, onClose }) {
           <input className="input" value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
         </div>
         <div className="field">
-          <label>Срок</label>
+          <label>{t('goals.deadline')}</label>
           <input type="date" className="input" value={form.deadline} onChange={e => setForm(f => ({ ...f, deadline: e.target.value }))} />
         </div>
       </div>
@@ -249,7 +250,7 @@ function GoalForm({ initial, onSave, onClose }) {
 
 export default function Goals() {
   const { items, add, update, remove } = useCollection('goals')
-  const { t } = useLang()
+  const { t, tp } = useLang()
   const toast = useToast()
   const [tab, setTab] = useState('active') // active | done
   const [modalOpen, setModalOpen] = useState(false)
@@ -302,8 +303,8 @@ export default function Goals() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('nav.goals')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {activeGoals.length} активных
-            {doneGoals.length > 0 && ` · ${doneGoals.length} завершено`}
+            {tp('goals.activeCount', activeGoals.length)}
+            {doneGoals.length > 0 && ` · ${tp('goals.doneCount', doneGoals.length)}`}
           </p>
         </div>
         <button className="btn btn-primary" onClick={openNew}>
@@ -314,17 +315,17 @@ export default function Goals() {
 
       <div className="tasks-tabs">
         <button className={`tasks-tab${tab === 'active' ? ' active' : ''}`} onClick={() => setTab('active')}>
-          {t('common.active') || 'Активные'} {activeGoals.length > 0 && `(${activeGoals.length})`}
+          {t('common.active')} {activeGoals.length > 0 && `(${activeGoals.length})`}
         </button>
         <button className={`tasks-tab${tab === 'done' ? ' active' : ''}`} onClick={() => setTab('done')}>
-          {t('tasks.done') || 'Готово'} {doneGoals.length > 0 && `(${doneGoals.length})`}
+          {t('tasks.done')} {doneGoals.length > 0 && `(${doneGoals.length})`}
         </button>
       </div>
 
       {display.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
           <div style={{ fontSize: 48, marginBottom: 12 }}>{tab === 'done' ? <Icon icon={Trophy} size="1em" /> : <Icon icon={Target} size="1em" />}</div>
-          <h3>{tab === 'done' ? 'Нет завершённых целей' : t('goals.empty')}</h3>
+          <h3>{tab === 'done' ? t('goals.emptyDone') : t('goals.empty')}</h3>
           {tab === 'active' && (
             <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={openNew}>
               + {t('goals.newGoal')}

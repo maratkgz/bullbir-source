@@ -85,7 +85,7 @@ export default function Reminders() {
           <AnimatePresence>
             {items.map((r) => (
               <motion.div key={r.id} layout initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="rem-row">
-                <button aria-label="Отметить напоминание" aria-pressed={r.done} className={`checkbox ${r.done ? 'checked' : ''}`} onClick={() => update(r.id, { done: !r.done })}>
+                <button aria-label={t('rem.toggle')} aria-pressed={r.done} className={`checkbox ${r.done ? 'checked' : ''}`} onClick={() => update(r.id, { done: !r.done })}>
                   {r.done && <Icon icon={Check} size={12} />}
                 </button>
                 <div style={{ flex: 1 }}>

@@ -25,6 +25,7 @@ function getGroupLabel(g, lang) {
 }
 
 function ProgressRing({ done, total }) {
+  const { t, tp } = useLang()
   const pct = total === 0 ? 0 : Math.round((done / total) * 100)
   return (
     <div className="tasks-progress-card card">
@@ -38,10 +39,10 @@ function ProgressRing({ done, total }) {
       </div>
       <div>
         <div className="tasks-progress-title">
-          {pct === 100 ? <Icon icon={PartyPopper} size="1em" /> : <Icon icon={Zap} size="1em" />} {pct === 100 ? 'День завершён!' : 'Прогресс дня'}
+          {pct === 100 ? <Icon icon={PartyPopper} size="1em" /> : <Icon icon={Zap} size="1em" />} {pct === 100 ? t('tasks.dayDone') : t('tasks.dayProgress')}
         </div>
         <div className="tasks-progress-sub" style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-          Выполнено {done} из {total} задач
+          {tp('tasks.doneOfTotal', total, { done })}
         </div>
       </div>
       <div className="tasks-ring-count">
@@ -70,7 +71,7 @@ function TaskRow({ task, onCheck, onEdit, onSkip }) {
       <button
         className={`task-checkbox${done ? ' checked' : ''}`}
         onClick={(e) => { e.stopPropagation(); onCheck(task) }}
-        aria-label={done ? 'Отметить как невыполненную' : 'Отметить как выполненную'}
+        aria-label={done ? t('tasks.markUndone') : t('tasks.markDone')}
         aria-pressed={done}
       >
         {done && (
@@ -93,14 +94,14 @@ function TaskRow({ task, onCheck, onEdit, onSkip }) {
         <span className="task-prio-badge high">!</span>
       )}
       {skipped && (
-        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}><Icon icon={Ban} size="1em" label="Пропущена" /></span>
+        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}><Icon icon={Ban} size="1em" label={t('tasks.skipped')} /></span>
       )}
       {!done && !skipped && (
         <button
           className="task-skip-btn"
           onClick={(e) => { e.stopPropagation(); onSkip(task) }}
           title={t('tasks.skip')}
-          aria-label="Пропустить задачу"
+          aria-label={t('tasks.skipTask')}
         >
           <Icon icon={ChevronRight} size={16} />
         </button>
@@ -199,7 +200,7 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
       </div>
 
       <div className="field">
-        <label>Время дня</label>
+        <label>{t('tasks.timeOfDay')}</label>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {TIME_GROUPS.map(g => (
             <button
@@ -235,7 +236,7 @@ function TaskModal({ open, onClose, task, onSave, onDelete }) {
         <div className="list-stack">
           {form.subtasks.map((s, i) => (
             <div key={i} className="subtask-row">
-              <button type="button" aria-label="Отметить подзадачу" aria-pressed={s.done} className={`checkbox ${s.done ? 'checked' : ''}`} onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.map((x, j) => j === i ? { ...x, done: !x.done } : x) }))}>
+              <button type="button" aria-label={t('tasks.toggleSubtask')} aria-pressed={s.done} className={`checkbox ${s.done ? 'checked' : ''}`} onClick={() => setForm(f => ({ ...f, subtasks: f.subtasks.map((x, j) => j === i ? { ...x, done: !x.done } : x) }))}>
                 {s.done && <Icon icon={Check} size={12} />}
               </button>
               <span style={{ flex: 1, textDecoration: s.done ? 'line-through' : 'none', color: s.done ? 'var(--text-muted)' : 'var(--text)' }}>{s.title}</span>
@@ -357,9 +358,9 @@ export default function TaskTracker() {
   }
 
   const TABS = [
-    { id: 'today', label: t('common.today') || 'Сегодня' },
-    { id: 'week',  label: t('tasks.week') || 'Неделя' },
-    { id: 'done',  label: t('tasks.done') || 'Готово' },
+    { id: 'today', label: t('common.today') },
+    { id: 'week',  label: t('tasks.week') },
+    { id: 'done',  label: t('tasks.done') },
   ]
 
   return (
@@ -369,7 +370,7 @@ export default function TaskTracker() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('nav.tasks')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {doneCount} из {totalCount} выполнено сегодня
+            {t('tasks.doneToday', { done: doneCount, total: totalCount })}
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -406,7 +407,7 @@ export default function TaskTracker() {
           <div style={{ fontSize: 48, marginBottom: 12 }}>
             {tab === 'done' ? <Icon icon={Trophy} size="1em" /> : <Icon icon={Inbox} size="1em" />}
           </div>
-          <h3>{tab === 'done' ? 'Нет выполненных задач' : t('tasks.empty')}</h3>
+          <h3>{tab === 'done' ? t('tasks.emptyDone') : t('tasks.empty')}</h3>
           {tab !== 'done' && (
             <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={openNew}>
               + {t('tasks.new')}

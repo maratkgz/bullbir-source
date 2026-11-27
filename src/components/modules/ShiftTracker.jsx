@@ -45,9 +45,12 @@ const BLANK = {
   workplace: '', rateType: 'hourly', rate: '', status: 'planned', wellbeing: null, note: '',
 }
 
+const DATE_LOCALES = { en: 'en-US', kg: 'ky-KG', ru: 'ru-RU' }
+
 export default function ShiftTracker() {
   const { items, add, update, remove } = useCollection('shifts', { orderField: 'date', direction: 'desc' })
-  const { t } = useLang()
+  const { t, tp, lang } = useLang()
+  const dateLocale = DATE_LOCALES[lang] || 'en-US'
   const toast = useToast()
   const [currency, setCurrency] = useLocalStorage('bullbir_currency', 'KGS')
   const [view, setView] = useState('calendar')
@@ -164,7 +167,7 @@ export default function ShiftTracker() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('shift.title')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {format(month, 'LLLL yyyy', { locale: undefined })} · {items.length} смен
+            {month.toLocaleString(dateLocale, { month: 'long', year: 'numeric' })} · {tp('shift.count', items.length)}
           </p>
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
@@ -196,18 +199,18 @@ export default function ShiftTracker() {
         return (
           <div className="shift-hero-card" style={{ marginBottom: 16 }}>
             <div style={{ fontSize: 13.5, color: 'rgba(255,255,255,0.8)', fontWeight: 500, position: 'relative' }}>
-              Заработано в {format(month, 'LLLL', { locale: undefined })}
+              {t('shift.earnedIn', { month: month.toLocaleString(dateLocale, { month: 'long' }) })}
             </div>
             <div style={{ fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginTop: 6, position: 'relative' }}>
               {formatMoney(totalEarnings, currency)}
             </div>
             <div style={{ display: 'flex', gap: 24, marginTop: 18, position: 'relative' }}>
               <div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Часов</div>
-                <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginTop: 2 }}>{Math.round(totalHours)} ч</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>{t('shift.hours')}</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginTop: 2 }}>{t('shift.hoursShort', { n: Math.round(totalHours) })}</div>
               </div>
               <div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>Смен</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', fontWeight: 600 }}>{t('shift.shifts')}</div>
                 <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', marginTop: 2 }}>{monthItems.length}</div>
               </div>
             </div>
@@ -260,7 +263,7 @@ export default function ShiftTracker() {
         <div>
           <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-4)' }}>
             <button className="btn btn-ghost" onClick={() => setMonth(subMonths(month, 1))}>←</button>
-            <h2 style={{ fontSize: 'var(--text-lg)', fontWeight: 700 }}>{format(month, 'MMMM yyyy')}</h2>
+            <h2 style={{ fontSize: 'var(--text-lg)', fontWeight: 700 }}>{month.toLocaleString(dateLocale, { month: 'long', year: 'numeric' })}</h2>
             <button className="btn btn-ghost" onClick={() => setMonth(addMonths(month, 1))}>→</button>
           </div>
           <div className="card" style={{ padding: 0, overflow: 'hidden' }}>

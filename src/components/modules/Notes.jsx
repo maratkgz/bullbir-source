@@ -10,9 +10,11 @@ import { useIsMobile } from '../../hooks/useMediaQuery'
 import { Pin, Plus, Search } from 'lucide-react'
 import Icon from '../ui/Icon'
 
+const DATE_LOCALES = { en: 'en-US', kg: 'ky-KG', ru: 'ru-RU' }
+
 export default function Notes() {
   const { items, loading, add, update, remove } = useCollection('notes', { orderField: 'updatedAt' })
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const toast = useToast()
   const isMobile = useIsMobile()
   const [params, setParams] = useSearchParams()
@@ -64,9 +66,9 @@ export default function Notes() {
     const d = n.updatedAt?.seconds ? new Date(n.updatedAt.seconds * 1000) : null
     if (!d) return ''
     const today = new Date(); const diff = (today - d) / 86400000
-    if (diff < 1) return 'Сегодня'
-    if (diff < 2) return 'Вчера'
-    return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })
+    if (diff < 1) return t('common.today')
+    if (diff < 2) return t('common.yesterday')
+    return d.toLocaleDateString(DATE_LOCALES[lang] || 'en-US', { day: 'numeric', month: 'short' })
   }
 
   const NoteCard = ({ n }) => (
@@ -77,7 +79,7 @@ export default function Notes() {
       {n.pinned && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
           <Icon icon={Pin} size={13} />
-          <span style={{ fontSize: 10, fontWeight: 700, color: '#9a8cff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Закреплено</span>
+          <span style={{ fontSize: 10, fontWeight: 700, color: '#9a8cff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{t('notes.pinnedBadge')}</span>
         </div>
       )}
       <div style={{ fontSize: 14.5, fontWeight: 700, color: 'var(--text)', marginBottom: 6 }}>
@@ -112,7 +114,7 @@ export default function Notes() {
           </div>
           {pinned.map(n => <NoteCard key={`p-${n.id}`} n={n} />)}
           <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '16px 0 10px' }}>
-            Все заметки
+            {t('notes.all')}
           </div>
         </>
       )}

@@ -9,11 +9,11 @@ import { NotebookPen, PenLine } from 'lucide-react'
 import Icon from '../ui/Icon'
 
 const MOODS = [
-  { value: 0, emoji: '😔', label: 'Плохо',   color: '#e06a9a', height: 25 },
-  { value: 1, emoji: '😕', label: 'Грустно', color: '#f0a45a', height: 45 },
-  { value: 2, emoji: '😐', label: 'Нейтрально', color: '#9a9aab', height: 55 },
-  { value: 3, emoji: '🙂', label: 'Хорошо',  color: '#5ad1a5', height: 75 },
-  { value: 4, emoji: '😄', label: 'Отлично', color: '#7c5cff', height: 100 },
+  { value: 0, emoji: '😔', key: 'mood.veryBad', color: '#e06a9a', height: 25 },
+  { value: 1, emoji: '😕', key: 'mood.bad', color: '#f0a45a', height: 45 },
+  { value: 2, emoji: '😐', key: 'mood.ok', color: '#9a9aab', height: 55 },
+  { value: 3, emoji: '🙂', key: 'mood.good', color: '#5ad1a5', height: 75 },
+  { value: 4, emoji: '😄', key: 'mood.great', color: '#7c5cff', height: 100 },
 ]
 const MOOD_HEIGHTS = [25, 45, 55, 75, 100]
 
@@ -24,8 +24,15 @@ function countWords(text) {
   return text ? text.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).filter(Boolean).length : 0
 }
 
+const DATE_LOCALES = { en: 'en-US', kg: 'ky-KG', ru: 'ru-RU' }
+const DAY_LABELS = {
+  en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  kg: ['Дш', 'Сш', 'Шр', 'Бш', 'Жм', 'Иш', 'Жк'],
+  ru: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+}
+
 function WeekMood({ items }) {
-  const { lang } = useLang()
+  const { t, lang } = useLang()
   const days = Array.from({ length: 7 }, (_, i) => {
     const d = new Date()
     d.setDate(d.getDate() - 6 + i)
@@ -37,13 +44,13 @@ function WeekMood({ items }) {
     return m
   }, [items])
 
-  const dayLabels = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+  const dayLabels = DAY_LABELS[lang] || DAY_LABELS.en
   const today = toDateKey()
 
   return (
     <div className="card journal-week-mood">
       <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text)', marginBottom: 14 }}>
-        Эта неделя
+        {t('journal.thisWeek')}
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 6 }}>
         {days.map((d, i) => {
@@ -69,6 +76,7 @@ function WeekMood({ items }) {
 }
 
 function MoodChart({ items }) {
+  const { t } = useLang()
   const last14 = useMemo(() => {
     const days = Array.from({ length: 14 }, (_, i) => {
       const d = new Date()
@@ -85,7 +93,7 @@ function MoodChart({ items }) {
   return (
     <div className="card" style={{ marginBottom: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>Настроение за 2 недели</span>
+        <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{t('journal.moodTwoWeeks')}</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 4, height: 100 }}>
         {last14.map(({ k, mood }) => (
@@ -104,9 +112,11 @@ function MoodChart({ items }) {
 }
 
 function EntryCard({ entry, onDelete, onEdit }) {
+  const { t, lang } = useLang()
+  const locale = DATE_LOCALES[lang] || 'en-US'
   const date = entry.date ? new Date(entry.date) : entry.createdAt ? new Date(entry.createdAt.seconds * 1000) : new Date()
-  const dateStr = date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })
-  const timeStr = date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
+  const dateStr = date.toLocaleDateString(locale, { day: 'numeric', month: 'long' })
+  const timeStr = date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })
   const preview = (entry.content || '').replace(/<[^>]+>/g, ' ').slice(0, 180)
 
   return (
@@ -125,7 +135,7 @@ function EntryCard({ entry, onDelete, onEdit }) {
         )}
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)' }}>
-            {entry.title || 'Без названия'}
+            {entry.title || t('common.untitled')}
           </div>
           <div style={{ fontSize: 12.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 1 }}>
             {dateStr}, {timeStr}
@@ -160,7 +170,7 @@ function EntryCard({ entry, onDelete, onEdit }) {
 }
 
 function EntryModal({ open, onClose, entry, onSave }) {
-  const { t } = useLang()
+  const { t, tp } = useLang()
   const [form, setForm] = useState({ title: '', content: '', mood: null, tags: [], date: toDateKey() })
   const [tagInput, setTagInput] = useState('')
 
@@ -177,18 +187,19 @@ function EntryModal({ open, onClose, entry, onSave }) {
   }
 
   return (
-    <Modal open={open} onClose={onClose} title={entry ? 'Редактировать запись' : 'Новая запись'} maxWidth={560}>
+    <Modal open={open} onClose={onClose} title={entry ? t('journal.editEntry') : t('journal.newEntry')} maxWidth={560}>
       <div className="field">
-        <label>Заголовок</label>
-        <input className="input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} autoFocus placeholder="Как прошёл день?" />
+        <label>{t('common.title')}</label>
+        <input className="input" value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} autoFocus placeholder={t('journal.titlePlaceholder')} />
       </div>
 
       <div className="field">
-        <label>Настроение</label>
+        <label>{t('journal.moodTag')}</label>
         <div style={{ display: 'flex', gap: 8 }}>
           {MOODS.map(m => (
             <button
               key={m.value} type="button"
+              aria-label={t(m.key)} title={t(m.key)} aria-pressed={form.mood === m.value}
               onClick={() => setForm(f => ({ ...f, mood: f.mood === m.value ? null : m.value }))}
               style={{
                 width: 44, height: 44, borderRadius: 12, fontSize: 22,
@@ -202,22 +213,22 @@ function EntryModal({ open, onClose, entry, onSave }) {
       </div>
 
       <div className="field">
-        <label>Запись</label>
+        <label>{t('journal.entry')}</label>
         <textarea
           className="textarea"
           rows={8}
           value={form.content}
           onChange={e => setForm(f => ({ ...f, content: e.target.value }))}
-          placeholder={t('journal.placeholder') || 'Что происходило сегодня? Как ты себя чувствуешь?'}
+          placeholder={t('journal.placeholder')}
           style={{ resize: 'vertical', fontFamily: 'var(--font-body)', lineHeight: 1.6 }}
         />
         <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
-          {countWords(form.content)} слов
+          {tp('journal.words', countWords(form.content))}
         </div>
       </div>
 
       <div className="field">
-        <label>Теги</label>
+        <label>{t('tasks.tags')}</label>
         <div className="chip-input">
           {form.tags.map(tag => (
             <span key={tag} className="chip-removable">#{tag}
@@ -228,13 +239,13 @@ function EntryModal({ open, onClose, entry, onSave }) {
             className="input" style={{ flex: 1, minWidth: 100 }} value={tagInput}
             onChange={e => setTagInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addTag())}
-            placeholder="добавить тег..."
+            placeholder={`${t('tasks.addTag')}…`}
           />
         </div>
       </div>
 
       <div className="field">
-        <label>Дата</label>
+        <label>{t('common.date')}</label>
         <input type="date" className="input" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
       </div>
 
@@ -247,7 +258,7 @@ function EntryModal({ open, onClose, entry, onSave }) {
 
 export default function Journal() {
   const { items, loading, add, update, remove } = useCollection('journalEntries', { orderField: 'createdAt', direction: 'desc' })
-  const { t } = useLang()
+  const { t, tp } = useLang()
   const toast = useToast()
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState(null)
@@ -277,12 +288,12 @@ export default function Journal() {
         <div>
           <h2 style={{ letterSpacing: '-0.02em' }}>{t('nav.journal')}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {monthCount} записей в этом месяце
+            {tp('journal.monthCount', monthCount)}
           </p>
         </div>
         <button className="btn btn-primary" onClick={openNew}>
           <Icon icon={PenLine} size={18} />
-          Новая запись
+          {t('journal.newEntry')}
         </button>
       </div>
 
@@ -300,16 +311,16 @@ export default function Journal() {
       ) : items.length === 0 ? (
         <div className="card" style={{ textAlign: 'center', padding: 'var(--space-8) var(--space-4)', marginTop: 16 }}>
           <div style={{ fontSize: 48, marginBottom: 12 }}><Icon icon={NotebookPen} size="1em" /></div>
-          <h3>Начни вести дневник</h3>
-          <p style={{ color: 'var(--text-muted)', marginTop: 8 }}>Фиксируй мысли, настроение и события каждого дня</p>
+          <h3>{t('journal.emptyTitle')}</h3>
+          <p style={{ color: 'var(--text-muted)', marginTop: 8 }}>{t('journal.emptyHint')}</p>
           <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={openNew}>
-            + Первая запись
+            + {t('journal.firstEntry')}
           </button>
         </div>
       ) : (
         <div>
           <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 14, marginTop: 20 }}>
-            Последние записи
+            {t('journal.recent')}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <AnimatePresence>

@@ -130,9 +130,9 @@ export default function Calendar() {
     <div>
       <div className="page-header">
         <div className="flex items-center gap-3">
-          <button className="btn btn-ghost btn-icon" onClick={navPrev} aria-label="Назад"><Icon icon={ChevronLeft} /></button>
+          <button className="btn btn-ghost btn-icon" onClick={navPrev} aria-label={t('cal.prev')}><Icon icon={ChevronLeft} /></button>
           <span className="date-label" style={{ minWidth: 180 }}>{label}</span>
-          <button className="btn btn-ghost btn-icon" onClick={navNext} aria-label="Вперёд"><Icon icon={ChevronRight} /></button>
+          <button className="btn btn-ghost btn-icon" onClick={navNext} aria-label={t('cal.next')}><Icon icon={ChevronRight} /></button>
         </div>
         <div className="flex items-center gap-3">
           <div className="view-toggle">
