@@ -1,7 +1,14 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from './Logo'
+import { useLang } from '../../context/LangContext'
+import { pickSplashQuote } from '../../data/splashQuotes'
 
 export default function Splash({ onDone }) {
+  const { lang } = useLang()
+  // One quote per loading screen (picked once, so it doesn't change while visible).
+  const [quote] = useState(() => pickSplashQuote(lang))
+
   return (
     <motion.div
       style={{
@@ -13,6 +20,7 @@ export default function Splash({ onDone }) {
         alignItems: 'center',
         justifyContent: 'center',
         gap: 'var(--space-5)',
+        padding: '0 var(--page-pad-x)',
         background: 'var(--gradient-hero)',
       }}
       initial={{ opacity: 1 }}
@@ -41,6 +49,21 @@ export default function Splash({ onDone }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
       />
+      <motion.p
+        style={{
+          color: 'rgba(255,255,255,0.78)',
+          fontSize: 'var(--text-base)',
+          textAlign: 'center',
+          maxWidth: '32ch',
+          lineHeight: 1.5,
+          fontStyle: 'italic',
+        }}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.4 }}
+      >
+        {quote}
+      </motion.p>
     </motion.div>
   )
 }
