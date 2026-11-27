@@ -14,6 +14,7 @@ import { BookOpen, Camera, Check, Download, Flame, Mail, Moon, Pencil, Phone, Sp
 import Icon from '../ui/Icon'
 import PasswordCard from './profile/PasswordCard'
 import CoverMenu from './profile/CoverMenu'
+import { cleanupOrphans } from './mandala/orphanCleanup'
 import EmailCard from './profile/EmailCard'
 import DevicesCard from './profile/DevicesCard'
 import SecurityActivityCard from './profile/SecurityActivityCard'
@@ -138,6 +139,7 @@ export default function Profile() {
   const [totalXp, setTotalXp] = useState(0)
   const [avatarBusy, setAvatarBusy] = useState(false)
   const [bannerBusy, setBannerBusy] = useState(false)
+  const [cleaning, setCleaning] = useState(false)
   const [delModal, setDelModal] = useState(false)
   const [delBusy, setDelBusy] = useState(false)
   const [delPw, setDelPw] = useState('')
@@ -270,6 +272,18 @@ export default function Profile() {
       a.click(); URL.revokeObjectURL(a.href)
       toast.success(t('profile.data.exported'))
     } catch (e) { toast.error(e.message) }
+  }
+
+  // User-triggered: removes tasks/habits/reviews left by tables deleted before deletion cascaded.
+  const cleanLeftovers = async () => {
+    if (!firebaseReady || cleaning) return
+    setCleaning(true)
+    try {
+      const n = await cleanupOrphans(db, user.uid)
+      toast.success(n > 0 ? t('profile.data.leftoversDone', { n }) : t('profile.data.leftoversNone'))
+    } catch (e) {
+      toast.error(tError(e))
+    } finally { setCleaning(false) }
   }
 
   const clearCache = async () => {
@@ -626,6 +640,15 @@ export default function Profile() {
               <span className="prof-card-title">{t('profile.data.cache')}</span>
               <p className="text-muted" style={{ fontSize: 'var(--text-sm)', margin: '8px 0 16px' }}>{t('profile.data.cacheDesc')}</p>
               <button className="btn btn-secondary" onClick={clearCache}>{t('profile.data.clearBtn')}</button>
+            </div>
+
+            <div className="card prof-card-inner">
+              <span className="prof-card-title">{t('profile.data.leftovers')}</span>
+              <p className="text-muted" style={{ fontSize: 'var(--text-sm)', margin: '8px 0 16px' }}>{t('profile.data.leftoversDesc')}</p>
+              <button className="btn btn-secondary" onClick={cleanLeftovers} disabled={cleaning}>
+                {cleaning ? <span className="spinner" style={{ width: 14, height: 14 }} /> : null}
+                {t('profile.data.leftoversBtn')}
+              </button>
             </div>
 
             <div className="card prof-card-inner">
