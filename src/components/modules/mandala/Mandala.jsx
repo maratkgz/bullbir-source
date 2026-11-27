@@ -21,6 +21,7 @@ import { regenerateItem, regenerateDirection } from '../../../ai/engine/regenera
 import { CalendarDays, Sparkles, MessageCircle, Trash2 } from 'lucide-react'
 import Icon from '../../ui/Icon'
 import { emptyMandala, normalizeMandala, getCell, patchForCell, mandalaStats } from './mandalaModel'
+import { linkedToMandala } from './mandalaLinks'
 import './Mandala.css'
 import './MandalaCompact.css'
 import '../assistant/Assistant.css'
@@ -36,6 +37,9 @@ const editorKey = (editing, cell) => `${JSON.stringify(editing)}:${cell.src}:${c
 
 export default function Mandala() {
   const { items, loading, add, update, remove } = useCollection('mandalas')
+  const taskCol = useCollection('tasks')
+  const habitCol = useCollection('habits')
+  const reviewCol = useCollection('weeklyReviews', { orderField: 'updatedAt' })
   const { t, lang } = useLang()
   const toast = useToast()
   const isMobile = useIsMobile()
@@ -121,9 +125,23 @@ export default function Mandala() {
     toast.success(t('ai.fill.done'))
   })
 
+  // Deleting a table also deletes what it created: its tasks, habits and weekly reviews.
+  const linked = active
+    ? {
+      tasks: linkedToMandala(taskCol.items, active.id),
+      habits: linkedToMandala(habitCol.items, active.id),
+      reviews: linkedToMandala(reviewCol.items, active.id),
+    }
+    : { tasks: [], habits: [], reviews: [] }
+
   const deleteMandala = async () => {
     if (!active) return
     try {
+      await Promise.all([
+        ...linked.tasks.map((x) => taskCol.remove(x.id)),
+        ...linked.habits.map((x) => habitCol.remove(x.id)),
+        ...linked.reviews.map((x) => reviewCol.remove(x.id)),
+      ])
       await remove(active.id)
       setConfirmDelete(false)
       openMandala(null)

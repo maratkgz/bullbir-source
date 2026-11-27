@@ -120,10 +120,17 @@ export default function CompletionHistory() {
   const { t } = useLang()
   const [filter, setFilter] = useState('all')
 
+  // History = what already happened: done, skipped, or open with a deadline that has passed.
+  // Future (planned) tasks are not history and must not show as "overdue".
   const filtered = useMemo(() => {
     if (filter === 'done') return tasks.filter(t => t.status === 'done')
     if (filter === 'skipped') return tasks.filter(t => t.status === 'skipped')
-    return tasks
+    const todayKey = toDateKey()
+    return tasks.filter((task) => {
+      if (task.status === 'done' || task.status === 'skipped') return true
+      const d = task.deadline ? toDate(task.deadline) : null
+      return !!d && toDateKey(d) < todayKey
+    })
   }, [tasks, filter])
 
   const metrics = useMemo(() => {
@@ -238,7 +245,7 @@ export default function CompletionHistory() {
                     {task.title}
                   </span>
                   <span className={`prio prio-${task.priority || 'medium'}`} style={{ fontSize: 'var(--text-xs)' }}>
-                    {task.priority || 'medium'}
+                    {t(`tasks.${['low', 'medium', 'high'].includes(task.priority) ? task.priority : 'medium'}`)}
                   </span>
                   {task.skipReason && (
                     <span className="hist-skip-reason" title={task.skipReason}>"{task.skipReason.slice(0, 30)}{task.skipReason.length > 30 ? '…' : ''}"</span>
