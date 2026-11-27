@@ -44,10 +44,13 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: var(--text-sm);
+  font-size: clamp(12.5px, 3.4vw, var(--text-sm));
   font-weight: 700;
   line-height: 1.25;
-  word-break: break-word;
+  /* Break long words with a hyphen (needs <html lang>), never mid-word without one. */
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 .mandala-tile.is-empty .mandala-tile-title { color: var(--text-secondary); font-weight: 600; }
 

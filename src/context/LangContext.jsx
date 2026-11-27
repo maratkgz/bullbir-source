@@ -1,7 +1,7 @@
-import { createContext, useContext, useCallback } from 'react'
+import { createContext, useContext, useCallback, useEffect } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { translations, LANGUAGES, QUOTES } from '../data/translations'
-import { resolvePluralKey } from '../data/i18n/plural'
+import { PLURAL_LOCALES, resolvePluralKey } from '../data/i18n/plural'
 
 const LangContext = createContext(null)
 
@@ -21,6 +21,12 @@ function detectLang() {
 
 export function LangProvider({ children }) {
   const [lang, setLang] = useLocalStorage('bullbir_lang', detectLang())
+
+  // <html lang> follows the app language: screen readers pick the right voice and the
+  // browser can hyphenate long words correctly (ru / ky / en).
+  useEffect(() => {
+    document.documentElement.lang = PLURAL_LOCALES[lang] || 'en'
+  }, [lang])
 
   const t = useCallback(
     (key, vars) => {
