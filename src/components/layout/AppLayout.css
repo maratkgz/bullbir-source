@@ -12,18 +12,22 @@
   flex-direction: column;
 }
 
+/* Page container: fluid padding, content centred at --content-max on large screens. */
 .app-content {
   flex: 1;
-  padding: var(--space-5);
-  max-width: 1200px;
   width: 100%;
+  min-width: 0;
+  max-width: calc(var(--content-max) + 2 * var(--page-pad-x));
   margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x);
+  padding-left: max(var(--page-pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--page-pad-x), env(safe-area-inset-right));
+  /* Phones: room for the fixed bottom navigation so it never covers content. */
+  padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom) + var(--space-5));
 }
 
-@media (max-width: 767px) {
-  .app-content {
-    padding: var(--space-4) var(--space-4) calc(var(--space-8) + env(safe-area-inset-bottom));
-  }
+@media (min-width: 600px) {
+  .app-content { padding-bottom: var(--page-pad-y); }
 }
 
 /* Shared module primitives */
