@@ -1,18 +1,22 @@
 import { useMemo, useState } from 'react'
-import { LayoutGrid, RotateCcw } from 'lucide-react'
+import { LayoutGrid, RotateCcw, Sparkles } from 'lucide-react'
 import Icon from '../../../ui/Icon'
 import { useLang } from '../../../../context/LangContext'
 import { classifyGoal } from '../../../../ai/engine/classifier'
 import { LIMITS, TIME_PER_DAY, INTERVIEW_FIELDS, cleanTimePerDay } from '../mandalaModel'
 import SpherePicker from '../SpherePicker'
 
-const LONG_FIELDS = INTERVIEW_FIELDS.filter((f) => f !== 'goal')
+// The interview asks 3 questions (goal, why, minutes); only "why" is a long text here.
+const LONG_FIELDS = INTERVIEW_FIELDS.filter((f) => f === 'why')
+const INSPIRE_COUNT = 6
 
 /** Final editable summary of the interview; "Build my table" hands it back with the chosen sphere. */
 export default function InterviewSummary({ summary, domains, feedback, isBusy, onBuild, onRestart }) {
   const { t } = useLang()
   const [form, setForm] = useState(() => ({ ...summary, goal: summary.goal.slice(0, LIMITS.text) }))
   const [sphere, setSphere] = useState(summary.sphere)
+  // One inspiring line at the end of the interview, picked once.
+  const [inspireKey] = useState(() => `mandala.wizard.inspire.${1 + Math.floor(Math.random() * INSPIRE_COUNT)}`)
   const set = (change) => setForm((f) => ({ ...f, ...change }))
 
   const ranked = useMemo(() => classifyGoal(form.goal, domains, { feedback }), [form.goal, domains, feedback])
@@ -27,6 +31,9 @@ export default function InterviewSummary({ summary, domains, feedback, isBusy, o
 
   return (
     <form className="iv-summary card mandala-editor" onSubmit={handleSubmit}>
+      <p className="iv-inspire">
+        <Icon icon={Sparkles} size="1em" /> {t(inspireKey)}
+      </p>
       <div>
         <h3>{t('mandala.wizard.summaryTitle')}</h3>
         <p className="text-secondary" style={{ fontSize: 'var(--text-sm)', marginTop: 4 }}>{t('mandala.wizard.summaryHint')}</p>

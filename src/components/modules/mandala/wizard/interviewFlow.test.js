@@ -3,31 +3,31 @@ import { startInterview, submitAnswer, resumeInterview, messageText } from './in
 
 const answerAll = (state, list) => list.reduce((s, text) => submitAnswer(s, text), state)
 const GOOD = [
-  'I want more energy every day', 'Run a half marathon next year', 'To feel strong and healthy',
-  'I have running shoes and a park', 'I gave up after two weeks', 'Little free time after work', '30 minutes',
+  'Run a half marathon next year', 'To feel strong and healthy', '30 minutes',
 ]
 
 describe('interviewFlow', () => {
   it('starts with the first question', () => {
     const s = startInterview()
-    expect(s).toMatchObject({ phase: 'chat', step: 'life' })
-    expect(s.messages).toEqual([{ id: 'm0', from: 'ai', key: 'ai.iv.q.life' }])
+    expect(s).toMatchObject({ phase: 'chat', step: 'goal' })
+    expect(s.messages).toEqual([{ id: 'm0', from: 'ai', key: 'ai.iv.q.goal' }])
   })
 
   it('records the answer and asks the next question', () => {
-    const s = submitAnswer(startInterview(), '  I work a lot in an office  ')
-    expect(s.step).toBe('goal')
-    expect(s.answers.life).toBe('I work a lot in an office')
+    const s = submitAnswer(startInterview(), '  Run a half marathon next year  ')
+    expect(s.step).toBe('why')
+    expect(s.answers.goal).toBe('Run a half marathon next year')
     expect(s.messages.map((m) => m.from)).toEqual(['ai', 'me', 'ai'])
-    expect(s.messages[2].key).toBe('ai.iv.q.goal')
+    expect(s.messages[2].key).toBe('ai.iv.q.why')
   })
 
   it('re-asks once for a vague answer', () => {
-    const s1 = submitAnswer(startInterview(), 'idk')
-    expect(s1.step).toBe('life')
-    expect(s1.messages.at(-1).key).toBe('ai.iv.clarify.life')
+    const s0 = submitAnswer(startInterview(), 'Run a half marathon next year')
+    const s1 = submitAnswer(s0, 'idk')
+    expect(s1.step).toBe('why')
+    expect(s1.messages.at(-1).key).toBe('ai.iv.clarify.why')
     const s2 = submitAnswer(s1, 'idk')
-    expect(s2.step).toBe('goal')
+    expect(s2.step).toBe('minutes')
   })
 
   it('ignores empty answers and does not mutate state', () => {
@@ -47,18 +47,18 @@ describe('interviewFlow', () => {
     const s = submitAnswer(startInterview(), 'хочу умереть')
     expect(s.phase).toBe('safety')
     expect(s.safetyKey).toBe('ai.safety.crisis')
-    expect(s.answers.life).toBeUndefined()
+    expect(s.answers.goal).toBeUndefined()
     expect(submitAnswer(s, 'anything else here')).toBe(s)
     const back = resumeInterview(s)
-    expect(back).toMatchObject({ phase: 'chat', step: 'life', safetyKey: null })
-    expect(back.messages.at(-1).key).toBe('ai.iv.q.life')
+    expect(back).toMatchObject({ phase: 'chat', step: 'goal', safetyKey: null })
+    expect(back.messages.at(-1).key).toBe('ai.iv.q.goal')
   })
 
   it('adds a gentle note for non-stopping safety levels and continues', () => {
     const s = submitAnswer(startInterview(), 'хочу купить акции и биткоин')
     expect(s.phase).toBe('chat')
     expect(s.messages.some((m) => m.tone === 'note' && m.key === 'ai.safety.money')).toBe(true)
-    expect(s.step).toBe('goal')
+    expect(s.step).toBe('why')
   })
 
   it('translates key messages only', () => {

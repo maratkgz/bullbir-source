@@ -37,18 +37,18 @@ describe('isVagueAnswer', () => {
 
 describe('nextStep', () => {
   it('asks the steps in order', () => {
-    expect(INTERVIEW_STEPS).toEqual(['life', 'goal', 'why', 'has', 'failures', 'obstacles', 'minutes'])
-    expect(nextStep({})).toEqual({ done: false, step: 'life', key: 'ai.iv.q.life' })
-    expect(nextStep(undefined)).toMatchObject({ step: 'life' })
-    expect(nextStep({ life: FULL.life })).toEqual({ done: false, step: 'goal', key: 'ai.iv.q.goal' })
+    expect(INTERVIEW_STEPS).toEqual(['goal', 'why', 'minutes'])
+    expect(nextStep({})).toEqual({ done: false, step: 'goal', key: 'ai.iv.q.goal' })
+    expect(nextStep(undefined)).toMatchObject({ step: 'goal' })
+    expect(nextStep({ goal: FULL.goal })).toEqual({ done: false, step: 'why', key: 'ai.iv.q.why' })
   })
 
   it('asks to clarify a vague answer only once', () => {
-    let a = applyAnswer({ life: FULL.life, goal: FULL.goal }, 'why', 'не знаю')
+    let a = applyAnswer({ goal: FULL.goal }, 'why', 'не знаю')
     expect(nextStep(a)).toEqual({ done: false, step: 'why', key: 'ai.iv.clarify.why', clarify: true })
     a = applyAnswer(a, 'why', 'хз')
     expect(a._clarified).toEqual({ why: true })
-    expect(nextStep(a)).toEqual({ done: false, step: 'has', key: 'ai.iv.q.has' })
+    expect(nextStep(a)).toEqual({ done: false, step: 'minutes', key: 'ai.iv.q.minutes' })
   })
 
   it('finishes with a summary and the classified sphere', () => {
@@ -80,7 +80,7 @@ describe('applyAnswer', () => {
   })
 
   it('ignores unknown steps and keeps the previous answer when the new one is empty', () => {
-    expect(applyAnswer({ life: 'a b' }, 'nope', 'x')).toEqual({ life: 'a b' })
-    expect(applyAnswer({ life: 'a b' }, 'life', '  ')).toMatchObject({ life: 'a b', _clarified: { life: true } })
+    expect(applyAnswer({ goal: 'a b' }, 'nope', 'x')).toEqual({ goal: 'a b' })
+    expect(applyAnswer({ goal: 'a b' }, 'goal', '  ')).toMatchObject({ goal: 'a b', _clarified: { goal: true } })
   })
 })

@@ -3,7 +3,8 @@
 import { normalize } from './text'
 import { classifyGoal, FALLBACK_DOMAIN_ID } from './classifier'
 
-export const INTERVIEW_STEPS = ['life', 'goal', 'why', 'has', 'failures', 'obstacles', 'minutes']
+// Short on purpose: three questions are enough to build the table; the rest stays editable.
+export const INTERVIEW_STEPS = ['goal', 'why', 'minutes']
 export const MINUTES_RANGE = { min: 5, max: 240, fallback: 30 }
 
 const MIN_WORDS = 2

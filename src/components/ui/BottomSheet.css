@@ -8,16 +8,24 @@
   justify-content: center;
 }
 
+/* Header (drag to close) + scrollable body. dvh = the visible height on iOS Safari. */
 .sheet {
   width: 100%;
   max-width: 640px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-  padding: var(--space-3) var(--space-5) calc(var(--space-6) + env(safe-area-inset-bottom));
-  max-height: 90vh;
-  overflow-y: auto;
   box-shadow: var(--shadow-pop);
-  touch-action: none;
+}
+
+.sheet-header {
+  flex-shrink: 0;
+  padding: var(--space-3) var(--space-5) var(--space-2);
+  touch-action: none; /* only the header drags; the body scrolls */
+  cursor: grab;
 }
 
 .sheet-handle {
@@ -25,16 +33,23 @@
   height: 5px;
   border-radius: var(--radius-full);
   background: var(--border);
-  margin: 0 auto var(--space-4);
+  margin: 0 auto var(--space-3);
 }
 
 .sheet-title {
   font-size: var(--text-lg);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
 }
 
 .sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  padding: var(--space-2) var(--space-5) calc(var(--space-6) + env(safe-area-inset-bottom));
 }
