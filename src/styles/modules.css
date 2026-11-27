@@ -1553,3 +1553,7 @@
 .cal-day-title:disabled { cursor: default; color: inherit; }
 .cal-day-type { font-size: var(--text-xs); }
 .cal-del { color: var(--error); }
+
+/* Profile cover: user photo or default gradient, buttons readable on both */
+.prof-cover-actions { position: relative; z-index: 1; display: flex; justify-content: flex-end; gap: var(--space-2); padding: 12px 16px; }
+.prof-cover-btn { background: rgba(0,0,0,0.35) !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #fff !important; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }

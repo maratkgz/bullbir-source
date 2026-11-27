@@ -44,6 +44,21 @@ rulesDescribe('Firestore security rules', () => {
     await assertSucceeds(updateDoc(ref, { displayName: 'Alice B', bio: 'Hello' }))
   })
 
+  it('stores a compressed avatar and banner in the profile, within size caps', async () => {
+    const ref = doc(verified('alice'), 'users/alice')
+    await assertSucceeds(setDoc(ref, { email: 'alice@example.test', onboardingDone: true }))
+    const jpeg = (bytes: number) => `data:image/jpeg;base64,${'A'.repeat(bytes)}`
+    await assertSucceeds(updateDoc(ref, { photoURL: jpeg(50_000) }))
+    await assertSucceeds(updateDoc(ref, { bannerURL: jpeg(300_000) }))
+    await assertSucceeds(updateDoc(ref, { photoURL: 'https://lh3.googleusercontent.com/a/photo' }))
+    await assertSucceeds(updateDoc(ref, { bannerURL: null }))
+    await assertFails(updateDoc(ref, { photoURL: jpeg(250_000) }))
+    await assertFails(updateDoc(ref, { bannerURL: jpeg(500_000) }))
+    await assertFails(updateDoc(ref, { photoURL: 'javascript:alert(1)' }))
+    await assertFails(updateDoc(ref, { bannerURL: 'data:text/html;base64,PHNjcmlwdD4=' }))
+    await assertFails(updateDoc(ref, { photoURL: 42 }))
+  })
+
   it('rejects client-created privilege fields in the root profile', async () => {
     await assertFails(setDoc(doc(verified('alice'), 'users/alice'), { email: 'alice@example.test', role: 'admin' }))
     await assertFails(setDoc(doc(verified('alice'), 'users/alice'), { email: 'alice@example.test', plan: 'enterprise' }))

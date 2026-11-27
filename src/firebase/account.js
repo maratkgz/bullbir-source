@@ -19,7 +19,8 @@ export const USER_COLLECTIONS = [
 const SENSITIVE_CACHES = ['firebase-api']
 const PENDING_WRITES_TIMEOUT_MS = 3000
 
-export const AVATAR_MAX_BYTES = 2 * 1024 * 1024
+// Limit for the picked file; it is resized + compressed in the browser before saving.
+export const AVATAR_MAX_BYTES = 20 * 1024 * 1024
 export const AVATAR_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif']
 
 /** @param {File} file @returns {'type'|'size'|null} validation error code, null when ok */

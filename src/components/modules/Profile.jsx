@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { doc, updateDoc, collection, getDocs } from 'firebase/firestore'
-import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { useAuth } from '../../context/AuthContext'
 import { useLang } from '../../context/LangContext'
 import { useTheme } from '../../context/ThemeContext'
-import { db, storage, firebaseReady } from '../../firebase/config'
+import { db, firebaseReady } from '../../firebase/config'
 import { USER_COLLECTIONS, validateAvatar, AVATAR_TYPES } from '../../firebase/account'
+import { imageToDataUrl, AVATAR_IMAGE, BANNER_IMAGE } from '../../utils/imageResize'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
-import { BookOpen, Camera, Check, Download, Flame, Mail, Moon, Pencil, Phone, Sparkles, Star, Sun, Wallet } from 'lucide-react'
+import { BookOpen, Camera, Check, Download, Flame, ImagePlus, Mail, Moon, Pencil, Phone, Sparkles, Star, Sun, Trash2, Wallet } from 'lucide-react'
 import Icon from '../ui/Icon'
 import PasswordCard from './profile/PasswordCard'
 import EmailCard from './profile/EmailCard'
@@ -136,12 +136,14 @@ export default function Profile() {
   const [tab, setTab] = useState('personal')
   const [totalXp, setTotalXp] = useState(0)
   const [avatarBusy, setAvatarBusy] = useState(false)
+  const [bannerBusy, setBannerBusy] = useState(false)
   const [delModal, setDelModal] = useState(false)
   const [delBusy, setDelBusy] = useState(false)
   const [delPw, setDelPw] = useState('')
   const [delText, setDelText] = useState('')
   const [bioLen, setBioLen] = useState(0)
   const fileRef = useRef(null)
+  const bannerRef = useRef(null)
 
   const [fontSize, setFontSize] = useLocalStorage('bb_fontSize', 'md')
   const [startScreen, setStartScreen] = useLocalStorage('bb_startScreen', '/app/dashboard')
@@ -194,6 +196,7 @@ export default function Profile() {
   const email = user?.email || ''
   const phone = profile?.phone || ''
   const photoURL = user?.photoURL || null
+  const bannerURL = profile?.bannerURL || null
   const initial = (displayName || email || '?').charAt(0).toUpperCase()
 
   const level = calcLevel(totalXp)
@@ -207,23 +210,33 @@ export default function Profile() {
     await refreshProfile()
   }
 
-  const pickAvatar = async (file) => {
+  // Avatar and cover are compressed in the browser and stored in the profile doc
+  // (no Firebase Storage). `field` is 'photoURL' or 'bannerURL'.
+  const pickImage = async (file, field) => {
     if (!file || !firebaseReady) return
     const invalid = validateAvatar(file)
     if (invalid) {
       toast.error(t(invalid === 'size' ? 'profile.avatar.tooBig' : 'profile.avatar.badType'))
       return
     }
-    setAvatarBusy(true)
+    const setBusy = field === 'photoURL' ? setAvatarBusy : setBannerBusy
+    setBusy(true)
     try {
-      const r = sRef(storage, `avatars/${user.uid}`)
-      await uploadBytes(r, file)
-      const url = await getDownloadURL(r)
-      await updateDoc(doc(db, 'users', user.uid), { photoURL: url })
+      const url = await imageToDataUrl(file, field === 'photoURL' ? AVATAR_IMAGE : BANNER_IMAGE)
+      await updateDoc(doc(db, 'users', user.uid), { [field]: url })
       await refreshProfile()
-      toast.success(t('profile.avatar.updated'))
-    } catch (e) { toast.error(e.message) }
-    finally { setAvatarBusy(false) }
+      toast.success(t(field === 'photoURL' ? 'profile.avatar.updated' : 'profile.banner.updated'))
+    } catch (e) {
+      toast.error(e?.message?.startsWith('image-') ? t('profile.image.failed') : tError(e))
+    } finally { setBusy(false) }
+  }
+
+  const removeBanner = async () => {
+    try {
+      await updateDoc(doc(db, 'users', user.uid), { bannerURL: null })
+      await refreshProfile()
+      toast.success(t('profile.banner.removed'))
+    } catch (e) { toast.error(tError(e)) }
   }
 
   // Server says the session is too old for a sensitive action (passwordless account): sign in again.
@@ -275,17 +288,29 @@ export default function Profile() {
   return (
     <div>
       {/* Hero */}
-      <div className="prof-cover">
-        <div className="prof-cover-glow" />
-        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '12px 16px' }}>
-          <button className="btn btn-secondary btn-sm" onClick={() => setTab('personal')} style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
-            <Icon icon={Pencil} size="1em" /> {t('common.edit')}
+      <div className="prof-cover" style={bannerURL ? { backgroundImage: `url(${bannerURL})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}>
+        {!bannerURL && <div className="prof-cover-glow" />}
+        <div className="prof-cover-actions">
+          {bannerURL && (
+            <button type="button" className="btn btn-secondary btn-sm prof-cover-btn" onClick={removeBanner}
+              aria-label={t('profile.banner.remove')} title={t('profile.banner.remove')}>
+              <Icon icon={Trash2} size="1em" />
+            </button>
+          )}
+          <button type="button" className="btn btn-secondary btn-sm prof-cover-btn" onClick={() => bannerRef.current?.click()} disabled={bannerBusy}>
+            {bannerBusy
+              ? <span className="spinner" style={{ width: 14, height: 14, borderColor: 'white', borderTopColor: 'transparent' }} />
+              : <Icon icon={ImagePlus} size="1em" />}
+            {t('profile.banner.change')}
           </button>
         </div>
       </div>
+      <input ref={bannerRef} type="file" accept={AVATAR_TYPES.join(',')} className="sr-only"
+        onChange={e => { if (e.target.files?.[0]) pickImage(e.target.files[0], 'bannerURL'); e.target.value = '' }} />
       <div className="prof-hero-body">
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: -48 }}>
-          <button className="prof-avatar-btn" onClick={() => fileRef.current?.click()} disabled={avatarBusy}>
+          <button className="prof-avatar-btn" onClick={() => fileRef.current?.click()} disabled={avatarBusy}
+            aria-label={t('profile.avatar.change')} title={t('profile.avatar.change')}>
             {photoURL
               ? <img src={photoURL} alt="" className="prof-avatar-img" />
               : <div className="prof-avatar-ph">{initial}</div>
@@ -298,7 +323,7 @@ export default function Profile() {
             </div>
           </button>
         </div>
-        <input ref={fileRef} type="file" accept={AVATAR_TYPES.join(',')} className="sr-only" onChange={e => { if (e.target.files?.[0]) pickAvatar(e.target.files[0]); e.target.value = '' }} />
+        <input ref={fileRef} type="file" accept={AVATAR_TYPES.join(',')} className="sr-only" onChange={e => { if (e.target.files?.[0]) pickImage(e.target.files[0], 'photoURL'); e.target.value = '' }} />
         <div style={{ marginTop: 12 }}>
           <h2 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>{displayName || t('profile.noName')}</h2>
           <div style={{ fontSize: 13.5, color: 'var(--text-muted)', fontWeight: 500, marginTop: 2 }}>

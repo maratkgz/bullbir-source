@@ -58,19 +58,35 @@ service cloud.firestore {
 
     function allowedProfileFields() {
       return request.resource.data.keys().hasOnly([
-        'email', 'displayName', 'photoURL', 'phone', 'onboardingDone', 'createdAt',
+        'email', 'displayName', 'photoURL', 'bannerURL', 'phone', 'onboardingDone', 'createdAt',
         'language', 'theme', 'bio', 'birthDate', 'firstName', 'lastName'
       ]);
+    }
+
+    // Avatar and banner are stored in the profile doc itself (compressed in the browser):
+    // an https URL or a data:image URL, with a byte cap so the doc stays well under 1 MiB.
+    function okImage(field, maxBytes) {
+      return !(field in request.resource.data)
+        || request.resource.data[field] == null
+        || (request.resource.data[field] is string
+            && request.resource.data[field].size() <= maxBytes
+            && request.resource.data[field].matches('^(https://|data:image/(jpeg|png|webp);base64,).*'));
+    }
+
+    function profileImagesOk() {
+      return okImage('photoURL', 200000) && okImage('bannerURL', 450000);
     }
 
     // Root profile doc. Created right after sign-up, before the email is verified.
     match /users/{uid} {
       allow read, delete: if isOwner(uid) && freshCredentials(uid);
-      allow create: if isOwner(uid) && freshCredentials(uid) && reasonableSize() && allowedProfileFields();
+      allow create: if isOwner(uid) && freshCredentials(uid) && reasonableSize() && allowedProfileFields()
+        && profileImagesOk();
       // Identity and creation metadata are server-owned and cannot be changed by clients.
       allow update: if isOwner(uid) && freshCredentials(uid) && reasonableSize() && allowedProfileFields()
+        && profileImagesOk()
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-          'displayName', 'photoURL', 'phone', 'onboardingDone', 'language', 'theme',
+          'displayName', 'photoURL', 'bannerURL', 'phone', 'onboardingDone', 'language', 'theme',
           'bio', 'birthDate', 'firstName', 'lastName'
         ]);
     }
