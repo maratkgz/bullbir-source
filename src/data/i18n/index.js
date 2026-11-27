@@ -3,8 +3,9 @@ import mandala from './mandala'
 import plan from './plan'
 import today from './today'
 import coach from './coach'
+import goals from './goals'
 
-export const FEATURE_PACKS = [mandala, plan, today, coach]
+export const FEATURE_PACKS = [mandala, plan, today, coach, goals]
 
 /** Returns new dictionaries: base strings plus every pack (packs never override base keys). */
 export function mergePacks(base, packs) {

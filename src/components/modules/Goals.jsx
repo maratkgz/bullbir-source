@@ -4,8 +4,7 @@ import { useCollection } from '../../hooks/useCollection'
 import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
-import { toDateKey } from '../../utils/format'
-import { Check, PartyPopper, Plus, Target, Trophy } from 'lucide-react'
+import { Check, PartyPopper, Pencil, Plus, RotateCcw, Target, Trash2, Trophy } from 'lucide-react'
 import Icon from '../ui/Icon'
 
 const GOAL_COLORS = [
@@ -24,8 +23,28 @@ function goalPct(goal) {
   return Math.round((ms.filter(m => m.done).length / ms.length) * 100)
 }
 
-function GoalCard({ goal, onToggleMilestone, onArchive, onDelete, onClick }) {
+/** Big, finger-friendly actions under each goal: complete/reopen, edit, delete. */
+function GoalActions({ goal, isCompleted, onArchive, onEdit, onDelete }) {
   const { t } = useLang()
+  const stop = (fn) => (e) => { e.stopPropagation(); fn(goal) }
+  return (
+    <div className="goal-actions">
+      <button type="button" className={`btn btn-sm ${isCompleted ? 'btn-secondary' : 'btn-primary'}`}
+        onClick={stop(onArchive)} aria-pressed={isCompleted}>
+        <Icon icon={isCompleted ? RotateCcw : Check} size={16} />
+        {isCompleted ? t('goals.reopen') : t('goals.complete')}
+      </button>
+      <button type="button" className="btn btn-ghost btn-icon" onClick={stop(onEdit)} aria-label={t('common.edit')}>
+        <Icon icon={Pencil} size={18} />
+      </button>
+      <button type="button" className="btn btn-ghost btn-icon goal-delete" onClick={stop(onDelete)} aria-label={t('common.delete')}>
+        <Icon icon={Trash2} size={18} />
+      </button>
+    </div>
+  )
+}
+
+function GoalCard({ goal, onToggleMilestone, onArchive, onEdit, onDelete, onClick }) {
   const pct = goalPct(goal)
   const ms = goal.milestones || []
   const done = ms.filter(m => m.done).length
@@ -79,10 +98,6 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onDelete, onClick }) {
                 : null
           }
         </div>
-        <button
-          style={{ color: 'var(--text-muted)', padding: 4, fontSize: 18 }}
-          onClick={e => { e.stopPropagation(); onDelete(goal.id) }}
-        >×</button>
       </div>
 
       <div style={{
@@ -125,13 +140,23 @@ function GoalCard({ goal, onToggleMilestone, onArchive, onDelete, onClick }) {
           ))}
         </div>
       )}
+
+      <GoalActions goal={goal} isCompleted={isCompleted} onArchive={onArchive} onEdit={onEdit} onDelete={onDelete} />
     </motion.div>
   )
 }
 
-function GoalForm({ onSave, onClose }) {
+const EMPTY_GOAL = { title: '', description: '', emoji: '🎯', color: '#7c5cff', deadline: '', milestones: [] }
+
+function GoalForm({ initial, onSave, onClose }) {
   const { t } = useLang()
-  const [form, setForm] = useState({ title: '', description: '', emoji: '🎯', color: '#7c5cff', deadline: '', milestones: [] })
+  const [form, setForm] = useState(() => ({
+    ...EMPTY_GOAL,
+    ...(initial ? {
+      title: initial.title || '', description: initial.description || '', emoji: initial.emoji || '🎯',
+      color: initial.color || '#7c5cff', deadline: initial.deadline || '', milestones: initial.milestones || [],
+    } : {}),
+  }))
   const [msInput, setMsInput] = useState('')
 
   const addMs = () => {
@@ -228,13 +253,20 @@ export default function Goals() {
   const toast = useToast()
   const [tab, setTab] = useState('active') // active | done
   const [modalOpen, setModalOpen] = useState(false)
+  const [editing, setEditing] = useState(null)
+  const [confirmDel, setConfirmDel] = useState(null)
 
   const activeGoals = items.filter(g => !g.archived && goalPct(g) < 100)
   const doneGoals = items.filter(g => g.archived || goalPct(g) === 100)
   const display = tab === 'active' ? activeGoals : doneGoals
 
+  const openNew = () => { setEditing(null); setModalOpen(true) }
+  const openEdit = (goal) => { setEditing(goal); setModalOpen(true) }
+  const closeForm = () => { setModalOpen(false); setEditing(null) }
+
   const saveGoal = async (form) => {
-    await add({ ...form, archived: false })
+    if (editing) await update(editing.id, form)
+    else await add({ ...form, archived: false })
     toast.success(t('common.saved'))
   }
 
@@ -243,9 +275,25 @@ export default function Goals() {
     update(goal.id, { milestones: ms })
   }
 
-  const clickGoal = (goal) => {
-    // mark today done if no milestones
-    if ((goal.milestones || []).length === 0) return
+  // "Done" marks the goal completed; on a completed goal the same button reopens it
+  // (also un-ticks the milestones if every one was done, otherwise it would stay 100%).
+  const toggleComplete = (goal) => {
+    const isDone = goal.archived || goalPct(goal) === 100
+    if (!isDone) {
+      update(goal.id, { archived: true })
+      toast.success(t('goals.completedToast'))
+      return
+    }
+    const ms = goal.milestones || []
+    const allDone = ms.length > 0 && ms.every(m => m.done)
+    update(goal.id, { archived: false, ...(allDone ? { milestones: ms.map(m => ({ ...m, done: false })) } : {}) })
+  }
+
+  const deleteGoal = () => {
+    if (!confirmDel) return
+    remove(confirmDel.id)
+    setConfirmDel(null)
+    toast.success(t('goals.deleted'))
   }
 
   return (
@@ -258,7 +306,7 @@ export default function Goals() {
             {doneGoals.length > 0 && ` · ${doneGoals.length} завершено`}
           </p>
         </div>
-        <button className="btn btn-primary" onClick={() => setModalOpen(true)}>
+        <button className="btn btn-primary" onClick={openNew}>
           <Icon icon={Plus} size={18} />
           {t('goals.newGoal')}
         </button>
@@ -278,7 +326,7 @@ export default function Goals() {
           <div style={{ fontSize: 48, marginBottom: 12 }}>{tab === 'done' ? <Icon icon={Trophy} size="1em" /> : <Icon icon={Target} size="1em" />}</div>
           <h3>{tab === 'done' ? 'Нет завершённых целей' : t('goals.empty')}</h3>
           {tab === 'active' && (
-            <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setModalOpen(true)}>
+            <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={openNew}>
               + {t('goals.newGoal')}
             </button>
           )}
@@ -291,17 +339,28 @@ export default function Goals() {
                 key={g.id}
                 goal={g}
                 onToggleMilestone={toggleMilestone}
-                onArchive={id => update(id, { archived: !g.archived })}
-                onDelete={remove}
-                onClick={clickGoal}
+                onArchive={toggleComplete}
+                onEdit={openEdit}
+                onDelete={setConfirmDel}
+                onClick={openEdit}
               />
             ))}
           </AnimatePresence>
         </div>
       )}
 
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={t('goals.newGoal')}>
-        <GoalForm onSave={saveGoal} onClose={() => setModalOpen(false)} />
+      <Modal open={modalOpen} onClose={closeForm} title={editing ? t('goals.editGoal') : t('goals.newGoal')}>
+        {modalOpen && <GoalForm key={editing?.id || 'new'} initial={editing} onSave={saveGoal} onClose={closeForm} />}
+      </Modal>
+
+      <Modal open={!!confirmDel} onClose={() => setConfirmDel(null)} title={t('goals.deleteTitle')}>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-5)' }}>
+          {t('goals.deleteConfirm', { name: confirmDel?.title || '' })}
+        </p>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button type="button" className="btn btn-ghost" style={{ flex: 1 }} onClick={() => setConfirmDel(null)}>{t('common.cancel')}</button>
+          <button type="button" className="btn btn-danger" style={{ flex: 1 }} onClick={deleteGoal}>{t('common.delete')}</button>
+        </div>
       </Modal>
     </div>
   )

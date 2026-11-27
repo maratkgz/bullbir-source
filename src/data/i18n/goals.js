@@ -1,0 +1,40 @@
+// UI strings for goal and calendar-event actions (complete / reopen / edit / delete), merged into translations.js.
+// Every key must exist in all three languages (Kyrgyz with real ң ү ө).
+export default {
+  en: {
+    'goals.complete': 'Done',
+    'goals.reopen': 'Back to work',
+    'goals.editGoal': 'Edit goal',
+    'goals.deleteTitle': 'Delete goal?',
+    'goals.deleteConfirm': '“{name}” will be deleted for good.',
+    'goals.deleted': 'Goal deleted',
+    'goals.completedToast': 'Goal completed — well done!',
+    'cal.deleted': 'Event deleted',
+    'cal.deleteTitle': 'Delete event?',
+    'cal.deleteConfirm': '“{name}” will be deleted.',
+  },
+  kg: {
+    'goals.complete': 'Аткарылды',
+    'goals.reopen': 'Кайра ишке',
+    'goals.editGoal': 'Максатты өзгөртүү',
+    'goals.deleteTitle': 'Максатты өчүрөсүзбү?',
+    'goals.deleteConfirm': '«{name}» биротоло өчүрүлөт.',
+    'goals.deleted': 'Максат өчүрүлдү',
+    'goals.completedToast': 'Максат аткарылды — азаматсыз!',
+    'cal.deleted': 'Окуя өчүрүлдү',
+    'cal.deleteTitle': 'Окуяны өчүрөсүзбү?',
+    'cal.deleteConfirm': '«{name}» өчүрүлөт.',
+  },
+  ru: {
+    'goals.complete': 'Выполнено',
+    'goals.reopen': 'Вернуть в работу',
+    'goals.editGoal': 'Изменить цель',
+    'goals.deleteTitle': 'Удалить цель?',
+    'goals.deleteConfirm': '«{name}» будет удалена навсегда.',
+    'goals.deleted': 'Цель удалена',
+    'goals.completedToast': 'Цель выполнена — молодец!',
+    'cal.deleted': 'Событие удалено',
+    'cal.deleteTitle': 'Удалить событие?',
+    'cal.deleteConfirm': '«{name}» будет удалено.',
+  },
+}

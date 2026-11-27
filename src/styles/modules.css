@@ -1566,3 +1566,17 @@
 .lp-feature svg { color: var(--primary); }
 .lp-footer { padding: var(--space-5) 0 calc(var(--space-5) + env(safe-area-inset-bottom)); text-align: center; font-size: var(--text-sm); }
 @media (max-width: 359px) { .lp .land-brand-name { display: none; } }
+
+/* Goal card actions — finger-sized on phones */
+.goal-actions { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); }
+.goal-actions .btn-sm { flex: 1; min-height: var(--touch-target); }
+.goal-actions .goal-delete { color: var(--error); }
+
+/* Calendar: selected day + its list (phones see and manage events here) */
+.cal-cell.selected { outline: 2px solid var(--primary); outline-offset: -2px; }
+.cal-day-panel { margin-top: var(--space-4); }
+.cal-day-item { display: flex; align-items: center; gap: var(--space-2); margin-top: 6px; }
+.cal-day-title { flex: 1; min-width: 0; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-height: var(--touch-target); }
+.cal-day-title:disabled { cursor: default; color: inherit; }
+.cal-day-type { font-size: var(--text-xs); }
+.cal-del { color: var(--error); }

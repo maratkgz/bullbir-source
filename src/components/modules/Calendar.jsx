@@ -10,7 +10,7 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import Modal from '../ui/Modal'
 import { toDate, toDateKey } from '../../utils/format'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Pencil, Trash2 } from 'lucide-react'
 import Icon from '../ui/Icon'
 
 const CATEGORIES = [
@@ -20,6 +20,32 @@ const CATEGORIES = [
   { id: 'social', color: '#f59e0b' },
 ]
 const WEEKDAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+const TYPE_LABEL_KEYS = { task: 'nav.tasks', reminder: 'nav.reminders' }
+
+/** One day's items: events can be edited/deleted right here; tasks/reminders are labelled. */
+function DayList({ items, onEdit, onDelete, t }) {
+  if (!items.length) return <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{t('cal.noEvents')}</p>
+  return items.map((ev, i) => (
+    <div key={ev.id + i} className="cal-event-row cal-day-item">
+      <span className="cal-cat-dot" style={{ background: ev.color }} />
+      <button type="button" className="cal-day-title" onClick={() => onEdit(ev)} disabled={ev._type !== 'event'}>
+        {ev.title}
+        {ev._type !== 'event' && <span className="text-muted cal-day-type"> · {t(TYPE_LABEL_KEYS[ev._type])}</span>}
+      </button>
+      {ev.time && <span className="text-muted mono">{ev.time}</span>}
+      {ev._type === 'event' && (
+        <>
+          <button type="button" className="btn btn-ghost btn-icon" onClick={() => onEdit(ev)} aria-label={t('common.edit')}>
+            <Icon icon={Pencil} size={16} />
+          </button>
+          <button type="button" className="btn btn-ghost btn-icon cal-del" onClick={() => onDelete(ev)} aria-label={t('common.delete')}>
+            <Icon icon={Trash2} size={16} />
+          </button>
+        </>
+      )}
+    </div>
+  ))
+}
 
 export default function Calendar() {
   const { items, add, update, remove } = useCollection('events', { orderField: 'date', direction: 'asc' })
@@ -31,6 +57,8 @@ export default function Calendar() {
 
   const [view, setView] = useState('month')
   const [cursor, setCursor] = useState(new Date())
+  const [selectedDay, setSelectedDay] = useState(() => new Date())
+  const [confirmDel, setConfirmDel] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState(null)
   const [form, setForm] = useState({ title: '', date: toDateKey(), time: '', allDay: true, category: 'personal' })
@@ -72,6 +100,14 @@ export default function Calendar() {
     setModalOpen(false)
   }
 
+  const deleteEvent = () => {
+    if (!confirmDel) return
+    remove(confirmDel.id)
+    setConfirmDel(null)
+    setModalOpen(false)
+    toast.success(t('cal.deleted'))
+  }
+
   const navPrev = () => setCursor((c) => (view === 'month' ? subMonths(c, 1) : view === 'week' ? subWeeks(c, 1) : subDays(c, 1)))
   const navNext = () => setCursor((c) => (view === 'month' ? addMonths(c, 1) : view === 'week' ? addWeeks(c, 1) : addDays(c, 1)))
 
@@ -109,24 +145,40 @@ export default function Calendar() {
       </div>
 
       {view === 'month' && (
-        <div className="cal-grid">
-          {WEEKDAYS.map((d) => <div key={d} className="cal-weekday">{d}</div>)}
-          {monthDays.map((day) => {
-            const key = toDateKey(day)
-            const dayEvents = eventsByDay[key] || []
-            return (
-              <div key={key} className={`cal-cell ${isSameMonth(day, cursor) ? '' : 'other'} ${isToday(day) ? 'today' : ''}`} onClick={() => openNew(day)}>
-                <span className="cal-daynum">{format(day, 'd')}</span>
-                <div className="cal-dots">
-                  {dayEvents.slice(0, 3).map((ev, i) => (
-                    <div key={ev.id + i} className="cal-event cal-dot" style={{ background: ev.color }} title={ev.title} onClick={(e) => { e.stopPropagation(); openEdit(ev) }}>{ev.title}</div>
-                  ))}
-                  {dayEvents.length > 3 && <span className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>+{dayEvents.length - 3}</span>}
+        <>
+          <div className="cal-grid">
+            {WEEKDAYS.map((d) => <div key={d} className="cal-weekday">{d}</div>)}
+            {monthDays.map((day) => {
+              const key = toDateKey(day)
+              const dayEvents = eventsByDay[key] || []
+              const selected = key === toDateKey(selectedDay)
+              return (
+                <div key={key} role="button" tabIndex={0} aria-pressed={selected}
+                  aria-label={`${format(day, 'd MMMM')}${dayEvents.length ? ` · ${dayEvents.length}` : ''}`}
+                  className={`cal-cell ${isSameMonth(day, cursor) ? '' : 'other'} ${isToday(day) ? 'today' : ''} ${selected ? 'selected' : ''}`}
+                  onClick={() => setSelectedDay(day)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedDay(day) } }}>
+                  <span className="cal-daynum">{format(day, 'd')}</span>
+                  <div className="cal-dots">
+                    {dayEvents.slice(0, 3).map((ev, i) => (
+                      <div key={ev.id + i} className="cal-event cal-dot" style={{ background: ev.color }} title={ev.title}>{ev.title}</div>
+                    ))}
+                    {dayEvents.length > 3 && <span className="text-muted" style={{ fontSize: 'var(--text-xs)' }}>+{dayEvents.length - 3}</span>}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+
+          {/* The selected day's list: the easy way to see, edit and delete events on a phone. */}
+          <div className="card cal-day-panel">
+            <div className="flex items-center justify-between" style={{ marginBottom: 'var(--space-2)' }}>
+              <strong>{format(selectedDay, 'EEEE, d MMMM')}</strong>
+              <button type="button" className="btn btn-secondary btn-sm" onClick={() => openNew(selectedDay)}>+ {t('cal.newEvent')}</button>
+            </div>
+            <DayList items={eventsByDay[toDateKey(selectedDay)] || []} onEdit={openEdit} onDelete={setConfirmDel} t={t} />
+          </div>
+        </>
       )}
 
       {view === 'week' && (
@@ -140,13 +192,7 @@ export default function Calendar() {
                   <strong>{format(day, 'EEEE, d MMM')}</strong>
                   <button className="btn btn-ghost" onClick={() => openNew(day)}>+</button>
                 </div>
-                {dayEvents.length ? dayEvents.map((ev, i) => (
-                  <div key={ev.id + i} className="cal-event-row" onClick={() => openEdit(ev)} style={{ cursor: 'pointer', marginTop: 6 }}>
-                    <span className="cal-cat-dot" style={{ background: ev.color }} />
-                    <span style={{ flex: 1 }}>{ev.title}</span>
-                    {ev.time && <span className="text-muted mono">{ev.time}</span>}
-                  </div>
-                )) : <p className="text-muted" style={{ fontSize: 'var(--text-sm)' }}>{t('cal.noEvents')}</p>}
+                <DayList items={dayEvents} onEdit={openEdit} onDelete={setConfirmDel} t={t} />
               </div>
             )
           })}
@@ -155,15 +201,7 @@ export default function Calendar() {
 
       {view === 'day' && (
         <div className="card cal-day-view">
-          {(eventsByDay[toDateKey(cursor)] || []).length ? (
-            eventsByDay[toDateKey(cursor)].map((ev, i) => (
-              <div key={ev.id + i} className="cal-event-row" onClick={() => openEdit(ev)} style={{ cursor: 'pointer' }}>
-                <span className="cal-cat-dot" style={{ background: ev.color }} />
-                <span style={{ flex: 1 }}>{ev.title}</span>
-                {ev.time && <span className="text-muted mono">{ev.time}</span>}
-              </div>
-            ))
-          ) : <p className="text-muted">{t('cal.noEvents')}</p>}
+          <DayList items={eventsByDay[toDateKey(cursor)] || []} onEdit={openEdit} onDelete={setConfirmDel} t={t} />
         </div>
       )}
 
@@ -195,8 +233,18 @@ export default function Calendar() {
           </div>
         </div>
         <div className="flex justify-between gap-3">
-          {editing ? <button className="btn btn-danger" onClick={async () => { await remove(editing.id); setModalOpen(false) }}>{t('common.delete')}</button> : <span />}
+          {editing ? <button className="btn btn-danger" onClick={() => setConfirmDel(editing)}>{t('common.delete')}</button> : <span />}
           <button className="btn btn-primary" onClick={save}>{t('common.save')}</button>
+        </div>
+      </Modal>
+
+      <Modal open={!!confirmDel} onClose={() => setConfirmDel(null)} title={t('cal.deleteTitle')}>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-5)' }}>
+          {t('cal.deleteConfirm', { name: confirmDel?.title || '' })}
+        </p>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button type="button" className="btn btn-ghost" style={{ flex: 1 }} onClick={() => setConfirmDel(null)}>{t('common.cancel')}</button>
+          <button type="button" className="btn btn-danger" style={{ flex: 1 }} onClick={deleteEvent}>{t('common.delete')}</button>
         </div>
       </Modal>
     </div>
