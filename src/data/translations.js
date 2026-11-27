@@ -15,6 +15,7 @@ export const translations = {
     // Common
     'common.save': 'Save',
     'common.saved': 'Saved',
+    'common.saveFailed': "Couldn't save. Check your connection and try again.",
     'common.cancel': 'Cancel',
     'common.delete': 'Delete',
     'common.edit': 'Edit',
@@ -770,6 +771,7 @@ export const translations = {
 
     'common.save': 'Сактоо',
     'common.saved': 'Сакталды',
+    'common.saveFailed': 'Сакталган жок. Интернетти текшерип, кайра аракет кылыңыз.',
     'common.cancel': 'Жокко чыгаруу',
     'common.delete': 'Жок кылуу',
     'common.edit': 'Өзгөртүү',
@@ -1507,6 +1509,7 @@ export const translations = {
 
     'common.save': 'Сохранить',
     'common.saved': 'Сохранено',
+    'common.saveFailed': 'Не сохранилось. Проверьте интернет и попробуйте ещё раз.',
     'common.cancel': 'Отмена',
     'common.delete': 'Удалить',
     'common.edit': 'Изменить',

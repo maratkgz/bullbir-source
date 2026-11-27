@@ -310,6 +310,14 @@ export default function Habits() {
                       <Icon icon={Pencil} size={16} />
                     </button>
                     <button
+                      className="btn btn-icon btn-ghost"
+                      style={{ color: 'var(--error)' }}
+                      onClick={() => setConfirmDel(habit)}
+                      aria-label="Удалить привычку"
+                    >
+                      <Icon icon={Trash2} size={16} />
+                    </button>
+                    <button
                       className={`habits-check-btn${doneToday ? ' done' : ''}`}
                       style={doneToday ? { background: habit.color, borderColor: habit.color } : {}}
                       onClick={() => toggleDay(habit, today)}

@@ -4,7 +4,7 @@ import {
   query,
   orderBy,
   onSnapshot,
-  addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   doc,
@@ -12,11 +12,15 @@ import {
 } from 'firebase/firestore'
 import { db, firebaseReady } from '../firebase/config'
 import { useAuth } from '../context/AuthContext'
+import { useLang } from '../context/LangContext'
+import { useToast } from '../components/ui/Toast'
 import { reportDataError, reportingWrite } from '../monitoring/reportError'
 
 // Real-time CRUD for users/{uid}/{name}
 export function useCollection(name, { orderField = 'createdAt', direction = 'desc' } = {}) {
   const { user, recoverBridge, bridgeEpoch } = useAuth()
+  const toast = useToast()
+  const { t } = useLang()
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   // Last listener error (Firestore error with `.code`), null while the listener is healthy.
@@ -24,6 +28,17 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
 
   const path = user ? `users/${user.uid}/${name}` : null
   const pathRef = useRef(path)
+
+  // The toast API object is recreated on every toast change; keep write callbacks stable.
+  const notifyRef = useRef(null)
+  notifyRef.current = () => toast.error(t('common.saveFailed'))
+
+  const inBackground = useCallback(
+    (op, write) => {
+      reportingWrite(op, name, write).catch(() => notifyRef.current?.())
+    },
+    [name],
+  )
 
   useEffect(() => {
     // New path (or none): never show the previous user's / collection's items. A re-subscribe
@@ -61,30 +76,34 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
   const add = useCallback(
     async (data) => {
       if (!path) return null
-      const ref = await reportingWrite('add', name, () => addDoc(collection(db, path), {
+      // The id is generated locally, so the item appears at once (Firestore latency
+      // compensation) and the caller does not wait for the server — no slow dialogs, no
+      // duplicate items from repeated taps. A later server rejection is reported + toasted.
+      const ref = doc(collection(db, path))
+      inBackground('add', () => setDoc(ref, {
         ...data,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
       }))
       return ref.id
     },
-    [path, name],
+    [path, name, inBackground],
   )
 
   const update = useCallback(
     async (id, data) => {
       if (!path) return
-      await reportingWrite('update', name, () => updateDoc(doc(db, path, id), { ...data, updatedAt: serverTimestamp() }))
+      inBackground('update', () => updateDoc(doc(db, path, id), { ...data, updatedAt: serverTimestamp() }))
     },
-    [path, name],
+    [path, inBackground],
   )
 
   const remove = useCallback(
     async (id) => {
       if (!path) return
-      await reportingWrite('remove', name, () => deleteDoc(doc(db, path, id)))
+      inBackground('remove', () => deleteDoc(doc(db, path, id)))
     },
-    [path, name],
+    [path, inBackground],
   )
 
   return useMemo(

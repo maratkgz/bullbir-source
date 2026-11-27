@@ -1178,6 +1178,10 @@
   padding: 11px 0;
 }
 .fin-txn-row:hover .fin-del-btn { opacity: 1 !important; }
+/* Touch screens have no hover: always show row actions there. */
+@media (hover: none) {
+  .fin-del-btn, .task-skip-btn { opacity: 1 !important; }
+}
 .fin-txn-icon {
   width: 40px; height: 40px;
   border-radius: 12px;
