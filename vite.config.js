@@ -75,7 +75,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo.png', 'favicon-32.png', 'icons/apple-touch-icon.png', 'offline.html'],
+      includeAssets: ['logo.png', 'favicon.ico', 'apple-touch-icon.png', 'offline.html'],
       manifest: {
         name: 'BullBir',
         short_name: 'BullBir',
@@ -87,10 +87,10 @@ export default defineConfig(({ mode }) => ({
         theme_color: '#5b4fcf',
         background_color: '#0d0d17',
         icons: [
-          { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
-          { src: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-          { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+          { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
       workbox: {

@@ -40,7 +40,7 @@ export default function Reminders() {
         d.setHours(h, m, 0, 0)
         if (now >= d && now - d < 60000) {
           firedRef.current.add(r.id)
-          new Notification('BullBir', { body: r.title, icon: '/icons/icon-192.png' })
+          new Notification('BullBir', { body: r.title, icon: '/icon-192.png' })
         }
       })
     }
