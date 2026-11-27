@@ -1,16 +1,17 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   ResponsiveContainer, LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip,
   CartesianGrid, PieChart, Pie, Cell, AreaChart, Area,
 } from 'recharts'
-import { format, subDays, eachDayOfInterval, startOfWeek, subWeeks } from 'date-fns'
+import { format, subDays } from 'date-fns'
 import { useCollection } from '../../hooks/useCollection'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useLang } from '../../context/LangContext'
 import { toDateKey, formatMoney } from '../../utils/format'
 import { BookMarked, BookOpen, Briefcase, Building2, CircleCheck, Flame, Globe, Medal, NotebookPen, PartyPopper, PiggyBank, Rainbow, Smile, Sparkles, Star, Target, TrendingUp, Trophy, Wallet } from 'lucide-react'
 import Icon from '../ui/Icon'
+import { heatmapCells } from './progress/activity'
 
 // XP rewards per activity type
 const XP_TASK = 5
@@ -63,6 +64,7 @@ export default function PersonalProgress() {
   const { items: savingsGoals } = useCollection('savingsGoals', { orderField: 'createdAt', direction: 'desc' })
   const { items: habits } = useCollection('habits', { orderField: 'createdAt', direction: 'desc' })
   const { items: transactions } = useCollection('transactions', { orderField: 'date', direction: 'desc' })
+  const { items: mandalas } = useCollection('mandalas')
 
   // Compute period start date
   const periodStart = useMemo(() => {
@@ -135,27 +137,18 @@ export default function PersonalProgress() {
   }, [allStats.level])
 
   // Heatmap: last 52 weeks × 7 days
-  const heatmapData = useMemo(() => {
-    const end = new Date()
-    const start = subWeeks(startOfWeek(end, { weekStartsOn: 1 }), 51)
-    const days = eachDayOfInterval({ start, end })
+  // Habits and table items count too (they used to be missing, so the grid looked empty).
+  const heatmapData = useMemo(
+    () => heatmapCells({ tasks, habits, moods, journals, mandalas }),
+    [tasks, habits, moods, journals, mandalas],
+  )
 
-    const activityByDate = {}
-    tasks.filter((x) => x.status === 'done').forEach((x) => {
-      const d = toDateKey(x.updatedAt?.toDate?.() || new Date(x.updatedAt || x.createdAt))
-      activityByDate[d] = (activityByDate[d] || 0) + 1
-    })
-    moods.forEach((x) => { activityByDate[x.date] = (activityByDate[x.date] || 0) + 1 })
-    journals.forEach((x) => { activityByDate[x.date] = (activityByDate[x.date] || 0) + 2 })
-
-    const max = Math.max(1, ...Object.values(activityByDate))
-    return days.map((d) => {
-      const key = toDateKey(d)
-      const val = activityByDate[key] || 0
-      const level = val === 0 ? 0 : val < max * 0.25 ? 1 : val < max * 0.5 ? 2 : val < max * 0.75 ? 3 : 4
-      return { key, level }
-    })
-  }, [tasks, moods, journals])
+  // The grid is a year wide: on a phone show the latest weeks (scrolled to today) first.
+  const heatmapRef = useRef(null)
+  useEffect(() => {
+    const el = heatmapRef.current
+    if (el) el.scrollLeft = el.scrollWidth
+  }, [heatmapData])
 
   // Mood chart (last 30 days)
   const moodChart = useMemo(() => {
@@ -331,10 +324,11 @@ export default function PersonalProgress() {
           {/* Activity heatmap */}
           <div className="card" style={{ marginBottom: 'var(--space-5)' }}>
             <span className="section-title">{t('prog.activity')}</span>
-            <div className="heatmap-wrap">
-              <div className="heatmap">
+            <div className="heatmap-wrap" ref={heatmapRef}>
+              <div className="heatmap" role="img" aria-label={t('prog.activity')}>
                 {heatmapData.map((cell) => (
-                  <div key={cell.key} className={`heatmap-cell${cell.level ? ` l${cell.level}` : ''}`} title={cell.key} />
+                  <div key={cell.key} className={`heatmap-cell${cell.level ? ` l${cell.level}` : ''}`}
+                    title={`${cell.key}: ${cell.value}`} />
                 ))}
               </div>
             </div>
