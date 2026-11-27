@@ -5,7 +5,7 @@ import { useLang } from '../../context/LangContext'
 import { useToast } from '../ui/Toast'
 import { toDateKey } from '../../utils/format'
 import Modal from '../ui/Modal'
-import { Check, Flame, Pencil, Plus, Sprout, Trash2 } from 'lucide-react'
+import { Check, Flame, LayoutGrid, Pencil, Plus, Sprout, Trash2 } from 'lucide-react'
 import Icon from '../ui/Icon'
 
 const EMOJIS = ['💪','📚','🏃','🧘','💧','🥗','😴','✍️','🎯','🎵','🧠','❤️','🌅','🚴','🏋️','🧹','🌿','☕','🎨','📝','🤸','🦷']
@@ -40,6 +40,25 @@ function calcStreak(completions = []) {
     } else break
   }
   return streak
+}
+
+const HABIT_FREQS = ['daily', '3w', 'weekly']
+
+/** Frequency badge and "from the table" mark for habits created by the mandala launch. */
+function HabitMarks({ habit }) {
+  const { t } = useLang()
+  const freq = HABIT_FREQS.includes(habit.freq) ? habit.freq : ''
+  if (!freq && !habit.mandalaRef) return null
+  return (
+    <span style={{ display: 'inline-flex', gap: 4, flexWrap: 'wrap', marginLeft: 6, verticalAlign: 'middle' }}>
+      {freq && <span className="badge" style={{ padding: '1px 8px' }}>{t(`launch.freq.${freq}`)}</span>}
+      {habit.mandalaRef && (
+        <span className="badge" style={{ padding: '1px 8px' }}>
+          <Icon icon={LayoutGrid} size="1em" /> {t('launch.fromTable')}
+        </span>
+      )}
+    </span>
+  )
 }
 
 function HabitModal({ habit, onSave, onClose }) {
@@ -234,6 +253,7 @@ export default function Habits() {
                       {habit.emoji}
                     </span>
                     <span className="habits-name-text">{habit.title}</span>
+                    <HabitMarks habit={habit} />
                   </div>
                   {days.map(d => {
                     const done = completions.includes(d.key)
@@ -290,7 +310,7 @@ export default function Habits() {
                       style={{ background: habit.color + '22', color: habit.color }}
                     >{habit.emoji}</span>
                     <div>
-                      <div className="habits-card-name">{habit.title}</div>
+                      <div className="habits-card-name">{habit.title}<HabitMarks habit={habit} /></div>
                       <div className="habits-card-meta">
                         {streak > 0 ? (
                           <span style={{ color: 'var(--accent)', fontWeight: 700 }}><Icon icon={Flame} size="1em" /> {streak} {t('habits.daysStreak')}</span>

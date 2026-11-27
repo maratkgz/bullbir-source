@@ -1,0 +1,965 @@
+{
+  "id": "volunteering",
+  "icon": "🤝",
+  "title": { "en": "Volunteering & community", "kg": "Ыктыярчылык жана коомчулук", "ru": "Волонтёрство и сообщество" },
+  "keywords": {
+    "en": ["!volunteer", "!volunteering", "volunteer work", "charity", "help people", "community", "ngo", "nonprofit", "clean-up", "donate", "shelter", "help elders", "social project", "kindness", "give back", "mentor kids", "eco"],
+    "kg": ["!ыктыярчы", "!волонтёр", "ыктыярчылык", "волонтёрлук", "кайрымдуулук", "жардам берүү", "коомчулук", "ашар", "волонтёр болуу", "таштанды тазалоо", "карыяларга жардам", "жаныбарлар баш калкалоочу жайы", "коомдук долбоор", "садага", "жакшылык кылуу"],
+    "ru": ["!волонтёр", "!волонтер", "!волонтерство", "волонтёрство", "волонтерить", "благотворительность", "помогать людям", "помощь", "сообщество", "нко", "субботник", "уборка мусора", "приют", "помогать пожилым", "социальный проект", "добрые дела", "доброволец", "экоакция", "ашар"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Find your cause", "kg": "Өз ишиңизди табуу", "ru": "Найти своё дело" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Cause and organisation chosen", "kg": "Багыт жана уюм тандалды", "ru": "Выбраны направление и организация" },
+        { "en": "First volunteer shift done", "kg": "Биринчи ыктыярчылык кезеги өттү", "ru": "Пройдена первая волонтёрская смена" }
+      ],
+      "actions": [
+        {
+          "en": "Choose 1 cause: elders, kids, nature, animals or other",
+          "kg": "1 багыт тандаңыз: карыялар, балдар, табият, жаныбарлар же башка",
+          "ru": "Выбрать 1 направление: пожилые, дети, природа, животные",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 problems in your area that upset you", "kg": "Аймагыңыздагы көңүлүңүздү оорткон 3 көйгөйдү жазыңыз", "ru": "Выписать 3 проблемы района, которые вас задевают" },
+          "steps": [
+            { "en": "List 5 problems you see near you", "kg": "Жаныңыздагы 5 көйгөйдү тизмелеңиз", "ru": "Выписать 5 проблем, которые видите рядом", "minutes": 15 },
+            { "en": "Mark the ones where you could really help", "kg": "Чындап жардам бере ала турганыңызды белгилеңиз", "ru": "Отметить те, где вы реально можете помочь", "minutes": 10 },
+            { "en": "Ask family which cause they would support", "kg": "Үй-бүлөңүздөн кайсы багытты колдоорун сураңыз", "ru": "Спросить семью, какое направление они поддержат", "minutes": 15 },
+            { "en": "Pick 1 cause and write why it matters to you", "kg": "1 багыт тандап, эмне үчүн маанилүү экенин жазыңыз", "ru": "Выбрать 1 направление и записать, почему оно важно", "minutes": 10 },
+            { "en": "Save it as a goal in the app", "kg": "Аны тиркемеге максат катары сактаңыз", "ru": "Сохранить его как цель в приложении", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Find 3 local organisations or initiatives for your cause",
+          "kg": "Багытыңыз боюнча 3 жергиликтүү уюм же демилге табыңыз",
+          "ru": "Найти 3 местные организации или инициативы по теме",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Find 1 organisation and save its contact", "kg": "1 уюм таап, байланышын сактап алыңыз", "ru": "Найти 1 организацию и сохранить её контакт" },
+          "steps": [
+            { "en": "Search social media and city chats for volunteers", "kg": "Соцтармактардан жана шаар чаттарынан ыктыярчы чакырыктарын издеңиз", "ru": "Поискать призывы волонтёров в соцсетях и чатах города", "minutes": 30 },
+            { "en": "Ask at school, university or mosque/church", "kg": "Мектептен, ЖОЖдон же мечит/чиркөөдөн сураңыз", "ru": "Спросить в школе, вузе, мечети или церкви", "minutes": 20 },
+            { "en": "Check that each one is real: reviews, past events", "kg": "Ар биринин чын экенин текшериңиз: пикирлер, өткөн иш-чаралар", "ru": "Проверить реальность: отзывы, прошлые акции", "minutes": 30 },
+            { "en": "Write down 3 contacts and what they need", "kg": "3 байланышты жана аларга эмне керек экенин жазыңыз", "ru": "Записать 3 контакта и что им нужно", "minutes": 10 },
+            { "en": "Choose the one closest to your time and skills", "kg": "Убактыңызга жана жөндөмүңүзгө эң жакынын тандаңыз", "ru": "Выбрать ту, что ближе по времени и навыкам", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Write to the organisation and offer your help",
+          "kg": "Уюмга жазып, жардамыңызды сунуштаңыз",
+          "ru": "Написать в организацию и предложить помощь",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Send one short message: who you are, when you can help", "kg": "Бир кыска кат жөнөтүңүз: ким экениңиз, качан жардам бере аласыз", "ru": "Отправить короткое сообщение: кто вы и когда свободны" },
+          "steps": [
+            { "en": "Write what you can do and how many hours", "kg": "Эмне кыла аларыңызды жана канча саат экенин жазыңыз", "ru": "Записать, что умеете и сколько часов готовы дать", "minutes": 10 },
+            { "en": "Write a polite message of 5 lines", "kg": "5 саптык сылык кат жазыңыз", "ru": "Написать вежливое сообщение на 5 строк", "minutes": 15 },
+            { "en": "Send it and note the date", "kg": "Аны жөнөтүп, датасын белгилеңиз", "ru": "Отправить и отметить дату", "minutes": 5 },
+            { "en": "Call if there is no answer in 3 days", "kg": "3 күндө жооп болбосо, чалыңыз", "ru": "Позвонить, если нет ответа 3 дня", "minutes": 10 },
+            { "en": "Agree on the first shift date", "kg": "Биринчи кезектин датасына макулдашыңыз", "ru": "Договориться о дате первой смены", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Do one trial shift and decide if it fits you",
+          "kg": "Бир сынак кезек өтүп, сизге туура келерин чечиңиз",
+          "ru": "Пройти пробную смену и решить, подходит ли",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Visit the place for 1 hour to see the work", "kg": "Ишти көрүү үчүн ал жерге 1 саатка барыңыз", "ru": "Съездить на место на 1 час, чтобы увидеть работу" },
+          "steps": [
+            { "en": "Ask what to bring and what to wear", "kg": "Эмне алып келип, эмне кийүү керек экенин сураңыз", "ru": "Спросить, что взять с собой и как одеться", "minutes": 5 },
+            { "en": "Plan the route and come 10 minutes early", "kg": "Жолду пландап, 10 мүнөт эрте келиңиз", "ru": "Продумать дорогу и прийти на 10 минут раньше", "minutes": 10 },
+            { "en": "Do the shift and follow the coordinator", "kg": "Кезекти өтүп, координатордун айтканын аткарыңыз", "ru": "Отработать смену, слушая координатора", "minutes": 120 },
+            { "en": "Write what you liked and what was hard", "kg": "Эмне жакканын жана эмне оор болгонун жазыңыз", "ru": "Записать, что понравилось и что было трудно", "minutes": 10 },
+            { "en": "Decide: continue here or try another place", "kg": "Чечиңиз: ушул жерде улантуу же башка жерди сынап көрүү", "ru": "Решить: продолжать здесь или попробовать другое место", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Read one news item about your cause weekly",
+          "kg": "Ар жума багытыңыз боюнча бир жаңылык окуңуз",
+          "ru": "Раз в неделю читать новость по своей теме",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Read one news item a month", "kg": "Айына бир жаңылык окуңуз", "ru": "Читать одну новость в месяц" }
+        },
+        {
+          "en": "Help with what people ask for, not what you assume",
+          "kg": "Өзүңүз ойлогонду эмес, адамдар сураган жардамды бериңиз",
+          "ru": "Помогать тем, о чём просят, а не тем, что кажется нужным",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask \"what do you need most?\" before helping", "kg": "Жардамдан мурун «сизге эмне көбүрөөк керек?» деп сураңыз", "ru": "Перед помощью спрашивать: «что нужнее всего?»" }
+        },
+        {
+          "en": "Join one city clean-up or eco action this month",
+          "kg": "Ушул айда шаардагы бир тазалоо же эко-акцияга катышыңыз",
+          "ru": "В этом месяце сходить на один субботник или экоакцию",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Clean your own yard or street for 30 minutes", "kg": "Өз короо-жайыңызды же көчөңүздү 30 мүнөт тазалаңыз", "ru": "Убрать 30 минут свой двор или улицу" },
+          "steps": [
+            { "en": "Find an action date in city chats", "kg": "Шаар чаттарынан акциянын датасын табыңыз", "ru": "Найти дату акции в чатах города", "minutes": 15 },
+            { "en": "Invite one friend to come with you", "kg": "Бир досуңузду бирге барууга чакырыңыз", "ru": "Позвать одного друга с собой", "minutes": 5 },
+            { "en": "Prepare gloves, bags and water", "kg": "Мээлей, баштык жана суу даярдаңыз", "ru": "Подготовить перчатки, мешки и воду", "minutes": 10 },
+            { "en": "Take part for the full time", "kg": "Толук убакыт бою катышыңыз", "ru": "Участвовать всё время акции", "minutes": 120 },
+            { "en": "Take a before/after photo for your report", "kg": "Отчёт үчүн «чейин/кийин» сүрөтүн тартыңыз", "ru": "Сделать фото «до/после» для отчёта", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Say no to tasks you cannot finish, early and honestly",
+          "kg": "Бүтүрө албай турган ишке эрте жана ачык «жок» деңиз",
+          "ru": "Заранее и честно отказываться от того, что не потянете",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask for 1 day to think before agreeing", "kg": "Макул болордон мурун ойлонууга 1 күн сураңыз", "ru": "Брать 1 день на раздумье перед согласием" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Regular help", "kg": "Туруктуу жардам", "ru": "Регулярная помощь" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "10 volunteer hours", "kg": "10 саат ыктыярчылык", "ru": "10 часов волонтёрства" },
+        { "en": "50 volunteer hours", "kg": "50 саат ыктыярчылык", "ru": "50 часов волонтёрства" }
+      ],
+      "actions": [
+        {
+          "en": "Volunteer 2 hours every week on a fixed day",
+          "kg": "Ар жума белгилүү күнү 2 саат ыктыярчы болуңуз",
+          "ru": "Волонтёрить 2 часа каждую неделю в фиксированный день",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Volunteer 1 hour every 2 weeks", "kg": "2 жумада 1 саат ыктыярчы болуңуз", "ru": "Волонтёрить 1 час раз в 2 недели" }
+        },
+        {
+          "en": "Log your volunteer hours after each shift",
+          "kg": "Ар бир кезектен кийин ыктыярчылык сааттарыңызды жазыңыз",
+          "ru": "Записывать волонтёрские часы после каждой смены",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Log hours once a month", "kg": "Сааттарды айына бир жолу жазыңыз", "ru": "Записывать часы раз в месяц" }
+        },
+        {
+          "en": "Warn the coordinator 24 hours ahead if you can't come",
+          "kg": "Келе албасаңыз, координаторго 24 саат мурун эскертиңиз",
+          "ru": "Предупреждать координатора за 24 часа, если не придёте",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Send a message before the shift if you are late", "kg": "Кечиксеңиз, кезектен мурун билдирүү жөнөтүңүз", "ru": "Писать до смены, если опаздываете" }
+        },
+        {
+          "en": "Visit or call one lonely elder neighbour weekly",
+          "kg": "Ар жума жалгыз жашаган бир карыя кошунага барыңыз же чалыңыз",
+          "ru": "Раз в неделю навещать или звонить одинокому пожилому соседу",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Call an elder neighbour once a month", "kg": "Карыя кошунага айына бир чалыңыз", "ru": "Звонить пожилому соседу раз в месяц" }
+        },
+        {
+          "en": "Help at one ashar or a neighbour's big task this month",
+          "kg": "Ушул айда бир ашарга же кошунанын чоң ишине жардам бериңиз",
+          "ru": "В этом месяце помочь на одном ашаре или в деле соседа",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Help a neighbour carry or fix one thing", "kg": "Кошунага бир нерсени көтөрүүгө же оңдоого жардам бериңиз", "ru": "Помочь соседу что-то донести или починить" },
+          "steps": [
+            { "en": "Ask neighbours or relatives who needs help", "kg": "Кошуна же туугандардан кимге жардам керек экенин сураңыз", "ru": "Спросить соседей или родню, кому нужна помощь", "minutes": 15 },
+            { "en": "Agree on the day and what you will do", "kg": "Күнүн жана эмне кыларыңызды макулдашыңыз", "ru": "Договориться о дне и что будете делать", "minutes": 10 },
+            { "en": "Bring work clothes and gloves", "kg": "Иш кийим жана мээлей алып барыңыз", "ru": "Взять рабочую одежду и перчатки", "minutes": 5 },
+            { "en": "Work together until the task is done", "kg": "Иш бүткөнчө чогуу иштеңиз", "ru": "Работать вместе до конца дела", "minutes": 120 },
+            { "en": "Note what you learned from the elders", "kg": "Улуулардан эмне үйрөнгөнүңүздү жазыңыз", "ru": "Записать, чему научились у старших", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Donate one useful thing or 100 som weekly to a real need",
+          "kg": "Ар жума чыныгы муктаждыкка бир пайдалуу буюм же 100 сом бериңиз",
+          "ru": "Каждую неделю отдавать полезную вещь или 100 сомов на нужду",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Give away one unused thing a month", "kg": "Айына колдонулбаган бир буюмду бериңиз", "ru": "Раз в месяц отдавать одну ненужную вещь" }
+        },
+        {
+          "en": "Help at one animal shelter: feeding, walking, cleaning",
+          "kg": "Бир жаныбарлар жайына жардам бериңиз: тоюттандыруу, сейилдетүү",
+          "ru": "Помочь в приюте для животных: кормление, выгул, уборка",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Bring food to a shelter once", "kg": "Жайга бир жолу тамак-аш алып барыңыз", "ru": "Один раз привезти корм в приют" },
+          "steps": [
+            { "en": "Find a shelter near you and its needs list", "kg": "Жакын жайды жана анын муктаждыктар тизмесин табыңыз", "ru": "Найти приют рядом и его список нужд", "minutes": 20 },
+            { "en": "Call and ask when volunteers can come", "kg": "Чалып, ыктыярчылар качан келе аларын сураңыз", "ru": "Позвонить и спросить, когда можно прийти", "minutes": 10 },
+            { "en": "Buy or collect one item from the list", "kg": "Тизмедеги бир нерсени сатып алыңыз же чогултуңуз", "ru": "Купить или собрать одну вещь из списка", "minutes": 30 },
+            { "en": "Spend 2 hours helping on site", "kg": "Ал жерде 2 саат жардам бериңиз", "ru": "Помочь на месте 2 часа", "minutes": 120 },
+            { "en": "Share the shelter's needs with friends", "kg": "Жайдын муктаждыктарын досторуңуз менен бөлүшүңүз", "ru": "Рассказать друзьям о нуждах приюта", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Plan next week's volunteer slot every Sunday",
+          "kg": "Ар жекшемби кийинки жуманын ыктыярчылык убактысын пландаңыз",
+          "ru": "Каждое воскресенье планировать волонтёрство на неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Plan volunteering once a month", "kg": "Ыктыярчылыкты айына бир пландаңыз", "ru": "Планировать волонтёрство раз в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Own project", "kg": "Өз долбоорум", "ru": "Свой проект" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Project idea checked with people", "kg": "Долбоор идеясы адамдар менен текшерилди", "ru": "Идея проекта проверена на людях" },
+        { "en": "First event held", "kg": "Биринчи иш-чара өттү", "ru": "Проведено первое мероприятие" }
+      ],
+      "actions": [
+        {
+          "en": "Describe a small project: problem, people, one action",
+          "kg": "Кичи долбоорду сүрөттөңүз: көйгөй, адамдар, бир аракет",
+          "ru": "Описать маленький проект: проблема, люди, одно действие",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write the project idea in 3 sentences", "kg": "Долбоор идеясын 3 сүйлөм менен жазыңыз", "ru": "Записать идею проекта в 3 предложениях" },
+          "steps": [
+            { "en": "Choose one problem in your street, school or village", "kg": "Көчөңүздөгү, мектептеги же айылдагы бир көйгөйдү тандаңыз", "ru": "Выбрать одну проблему улицы, школы или села", "minutes": 15 },
+            { "en": "Write who suffers from it and how many people", "kg": "Андан ким жапа чегерин жана канча адам экенин жазыңыз", "ru": "Записать, кто от неё страдает и сколько людей", "minutes": 15 },
+            { "en": "Think of one simple action that helps", "kg": "Жардам бере турган бир жөнөкөй аракетти ойлоңуз", "ru": "Придумать одно простое действие, которое поможет", "minutes": 20 },
+            { "en": "Write a goal with a number and a date", "kg": "Сан жана дата менен максат жазыңыз", "ru": "Записать цель с цифрой и датой", "minutes": 10 },
+            { "en": "List what you need: people, things, permission", "kg": "Эмне керек экенин жазыңыз: адамдар, буюмдар, уруксат", "ru": "Выписать, что нужно: люди, вещи, разрешение", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Discuss the idea with 5 people it should help",
+          "kg": "Идеяны ал жардам бере турган 5 адам менен талкуулаңыз",
+          "ru": "Обсудить идею с 5 людьми, которым она должна помочь",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask 2 people if they need this", "kg": "2 адамдан бул керекпи деп сураңыз", "ru": "Спросить 2 человек, нужно ли им это" },
+          "steps": [
+            { "en": "Prepare 3 simple questions", "kg": "3 жөнөкөй суроо даярдаңыз", "ru": "Подготовить 3 простых вопроса", "minutes": 10 },
+            { "en": "Talk to 5 people in person or by phone", "kg": "5 адам менен жүзмө-жүз же телефон аркылуу сүйлөшүңүз", "ru": "Поговорить с 5 людьми лично или по телефону", "minutes": 60 },
+            { "en": "Write their answers right after", "kg": "Алардын жоопторун дароо жазыңыз", "ru": "Сразу записать их ответы", "minutes": 15 },
+            { "en": "Change the idea based on what you heard", "kg": "Уккан нерселердин негизинде идеяны өзгөртүңүз", "ru": "Изменить идею по услышанному", "minutes": 20 },
+            { "en": "Ask an elder or aksakal for advice", "kg": "Улуу кишиден же аксакалдан кеңеш сураңыз", "ru": "Спросить совета у старшего или аксакала", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Hold the first event of your project",
+          "kg": "Долбооруңуздун биринчи иш-чарасын өткөрүңүз",
+          "ru": "Провести первое мероприятие проекта",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Hold a 1-hour mini event with 5 people", "kg": "5 адам менен 1 сааттык кичи иш-чара өткөрүңүз", "ru": "Провести часовую мини-встречу на 5 человек" },
+          "steps": [
+            { "en": "Set a date, place and number of guests", "kg": "Дата, жай жана коноктордун санын белгилеңиз", "ru": "Определить дату, место и число участников", "minutes": 15 },
+            { "en": "Get permission from the place owner or akimiat", "kg": "Жайдын ээсинен же айыл өкмөтүнөн уруксат алыңыз", "ru": "Получить разрешение владельца места или местной власти", "minutes": 60 },
+            { "en": "Make a simple poster and send it to chats", "kg": "Жөнөкөй жарыя жасап, чаттарга жөнөтүңүз", "ru": "Сделать простую афишу и разослать по чатам", "minutes": 30 },
+            { "en": "Prepare a plan of the event by minutes", "kg": "Иш-чаранын планын мүнөт боюнча даярдаңыз", "ru": "Подготовить план мероприятия по минутам", "minutes": 30 },
+            { "en": "Hold the event and take photos", "kg": "Иш-чараны өткөрүп, сүрөткө тартыңыз", "ru": "Провести мероприятие и сделать фото", "minutes": 120 },
+            { "en": "Thank everyone the same day", "kg": "Ошол эле күнү баарына ыраазычылык айтыңыз", "ru": "В тот же день поблагодарить всех", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Spend 30 minutes weekly moving the project forward",
+          "kg": "Долбоорду алга жылдырууга ар жума 30 мүнөт бөлүңүз",
+          "ru": "Каждую неделю 30 минут продвигать проект",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Do one small project task a week", "kg": "Жумасына долбоордун бир кичи тапшырмасын аткарыңыз", "ru": "Делать одну небольшую задачу проекта в неделю" }
+        },
+        {
+          "en": "Find 3 people to run the project with you",
+          "kg": "Долбоорду сиз менен бирге жүргүзө турган 3 адам табыңыз",
+          "ru": "Найти 3 человек, чтобы вести проект вместе",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Invite one friend to help once", "kg": "Бир досуңузду бир жолу жардамга чакырыңыз", "ru": "Позвать одного друга помочь один раз" },
+          "steps": [
+            { "en": "List friends who care about this problem", "kg": "Бул көйгөйгө кайдыгер эмес досторду тизмелеңиз", "ru": "Выписать друзей, которым не всё равно", "minutes": 10 },
+            { "en": "Tell each of them the idea in 1 minute", "kg": "Ар бирине идеяны 1 мүнөттө айтып бериңиз", "ru": "Рассказать каждому идею за 1 минуту", "minutes": 30 },
+            { "en": "Give each a clear role", "kg": "Ар бирине так роль бериңиз", "ru": "Дать каждому чёткую роль", "minutes": 15 },
+            { "en": "Create a group chat for the team", "kg": "Команда үчүн топтук чат түзүңүз", "ru": "Создать групповой чат команды", "minutes": 5 },
+            { "en": "Hold the first 30-minute team meeting", "kg": "Команданын биринчи 30 мүнөттүк жолугушуусун өткөрүңүз", "ru": "Провести первую 30-минутную встречу команды", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Don't collect money without a public report",
+          "kg": "Ачык отчётсуз акча чогултпаңыз",
+          "ru": "Не собирать деньги без публичного отчёта",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask for things, not money, at the start", "kg": "Башында акча эмес, буюм сураңыз", "ru": "На старте просить вещи, а не деньги" }
+        },
+        {
+          "en": "Write a one-page plan for the next 3 months",
+          "kg": "Кийинки 3 айга бир барактык план жазыңыз",
+          "ru": "Написать план на 3 месяца на одной странице",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Plan the next 2 events", "kg": "Кийинки 2 иш-чараны пландаңыз", "ru": "Спланировать 2 следующих мероприятия" },
+          "steps": [
+            { "en": "Write what worked at the first event", "kg": "Биринчи иш-чарада эмне жакшы болгонун жазыңыз", "ru": "Записать, что сработало на первом мероприятии", "minutes": 10 },
+            { "en": "Set a 3-month goal with a number", "kg": "3 айлык максатты сан менен коюңуз", "ru": "Поставить цель на 3 месяца с цифрой", "minutes": 10 },
+            { "en": "Plan one event a month with dates", "kg": "Айына бир иш-чараны дата менен пландаңыз", "ru": "Запланировать по одному мероприятию в месяц", "minutes": 20 },
+            { "en": "Write who is responsible for what", "kg": "Ким эмнеге жооптуу экенин жазыңыз", "ru": "Записать, кто за что отвечает", "minutes": 10 },
+            { "en": "Share the plan with the team", "kg": "Планды команда менен бөлүшүңүз", "ru": "Поделиться планом с командой", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Share one project update with people weekly",
+          "kg": "Ар жума адамдар менен долбоордун бир жаңылыгын бөлүшүңүз",
+          "ru": "Раз в неделю делиться новостью проекта",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Share an update once a month", "kg": "Айына бир жолу жаңылык бөлүшүңүз", "ru": "Делиться новостью раз в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Useful skills", "kg": "Пайдалуу көндүмдөр", "ru": "Полезные навыки" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First aid course finished", "kg": "Биринчи жардам курсу бүттү", "ru": "Пройден курс первой помощи" }
+      ],
+      "actions": [
+        {
+          "en": "Take a first aid course",
+          "kg": "Биринчи медициналык жардам курсунан өтүңүз",
+          "ru": "Пройти курс первой помощи",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Watch one official first aid video lesson", "kg": "Биринчи жардам боюнча бир расмий видео сабак көрүңүз", "ru": "Посмотреть один официальный видеоурок первой помощи" },
+          "steps": [
+            { "en": "Find a first aid course: Red Crescent or local centre", "kg": "Курс табыңыз: Кызыл Жарым Ай же жергиликтүү борбор", "ru": "Найти курс: Красный Полумесяц или местный центр", "minutes": 20 },
+            { "en": "Check dates and sign up", "kg": "Даталарды текшерип, катталыңыз", "ru": "Проверить даты и записаться", "minutes": 15 },
+            { "en": "Attend all course sessions", "kg": "Курстун бардык сабактарына катышыңыз", "ru": "Посетить все занятия курса", "minutes": 120 },
+            { "en": "Practise the main steps at home on a pillow", "kg": "Негизги кадамдарды үйдө жаздыкка машыгыңыз", "ru": "Отработать основные шаги дома на подушке", "minutes": 20 },
+            { "en": "Keep the certificate in one folder", "kg": "Күбөлүктү бир папкада сактаңыз", "ru": "Сохранить сертификат в одной папке", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Write which 3 skills you can give: language, design, sport",
+          "kg": "Бере ала турган 3 көндүмдү жазыңыз: тил, дизайн, спорт",
+          "ru": "Выписать 3 навыка, которые можете дать: язык, дизайн, спорт",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 1 skill you can teach others", "kg": "Башкаларга үйрөтө ала турган 1 көндүмдү жазыңыз", "ru": "Записать 1 навык, которому можете научить" },
+          "steps": [
+            { "en": "List everything you do well", "kg": "Жакшы кыла алган нерселериңиздин баарын жазыңыз", "ru": "Выписать всё, что умеете хорошо", "minutes": 15 },
+            { "en": "Ask 2 friends what you are good at", "kg": "2 досуңуздан эмнеге мыкты экениңизди сураңыз", "ru": "Спросить 2 друзей, в чём вы сильны", "minutes": 15 },
+            { "en": "Pick 3 skills useful for your cause", "kg": "Багытыңызга пайдалуу 3 көндүмдү тандаңыз", "ru": "Выбрать 3 навыка, полезных для вашей темы", "minutes": 10 },
+            { "en": "Write how each one can help", "kg": "Ар бири кантип жардам берерин жазыңыз", "ru": "Записать, как каждый может помочь", "minutes": 10 },
+            { "en": "Offer one skill to your organisation", "kg": "Уюмуңузга бир көндүмүңүздү сунуштаңыз", "ru": "Предложить один навык своей организации", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Teach kids or peers your skill 1 hour a week for free",
+          "kg": "Балдарга же теңтуштарга көндүмүңүздү жумасына 1 саат акысыз үйрөтүңүз",
+          "ru": "Бесплатно учить детей или ровесников своему навыку 1 час в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Give one free lesson a month", "kg": "Айына бир акысыз сабак өткөрүңүз", "ru": "Проводить одно бесплатное занятие в месяц" }
+        },
+        {
+          "en": "Learn one organising skill weekly: lists, chats, posters",
+          "kg": "Ар жума бир уюштуруу көндүмүн үйрөнүңүз: тизме, чат, жарыя",
+          "ru": "Каждую неделю осваивать навык организации: списки, чаты, афиши",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Watch one 10-minute lesson on organising", "kg": "Уюштуруу боюнча бир 10 мүнөттүк сабак көрүңүз", "ru": "Посмотреть один 10-минутный урок по организации" }
+        },
+        {
+          "en": "Learn to speak to a group: give one 3-minute talk",
+          "kg": "Топ алдында сүйлөөнү үйрөнүңүз: бир 3 мүнөттүк сөз сүйлөңүз",
+          "ru": "Научиться выступать: сделать одно выступление на 3 минуты",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Tell your idea to 3 friends at once", "kg": "Идеяңызды бир убакта 3 досуңузга айтып бериңиз", "ru": "Рассказать идею сразу 3 друзьям" },
+          "steps": [
+            { "en": "Choose a topic: your cause or project", "kg": "Тема тандаңыз: багытыңыз же долбооруңуз", "ru": "Выбрать тему: своё направление или проект", "minutes": 5 },
+            { "en": "Write 3 main points on a card", "kg": "3 негизги ойду карточкага жазыңыз", "ru": "Записать 3 главные мысли на карточку", "minutes": 15 },
+            { "en": "Rehearse aloud 3 times with a timer", "kg": "Таймер менен 3 жолу үн чыгарып машыгыңыз", "ru": "Отрепетировать вслух 3 раза с таймером", "minutes": 20 },
+            { "en": "Give the talk at a meeting or lesson", "kg": "Жолугушууда же сабакта сөз сүйлөңүз", "ru": "Выступить на встрече или занятии", "minutes": 15 },
+            { "en": "Ask 2 listeners what to improve", "kg": "2 угуучудан эмнени жакшыртуу керек экенин сураңыз", "ru": "Спросить 2 слушателей, что улучшить", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Follow safety rules on every action without exception",
+          "kg": "Ар бир акцияда коопсуздук эрежелерин сөзсүз сактаңыз",
+          "ru": "Соблюдать правила безопасности на каждой акции без исключений",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask the coordinator about safety before starting", "kg": "Баштоодон мурун координатордон коопсуздук тууралуу сураңыз", "ru": "Перед началом спрашивать координатора о безопасности" }
+        },
+        {
+          "en": "Read one guide on your cause weekly: elders, kids, ecology",
+          "kg": "Ар жума багытыңыз боюнча бир колдонмо окуңуз",
+          "ru": "Раз в неделю читать одно руководство по своей теме",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Read one guide a month", "kg": "Айына бир колдонмо окуңуз", "ru": "Читать одно руководство в месяц" }
+        },
+        {
+          "en": "Respect the dignity of people you help: no pity photos",
+          "kg": "Жардам алгандардын ар-намысын сыйлаңыз: аянычтуу сүрөт тартпаңыз",
+          "ru": "Уважать достоинство тех, кому помогаете: без жалостливых фото",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask before taking any photo of people you help", "kg": "Жардам алгандарды сүрөткө тартуудан мурун уруксат сураңыз", "ru": "Спрашивать разрешения перед любым фото подопечных" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Energy & limits", "kg": "Күч жана чек", "ru": "Силы и границы" },
+      "kind": "support",
+      "milestones": [
+        { "en": "3 months of volunteering without burnout", "kg": "Чарчап калбай 3 ай ыктыярчылык", "ru": "3 месяца волонтёрства без выгорания" }
+      ],
+      "actions": [
+        {
+          "en": "Give no more than 6 volunteer hours a week",
+          "kg": "Ыктыярчылыкка жумасына 6 сааттан ашык бербеңиз",
+          "ru": "Отдавать волонтёрству не больше 6 часов в неделю",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep at least 2 free evenings a week", "kg": "Жумасына жок дегенде 2 бош кеч калтырыңыз", "ru": "Оставлять минимум 2 свободных вечера в неделю" }
+        },
+        {
+          "en": "Sleep 7–8 hours, especially before shifts",
+          "kg": "Өзгөчө кезектен мурун 7–8 саат уктаңыз",
+          "ru": "Спать 7–8 часов, особенно перед сменами",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Go to bed 30 minutes earlier before a shift", "kg": "Кезектен мурун 30 мүнөт эрте жатыңыз", "ru": "Ложиться на 30 минут раньше перед сменой" }
+        },
+        {
+          "en": "Bring water and food to every long shift",
+          "kg": "Ар бир узак кезекке суу жана тамак алып барыңыз",
+          "ru": "Брать воду и еду на каждую длинную смену",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Always carry a bottle of water", "kg": "Ар дайым бир бөтөлкө суу алып жүрүңүз", "ru": "Всегда носить бутылку воды" }
+        },
+        {
+          "en": "Rate your energy 1–10 after each week",
+          "kg": "Ар жуманын аягында күчүңүздү 1–10 баллга баалаңыз",
+          "ru": "Оценивать свои силы по шкале 1–10 в конце недели",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Note how you feel after each shift", "kg": "Ар кезектен кийин өзүңүздү кандай сезериңизди жазыңыз", "ru": "Отмечать самочувствие после каждой смены" }
+        },
+        {
+          "en": "Talk weekly with someone about hard moments",
+          "kg": "Оор учурлар тууралуу ар жума бирөө менен сүйлөшүңүз",
+          "ru": "Раз в неделю обсуждать с кем-то тяжёлые моменты",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Write hard moments in a journal", "kg": "Оор учурларды күндөлүккө жазыңыз", "ru": "Записывать тяжёлые моменты в дневник" }
+        },
+        {
+          "en": "Take a week off after every 2 months of help",
+          "kg": "Ар 2 ай жардамдан кийин бир жума эс алыңыз",
+          "ru": "Брать неделю отдыха после каждых 2 месяцев помощи",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Skip one shift a month guilt-free", "kg": "Айына бир кезекти уялбай калтырыңыз", "ru": "Пропускать одну смену в месяц без чувства вины" }
+        },
+        {
+          "en": "Move 30 minutes 3 times a week",
+          "kg": "Жумасына 3 жолу 30 мүнөт кыймылдаңыз",
+          "ru": "Двигаться 30 минут 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Walk 15 minutes 3 times a week", "kg": "Жумасына 3 жолу 15 мүнөт басыңыз", "ru": "Гулять 15 минут 3 раза в неделю" }
+        },
+        {
+          "en": "Leave hard emotions at the door: 5 calm breaths",
+          "kg": "Оор сезимдерди эшикте калтырыңыз: 5 жолу терең дем алыңыз",
+          "ru": "Оставлять тяжёлое за дверью: 5 спокойных вдохов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take 3 deep breaths after a hard shift", "kg": "Оор кезектен кийин 3 жолу терең дем алыңыз", "ru": "Сделать 3 глубоких вдоха после тяжёлой смены" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Team & people", "kg": "Команда жана адамдар", "ru": "Команда и люди" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Friend or family member joined you", "kg": "Дос же үй-бүлө мүчөсү кошулду", "ru": "К вам присоединился друг или родственник" }
+      ],
+      "actions": [
+        {
+          "en": "Invite one friend or relative to volunteer with you",
+          "kg": "Бир досуңузду же тууганыңызды бирге ыктыярчы болууга чакырыңыз",
+          "ru": "Позвать друга или родственника волонтёрить вместе",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Tell one friend about your last shift", "kg": "Бир досуңузга акыркы кезегиңиз тууралуу айтып бериңиз", "ru": "Рассказать другу о последней смене" },
+          "steps": [
+            { "en": "Think who would enjoy this cause", "kg": "Бул багыт кимге жагарын ойлонуңуз", "ru": "Подумать, кому понравится это дело", "minutes": 10 },
+            { "en": "Tell them one real story from a shift", "kg": "Аларга кезектен бир чыныгы окуяны айтып бериңиз", "ru": "Рассказать им одну настоящую историю со смены", "minutes": 15 },
+            { "en": "Invite them to one specific date", "kg": "Аларды белгилүү бир датага чакырыңыз", "ru": "Пригласить их на конкретную дату", "minutes": 5 },
+            { "en": "Go together and show them around", "kg": "Бирге барып, баарын көрсөтүңүз", "ru": "Сходить вместе и всё показать", "minutes": 120 },
+            { "en": "Ask how it felt and if they'll come again", "kg": "Кандай болгонун жана дагы келеби деп сураңыз", "ru": "Спросить впечатления и придут ли снова", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Learn the names of everyone on your team",
+          "kg": "Командаңыздагы бардык адамдардын атын жаттап алыңыз",
+          "ru": "Запомнить имена всех в команде",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Learn 3 new names each shift", "kg": "Ар кезекте 3 жаңы ат жаттаңыз", "ru": "Запоминать 3 новых имени за смену" }
+        },
+        {
+          "en": "Thank the coordinator or a teammate after each shift",
+          "kg": "Ар кезектен кийин координаторго же өнөккө ыраазычылык айтыңыз",
+          "ru": "Благодарить координатора или напарника после каждой смены",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Thank one teammate a month", "kg": "Айына бир өнөгүңүзгө ыраазычылык айтыңыз", "ru": "Благодарить одного напарника в месяц" }
+        },
+        {
+          "en": "Tell parents where and with whom you volunteer",
+          "kg": "Ата-энеңизге кайда жана ким менен ыктыярчы экениңизди айтыңыз",
+          "ru": "Говорить родителям, где и с кем вы волонтёрите",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Send family the address before each shift", "kg": "Ар кезектен мурун үй-бүлөгө даректи жөнөтүңүз", "ru": "Отправлять семье адрес перед сменой" }
+        },
+        {
+          "en": "Meet volunteers from another group and share ideas",
+          "kg": "Башка топтун ыктыярчылары менен жолугуп, идея бөлүшүңүз",
+          "ru": "Встретиться с волонтёрами другой группы и обменяться идеями",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Follow 2 other volunteer groups online", "kg": "Онлайн дагы 2 ыктыярчылар тобуна жазылыңыз", "ru": "Подписаться на 2 других волонтёрских группы" },
+          "steps": [
+            { "en": "Find one more group in your city", "kg": "Шаарыңыздан дагы бир топту табыңыз", "ru": "Найти ещё одну группу в своём городе", "minutes": 15 },
+            { "en": "Write to them and suggest a short meeting", "kg": "Аларга жазып, кыска жолугушуу сунуштаңыз", "ru": "Написать им и предложить короткую встречу", "minutes": 10 },
+            { "en": "Prepare 3 questions about how they work", "kg": "Алар кантип иштешерин сурай турган 3 суроо даярдаңыз", "ru": "Подготовить 3 вопроса об их работе", "minutes": 10 },
+            { "en": "Meet for 1 hour and take notes", "kg": "1 саат жолугуп, жазып алыңыз", "ru": "Встретиться на час и делать заметки", "minutes": 60 },
+            { "en": "Bring one idea back to your team", "kg": "Командаңызга бир идея алып келиңиз", "ru": "Принести одну идею в свою команду", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Help a new volunteer during their first shift",
+          "kg": "Жаңы ыктыярчыга анын биринчи кезегинде жардам бериңиз",
+          "ru": "Помогать новичку на его первой смене",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Answer one newcomer's question in the chat", "kg": "Чатта бир жаңы келгендин суроосуна жооп бериңиз", "ru": "Ответить на вопрос новичка в чате" }
+        },
+        {
+          "en": "Settle conflicts calmly and through the coordinator",
+          "kg": "Чыр-чатакты тынч жана координатор аркылуу чечиңиз",
+          "ru": "Решать конфликты спокойно и через координатора",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Pause 10 minutes before answering in a conflict", "kg": "Чыр учурунда жооп берерден мурун 10 мүнөт күтүңүз", "ru": "Брать паузу 10 минут перед ответом в споре" }
+        },
+        {
+          "en": "Read the team chat once a day and reply within a day",
+          "kg": "Команда чатын күнүнө бир окуп, бир күндө жооп бериңиз",
+          "ru": "Читать чат команды раз в день и отвечать в течение дня",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Check the team chat 3 times a week", "kg": "Команда чатын жумасына 3 жолу текшериңиз", "ru": "Проверять чат команды 3 раза в неделю" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Time & resources", "kg": "Убакыт жана ресурстар", "ru": "Время и ресурсы" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Fixed volunteer slot in the calendar", "kg": "Календарда туруктуу ыктыярчылык убактысы бар", "ru": "Постоянный слот волонтёрства в календаре" }
+      ],
+      "actions": [
+        {
+          "en": "Block one fixed volunteer slot in your weekly calendar",
+          "kg": "Жумалык календарга бир туруктуу ыктыярчылык убактысын бөлүңүз",
+          "ru": "Забронировать в календаре постоянный слот для волонтёрства",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Choose one free hour this week", "kg": "Ушул жумадан бир бош саат тандаңыз", "ru": "Выбрать один свободный час на этой неделе" },
+          "steps": [
+            { "en": "Write your fixed study, work and family times", "kg": "Окуу, иш жана үй-бүлө убактыңызды жазыңыз", "ru": "Выписать постоянное время учёбы, работы и семьи", "minutes": 10 },
+            { "en": "Find one free 2-hour window", "kg": "Бир бош 2 сааттык убакыт табыңыз", "ru": "Найти одно свободное окно на 2 часа", "minutes": 10 },
+            { "en": "Check it with the organisation's schedule", "kg": "Аны уюмдун графиги менен салыштырыңыз", "ru": "Сверить его с графиком организации", "minutes": 10 },
+            { "en": "Add it to the calendar with a reminder", "kg": "Аны эскертме менен календарга кошуңуз", "ru": "Внести в календарь с напоминанием", "minutes": 5 },
+            { "en": "Tell your family about this slot", "kg": "Бул убакыт тууралуу үй-бүлөңүзгө айтыңыз", "ru": "Сообщить семье об этом слоте", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Never skip study, work or family duties to volunteer",
+          "kg": "Ыктыярчылык үчүн окуу, иш, үй-бүлө милдетин калтырбаңыз",
+          "ru": "Не жертвовать ради волонтёрства учёбой, работой и семьёй",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Volunteer only after main tasks are done", "kg": "Негизги иштер бүткөндөн кийин гана ыктыярчы болуңуз", "ru": "Волонтёрить только после основных дел" }
+        },
+        {
+          "en": "Collect a home kit: gloves, bags, first aid, water bottle",
+          "kg": "Үй топтомун чогултуңуз: мээлей, баштык, дарылар, суу",
+          "ru": "Собрать набор: перчатки, мешки, аптечка, бутылка воды",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Put gloves and bags in one bag", "kg": "Мээлей менен баштыктарды бир сумкага салыңыз", "ru": "Сложить перчатки и мешки в одну сумку" },
+          "steps": [
+            { "en": "Write what you need on most shifts", "kg": "Көпчүлүк кезектерде эмне керек экенин жазыңыз", "ru": "Записать, что нужно на большинстве смен", "minutes": 10 },
+            { "en": "Check what you already have at home", "kg": "Үйдө эмне бар экенин текшериңиз", "ru": "Проверить, что уже есть дома", "minutes": 10 },
+            { "en": "Buy only the missing items in soms you planned", "kg": "Пландаган сумманын ичинде жетишпегенин гана алыңыз", "ru": "Докупить только недостающее в пределах плана", "minutes": 30 },
+            { "en": "Pack it all in one bag", "kg": "Баарын бир сумкага салыңыз", "ru": "Сложить всё в одну сумку", "minutes": 10 },
+            { "en": "Keep the bag near the door", "kg": "Сумканы эшиктин жанына коюңуз", "ru": "Держать сумку у двери", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Spend on volunteering only money you planned",
+          "kg": "Ыктыярчылыкка пландаган акчаңызды гана сарптаңыз",
+          "ru": "Тратить на волонтёрство только запланированные деньги",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a monthly limit in soms for helping", "kg": "Жардам үчүн айлык сом чегин коюңуз", "ru": "Установить месячный лимит в сомах на помощь" }
+        },
+        {
+          "en": "Collect 3 unused things at home for people in need weekly",
+          "kg": "Ар жума үйдөн муктаждарга 3 колдонулбаган буюм чогултуңуз",
+          "ru": "Каждую неделю собирать дома 3 ненужные вещи для нуждающихся",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Collect one unused thing a week", "kg": "Жумасына бир колдонулбаган буюм чогултуңуз", "ru": "Собирать одну ненужную вещь в неделю" }
+        },
+        {
+          "en": "Give only clean and working things",
+          "kg": "Таза жана иштеген буюмдарды гана бериңиз",
+          "ru": "Отдавать только чистые и рабочие вещи",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check each item before giving it", "kg": "Берерден мурун ар бир буюмду текшериңиз", "ru": "Проверять каждую вещь перед передачей" }
+        },
+        {
+          "en": "Plan the route and transport before each shift",
+          "kg": "Ар кезектен мурун жолду жана транспортту пландаңыз",
+          "ru": "Планировать маршрут и транспорт перед каждой сменой",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Save the route to the place in maps", "kg": "Жерге баруучу жолду картага сактаңыз", "ru": "Сохранить маршрут к месту в картах" }
+        },
+        {
+          "en": "Collect contacts: coordinator, team, emergency number",
+          "kg": "Байланыштарды чогултуңуз: координатор, команда, тез жардам",
+          "ru": "Собрать контакты: координатор, команда, экстренный номер",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Save the coordinator's number", "kg": "Координатордун номерин сактаңыз", "ru": "Сохранить номер координатора" },
+          "steps": [
+            { "en": "Save the coordinator's phone", "kg": "Координатордун телефонун сактаңыз", "ru": "Сохранить телефон координатора", "minutes": 5 },
+            { "en": "Save 2 teammates' phones", "kg": "2 өнөгүңүздүн телефонун сактаңыз", "ru": "Сохранить телефоны 2 напарников", "minutes": 5 },
+            { "en": "Write the emergency numbers 101, 102, 103", "kg": "Тез жардам номерлерин жазыңыз: 101, 102, 103", "ru": "Записать экстренные номера 101, 102, 103", "minutes": 5 },
+            { "en": "Write the address of each place you go", "kg": "Бара турган ар бир жердин дарегин жазыңыз", "ru": "Записать адрес каждого места", "minutes": 10 },
+            { "en": "Share the list with one family member", "kg": "Тизмени бир үй-бүлө мүчөсү менен бөлүшүңүз", "ru": "Поделиться списком с одним родственником", "minutes": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Reliability", "kg": "Ишенимдүүлүк", "ru": "Надёжность" },
+      "kind": "character",
+      "milestones": [
+        { "en": "10 shifts without being late", "kg": "Кечикпей 10 кезек", "ru": "10 смен без опозданий" }
+      ],
+      "actions": [
+        {
+          "en": "Come to every shift 10 minutes early",
+          "kg": "Ар бир кезекке 10 мүнөт эрте келиңиз",
+          "ru": "Приходить на каждую смену на 10 минут раньше",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Come exactly on time", "kg": "Так убагында келиңиз", "ru": "Приходить точно вовремя" }
+        },
+        {
+          "en": "Do what you promised or warn a day before",
+          "kg": "Убада кылганыңызды аткарыңыз же бир күн мурун эскертиңиз",
+          "ru": "Делать обещанное или предупреждать за день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Promise only what fits your week", "kg": "Жумаңызга батканды гана убада кылыңыз", "ru": "Обещать только то, что помещается в неделю" }
+        },
+        {
+          "en": "Pick up 3 pieces of litter every day",
+          "kg": "Күн сайын 3 таштанды терип салыңыз",
+          "ru": "Каждый день поднимать 3 мусоринки",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Pick up 1 piece of litter a day", "kg": "Күнүнө 1 таштанды терип салыңыз", "ru": "Поднимать 1 мусоринку в день" }
+        },
+        {
+          "en": "Greet neighbours, guards and cleaners first every day",
+          "kg": "Күн сайын кошуналар, күзөтчүлөр, тазалоочуларга биринчи салам бериңиз",
+          "ru": "Каждый день первым здороваться с соседями, охраной, уборщиками",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Greet 3 people first each day", "kg": "Күн сайын 3 адамга биринчи салам бериңиз", "ru": "Первым здороваться с 3 людьми в день" }
+        },
+        {
+          "en": "Leave every place cleaner than you found it",
+          "kg": "Ар бир жерди тапкандагыдан таза калтырыңыз",
+          "ru": "Оставлять каждое место чище, чем было",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take your own rubbish with you always", "kg": "Өз таштандыңызды дайыма өзүңүз менен алып кетиңиз", "ru": "Всегда уносить свой мусор" }
+        },
+        {
+          "en": "Finish the task you started before taking a new one",
+          "kg": "Жаңысын алардан мурун баштаган ишиңизди бүтүрүңүз",
+          "ru": "Доводить начатое дело до конца, прежде чем брать новое",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Finish one started task this week", "kg": "Ушул жумада баштаган бир ишиңизди бүтүрүңүз", "ru": "Закончить одно начатое дело на этой неделе" }
+        },
+        {
+          "en": "Help without asking for praise or posting about it",
+          "kg": "Мактоо күтпөй жана ал тууралуу жарыялабай жардам бериңиз",
+          "ru": "Помогать, не ожидая похвалы и не выкладывая это",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do one quiet good deed a week", "kg": "Жумасына бир жашыруун жакшылык кылыңыз", "ru": "Делать одно тихое доброе дело в неделю" }
+        },
+        {
+          "en": "Offer your seat and help to elders every time",
+          "kg": "Улууларга ар дайым орун бошотуп, жардам бериңиз",
+          "ru": "Всегда уступать место и помогать старшим",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Offer help to one elder this week", "kg": "Ушул жумада бир улуу кишиге жардам сунуштаңыз", "ru": "Предложить помощь одному пожилому на этой неделе" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Impact record", "kg": "Натыйжа эсеби", "ru": "Учёт пользы" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Volunteer portfolio with 10 entries", "kg": "10 жазуусу бар ыктыярчылык портфолиосу", "ru": "Волонтёрское портфолио из 10 записей" }
+      ],
+      "actions": [
+        {
+          "en": "Start a volunteer log: date, place, hours, result",
+          "kg": "Ыктыярчылык журналын баштаңыз: дата, жер, саат, натыйжа",
+          "ru": "Завести журнал: дата, место, часы, результат",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write down your last shift", "kg": "Акыркы кезегиңизди жазып алыңыз", "ru": "Записать свою последнюю смену" },
+          "steps": [
+            { "en": "Create a table or note for the log", "kg": "Журнал үчүн таблица же эскертме түзүңүз", "ru": "Создать таблицу или заметку для журнала", "minutes": 10 },
+            { "en": "Add columns: date, place, hours, what changed", "kg": "Мамычаларды кошуңуз: дата, жер, саат, эмне өзгөрдү", "ru": "Добавить столбцы: дата, место, часы, что изменилось", "minutes": 5 },
+            { "en": "Fill in all past shifts you remember", "kg": "Эсиңиздеги бардык мурунку кезектерди толтуруңуз", "ru": "Заполнить все прошлые смены, что помните", "minutes": 20 },
+            { "en": "Count total hours so far", "kg": "Ушул убакка чейинки жалпы сааттарды эсептеңиз", "ru": "Посчитать общее число часов", "minutes": 5 },
+            { "en": "Set a reminder to fill it after each shift", "kg": "Ар кезектен кийин толтурууга эскертме коюңуз", "ru": "Поставить напоминание заполнять после смены", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Write one result in numbers after each shift",
+          "kg": "Ар кезектен кийин бир натыйжаны сан менен жазыңыз",
+          "ru": "После каждой смены записывать один результат в цифрах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Write one sentence about each shift", "kg": "Ар бир кезек тууралуу бир сүйлөм жазыңыз", "ru": "Писать одно предложение о каждой смене" }
+        },
+        {
+          "en": "Take one photo of the result, not of people in need",
+          "kg": "Муктаж адамдардын эмес, натыйжанын бир сүрөтүн тартыңыз",
+          "ru": "Делать одно фото результата, а не нуждающихся людей",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Photograph the place after the work", "kg": "Иштен кийин жердин сүрөтүн тартыңыз", "ru": "Фотографировать место после работы" }
+        },
+        {
+          "en": "Get a reference letter from the organisation",
+          "kg": "Уюмдан мүнөздөмө кат алыңыз",
+          "ru": "Получить рекомендательное письмо от организации",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask the coordinator for a short written review", "kg": "Координатордон кыска жазуу пикир сураңыз", "ru": "Попросить у координатора короткий письменный отзыв" },
+          "steps": [
+            { "en": "Collect your hours and tasks from the log", "kg": "Журналдан сааттарыңызды жана тапшырмаларды чогултуңуз", "ru": "Собрать из журнала часы и задачи", "minutes": 15 },
+            { "en": "Ask the coordinator politely in person", "kg": "Координатордон жүзмө-жүз сылык сураңыз", "ru": "Вежливо попросить координатора лично", "minutes": 10 },
+            { "en": "Send a short list of what you did", "kg": "Эмне кылганыңыздын кыска тизмесин жөнөтүңүз", "ru": "Отправить краткий список сделанного", "minutes": 10 },
+            { "en": "Agree on a date to receive the letter", "kg": "Катты алуу датасына макулдашыңыз", "ru": "Договориться о дате получения письма", "minutes": 5 },
+            { "en": "Save a scan in one folder with certificates", "kg": "Сканын күбөлүктөр менен бир папкага сактаңыз", "ru": "Сохранить скан в папку с сертификатами", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Add your volunteer experience to your CV",
+          "kg": "Ыктыярчылык тажрыйбаңызды резюмеге кошуңуз",
+          "ru": "Добавить волонтёрский опыт в резюме",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write one line about volunteering for your CV", "kg": "Резюме үчүн ыктыярчылык тууралуу бир сап жазыңыз", "ru": "Написать одну строку о волонтёрстве для резюме" },
+          "steps": [
+            { "en": "Choose the 2 most useful experiences", "kg": "Эң пайдалуу 2 тажрыйбаны тандаңыз", "ru": "Выбрать 2 самых полезных опыта", "minutes": 10 },
+            { "en": "Write each as action plus result in numbers", "kg": "Ар бирин аракет жана сан менен натыйжа катары жазыңыз", "ru": "Описать каждый как действие и результат в цифрах", "minutes": 15 },
+            { "en": "Add the skills you used", "kg": "Колдонгон көндүмдөрүңүздү кошуңуз", "ru": "Добавить использованные навыки", "minutes": 10 },
+            { "en": "Ask a friend to read and check it", "kg": "Досуңуздан окуп, текшерип берүүсүн сураңыз", "ru": "Попросить друга прочитать и проверить", "minutes": 10 },
+            { "en": "Update your CV file and online profile", "kg": "Резюме файлыңызды жана онлайн профилди жаңылаңыз", "ru": "Обновить файл резюме и онлайн-профиль", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Sum up hours and results on the last day of the month",
+          "kg": "Айдын акыркы күнү сааттарды жана натыйжаларды жыйынтыктаңыз",
+          "ru": "В последний день месяца подводить итоги часов и результатов",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Count only hours once a month", "kg": "Айына бир жолу сааттарды гана эсептеңиз", "ru": "Раз в месяц считать только часы" }
+        },
+        {
+          "en": "Write a short story of one shift that changed you",
+          "kg": "Сизди өзгөрткөн бир кезек тууралуу кыска окуя жазыңыз",
+          "ru": "Написать короткую историю о смене, которая вас изменила",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 5 sentences about your best shift", "kg": "Эң мыкты кезегиңиз тууралуу 5 сүйлөм жазыңыз", "ru": "Написать 5 предложений о лучшей смене" },
+          "steps": [
+            { "en": "Choose one shift you remember most", "kg": "Эң эсиңизде калган бир кезекти тандаңыз", "ru": "Выбрать самую запомнившуюся смену", "minutes": 5 },
+            { "en": "Write what happened, without names", "kg": "Аттарын атабай, эмне болгонун жазыңыз", "ru": "Записать, что произошло, без имён", "minutes": 20 },
+            { "en": "Write what you understood after it", "kg": "Андан кийин эмнени түшүнгөнүңүздү жазыңыз", "ru": "Записать, что вы поняли после", "minutes": 10 },
+            { "en": "Cut it to one page", "kg": "Аны бир баракка чейин кыскартыңыз", "ru": "Сократить до одной страницы", "minutes": 10 },
+            { "en": "Share it with the team or keep it for yourself", "kg": "Аны команда менен бөлүшүңүз же өзүңүзгө сактаңыз", "ru": "Поделиться с командой или оставить себе", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Report honestly: never add hours or results",
+          "kg": "Ак ниет отчёт бериңиз: сааттарды, натыйжаларды кошуп жазбаңыз",
+          "ru": "Отчитываться честно: не приписывать часы и результаты",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write hours right after the shift, not later", "kg": "Сааттарды кийин эмес, кезектен кийин дароо жазыңыз", "ru": "Записывать часы сразу после смены, а не потом" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Neighbours & traditions", "kg": "Кошуналар жана салт", "ru": "Соседи и традиции" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A good deed done for every neighbour on the floor", "kg": "Кабаттагы ар бир кошунага жакшылык кылынды", "ru": "Сделано доброе дело для каждого соседа по этажу" }
+      ],
+      "actions": [
+        {
+          "en": "Help one neighbour a week: bags, shopping, repairs",
+          "kg": "Жумасына бир кошунага жардам бериңиз: сумка, базар, оңдоо",
+          "ru": "Помогать одному соседу в неделю: сумки, покупки, ремонт",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Help one neighbour a month", "kg": "Айына бир кошунага жардам бериңиз", "ru": "Помогать одному соседу в месяц" }
+        },
+        {
+          "en": "Organise a yard clean-up with neighbours",
+          "kg": "Кошуналар менен короо тазалоону уюштуруңуз",
+          "ru": "Организовать с соседями уборку двора",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Clean the entrance of your building for 30 minutes", "kg": "Үйүңүздүн подъездин 30 мүнөт тазалаңыз", "ru": "Убрать 30 минут подъезд своего дома" },
+          "steps": [
+            { "en": "Agree a date with 2 active neighbours", "kg": "2 активдүү кошуна менен датага макулдашыңыз", "ru": "Согласовать дату с 2 активными соседями", "minutes": 15 },
+            { "en": "Post a notice at the entrance and in the chat", "kg": "Подъездге жана чатка жарыя илиңиз", "ru": "Повесить объявление в подъезде и в чате", "minutes": 15 },
+            { "en": "Prepare gloves, bags and rakes", "kg": "Мээлей, баштык жана тырмоочторду даярдаңыз", "ru": "Подготовить перчатки, мешки и грабли", "minutes": 20 },
+            { "en": "Hold the clean-up for 2 hours", "kg": "Тазалоону 2 саат өткөрүңүз", "ru": "Провести уборку 2 часа", "minutes": 120 },
+            { "en": "Share tea together and thank everyone", "kg": "Бирге чай ичип, баарына ыраазычылык айтыңыз", "ru": "Вместе выпить чаю и поблагодарить всех", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Join ashar work days and family gatherings when asked",
+          "kg": "Чакырганда ашарга жана үй-бүлөлүк чогулуштарга катышыңыз",
+          "ru": "Участвовать в ашаре и семейных сборах, когда зовут",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Help for at least 1 hour at the next ashar", "kg": "Кийинки ашарда жок дегенде 1 саат жардам бериңиз", "ru": "Помочь хотя бы 1 час на следующем ашаре" }
+        },
+        {
+          "en": "Spend 30 minutes a week with grandparents or elders",
+          "kg": "Жумасына 30 мүнөт чоң ата-чоң эне же улуулар менен болуңуз",
+          "ru": "Проводить 30 минут в неделю с бабушкой, дедушкой или старшими",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Call your grandparents once a week", "kg": "Жумасына бир жолу чоң ата-чоң энеңизге чалыңыз", "ru": "Звонить бабушке и дедушке раз в неделю" }
+        },
+        {
+          "en": "Make a list of elders and families nearby who need help",
+          "kg": "Жакын жердеги жардамга муктаж карыялардын, үй-бүлөлөрдүн тизмесин түзүңүз",
+          "ru": "Составить список пожилых и семей рядом, кому нужна помощь",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask one neighbour who might need help", "kg": "Бир кошунадан кимге жардам керек болушу мүмкүн экенин сураңыз", "ru": "Спросить у соседа, кому может нужна помощь" },
+          "steps": [
+            { "en": "Ask the elder of your street or house chat", "kg": "Көчөңүздүн улуусунан же үй чатынан сураңыз", "ru": "Спросить старшего по улице или чат дома", "minutes": 15 },
+            { "en": "Write names and what each one needs", "kg": "Аттарын жана ар бирине эмне керек экенин жазыңыз", "ru": "Записать имена и что нужно каждому", "minutes": 15 },
+            { "en": "Keep the list private, only for helpers", "kg": "Тизмени жашыруун, жардамчылар үчүн гана сактаңыз", "ru": "Хранить список закрыто, только для помощников", "minutes": 5 },
+            { "en": "Pick one need you can meet this week", "kg": "Ушул жумада аткара ала турган бир муктаждыкты тандаңыз", "ru": "Выбрать одну нужду, которую закроете на неделе", "minutes": 5 },
+            { "en": "Meet it and mark it in the list", "kg": "Аны аткарып, тизмеге белгилеңиз", "ru": "Выполнить и отметить в списке", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Respect each family's faith and customs when helping",
+          "kg": "Жардам бергенде ар бир үй-бүлөнүн ыйманын, салтын сыйлаңыз",
+          "ru": "Уважать веру и обычаи каждой семьи, помогая ей",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask how they prefer to be helped", "kg": "Аларга кандай жардам ыңгайлуу экенин сураңыз", "ru": "Спросить, как им удобнее принимать помощь" }
+        },
+        {
+          "en": "Share food or tea with a neighbour once a week",
+          "kg": "Жумасына бир жолу кошуна менен тамак же чай бөлүшүңүз",
+          "ru": "Раз в неделю делиться едой или чаем с соседом",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Share food with a neighbour once a month", "kg": "Айына бир кошуна менен тамак бөлүшүңүз", "ru": "Раз в месяц делиться едой с соседом" }
+        },
+        {
+          "en": "Teach a child or elder one phone skill",
+          "kg": "Балага же карыяга телефондун бир мүмкүнчүлүгүн үйрөтүңүз",
+          "ru": "Научить ребёнка или пожилого одному навыку на телефоне",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Show an elder how to make a video call", "kg": "Карыяга видео чалуу кантип жасаларын көрсөтүңүз", "ru": "Показать пожилому, как сделать видеозвонок" },
+          "steps": [
+            { "en": "Ask what they want to do on the phone", "kg": "Телефондо эмне кылгысы келерин сураңыз", "ru": "Спросить, что они хотят делать в телефоне", "minutes": 10 },
+            { "en": "Show the steps slowly, one at a time", "kg": "Кадамдарды жай, бирден көрсөтүңүз", "ru": "Показать шаги медленно, по одному", "minutes": 20 },
+            { "en": "Let them repeat each step themselves", "kg": "Ар бир кадамды өздөрү кайталасын", "ru": "Дать им повторить каждый шаг самим", "minutes": 15 },
+            { "en": "Write the steps on paper in large letters", "kg": "Кадамдарды кагазга ири тамгалар менен жазыңыз", "ru": "Записать шаги на бумаге крупными буквами", "minutes": 10 },
+            { "en": "Check in 3 days that it still works", "kg": "3 күндөн кийин дагы эле колдоно алабы, текшериңиз", "ru": "Через 3 дня проверить, что получается", "minutes": 10 }
+          ]
+        }
+      ]
+    }
+  ]
+}

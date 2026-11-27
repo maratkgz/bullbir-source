@@ -1,0 +1,895 @@
+{
+  "id": "freelance",
+  "icon": "💻",
+  "title": { "en": "Freelance", "kg": "Фриланс", "ru": "Фриланс" },
+  "keywords": {
+    "en": ["!freelance", "!freelancer", "remote work", "work from home", "upwork", "kwork", "fiverr", "clients", "orders", "gigs", "portfolio", "self-employed", "side income", "online work", "earn online", "designer", "copywriter", "smm", "side hustle", "rate"],
+    "kg": ["!фриланс", "!фрилансер", "алыстан иштөө", "үйдөн иштөө", "онлайн иш", "онлайн киреше", "интернеттен акча табуу", "буйрутма", "буйрутмалар", "заказ", "кардар", "портфолио", "кошумча киреше", "дизайнер", "копирайтер", "smm", "upwork", "kwork"],
+    "ru": ["!фриланс", "!фрилансер", "удалёнка", "удаленная работа", "работа из дома", "заказы", "заказчики", "клиенты", "портфолио", "самозанятый", "подработка", "доп доход", "заработок онлайн", "заработать в интернете", "kwork", "fl.ru", "upwork", "дизайнер", "копирайтер", "смм", "ставка"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Skill & niche", "kg": "Көндүм жана багыт", "ru": "Навык и ниша" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Niche and service chosen", "kg": "Багыт жана кызмат тандалды", "ru": "Выбраны ниша и услуга" },
+        { "en": "Skill level enough for paid orders", "kg": "Акы төлөнүүчү буйрутмага жетиштүү деңгээл", "ru": "Уровень навыка достаточен для платных заказов" }
+      ],
+      "actions": [
+        {
+          "en": "Choose 1 service and 1 type of client",
+          "kg": "1 кызмат жана кардардын 1 түрүн тандаңыз",
+          "ru": "Выбрать 1 услугу и 1 тип клиентов",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 3 services you could offer now", "kg": "Азыр сунуштай ала турган 3 кызматты жазыңыз", "ru": "Записать 3 услуги, которые можете предложить уже сейчас" },
+          "steps": [
+            { "en": "List skills you already have", "kg": "Азыр бар көндүмдөрүңүздү тизмелеңиз", "ru": "Выписать навыки, которые уже есть", "minutes": 15 },
+            { "en": "Check demand: count orders on Kwork or fl.ru", "kg": "Суроо-талапты текшериңиз: Kwork же fl.ruдагы буйрутмаларды санаңыз", "ru": "Проверить спрос: посчитать заказы на Kwork или fl.ru", "minutes": 30 },
+            { "en": "Look at 10 freelancers’ prices in this niche", "kg": "Ушул багыттагы 10 фрилансердин баасын караңыз", "ru": "Посмотреть цены 10 фрилансеров в этой нише", "minutes": 20 },
+            { "en": "Pick one service with demand that you enjoy", "kg": "Суроосу бар жана сизге жаккан бир кызматты тандаңыз", "ru": "Выбрать одну востребованную услугу, которая нравится", "minutes": 10 },
+            { "en": "Write who your client is in one sentence", "kg": "Кардарыңыз ким экенин бир сүйлөм менен жазыңыз", "ru": "Записать одним предложением, кто ваш клиент", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Practice your main skill 1 hour a day",
+          "kg": "Негизги көндүмүңүздү күнүнө 1 саат машыктырыңыз",
+          "ru": "Тренировать основной навык 1 час в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 60,
+          "easy": { "en": "Practice your main skill 20 minutes a day", "kg": "Негизги көндүмүңүздү күнүнө 20 мүнөт машыктырыңыз", "ru": "Тренировать основной навык 20 минут в день" }
+        },
+        {
+          "en": "Finish 1 short course in your niche",
+          "kg": "Багытыңыз боюнча 1 кыска курсту бүтүрүңүз",
+          "ru": "Пройти 1 короткий курс по своей нише",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Watch 3 lessons of a free course", "kg": "Акысыз курстун 3 сабагын көрүңүз", "ru": "Посмотреть 3 урока бесплатного курса" },
+          "steps": [
+            { "en": "Find a free or cheap course with good reviews", "kg": "Пикирлери жакшы акысыз же арзан курс табыңыз", "ru": "Найти бесплатный или недорогой курс с хорошими отзывами", "minutes": 20 },
+            { "en": "Split it into lessons by days", "kg": "Аны күндөргө бөлүп, сабактарга ажыратыңыз", "ru": "Разбить курс на уроки по дням", "minutes": 10 },
+            { "en": "Do the first third with practice tasks", "kg": "Биринчи үчтөн бирин тапшырмалары менен өтүңүз", "ru": "Пройти первую треть с практикой", "minutes": 90 },
+            { "en": "Do the second third", "kg": "Экинчи үчтөн бирин өтүңүз", "ru": "Пройти вторую треть", "minutes": 90 },
+            { "en": "Finish the course and make one final work", "kg": "Курсту бүтүрүп, бир жыйынтык иш жасаңыз", "ru": "Закончить курс и сделать одну итоговую работу", "minutes": 90 }
+          ]
+        },
+        {
+          "en": "Redo 1 strong work by a top freelancer to learn",
+          "kg": "Үйрөнүү үчүн мыкты фрилансердин 1 ишин кайталап жасаңыз",
+          "ru": "Повторять 1 сильную работу топового фрилансера для учёбы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Analyze 1 strong work for 15 minutes", "kg": "1 мыкты ишти 15 мүнөт талдаңыз", "ru": "Разбирать 1 сильную работу 15 минут" }
+        },
+        {
+          "en": "Learn 1 new tool or technique 3 times a week",
+          "kg": "Жумасына 3 жолу 1 жаңы курал же ыкма үйрөнүңүз",
+          "ru": "Изучать 1 новый инструмент или приём 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Learn 1 new technique a week", "kg": "Жумасына 1 жаңы ыкма үйрөнүңүз", "ru": "Изучать 1 новый приём в неделю" }
+        },
+        {
+          "en": "Ask 1 experienced person for feedback on your work",
+          "kg": "Ишиңизге тажрыйбалуу 1 адамдан пикир сураңыз",
+          "ru": "Просить 1 опытного человека оценить вашу работу",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Ask a friend for feedback once a month", "kg": "Айына бир жолу досуңуздан пикир сураңыз", "ru": "Раз в месяц просить друга оценить работу" }
+        },
+        {
+          "en": "Write down 1 lesson after every order",
+          "kg": "Ар бир буйрутмадан кийин 1 сабак жазып алыңыз",
+          "ru": "Записывать 1 вывод после каждого заказа",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write down 1 lesson a week", "kg": "Жумасына 1 сабак жазыңыз", "ru": "Записывать 1 вывод в неделю" }
+        },
+        {
+          "en": "Follow 3 niche experts and read 1 post a week",
+          "kg": "Багыт боюнча 3 адиске жазылып, жумасына 1 пост окуңуз",
+          "ru": "Подписаться на 3 экспертов ниши и читать 1 пост в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Read 1 expert post a month", "kg": "Айына адистин 1 постун окуңуз", "ru": "Читать 1 пост эксперта в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Portfolio", "kg": "Портфолио", "ru": "Портфолио" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "5 works in the portfolio", "kg": "Портфолиодо 5 иш", "ru": "5 работ в портфолио" },
+        { "en": "Profile filled on 2 platforms", "kg": "2 платформада профиль толтурулду", "ru": "Профиль заполнен на 2 площадках" }
+      ],
+      "actions": [
+        {
+          "en": "Make 3 sample works for the portfolio in 3 weeks",
+          "kg": "3 жумада портфолио үчүн 3 үлгү иш жасаңыз",
+          "ru": "Сделать 3 работы для портфолио за 3 недели",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Make 1 sample work", "kg": "1 үлгү иш жасаңыз", "ru": "Сделать 1 работу для портфолио" },
+          "steps": [
+            { "en": "Pick 3 typical tasks clients order", "kg": "Кардарлар көп буйрутма кылган 3 тапшырманы тандаңыз", "ru": "Выбрать 3 типичные задачи, которые заказывают клиенты", "minutes": 20 },
+            { "en": "Write a brief for each as if from a client", "kg": "Ар бирине кардардын атынан тапшырма жазыңыз", "ru": "Написать для каждой ТЗ как будто от клиента", "minutes": 20 },
+            { "en": "Do the first work", "kg": "Биринчи ишти жасаңыз", "ru": "Сделать первую работу", "minutes": 120 },
+            { "en": "Do the second work", "kg": "Экинчи ишти жасаңыз", "ru": "Сделать вторую работу", "minutes": 120 },
+            { "en": "Do the third work", "kg": "Үчүнчү ишти жасаңыз", "ru": "Сделать третью работу", "minutes": 120 },
+            { "en": "Ask someone experienced to review all 3", "kg": "Үчөөнү тең тажрыйбалуу адамга көрсөтүңүз", "ru": "Показать все 3 работы опытному человеку", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Create a profile on Kwork, fl.ru or Upwork",
+          "kg": "Kwork, fl.ru же Upworkто профиль түзүңүз",
+          "ru": "Создать профиль на Kwork, fl.ru или Upwork",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Upload a photo and a short bio to 1 platform", "kg": "1 платформага сүрөт жана кыскача маалымат жүктөңүз", "ru": "Загрузить фото и короткое описание на 1 площадку" },
+          "steps": [
+            { "en": "Choose 1–2 platforms that fit your niche", "kg": "Багытыңызга туура келген 1–2 платформаны тандаңыз", "ru": "Выбрать 1–2 площадки под свою нишу", "minutes": 15 },
+            { "en": "Study 5 top profiles in your niche", "kg": "Багытыңыздагы 5 мыкты профилди изилдеңиз", "ru": "Изучить 5 лучших профилей в нише", "minutes": 20 },
+            { "en": "Write a bio: who you help and with what", "kg": "Маалымат жазыңыз: кимге жана эмнеге жардам бересиз", "ru": "Написать описание: кому и с чем вы помогаете", "minutes": 30 },
+            { "en": "Add a clear photo and portfolio works", "kg": "Так сүрөт жана портфолио иштерин кошуңуз", "ru": "Добавить чёткое фото и работы из портфолио", "minutes": 20 },
+            { "en": "Create 2 service offers with prices", "kg": "Баасы менен 2 кызмат сунушун түзүңүз", "ru": "Создать 2 предложения услуг с ценами", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Collect works into one link: Behance, Notion or Drive",
+          "kg": "Иштерди бир шилтемеге чогултуңуз: Behance, Notion же Drive",
+          "ru": "Собрать работы в одну ссылку: Behance, Notion или Drive",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Put 3 best works in one folder", "kg": "Эң жакшы 3 ишти бир папкага салыңыз", "ru": "Сложить 3 лучшие работы в одну папку" },
+          "steps": [
+            { "en": "Choose your 5 best works", "kg": "Эң мыкты 5 ишиңизди тандаңыз", "ru": "Выбрать 5 лучших работ", "minutes": 15 },
+            { "en": "Write the task and result for each", "kg": "Ар биринин тапшырмасын жана жыйынтыгын жазыңыз", "ru": "Описать задачу и результат каждой", "minutes": 30 },
+            { "en": "Put them on one page in order", "kg": "Аларды бир баракчага ирети менен жайгаштырыңыз", "ru": "Разместить их на одной странице по порядку", "minutes": 30 },
+            { "en": "Add contacts at the end", "kg": "Аягына байланыш маалыматын кошуңуз", "ru": "Добавить контакты в конце", "minutes": 5 },
+            { "en": "Open the link on a phone and check it", "kg": "Шилтемени телефондон ачып текшериңиз", "ru": "Открыть ссылку с телефона и проверить", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Add 1 new work to the portfolio every month",
+          "kg": "Ар айда портфолиого 1 жаңы иш кошуңуз",
+          "ru": "Добавлять 1 новую работу в портфолио каждый месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Update 1 old work description", "kg": "1 эски иштин сүрөттөмөсүн жаңыртыңыз", "ru": "Обновить описание 1 старой работы" }
+        },
+        {
+          "en": "Ask every client for permission to show the work",
+          "kg": "Ар бир кардардан ишти көрсөтүүгө уруксат сураңыз",
+          "ru": "Спрашивать у каждого клиента разрешение показать работу",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask 1 client a month for permission", "kg": "Айына 1 кардардан уруксат сураңыз", "ru": "Спрашивать разрешение у 1 клиента в месяц" }
+        },
+        {
+          "en": "Ask every finished client for a review",
+          "kg": "Иш бүткөн ар бир кардардан пикир сураңыз",
+          "ru": "Просить отзыв у каждого клиента после работы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask your best client for a review", "kg": "Эң жакшы кардарыңыздан пикир сураңыз", "ru": "Попросить отзыв у лучшего клиента" }
+        },
+        {
+          "en": "Remove 1 weak work from the portfolio each month",
+          "kg": "Ар айда портфолиодон 1 алсыз ишти алып салыңыз",
+          "ru": "Убирать 1 слабую работу из портфолио каждый месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Review the portfolio once every 2 months", "kg": "Портфолиону 2 айда бир карап чыгыңыз", "ru": "Пересматривать портфолио раз в 2 месяца" }
+        },
+        {
+          "en": "Post 1 work or case in social media weekly",
+          "kg": "Жумасына соцтармакка 1 иш же кейс жарыялаңыз",
+          "ru": "Публиковать 1 работу или кейс в соцсетях в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Post 1 work a month", "kg": "Айына 1 иш жарыялаңыз", "ru": "Публиковать 1 работу в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Finding clients", "kg": "Кардар табуу", "ru": "Поиск клиентов" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First paid order", "kg": "Биринчи акы төлөнгөн буйрутма", "ru": "Первый оплаченный заказ" },
+        { "en": "3 regular clients", "kg": "3 туруктуу кардар", "ru": "3 постоянных клиента" }
+      ],
+      "actions": [
+        {
+          "en": "Send 5 personal replies to orders every day",
+          "kg": "Күн сайын буйрутмаларга 5 жеке жооп жөнөтүңүз",
+          "ru": "Отправлять 5 персональных откликов на заказы в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Send 2 replies to orders a day", "kg": "Күнүнө буйрутмаларга 2 жооп жөнөтүңүз", "ru": "Отправлять 2 отклика в день" }
+        },
+        {
+          "en": "Write a reply template you adapt to each order",
+          "kg": "Ар бир буйрутмага ыңгайлаштырылуучу жооп үлгүсүн жазыңыз",
+          "ru": "Написать шаблон отклика, который адаптируете под заказ",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 sentences about how you can help", "kg": "Кантип жардам бере аларыңыз тууралуу 3 сүйлөм жазыңыз", "ru": "Написать 3 предложения о том, чем можете помочь" },
+          "steps": [
+            { "en": "Read 5 strong replies from experienced freelancers", "kg": "Тажрыйбалуу фрилансерлердин 5 мыкты жообун окуңуз", "ru": "Прочитать 5 сильных откликов опытных фрилансеров", "minutes": 15 },
+            { "en": "Start with the client’s task, not about yourself", "kg": "Өзүңүздөн эмес, кардардын тапшырмасынан баштаңыз", "ru": "Начинать с задачи клиента, а не с себя", "minutes": 10 },
+            { "en": "Add 1 relevant work and a deadline", "kg": "1 тиешелүү иш жана мөөнөт кошуңуз", "ru": "Добавить 1 подходящую работу и срок", "minutes": 10 },
+            { "en": "End with a question to start a dialogue", "kg": "Сүйлөшүүнү баштаган суроо менен бүтүрүңүз", "ru": "Закончить вопросом, чтобы начать диалог", "minutes": 10 },
+            { "en": "Test it on 10 orders and keep the best version", "kg": "10 буйрутмада сынап, эң жакшы вариантын калтырыңыз", "ru": "Проверить на 10 заказах и оставить лучшую версию", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Tell 5 acquaintances what service you offer",
+          "kg": "5 таанышыңызга кандай кызмат сунуштаарыңызды айтыңыз",
+          "ru": "Рассказывать 5 знакомым, какую услугу вы предлагаете",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Tell 1 acquaintance about your service a week", "kg": "Жумасына 1 таанышыңызга кызматыңыз тууралуу айтыңыз", "ru": "Рассказывать 1 знакомому о своей услуге в неделю" }
+        },
+        {
+          "en": "Offer your service to 10 local businesses",
+          "kg": "Кызматыңызды 10 жергиликтүү бизнеске сунуштаңыз",
+          "ru": "Предложить услугу 10 местным бизнесам",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write to 2 local businesses", "kg": "2 жергиликтүү бизнеске жазыңыз", "ru": "Написать 2 местным бизнесам" },
+          "steps": [
+            { "en": "Find 10 small businesses on Instagram or 2GIS", "kg": "Instagram же 2GISтен 10 чакан бизнес табыңыз", "ru": "Найти 10 малых бизнесов в Instagram или 2GIS", "minutes": 30 },
+            { "en": "Note 1 thing you could improve for each", "kg": "Ар бири үчүн жакшырта ала турган 1 нерсени белгилеңиз", "ru": "Отметить для каждого 1 вещь, которую можете улучшить", "minutes": 30 },
+            { "en": "Write a short personal message to each", "kg": "Ар бирине кыска жеке билдирүү жазыңыз", "ru": "Написать каждому короткое личное сообщение", "minutes": 40 },
+            { "en": "Send all 10 messages", "kg": "Бардык 10 билдирүүнү жөнөтүңүз", "ru": "Отправить все 10 сообщений", "minutes": 15 },
+            { "en": "Follow up politely after 3 days", "kg": "3 күндөн кийин сылык эске салыңыз", "ru": "Вежливо напомнить через 3 дня", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Count replies sent, answers and orders weekly",
+          "kg": "Ар жумада жөнөтүлгөн жооп, келген жооп жана буйрутманы санаңыз",
+          "ru": "Каждую неделю считать отклики, ответы и заказы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Count orders once a month", "kg": "Айына бир жолу буйрутмаларды санаңыз", "ru": "Считать заказы раз в месяц" }
+        },
+        {
+          "en": "Check 2–3 job chats in Telegram daily",
+          "kg": "Telegramдагы 2–3 жумуш чатын күн сайын текшериңиз",
+          "ru": "Каждый день проверять 2–3 чата с заказами в Telegram",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Check job chats twice a week", "kg": "Жумуш чаттарын жумасына эки жолу текшериңиз", "ru": "Проверять чаты с заказами 2 раза в неделю" }
+        },
+        {
+          "en": "Message every past client once in 2 months",
+          "kg": "2 айда бир жолу ар бир мурунку кардарга жазыңыз",
+          "ru": "Писать каждому прошлому клиенту раз в 2 месяца",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write to 1 past client a month", "kg": "Айына 1 мурунку кардарга жазыңыз", "ru": "Писать 1 прошлому клиенту в месяц" }
+        },
+        {
+          "en": "Ask happy clients for referrals",
+          "kg": "Ыраазы кардарлардан сизди башкаларга сунуштоону сураңыз",
+          "ru": "Просить довольных клиентов порекомендовать вас",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask 1 happy client for a referral", "kg": "1 ыраазы кардардан сунуштама сураңыз", "ru": "Попросить рекомендацию у 1 довольного клиента" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Work with orders", "kg": "Буйрутма менен иштөө", "ru": "Работа с заказом" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "10 orders completed on time", "kg": "10 буйрутма өз убагында бүттү", "ru": "10 заказов сдано в срок" }
+      ],
+      "actions": [
+        {
+          "en": "Write a brief template with 7 questions for clients",
+          "kg": "Кардарлар үчүн 7 суроодон турган бриф үлгүсүн жазыңыз",
+          "ru": "Составить бриф для клиентов из 7 вопросов",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 questions to ask before starting", "kg": "Иш баштаардан мурун берилчү 3 суроо жазыңыз", "ru": "Записать 3 вопроса перед началом работы" },
+          "steps": [
+            { "en": "Recall what was unclear in past orders", "kg": "Мурунку буйрутмаларда эмне түшүнүксүз болгонун эстеңиз", "ru": "Вспомнить, что было неясно в прошлых заказах", "minutes": 10 },
+            { "en": "Write questions on goal, deadline, budget", "kg": "Максат, мөөнөт, бюджет тууралуу суроо жазыңыз", "ru": "Записать вопросы о цели, сроке, бюджете", "minutes": 15 },
+            { "en": "Add questions on examples and style", "kg": "Мисалдар жана стиль тууралуу суроо кошуңуз", "ru": "Добавить вопросы о примерах и стиле", "minutes": 10 },
+            { "en": "Save it in Google Forms or a note", "kg": "Аны Google Forms же жазууга сактаңыз", "ru": "Сохранить в Google Forms или заметке", "minutes": 15 },
+            { "en": "Send it to the next client before starting", "kg": "Кийинки кардарга иш баштаардан мурун жөнөтүңүз", "ru": "Отправить следующему клиенту до начала работы", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Agree on scope, price and deadline in writing",
+          "kg": "Иштин көлөмүн, баасын жана мөөнөтүн жазуу түрүндө макулдашыңыз",
+          "ru": "Письменно согласовывать объём, цену и срок",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Confirm the deadline in a chat message", "kg": "Мөөнөттү чатта билдирүү менен ырастаңыз", "ru": "Подтверждать срок сообщением в чате" }
+        },
+        {
+          "en": "Take a 30–50% prepayment for new clients",
+          "kg": "Жаңы кардарлардан 30–50% алдын ала төлөм алыңыз",
+          "ru": "Брать предоплату 30–50% с новых клиентов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take prepayment for orders over 5000 som", "kg": "5000 сомдон кымбат буйрутмага алдын ала төлөм алыңыз", "ru": "Брать предоплату за заказы дороже 5000 сомов" }
+        },
+        {
+          "en": "Send the client a short progress update",
+          "kg": "Кардарга иштин жүрүшү тууралуу кыска маалымат жөнөтүңүз",
+          "ru": "Отправлять клиенту короткий отчёт о ходе работы",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Send one progress update per order", "kg": "Ар бир буйрутма боюнча бир жолу маалымат бериңиз", "ru": "Отправлять один отчёт за заказ" }
+        },
+        {
+          "en": "Check the work against the brief before sending",
+          "kg": "Жөнөтөрдөн мурун ишти бриф менен салыштырып текшериңиз",
+          "ru": "Сверять работу с брифом перед отправкой",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Re-read the brief once before sending", "kg": "Жөнөтөрдөн мурун брифти бир жолу кайра окуңуз", "ru": "Перечитывать бриф перед отправкой" }
+        },
+        {
+          "en": "Set your deadline 1 day earlier than promised",
+          "kg": "Өзүңүзгө убада кылгандан 1 күн эрте мөөнөт коюңуз",
+          "ru": "Ставить себе срок на 1 день раньше обещанного",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Plan to finish half a day early", "kg": "Жарым күн эрте бүтүрүүнү пландаңыз", "ru": "Планировать закончить на полдня раньше" }
+        },
+        {
+          "en": "Include 2 rounds of edits in the price, extra paid",
+          "kg": "Баага 2 оңдоо киргизип, андан ашыгын акы менен кылыңыз",
+          "ru": "Включать в цену 2 правки, остальные платно",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write the number of edits in the agreement", "kg": "Макулдашууга оңдоолордун санын жазыңыз", "ru": "Указывать число правок в договорённости" }
+        },
+        {
+          "en": "Keep all files of each order in its own folder",
+          "kg": "Ар бир буйрутманын файлдарын өз папкасында сактаңыз",
+          "ru": "Хранить файлы каждого заказа в отдельной папке",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Back up finished work once a week", "kg": "Бүткөн иштерди жумасына бир жолу сактап коюңуз", "ru": "Делать резервную копию работ раз в неделю" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Money & pricing", "kg": "Акча жана баа", "ru": "Деньги и цены" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Income covers basic monthly costs", "kg": "Киреше айлык негизги чыгымды жабат", "ru": "Доход покрывает базовые расходы месяца" },
+        { "en": "Reserve for 2 months saved", "kg": "2 айлык запас топтолду", "ru": "Накоплен резерв на 2 месяца" }
+      ],
+      "actions": [
+        {
+          "en": "Set a price list for 3 services",
+          "kg": "3 кызматтын баа тизмесин түзүңүз",
+          "ru": "Составить прайс на 3 услуги",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Set a price for your main service", "kg": "Негизги кызматыңызга баа коюңуз", "ru": "Назначить цену на основную услугу" },
+          "steps": [
+            { "en": "Look at 10 market prices for each service", "kg": "Ар бир кызмат боюнча рыноктогу 10 бааны караңыз", "ru": "Посмотреть 10 рыночных цен на каждую услугу", "minutes": 20 },
+            { "en": "Estimate hours each service takes", "kg": "Ар бир кызмат канча саат аларын эсептеңиз", "ru": "Оценить, сколько часов занимает каждая услуга", "minutes": 15 },
+            { "en": "Set your minimum hourly rate", "kg": "Сааттык минималдуу акыңызды аныктаңыз", "ru": "Определить свою минимальную ставку в час", "minutes": 10 },
+            { "en": "Calculate prices and round them", "kg": "Бааларды эсептеп, тегеректеңиз", "ru": "Посчитать цены и округлить", "minutes": 10 },
+            { "en": "Publish the price list in your profile", "kg": "Баа тизмесин профилиңизге жарыялаңыз", "ru": "Опубликовать прайс в профиле", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Record every payment received the same day",
+          "kg": "Келген ар бир төлөмдү ошол эле күнү жазыңыз",
+          "ru": "Записывать каждую полученную оплату в тот же день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Record payments once a week", "kg": "Төлөмдөрдү жумасына бир жолу жазыңыз", "ru": "Записывать оплаты раз в неделю" }
+        },
+        {
+          "en": "Save 20% of every payment for a reserve",
+          "kg": "Ар бир төлөмдүн 20%ын запаска калтырыңыз",
+          "ru": "Откладывать 20% каждой оплаты в резерв",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Save 10% of every payment", "kg": "Ар бир төлөмдүн 10%ын калтырыңыз", "ru": "Откладывать 10% каждой оплаты" }
+        },
+        {
+          "en": "Compare monthly income with your goal",
+          "kg": "Айлык кирешени максатыңыз менен салыштырыңыз",
+          "ru": "Сравнивать доход за месяц с целью",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write down monthly income", "kg": "Айлык кирешени жазып алыңыз", "ru": "Записывать доход за месяц" }
+        },
+        {
+          "en": "Raise prices by 10–20% every 10 orders",
+          "kg": "Ар 10 буйрутмадан кийин бааны 10–20% көтөрүңүз",
+          "ru": "Поднимать цены на 10–20% каждые 10 заказов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Raise the price for new clients only", "kg": "Бааны жаңы кардарлар үчүн гана көтөрүңүз", "ru": "Поднимать цену только для новых клиентов" }
+        },
+        {
+          "en": "Set up a way to receive payments safely",
+          "kg": "Төлөм алуунун коопсуз жолун даярдаңыз",
+          "ru": "Настроить безопасный способ получения оплаты",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write your payment details in one message", "kg": "Төлөм реквизиттериңизди бир билдирүүгө жазыңыз", "ru": "Записать реквизиты для оплаты в одно сообщение" },
+          "steps": [
+            { "en": "Check which methods your platform supports", "kg": "Платформаңыз кайсы ыкмаларды колдоорун текшериңиз", "ru": "Проверить, какие способы поддерживает площадка", "minutes": 15 },
+            { "en": "Check card fees in your local bank", "kg": "Жергиликтүү банктагы карта комиссиясын текшериңиз", "ru": "Узнать комиссии по карте в местном банке", "minutes": 15 },
+            { "en": "Choose 1 main and 1 backup method", "kg": "1 негизги жана 1 запас ыкманы тандаңыз", "ru": "Выбрать 1 основной и 1 запасной способ", "minutes": 10 },
+            { "en": "Make a test transfer of a small sum", "kg": "Чакан сумма менен сыноо которуусун жасаңыз", "ru": "Сделать тестовый перевод небольшой суммы", "minutes": 15 },
+            { "en": "Save the details as a ready message", "kg": "Реквизиттерди даяр билдирүү катары сактаңыз", "ru": "Сохранить реквизиты как готовое сообщение", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Never pay to get an order or “registration fee”",
+          "kg": "Буйрутма же «каттоо акысы» үчүн эч качан төлөбөңүз",
+          "ru": "Никогда не платить за заказ или «регистрацию»",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check every new client’s profile and reviews", "kg": "Ар бир жаңы кардардын профилин жана пикирлерин текшериңиз", "ru": "Проверять профиль и отзывы каждого нового клиента" }
+        },
+        {
+          "en": "Learn how to pay taxes as a freelancer",
+          "kg": "Фрилансер катары салык кантип төлөнөрүн билиңиз",
+          "ru": "Разобраться, как платить налоги фрилансеру",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Read 1 official page on taxes for self-employed", "kg": "Өз алдынча иштегендердин салыгы тууралуу 1 расмий баракчаны окуңуз", "ru": "Прочитать 1 официальную страницу о налогах для самозанятых" },
+          "steps": [
+            { "en": "Find official tax rules for your country", "kg": "Өлкөңүздүн расмий салык эрежелерин табыңыз", "ru": "Найти официальные налоговые правила своей страны", "minutes": 15 },
+            { "en": "Read about patent and simplified regimes", "kg": "Патент жана жөнөкөйлөтүлгөн режим тууралуу окуңуз", "ru": "Прочитать о патенте и упрощённых режимах", "minutes": 30 },
+            { "en": "Ask an accountant or experienced freelancer", "kg": "Бухгалтерден же тажрыйбалуу фрилансерден сураңыз", "ru": "Спросить бухгалтера или опытного фрилансера", "minutes": 20 },
+            { "en": "Choose a regime and write down why", "kg": "Режимди тандап, себебин жазыңыз", "ru": "Выбрать режим и записать причину", "minutes": 10 },
+            { "en": "Put payment dates in your calendar", "kg": "Төлөм күндөрүн календарга коюңуз", "ru": "Внести даты платежей в календарь", "minutes": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Routine & focus", "kg": "Тартип жана көңүл", "ru": "Режим и фокус" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A month with a fixed work schedule", "kg": "Бир ай туруктуу иш графиги менен", "ru": "Месяц работы по постоянному графику" }
+      ],
+      "actions": [
+        {
+          "en": "Start work at the same time every weekday",
+          "kg": "Иш күндөрү ар дайым бир убакта ишти баштаңыз",
+          "ru": "Начинать работу в одно и то же время в будни",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Start work at a fixed time 3 days a week", "kg": "Жумасына 3 күн белгиленген убакта баштаңыз", "ru": "Начинать в фиксированное время 3 дня в неделю" }
+        },
+        {
+          "en": "Work in 2 focus blocks of 45 minutes without phone",
+          "kg": "Телефонсуз 45 мүнөттөн 2 көңүл бөлүп иштөө блогу",
+          "ru": "Работать 2 блока по 45 минут без телефона",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 90,
+          "easy": { "en": "Work 1 focus block of 25 minutes", "kg": "25 мүнөттүк 1 алаксыбай иштөө блогу", "ru": "Работать 1 блок 25 минут без отвлечений" }
+        },
+        {
+          "en": "Set up a fixed workplace at home",
+          "kg": "Үйдө туруктуу иш орун жасаңыз",
+          "ru": "Обустроить постоянное рабочее место дома",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Clear one table only for work", "kg": "Бир столду жумуш үчүн гана бошотуңуз", "ru": "Освободить один стол только для работы" },
+          "steps": [
+            { "en": "Choose a quiet spot with light", "kg": "Жарык, тынч жерди тандаңыз", "ru": "Выбрать тихое место со светом", "minutes": 10 },
+            { "en": "Remove everything not needed for work", "kg": "Жумушка керексиз нерселердин баарын алып салыңыз", "ru": "Убрать всё, что не нужно для работы", "minutes": 20 },
+            { "en": "Set up the chair and screen height", "kg": "Отургучтун жана экрандын бийиктигин тууралаңыз", "ru": "Настроить высоту стула и экрана", "minutes": 15 },
+            { "en": "Agree with family on quiet work hours", "kg": "Үй-бүлө менен тынч иштөө убактысын макулдашыңыз", "ru": "Договориться с семьёй о тихих часах работы", "minutes": 15 },
+            { "en": "Work there for 3 days and fix what bothers you", "kg": "3 күн ошол жерде иштеп, тоскоол болгонду оңдоңуз", "ru": "Поработать там 3 дня и исправить то, что мешает", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Write 3 tasks for tomorrow every evening",
+          "kg": "Ар кечте эртеңки 3 ишти жазыңыз",
+          "ru": "Каждый вечер записывать 3 задачи на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write 1 task for tomorrow", "kg": "Эртеңкиге 1 иш жазыңыз", "ru": "Записывать 1 задачу на завтра" }
+        },
+        {
+          "en": "Turn off social media notifications during work",
+          "kg": "Иш учурунда соцтармак билдирмелерин өчүрүңүз",
+          "ru": "Отключать уведомления соцсетей во время работы",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Mute social media for 1 hour", "kg": "Соцтармактарды 1 саатка өчүрүңүз", "ru": "Отключать соцсети на 1 час" }
+        },
+        {
+          "en": "Plan the week every Monday morning",
+          "kg": "Ар дүйшөмбү эртең менен жуманы пландаңыз",
+          "ru": "Планировать неделю каждый понедельник утром",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Write the 1 main goal of the week", "kg": "Жуманын 1 негизги максатын жазыңыз", "ru": "Записать 1 главную цель недели" }
+        },
+        {
+          "en": "Finish work by a fixed time in the evening",
+          "kg": "Кечинде белгиленген убакта жумушту бүтүрүңүз",
+          "ru": "Заканчивать работу к фиксированному времени вечером",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "No work after 22:00", "kg": "Саат 22:00дөн кийин иштебеңиз", "ru": "Не работать после 22:00" }
+        },
+        {
+          "en": "Track hours worked each week",
+          "kg": "Ар жумада иштеген саатыңызды эсептеңиз",
+          "ru": "Считать отработанные часы каждую неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Track hours for 1 day", "kg": "1 күндүн иш саатын эсептеңиз", "ru": "Посчитать рабочие часы за 1 день" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Energy & rest", "kg": "Күч-кубат, эс алуу", "ru": "Энергия и отдых" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A month without working on days off", "kg": "Бир ай эс алуу күндөрү иштебей", "ru": "Месяц без работы в выходные" }
+      ],
+      "actions": [
+        {
+          "en": "Get up and stretch every hour at the computer",
+          "kg": "Компьютердин алдында ар саат сайын туруп, керилиңиз",
+          "ru": "Вставать и разминаться каждый час за компьютером",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Stretch 3 times a day", "kg": "Күнүнө 3 жолу керилип алыңыз", "ru": "Разминаться 3 раза в день" }
+        },
+        {
+          "en": "Walk outside 30 minutes a day",
+          "kg": "Күнүнө 30 мүнөт сыртта сейилдеңиз",
+          "ru": "Гулять на улице 30 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk outside 10 minutes a day", "kg": "Күнүнө 10 мүнөт сыртка чыгыңыз", "ru": "Выходить на улицу на 10 минут в день" }
+        },
+        {
+          "en": "Look away from the screen for 20 seconds every 20 minutes",
+          "kg": "Ар 20 мүнөттө 20 секунд экрандан алыска караңыз",
+          "ru": "Каждые 20 минут отводить взгляд от экрана на 20 секунд",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Rest your eyes 3 times a day", "kg": "Күнүнө 3 жолу көзүңүздү эс алдырыңыз", "ru": "Давать отдых глазам 3 раза в день" }
+        },
+        {
+          "en": "Keep 1 full day a week with no work",
+          "kg": "Жумасына 1 толук күн жумуштан эркин болсун",
+          "ru": "Оставлять 1 полный день в неделю без работы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep half a day a week with no work", "kg": "Жумасына жарым күн жумушсуз болсун", "ru": "Оставлять полдня в неделю без работы" }
+        },
+        {
+          "en": "Sleep 7–8 hours and go to bed at one time",
+          "kg": "7–8 саат уктап, бир убакта жатыңыз",
+          "ru": "Спать 7–8 часов и ложиться в одно время",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Go to bed at a fixed time 3 nights a week", "kg": "Жумасына 3 түн белгиленген убакта жатыңыз", "ru": "Ложиться в фиксированное время 3 раза в неделю" }
+        },
+        {
+          "en": "Do any physical activity 3 times a week",
+          "kg": "Жумасына 3 жолу каалаган кыймыл-аракет жасаңыз",
+          "ru": "Заниматься любой физической активностью 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Do 10 minutes of exercise once a week", "kg": "Жумасына бир жолу 10 мүнөт көнүгүү жасаңыз", "ru": "Делать 10 минут упражнений раз в неделю" }
+        },
+        {
+          "en": "Meet friends offline at least once a week",
+          "kg": "Жумасына кеминде бир жолу достор менен жолугуңуз",
+          "ru": "Встречаться с друзьями вживую хотя бы раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Call a friend once a week", "kg": "Жумасына бир жолу досуңузга чалыңыз", "ru": "Звонить другу раз в неделю" }
+        },
+        {
+          "en": "Eat meals away from the computer",
+          "kg": "Тамакты компьютерден алыс жеңиз",
+          "ru": "Есть не за компьютером",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Eat lunch away from the computer", "kg": "Түшкү тамакты компьютерден алыс жеңиз", "ru": "Обедать не за компьютером" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Keeping your word", "kg": "Сөзгө бекемдик", "ru": "Держать слово" },
+      "kind": "character",
+      "milestones": [
+        { "en": "10 orders without a missed deadline", "kg": "Мөөнөтү бузулбаган 10 буйрутма", "ru": "10 заказов без сорванных сроков" }
+      ],
+      "actions": [
+        {
+          "en": "Deliver every order on time or earlier",
+          "kg": "Ар бир буйрутманы өз убагында же эрте тапшырыңыз",
+          "ru": "Сдавать каждый заказ в срок или раньше",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Warn the client 2 days before a possible delay", "kg": "Кечигүү мүмкүн болсо, кардарга 2 күн мурун эскертиңиз", "ru": "Предупреждать клиента о задержке за 2 дня" }
+        },
+        {
+          "en": "Reply to clients within 2 hours on workdays",
+          "kg": "Иш күндөрү кардарларга 2 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать клиентам в течение 2 часов в рабочие дни",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Reply to clients within the same day", "kg": "Кардарларга ошол эле күнү жооп бериңиз", "ru": "Отвечать клиентам в тот же день" }
+        },
+        {
+          "en": "Take only orders you can really do well",
+          "kg": "Чындап жакшы аткара ала турган буйрутмаларды гана алыңыз",
+          "ru": "Брать только заказы, которые реально сделаете хорошо",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask yourself before each order: can I do it well?", "kg": "Ар бир буйрутманын алдында сураңыз: жакшы жасай аламбы?", "ru": "Спрашивать себя перед заказом: сделаю ли хорошо?" }
+        },
+        {
+          "en": "Be polite even with difficult clients",
+          "kg": "Оор кардарлар менен да сылык болуңуз",
+          "ru": "Оставаться вежливым даже с трудными клиентами",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait 10 minutes before replying when angry", "kg": "Ачууланганда жооп берерден мурун 10 мүнөт күтүңүз", "ru": "Подождать 10 минут перед ответом, если злитесь" }
+        },
+        {
+          "en": "Admit your mistakes and fix them for free",
+          "kg": "Катаңызды моюнга алып, акысыз оңдоңуз",
+          "ru": "Признавать свои ошибки и исправлять бесплатно",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Apologize for a mistake within a day", "kg": "Ката үчүн бир күндүн ичинде кечирим сураңыз", "ru": "Извиняться за ошибку в течение дня" }
+        },
+        {
+          "en": "Never use other people’s work as your own",
+          "kg": "Башкалардын ишин эч качан өзүңүздүкүндөй көрсөтпөңүз",
+          "ru": "Никогда не выдавать чужую работу за свою",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Mark sources for every borrowed element", "kg": "Алынган ар бир элементтин булагын көрсөтүңүз", "ru": "Указывать источник каждого заимствованного элемента" }
+        },
+        {
+          "en": "Finish every started order before taking a new one",
+          "kg": "Жаңы буйрутма алардан мурун баштаганыңызды бүтүрүңүз",
+          "ru": "Заканчивать начатый заказ, прежде чем брать новый",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Close 1 unfinished task this week", "kg": "Ушул жумада бүтпөй калган 1 ишти жабыңыз", "ru": "Закрыть 1 незавершённую задачу на этой неделе" }
+        },
+        {
+          "en": "Thank every client after the work is done",
+          "kg": "Иш бүткөндөн кийин ар бир кардарга рахмат айтыңыз",
+          "ru": "Благодарить каждого клиента после завершения работы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Send a thank-you message after each order", "kg": "Ар бир буйрутмадан кийин ыраазычылык билдирүүсүн жөнөтүңүз", "ru": "Отправлять сообщение-благодарность после заказа" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Personal brand", "kg": "Жеке бренд", "ru": "Личный бренд" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "200 followers interested in your niche", "kg": "Багытыңызга кызыккан 200 жазылуучу", "ru": "200 подписчиков, интересующихся вашей нишей" }
+      ],
+      "actions": [
+        {
+          "en": "Set up a work account on Instagram, Telegram or LinkedIn",
+          "kg": "Instagram, Telegram же LinkedInде жумушчу аккаунт ачыңыз",
+          "ru": "Оформить рабочий аккаунт в Instagram, Telegram или LinkedIn",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write a bio with your service and contact", "kg": "Кызматыңыз жана байланышыңыз менен био жазыңыз", "ru": "Написать описание с услугой и контактом" },
+          "steps": [
+            { "en": "Choose 1 platform where your clients are", "kg": "Кардарларыңыз отурган 1 платформаны тандаңыз", "ru": "Выбрать 1 площадку, где сидят ваши клиенты", "minutes": 10 },
+            { "en": "Write a bio: who you help and how", "kg": "Био жазыңыз: кимге жана кантип жардам бересиз", "ru": "Написать описание: кому и как помогаете", "minutes": 20 },
+            { "en": "Add a clear photo of yourself", "kg": "Өзүңүздүн так сүрөтүңүздү кошуңуз", "ru": "Добавить чёткое фото себя", "minutes": 10 },
+            { "en": "Post 3 of your best works", "kg": "Эң жакшы 3 ишиңизди жарыялаңыз", "ru": "Опубликовать 3 лучшие работы", "minutes": 30 },
+            { "en": "Add a link to your portfolio", "kg": "Портфолиого шилтеме кошуңуз", "ru": "Добавить ссылку на портфолио", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Post 2 useful tips from your niche a week",
+          "kg": "Жумасына багытыңыздан 2 пайдалуу кеңеш жарыялаңыз",
+          "ru": "Публиковать 2 полезных совета из ниши в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Post 1 tip a week", "kg": "Жумасына 1 кеңеш жарыялаңыз", "ru": "Публиковать 1 совет в неделю" }
+        },
+        {
+          "en": "Comment usefully on 5 posts of potential clients",
+          "kg": "Потенциалдуу кардарлардын 5 постуна пайдалуу комментарий жазыңыз",
+          "ru": "Оставлять полезные комментарии к 5 постам потенциальных клиентов",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Comment on 2 posts a week", "kg": "Жумасына 2 постко комментарий жазыңыз", "ru": "Комментировать 2 поста в неделю" }
+        },
+        {
+          "en": "Share 1 case: task, solution, result",
+          "kg": "1 кейс бөлүшүңүз: тапшырма, чечим, жыйынтык",
+          "ru": "Делиться 1 кейсом: задача, решение, результат",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Share 1 case a month", "kg": "Айына 1 кейс бөлүшүңүз", "ru": "Делиться 1 кейсом в месяц" }
+        },
+        {
+          "en": "Show only real works and real results",
+          "kg": "Чыныгы иштерди жана чыныгы жыйынтыктарды гана көрсөтүңүз",
+          "ru": "Показывать только реальные работы и результаты",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check every post for honest claims", "kg": "Ар бир постту чынчылдыгын текшериңиз", "ru": "Проверять каждый пост на честность" }
+        },
+        {
+          "en": "Reply to every comment and message within a day",
+          "kg": "Ар бир комментарийге жана билдирүүгө бир күндө жооп бериңиз",
+          "ru": "Отвечать на каждый комментарий и сообщение за день",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Reply to messages twice a week", "kg": "Билдирүүлөргө жумасына эки жолу жооп бериңиз", "ru": "Отвечать на сообщения 2 раза в неделю" }
+        },
+        {
+          "en": "Check which post got the most saves",
+          "kg": "Кайсы пост эң көп сакталганын текшериңиз",
+          "ru": "Проверять, какой пост чаще сохраняли",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Check stats once a month", "kg": "Статистиканы айына бир жолу текшериңиз", "ru": "Проверять статистику раз в месяц" }
+        },
+        {
+          "en": "Help in 1 professional chat with a useful answer",
+          "kg": "1 кесиптик чатта пайдалуу жооп менен жардам бериңиз",
+          "ru": "Помогать полезным ответом в 1 профессиональном чате",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Answer 1 question in a chat a month", "kg": "Айына чатта 1 суроого жооп бериңиз", "ru": "Отвечать на 1 вопрос в чате в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "English for work", "kg": "Жумушка англис тили", "ru": "Английский для работы" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Can write to a foreign client without a translator", "kg": "Чет элдик кардарга котормочусуз жаза алат", "ru": "Могу писать иностранному клиенту без переводчика" }
+      ],
+      "actions": [
+        {
+          "en": "Study English for work 20 minutes a day",
+          "kg": "Жумуш үчүн англис тилин күнүнө 20 мүнөт окуңуз",
+          "ru": "Заниматься английским для работы 20 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 20,
+          "easy": { "en": "Study English 10 minutes a day", "kg": "Англис тилин күнүнө 10 мүнөт окуңуз", "ru": "Заниматься английским 10 минут в день" }
+        },
+        {
+          "en": "Learn 5 professional words from your niche daily",
+          "kg": "Күн сайын багытыңыздан 5 кесиптик сөз жаттаңыз",
+          "ru": "Учить 5 профессиональных слов ниши в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Learn 2 professional words a day", "kg": "Күнүнө 2 кесиптик сөз жаттаңыз", "ru": "Учить 2 профессиональных слова в день" }
+        },
+        {
+          "en": "Write 5 ready English phrases for talking to clients",
+          "kg": "Кардарлар менен сүйлөшүү үчүн 5 даяр англисче фраза жазыңыз",
+          "ru": "Составить 5 готовых фраз на английском для клиентов",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write 2 English phrases: greeting and deadline", "kg": "2 англисче фраза жазыңыз: учурашуу жана мөөнөт", "ru": "Написать 2 фразы на английском: приветствие и срок" },
+          "steps": [
+            { "en": "List typical situations: hello, questions, deadline", "kg": "Көп кездешкен кырдаалдарды жазыңыз: учурашуу, суроо, мөөнөт", "ru": "Выписать ситуации: приветствие, вопросы, срок", "minutes": 10 },
+            { "en": "Find example phrases from real freelancers", "kg": "Чыныгы фрилансерлердин фразаларынын мисалын табыңыз", "ru": "Найти примеры фраз реальных фрилансеров", "minutes": 20 },
+            { "en": "Write 5 phrases in your own words", "kg": "5 фразаны өз сөзүңүз менен жазыңыз", "ru": "Написать 5 фраз своими словами", "minutes": 20 },
+            { "en": "Check them with a teacher or a friend", "kg": "Аларды мугалимге же досуңузга текшертиңиз", "ru": "Проверить их у преподавателя или друга", "minutes": 15 },
+            { "en": "Save them as quick replies", "kg": "Аларды даяр жооп катары сактаңыз", "ru": "Сохранить как быстрые ответы", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Read 1 English job post and write a reply 3 times a week",
+          "kg": "Жумасына 3 жолу 1 англисче жарнама окуп, жооп жазыңыз",
+          "ru": "Читать 1 вакансию на английском и писать отклик 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Read 1 English job post a week", "kg": "Жумасына 1 англисче жарнама окуңуз", "ru": "Читать 1 вакансию на английском в неделю" }
+        },
+        {
+          "en": "Watch 1 English video from your niche weekly",
+          "kg": "Жумасына багытыңыз боюнча 1 англисче видео көрүңүз",
+          "ru": "Смотреть 1 видео на английском по нише в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Watch 10 minutes of an English video", "kg": "Англисче видеону 10 мүнөт көрүңүз", "ru": "Смотреть 10 минут видео на английском" }
+        },
+        {
+          "en": "Translate your profile and portfolio into English",
+          "kg": "Профилиңизди жана портфолиону англисчеге которуңуз",
+          "ru": "Перевести профиль и портфолио на английский",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Translate your bio into English", "kg": "Био маалыматыңызды англисчеге которуңуз", "ru": "Перевести описание профиля на английский" },
+          "steps": [
+            { "en": "Translate the bio", "kg": "Био маалыматын которуңуз", "ru": "Перевести описание профиля", "minutes": 30 },
+            { "en": "Translate the descriptions of 3 works", "kg": "3 иштин сүрөттөмөсүн которуңуз", "ru": "Перевести описания 3 работ", "minutes": 40 },
+            { "en": "Check grammar with a free tool", "kg": "Грамматиканы акысыз курал менен текшериңиз", "ru": "Проверить грамматику бесплатным сервисом", "minutes": 15 },
+            { "en": "Ask someone with good English to read it", "kg": "Англисчени жакшы билген адамга окутуңуз", "ru": "Попросить человека с хорошим английским прочитать", "minutes": 15 },
+            { "en": "Publish the English version", "kg": "Англисче вариантын жарыялаңыз", "ru": "Опубликовать английскую версию", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Have a 30-minute English speaking practice weekly",
+          "kg": "Жумасына 30 мүнөт англисче сүйлөп машыгыңыз",
+          "ru": "Практиковать разговорный английский 30 минут в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Speak English for 10 minutes a week", "kg": "Жумасына 10 мүнөт англисче сүйлөңүз", "ru": "Говорить по-английски 10 минут в неделю" }
+        },
+        {
+          "en": "Write to foreign clients yourself, then check",
+          "kg": "Чет элдик кардарларга өзүңүз жазып, андан кийин текшериңиз",
+          "ru": "Писать иностранным клиентам самому, потом проверять",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write 1 sentence yourself before using a translator", "kg": "Котормочуну колдонордон мурун 1 сүйлөмдү өзүңүз жазыңыз", "ru": "Писать 1 предложение самому перед переводчиком" }
+        }
+      ]
+    }
+  ]
+}

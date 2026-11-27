@@ -1,0 +1,850 @@
+{
+  "id": "social",
+  "icon": "🤝",
+  "title": { "en": "Friends & circle", "kg": "Достор жана чөйрө", "ru": "Друзья и окружение" },
+  "keywords": {
+    "en": ["!friends", "!friendship", "friend", "make friends", "new friends", "lonely", "loneliness", "social", "circle", "community", "people", "communication", "shy", "introvert", "confidence", "networking", "company", "meetups", "socialize", "hang out"],
+    "kg": ["!дос", "!достор", "!достук", "жаңы достор", "дос табуу", "жалгыз", "жалгыздык", "чөйрө", "коом", "адамдар", "сүйлөшүү", "баарлашуу", "уялчаак", "өзүмө ишеним", "тааныштар", "компания", "жолугушуу", "шерине", "бирге убакыт"],
+    "ru": ["!друзья", "!дружба", "друг", "подруга", "найти друзей", "новые друзья", "одиночество", "одиноко", "окружение", "круг общения", "сообщество", "люди", "общение", "общаться", "стеснительный", "интроверт", "уверенность", "знакомства", "компания", "нетворкинг", "тусовка"]
+  },
+  "directions": [
+    {
+      "title": { "en": "New friends", "kg": "Жаңы достор", "ru": "Новые друзья" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "3 new people you meet regularly", "kg": "Дайыма жолуккан 3 жаңы адам", "ru": "3 новых человека, с которыми видитесь регулярно" }
+      ],
+      "actions": [
+        {
+          "en": "Join 1 club, course or sports group",
+          "kg": "1 клубга, курска же спорт тобуна кошулуңуз",
+          "ru": "Вступить в 1 клуб, курс или спортивную группу",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Find 3 groups in your city by interest", "kg": "Шаарыңыздан кызыгууңуз боюнча 3 топ табыңыз", "ru": "Найти 3 группы по интересам в своём городе" },
+          "steps": [
+            { "en": "Write 3 interests you’d enjoy with others", "kg": "Башкалар менен бөлүшө турган 3 кызыгууну жазыңыз", "ru": "Записать 3 интереса, которыми хочется заниматься с другими", "minutes": 10 },
+            { "en": "Search Instagram, Telegram and 2GIS for groups", "kg": "Instagram, Telegram жана 2GISтен топторду издеңиз", "ru": "Поискать группы в Instagram, Telegram и 2GIS", "minutes": 20 },
+            { "en": "Pick 1 that is free or cheap and nearby", "kg": "Акысыз же арзан, жакын жердегисин тандаңыз", "ru": "Выбрать 1 бесплатную или недорогую рядом", "minutes": 10 },
+            { "en": "Write to the organizer and ask about the next meeting", "kg": "Уюштуруучуга жазып, кийинки жолугушууну сураңыз", "ru": "Написать организатору и узнать о ближайшей встрече", "minutes": 10 },
+            { "en": "Go to the first meeting", "kg": "Биринчи жолугушууга барыңыз", "ru": "Сходить на первую встречу", "minutes": 90 }
+          ]
+        },
+        {
+          "en": "Go to 1 group activity with new people a week",
+          "kg": "Жумасына жаңы адамдар менен 1 жалпы иш-чарага барыңыз",
+          "ru": "Ходить на 1 групповое занятие с новыми людьми в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 90,
+          "easy": { "en": "Go to 1 group activity a month", "kg": "Айына 1 жалпы иш-чарага барыңыз", "ru": "Ходить на 1 групповое занятие в месяц" }
+        },
+        {
+          "en": "Start a short talk with 1 new person a week",
+          "kg": "Жумасына 1 жаңы адам менен кыска сүйлөшүү баштаңыз",
+          "ru": "Начинать короткий разговор с 1 новым человеком в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Smile and greet 1 new person a week", "kg": "Жумасына 1 жаңы адамга жылмайып учурашыңыз", "ru": "Улыбнуться и поздороваться с 1 новым человеком" }
+        },
+        {
+          "en": "Remember new people’s names and use them",
+          "kg": "Жаңы адамдардын атын эстеп, колдонуңуз",
+          "ru": "Запоминать имена новых людей и называть их",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write down the name of each new person", "kg": "Ар бир жаңы адамдын атын жазып алыңыз", "ru": "Записывать имя каждого нового знакомого" }
+        },
+        {
+          "en": "Invite 1 new acquaintance for tea or a walk",
+          "kg": "1 жаңы таанышыңызды чайга же сейилдөөгө чакырыңыз",
+          "ru": "Приглашать 1 нового знакомого на чай или прогулку",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Invite 1 new acquaintance a month", "kg": "Айына 1 жаңы таанышыңызды чакырыңыз", "ru": "Приглашать 1 нового знакомого в месяц" }
+        },
+        {
+          "en": "Say yes to 1 invitation you would usually skip",
+          "kg": "Адатта баш тарта турган 1 чакырууга макул болуңуз",
+          "ru": "Соглашаться на 1 приглашение, от которого обычно отказываетесь",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Accept 1 invitation a month", "kg": "Айына 1 чакырууну кабыл алыңыз", "ru": "Принимать 1 приглашение в месяц" }
+        },
+        {
+          "en": "Volunteer once a month with a local group",
+          "kg": "Айына бир жолу жергиликтүү топ менен волонтёр болуңуз",
+          "ru": "Раз в месяц волонтёрить с местной группой",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Help at 1 community event", "kg": "1 коомдук иш-чарага жардам бериңиз", "ru": "Помочь на 1 общественном мероприятии" }
+        },
+        {
+          "en": "Exchange contacts with people you liked talking to",
+          "kg": "Сүйлөшүү жаккан адамдар менен байланыш алмашыңыз",
+          "ru": "Обмениваться контактами с теми, с кем понравилось общаться",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Add 1 new contact a month", "kg": "Айына 1 жаңы байланыш кошуңуз", "ru": "Добавлять 1 новый контакт в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Keeping friends", "kg": "Достукту сактоо", "ru": "Поддерживать дружбу" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "A month of regular contact with 5 friends", "kg": "Бир ай 5 дос менен дайыма байланыш", "ru": "Месяц регулярной связи с 5 друзьями" }
+      ],
+      "actions": [
+        {
+          "en": "Write a list of 5–10 people you want to stay close to",
+          "kg": "Жакын болгуңуз келген 5–10 адамдын тизмесин жазыңыз",
+          "ru": "Составить список из 5–10 людей, с кем хотите быть близки",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Write 3 friends you miss", "kg": "Сагынган 3 досуңузду жазыңыз", "ru": "Записать 3 друзей, по которым скучаете" },
+          "steps": [
+            { "en": "Look through your contacts and chats", "kg": "Байланыштарды жана чаттарды карап чыгыңыз", "ru": "Просмотреть контакты и чаты", "minutes": 10 },
+            { "en": "Write people who make you feel good", "kg": "Жаныңызга жылуулук берген адамдарды жазыңыз", "ru": "Выписать людей, с которыми хорошо", "minutes": 10 },
+            { "en": "Note when you last talked to each", "kg": "Ар бири менен акыркы жолу качан сүйлөшкөнүңүздү белгилеңиз", "ru": "Отметить, когда последний раз общались с каждым", "minutes": 10 },
+            { "en": "Set reminders to contact each monthly", "kg": "Ар бирине ай сайын жазуу үчүн эскерткич коюңуз", "ru": "Поставить напоминания связываться с каждым раз в месяц", "minutes": 10 },
+            { "en": "Write to the first one today", "kg": "Биринчисине бүгүн жазыңыз", "ru": "Написать первому сегодня", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Write or call 2 friends a week",
+          "kg": "Жумасына 2 доско жазыңыз же чалыңыз",
+          "ru": "Писать или звонить 2 друзьям в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write to 1 friend a week", "kg": "Жумасына 1 доско жазыңыз", "ru": "Писать 1 другу в неделю" }
+        },
+        {
+          "en": "Meet friends in person once a week",
+          "kg": "Жумасына бир жолу достор менен жүз көрүшүңүз",
+          "ru": "Встречаться с друзьями вживую раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Meet a friend once a month", "kg": "Айына бир жолу дос менен жолугуңуз", "ru": "Встречаться с другом раз в месяц" }
+        },
+        {
+          "en": "Congratulate friends on birthdays and big news",
+          "kg": "Досторду туулган күнү жана чоң жаңылыктары менен куттуктаңыз",
+          "ru": "Поздравлять друзей с днями рождения и важными новостями",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put friends’ birthdays in the calendar", "kg": "Достордун туулган күнүн календарга жазыңыз", "ru": "Внести дни рождения друзей в календарь" }
+        },
+        {
+          "en": "Remember what friends told you and ask later",
+          "kg": "Достор айткан нерсени эстеп, кийин сураңыз",
+          "ru": "Помнить, что рассказывали друзья, и спрашивать потом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask a friend about 1 thing they shared before", "kg": "Досуңуздан мурун айткан 1 нерсе тууралуу сураңыз", "ru": "Спросить друга об 1 вещи, которой он делился" }
+        },
+        {
+          "en": "Be there when a friend has a hard time",
+          "kg": "Досуңузга оор болгондо жанында болуңуз",
+          "ru": "Быть рядом, когда другу трудно",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write “I’m here if you need me” to a friend", "kg": "Досуңузга «керек болсом, жаныңдамын» деп жазыңыз", "ru": "Написать другу «я рядом, если что»" }
+        },
+        {
+          "en": "Organize 1 meeting for your friend group a month",
+          "kg": "Айына достор тобу үчүн 1 жолугушуу уюштуруңуз",
+          "ru": "Организовывать 1 встречу компании друзей в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Suggest a date for a meeting in the chat", "kg": "Чатта жолугушуу күнүн сунуштаңыз", "ru": "Предложить дату встречи в чате" }
+        },
+        {
+          "en": "Keep friends’ secrets",
+          "kg": "Достордун сырын сактаңыз",
+          "ru": "Хранить секреты друзей",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Don’t retell others’ stories without permission", "kg": "Башкалардын окуясын уруксатсыз айтпаңыз", "ru": "Не пересказывать чужие истории без разрешения" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Communication skills", "kg": "Сүйлөшүү чеберчилиги", "ru": "Навыки общения" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Comfortable talking with strangers", "kg": "Бейтааныштар менен эркин сүйлөшөт", "ru": "Свободно разговариваю с незнакомыми" }
+      ],
+      "actions": [
+        {
+          "en": "Ask open questions: what, how, why",
+          "kg": "Ачык суроо бериңиз: эмне, кантип, эмне үчүн",
+          "ru": "Задавать открытые вопросы: что, как, почему",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask 1 open question in each talk", "kg": "Ар бир сүйлөшүүдө 1 ачык суроо бериңиз", "ru": "Задавать 1 открытый вопрос в каждом разговоре" }
+        },
+        {
+          "en": "Listen more than you speak in a conversation",
+          "kg": "Сүйлөшүүдө сүйлөгөндөн көп угуңуз",
+          "ru": "В разговоре больше слушать, чем говорить",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "In 1 talk a day, let the other speak first", "kg": "Күнүнө 1 сүйлөшүүдө башкага биринчи сөз бериңиз", "ru": "В 1 разговоре в день давать другому говорить первым" }
+        },
+        {
+          "en": "Keep eye contact and put the phone away when talking",
+          "kg": "Сүйлөшкөндө көзгө карап, телефонду алып коюңуз",
+          "ru": "Смотреть в глаза и убирать телефон во время разговора",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put the phone away during 1 talk a day", "kg": "Күнүнө 1 сүйлөшүүдө телефонду алып коюңуз", "ru": "Убирать телефон в 1 разговоре в день" }
+        },
+        {
+          "en": "Prepare 5 easy topics to start a conversation",
+          "kg": "Сүйлөшүү баштоо үчүн 5 жеңил тема даярдаңыз",
+          "ru": "Подготовить 5 лёгких тем для начала разговора",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Prepare 2 easy questions to start a talk", "kg": "Сүйлөшүү баштоо үчүн 2 жеңил суроо даярдаңыз", "ru": "Подготовить 2 лёгких вопроса для начала разговора" },
+          "steps": [
+            { "en": "Write topics people like: food, travel, hobbies", "kg": "Адамдар жакшы көргөн темаларды жазыңыз: тамак, саякат, хобби", "ru": "Записать любимые темы людей: еда, путешествия, хобби", "minutes": 10 },
+            { "en": "Write 1 question for each topic", "kg": "Ар бир темага 1 суроо жазыңыз", "ru": "Записать по 1 вопросу на каждую тему", "minutes": 10 },
+            { "en": "Remove topics that can hurt: money, weight, politics", "kg": "Оорутушу мүмкүн темаларды алып салыңыз: акча, салмак, саясат", "ru": "Убрать темы, которые могут задеть: деньги, вес, политика", "minutes": 5 },
+            { "en": "Try 2 questions with someone this week", "kg": "Ушул жумада 2 суроону бирөө менен сынаңыз", "ru": "Попробовать 2 вопроса с кем-то на этой неделе", "minutes": 15 },
+            { "en": "Note which worked best", "kg": "Кайсынысы жакшы иштегенин белгилеңиз", "ru": "Отметить, какие сработали лучше", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Read or watch 1 lesson on communication a week",
+          "kg": "Жумасына сүйлөшүү тууралуу 1 сабак окуңуз же көрүңүз",
+          "ru": "Читать или смотреть 1 урок об общении в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Watch 1 short video on communication a month", "kg": "Айына сүйлөшүү тууралуу 1 кыска видео көрүңүз", "ru": "Смотреть 1 короткое видео об общении в месяц" }
+        },
+        {
+          "en": "Give 1 sincere compliment 3 times a week",
+          "kg": "Жумасына 3 жолу 1 чын жүрөктөн мактоо айтыңыз",
+          "ru": "Делать 1 искренний комплимент 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 5,
+          "easy": { "en": "Give 1 sincere compliment a week", "kg": "Жумасына 1 чын жүрөктөн мактоо айтыңыз", "ru": "Делать 1 искренний комплимент в неделю" }
+        },
+        {
+          "en": "Speak in front of a group once: toast, talk or story",
+          "kg": "Бир жолу топтун алдында сүйлөңүз: тост, баяндама же окуя",
+          "ru": "Выступить перед группой: тост, доклад или история",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Tell a short story to 2–3 friends", "kg": "2–3 досуңузга кыска окуя айтып бериңиз", "ru": "Рассказать короткую историю 2–3 друзьям" },
+          "steps": [
+            { "en": "Choose an occasion: family event, club, class", "kg": "Учур тандаңыз: үй-бүлөлүк иш-чара, клуб, сабак", "ru": "Выбрать повод: семейное событие, клуб, занятие", "minutes": 5 },
+            { "en": "Write a 1–2 minute speech", "kg": "1–2 мүнөттүк сөз жазыңыз", "ru": "Написать речь на 1–2 минуты", "minutes": 20 },
+            { "en": "Practice it aloud 3 times", "kg": "Аны үн чыгарып 3 жолу машыгыңыз", "ru": "Прорепетировать вслух 3 раза", "minutes": 15 },
+            { "en": "Record yourself once and fix 1 thing", "kg": "Өзүңүздү бир жолу жаздырып, 1 нерсени оңдоңуз", "ru": "Записать себя один раз и исправить 1 момент", "minutes": 15 },
+            { "en": "Give the speech", "kg": "Сөзүңүздү айтыңыз", "ru": "Выступить", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Disagree politely: “I see it differently because…”",
+          "kg": "Сылык каршы чыгыңыз: «Мен башкача ойлойм, анткени…»",
+          "ru": "Вежливо не соглашаться: «Я вижу иначе, потому что…»",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Use 1 polite disagreement phrase this week", "kg": "Ушул жумада 1 сылык каршы пикир фразасын колдонуңуз", "ru": "Использовать 1 вежливую фразу несогласия на неделе" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Community", "kg": "Коомчулук", "ru": "Сообщество" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Active member of 1 community", "kg": "1 коомчулуктун активдүү мүчөсү", "ru": "Активный участник 1 сообщества" }
+      ],
+      "actions": [
+        {
+          "en": "Find 1 community by interest and become a regular",
+          "kg": "Кызыгууңуз боюнча 1 коомчулук таап, туруктуу мүчө болуңуз",
+          "ru": "Найти 1 сообщество по интересам и стать постоянным участником",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Join 1 interest chat in Telegram", "kg": "Telegramдагы 1 кызыгуу чатына кошулуңуз", "ru": "Вступить в 1 чат по интересам в Telegram" },
+          "steps": [
+            { "en": "List 3 communities: sport, books, IT, volunteering", "kg": "3 коомчулук жазыңыз: спорт, китеп, IT, волонтёрлук", "ru": "Выписать 3 сообщества: спорт, книги, IT, волонтёрство", "minutes": 10 },
+            { "en": "Read their chats or pages for 2 days", "kg": "2 күн алардын чатын же баракчасын окуңуз", "ru": "Почитать их чаты или страницы 2 дня", "minutes": 20 },
+            { "en": "Pick the friendliest one", "kg": "Эң ачык-жарыгын тандаңыз", "ru": "Выбрать самое дружелюбное", "minutes": 5 },
+            { "en": "Introduce yourself in the chat", "kg": "Чатта өзүңүздү тааныштырыңыз", "ru": "Представиться в чате", "minutes": 10 },
+            { "en": "Go to their next offline meeting", "kg": "Алардын кийинки жолугушуусуна барыңыз", "ru": "Сходить на их ближайшую офлайн-встречу", "minutes": 90 }
+          ]
+        },
+        {
+          "en": "Take part in the community chat 2 times a week",
+          "kg": "Жумасына 2 жолу коомчулуктун чатына катышыңыз",
+          "ru": "Участвовать в чате сообщества 2 раза в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write in the chat once a week", "kg": "Жумасына бир жолу чатка жазыңыз", "ru": "Писать в чат раз в неделю" }
+        },
+        {
+          "en": "Help organize 1 community event every 2 months",
+          "kg": "2 айда 1 коомчулук иш-чарасын уюштурууга жардам бериңиз",
+          "ru": "Помогать организовать 1 событие сообщества раз в 2 месяца",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Offer help with 1 small task for an event", "kg": "Иш-чарага 1 майда иш боюнча жардам сунуштаңыз", "ru": "Предложить помощь с 1 мелкой задачей к событию" }
+        },
+        {
+          "en": "Greet neighbors and know at least 3 by name",
+          "kg": "Кошуналар менен учурашып, кеминде 3үнүн атын билиңиз",
+          "ru": "Здороваться с соседями и знать хотя бы 3 по имени",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Greet 1 neighbor today", "kg": "Бүгүн 1 кошуна менен учурашыңыз", "ru": "Поздороваться с 1 соседом сегодня" }
+        },
+        {
+          "en": "Join a neighborhood cleanup or ashar once a month",
+          "kg": "Айына бир жолу айылдагы же короодогу ашарга катышыңыз",
+          "ru": "Раз в месяц участвовать в субботнике или ашаре",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Join 1 cleanup or ashar a season", "kg": "Мезгилине 1 ашарга катышыңыз", "ru": "Участвовать в 1 субботнике за сезон" }
+        },
+        {
+          "en": "Share 1 useful thing with the community a week",
+          "kg": "Жумасына коомчулук менен 1 пайдалуу нерсе бөлүшүңүз",
+          "ru": "Делиться 1 полезной вещью с сообществом в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Share 1 useful link a month", "kg": "Айына 1 пайдалуу шилтеме бөлүшүңүз", "ru": "Делиться 1 полезной ссылкой в месяц" }
+        },
+        {
+          "en": "Come to meetings on time",
+          "kg": "Жолугушууларга өз убагында келиңиз",
+          "ru": "Приходить на встречи вовремя",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Arrive 5 minutes early once a week", "kg": "Жумасына бир жолу 5 мүнөт эрте келиңиз", "ru": "Приходить на 5 минут раньше раз в неделю" }
+        },
+        {
+          "en": "Welcome 1 newcomer to the community",
+          "kg": "Коомчулукка келген 1 жаңы адамды тосуп алыңыз",
+          "ru": "Встречать и знакомить 1 новичка в сообществе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Say hello to 1 newcomer", "kg": "1 жаңы келген адам менен учурашыңыз", "ru": "Поздороваться с 1 новичком" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Confidence", "kg": "Өзүңө ишеним", "ru": "Уверенность" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Shyness no longer stops invitations", "kg": "Уялчаактык чакыруудан токтотпойт", "ru": "Стеснение больше не мешает приглашать" }
+      ],
+      "actions": [
+        {
+          "en": "Do 1 small brave social step every day",
+          "kg": "Күн сайын 1 кичине тайманбас кадам жасаңыз",
+          "ru": "Делать 1 маленький смелый шаг в общении каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Do 1 brave step 3 times a week", "kg": "Жумасына 3 жолу 1 тайманбас кадам жасаңыз", "ru": "Делать 1 смелый шаг 3 раза в неделю" }
+        },
+        {
+          "en": "Write a ladder of 8 social steps from easy to hard",
+          "kg": "Жеңилден оорго карай 8 баскычтуу сүйлөшүү тепкичин жазыңыз",
+          "ru": "Составить лестницу из 8 шагов общения от лёгкого к трудному",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Write 3 social steps from easy to harder", "kg": "Жеңилден оорго карай 3 кадам жазыңыз", "ru": "Записать 3 шага общения от лёгкого к трудному" },
+          "steps": [
+            { "en": "Write what feels scary in social situations", "kg": "Баарлашууда эмнеден коркоруңузду жазыңыз", "ru": "Записать, что пугает в общении", "minutes": 10 },
+            { "en": "Turn it into 8 small steps", "kg": "Аны 8 кичине кадамга бөлүңүз", "ru": "Разбить на 8 маленьких шагов", "minutes": 15 },
+            { "en": "Order them from easiest to hardest", "kg": "Эң жеңилинен эң оорусуна чейин иреттеңиз", "ru": "Расставить от самого лёгкого к самому трудному", "minutes": 5 },
+            { "en": "Do the first step today", "kg": "Биринчи кадамды бүгүн жасаңыз", "ru": "Сделать первый шаг сегодня", "minutes": 10 },
+            { "en": "Plan 1 step per week after that", "kg": "Андан кийин жумасына 1 кадам пландаңыз", "ru": "Дальше планировать по 1 шагу в неделю", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Write 1 thing you did well socially each evening",
+          "kg": "Ар кечте баарлашууда жакшы жасаган 1 нерсени жазыңыз",
+          "ru": "Каждый вечер записывать 1 удачный момент в общении",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Write 1 social success a week", "kg": "Жумасына баарлашуудагы 1 ийгиликти жазыңыз", "ru": "Записывать 1 успех в общении в неделю" }
+        },
+        {
+          "en": "Stand straight and speak loud enough to be heard",
+          "kg": "Түз туруп, угулгудай үн менен сүйлөңүз",
+          "ru": "Держать спину прямо и говорить достаточно громко",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check your posture twice a day", "kg": "Күнүнө эки жолу турумуңузду текшериңиз", "ru": "Проверять осанку 2 раза в день" }
+        },
+        {
+          "en": "Treat rejection as normal, not as a verdict",
+          "kg": "Баш тартууну өкүм эмес, кадимки нерсе катары кабыл алыңыз",
+          "ru": "Воспринимать отказ как норму, а не как приговор",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "After a “no”, write 1 thing you learned", "kg": "«Жок» дегенден кийин 1 сабак жазыңыз", "ru": "После отказа записать 1 вывод" }
+        },
+        {
+          "en": "Do sport 3 times a week for energy and mood",
+          "kg": "Күч жана маанай үчүн жумасына 3 жолу машыгыңыз",
+          "ru": "Заниматься спортом 3 раза в неделю для энергии и настроения",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Walk 20 minutes 3 times a week", "kg": "Жумасына 3 жолу 20 мүнөт басыңыз", "ru": "Гулять 20 минут 3 раза в неделю" }
+        },
+        {
+          "en": "Stop comparing your social life with others online",
+          "kg": "Социалдык жашооңузду интернеттеги башкалар менен салыштырбаңыз",
+          "ru": "Перестать сравнивать свою жизнь с чужой в соцсетях",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Mute 2 accounts that make you feel left out", "kg": "Сизди четте калгандай сезиндирген 2 аккаунтту өчүрүңүз", "ru": "Скрыть 2 аккаунта, после которых чувствуете себя лишним" }
+        },
+        {
+          "en": "Ask 1 trusted friend for honest feedback on your manner",
+          "kg": "1 ишенимдүү доско жүрүш-турушуңуз тууралуу ачык пикир сураңыз",
+          "ru": "Просить 1 близкого друга честно оценить вашу манеру общения",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Ask for feedback once a month", "kg": "Айына бир жолу пикир сураңыз", "ru": "Просить обратную связь раз в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Time & budget", "kg": "Убакыт жана бюджет", "ru": "Время и бюджет" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Social time planned every week", "kg": "Ар жума баарлашууга убакыт пландалды", "ru": "Время на общение запланировано каждую неделю" }
+      ],
+      "actions": [
+        {
+          "en": "Block 1 evening a week for friends in the calendar",
+          "kg": "Календарда жумасына 1 кечти досторго бөлүп коюңуз",
+          "ru": "Бронировать в календаре 1 вечер в неделю для друзей",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Block 1 evening a month for friends", "kg": "Айына 1 кечти досторго бөлүңүз", "ru": "Бронировать 1 вечер в месяц для друзей" }
+        },
+        {
+          "en": "Set a monthly budget for meetings and gifts",
+          "kg": "Жолугушуу жана белектер үчүн айлык бюджет коюңуз",
+          "ru": "Установить месячный бюджет на встречи и подарки",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Write how much you spent on meetings last month", "kg": "Өткөн айда жолугушууларга канча коротконуңузду жазыңыз", "ru": "Записать, сколько потратили на встречи в прошлом месяце" },
+          "steps": [
+            { "en": "Check last month’s spending on cafes and gifts", "kg": "Өткөн айдагы кафе жана белек чыгымдарын текшериңиз", "ru": "Проверить расходы на кафе и подарки за прошлый месяц", "minutes": 15 },
+            { "en": "Choose a sum that does not hurt your budget", "kg": "Бюджетиңизге зыян келтирбеген сумманы тандаңыз", "ru": "Выбрать сумму, которая не бьёт по бюджету", "minutes": 5 },
+            { "en": "Write 5 free ways to meet: park, home tea, sport", "kg": "Жолугушуунун 5 акысыз жолун жазыңыз: сейил бак, үйдө чай, спорт", "ru": "Записать 5 бесплатных форматов встреч: парк, чай дома, спорт", "minutes": 10 },
+            { "en": "Set aside the sum at the start of the month", "kg": "Айдын башында сумманы өзүнчө калтырыңыз", "ru": "Откладывать сумму в начале месяца", "minutes": 5 },
+            { "en": "Check the balance mid-month", "kg": "Айдын ортосунда калдыкты текшериңиз", "ru": "Проверить остаток в середине месяца", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Suggest 1 free meeting format a week",
+          "kg": "Жумасына жолугушуунун 1 акысыз түрүн сунуштаңыз",
+          "ru": "Предлагать 1 бесплатный формат встречи в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Suggest a walk instead of a cafe once a month", "kg": "Айына бир жолу кафенин ордуна сейилдөө сунуштаңыз", "ru": "Раз в месяц предлагать прогулку вместо кафе" }
+        },
+        {
+          "en": "Split bills fairly or take turns paying",
+          "kg": "Эсепти адилет бөлүңүз же кезек менен төлөңүз",
+          "ru": "Честно делить счёт или платить по очереди",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Agree on bill splitting before ordering", "kg": "Буйрутма берерден мурун эсепти бөлүштүрүүнү макулдашыңыз", "ru": "Договариваться о счёте до заказа" }
+        },
+        {
+          "en": "Don’t borrow money to keep up with friends",
+          "kg": "Достордон калбаш үчүн карыз албаңыз",
+          "ru": "Не занимать деньги, чтобы не отставать от друзей",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say honestly when an outing is too expensive", "kg": "Чыгым кымбат болсо, чынын айтыңыз", "ru": "Честно говорить, если встреча слишком дорогая" }
+        },
+        {
+          "en": "Answer friends’ messages in 1 daily slot",
+          "kg": "Достордун билдирүүлөрүнө күнүнө 1 белгиленген убакта жооп бериңиз",
+          "ru": "Отвечать друзьям в 1 выделенное время в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Answer friends’ messages within 2 days", "kg": "Достордун билдирүүлөрүнө 2 күндүн ичинде жооп бериңиз", "ru": "Отвечать друзьям в течение 2 дней" }
+        },
+        {
+          "en": "Keep meeting plans or cancel at least 1 day before",
+          "kg": "Жолугушуу пландарын сактаңыз же кеминде 1 күн мурун айтыңыз",
+          "ru": "Не срывать встречи или отменять минимум за день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write every meeting into the calendar", "kg": "Ар бир жолугушууну календарга жазыңыз", "ru": "Записывать каждую встречу в календарь" }
+        },
+        {
+          "en": "Make a short weekly call list on Sunday",
+          "kg": "Жекшембиде жумалык кыска чалуулар тизмесин түзүңүз",
+          "ru": "Составлять короткий список звонков на неделю в воскресенье",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Pick 1 person to call this week", "kg": "Ушул жумада чала турган 1 адамды тандаңыз", "ru": "Выбрать 1 человека, которому позвонить на неделе" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Healthy circle", "kg": "Туура чөйрө", "ru": "Здоровое окружение" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Circle that supports your goals", "kg": "Максаттарыңызды колдогон чөйрө", "ru": "Окружение, которое поддерживает ваши цели" }
+      ],
+      "actions": [
+        {
+          "en": "Note who gives energy and who drains it",
+          "kg": "Ким күч берип, ким күч аларын белгилеңиз",
+          "ru": "Отмечать, кто даёт энергию, а кто забирает",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Note 1 person who gave you energy this week", "kg": "Ушул жумада күч берген 1 адамды белгилеңиз", "ru": "Отметить 1 человека, который дал сил на неделе" }
+        },
+        {
+          "en": "Spend more time with people who grow and support",
+          "kg": "Өсүп жаткан жана колдогон адамдар менен көбүрөөк убакыт өткөрүңүз",
+          "ru": "Больше времени проводить с людьми, которые растут и поддерживают",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Meet 1 such person a month", "kg": "Айына ушундай 1 адам менен жолугуңуз", "ru": "Встречаться с 1 таким человеком в месяц" }
+        },
+        {
+          "en": "Say no to alcohol or habits you don’t want, calmly",
+          "kg": "Каалабаган ичимдик же адаттан тынч баш тартыңыз",
+          "ru": "Спокойно отказываться от алкоголя и привычек, которых не хотите",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Prepare 1 phrase to refuse politely", "kg": "Сылык баш тартуу үчүн 1 фраза даярдаңыз", "ru": "Подготовить 1 фразу для вежливого отказа" }
+        },
+        {
+          "en": "Leave conversations full of gossip or mockery",
+          "kg": "Ушак же шылдыңга толгон сүйлөшүүдөн чыгып кетиңиз",
+          "ru": "Выходить из разговоров, полных сплетен и насмешек",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Change the topic when gossip starts", "kg": "Ушак башталса, теманы которуңуз", "ru": "Менять тему, когда начинаются сплетни" }
+        },
+        {
+          "en": "Find 1 person ahead of you in your goal to learn from",
+          "kg": "Максатыңызда сизден алдыда жүргөн, үйрөнө турган 1 адамды табыңыз",
+          "ru": "Найти 1 человека, который впереди вас в вашей цели",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Follow 1 person who inspires you", "kg": "Сизди шыктандырган 1 адамга жазылыңыз", "ru": "Подписаться на 1 вдохновляющего человека" },
+          "steps": [
+            { "en": "Write your main goal for this year", "kg": "Ушул жылдагы негизги максатыңызды жазыңыз", "ru": "Записать главную цель на этот год", "minutes": 5 },
+            { "en": "List 3 people who already reached something similar", "kg": "Ушуга окшош нерсеге жеткен 3 адамды тизмелеңиз", "ru": "Выписать 3 людей, которые уже достигли похожего", "minutes": 10 },
+            { "en": "Write to 1 of them with a specific question", "kg": "Алардын 1ине так суроо менен жазыңыз", "ru": "Написать 1 из них с конкретным вопросом", "minutes": 15 },
+            { "en": "Thank them for the answer", "kg": "Жообу үчүн рахмат айтыңыз", "ru": "Поблагодарить за ответ", "minutes": 5 },
+            { "en": "Apply 1 advice in a week", "kg": "Бир жуманын ичинде 1 кеңешти колдонуңуз", "ru": "Применить 1 совет в течение недели", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Tell close friends about your goals",
+          "kg": "Жакын досторуңузга максаттарыңызды айтыңыз",
+          "ru": "Рассказывать близким друзьям о своих целях",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Tell 1 friend about 1 goal", "kg": "1 досуңузга 1 максатыңызды айтыңыз", "ru": "Рассказать 1 другу об 1 цели" }
+        },
+        {
+          "en": "Do a shared goal with a friend: sport, study",
+          "kg": "Дос менен жалпы максатты аткарыңыз: спорт, окуу",
+          "ru": "Заниматься общей целью с другом: спорт, учёба",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Do 1 shared activity with a friend a month", "kg": "Айына дос менен 1 жалпы иш кылыңыз", "ru": "Делать 1 общее занятие с другом в месяц" }
+        },
+        {
+          "en": "Respect friends of other views, faiths and cultures",
+          "kg": "Башка көз караштагы, ишенимдеги жана маданияттагы досторду урматтаңыз",
+          "ru": "Уважать друзей других взглядов, вер и культур",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask 1 friend about their traditions", "kg": "1 досуңуздан анын салттары тууралуу сураңыз", "ru": "Спросить 1 друга о его традициях" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Kindness", "kg": "Боорукердик", "ru": "Доброта" },
+      "kind": "character",
+      "milestones": [
+        { "en": "A month of daily small kindnesses", "kg": "Бир ай күн сайын кичине жакшылык", "ru": "Месяц ежедневных маленьких добрых дел" }
+      ],
+      "actions": [
+        {
+          "en": "Greet people first: neighbors, guards, sellers",
+          "kg": "Адамдар менен биринчи учурашыңыз: кошуналар, кароолчулар, сатуучулар",
+          "ru": "Первым здороваться: соседи, охрана, продавцы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Greet 3 people first every day", "kg": "Күн сайын 3 адам менен биринчи учурашыңыз", "ru": "Каждый день первым здороваться с 3 людьми" }
+        },
+        {
+          "en": "Do 1 small kind deed every day",
+          "kg": "Күн сайын 1 кичине жакшылык кылыңыз",
+          "ru": "Делать 1 маленькое доброе дело каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Do 1 kind deed 3 times a week", "kg": "Жумасына 3 жолу 1 жакшылык кылыңыз", "ru": "Делать 1 доброе дело 3 раза в неделю" }
+        },
+        {
+          "en": "Pick up 1 piece of litter you see outside",
+          "kg": "Сыртта көргөн 1 таштандыны алып ыргытыңыз",
+          "ru": "Подбирать 1 мусор, который видите на улице",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Pick up litter once a week", "kg": "Жумасына бир жолу таштанды чогултуңуз", "ru": "Подбирать мусор раз в неделю" }
+        },
+        {
+          "en": "Give up your seat to elders in transport",
+          "kg": "Транспортто улууларга орун бериңиз",
+          "ru": "Уступать место старшим в транспорте",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Offer your seat once this week", "kg": "Ушул жумада бир жолу орун бериңиз", "ru": "Уступить место раз на этой неделе" }
+        },
+        {
+          "en": "Never speak badly about absent people",
+          "kg": "Жок адамдар тууралуу эч качан жаман айтпаңыз",
+          "ru": "Никогда не говорить плохо о тех, кого нет рядом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say 1 good thing about someone absent", "kg": "Жок адам тууралуу 1 жакшы сөз айтыңыз", "ru": "Сказать 1 хорошее о том, кого нет рядом" }
+        },
+        {
+          "en": "Be on time for every meeting with friends",
+          "kg": "Достор менен ар бир жолугушууга өз убагында келиңиз",
+          "ru": "Приходить вовремя на каждую встречу с друзьями",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Warn 30 minutes ahead if you will be late", "kg": "Кечиксеңиз, 30 мүнөт мурун эскертиңиз", "ru": "Предупреждать за 30 минут об опоздании" }
+        },
+        {
+          "en": "Include people who stand alone in the group",
+          "kg": "Топто жалгыз турган адамдарды сүйлөшүүгө тартыңыз",
+          "ru": "Вовлекать в разговор тех, кто стоит в стороне",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Invite 1 quiet person into the talk", "kg": "1 унчукпаган адамды сүйлөшүүгө чакырыңыз", "ru": "Пригласить в разговор 1 тихого человека" }
+        },
+        {
+          "en": "Help 1 friend with a real task a week",
+          "kg": "Жумасына 1 доско чыныгы иш менен жардам бериңиз",
+          "ru": "Помогать 1 другу реальным делом в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Offer help to 1 friend a month", "kg": "Айына 1 доско жардам сунуштаңыз", "ru": "Предлагать помощь 1 другу в месяц" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Networking", "kg": "Кесиптик байланыш", "ru": "Нетворкинг" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "20 useful professional contacts", "kg": "20 пайдалуу кесиптик байланыш", "ru": "20 полезных профессиональных контактов" }
+      ],
+      "actions": [
+        {
+          "en": "Prepare a 30-second story about yourself",
+          "kg": "Өзүңүз тууралуу 30 секунддук баян даярдаңыз",
+          "ru": "Подготовить рассказ о себе на 30 секунд",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 2 sentences about who you are and what you do", "kg": "Ким экениңиз жана эмне кыларыңыз тууралуу 2 сүйлөм жазыңыз", "ru": "Написать 2 предложения: кто вы и чем занимаетесь" },
+          "steps": [
+            { "en": "Write who you are and what you do", "kg": "Ким экениңизди жана эмне кыларыңызды жазыңыз", "ru": "Записать, кто вы и чем занимаетесь", "minutes": 10 },
+            { "en": "Add what you are looking for now", "kg": "Азыр эмне издеп жатканыңызды кошуңуз", "ru": "Добавить, что вы сейчас ищете", "minutes": 5 },
+            { "en": "Cut it to 30 seconds aloud", "kg": "Аны үн чыгарып 30 секундга чейин кыскартыңыз", "ru": "Сократить до 30 секунд вслух", "minutes": 10 },
+            { "en": "Practice it 5 times", "kg": "Аны 5 жолу машыгыңыз", "ru": "Отрепетировать 5 раз", "minutes": 10 },
+            { "en": "Use it at the next event", "kg": "Кийинки иш-чарада колдонуңуз", "ru": "Использовать на ближайшем мероприятии", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Attend 1 professional meetup a month",
+          "kg": "Айына 1 кесиптик жолугушууга барыңыз",
+          "ru": "Посещать 1 профессиональную встречу в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Watch 1 online meetup a month", "kg": "Айына 1 онлайн жолугушууну көрүңүз", "ru": "Смотреть 1 онлайн-встречу в месяц" }
+        },
+        {
+          "en": "Write to 1 new professional contact a week",
+          "kg": "Жумасына 1 жаңы кесиптик байланышка жазыңыз",
+          "ru": "Писать 1 новому профессиональному контакту в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write to 1 new contact a month", "kg": "Айына 1 жаңы байланышка жазыңыз", "ru": "Писать 1 новому контакту в месяц" }
+        },
+        {
+          "en": "Follow up within 2 days after meeting someone",
+          "kg": "Таанышкандан кийин 2 күндүн ичинде жазыңыз",
+          "ru": "Писать в течение 2 дней после знакомства",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Add new contacts with a note where you met", "kg": "Жаңы байланышты кайда таанышканыңыз менен сактаңыз", "ru": "Сохранять контакт с пометкой, где познакомились" }
+        },
+        {
+          "en": "Offer help before asking for it",
+          "kg": "Жардам сураардан мурун өзүңүз жардам сунуштаңыз",
+          "ru": "Предлагать помощь, прежде чем просить",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Share 1 useful contact or link with someone", "kg": "Бирөө менен 1 пайдалуу байланыш же шилтеме бөлүшүңүз", "ru": "Поделиться с кем-то 1 полезным контактом или ссылкой" }
+        },
+        {
+          "en": "Fill out a LinkedIn or professional profile",
+          "kg": "LinkedIn же кесиптик профилди толтуруңуз",
+          "ru": "Заполнить LinkedIn или профессиональный профиль",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Add a photo and headline to your profile", "kg": "Профилге сүрөт жана аталыш кошуңуз", "ru": "Добавить фото и заголовок в профиль" },
+          "steps": [
+            { "en": "Add a clear photo", "kg": "Так сүрөт кошуңуз", "ru": "Добавить чёткое фото", "minutes": 5 },
+            { "en": "Write a headline: role and skill", "kg": "Аталыш жазыңыз: кесип жана көндүм", "ru": "Написать заголовок: роль и навык", "minutes": 10 },
+            { "en": "Add study, work and projects", "kg": "Окуу, жумуш жана долбоорлорду кошуңуз", "ru": "Добавить учёбу, работу и проекты", "minutes": 30 },
+            { "en": "Connect with 20 people you know", "kg": "Тааныш 20 адам менен байланышыңыз", "ru": "Добавить 20 знакомых в контакты", "minutes": 15 },
+            { "en": "Post 1 short introduction", "kg": "1 кыска таанышуу постун жарыялаңыз", "ru": "Опубликовать 1 короткий пост-знакомство", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Congratulate contacts on their achievements",
+          "kg": "Байланыштарды жетишкендиктери менен куттуктаңыз",
+          "ru": "Поздравлять контакты с их достижениями",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Congratulate 1 contact a month", "kg": "Айына 1 байланышты куттуктаңыз", "ru": "Поздравлять 1 контакт в месяц" }
+        },
+        {
+          "en": "Have 1 coffee talk with a professional a month",
+          "kg": "Айына 1 адис менен кофе үстүндө сүйлөшүңүз",
+          "ru": "Встречаться на кофе с 1 специалистом в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Have 1 online call a month", "kg": "Айына 1 онлайн сүйлөшүү өткөрүңүз", "ru": "Проводить 1 онлайн-созвон в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Online circle", "kg": "Онлайн чөйрө", "ru": "Онлайн-общение" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Online communication turned into real meetings", "kg": "Онлайн баарлашуу чыныгы жолугушууга айланды", "ru": "Онлайн-общение переросло в живые встречи" }
+      ],
+      "actions": [
+        {
+          "en": "Write a thoughtful comment to friends’ posts",
+          "kg": "Достордун постторуна маанилүү комментарий жазыңыз",
+          "ru": "Оставлять содержательные комментарии к постам друзей",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Comment on 1 friend’s post a week", "kg": "Жумасына 1 достун постуна комментарий жазыңыз", "ru": "Комментировать 1 пост друга в неделю" }
+        },
+        {
+          "en": "Send a voice message instead of a sticker",
+          "kg": "Стикердин ордуна үн билдирүү жөнөтүңүз",
+          "ru": "Отправлять голосовое вместо стикера",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Send 1 voice message a week", "kg": "Жумасына 1 үн билдирүү жөнөтүңүз", "ru": "Отправлять 1 голосовое в неделю" }
+        },
+        {
+          "en": "Have a video call with a faraway friend weekly",
+          "kg": "Жумасына алыстагы дос менен видео сүйлөшүңүз",
+          "ru": "Созваниваться по видео с далёким другом в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Video call a faraway friend once a month", "kg": "Айына бир жолу алыстагы дос менен видео сүйлөшүңүз", "ru": "Созваниваться с далёким другом раз в месяц" }
+        },
+        {
+          "en": "Move 1 online friendship to an offline meeting",
+          "kg": "1 онлайн достукту чыныгы жолугушууга айлантыңыз",
+          "ru": "Перевести 1 онлайн-знакомство во встречу вживую",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Suggest meeting to 1 online friend", "kg": "1 онлайн досуңузга жолугушууну сунуштаңыз", "ru": "Предложить встречу 1 онлайн-другу" }
+        },
+        {
+          "en": "Never share private photos or chats of others",
+          "kg": "Башкалардын жеке сүрөтүн же чатын эч качан бөлүшпөңүз",
+          "ru": "Никогда не пересылать чужие личные фото и переписки",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask before posting a photo with others", "kg": "Башкалар менен сүрөттү жарыялардан мурун сураңыз", "ru": "Спрашивать, прежде чем выкладывать общее фото" }
+        },
+        {
+          "en": "Be polite in comments, even when you disagree",
+          "kg": "Макул болбосоңуз да, комментарийде сылык болуңуз",
+          "ru": "Быть вежливым в комментариях, даже если не согласны",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Re-read a comment before sending", "kg": "Комментарийди жөнөтөрдөн мурун кайра окуңуз", "ru": "Перечитывать комментарий перед отправкой" }
+        },
+        {
+          "en": "Leave 2 chats that bring only noise",
+          "kg": "Ызы-чуудан башка эч нерсе бербеген 2 чаттан чыгыңыз",
+          "ru": "Выйти из 2 чатов, которые приносят только шум",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Mute 1 noisy chat", "kg": "1 ызы-чуулуу чатты үнсүз кылыңыз", "ru": "Отключить звук в 1 шумном чате" }
+        },
+        {
+          "en": "Meet online acquaintances only in public places",
+          "kg": "Онлайн тааныштар менен коомдук жерлерде гана жолугуңуз",
+          "ru": "Встречаться с онлайн-знакомыми только в людных местах",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Tell a friend before meeting an online acquaintance", "kg": "Онлайн тааныш менен жолугардан мурун досуңузга айтыңыз", "ru": "Сообщать другу перед встречей с онлайн-знакомым" }
+        }
+      ]
+    }
+  ]
+}

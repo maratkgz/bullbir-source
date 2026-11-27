@@ -1,5 +1,6 @@
 // Full UI translations for BullBir — English / Kyrgyz / Russian.
 // Kyrgyz uses ң, ү, ө where required.
+import { FEATURE_PACKS, mergePacks } from './i18n'
 
 export const LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
@@ -7,7 +8,7 @@ export const LANGUAGES = [
   { code: 'ru', label: 'Русский', flag: '🇷🇺' },
 ]
 
-export const translations = {
+const baseTranslations = {
   en: {
     appName: 'BullBir',
     tagline: 'Your personal space',
@@ -2241,6 +2242,9 @@ export const translations = {
     'fb.default': 'Что-то пошло не так. Попробуйте снова.',
   },
 }
+
+// Feature packs live in ./i18n/*.js (one file per feature).
+export const translations = mergePacks(baseTranslations, FEATURE_PACKS)
 
 export const QUOTES = {
   en: [

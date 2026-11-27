@@ -1,178 +1,137 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { useCollection } from '../../../hooks/useCollection'
 import { useLocalStorage } from '../../../hooks/useLocalStorage'
+import { useIsMobile } from '../../../hooks/useMediaQuery'
 import { useLang } from '../../../context/LangContext'
+import { useAiLibrary } from '../../../ai/useAiLibrary'
 import { useToast } from '../../ui/Toast'
 import Modal from '../../ui/Modal'
 import { toDateKey } from '../../../utils/format'
 import MandalaGrid from './MandalaGrid'
+import MandalaMobile from './MandalaMobile'
 import CellEditor from './CellEditor'
 import MandalaAiFill from './MandalaAiFill'
 import MandalaPlanner from './MandalaPlanner'
+import ManualCreate from './ManualCreate'
+import MandalaWizard from './wizard/MandalaWizard'
+import { ProgressRing, MandalaList, DirectionLegend } from './MandalaParts'
 import { mandalaPace } from '../../../ai/engine/pace'
-import { CalendarDays, Sparkles } from 'lucide-react'
+import { regenerateItem, regenerateDirection } from '../../../ai/engine/regenerate'
+import { CalendarDays, Sparkles, MessageCircle } from 'lucide-react'
 import Icon from '../../ui/Icon'
-import {
-  LIMITS, DIRECTION_COLORS, emptyMandala, normalizeMandala, getCell, patchForCell,
-  mandalaStats, directionProgress,
-} from './mandalaModel'
+import { emptyMandala, normalizeMandala, getCell, patchForCell, mandalaStats } from './mandalaModel'
 import './Mandala.css'
 import '../assistant/Assistant.css'
 
 const ZOOM_STEPS = [0.6, 0.75, 0.9, 1, 1.2, 1.45, 1.75]
 const DEFAULT_ZOOM_INDEX = 3
 
-function ProgressRing({ value, size = 44 }) {
-  const r = (size - 6) / 2
-  const c = 2 * Math.PI * r
+function ZoomControls({ index, onChange, t }) {
   return (
-    <svg width={size} height={size} className="mandala-ring" aria-hidden="true">
-      <circle cx={size / 2} cy={size / 2} r={r} className="mandala-ring-bg" />
-      <circle
-        cx={size / 2} cy={size / 2} r={r}
-        className="mandala-ring-fg"
-        strokeDasharray={c}
-        strokeDashoffset={c - (c * value) / 100}
-      />
-      <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle">{value}%</text>
-    </svg>
-  )
-}
-
-function MandalaList({ mandalas, onOpen, onCreate, t }) {
-  if (mandalas.length === 0) {
-    return (
-      <div className="card mandala-empty">
-        <div className="mandala-empty-art" aria-hidden="true">
-          {Array.from({ length: 9 }, (_, i) => <span key={i} className={i === 4 ? 'is-core' : ''} />)}
-        </div>
-        <h3>{t('mandala.emptyTitle')}</h3>
-        <p>{t('mandala.emptyText')}</p>
-        <button className="btn btn-primary" onClick={onCreate}>+ {t('mandala.new')}</button>
-      </div>
-    )
-  }
-  return (
-    <div className="mandala-list">
-      {mandalas.map((m, i) => {
-        const stats = mandalaStats(m)
-        return (
-          <motion.button
-            key={m.id}
-            type="button"
-            className="card mandala-card"
-            onClick={() => onOpen(m.id)}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.04 }}
-          >
-            <ProgressRing value={stats.progress} />
-            <div className="mandala-card-body">
-              <div className="mandala-card-title">{m.title || t('mandala.untitled')}</div>
-              <div className="mandala-card-meta">
-                {t('mandala.statsLine', {
-                  dirs: stats.directions, done: stats.actionsDone, total: stats.actions,
-                })}
-              </div>
-            </div>
-          </motion.button>
-        )
-      })}
+    <div className="mandala-zoom" role="group" aria-label={t('mandala.zoom')}>
+      <button type="button" className="btn btn-secondary btn-sm" disabled={index === 0}
+        onClick={() => onChange(index - 1)} aria-label={t('mandala.zoomOut')}>−</button>
+      <span>{Math.round(ZOOM_STEPS[index] * 100)}%</span>
+      <button type="button" className="btn btn-secondary btn-sm" disabled={index === ZOOM_STEPS.length - 1}
+        onClick={() => onChange(index + 1)} aria-label={t('mandala.zoomIn')}>+</button>
     </div>
   )
 }
 
-function DirectionLegend({ mandala, onOpen, t }) {
-  return (
-    <div className="mandala-legend">
-      {mandala.directions.map((dir, d) => {
-        const progress = directionProgress(dir)
-        return (
-          <button
-            key={d}
-            type="button"
-            className="mandala-legend-item"
-            style={{ '--c': DIRECTION_COLORS[d], '--p': `${progress}%` }}
-            onClick={() => onOpen({ kind: 'direction', d })}
-          >
-            <span className="mandala-legend-name">{dir.text || t('mandala.direction', { n: d + 1 })}</span>
-            <span className="mandala-legend-pct">{progress}%</span>
-            <span className="mandala-legend-bar" aria-hidden="true" />
-          </button>
-        )
-      })}
-    </div>
-  )
-}
+const editorTitle = (editing, t) => editing && {
+  center: t('mandala.mainGoal'),
+  direction: t('mandala.direction', { n: (editing.d ?? 0) + 1 }),
+  action: t('mandala.action', { n: (editing.a ?? 0) + 1 }),
+}[editing.kind]
+
+/** Cell key for the editor: changes when the cell is regenerated so the form resets. */
+const editorKey = (editing, cell) => `${JSON.stringify(editing)}:${cell.src}:${cell.text}`
 
 export default function Mandala() {
   const { items, loading, add, update, remove } = useCollection('mandalas')
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const toast = useToast()
+  const isMobile = useIsMobile()
+  const { domains } = useAiLibrary()
   const [params, setParams] = useSearchParams()
   const [zoomIndex, setZoomIndex] = useLocalStorage('bb_mandala_zoom', DEFAULT_ZOOM_INDEX)
   const [editing, setEditing] = useState(null) // cell ref
   const [isSaving, setIsSaving] = useState(false)
-  const [createOpen, setCreateOpen] = useState(false)
-  const [newTitle, setNewTitle] = useState('')
+  const [manualOpen, setManualOpen] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [aiOpen, setAiOpen] = useState(false)
   const [planOpen, setPlanOpen] = useState(false)
-  const [fillWithAi, setFillWithAi] = useState(true)
 
-  const mandalas = useMemo(() => items.map(normalizeMandala), [items])
+  const mandalas = useMemo(() => items.map((m) => normalizeMandala(m)), [items])
   const activeId = params.get('id')
   const active = mandalas.find((m) => m.id === activeId) || null
+  const isWizard = !activeId && params.get('new') === '1'
   const todayKey = toDateKey()
   const safeZoomIndex = Math.min(Math.max(Number(zoomIndex) || 0, 0), ZOOM_STEPS.length - 1)
 
   const openMandala = (id) => setParams(id ? { id } : {})
+  const openWizard = () => setParams({ new: '1' })
 
-  const createMandala = async (e) => {
-    e.preventDefault()
-    const title = newTitle.trim()
-    if (!title) return
-    try {
-      const id = await add(emptyMandala(title))
-      setCreateOpen(false)
-      setNewTitle('')
-      if (id) {
-        openMandala(id)
-        if (fillWithAi) setAiOpen(true)
-      }
-    } catch {
-      toast.error(t('common.error'))
-    }
-  }
-
-  const saveCell = async (cell) => {
-    if (!active || !editing) return
-    setIsSaving(true)
-    try {
-      await update(active.id, patchForCell(active, editing, cell))
-      setEditing(null)
-    } catch {
-      toast.error(t('common.error'))
-    } finally {
-      setIsSaving(false)
-    }
-  }
-
-  const applyAi = async (patch) => {
+  // Every save is a partial update: fields this screen doesn't touch (checks, linkedIds, interview…) stay.
+  const saveFields = async (patch, onSuccess) => {
     if (!active) return
     setIsSaving(true)
     try {
       await update(active.id, patch)
-      setAiOpen(false)
-      toast.success(t('ai.fill.done'))
+      onSuccess?.()
     } catch {
       toast.error(t('common.error'))
     } finally {
       setIsSaving(false)
     }
   }
+
+  const createDoc = async (doc, afterOpen) => {
+    setIsSaving(true)
+    try {
+      const id = await add(doc)
+      if (id) {
+        openMandala(id)
+        afterOpen?.()
+      }
+    } catch {
+      toast.error(t('common.error'))
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const createManual = (title, fillWithAi) => {
+    setManualOpen(false)
+    createDoc(emptyMandala(title), fillWithAi ? () => setAiOpen(true) : undefined)
+  }
+
+  const createFromWizard = (doc) => createDoc(doc, () => toast.success(t('mandala.wizard.built')))
+
+  const saveCell = (cell) => {
+    if (!editing) return
+    saveFields(patchForCell(active, editing, cell), () => setEditing(null))
+  }
+
+  const regenerate = (reason) => {
+    if (!active || !editing || editing.kind === 'center') return
+    const options = { domains, lang }
+    const next = editing.kind === 'action'
+      ? regenerateItem(active, editing.d, editing.a, reason, options)
+      : regenerateDirection(active, editing.d, reason, options)
+    const changed = JSON.stringify(next.directions[editing.d]) !== JSON.stringify(active.directions[editing.d])
+    if (!changed) {
+      toast.info(t('mandala.regen.none'))
+      return
+    }
+    saveFields({ directions: next.directions }, () => toast.success(t('mandala.regen.done')))
+  }
+
+  const applyAi = (patch) => saveFields(patch, () => {
+    setAiOpen(false)
+    toast.success(t('ai.fill.done'))
+  })
 
   const deleteMandala = async () => {
     if (!active) return
@@ -186,54 +145,55 @@ export default function Mandala() {
     }
   }
 
-  const editingTitle = editing && {
-    center: t('mandala.mainGoal'),
-    direction: t('mandala.direction', { n: (editing.d ?? 0) + 1 }),
-    action: t('mandala.action', { n: (editing.a ?? 0) + 1 }),
-  }[editing.kind]
-
   const stats = active ? mandalaStats(active) : null
   const pace = active ? mandalaPace(active) : null
+  const editingCell = editing && active ? getCell(active, editing) : null
+  const heading = active ? active.title || t('mandala.untitled') : isWizard ? t('mandala.wizard.title') : t('nav.mandala')
+  const subheading = active
+    ? t('mandala.statsLine', { dirs: stats.directions, done: stats.actionsDone, total: stats.actions })
+    : isWizard ? t('mandala.wizard.subtitle') : t('mandala.subtitle')
 
   return (
     <div>
       <div className="module-header">
         <div>
-          {active ? (
+          {(active || isWizard) && (
             <button type="button" className="btn btn-ghost btn-sm mandala-back" onClick={() => openMandala(null)}>
               ← {t('mandala.all')}
             </button>
-          ) : null}
-          <h2 style={{ letterSpacing: '-0.02em' }}>{active ? active.title || t('mandala.untitled') : t('nav.mandala')}</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>
-            {active
-              ? t('mandala.statsLine', { dirs: stats.directions, done: stats.actionsDone, total: stats.actions })
-              : t('mandala.subtitle')}
-          </p>
+          )}
+          <h2 style={{ letterSpacing: '-0.02em' }}>{heading}</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 'var(--text-sm)', marginTop: 4 }}>{subheading}</p>
         </div>
-        {active ? (
+        {active && (
           <div className="mandala-toolbar">
             <ProgressRing value={stats.progress} size={48} />
             <button type="button" className="btn btn-secondary btn-sm" onClick={() => setAiOpen(true)}><Icon icon={Sparkles} size="1em" /> {t('ai.fill.button')}</button>
-            <button type="button" className="btn btn-secondary btn-sm" onClick={() => setPlanOpen(true)}><Icon icon={CalendarDays} size="1em" /> {t('ai.plan.button')}</button>
-            <div className="mandala-zoom" role="group" aria-label={t('mandala.zoom')}>
-              <button type="button" className="btn btn-secondary btn-sm" disabled={safeZoomIndex === 0}
-                onClick={() => setZoomIndex(safeZoomIndex - 1)} aria-label={t('mandala.zoomOut')}>−</button>
-              <span>{Math.round(ZOOM_STEPS[safeZoomIndex] * 100)}%</span>
-              <button type="button" className="btn btn-secondary btn-sm" disabled={safeZoomIndex === ZOOM_STEPS.length - 1}
-                onClick={() => setZoomIndex(safeZoomIndex + 1)} aria-label={t('mandala.zoomIn')}>+</button>
-            </div>
+            <button type="button" className="btn btn-secondary btn-sm" onClick={() => setPlanOpen(true)}><Icon icon={CalendarDays} size="1em" /> {t('mandala.launchPlan')}</button>
+            {!isMobile && <ZoomControls index={safeZoomIndex} onChange={setZoomIndex} t={t} />}
             <button type="button" className="btn btn-ghost btn-sm" onClick={() => setConfirmDelete(true)}>
               {t('common.delete')}
             </button>
           </div>
-        ) : (
-          <button className="btn btn-primary" onClick={() => setCreateOpen(true)}>+ {t('mandala.new')}</button>
+        )}
+        {!active && !isWizard && (
+          <button type="button" className="btn btn-primary" onClick={openWizard}>
+            <Icon icon={MessageCircle} size="1em" /> {t('mandala.wizard.create')}
+          </button>
         )}
       </div>
 
-      {!active && !loading && (
-        <MandalaList mandalas={mandalas} onOpen={openMandala} onCreate={() => setCreateOpen(true)} t={t} />
+      {isWizard && (
+        <MandalaWizard
+          isBusy={isSaving}
+          onCreate={createFromWizard}
+          onManual={() => setManualOpen(true)}
+          onCancel={() => openMandala(null)}
+        />
+      )}
+
+      {!active && !isWizard && !loading && (
+        <MandalaList mandalas={mandalas} onOpen={openMandala} onCreate={openWizard} onManual={() => setManualOpen(true)} t={t} />
       )}
       {!active && activeId && !loading && <p className="text-secondary">{t('mandala.notFound')}</p>}
 
@@ -246,48 +206,34 @@ export default function Mandala() {
               })}
             </p>
           )}
-          <p className="mandala-hint">{t('mandala.hint')}</p>
-          <MandalaGrid mandala={active} zoom={ZOOM_STEPS[safeZoomIndex]} todayKey={todayKey} onOpen={setEditing} />
+          {isMobile ? (
+            <MandalaMobile key={active.id} mandala={active} todayKey={todayKey} onOpen={setEditing} />
+          ) : (
+            <>
+              <p className="mandala-hint">{t('mandala.hint')}</p>
+              <MandalaGrid key={active.id} mandala={active} zoom={ZOOM_STEPS[safeZoomIndex]} todayKey={todayKey} onOpen={setEditing} />
+            </>
+          )}
           <DirectionLegend mandala={active} onOpen={setEditing} t={t} />
         </>
       )}
 
-      <Modal open={!!editing} onClose={() => setEditing(null)} title={editingTitle || ''}>
-        {editing && active && (
+      <Modal open={!!editing} onClose={() => setEditing(null)} title={editorTitle(editing, t) || ''}>
+        {editingCell && (
           <CellEditor
-            key={JSON.stringify(editing)}
-            cell={getCell(active, editing)}
+            key={editorKey(editing, editingCell)}
+            cell={editingCell}
             kind={editing.kind}
             isSaving={isSaving}
             onSave={saveCell}
+            onRegenerate={domains.length ? regenerate : undefined}
             onCancel={() => setEditing(null)}
           />
         )}
       </Modal>
 
-      <Modal open={createOpen} onClose={() => setCreateOpen(false)} title={t('mandala.new')}>
-        <form onSubmit={createMandala} className="mandala-editor">
-          <label className="mandala-field">
-            <span>{t('mandala.mainGoal')}</span>
-            <input
-              className="input"
-              autoFocus
-              value={newTitle}
-              maxLength={LIMITS.text}
-              onChange={(e) => setNewTitle(e.target.value)}
-              placeholder={t('mandala.placeholder.center')}
-            />
-          </label>
-          <p className="text-secondary" style={{ fontSize: 'var(--text-sm)' }}>{t('mandala.createHint')}</p>
-          <label className="mandala-check">
-            <input type="checkbox" checked={fillWithAi} onChange={(e) => setFillWithAi(e.target.checked)} />
-            <span><Icon icon={Sparkles} size="1em" /> {t('ai.fill.onCreate')}</span>
-          </label>
-          <div className="flex gap-3 justify-between">
-            <button type="button" className="btn btn-ghost" onClick={() => setCreateOpen(false)}>{t('common.cancel')}</button>
-            <button type="submit" className="btn btn-primary" disabled={!newTitle.trim()}>{t('common.create')}</button>
-          </div>
-        </form>
+      <Modal open={manualOpen} onClose={() => setManualOpen(false)} title={t('mandala.new')}>
+        {manualOpen && <ManualCreate onCreate={createManual} onCancel={() => setManualOpen(false)} />}
       </Modal>
 
       <Modal open={aiOpen && !!active} onClose={() => setAiOpen(false)} title={t('ai.fill.title')} maxWidth={620}>
@@ -301,7 +247,7 @@ export default function Mandala() {
           <MandalaPlanner
             mandala={active}
             onCancel={() => setPlanOpen(false)}
-            onDone={(n) => { setPlanOpen(false); toast.success(t('ai.plan.added', { n })) }}
+            onDone={(n) => { setPlanOpen(false); toast.success(t('launch.done', { n })) }}
           />
         )}
       </Modal>

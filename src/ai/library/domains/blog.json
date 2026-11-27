@@ -1,0 +1,925 @@
+{
+  "id": "blog",
+  "icon": "📱",
+  "title": { "en": "Blog & social media", "kg": "Блог жана социалдык тармактар", "ru": "Блог и соцсети" },
+  "keywords": {
+    "en": ["!blog", "!blogger", "blogging", "vlog", "social media", "followers", "subscribers", "content", "creator", "tiktok", "instagram", "reels", "youtube", "channel", "posts", "stories", "views", "audience", "influencer", "go viral"],
+    "kg": ["!блог", "!блогер", "блог жүргүзүү", "соцтармак", "социалдык тармак", "жазылуучулар", "подписчиктер", "контент", "тикток", "инста", "инстаграм", "ютуб", "канал", "пост", "сторис", "рилс", "көрүүлөр", "аудитория", "видео тартуу"],
+    "ru": ["!блог", "!блогер", "!блогером", "вести блог", "соцсети", "подписчики", "подписчиков", "контент", "тикток", "инста", "инстаграм", "рилс", "ютуб", "канал", "посты", "сторис", "просмотры", "аудитория", "охваты", "инфлюенсер", "набрать подписчиков"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Niche & style", "kg": "Багыт жана стиль", "ru": "Ниша и стиль" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Niche described in one sentence", "kg": "Багыт бир сүйлөм менен сүрөттөлдү", "ru": "Ниша описана одним предложением" },
+        { "en": "Recognisable style in 10 posts", "kg": "10 постто таанылуучу стиль бар", "ru": "Узнаваемый стиль в 10 постах" }
+      ],
+      "actions": [
+        {
+          "en": "Describe your niche and audience in one sentence",
+          "kg": "Багытыңызды жана аудиторияңызды бир сүйлөм менен жазыңыз",
+          "ru": "Описать нишу и аудиторию одним предложением",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 topics you could talk about for hours", "kg": "Сааттап сүйлөй ала турган 3 теманы жазыңыз", "ru": "Выписать 3 темы, о которых можете говорить часами" },
+          "steps": [
+            { "en": "List 10 topics you know or love", "kg": "Билген же жакшы көргөн 10 теманы тизмелеңиз", "ru": "Выписать 10 тем, которые знаете или любите", "minutes": 20 },
+            { "en": "Mark 3 topics you can post on for a year", "kg": "Бир жыл бою жаза ала турган 3 теманы белгилеңиз", "ru": "Отметить 3 темы, о которых сможете писать год", "minutes": 15 },
+            { "en": "Describe your viewer: age, city, problem", "kg": "Көрүүчүңүздү сүрөттөңүз: жашы, шаары, көйгөйү", "ru": "Описать зрителя: возраст, город, проблема", "minutes": 20 },
+            { "en": "Find 5 bloggers in this niche and note gaps", "kg": "Ушул багыттагы 5 блогерди таап, эмне жетишпейт белгилеңиз", "ru": "Найти 5 блогеров ниши и отметить, чего не хватает", "minutes": 40 },
+            { "en": "Write the niche sentence and keep it in sight", "kg": "Багыт сүйлөмүн жазып, көрүнгөн жерге коюңуз", "ru": "Записать фразу о нише и держать её на виду", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Choose one main platform and fill in the profile",
+          "kg": "Бир негизги платформа тандап, профилди толтуруңуз",
+          "ru": "Выбрать одну главную площадку и оформить профиль",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write a 2-line bio for your profile", "kg": "Профилиңизге 2 саптык маалымат жазыңыз", "ru": "Написать описание профиля в 2 строки" },
+          "steps": [
+            { "en": "Check where your audience spends most time", "kg": "Аудиторияңыз кайсы жерде көп отурарын текшериңиз", "ru": "Проверить, где больше всего сидит ваша аудитория", "minutes": 30 },
+            { "en": "Pick one platform and a clear username", "kg": "Бир платформа жана түшүнүктүү ат тандаңыз", "ru": "Выбрать одну площадку и понятный никнейм", "minutes": 15 },
+            { "en": "Take or choose a clear profile photo", "kg": "Даана профиль сүрөтүн тартыңыз же тандаңыз", "ru": "Сделать или выбрать чёткое фото профиля", "minutes": 30 },
+            { "en": "Write a bio: who you are and what you post", "kg": "Био жазыңыз: ким экениңиз жана эмне тууралуу жазасыз", "ru": "Написать био: кто вы и о чём контент", "minutes": 20 },
+            { "en": "Add a contact for collaborations", "kg": "Кызматташуу үчүн байланыш маалыматын кошуңуз", "ru": "Добавить контакт для сотрудничества", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Repeat 3 fixed content formats instead of random posts",
+          "kg": "Кокус посттордун ордуна 3 туруктуу форматты кайталаңыз",
+          "ru": "Повторять 3 постоянных формата вместо случайных постов",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Repeat one format at least once a week", "kg": "Бир форматты жумасына жок дегенде бир жолу кайталаңыз", "ru": "Повторять хотя бы один формат раз в неделю" }
+        },
+        {
+          "en": "Create a style: 2 colours, 1 font, 1 cover template",
+          "kg": "Стиль түзүңүз: 2 түс, 1 шрифт, 1 мукаба үлгүсү",
+          "ru": "Создать стиль: 2 цвета, 1 шрифт, 1 шаблон обложки",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Pick 2 main colours for your posts", "kg": "Посттор үчүн 2 негизги түс тандаңыз", "ru": "Выбрать 2 основных цвета для постов" },
+          "steps": [
+            { "en": "Collect 10 examples of a style you like", "kg": "Жаккан стилдин 10 үлгүсүн чогултуңуз", "ru": "Собрать 10 примеров понравившегося стиля", "minutes": 30 },
+            { "en": "Choose 2 main colours and 1 accent", "kg": "2 негизги жана 1 кошумча түс тандаңыз", "ru": "Выбрать 2 основных цвета и 1 акцентный", "minutes": 15 },
+            { "en": "Choose 1 easy-to-read font for covers", "kg": "Мукаба үчүн окууга жеңил 1 шрифт тандаңыз", "ru": "Выбрать 1 читаемый шрифт для обложек", "minutes": 15 },
+            { "en": "Make a cover template in a free editor", "kg": "Акысыз редактордо мукаба үлгүсүн жасаңыз", "ru": "Сделать шаблон обложки в бесплатном редакторе", "minutes": 45 },
+            { "en": "Use the template in your next 3 posts", "kg": "Кийинки 3 постто үлгүнү колдонуңуз", "ru": "Применить шаблон в следующих 3 постах", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Post only on your niche topics for 30 days",
+          "kg": "30 күн бою багытыңыздагы темаларды гана жарыялаңыз",
+          "ru": "30 дней публиковать только темы своей ниши",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check each idea against your niche sentence", "kg": "Ар бир идеяны багыт сүйлөмү менен салыштырыңыз", "ru": "Сверять каждую идею с фразой о нише" }
+        },
+        {
+          "en": "Study 3 strong creators of your niche each week",
+          "kg": "Ар жума багытыңыздагы 3 күчтүү авторду изилдеңиз",
+          "ru": "Каждую неделю разбирать 3 сильных автора ниши",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Study one creator a week", "kg": "Жумасына бир авторду изилдеңиз", "ru": "Разбирать одного автора в неделю" }
+        },
+        {
+          "en": "Keep family, faith and money private unless you choose",
+          "kg": "Үй-бүлө, ыйман, акча темасын өзүңүз чечмейинче жеке сактаңыз",
+          "ru": "Не выносить семью, веру и деньги без своего решения",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask yourself before each post: is this mine to share?", "kg": "Ар постто сураңыз: муну бөлүшүүгө укугум барбы?", "ru": "Перед постом спрашивать себя: моё ли это делиться?" }
+        },
+        {
+          "en": "Test your niche: publish 10 posts in 3 weeks",
+          "kg": "Багытты текшериңиз: 3 жумада 10 пост жарыялаңыз",
+          "ru": "Проверить нишу: 10 постов за 3 недели",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Publish 5 posts in 3 weeks", "kg": "3 жумада 5 пост жарыялаңыз", "ru": "Опубликовать 5 постов за 3 недели" },
+          "steps": [
+            { "en": "Write 10 post ideas in one list", "kg": "10 пост идеясын бир тизмеге жазыңыз", "ru": "Записать 10 идей постов одним списком", "minutes": 30 },
+            { "en": "Prepare the first 3 posts in one day", "kg": "Алгачкы 3 постту бир күндө даярдаңыз", "ru": "Подготовить первые 3 поста за один день", "minutes": 90 },
+            { "en": "Publish 3 posts a week on fixed days", "kg": "Жумасына 3 постту белгилүү күндөрү жарыялаңыз", "ru": "Публиковать 3 поста в неделю в фиксированные дни", "minutes": 45 },
+            { "en": "Compare views and comments of all 10 posts", "kg": "Бардык 10 посттун көрүүлөрүн, комментарийлерин салыштырыңыз", "ru": "Сравнить просмотры и комментарии 10 постов", "minutes": 20 },
+            { "en": "Keep the 3 topics that worked best", "kg": "Эң жакшы иштеген 3 теманы калтырыңыз", "ru": "Оставить 3 темы, которые сработали лучше", "minutes": 15 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Content plan", "kg": "Контент-план", "ru": "Контент-план" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Content plan for one month ready", "kg": "Бир айлык контент-план даяр", "ru": "Готов контент-план на месяц" },
+        { "en": "30 posts published on schedule", "kg": "30 пост график боюнча жарыяланды", "ru": "Опубликовано 30 постов по графику" }
+      ],
+      "actions": [
+        {
+          "en": "Make a content plan for 4 weeks ahead",
+          "kg": "4 жумага алдын ала контент-план түзүңүз",
+          "ru": "Составить контент-план на 4 недели вперёд",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Plan posts for the next 7 days", "kg": "Кийинки 7 күнгө посттарды пландаңыз", "ru": "Спланировать посты на ближайшие 7 дней" },
+          "steps": [
+            { "en": "Choose how many posts a week you can keep up", "kg": "Жумасына канча пост чыгара аларыңызды чечиңиз", "ru": "Решить, сколько постов в неделю реально тянуть", "minutes": 10 },
+            { "en": "Write 20 ideas in a notes table", "kg": "Эскертмелер таблицасына 20 идея жазыңыз", "ru": "Записать 20 идей в таблицу заметок", "minutes": 40 },
+            { "en": "Spread the ideas by days and formats", "kg": "Идеяларды күндөргө жана форматтарга бөлүңүз", "ru": "Распределить идеи по дням и форматам", "minutes": 30 },
+            { "en": "Add dates: holidays, events, seasons", "kg": "Даталарды кошуңуз: майрамдар, иш-чаралар, мезгил", "ru": "Добавить даты: праздники, события, сезон", "minutes": 15 },
+            { "en": "Put shooting days into the calendar", "kg": "Тартуу күндөрүн календарга киргизиңиз", "ru": "Внести дни съёмок в календарь", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Write down one content idea every day",
+          "kg": "Күн сайын бир контент идеясын жазып алыңыз",
+          "ru": "Каждый день записывать одну идею для контента",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Write one idea every 3 days", "kg": "3 күндө бир идея жазыңыз", "ru": "Записывать одну идею раз в 3 дня" }
+        },
+        {
+          "en": "Publish 3 posts a week on fixed days",
+          "kg": "Жумасына 3 пост белгилүү күндөрү жарыялаңыз",
+          "ru": "Публиковать 3 поста в неделю в фиксированные дни",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 60,
+          "easy": { "en": "Publish 1 post a week on a fixed day", "kg": "Жумасына 1 пост белгилүү күнү жарыялаңыз", "ru": "Публиковать 1 пост в неделю в фиксированный день" }
+        },
+        {
+          "en": "Batch-create posts for a week in one session",
+          "kg": "Бир жумалык постторду бир отурумда даярдаңыз",
+          "ru": "Готовить посты на неделю за одну сессию",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 90,
+          "easy": { "en": "Prepare 2 posts in one session", "kg": "Бир отурумда 2 пост даярдаңыз", "ru": "Готовить 2 поста за одну сессию" }
+        },
+        {
+          "en": "Keep 3 ready posts in reserve at all times",
+          "kg": "Ар дайым 3 даяр постту запаста кармаңыз",
+          "ru": "Всегда держать 3 готовых поста в запасе",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep 1 ready post in reserve", "kg": "Запаста 1 даяр пост кармаңыз", "ru": "Держать 1 готовый пост в запасе" }
+        },
+        {
+          "en": "Plan a series of 5 posts on one topic",
+          "kg": "Бир тема боюнча 5 посттон турган серия пландаңыз",
+          "ru": "Спланировать серию из 5 постов на одну тему",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Plan a series of 3 posts", "kg": "3 посттон турган серия пландаңыз", "ru": "Спланировать серию из 3 постов" },
+          "steps": [
+            { "en": "Choose a topic your audience asks about", "kg": "Аудиторияңыз көп сураган теманы тандаңыз", "ru": "Выбрать тему, о которой чаще спрашивают", "minutes": 15 },
+            { "en": "Split it into 5 parts with one idea each", "kg": "Аны ар биринде бир ой бар 5 бөлүккө бөлүңүз", "ru": "Разбить её на 5 частей по одной мысли", "minutes": 20 },
+            { "en": "Write a hook line for each part", "kg": "Ар бир бөлүккө кызыктыруучу биринчи сап жазыңыз", "ru": "Написать цепляющую первую фразу для каждой части", "minutes": 30 },
+            { "en": "Make the first 2 parts", "kg": "Алгачкы 2 бөлүктү даярдаңыз", "ru": "Сделать первые 2 части", "minutes": 90 },
+            { "en": "Publish all 5 parts within 2 weeks", "kg": "Бардык 5 бөлүктү 2 жуманын ичинде жарыялаңыз", "ru": "Опубликовать все 5 частей за 2 недели", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Post one story a day from your real life or work",
+          "kg": "Күнүнө чыныгы жашооңуздан же ишиңизден бир сторис салыңыз",
+          "ru": "Выкладывать одну сторис в день из жизни или работы",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Post a story 3 times a week", "kg": "Жумасына 3 жолу сторис салыңыз", "ru": "Выкладывать сторис 3 раза в неделю" }
+        },
+        {
+          "en": "Review the plan every Sunday and move what slipped",
+          "kg": "Ар жекшемби планды карап, калганын жылдырыңыз",
+          "ru": "Каждое воскресенье сверять план и переносить пропуски",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Check the plan once in 2 weeks", "kg": "Планды 2 жумада бир жолу текшериңиз", "ru": "Проверять план раз в 2 недели" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Shooting & editing", "kg": "Тартуу жана монтаж", "ru": "Съёмка и монтаж" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First 10 edited videos", "kg": "Алгачкы 10 монтаждалган видео", "ru": "Первые 10 смонтированных видео" },
+        { "en": "One post made in under an hour", "kg": "Бир пост бир сааттан аз убакытта жасалды", "ru": "Один пост сделан меньше чем за час" }
+      ],
+      "actions": [
+        {
+          "en": "Learn one free mobile editing app",
+          "kg": "Бир акысыз мобилдик монтаж тиркемесин өздөштүрүңүз",
+          "ru": "Освоить одно бесплатное мобильное приложение для монтажа",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Watch one 15-minute tutorial on editing", "kg": "Монтаж боюнча 15 мүнөттүк бир сабак көрүңүз", "ru": "Посмотреть один 15-минутный урок по монтажу" },
+          "steps": [
+            { "en": "Install one free editor and open a test clip", "kg": "Бир акысыз редактор орнотуп, сынак клипти ачыңыз", "ru": "Установить бесплатный редактор и открыть тестовый клип", "minutes": 15 },
+            { "en": "Learn to cut, trim and join clips", "kg": "Клиптерди кесүүнү, кыскартууну, бириктирүүнү үйрөнүңүз", "ru": "Научиться резать, обрезать и склеивать клипы", "minutes": 30 },
+            { "en": "Learn to add subtitles", "kg": "Субтитр кошууну үйрөнүңүз", "ru": "Научиться добавлять субтитры", "minutes": 30 },
+            { "en": "Learn to add music and adjust volume", "kg": "Музыка кошуп, үнүн тууралоону үйрөнүңүз", "ru": "Научиться добавлять музыку и регулировать громкость", "minutes": 20 },
+            { "en": "Edit one 30-second video from start to end", "kg": "Бир 30 секунддук видеону башынан аягына чейин монтаждаңыз", "ru": "Смонтировать одно 30-секундное видео от начала до конца", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Hook the viewer in the first 3 seconds of every video",
+          "kg": "Ар бир видеонун алгачкы 3 секундунда көрүүчүнү кызыктырыңыз",
+          "ru": "Цеплять зрителя в первые 3 секунды каждого видео",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Start each video with a question", "kg": "Ар бир видеону суроо менен баштаңыз", "ru": "Начинать каждое видео с вопроса" }
+        },
+        {
+          "en": "Shoot only in daylight or with a lamp in front of you",
+          "kg": "Күндүзгү жарыкта же алдыңызда чырак менен гана тартыңыз",
+          "ru": "Снимать только при дневном свете или с лампой спереди",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Stand facing a window when shooting", "kg": "Тартканда терезеге жүзүңүздү каратып туруңуз", "ru": "Во время съёмки вставать лицом к окну" }
+        },
+        {
+          "en": "Practise speaking to the camera 10 minutes, 3 times a week",
+          "kg": "Жумасына 3 жолу 10 мүнөт камерага сүйлөп машыгыңыз",
+          "ru": "3 раза в неделю 10 минут тренироваться говорить в камеру",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Record one 1-minute talk a week", "kg": "Жумасына бир 1 мүнөттүк сөз жаздырыңыз", "ru": "Записывать одно минутное обращение в неделю" }
+        },
+        {
+          "en": "Write a 5-line script template for videos",
+          "kg": "Видео үчүн 5 саптык сценарий үлгүсүн жазыңыз",
+          "ru": "Написать шаблон сценария видео на 5 строк",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write hook, main point and ending for one video", "kg": "Бир видеого башталыш, негизги ой жана аягын жазыңыз", "ru": "Написать начало, главную мысль и финал одного видео" },
+          "steps": [
+            { "en": "Watch 5 good videos and note their structure", "kg": "5 жакшы видеону көрүп, түзүлүшүн жазыңыз", "ru": "Посмотреть 5 хороших видео и записать структуру", "minutes": 30 },
+            { "en": "Write lines: hook, problem, tip, example, call", "kg": "Саптарды жазыңыз: башталыш, көйгөй, кеңеш, мисал, чакыруу", "ru": "Записать строки: зацепка, проблема, совет, пример, призыв", "minutes": 20 },
+            { "en": "Fill the template for your next video", "kg": "Кийинки видеоңуз үчүн үлгүнү толтуруңуз", "ru": "Заполнить шаблон для следующего видео", "minutes": 20 },
+            { "en": "Read it aloud and cut extra words", "kg": "Үн чыгарып окуп, ашыкча сөздөрдү алып салыңыз", "ru": "Прочитать вслух и убрать лишние слова", "minutes": 10 },
+            { "en": "Save the template in Notes for reuse", "kg": "Үлгүнү кайра колдонуу үчүн Notes бөлүмүнө сактаңыз", "ru": "Сохранить шаблон в заметках для повторного использования", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Add subtitles to every video",
+          "kg": "Ар бир видеого субтитр кошуңуз",
+          "ru": "Добавлять субтитры к каждому видео",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Add subtitles to the first 10 seconds", "kg": "Алгачкы 10 секундга субтитр кошуңуз", "ru": "Добавлять субтитры к первым 10 секундам" }
+        },
+        {
+          "en": "Set up a simple shooting corner at home",
+          "kg": "Үйдө жөнөкөй тартуу бурчун даярдаңыз",
+          "ru": "Оборудовать дома простой уголок для съёмки",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Find one clean wall near a window", "kg": "Терезенин жанынан бир таза дубал табыңыз", "ru": "Найти одну чистую стену у окна" },
+          "steps": [
+            { "en": "Choose a quiet place with good light", "kg": "Жарыгы жакшы тынч жер тандаңыз", "ru": "Выбрать тихое место с хорошим светом", "minutes": 15 },
+            { "en": "Clear the background of extra things", "kg": "Арткы фондогу ашыкча буюмдарды алып салыңыз", "ru": "Убрать лишние вещи с фона", "minutes": 30 },
+            { "en": "Fix the phone at eye level on books or a stand", "kg": "Телефонду көз деңгээлинде китепке же штативге бекитиңиз", "ru": "Закрепить телефон на уровне глаз: книги или штатив", "minutes": 15 },
+            { "en": "Test sound: record 30 seconds and listen", "kg": "Үндү текшериңиз: 30 секунд жаздырып, угуңуз", "ru": "Проверить звук: записать 30 секунд и прослушать", "minutes": 10 },
+            { "en": "Shoot one test video in the new corner", "kg": "Жаңы бурчта бир сынак видео тартыңыз", "ru": "Снять одно пробное видео в новом уголке", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Rewatch your last video and fix one weak point",
+          "kg": "Акыркы видеоңузду кайра көрүп, бир алсыз жерин оңдоңуз",
+          "ru": "Пересматривать последнее видео и исправлять одну слабость",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Note one thing to improve after each video", "kg": "Ар видеодон кийин жакшырта турган бир нерсени жазыңыз", "ru": "Записывать одну вещь для улучшения после видео" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Audience growth", "kg": "Аудиторияны өстүрүү", "ru": "Рост аудитории" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First 100 real followers", "kg": "Алгачкы 100 чыныгы жазылуучу", "ru": "Первые 100 живых подписчиков" },
+        { "en": "First 1,000 followers", "kg": "Алгачкы 1000 жазылуучу", "ru": "Первые 1000 подписчиков" },
+        { "en": "First collaboration done", "kg": "Биринчи кызматташтык болду", "ru": "Первая коллаборация проведена" }
+      ],
+      "actions": [
+        {
+          "en": "Reply to every comment within 24 hours",
+          "kg": "Ар бир комментарийге 24 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать на каждый комментарий в течение 24 часов",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Reply to 5 comments a day", "kg": "Күнүнө 5 комментарийге жооп бериңиз", "ru": "Отвечать на 5 комментариев в день" }
+        },
+        {
+          "en": "Leave 5 useful comments under bloggers of your niche",
+          "kg": "Багытыңыздагы блогерлерге 5 пайдалуу комментарий калтырыңыз",
+          "ru": "Оставлять 5 полезных комментариев у блогеров ниши",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Leave 2 useful comments a day", "kg": "Күнүнө 2 пайдалуу комментарий калтырыңыз", "ru": "Оставлять 2 полезных комментария в день" }
+        },
+        {
+          "en": "Agree on one collaboration with a blogger of your size",
+          "kg": "Өзүңүздөй блогер менен бир кызматташууга макулдашыңыз",
+          "ru": "Договориться о коллаборации с блогером своего уровня",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write to 2 bloggers with a collab idea", "kg": "2 блогерге кызматташуу идеясы менен жазыңыз", "ru": "Написать 2 блогерам с идеей коллаборации" },
+          "steps": [
+            { "en": "List 10 bloggers with a similar audience", "kg": "Аудиториясы окшош 10 блогердин тизмесин түзүңүз", "ru": "Составить список 10 блогеров с похожей аудиторией", "minutes": 30 },
+            { "en": "Think of one idea useful for both sides", "kg": "Эки тарапка тең пайдалуу бир идея ойлоп табыңыз", "ru": "Придумать одну идею, полезную обеим сторонам", "minutes": 20 },
+            { "en": "Write a short polite message to 5 of them", "kg": "Алардын 5ине кыска сылык кат жазыңыз", "ru": "Написать 5 из них короткое вежливое сообщение", "minutes": 30 },
+            { "en": "Agree on format, date and who posts what", "kg": "Формат, дата жана ким эмне жарыялаарын макулдашыңыз", "ru": "Согласовать формат, дату и кто что публикует", "minutes": 20 },
+            { "en": "Make the joint post and thank the partner", "kg": "Биргелешкен пост жасап, өнөгүңүзгө ыраазычылык айтыңыз", "ru": "Сделать совместный пост и поблагодарить партнёра", "minutes": 90 }
+          ]
+        },
+        {
+          "en": "Ask your audience a question once a week",
+          "kg": "Жумасына бир жолу аудиторияңызга суроо бериңиз",
+          "ru": "Раз в неделю задавать аудитории вопрос",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Run one poll in stories every 2 weeks", "kg": "2 жумада бир стористе сурамжылоо өткөрүңүз", "ru": "Раз в 2 недели делать опрос в сторис" }
+        },
+        {
+          "en": "Never buy followers, likes or views",
+          "kg": "Эч качан жазылуучу, лайк же көрүү сатып албаңыз",
+          "ru": "Никогда не покупать подписчиков, лайки и просмотры",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Skip follow-for-follow games: grow with content", "kg": "Өз ара жазылуу оюнуна катышпаңыз: контент менен гана өсүңүз", "ru": "Не играть во взаимные подписки: расти только контентом" }
+        },
+        {
+          "en": "Tell 20 people you know about your blog",
+          "kg": "Блогуңуз тууралуу тааныш 20 адамга айтыңыз",
+          "ru": "Рассказать о блоге 20 знакомым",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Share your blog with 5 friends", "kg": "Блогуңузду 5 досуңуз менен бөлүшүңүз", "ru": "Поделиться блогом с 5 друзьями" },
+          "steps": [
+            { "en": "Prepare 1 strong post to show first", "kg": "Биринчи көрсөтө турган 1 күчтүү пост даярдаңыз", "ru": "Подготовить 1 сильный пост для первого показа", "minutes": 60 },
+            { "en": "Write a short message about your blog", "kg": "Блогуңуз тууралуу кыска билдирүү жазыңыз", "ru": "Написать короткое сообщение о блоге", "minutes": 15 },
+            { "en": "Send it to 10 friends personally", "kg": "Аны 10 досуңузга жеке жөнөтүңүз", "ru": "Отправить его лично 10 друзьям", "minutes": 20 },
+            { "en": "Share it in 2 group chats where it fits", "kg": "Ылайыктуу 2 топтук чатта бөлүшүңүз", "ru": "Поделиться в 2 подходящих групповых чатах", "minutes": 10 },
+            { "en": "Ask 5 people for honest feedback", "kg": "5 адамдан ак ниет пикир сураңыз", "ru": "Попросить у 5 человек честный отзыв", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Turn one popular comment into a new post weekly",
+          "kg": "Ар жума бир популярдуу комментарийден жаңы пост жасаңыз",
+          "ru": "Каждую неделю делать пост из популярного комментария",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Answer one viewer question in stories weekly", "kg": "Ар жума стористе бир көрүүчүнүн суроосуна жооп бериңиз", "ru": "Раз в неделю отвечать на вопрос зрителя в сторис" }
+        },
+        {
+          "en": "Post the same video on a second platform for 4 weeks",
+          "kg": "Ошол эле видеону 4 жума экинчи платформага да салыңыз",
+          "ru": "4 недели дублировать видео на вторую площадку",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Post 3 videos on a second platform", "kg": "Экинчи платформага 3 видео салыңыз", "ru": "Выложить 3 видео на вторую площадку" },
+          "steps": [
+            { "en": "Pick a second platform where your topic is watched", "kg": "Темаңыз көрүлгөн экинчи платформаны тандаңыз", "ru": "Выбрать вторую площадку, где смотрят вашу тему", "minutes": 15 },
+            { "en": "Create and fill in the profile there", "kg": "Ал жерде профиль ачып, толтуруңуз", "ru": "Создать и оформить там профиль", "minutes": 30 },
+            { "en": "Adapt the format: size, length, captions", "kg": "Форматты ылайыкташтырыңыз: өлчөм, узундук, жазуулар", "ru": "Адаптировать формат: размер, длина, подписи", "minutes": 30 },
+            { "en": "Post 2 videos a week for 4 weeks", "kg": "4 жума бою жумасына 2 видео салыңыз", "ru": "4 недели выкладывать по 2 видео в неделю", "minutes": 30 },
+            { "en": "Compare results and decide to keep or stop", "kg": "Жыйынтыкты салыштырып, улантуу же токтотууну чечиңиз", "ru": "Сравнить результаты и решить: продолжать или нет", "minutes": 20 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Screen balance", "kg": "Экран тең салмагы", "ru": "Баланс экрана" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A month with screen time under limit", "kg": "Экран убактысы чекте болгон бир ай", "ru": "Месяц экранного времени в пределах лимита" }
+      ],
+      "actions": [
+        {
+          "en": "Set a daily limit for scrolling and keep it",
+          "kg": "Скролл үчүн күндүк чек коюп, аны сактаңыз",
+          "ru": "Поставить дневной лимит на ленту и соблюдать его",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Turn on a 1-hour limit for one app", "kg": "Бир тиркемеге 1 сааттык чек коюңуз", "ru": "Включить лимит 1 час для одного приложения" }
+        },
+        {
+          "en": "Check your screen time every evening",
+          "kg": "Ар кечте экран убактыңызды текшериңиз",
+          "ru": "Каждый вечер проверять экранное время",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Check screen time once a week", "kg": "Жумасына бир жолу экран убактысын текшериңиз", "ru": "Раз в неделю проверять экранное время" }
+        },
+        {
+          "en": "No phone for the first 30 minutes after waking",
+          "kg": "Ойгонгондон кийин 30 мүнөт телефон кармабаңыз",
+          "ru": "Не брать телефон первые 30 минут после пробуждения",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "No phone for the first 10 minutes after waking", "kg": "Ойгонгондон кийин 10 мүнөт телефон кармабаңыз", "ru": "Не брать телефон первые 10 минут после пробуждения" }
+        },
+        {
+          "en": "Keep one evening a week fully offline",
+          "kg": "Жумасына бир кечти толугу менен интернетсиз өткөрүңүз",
+          "ru": "Один вечер в неделю проводить полностью офлайн",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Stay offline for 2 hours once a week", "kg": "Жумасына бир жолу 2 саат интернетсиз болуңуз", "ru": "Раз в неделю 2 часа быть офлайн" }
+        },
+        {
+          "en": "Walk 30 minutes a day without headphones or scrolling",
+          "kg": "Күнүнө 30 мүнөт кулакчынсыз жана телефонсуз басыңыз",
+          "ru": "Гулять 30 минут в день без наушников и ленты",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk 10 minutes without the phone", "kg": "Телефонсуз 10 мүнөт басыңыз", "ru": "Гулять 10 минут без телефона" }
+        },
+        {
+          "en": "Put the phone away 1 hour before sleep",
+          "kg": "Уктаардан 1 саат мурун телефонду четке коюңуз",
+          "ru": "Убирать телефон за 1 час до сна",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put the phone away 20 minutes before sleep", "kg": "Уктаардан 20 мүнөт мурун телефонду четке коюңуз", "ru": "Убирать телефон за 20 минут до сна" }
+        },
+        {
+          "en": "Don't read stats more than twice a day",
+          "kg": "Статистиканы күнүнө эки жолудан ашык карабаңыз",
+          "ru": "Смотреть статистику не чаще двух раз в день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Turn off like notifications", "kg": "Лайк билдирүүлөрүн өчүрүңүз", "ru": "Отключить уведомления о лайках" }
+        },
+        {
+          "en": "Do 5 minutes of eye and neck exercises daily",
+          "kg": "Күн сайын 5 мүнөт көз жана моюн көнүгүүсүн жасаңыз",
+          "ru": "Каждый день 5 минут гимнастики для глаз и шеи",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Look into the distance for 1 minute every hour", "kg": "Ар саатта 1 мүнөт алыска караңыз", "ru": "Каждый час 1 минуту смотреть вдаль" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Routine & time", "kg": "Тартип жана убакыт", "ru": "Режим и время" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Fixed blogging hours for 4 weeks", "kg": "4 жума бою блогго туруктуу убакыт", "ru": "Фиксированные часы для блога 4 недели" }
+      ],
+      "actions": [
+        {
+          "en": "Block 3 fixed blogging slots in your weekly calendar",
+          "kg": "Жумалык календарга блог үчүн 3 туруктуу убакыт бөлүңүз",
+          "ru": "Забронировать в календаре 3 постоянных слота для блога",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Block one 1-hour slot a week", "kg": "Жумасына бир 1 сааттык убакыт бөлүңүз", "ru": "Забронировать один часовой слот в неделю" },
+          "steps": [
+            { "en": "Write down your fixed duties: study, work, family", "kg": "Туруктуу милдеттериңизди жазыңыз: окуу, иш, үй-бүлө", "ru": "Выписать постоянные дела: учёба, работа, семья", "minutes": 15 },
+            { "en": "Find 3 free 1-hour windows in the week", "kg": "Жумадан 3 бош 1 сааттык убакыт табыңыз", "ru": "Найти 3 свободных часовых окна в неделе", "minutes": 15 },
+            { "en": "Give each slot a job: ideas, shooting, editing", "kg": "Ар бир убакытка иш бериңиз: идея, тартуу, монтаж", "ru": "Назначить слотам задачи: идеи, съёмка, монтаж", "minutes": 10 },
+            { "en": "Add the slots to the calendar with reminders", "kg": "Убакыттарды эскертме менен календарга кошуңуз", "ru": "Внести слоты в календарь с напоминаниями", "minutes": 10 },
+            { "en": "Tell your family when you are busy filming", "kg": "Тартуу убактыңызды үй-бүлөңүзгө айтыңыз", "ru": "Сказать семье, когда вы заняты съёмкой", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Don't let the blog take time from study, work or prayer",
+          "kg": "Блог окуу, иш же намаз убактысын алып кетпесин",
+          "ru": "Не отдавать блогу время учёбы, работы или молитвы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do blog tasks only after main duties", "kg": "Блог иштерин негизги милдеттерден кийин гана аткарыңыз", "ru": "Заниматься блогом только после основных дел" }
+        },
+        {
+          "en": "Plan tomorrow's blog task every evening",
+          "kg": "Ар кечте эртеңки блог тапшырмасын пландаңыз",
+          "ru": "Каждый вечер планировать задачу для блога на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Plan blog tasks once a week", "kg": "Блог тапшырмаларын жумасына бир пландаңыз", "ru": "Планировать задачи блога раз в неделю" }
+        },
+        {
+          "en": "Use 25-minute focus blocks with notifications off",
+          "kg": "Билдирүүлөрдү өчүрүп, 25 мүнөттүк блоктор менен иштеңиз",
+          "ru": "Работать блоками по 25 минут без уведомлений",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do one 15-minute focus block", "kg": "Бир 15 мүнөттүк көңүл буруу блогун жасаңыз", "ru": "Делать один фокус-блок 15 минут" }
+        },
+        {
+          "en": "Keep a weekly blog review every Sunday",
+          "kg": "Ар жекшемби блогдун жумалык жыйынтыгын чыгарыңыз",
+          "ru": "Каждое воскресенье подводить итоги недели блога",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 1 win and 1 lesson of the week", "kg": "Жуманын 1 жеңишин жана 1 сабагын жазыңыз", "ru": "Записать 1 победу и 1 урок недели" }
+        },
+        {
+          "en": "Keep one day a week free from the blog",
+          "kg": "Жумасына бир күндү блогсуз өткөрүңүз",
+          "ru": "Один день в неделю не заниматься блогом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep one evening a week free from the blog", "kg": "Жумасына бир кечти блогсуз өткөрүңүз", "ru": "Один вечер в неделю не заниматься блогом" }
+        },
+        {
+          "en": "Track hours spent on the blog each week",
+          "kg": "Ар жума блогго кеткен сааттарды эсептеңиз",
+          "ru": "Каждую неделю считать часы, потраченные на блог",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Note blog time on one day as a test", "kg": "Сынак катары бир күн блог убактысын жазыңыз", "ru": "Записать время на блог за один день для пробы" }
+        },
+        {
+          "en": "Shoot in good mood hours, edit in tired hours",
+          "kg": "Шайыр маалда тартып, чарчаганда монтаж кылыңыз",
+          "ru": "Снимать в бодрые часы, монтировать в уставшие",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do the hardest blog task first", "kg": "Блогдун эң оор тапшырмасын биринчи аткарыңыз", "ru": "Делать самую трудную задачу блога первой" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Equipment & money", "kg": "Жабдуу жана акча", "ru": "Техника и деньги" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Basic kit bought without debt", "kg": "Негизги жабдуу карызсыз алынды", "ru": "Базовая техника куплена без долгов" }
+      ],
+      "actions": [
+        {
+          "en": "Start with the phone you have, buy nothing for 30 days",
+          "kg": "Колуңуздагы телефон менен баштаңыз, 30 күн эч нерсе албаңыз",
+          "ru": "Начать с текущим телефоном и 30 дней ничего не покупать",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Make 5 posts before any purchase", "kg": "Бир нерсе сатып алардан мурун 5 пост жасаңыз", "ru": "Сделать 5 постов до любой покупки" }
+        },
+        {
+          "en": "Make a kit list with prices: mic, lamp, stand",
+          "kg": "Жабдуу тизмесин баасы менен түзүңүз: микрофон, чырак, штатив",
+          "ru": "Составить список техники с ценами: микрофон, свет, штатив",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose the one item that helps most", "kg": "Эң көп пайда бере турган бир буюмду тандаңыз", "ru": "Выбрать одну вещь, которая поможет больше всего" },
+          "steps": [
+            { "en": "Note what hurts your videos most now", "kg": "Азыр видеоңузга эмне көбүрөөк зыян берерин жазыңыз", "ru": "Записать, что сейчас больше всего портит видео", "minutes": 10 },
+            { "en": "List up to 3 items that fix it", "kg": "Аны оңдой турган 3 буюмга чейин тизмелеңиз", "ru": "Выписать до 3 вещей, которые это исправят", "minutes": 10 },
+            { "en": "Compare prices in 3 local shops or sites", "kg": "3 жергиликтүү дүкөндө же сайтта бааларды салыштырыңыз", "ru": "Сравнить цены в 3 местных магазинах или сайтах", "minutes": 40 },
+            { "en": "Check used options in good condition", "kg": "Абалы жакшы колдонулган варианттарды текшериңиз", "ru": "Посмотреть б/у варианты в хорошем состоянии", "minutes": 20 },
+            { "en": "Write the final list with soms and order", "kg": "Акыркы тизмени сом менен жана кезеги менен жазыңыз", "ru": "Записать итоговый список с суммами в сомах и очерёдностью", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Save a fixed amount for equipment every week",
+          "kg": "Жабдуу үчүн ар жума белгилүү сумма чогултуңуз",
+          "ru": "Каждую неделю откладывать фиксированную сумму на технику",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Save 200 som a week for equipment", "kg": "Жабдууга жумасына 200 сом чогултуңуз", "ru": "Откладывать 200 сомов в неделю на технику" }
+        },
+        {
+          "en": "Buy equipment only with saved money, never in debt",
+          "kg": "Жабдууну чогулткан акчага гана алыңыз, карызга эч качан",
+          "ru": "Покупать технику только на накопленное, не в долг",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait 7 days before any gear purchase", "kg": "Жабдуу алардан мурун 7 күн күтүңүз", "ru": "Ждать 7 дней перед любой покупкой техники" }
+        },
+        {
+          "en": "Clean the phone lens and free up storage weekly",
+          "kg": "Ар жума телефондун линзасын тазалап, эс тутумун бошотуңуз",
+          "ru": "Каждую неделю чистить объектив и освобождать память",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Wipe the lens before each shoot", "kg": "Ар тартуудан мурун линзаны сүртүңүз", "ru": "Протирать объектив перед каждой съёмкой" }
+        },
+        {
+          "en": "Set up a backup of all your videos",
+          "kg": "Бардык видеолоруңуздун камдык көчүрмөсүн жасаңыз",
+          "ru": "Настроить резервную копию всех видео",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Copy last month's videos to a second place", "kg": "Өткөн айдагы видеолорду экинчи жерге көчүрүңүз", "ru": "Скопировать видео за прошлый месяц во второе место" },
+          "steps": [
+            { "en": "Choose where to back up: cloud or drive", "kg": "Кайда сактаарыңызды тандаңыз: булут же диск", "ru": "Выбрать место для копий: облако или диск", "minutes": 15 },
+            { "en": "Make folders by month", "kg": "Айлар боюнча папкалар түзүңүз", "ru": "Создать папки по месяцам", "minutes": 10 },
+            { "en": "Copy all finished videos", "kg": "Бардык бүткөн видеолорду көчүрүңүз", "ru": "Скопировать все готовые видео", "minutes": 45 },
+            { "en": "Delete failed takes from the phone", "kg": "Ийгиликсиз дублдарды телефондон өчүрүңүз", "ru": "Удалить неудачные дубли с телефона", "minutes": 20 },
+            { "en": "Set a monthly reminder to repeat", "kg": "Кайталоо үчүн айлык эскертме коюңуз", "ru": "Поставить ежемесячное напоминание повторять", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Use only free music and fonts with a licence",
+          "kg": "Лицензиясы бар акысыз музыка жана шрифттерди гана колдонуңуз",
+          "ru": "Использовать только бесплатную музыку и шрифты с лицензией",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Use the platform's built-in music library", "kg": "Платформанын ичиндеги музыка китепканасын колдонуңуз", "ru": "Брать музыку из встроенной библиотеки площадки" }
+        },
+        {
+          "en": "Write fair rules for paid ads before the first offer",
+          "kg": "Биринчи сунушка чейин жарнаманын адилет эрежелерин жазыңыз",
+          "ru": "Записать честные правила рекламы до первого предложения",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 products you would never advertise", "kg": "Эч качан жарнамалабай турган 3 нерсени жазыңыз", "ru": "Записать 3 вещи, которые никогда не будете рекламировать" },
+          "steps": [
+            { "en": "List topics you won't advertise: casinos, scams", "kg": "Жарнамалабай турган темаларды жазыңыз: казино, алдамчылык", "ru": "Выписать, что не рекламируете: казино, сомнительное", "minutes": 15 },
+            { "en": "Decide to test every product before advertising", "kg": "Жарнамадан мурун ар бир буюмду сынап көрүүнү чечиңиз", "ru": "Решить тестировать каждый продукт до рекламы", "minutes": 10 },
+            { "en": "Decide how you mark ads clearly", "kg": "Жарнаманы кантип ачык белгилээриңизди чечиңиз", "ru": "Решить, как явно помечать рекламу", "minutes": 10 },
+            { "en": "Check what similar bloggers charge", "kg": "Окшош блогерлер канча аларын билиңиз", "ru": "Узнать, сколько берут похожие блогеры", "minutes": 30 },
+            { "en": "Write the rules in one note", "kg": "Эрежелерди бир эскертмеге жазыңыз", "ru": "Записать правила в одной заметке", "minutes": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Honesty & respect", "kg": "Чынчылдык жана урмат", "ru": "Честность и уважение" },
+      "kind": "character",
+      "milestones": [
+        { "en": "30 posts finished as promised", "kg": "Убада кылынган 30 пост бүттү", "ru": "30 постов доведены до конца, как обещано" }
+      ],
+      "actions": [
+        {
+          "en": "Finish and publish every post you announce",
+          "kg": "Жарыялаган ар бир постту бүтүрүп, чыгарыңыз",
+          "ru": "Доводить до публикации каждый анонсированный пост",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Announce only posts that are already ready", "kg": "Даяр болгон посттарды гана жарыялаңыз", "ru": "Анонсировать только уже готовые посты" }
+        },
+        {
+          "en": "Mark every ad and gift clearly as ads",
+          "kg": "Ар бир жарнама менен белекти ачык белгилеңиз",
+          "ru": "Чётко помечать каждую рекламу и подарок",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write \"Ad\" in the first line of paid posts", "kg": "Акылуу посттордун биринчи сабына «жарнама» деп жазыңыз", "ru": "Писать «реклама» в первой строке платных постов" }
+        },
+        {
+          "en": "Check a fact in 2 sources before you post it",
+          "kg": "Фактыны жарыялоодон мурун 2 булактан текшериңиз",
+          "ru": "Проверять факт в 2 источниках перед публикацией",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Add a source link under facts you share", "kg": "Бөлүшкөн фактылардын астына булак шилтемесин кошуңуз", "ru": "Добавлять ссылку на источник под фактами" }
+        },
+        {
+          "en": "Answer rude comments politely or not at all",
+          "kg": "Орой комментарийлерге сылык жооп бериңиз же жооп бербеңиз",
+          "ru": "Отвечать на грубость вежливо или не отвечать вовсе",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait 1 hour before replying to criticism", "kg": "Сынга жооп берерден мурун 1 саат күтүңүз", "ru": "Ждать 1 час перед ответом на критику" }
+        },
+        {
+          "en": "Ask permission before filming or posting other people",
+          "kg": "Башка адамдарды тартуудан же жарыялоодон мурун уруксат сураңыз",
+          "ru": "Спрашивать разрешения, прежде чем снимать или выкладывать людей",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Blur faces of people who didn't agree", "kg": "Макул болбогон адамдардын жүзүн бүдөмүктөңүз", "ru": "Размывать лица тех, кто не дал согласия" }
+        },
+        {
+          "en": "Thank 3 followers by name each week",
+          "kg": "Ар жума 3 жазылуучуга аты менен ыраазычылык айтыңыз",
+          "ru": "Каждую неделю благодарить 3 подписчиков по имени",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Thank one follower a week", "kg": "Жумасына бир жазылуучуга ыраазычылык айтыңыз", "ru": "Благодарить одного подписчика в неделю" }
+        },
+        {
+          "en": "Correct your mistakes publicly within a day",
+          "kg": "Катаңызды бир күндүн ичинде ачык оңдоңуз",
+          "ru": "Публично исправлять свои ошибки в течение дня",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Pin a short correction under the wrong post", "kg": "Ката посттун астына кыска оңдоону бекитиңиз", "ru": "Закреплять короткую поправку под ошибочным постом" }
+        },
+        {
+          "en": "Never mock people, elders or traditions for views",
+          "kg": "Көрүү үчүн адамдарды, улууларды, салтты шылдыңдабаңыз",
+          "ru": "Никогда не высмеивать людей, старших и традиции ради охватов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask: would I show this to my parents?", "kg": "Өзүңүздөн сураңыз: муну ата-энеме көрсөтөр белем?", "ru": "Спрашивать себя: показал бы я это родителям?" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Analytics", "kg": "Аналитика", "ru": "Аналитика" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Monthly stats table for 3 months", "kg": "3 айлык статистика таблицасы", "ru": "Таблица статистики за 3 месяца" }
+      ],
+      "actions": [
+        {
+          "en": "Make a stats table: views, saves, new followers",
+          "kg": "Статистика таблицасын түзүңүз: көрүү, сактоо, жаңы жазылуучу",
+          "ru": "Сделать таблицу: просмотры, сохранения, новые подписчики",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write down this week's total views", "kg": "Ушул жуманын жалпы көрүүсүн жазыңыз", "ru": "Записать общие просмотры за неделю" },
+          "steps": [
+            { "en": "Open the platform stats and find key numbers", "kg": "Платформанын статистикасын ачып, негизги сандарды табыңыз", "ru": "Открыть статистику площадки и найти ключевые цифры", "minutes": 15 },
+            { "en": "Create a table with weeks as rows", "kg": "Саптары жумалар болгон таблица түзүңүз", "ru": "Создать таблицу, где строки — недели", "minutes": 15 },
+            { "en": "Add columns: posts, views, saves, followers", "kg": "Мамычаларды кошуңуз: пост, көрүү, сактоо, жазылуучу", "ru": "Добавить столбцы: посты, просмотры, сохранения, подписчики", "minutes": 10 },
+            { "en": "Fill in the last 4 weeks", "kg": "Акыркы 4 жуманы толтуруңуз", "ru": "Заполнить последние 4 недели", "minutes": 20 },
+            { "en": "Set a weekly reminder to update it", "kg": "Жаңылоо үчүн жумалык эскертме коюңуз", "ru": "Поставить еженедельное напоминание обновлять", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Update the stats table every Sunday",
+          "kg": "Ар жекшемби статистика таблицасын жаңылаңыз",
+          "ru": "Каждое воскресенье обновлять таблицу статистики",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Update the table once in 2 weeks", "kg": "Таблицаны 2 жумада бир жаңылаңыз", "ru": "Обновлять таблицу раз в 2 недели" }
+        },
+        {
+          "en": "Find your top 3 posts of the week and why they worked",
+          "kg": "Жуманын эң мыкты 3 постун жана себебин табыңыз",
+          "ru": "Находить 3 лучших поста недели и причину успеха",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Find the best post of the week", "kg": "Жуманын эң мыкты постун табыңыз", "ru": "Находить лучший пост недели" }
+        },
+        {
+          "en": "Check what time your audience is online",
+          "kg": "Аудиторияңыз кайсы убакта онлайн экенин текшериңиз",
+          "ru": "Проверять, в какое время аудитория онлайн",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Post once at a new time to compare", "kg": "Салыштыруу үчүн бир жолу башка убакта жарыялаңыз", "ru": "Один раз выложить в другое время для сравнения" }
+        },
+        {
+          "en": "Run a 2-week test: two hooks for the same topic",
+          "kg": "2 жумалык сынак: бир темага эки башка башталыш",
+          "ru": "Провести тест 2 недели: два начала на одну тему",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Try 2 different titles on 2 posts", "kg": "2 постто 2 башка аталышты сынаңыз", "ru": "Попробовать 2 разных заголовка на 2 постах" },
+          "steps": [
+            { "en": "Choose one topic and write 2 different hooks", "kg": "Бир тема тандап, 2 башка башталыш жазыңыз", "ru": "Выбрать тему и написать 2 разных начала", "minutes": 20 },
+            { "en": "Make 2 versions of the post", "kg": "Посттун 2 вариантын жасаңыз", "ru": "Сделать 2 версии поста", "minutes": 60 },
+            { "en": "Publish them a week apart at the same time", "kg": "Аларды бир жума аралык менен бир убакта жарыялаңыз", "ru": "Выложить их с разницей в неделю в одно время", "minutes": 10 },
+            { "en": "Compare views after 3 days each", "kg": "Ар биринин 3 күндөн кийинки көрүүлөрүн салыштырыңыз", "ru": "Сравнить просмотры каждого через 3 дня", "minutes": 15 },
+            { "en": "Write which hook won and use it again", "kg": "Кайсы башталыш утканын жазып, кайра колдонуңуз", "ru": "Записать, какое начало победило, и повторять его", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Judge posts by saves and comments, not likes only",
+          "kg": "Постту лайк менен эле эмес, сактоо жана комментарий менен баалаңыз",
+          "ru": "Оценивать посты по сохранениям и комментариям, не по лайкам",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Look at saves first when you check stats", "kg": "Статистиканы караганда алгач сактоолорду караңыз", "ru": "Смотреть сначала на сохранения в статистике" }
+        },
+        {
+          "en": "Read all comments weekly and list 3 viewer wishes",
+          "kg": "Ар жума комментарийлерди окуп, көрүүчүнүн 3 каалоосун жазыңыз",
+          "ru": "Раз в неделю читать комментарии и выписывать 3 пожелания",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Note one viewer wish a week", "kg": "Жумасына көрүүчүнүн бир каалоосун жазыңыз", "ru": "Записывать одно пожелание зрителей в неделю" }
+        },
+        {
+          "en": "Compare this month with the last on the 1st day",
+          "kg": "Айдын 1-күнү ушул айды өткөн ай менен салыштырыңыз",
+          "ru": "Первого числа сравнивать месяц с прошлым",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Compare follower count month to month", "kg": "Жазылуучулар санын ай сайын салыштырыңыз", "ru": "Сравнивать число подписчиков помесячно" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "People & support", "kg": "Адамдар жана колдоо", "ru": "Люди и поддержка" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Blogging buddy found", "kg": "Блог боюнча өнөк табылды", "ru": "Найден напарник по блогу" }
+      ],
+      "actions": [
+        {
+          "en": "Find a blogging buddy and check in weekly",
+          "kg": "Блог боюнча өнөк таап, ар жума отчет алмашыңыз",
+          "ru": "Найти напарника по блогу и сверяться раз в неделю",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask one friend to rate your next post", "kg": "Бир досуңуздан кийинки постуңузга баа берүүсүн сураңыз", "ru": "Попросить одного друга оценить следующий пост" },
+          "steps": [
+            { "en": "List 5 people who also create content", "kg": "Контент жасаган 5 адамды тизмелеңиз", "ru": "Выписать 5 людей, которые тоже делают контент", "minutes": 10 },
+            { "en": "Write to 3 of them with an offer to support", "kg": "Алардын 3үнө колдоо сунушу менен жазыңыз", "ru": "Написать 3 из них с предложением поддержки", "minutes": 15 },
+            { "en": "Agree on a weekly call day", "kg": "Жумалык сүйлөшүү күнүнө макулдашыңыз", "ru": "Договориться о дне еженедельного созвона", "minutes": 10 },
+            { "en": "Share goals for the month", "kg": "Айлык максаттарыңыз менен бөлүшүңүз", "ru": "Поделиться целями на месяц", "minutes": 20 },
+            { "en": "Hold the first 20-minute check-in", "kg": "Биринчи 20 мүнөттүк жолугушууну өткөрүңүз", "ru": "Провести первую 20-минутную встречу", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Give honest feedback on one post of a fellow blogger",
+          "kg": "Башка блогердин бир постуна ак ниет пикир бериңиз",
+          "ru": "Давать честный отзыв на один пост коллеги",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Leave one kind detailed comment a week", "kg": "Жумасына бир жылуу, толук комментарий калтырыңыз", "ru": "Оставлять один добрый развёрнутый комментарий в неделю" }
+        },
+        {
+          "en": "Attend one local meetup of bloggers or creators",
+          "kg": "Блогерлердин бир жергиликтүү жолугушуусуна катышыңыз",
+          "ru": "Сходить на одну местную встречу блогеров",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Join one online chat of creators", "kg": "Авторлордун бир онлайн чатына кошулуңуз", "ru": "Вступить в один онлайн-чат авторов" },
+          "steps": [
+            { "en": "Find meetups in your city in local chats", "kg": "Жергиликтүү чаттардан шаарыңыздагы жолугушууларды табыңыз", "ru": "Найти встречи в своём городе через местные чаты", "minutes": 20 },
+            { "en": "Register and put the date in the calendar", "kg": "Катталып, датаны календарга киргизиңиз", "ru": "Зарегистрироваться и внести дату в календарь", "minutes": 10 },
+            { "en": "Prepare a 30-second intro about your blog", "kg": "Блогуңуз тууралуу 30 секунддук таанышуу даярдаңыз", "ru": "Подготовить 30-секундное представление блога", "minutes": 15 },
+            { "en": "Attend and talk to 3 new people", "kg": "Катышып, 3 жаңы адам менен сүйлөшүңүз", "ru": "Сходить и поговорить с 3 новыми людьми", "minutes": 120 },
+            { "en": "Follow up with them within 2 days", "kg": "2 күндүн ичинде аларга жазыңыз", "ru": "Написать им в течение 2 дней", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Ask family before showing them or your home",
+          "kg": "Үй-бүлөңүздү же үйүңүздү көрсөтүүдөн мурун уруксат сураңыз",
+          "ru": "Спрашивать семью, прежде чем показывать их или дом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Film home only in your own room", "kg": "Үйдөн өз бөлмөңүздө гана тартыңыз", "ru": "Снимать дома только в своей комнате" }
+        },
+        {
+          "en": "Share one post of a smaller blogger each week",
+          "kg": "Ар жума кичирээк блогердин бир постун бөлүшүңүз",
+          "ru": "Каждую неделю делиться постом блогера поменьше",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Share one post of another blogger a month", "kg": "Айына бир башка блогердин постун бөлүшүңүз", "ru": "Раз в месяц делиться постом другого блогера" }
+        },
+        {
+          "en": "Block and report harassment, don't argue with it",
+          "kg": "Кордукту бөгөттөп, даттаныңыз, талашпаңыз",
+          "ru": "Блокировать и жаловаться на травлю, а не спорить",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Hide one toxic comment without replying", "kg": "Бир уулуу комментарийди жооп бербей жашырыңыз", "ru": "Скрыть один токсичный комментарий без ответа" }
+        },
+        {
+          "en": "Talk weekly with a person who supports your blog",
+          "kg": "Блогуңузду колдогон адам менен ар жума сүйлөшүңүз",
+          "ru": "Раз в неделю говорить с тем, кто поддерживает блог",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Tell one close person about your week's post", "kg": "Бир жакын адамга жуманын постун айтып бериңиз", "ru": "Рассказать близкому о посте недели" }
+        },
+        {
+          "en": "Ask 5 followers what they want to see next",
+          "kg": "5 жазылуучудан кийин эмне көргүсү келерин сураңыз",
+          "ru": "Спросить 5 подписчиков, что они хотят видеть дальше",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask one follower for an idea", "kg": "Бир жазылуучудан идея сураңыз", "ru": "Спросить идею у одного подписчика" },
+          "steps": [
+            { "en": "Pick 5 active followers", "kg": "5 активдүү жазылуучуну тандаңыз", "ru": "Выбрать 5 активных подписчиков", "minutes": 10 },
+            { "en": "Write them a short polite question", "kg": "Аларга кыска сылык суроо жазыңыз", "ru": "Написать им короткий вежливый вопрос", "minutes": 15 },
+            { "en": "Collect answers in one note", "kg": "Жоопторду бир эскертмеге чогултуңуз", "ru": "Собрать ответы в одной заметке", "minutes": 10 },
+            { "en": "Find the most common wish", "kg": "Эң көп кайталанган каалоону табыңыз", "ru": "Найти самое частое пожелание", "minutes": 10 },
+            { "en": "Add it to next week's content plan", "kg": "Аны кийинки жуманын контент-планына кошуңуз", "ru": "Добавить его в контент-план следующей недели", "minutes": 10 }
+          ]
+        }
+      ]
+    }
+  ]
+}

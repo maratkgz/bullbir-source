@@ -1,0 +1,857 @@
+{
+  "id": "mental",
+  "icon": "🧘",
+  "title": { "en": "Mind & rest", "kg": "Ички тынчтык жана эс алуу", "ru": "Душевное состояние и отдых" },
+  "keywords": {
+    "en": ["!stress", "!burnout", "!anxiety", "calm", "rest", "relax", "tired", "fatigue", "mood", "mental health", "peace of mind", "meditation", "breathing", "sleep better", "overthinking", "balance", "recover", "self-care", "emotions", "nervous", "unplug"],
+    "kg": ["!стресс", "!чарчоо", "!тынчсыздануу", "тынчтык", "тынч", "эс алуу", "эс алгым келет", "чарчадым", "маанай", "көңүл", "жан дүйнө", "медитация", "дем алуу", "уйку", "сезимдер", "нерв", "тең салмак", "кайгы", "өзүмө убакыт", "бейпилдик"],
+    "ru": ["!стресс", "!выгорание", "!тревога", "спокойствие", "успокоиться", "отдых", "отдохнуть", "устал", "усталость", "настроение", "психическое здоровье", "нервы", "медитация", "дыхание", "высыпаться", "эмоции", "баланс", "восстановиться", "забота о себе", "перегруз", "душевное равновесие"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Sleep", "kg": "Уйку", "ru": "Сон" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "2 weeks of a steady sleep schedule", "kg": "2 жума туруктуу уйку режими", "ru": "2 недели стабильного режима сна" }
+      ],
+      "actions": [
+        {
+          "en": "Go to bed and get up at the same time, ±30 min",
+          "kg": "Ар дайым бир убакта жатып, туруңуз (±30 мүнөт)",
+          "ru": "Ложиться и вставать в одно время (±30 минут)",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Keep a fixed wake-up time on weekdays", "kg": "Иш күндөрү бир убакта туруңуз", "ru": "Вставать в одно время по будням" }
+        },
+        {
+          "en": "No screens 30 minutes before sleep",
+          "kg": "Уктаардан 30 мүнөт мурун экран карабаңыз",
+          "ru": "Не смотреть в экраны за 30 минут до сна",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "No screens 10 minutes before sleep", "kg": "Уктаардан 10 мүнөт мурун экрандан баш тартыңыз", "ru": "Без экранов за 10 минут до сна" }
+        },
+        {
+          "en": "Make the bedroom dark, quiet and cool",
+          "kg": "Уктоочу бөлмөнү караңгы, тынч жана салкын кылыңыз",
+          "ru": "Сделать спальню тёмной, тихой и прохладной",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Air the room for 10 minutes before sleep", "kg": "Уктаардан мурун бөлмөнү 10 мүнөт желдетиңиз", "ru": "Проветривать комнату 10 минут перед сном" },
+          "steps": [
+            { "en": "Check what light gets into the room at night", "kg": "Түнкүсүн бөлмөгө кайсы жарык кирерин текшериңиз", "ru": "Проверить, какой свет попадает в комнату ночью", "minutes": 10 },
+            { "en": "Cover lights and close the curtains tightly", "kg": "Жарыктарды жаап, пардаларды бекем тартыңыз", "ru": "Закрыть источники света и плотно задёрнуть шторы", "minutes": 15 },
+            { "en": "Put the phone away from the bed", "kg": "Телефонду төшөктөн алыс коюңуз", "ru": "Убрать телефон подальше от кровати", "minutes": 5 },
+            { "en": "Air the room every evening", "kg": "Ар кечте бөлмөнү желдетиңиз", "ru": "Проветривать комнату каждый вечер", "minutes": 10 },
+            { "en": "Try a sleep mask or earplugs if needed", "kg": "Керек болсо уйку маскасын же кулак тыгынын колдонуп көрүңүз", "ru": "При необходимости попробовать маску или беруши", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "No caffeine after 15:00",
+          "kg": "Саат 15:00дөн кийин кофе жана энергетик ичпеңиз",
+          "ru": "Не пить кофеин после 15:00",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "No coffee after 18:00", "kg": "Саат 18:00дөн кийин кофе ичпеңиз", "ru": "Не пить кофе после 18:00" }
+        },
+        {
+          "en": "Do a calm 15-minute evening routine",
+          "kg": "15 мүнөттүк тынч кечки ырым жасаңыз",
+          "ru": "Делать спокойный 15-минутный вечерний ритуал",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Do one calm thing before sleep: read or stretch", "kg": "Уктаар алдында бир тынч иш жасаңыз: окуу же керилүү", "ru": "Делать одно спокойное дело перед сном: чтение или растяжка" }
+        },
+        {
+          "en": "Get 15 minutes of daylight in the morning",
+          "kg": "Эртең менен 15 мүнөт күндүн жарыгында болуңуз",
+          "ru": "Утром 15 минут побыть при дневном свете",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Open the curtains right after waking up", "kg": "Ойгонгон замат пардаларды ачыңыз", "ru": "Открывать шторы сразу после пробуждения" }
+        },
+        {
+          "en": "Note sleep hours and mood for a week",
+          "kg": "Бир жума уйку саатын жана маанайды белгилеңиз",
+          "ru": "Отмечать часы сна и настроение в течение недели",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Note sleep hours for 3 days", "kg": "3 күн уйку саатын белгилеңиз", "ru": "Записать часы сна за 3 дня" }
+        },
+        {
+          "en": "Keep naps under 30 minutes and before 16:00",
+          "kg": "Күндүзгү уйку 30 мүнөттөн аз жана саат 16:00гө чейин болсун",
+          "ru": "Дневной сон не дольше 30 минут и до 16:00",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Skip the late-afternoon nap", "kg": "Кечки маалдагы уйкудан баш тартыңыз", "ru": "Отказаться от сна ближе к вечеру" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Calm & stress", "kg": "Тынчтык жана стресс", "ru": "Спокойствие и стресс" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Have 3 working ways to calm down", "kg": "Тынчтануунун иштеген 3 жолу бар", "ru": "Есть 3 рабочих способа успокоиться" }
+      ],
+      "actions": [
+        {
+          "en": "Do 5 minutes of slow breathing every day",
+          "kg": "Күн сайын 5 мүнөт жай дем алыңыз",
+          "ru": "Делать 5 минут медленного дыхания каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Take 5 slow breaths in and out", "kg": "5 жолу жай дем алып, чыгарыңыз", "ru": "Сделать 5 медленных вдохов и выдохов" }
+        },
+        {
+          "en": "Write a personal list of 5 ways to calm down",
+          "kg": "Тынчтануунун 5 жеке жолун жазыңыз",
+          "ru": "Составить личный список из 5 способов успокоиться",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 2 things that help you calm down", "kg": "Тынчтанууга жардам берген 2 нерсени жазыңыз", "ru": "Записать 2 вещи, которые помогают успокоиться" },
+          "steps": [
+            { "en": "Recall 3 times you calmed down well", "kg": "Жакшы тынчтанган 3 учурду эстеңиз", "ru": "Вспомнить 3 случая, когда удалось хорошо успокоиться", "minutes": 10 },
+            { "en": "Write what helped each time", "kg": "Ар бир жолу эмне жардам бергенин жазыңыз", "ru": "Записать, что помогло каждый раз", "minutes": 10 },
+            { "en": "Add 2 new ways to try: walk, music", "kg": "Сынап көрүүгө 2 жаңы жол кошуңуз: сейилдөө, музыка", "ru": "Добавить 2 новых способа: прогулка, музыка", "minutes": 10 },
+            { "en": "Try each new way once this week", "kg": "Ушул жумада ар бир жаңы жолду бир жолу сынаңыз", "ru": "Попробовать каждый новый способ на этой неделе", "minutes": 30 },
+            { "en": "Keep the list in your phone notes", "kg": "Тизмени телефондун жазууларында сактаңыз", "ru": "Сохранить список в заметках телефона", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Write down what worries you, then 1 step you can take",
+          "kg": "Сизди эмне тынчсыздандырганын жана жасай турган 1 кадамды жазыңыз",
+          "ru": "Записывать, что тревожит, и 1 шаг, который можно сделать",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write down 1 worry and let it go for today", "kg": "1 тынчсызданууну жазып, бүгүнгө коё бериңиз", "ru": "Записать 1 тревогу и отложить её на сегодня" }
+        },
+        {
+          "en": "Take a 10-minute pause between big tasks",
+          "kg": "Чоң иштердин ортосунда 10 мүнөт тыныгыңыз",
+          "ru": "Делать 10-минутную паузу между большими задачами",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Take 1 short pause in the middle of the day", "kg": "Күндүн ортосунда 1 кыска тыныгуу алыңыз", "ru": "Делать 1 короткую паузу в середине дня" }
+        },
+        {
+          "en": "Count to 10 before answering when angry",
+          "kg": "Ачууланганда жооп берерден мурун 10го чейин санаңыз",
+          "ru": "Считать до 10, прежде чем отвечать в гневе",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Leave the room for a minute when upset", "kg": "Капа болгондо бир мүнөткө бөлмөдөн чыгыңыз", "ru": "Выходить из комнаты на минуту, когда расстроены" }
+        },
+        {
+          "en": "Name the 3 main stress sources of the week",
+          "kg": "Жуманын 3 негизги стресс себебин атаңыз",
+          "ru": "Называть 3 главных источника стресса за неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Name 1 stress source of the week", "kg": "Жуманын 1 стресс себебин атаңыз", "ru": "Назвать 1 источник стресса за неделю" }
+        },
+        {
+          "en": "Say “no” to 1 extra task that overloads you",
+          "kg": "Ашыкча жүк болгон 1 кошумча ишке «жок» дей алыңыз",
+          "ru": "Говорить «нет» 1 лишней задаче, которая перегружает",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask for a day to think before agreeing", "kg": "Макул болордон мурун ойлонууга бир күн сураңыз", "ru": "Просить день на раздумье перед согласием" }
+        },
+        {
+          "en": "Do a 10-minute guided relaxation 3 times a week",
+          "kg": "Жумасына 3 жолу 10 мүнөттүк релаксация жасаңыз",
+          "ru": "Делать 10-минутную релаксацию 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Do a 5-minute relaxation once a week", "kg": "Жумасына бир жолу 5 мүнөт релаксация жасаңыз", "ru": "Делать 5-минутную релаксацию раз в неделю" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Rest & recovery", "kg": "Эс алуу", "ru": "Отдых" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "A month with 1 real day off a week", "kg": "Бир ай бою жумасына 1 чыныгы эс алуу күнү", "ru": "Месяц с 1 настоящим выходным в неделю" }
+      ],
+      "actions": [
+        {
+          "en": "Keep 1 day a week free from work and study",
+          "kg": "Жумасына 1 күн жумуш менен окуудан эркин болсун",
+          "ru": "Оставлять 1 день в неделю без работы и учёбы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep half a day a week free", "kg": "Жумасына жарым күн бош болсун", "ru": "Оставлять полдня в неделю свободными" }
+        },
+        {
+          "en": "Do 30 minutes of something just for joy daily",
+          "kg": "Күн сайын 30 мүнөт жөн гана жаныңыз жыргаган нерсе кылыңыз",
+          "ru": "Каждый день 30 минут делать что-то просто для радости",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Do 10 minutes of something for joy", "kg": "10 мүнөт кубаныч берген нерсе кылыңыз", "ru": "Делать 10 минут что-то для радости" }
+        },
+        {
+          "en": "Make a list of 10 ways to rest without a screen",
+          "kg": "Экрансыз эс алуунун 10 жолунун тизмесин түзүңүз",
+          "ru": "Составить список из 10 способов отдыха без экрана",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 ways to rest without a screen", "kg": "Экрансыз эс алуунун 3 жолун жазыңыз", "ru": "Записать 3 способа отдыха без экрана" },
+          "steps": [
+            { "en": "Recall what you enjoyed as a child", "kg": "Бала кезиңизде эмнени жакшы көргөнүңүздү эстеңиз", "ru": "Вспомнить, что нравилось в детстве", "minutes": 10 },
+            { "en": "Write 5 things you can do at home", "kg": "Үйдө жасай турган 5 нерсени жазыңыз", "ru": "Записать 5 занятий, доступных дома", "minutes": 10 },
+            { "en": "Write 5 things outside: park, mountains, friends", "kg": "Сыртта 5 нерсе жазыңыз: сейил бак, тоо, достор", "ru": "Записать 5 занятий вне дома: парк, горы, друзья", "minutes": 10 },
+            { "en": "Try 1 new item from the list this week", "kg": "Ушул жумада тизмеден 1 жаңы нерсени сынаңыз", "ru": "Попробовать 1 новый пункт из списка на этой неделе", "minutes": 60 },
+            { "en": "Keep the list where you see it", "kg": "Тизмени көзүңүзгө көрүнгөн жерде сактаңыз", "ru": "Держать список на виду", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Spend 2 hours in nature once a week",
+          "kg": "Жумасына бир жолу 2 саат табиятта болуңуз",
+          "ru": "Проводить 2 часа на природе раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Walk in a park for 30 minutes a week", "kg": "Жумасына 30 мүнөт сейил бакта басыңыз", "ru": "Гулять 30 минут в парке раз в неделю" }
+        },
+        {
+          "en": "Plan a 1–2 day trip out of the city within a month",
+          "kg": "Бир айдын ичинде шаардан тышка 1–2 күндүк сапар пландаңыз",
+          "ru": "Спланировать поездку за город на 1–2 дня в течение месяца",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Plan a half-day trip out of the city", "kg": "Шаардан тышка жарым күндүк сапар пландаңыз", "ru": "Спланировать поездку за город на полдня" },
+          "steps": [
+            { "en": "Choose a place within your budget", "kg": "Бюджетиңизге туура келген жер тандаңыз", "ru": "Выбрать место в рамках бюджета", "minutes": 20 },
+            { "en": "Pick a date and tell family or friends", "kg": "Күнүн тандап, үй-бүлөгө же досторго айтыңыз", "ru": "Выбрать дату и сказать семье или друзьям", "minutes": 10 },
+            { "en": "Find transport and a place to stay", "kg": "Транспорт жана жата турган жер табыңыз", "ru": "Найти транспорт и ночлег", "minutes": 30 },
+            { "en": "Pack light the evening before", "kg": "Мурунку кечте жеңил жүк даярдаңыз", "ru": "Собрать лёгкие вещи накануне вечером", "minutes": 20 },
+            { "en": "Go and leave work notifications off", "kg": "Барып, жумуш билдирмелерин өчүрүп коюңуз", "ru": "Поехать и отключить рабочие уведомления", "minutes": 120 }
+          ]
+        },
+        {
+          "en": "Do nothing for 10 minutes: no phone, no tasks",
+          "kg": "10 мүнөт эч нерсе кылбаңыз: телефонсуз, иштерсиз",
+          "ru": "10 минут ничего не делать: без телефона и задач",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Sit quietly for 3 minutes", "kg": "3 мүнөт тынч отуруңуз", "ru": "Посидеть тихо 3 минуты" }
+        },
+        {
+          "en": "Have one hobby session a week",
+          "kg": "Жумасына бир жолу хоббиңиз менен алектениңиз",
+          "ru": "Заниматься хобби один раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Have a 20-minute hobby session a week", "kg": "Жумасына 20 мүнөт хобби менен алектениңиз", "ru": "Уделять хобби 20 минут в неделю" }
+        },
+        {
+          "en": "Rest before you are exhausted, not after",
+          "kg": "Толук чарчаганга чейин эс алыңыз, андан кийин эмес",
+          "ru": "Отдыхать до полного истощения, а не после",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Notice tiredness and take 1 break", "kg": "Чарчоону байкап, 1 тыныгуу алыңыз", "ru": "Замечать усталость и делать 1 перерыв" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Thoughts & emotions", "kg": "Ой жана сезим", "ru": "Мысли и эмоции" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "A month of daily mood notes", "kg": "Бир ай күн сайын маанайды белгилөө", "ru": "Месяц ежедневных заметок о настроении" }
+      ],
+      "actions": [
+        {
+          "en": "Note your mood in the app once a day",
+          "kg": "Тиркемеде күнүнө бир жолу маанайыңызды белгилеңиз",
+          "ru": "Отмечать настроение в приложении раз в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Note your mood 3 times a week", "kg": "Жумасына 3 жолу маанайыңызды белгилеңиз", "ru": "Отмечать настроение 3 раза в неделю" }
+        },
+        {
+          "en": "Write 3 good things from the day every evening",
+          "kg": "Ар кечте күндүн 3 жакшы окуясын жазыңыз",
+          "ru": "Каждый вечер записывать 3 хорошие вещи за день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write 1 good thing from the day", "kg": "Күндүн 1 жакшы окуясын жазыңыз", "ru": "Записывать 1 хорошую вещь за день" }
+        },
+        {
+          "en": "Write freely for 15 minutes about your thoughts",
+          "kg": "15 мүнөт ойлоруңуз тууралуу эркин жазыңыз",
+          "ru": "15 минут свободно писать о своих мыслях",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 15,
+          "easy": { "en": "Write 5 sentences about your day", "kg": "Күнүңүз тууралуу 5 сүйлөм жазыңыз", "ru": "Написать 5 предложений о своём дне" }
+        },
+        {
+          "en": "Name the feeling in words: “I feel …”",
+          "kg": "Сезимди сөз менен атаңыз: «Мен … сезип жатам»",
+          "ru": "Называть чувство словами: «Я чувствую …»",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Name 1 feeling a day", "kg": "Күнүнө 1 сезимди атаңыз", "ru": "Называть 1 чувство в день" }
+        },
+        {
+          "en": "Replace “I always fail” with a fact about today",
+          "kg": "«Менден эч нерсе чыкпайт» дегендин ордуна бүгүнкү фактыны жазыңыз",
+          "ru": "Заменять «у меня всегда не получается» фактом за сегодня",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Notice 1 harsh thought about yourself a day", "kg": "Күнүнө өзүңүз тууралуу 1 катаал ойду байкаңыз", "ru": "Замечать 1 резкую мысль о себе в день" }
+        },
+        {
+          "en": "Review the week: what drained and what filled you",
+          "kg": "Жуманы карап чыгыңыз: эмне күч алды, эмне күч берди",
+          "ru": "Разбирать неделю: что забирало силы, а что давало",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 1 thing that gave you energy this week", "kg": "Ушул жумада күч берген 1 нерсени жазыңыз", "ru": "Записать 1 вещь, которая дала сил за неделю" }
+        },
+        {
+          "en": "Write a letter of support to yourself",
+          "kg": "Өзүңүзгө колдоо катын жазыңыз",
+          "ru": "Написать себе письмо поддержки",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Write 3 kind sentences to yourself", "kg": "Өзүңүзгө 3 жылуу сүйлөм жазыңыз", "ru": "Написать себе 3 добрых предложения" },
+          "steps": [
+            { "en": "Recall 3 hard things you already got through", "kg": "Буга чейин өткөн 3 оор кырдаалды эстеңиз", "ru": "Вспомнить 3 трудности, которые вы уже прошли", "minutes": 10 },
+            { "en": "Write what strengths helped you then", "kg": "Ошондо кандай күчтүү жактарыңыз жардам бергенин жазыңыз", "ru": "Записать, какие сильные стороны тогда помогли", "minutes": 10 },
+            { "en": "Write words you would say to a close friend", "kg": "Жакын досуңузга айта турган сөздөрдү жазыңыз", "ru": "Написать слова, которые сказали бы близкому другу", "minutes": 15 },
+            { "en": "Read the letter aloud once", "kg": "Катты бир жолу үн чыгарып окуңуз", "ru": "Прочитать письмо вслух один раз", "minutes": 5 },
+            { "en": "Save it to reread on hard days", "kg": "Оор күндөрү кайра окуу үчүн сактаңыз", "ru": "Сохранить, чтобы перечитывать в трудные дни", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Talk about a feeling with someone close, not keep it",
+          "kg": "Сезимди ичке катпай, жакын адам менен бөлүшүңүз",
+          "ru": "Делиться чувством с близким, а не держать в себе",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Share 1 feeling with someone close a week", "kg": "Жумасына 1 сезимди жакын адам менен бөлүшүңүз", "ru": "Делиться 1 чувством с близким в неделю" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Body & movement", "kg": "Дене жана кыймыл", "ru": "Тело и движение" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A month of daily movement", "kg": "Бир ай күн сайын кыймыл", "ru": "Месяц ежедневного движения" }
+      ],
+      "actions": [
+        {
+          "en": "Walk 30 minutes a day",
+          "kg": "Күнүнө 30 мүнөт сейилдеңиз",
+          "ru": "Гулять 30 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk 10 minutes a day", "kg": "Күнүнө 10 мүнөт сейилдеңиз", "ru": "Гулять 10 минут в день" }
+        },
+        {
+          "en": "Do any sport you like 3 times a week",
+          "kg": "Жумасына 3 жолу жакшы көргөн спортуңуз менен машыгыңыз",
+          "ru": "Заниматься любым спортом 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Do 10 minutes of exercise once a week", "kg": "Жумасына бир жолу 10 мүнөт көнүгүү жасаңыз", "ru": "Делать 10 минут упражнений раз в неделю" }
+        },
+        {
+          "en": "Stretch 10 minutes in the morning",
+          "kg": "Эртең менен 10 мүнөт керилип, денени жазыңыз",
+          "ru": "Делать растяжку 10 минут утром",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Stretch 3 minutes after waking up", "kg": "Ойгонгондон кийин 3 мүнөт керилиңиз", "ru": "Потягиваться 3 минуты после пробуждения" }
+        },
+        {
+          "en": "Drink water regularly, keep a bottle nearby",
+          "kg": "Үзгүлтүксүз суу ичиңиз, бөтөлкө жаныңызда болсун",
+          "ru": "Регулярно пить воду, держать бутылку рядом",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Drink a glass of water after waking up", "kg": "Ойгонгондон кийин бир стакан суу ичиңиз", "ru": "Выпивать стакан воды после пробуждения" }
+        },
+        {
+          "en": "Eat at regular times, without skipping meals",
+          "kg": "Тамакты өткөрүп жибербей, белгилүү убакта жеңиз",
+          "ru": "Есть в одно и то же время, не пропуская приёмы пищи",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Have breakfast every day", "kg": "Күн сайын эртең мененки тамак ичиңиз", "ru": "Завтракать каждый день" }
+        },
+        {
+          "en": "Get up and move for 5 minutes every hour of sitting",
+          "kg": "Ар бир саат отургандан кийин туруп, 5 мүнөт кыймылдаңыз",
+          "ru": "Вставать и двигаться 5 минут каждый час сидения",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Get up and move 3 times a day", "kg": "Күнүнө 3 жолу туруп кыймылдаңыз", "ru": "Вставать и двигаться 3 раза в день" }
+        },
+        {
+          "en": "Try 1 new kind of movement a month: dance, swim, hike",
+          "kg": "Айына 1 жаңы кыймыл түрүн сынаңыз: бий, сүзүү, тоого чыгуу",
+          "ru": "Пробовать 1 новый вид движения в месяц: танцы, плавание, поход",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Watch 1 video and try a new exercise", "kg": "1 видео көрүп, жаңы көнүгүүнү сынаңыз", "ru": "Посмотреть 1 видео и попробовать новое упражнение" }
+        },
+        {
+          "en": "Notice tension in the body and relax the shoulders",
+          "kg": "Денедеги чыңалууну байкап, ийиндериңизди бошотуңуз",
+          "ru": "Замечать напряжение в теле и расслаблять плечи",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check your shoulders twice a day", "kg": "Күнүнө эки жолу ийиниңизди текшериңиз", "ru": "Проверять плечи 2 раза в день" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Digital balance", "kg": "Санариптик тең салмак", "ru": "Цифровой баланс" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Screen time down by 1 hour a day", "kg": "Экран убактысы күнүнө 1 саатка азайды", "ru": "Экранное время сокращено на 1 час в день" }
+      ],
+      "actions": [
+        {
+          "en": "Check your screen time and set a daily limit",
+          "kg": "Экран убактыңызды текшерип, күндүк чек коюңуз",
+          "ru": "Проверить экранное время и поставить дневной лимит",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Check your screen time for yesterday", "kg": "Кечээки экран убактыңызды текшериңиз", "ru": "Посмотреть экранное время за вчера" },
+          "steps": [
+            { "en": "Open screen time stats in phone settings", "kg": "Телефондун жөндөөлөрүнөн экран убактысын ачыңыз", "ru": "Открыть статистику экранного времени в настройках", "minutes": 5 },
+            { "en": "Write down the 3 apps that take most time", "kg": "Эң көп убакыт алган 3 тиркемени жазыңыз", "ru": "Записать 3 приложения, которые забирают больше всего", "minutes": 5 },
+            { "en": "Set a daily limit on these 3 apps", "kg": "Ушул 3 тиркемеге күндүк чек коюңуз", "ru": "Поставить дневной лимит на эти 3 приложения", "minutes": 10 },
+            { "en": "Remove 1 app you don’t need from the home screen", "kg": "Керексиз 1 тиркемени башкы экрандан алып салыңыз", "ru": "Убрать 1 ненужное приложение с главного экрана", "minutes": 5 },
+            { "en": "Check the stats again after a week", "kg": "Бир жумадан кийин статистиканы кайра текшериңиз", "ru": "Через неделю снова проверить статистику", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "No phone for the first 30 minutes after waking",
+          "kg": "Ойгонгондон кийинки 30 мүнөт телефон кармабаңыз",
+          "ru": "Не брать телефон первые 30 минут после пробуждения",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "No phone for the first 10 minutes after waking", "kg": "Ойгонгондон кийин 10 мүнөт телефон кармабаңыз", "ru": "Не брать телефон первые 10 минут после пробуждения" }
+        },
+        {
+          "en": "Turn off all non-essential notifications",
+          "kg": "Маанилүү эмес бардык билдирмелерди өчүрүңүз",
+          "ru": "Отключить все неважные уведомления",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Turn off notifications in 3 apps", "kg": "3 тиркеменин билдирмелерин өчүрүңүз", "ru": "Отключить уведомления в 3 приложениях" }
+        },
+        {
+          "en": "Eat meals without the phone",
+          "kg": "Тамакты телефонсуз жеңиз",
+          "ru": "Есть без телефона",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Have 1 meal a day without the phone", "kg": "Күнүнө 1 жолу телефонсуз тамактаныңыз", "ru": "Есть без телефона 1 раз в день" }
+        },
+        {
+          "en": "Have 2 phone-free hours on a day off",
+          "kg": "Эс алуу күнү 2 саат телефонсуз болуңуз",
+          "ru": "Проводить 2 часа без телефона в выходной",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Have 1 phone-free hour a week", "kg": "Жумасына 1 саат телефонсуз болуңуз", "ru": "Проводить 1 час в неделю без телефона" }
+        },
+        {
+          "en": "Unfollow 5 accounts that make you feel worse",
+          "kg": "Маанайыңызды бузган 5 аккаунттан жазылууну алып салыңыз",
+          "ru": "Отписаться от 5 аккаунтов, после которых хуже на душе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Unfollow 1 such account a week", "kg": "Жумасына ушундай 1 аккаунттан жазылууну алыңыз", "ru": "Отписаться от 1 такого аккаунта в неделю" }
+        },
+        {
+          "en": "Charge the phone outside the bedroom",
+          "kg": "Телефонду уктоочу бөлмөдөн тышкары кубаттаңыз",
+          "ru": "Заряжать телефон не в спальне",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put the phone face down at night, out of reach", "kg": "Түнкүсүн телефонду колуңуз жетпеген жерге оодарып коюңуз", "ru": "На ночь класть телефон экраном вниз, вне досягаемости" }
+        },
+        {
+          "en": "Read a paper book 15 minutes instead of scrolling",
+          "kg": "Лента аралагандын ордуна 15 мүнөт кагаз китеп окуңуз",
+          "ru": "Читать бумажную книгу 15 минут вместо ленты",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Read 5 pages instead of scrolling", "kg": "Лентанын ордуна 5 бет окуңуз", "ru": "Читать 5 страниц вместо ленты" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Support", "kg": "Колдоо", "ru": "Поддержка" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A list of people to turn to is ready", "kg": "Кайрыла турган адамдардын тизмеси даяр", "ru": "Готов список людей, к кому обратиться" }
+      ],
+      "actions": [
+        {
+          "en": "Know who to call when it’s really hard: a close person or a specialist",
+          "kg": "Абдан оор болгондо кимге чаларыңызды билиңиз: жакын адам же адис",
+          "ru": "Знать, кому звонить, когда совсем тяжело: близкий или специалист",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Save 1 trusted person’s number as a favorite", "kg": "1 ишенимдүү адамдын номерин тандалмаларга сактаңыз", "ru": "Сохранить номер 1 близкого человека в избранное" },
+          "steps": [
+            { "en": "Write 3 people you trust and can call", "kg": "Ишенген жана чала ала турган 3 адамды жазыңыз", "ru": "Записать 3 людей, которым доверяете и можете позвонить", "minutes": 10 },
+            { "en": "Find a free helpline or psychologist in your city", "kg": "Шаарыңыздагы акысыз жардам линиясын же психологду табыңыз", "ru": "Найти бесплатную линию помощи или психолога в своём городе", "minutes": 15 },
+            { "en": "Save all these numbers in the phone", "kg": "Бул номерлердин баарын телефонго сактаңыз", "ru": "Сохранить все эти номера в телефоне", "minutes": 5 },
+            { "en": "Tell 1 close person they are on your list", "kg": "1 жакын адамга аны тизмеге киргизгениңизди айтыңыз", "ru": "Сказать 1 близкому, что он в вашем списке", "minutes": 10 },
+            { "en": "Write the list on paper too", "kg": "Тизмени кагазга да жазып коюңуз", "ru": "Записать список и на бумаге", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Talk heart to heart with someone close once a week",
+          "kg": "Жумасына бир жолу жакын адам менен жүрөктөн сүйлөшүңүз",
+          "ru": "Раз в неделю говорить по душам с близким человеком",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Send a message to someone close a week", "kg": "Жумасына жакын адамга бир билдирүү жөнөтүңүз", "ru": "Писать близкому человеку раз в неделю" }
+        },
+        {
+          "en": "Ask for help when you need it, without shame",
+          "kg": "Керек болгондо уялбай жардам сураңыз",
+          "ru": "Просить о помощи, когда нужно, без стыда",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask for help with 1 small thing this week", "kg": "Ушул жумада 1 майда иш боюнча жардам сураңыз", "ru": "Попросить помощи с 1 мелочью на этой неделе" }
+        },
+        {
+          "en": "See a specialist if low mood lasts over 2 weeks",
+          "kg": "Начар маанай 2 жумадан ашса, адиске кайрылыңыз",
+          "ru": "Обратиться к специалисту, если плохое настроение дольше 2 недель",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Tell someone close if you feel low for days", "kg": "Бир нече күн маанайыңыз түшүп жүрсө, жакын адамга айтыңыз", "ru": "Сказать близкому, если несколько дней на душе плохо" }
+        },
+        {
+          "en": "Spend time with people who make you feel good",
+          "kg": "Жаныңызга жылуулук берген адамдар менен убакыт өткөрүңүз",
+          "ru": "Проводить время с людьми, с которыми хорошо",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Have 1 call with such a person a week", "kg": "Жумасына ушундай адам менен 1 жолу сүйлөшүңүз", "ru": "Созваниваться с таким человеком раз в неделю" }
+        },
+        {
+          "en": "Reduce time with people who constantly hurt you",
+          "kg": "Сизди дайыма капа кылган адамдар менен убакытты азайтыңыз",
+          "ru": "Сокращать время с людьми, которые постоянно ранят",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Notice after which talks you feel worse", "kg": "Кайсы сүйлөшүүдөн кийин маанайыңыз түшөрүн байкаңыз", "ru": "Замечать, после каких разговоров становится хуже" }
+        },
+        {
+          "en": "Do 1 good deed for someone a week",
+          "kg": "Жумасына бирөөгө 1 жакшылык кылыңыз",
+          "ru": "Делать 1 доброе дело для кого-то в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Say 1 kind word to someone a day", "kg": "Күнүнө бирөөгө 1 жылуу сөз айтыңыз", "ru": "Говорить кому-то 1 доброе слово в день" }
+        },
+        {
+          "en": "Respect your faith and traditions if they give you strength",
+          "kg": "Ишенимиңиз жана салтыңыз күч берсе, аларды урматтаңыз",
+          "ru": "Опираться на веру и традиции, если они дают силы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Find 5 quiet minutes a day for yourself", "kg": "Күнүнө өзүңүз үчүн 5 тынч мүнөт табыңыз", "ru": "Находить 5 тихих минут в день для себя" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Gratitude", "kg": "Ыраазычылык", "ru": "Благодарность" },
+      "kind": "character",
+      "milestones": [
+        { "en": "30 days of gratitude in a row", "kg": "Катары менен 30 күн ыраазычылык", "ru": "30 дней благодарности подряд" }
+      ],
+      "actions": [
+        {
+          "en": "Write 1 thing you are grateful for every day",
+          "kg": "Күн сайын ыраазы болгон 1 нерсени жазыңыз",
+          "ru": "Каждый день записывать 1 вещь, за которую благодарны",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Think of 1 thing you are grateful for", "kg": "Ыраазы болгон 1 нерсени ойлоңуз", "ru": "Подумать об 1 вещи, за которую благодарны" }
+        },
+        {
+          "en": "Thank people for small things: driver, seller, family",
+          "kg": "Майда нерсе үчүн да рахмат айтыңыз: айдоочуга, сатуучуга, үй-бүлөгө",
+          "ru": "Благодарить за мелочи: водителя, продавца, семью",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say thank you 3 times a day on purpose", "kg": "Күнүнө 3 жолу атайын рахмат айтыңыз", "ru": "Говорить спасибо 3 раза в день осознанно" }
+        },
+        {
+          "en": "Greet neighbors and colleagues first",
+          "kg": "Кошуналар жана кесиптештер менен биринчи болуп учурашыңыз",
+          "ru": "Первым здороваться с соседями и коллегами",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Greet 1 person first every day", "kg": "Күн сайын 1 адам менен биринчи учурашыңыз", "ru": "Каждый день первым здороваться с 1 человеком" }
+        },
+        {
+          "en": "Write a thank-you message to 1 person a week",
+          "kg": "Жумасына 1 адамга ыраазычылык билдирүүсүн жазыңыз",
+          "ru": "Писать 1 человеку сообщение-благодарность в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write 1 thank-you message a month", "kg": "Айына 1 ыраазычылык билдирүүсүн жазыңыз", "ru": "Писать 1 благодарность в месяц" }
+        },
+        {
+          "en": "Speak about yourself as kindly as about a friend",
+          "kg": "Өзүңүз тууралуу досуңуз тууралуу айткандай жылуу сүйлөңүз",
+          "ru": "Говорить о себе так же бережно, как о друге",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Catch 1 harsh word about yourself a day", "kg": "Күнүнө өзүңүзгө айткан 1 катуу сөздү байкаңыз", "ru": "Замечать 1 грубое слово о себе в день" }
+        },
+        {
+          "en": "Make your bed every morning",
+          "kg": "Ар таңда төшөгүңүздү жыйнаңыз",
+          "ru": "Заправлять кровать каждое утро",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Make your bed 3 times a week", "kg": "Жумасына 3 жолу төшөгүңүздү жыйнаңыз", "ru": "Заправлять кровать 3 раза в неделю" }
+        },
+        {
+          "en": "Keep small promises to yourself",
+          "kg": "Өзүңүзгө берген кичине убадаларды аткарыңыз",
+          "ru": "Выполнять маленькие обещания самому себе",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Make 1 small promise a day and keep it", "kg": "Күнүнө 1 кичине убада берип, аткарыңыз", "ru": "Давать себе 1 маленькое обещание в день и выполнять" }
+        },
+        {
+          "en": "Celebrate 1 small win of the week",
+          "kg": "Жуманын 1 кичине жеңишин белгилеңиз",
+          "ru": "Отмечать 1 маленькую победу недели",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write down 1 win a week", "kg": "Жумасына 1 жеңишти жазыңыз", "ru": "Записывать 1 победу в неделю" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Order at home", "kg": "Үйдөгү тартип", "ru": "Порядок дома" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Home space feels calm and tidy", "kg": "Үй тынч жана тыкан сезилет", "ru": "Дома спокойно и опрятно" }
+      ],
+      "actions": [
+        {
+          "en": "Tidy up for 10 minutes every evening",
+          "kg": "Ар кечте 10 мүнөт жыйнаңыз",
+          "ru": "Наводить порядок 10 минут каждый вечер",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Tidy up for 5 minutes", "kg": "5 мүнөт жыйнаңыз", "ru": "Наводить порядок 5 минут" }
+        },
+        {
+          "en": "Clear out 1 zone: wardrobe, desk or shelf",
+          "kg": "1 жерди тазалаңыз: шкаф, стол же текче",
+          "ru": "Разобрать 1 зону: шкаф, стол или полку",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Clear out 1 drawer", "kg": "1 тартманы иреттеңиз", "ru": "Разобрать 1 ящик" },
+          "steps": [
+            { "en": "Choose the zone that bothers you most", "kg": "Эң көп тынчын алган жерди тандаңыз", "ru": "Выбрать зону, которая больше всего раздражает", "minutes": 5 },
+            { "en": "Take everything out", "kg": "Баарын чыгарыңыз", "ru": "Достать всё", "minutes": 15 },
+            { "en": "Sort: keep, give away, throw away", "kg": "Иргеңиз: калтыруу, берүү, ыргытуу", "ru": "Рассортировать: оставить, отдать, выбросить", "minutes": 30 },
+            { "en": "Put the rest back neatly", "kg": "Калганын тыкан кайра салыңыз", "ru": "Аккуратно разложить оставшееся", "minutes": 20 },
+            { "en": "Give unneeded things to people who need them", "kg": "Керексиз буюмдарды муктаж адамдарга бериңиз", "ru": "Отдать ненужные вещи тем, кому они нужны", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Wash the dishes right after eating",
+          "kg": "Тамактан кийин дароо идишти жууңуз",
+          "ru": "Мыть посуду сразу после еды",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Leave no dishes in the sink overnight", "kg": "Түнкүсүн раковинада идиш калтырбаңыз", "ru": "Не оставлять посуду в раковине на ночь" }
+        },
+        {
+          "en": "Do a general cleaning once a week",
+          "kg": "Жумасына бир жолу жалпы тазалык жасаңыз",
+          "ru": "Делать общую уборку раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Clean 1 room a week", "kg": "Жумасына 1 бөлмөнү тазалаңыз", "ru": "Убирать 1 комнату в неделю" }
+        },
+        {
+          "en": "Put things back right after using them",
+          "kg": "Буюмду колдонгондон кийин дароо ордуна коюңуз",
+          "ru": "Сразу возвращать вещи на место после использования",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put 5 things back in place each evening", "kg": "Ар кечте 5 буюмду ордуна коюңуз", "ru": "Каждый вечер возвращать на место 5 вещей" }
+        },
+        {
+          "en": "Air the rooms every morning",
+          "kg": "Ар таңда бөлмөлөрдү желдетиңиз",
+          "ru": "Проветривать комнаты каждое утро",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Air 1 room a day", "kg": "Күнүнө 1 бөлмөнү желдетиңиз", "ru": "Проветривать 1 комнату в день" }
+        },
+        {
+          "en": "Add 1 thing that makes home cozy: plant, light, photo",
+          "kg": "Үйгө жылуулук берген 1 нерсе кошуңуз: өсүмдүк, жарык, сүрөт",
+          "ru": "Добавить 1 вещь для уюта: растение, свет, фото",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Move 1 thing to make a corner cozier", "kg": "Бурчту жайлуу кылуу үчүн 1 нерсени ордунан жылдырыңыз", "ru": "Переставить 1 вещь, чтобы уголок стал уютнее" }
+        },
+        {
+          "en": "Clean your phone and computer desktop weekly",
+          "kg": "Жумасына телефонуңузду жана компьютердин иш столун тазалаңыз",
+          "ru": "Раз в неделю чистить рабочий стол компьютера и телефон",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Delete 20 unneeded photos or files", "kg": "20 керексиз сүрөт же файлды өчүрүңүз", "ru": "Удалить 20 ненужных фото или файлов" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Hobby & joy", "kg": "Хобби жана кубаныч", "ru": "Хобби и радость" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A hobby practiced for a month", "kg": "Бир ай хобби менен алектенүү", "ru": "Месяц занятий хобби" }
+      ],
+      "actions": [
+        {
+          "en": "Choose 1 hobby to try this month",
+          "kg": "Ушул айда сынап көрө турган 1 хобби тандаңыз",
+          "ru": "Выбрать 1 хобби, чтобы попробовать в этом месяце",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 hobbies you would like to try", "kg": "Сынап көргүңүз келген 3 хоббини жазыңыз", "ru": "Записать 3 хобби, которые хотелось бы попробовать" },
+          "steps": [
+            { "en": "List 5 things you were curious about", "kg": "Кызыккан 5 нерсени тизмелеңиз", "ru": "Выписать 5 вещей, которые вызывали интерес", "minutes": 10 },
+            { "en": "Cross out what costs too much", "kg": "Өтө кымбат болгонун сызып салыңыз", "ru": "Вычеркнуть то, что слишком дорого", "minutes": 5 },
+            { "en": "Pick 1 you can start this week", "kg": "Ушул жумада баштай турган 1ин тандаңыз", "ru": "Выбрать 1, которое можно начать на этой неделе", "minutes": 5 },
+            { "en": "Find a free video lesson or local club", "kg": "Акысыз видео сабак же жергиликтүү ийрим табыңыз", "ru": "Найти бесплатный видеоурок или местный кружок", "minutes": 20 },
+            { "en": "Put the first session in your calendar", "kg": "Биринчи сабакты календарга коюңуз", "ru": "Внести первое занятие в календарь", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Spend 1 hour a week on your hobby",
+          "kg": "Жумасына 1 саат хоббиңизге бөлүңүз",
+          "ru": "Уделять хобби 1 час в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Spend 20 minutes a week on your hobby", "kg": "Жумасына 20 мүнөт хоббиңизге бөлүңүз", "ru": "Уделять хобби 20 минут в неделю" }
+        },
+        {
+          "en": "Do the hobby for joy, not for results",
+          "kg": "Хобби менен жыйынтык үчүн эмес, кубаныч үчүн алектениңиз",
+          "ru": "Заниматься хобби ради радости, а не результата",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Notice 1 moment of joy during the hobby", "kg": "Хобби учурунда 1 кубаныч учурун байкаңыз", "ru": "Заметить 1 момент радости во время хобби" }
+        },
+        {
+          "en": "Do something creative once a week: draw, cook, sing",
+          "kg": "Жумасына бир жолу чыгармачыл нерсе кылыңыз: сүрөт, тамак, ыр",
+          "ru": "Раз в неделю делать что-то творческое: рисовать, готовить, петь",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Do 15 minutes of something creative", "kg": "15 мүнөт чыгармачыл нерсе кылыңыз", "ru": "Делать 15 минут что-то творческое" }
+        },
+        {
+          "en": "Listen to a full music album without distractions",
+          "kg": "Алаксыбай бир толук музыкалык альбомду угуңуз",
+          "ru": "Слушать целый музыкальный альбом без отвлечений",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Listen to 3 favorite songs without the phone", "kg": "Телефонсуз 3 сүйүктүү ырды угуңуз", "ru": "Послушать 3 любимые песни без телефона" }
+        },
+        {
+          "en": "Share your hobby with a friend once a month",
+          "kg": "Айына бир жолу хоббиңизди дос менен бөлүшүңүз",
+          "ru": "Раз в месяц заниматься хобби вместе с другом",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Tell a friend about your hobby", "kg": "Досуңузга хоббиңиз тууралуу айтыңыз", "ru": "Рассказать другу о своём хобби" }
+        },
+        {
+          "en": "Visit 1 free event a month: exhibit, concert, park",
+          "kg": "Айына 1 акысыз иш-чарага барыңыз: көргөзмө, концерт, сейил бак",
+          "ru": "Посещать 1 бесплатное мероприятие в месяц: выставка, концерт, парк",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Find 1 free event in your city", "kg": "Шаарыңыздан 1 акысыз иш-чара табыңыз", "ru": "Найти 1 бесплатное мероприятие в городе" }
+        },
+        {
+          "en": "Save photos of what you made in one album",
+          "kg": "Жасаган нерселериңиздин сүрөтүн бир альбомго сактаңыз",
+          "ru": "Сохранять фото своих работ в один альбом",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Take 1 photo of your hobby a week", "kg": "Жумасына хоббиңиздин 1 сүрөтүн тартыңыз", "ru": "Делать 1 фото хобби в неделю" }
+        }
+      ]
+    }
+  ]
+}

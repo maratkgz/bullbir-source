@@ -23,7 +23,8 @@ function taskStats(tasks, from, to) {
   return { done, overdue }
 }
 
-function habitStats(habits, from, to) {
+/** Habit check-ins in [from, to] and the share of possible daily check-ins (0..1). */
+export function habitStats(habits, from, to) {
   const checkins = habits.reduce(
     (n, h) => n + (h.completions || []).filter((k) => inWindow(k, from, to)).length, 0,
   )

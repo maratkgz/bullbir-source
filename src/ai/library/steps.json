@@ -1,0 +1,87 @@
+{
+  "sequences": [
+    {
+      "id": "exam",
+      "keywords": {
+        "en": ["exam", "test", "pass", "ielts", "toefl", "certificate", "admission"],
+        "kg": ["экзамен", "тапшыр", "сынак", "тест", "сертификат"],
+        "ru": ["экзамен", "сдать", "сдач", "тест", "зачет", "ielts", "сертификат", "поступ", "егэ", "орт"]
+      },
+      "steps": [
+        { "en": "Find out the exam format, dates and scoring", "kg": "Экзамендин форматын, мөөнөттөрүн жана баалоосун билиңиз", "ru": "Узнать формат, даты и критерии оценки экзамена", "minutes": 30 },
+        { "en": "Take a practice test to see your level", "kg": "Деңгээлиңизди билүү үчүн сынамык тест тапшырыңыз", "ru": "Пройти пробный тест и узнать свой уровень", "minutes": 60 },
+        { "en": "List weak topics from the practice test", "kg": "Сынамык тесттен алсыз темаларды тизмектеңиз", "ru": "Выписать слабые темы по итогам пробного теста", "minutes": 20 },
+        { "en": "Make a study schedule up to the exam date", "kg": "Экзамен күнүнө чейин окуу графигин түзүңүз", "ru": "Составить график подготовки до даты экзамена", "minutes": 30 },
+        { "en": "Study one weak topic per session", "kg": "Ар бир сабакта бир алсыз теманы окуңуз", "ru": "Разбирать одну слабую тему за занятие", "minutes": 45 },
+        { "en": "Solve tasks under time limits", "kg": "Тапшырмаларды убакыт чегинде чечиңиз", "ru": "Решать задания на время", "minutes": 45 },
+        { "en": "Take a second full practice test", "kg": "Экинчи толук сынамык тест тапшырыңыз", "ru": "Пройти второй полный пробный тест", "minutes": 90 },
+        { "en": "Review mistakes and register for the exam", "kg": "Каталарды талдап, экзаменге катталыңыз", "ru": "Разобрать ошибки и записаться на экзамен", "minutes": 30 }
+      ]
+    },
+    {
+      "id": "saving",
+      "keywords": {
+        "en": ["save", "saving", "savings", "money", "buy", "fund", "budget"],
+        "kg": ["топто", "акча", "сатып", "үнөмдө", "бюджет"],
+        "ru": ["накоп", "копить", "сбереж", "деньг", "купить", "подушк", "бюджет", "отложить"]
+      },
+      "steps": [
+        { "en": "Set the exact amount and the target date", "kg": "Так сумманы жана максаттуу мөөнөттү белгилеңиз", "ru": "Определить точную сумму и срок", "minutes": 15 },
+        { "en": "Write down all income and expenses for a month", "kg": "Бир айдагы бардык киреше жана чыгашаны жазып алыңыз", "ru": "Выписать все доходы и расходы за месяц", "minutes": 30 },
+        { "en": "Find three expenses you can cut", "kg": "Кыскартууга мүмкүн болгон үч чыгашаны табыңыз", "ru": "Найти три статьи расходов, которые можно сократить", "minutes": 20 },
+        { "en": "Calculate how much to set aside each month", "kg": "Ай сайын канча акча бөлүү керектигин эсептеңиз", "ru": "Посчитать, сколько откладывать каждый месяц", "minutes": 15 },
+        { "en": "Open a separate savings account", "kg": "Өзүнчө жыйым эсебин ачыңыз", "ru": "Открыть отдельный накопительный счёт", "minutes": 30 },
+        { "en": "Set up an automatic transfer on payday", "kg": "Айлык күнү автоматтык которууну орнотуңуз", "ru": "Настроить автоперевод в день зарплаты", "minutes": 15 },
+        { "en": "Review the progress at the end of the month", "kg": "Айдын аягында жыйынтыкты текшериңиз", "ru": "Проверить прогресс в конце месяца", "minutes": 15 }
+      ]
+    },
+    {
+      "id": "launch",
+      "keywords": {
+        "en": ["launch", "start", "business", "open", "release", "website", "app", "channel", "shop"],
+        "kg": ["ишке", "бизнес", "ачуу", "сайт", "канал", "дүкөн"],
+        "ru": ["запуст", "бизнес", "открыть", "сайт", "приложен", "канал", "магазин", "проект", "старт"]
+      },
+      "steps": [
+        { "en": "Describe the idea and who it is for in one page", "kg": "Идеяны жана ал ким үчүн экенин бир баракка жазыңыз", "ru": "Описать идею и для кого она, на одной странице", "minutes": 30 },
+        { "en": "Talk to five potential customers", "kg": "Беш потенциалдуу кардар менен сүйлөшүңүз", "ru": "Поговорить с пятью потенциальными клиентами", "minutes": 60 },
+        { "en": "Look at three competitors and note their prices", "kg": "Үч атаандашты карап, баасын жазып алыңыз", "ru": "Изучить трёх конкурентов и их цены", "minutes": 45 },
+        { "en": "Make the smallest working version", "kg": "Эң кичинекей иштеген вариантын жасаңыз", "ru": "Сделать самую маленькую рабочую версию", "minutes": 90 },
+        { "en": "Show it to the first users", "kg": "Аны биринчи колдонуучуларга көрсөтүңүз", "ru": "Показать первым пользователям", "minutes": 45 },
+        { "en": "Collect feedback and fix the main problems", "kg": "Пикирлерди чогултуп, негизги көйгөйлөрдү оңдоңуз", "ru": "Собрать отзывы и исправить главные проблемы", "minutes": 60 },
+        { "en": "Announce the launch", "kg": "Ишке киргизүүнү жарыялаңыз", "ru": "Объявить о запуске", "minutes": 30 }
+      ]
+    },
+    {
+      "id": "skill",
+      "keywords": {
+        "en": ["learn", "skill", "master", "course", "language", "play", "draw", "code"],
+        "kg": ["үйрөн", "чеберчил", "курс", "тил", "ойно", "сүрөт"],
+        "ru": ["научит", "выучит", "освоит", "навык", "курс", "язык", "играть", "рисовать", "изучит"]
+      },
+      "steps": [
+        { "en": "Choose one course or book to follow", "kg": "Бир курсту же китепти тандаңыз", "ru": "Выбрать один курс или книгу", "minutes": 30 },
+        { "en": "Define what result means 'learned' for you", "kg": "Сиз үчүн 'үйрөндүм' деген кандай натыйжа экенин аныктаңыз", "ru": "Определить, какой результат значит «освоил»", "minutes": 15 },
+        { "en": "Go through the first lesson", "kg": "Биринчи сабакты өтүңүз", "ru": "Пройти первый урок", "minutes": 45 },
+        { "en": "Practice the basics in short sessions", "kg": "Негиздерди кыска сабактарда машыктырыңыз", "ru": "Отработать основы короткими подходами", "minutes": 30 },
+        { "en": "Make a small project with the new skill", "kg": "Жаңы чеберчилик менен кичинекей долбоор жасаңыз", "ru": "Сделать небольшой проект с новым навыком", "minutes": 90 },
+        { "en": "Get feedback from someone more experienced", "kg": "Тажрыйбалуураак адамдан пикир алыңыз", "ru": "Получить отзыв от более опытного человека", "minutes": 30 },
+        { "en": "Repeat the hardest part and record progress", "kg": "Эң кыйын бөлүгүн кайталап, жылышты жазыңыз", "ru": "Повторить самое сложное и записать прогресс", "minutes": 45 }
+      ]
+    },
+    {
+      "id": "generic",
+      "keywords": { "en": [], "kg": [], "ru": [] },
+      "steps": [
+        { "en": "Research how others reached this result", "kg": "Башкалар бул натыйжага кантип жеткенин изилдеңиз", "ru": "Изучить, как другие достигли такого результата", "minutes": 30 },
+        { "en": "Write a short plan with clear steps", "kg": "Так кадамдары бар кыска план жазыңыз", "ru": "Написать короткий план с понятными шагами", "minutes": 20 },
+        { "en": "Prepare what you need to start", "kg": "Баштоо үчүн керектүү нерселерди даярдаңыз", "ru": "Подготовить всё нужное для старта", "minutes": 30 },
+        { "en": "Make a first small version", "kg": "Биринчи кичинекей вариантын жасаңыз", "ru": "Сделать первую небольшую версию", "minutes": 60 },
+        { "en": "Practise and improve it", "kg": "Машыгып, аны жакшыртыңыз", "ru": "Потренироваться и улучшить", "minutes": 45 },
+        { "en": "Ask for feedback", "kg": "Пикир сураңыз", "ru": "Попросить обратную связь", "minutes": 20 },
+        { "en": "Fix what the feedback showed", "kg": "Пикирде көрүнгөн нерселерди оңдоңуз", "ru": "Исправить то, что показала обратная связь", "minutes": 45 },
+        { "en": "Finish the final version and mark it done", "kg": "Акыркы вариантын бүтүрүп, аткарылды деп белгилеңиз", "ru": "Довести до финала и отметить выполненным", "minutes": 45 }
+      ]
+    }
+  ]
+}

@@ -3,138 +3,887 @@
   "icon": "💪",
   "title": { "en": "Health & sport", "kg": "Ден соолук жана спорт", "ru": "Здоровье и спорт" },
   "keywords": {
-    "en": ["health", "healthy", "fit", "fitness", "sport", "run", "running", "marathon", "weight", "lose weight", "gym", "muscle", "body", "diet", "sleep", "workout", "yoga", "swim", "energy"],
-    "kg": ["ден соолук", "дене", "спорт", "чуркоо", "марафон", "салмак", "арыктоо", "машыгуу", "тамак", "уйку", "булчуң", "йога", "сүзүү", "сергек"],
-    "ru": ["здоровье", "здоровый", "спорт", "бег", "бегать", "пробежать", "марафон", "вес", "похудеть", "сбросить", "зал", "тренировки", "мышцы", "тело", "питание", "диета", "сон", "йога", "плавание", "фитнес", "энергия"]
+    "en": ["health", "healthy", "fit", "fitness", "sport", "run", "running", "marathon", "weight", "lose weight", "gym", "muscle", "body", "diet", "sleep", "workout", "yoga", "swim", "energy", "steps", "stretching", "cardio", "abs", "push-ups"],
+    "kg": ["ден соолук", "дене", "спорт", "чуркоо", "марафон", "салмак", "арыктоо", "машыгуу", "тамак", "уйку", "булчуң", "йога", "сүзүү", "сергек", "чыңдоо", "кадам", "зал", "дене тарбия", "арык болуу", "күчтүү болуу"],
+    "ru": ["здоровье", "здоровый", "спорт", "бег", "бегать", "пробежать", "марафон", "вес", "похудеть", "сбросить", "зал", "тренировки", "мышцы", "тело", "питание", "диета", "сон", "йога", "плавание", "фитнес", "энергия", "пресс", "отжимания", "растяжка", "шаги"]
   },
   "directions": [
     {
       "title": { "en": "Training", "kg": "Машыгуу", "ru": "Тренировки" },
+      "kind": "direct",
       "milestones": [
         { "en": "4 weeks of 3 workouts per week", "kg": "4 жума бою жумасына 3 машыгуу", "ru": "4 недели по 3 тренировки в неделю" },
         { "en": "First personal record set", "kg": "Биринчи жеке рекорд коюлду", "ru": "Установлен первый личный рекорд" }
       ],
       "actions": [
-        { "en": "Choose a training plan suitable for your level", "kg": "Деңгээлиңизге ылайыктуу машыгуу планын тандаңыз", "ru": "Выбрать план тренировок под свой уровень" },
-        { "en": "Train 3 times a week on fixed days", "kg": "Жумасына 3 жолу белгиленген күндөрү машыгыңыз", "ru": "Тренироваться 3 раза в неделю в фиксированные дни" },
-        { "en": "Warm up for 10 minutes before every workout", "kg": "Ар машыгуудан мурун 10 мүнөт жылыныңыз", "ru": "Разминаться 10 минут перед каждой тренировкой" },
-        { "en": "Increase the load by no more than 10% a week", "kg": "Жүктү жумасына 10%дан ашык көбөйтпөңүз", "ru": "Повышать нагрузку не больше чем на 10% в неделю" },
-        { "en": "Add strength training twice a week", "kg": "Жумасына эки жолу күч машыгуусун кошуңуз", "ru": "Добавить силовые тренировки 2 раза в неделю" },
-        { "en": "Stretch for 10 minutes after training", "kg": "Машыгуудан кийин 10 мүнөт созулуңуз", "ru": "Делать растяжку 10 минут после тренировки" },
-        { "en": "Log every workout in a training diary", "kg": "Ар машыгууну күндөлүккө жазыңыз", "ru": "Записывать каждую тренировку в дневник" },
-        { "en": "Test your results once a month", "kg": "Жыйынтыгыңызды айына бир жолу текшериңиз", "ru": "Раз в месяц проводить контрольный замер" }
+        {
+          "en": "Choose a training plan suitable for your level",
+          "kg": "Деңгээлиңизге ылайыктуу машыгуу планын тандаңыз",
+          "ru": "Выбрать план тренировок под свой уровень",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Pick 3 exercises you can do at home", "kg": "Үйдө жасай ала турган 3 көнүгүү тандаңыз", "ru": "Выбрать 3 упражнения, которые можно делать дома" },
+          "steps": [
+            { "en": "Test how many push-ups and squats you can do", "kg": "Канча отжимание жана отуруп-туруу жасай аларыңызды текшериңиз", "ru": "Проверить, сколько отжиманий и приседаний вы можете", "minutes": 15 },
+            { "en": "Decide on 3 training days a week", "kg": "Жумасына 3 машыгуу күнүн белгилеңиз", "ru": "Определить 3 дня тренировок в неделю", "minutes": 10 },
+            { "en": "Compare 2–3 free beginner plans", "kg": "2–3 акысыз баштоочу планды салыштырыңыз", "ru": "Сравнить 2–3 бесплатных плана для новичков", "minutes": 30 },
+            { "en": "Choose one plan and save it", "kg": "Бир планды тандап, сактап коюңуз", "ru": "Выбрать один план и сохранить его", "minutes": 10 },
+            { "en": "Do the first workout from the plan", "kg": "Пландан биринчи машыгууну жасаңыз", "ru": "Провести первую тренировку по плану", "minutes": 45 }
+          ]
+        },
+        {
+          "en": "Train 3 times a week on fixed days",
+          "kg": "Жумасына 3 жолу белгиленген күндөрү машыгыңыз",
+          "ru": "Тренироваться 3 раза в неделю в фиксированные дни",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 45,
+          "easy": { "en": "Train twice a week for 20 minutes", "kg": "Жумасына эки жолу 20 мүнөттөн машыгыңыз", "ru": "Тренироваться 2 раза в неделю по 20 минут" }
+        },
+        {
+          "en": "Warm up for 10 minutes before every workout",
+          "kg": "Ар машыгуудан мурун 10 мүнөт жылыныңыз",
+          "ru": "Разминаться 10 минут перед каждой тренировкой",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Warm up for 5 minutes before training", "kg": "Машыгуудан мурун 5 мүнөт жылыныңыз", "ru": "Разминаться 5 минут перед тренировкой" }
+        },
+        {
+          "en": "Increase the load by no more than 10% a week",
+          "kg": "Жүктү жумасына 10%дан ашык көбөйтпөңүз",
+          "ru": "Повышать нагрузку не больше чем на 10% в неделю",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep the same load this week", "kg": "Ушул жумада жүктү ошол бойдон калтырыңыз", "ru": "На этой неделе не повышать нагрузку" }
+        },
+        {
+          "en": "Add strength training twice a week",
+          "kg": "Жумасына эки жолу күч машыгуусун кошуңуз",
+          "ru": "Добавить силовые тренировки 2 раза в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Do 10 minutes of bodyweight exercises", "kg": "Өз салмагыңыз менен 10 мүнөт көнүгүү жасаңыз", "ru": "Сделать 10 минут упражнений с весом тела" }
+        },
+        {
+          "en": "Stretch for 10 minutes after training",
+          "kg": "Машыгуудан кийин 10 мүнөт созулуңуз",
+          "ru": "Делать растяжку 10 минут после тренировки",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Stretch for 3 minutes after training", "kg": "Машыгуудан кийин 3 мүнөт созулуңуз", "ru": "Растягиваться 3 минуты после тренировки" }
+        },
+        {
+          "en": "Log every workout in a training diary",
+          "kg": "Ар машыгууну күндөлүккө жазыңыз",
+          "ru": "Записывать каждую тренировку в дневник",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 5,
+          "easy": { "en": "Note just the date and duration", "kg": "Датасын жана узактыгын гана жазыңыз", "ru": "Записывать только дату и длительность" }
+        },
+        {
+          "en": "Test your results once a month",
+          "kg": "Жыйынтыгыңызды айына бир жолу текшериңиз",
+          "ru": "Раз в месяц проводить контрольный замер",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Test one exercise and note the result", "kg": "Бир көнүгүүнү текшерип, жыйынтыгын жазыңыз", "ru": "Проверить одно упражнение и записать результат" },
+          "steps": [
+            { "en": "Pick 3 tests: push-ups, plank, 1 km run", "kg": "3 сыноо тандаңыз: отжимание, планка, 1 км чуркоо", "ru": "Выбрать 3 теста: отжимания, планка, бег 1 км", "minutes": 5 },
+            { "en": "Warm up well for 10 minutes", "kg": "10 мүнөт жакшылап жылыныңыз", "ru": "Хорошо размяться 10 минут", "minutes": 10 },
+            { "en": "Do the tests with full effort", "kg": "Сыноолорду бар күчүңүз менен аткарыңыз", "ru": "Выполнить тесты в полную силу", "minutes": 20 },
+            { "en": "Write the results in your diary", "kg": "Жыйынтыктарды күндөлүккө жазыңыз", "ru": "Записать результаты в дневник", "minutes": 5 },
+            { "en": "Compare with last month", "kg": "Өткөн ай менен салыштырыңыз", "ru": "Сравнить с прошлым месяцем", "minutes": 5 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Nutrition", "kg": "Тамактануу", "ru": "Питание" },
+      "kind": "direct",
       "milestones": [
         { "en": "Two weeks of planned meals", "kg": "Эки жума пландалган тамактануу", "ru": "Две недели запланированного питания" }
       ],
       "actions": [
-        { "en": "Eat vegetables with every main meal", "kg": "Ар бир негизги тамакта жашылча жеңиз", "ru": "Есть овощи в каждый основной приём пищи" },
-        { "en": "Plan meals for the week on Sunday", "kg": "Жекшембиде жумалык тамакты пландаңыз", "ru": "Планировать меню на неделю по воскресеньям" },
-        { "en": "Replace sugary drinks with water", "kg": "Таттуу суусундуктарды суу менен алмаштырыңыз", "ru": "Заменить сладкие напитки водой" },
-        { "en": "Add protein to breakfast", "kg": "Эртең мененки тамакка белок кошуңуз", "ru": "Добавить белок в завтрак" },
-        { "en": "Cook at home at least 4 days a week", "kg": "Жумасына жок дегенде 4 күн үйдө тамак жасаңыз", "ru": "Готовить дома минимум 4 дня в неделю" },
-        { "en": "Stop eating 3 hours before sleep", "kg": "Уктаардан 3 саат мурун тамак ичпеңиз", "ru": "Не есть за 3 часа до сна" },
-        { "en": "Keep healthy snacks at hand", "kg": "Пайдалуу жеңил тамактарды жаныңызда кармаңыз", "ru": "Держать под рукой полезные перекусы" },
-        { "en": "Read labels before buying food", "kg": "Азык сатып алардан мурун этикеткасын окуңуз", "ru": "Читать состав продуктов перед покупкой" }
+        {
+          "en": "Eat vegetables with every main meal",
+          "kg": "Ар бир негизги тамакта жашылча жеңиз",
+          "ru": "Есть овощи в каждый основной приём пищи",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Add vegetables to one meal a day", "kg": "Күнүнө бир тамакка жашылча кошуңуз", "ru": "Добавлять овощи в один приём пищи в день" }
+        },
+        {
+          "en": "Plan meals for the week on Sunday",
+          "kg": "Жекшембиде жумалык тамакты пландаңыз",
+          "ru": "Планировать меню на неделю по воскресеньям",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Plan only 3 dinners for the week", "kg": "Жумага 3 кечки тамакты гана пландаңыз", "ru": "Спланировать только 3 ужина на неделю" }
+        },
+        {
+          "en": "Replace sugary drinks with water",
+          "kg": "Таттуу суусундуктарды суу менен алмаштырыңыз",
+          "ru": "Заменить сладкие напитки водой",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Swap one sugary drink a day for water", "kg": "Күнүнө бир таттуу суусундукту сууга алмаштырыңыз", "ru": "Заменять один сладкий напиток в день водой" }
+        },
+        {
+          "en": "Add protein to breakfast",
+          "kg": "Эртең мененки тамакка белок кошуңуз",
+          "ru": "Добавить белок в завтрак",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Add an egg or cottage cheese 3 times a week", "kg": "Жумасына 3 жолу эртең мененки тамакка жумуртка кошуңуз", "ru": "3 раза в неделю добавлять к завтраку яйцо или творог" }
+        },
+        {
+          "en": "Cook at home at least 4 days a week",
+          "kg": "Жумасына жок дегенде 4 күн үйдө тамак жасаңыз",
+          "ru": "Готовить дома минимум 4 дня в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 60,
+          "easy": { "en": "Cook at home 2 days a week", "kg": "Жумасына 2 күн үйдө тамак жасаңыз", "ru": "Готовить дома 2 дня в неделю" }
+        },
+        {
+          "en": "Stop eating 3 hours before sleep",
+          "kg": "Уктаардан 3 саат мурун тамак ичпеңиз",
+          "ru": "Не есть за 3 часа до сна",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Stop eating 1 hour before sleep", "kg": "Уктаардан 1 саат мурун тамактанбаңыз", "ru": "Не есть за 1 час до сна" }
+        },
+        {
+          "en": "Keep healthy snacks at hand",
+          "kg": "Пайдалуу жеңил тамактарды жаныңызда кармаңыз",
+          "ru": "Держать под рукой полезные перекусы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Put fruit on the table today", "kg": "Бүгүн дасторконго жемиш коюп коюңуз", "ru": "Поставить сегодня фрукты на стол" }
+        },
+        {
+          "en": "Read labels before buying food",
+          "kg": "Азык сатып алардан мурун этикеткасын окуңуз",
+          "ru": "Читать состав продуктов перед покупкой",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Read the label of one product you buy often", "kg": "Көп ала турган бир азыктын этикеткасын окуңуз", "ru": "Прочитать этикетку одного частого продукта" }
+        }
       ]
     },
     {
       "title": { "en": "Sleep", "kg": "Уйку", "ru": "Сон" },
+      "kind": "support",
       "milestones": [
         { "en": "Same bedtime for 3 weeks", "kg": "3 жума бирдей убакта жатуу", "ru": "3 недели ложиться в одно время" }
       ],
       "actions": [
-        { "en": "Go to bed and wake up at the same time", "kg": "Бир убакта жатып, бир убакта туруңуз", "ru": "Ложиться и вставать в одно и то же время" },
-        { "en": "Keep the bedroom dark, quiet and cool", "kg": "Уктоочу бөлмөнү караңгы, тынч жана салкын кармаңыз", "ru": "Сделать спальню тёмной, тихой и прохладной" },
-        { "en": "No caffeine after 2 pm", "kg": "Саат 14:00дөн кийин кофеин ичпеңиз", "ru": "Не пить кофеин после 14:00" },
-        { "en": "Put the phone away 1 hour before bed", "kg": "Уктаардан 1 саат мурун телефонду коюңуз", "ru": "Откладывать телефон за час до сна" },
-        { "en": "Create a 15-minute evening wind-down ritual", "kg": "15 мүнөттүк кечки тынчтануу ырымын түзүңүз", "ru": "Создать 15-минутный вечерний ритуал расслабления" },
-        { "en": "Get morning daylight within an hour of waking", "kg": "Ойгонгондон кийин бир саат ичинде күндүн жарыгын алыңыз", "ru": "Выходить на дневной свет в течение часа после пробуждения" },
-        { "en": "Avoid naps longer than 20 minutes", "kg": "20 мүнөттөн узун күндүзгү уйкудан качыңыз", "ru": "Не спать днём дольше 20 минут" },
-        { "en": "Track sleep for two weeks", "kg": "Эки жума уйкуңузду көзөмөлдөңүз", "ru": "Две недели отслеживать сон" }
+        {
+          "en": "Go to bed and wake up at the same time",
+          "kg": "Бир убакта жатып, бир убакта туруңуз",
+          "ru": "Ложиться и вставать в одно и то же время",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Keep the same wake-up time on weekdays", "kg": "Иш күндөрү бир убакта ойгонуңуз", "ru": "В будни вставать в одно и то же время" }
+        },
+        {
+          "en": "Keep the bedroom dark, quiet and cool",
+          "kg": "Уктоочу бөлмөнү караңгы, тынч жана салкын кармаңыз",
+          "ru": "Сделать спальню тёмной, тихой и прохладной",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Air the bedroom for 10 minutes before sleep", "kg": "Уктаардан мурун бөлмөнү 10 мүнөт желдетиңиз", "ru": "Проветривать спальню 10 минут перед сном" },
+          "steps": [
+            { "en": "Find what lights the room at night", "kg": "Түнкүсүн бөлмөнү эмне жарык кыларын табыңыз", "ru": "Найти, что светит в комнате ночью", "minutes": 10 },
+            { "en": "Cover lights or get a sleep mask", "kg": "Жарыкты жабыңыз же уйку маскасын алыңыз", "ru": "Закрыть источники света или купить маску для сна", "minutes": 30 },
+            { "en": "Switch off notification sounds at night", "kg": "Түнкү билдирүү үндөрүн өчүрүңүз", "ru": "Отключить звуки уведомлений на ночь", "minutes": 10 },
+            { "en": "Air the room before bed", "kg": "Уктаардан мурун бөлмөнү желдетиңиз", "ru": "Проветрить комнату перед сном", "minutes": 10 },
+            { "en": "Note in the morning what disturbed sleep", "kg": "Эртең менен уйкуга эмне тоскоол болгонун жазыңыз", "ru": "Утром записать, что мешало спать", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "No caffeine after 2 pm",
+          "kg": "Саат 14:00дөн кийин кофеин ичпеңиз",
+          "ru": "Не пить кофеин после 14:00",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "No caffeine after 6 pm", "kg": "Саат 18:00дөн кийин кофеин ичпеңиз", "ru": "Не пить кофеин после 18:00" }
+        },
+        {
+          "en": "Put the phone away 1 hour before bed",
+          "kg": "Уктаардан 1 саат мурун телефонду коюңуз",
+          "ru": "Откладывать телефон за час до сна",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Put the phone away 20 minutes before bed", "kg": "Уктаардан 20 мүнөт мурун телефонду коюңуз", "ru": "Откладывать телефон за 20 минут до сна" }
+        },
+        {
+          "en": "Create a 15-minute evening wind-down ritual",
+          "kg": "15 мүнөттүк кечки тынчтануу ырымын түзүңүз",
+          "ru": "Создать 15-минутный вечерний ритуал расслабления",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Do 5 minutes of calm before sleep", "kg": "Уктаардан мурун 5 мүнөт тынч отуруңуз", "ru": "Проводить 5 спокойных минут перед сном" }
+        },
+        {
+          "en": "Get morning daylight within an hour of waking",
+          "kg": "Ойгонгондон кийин бир саат ичинде күндүн жарыгын алыңыз",
+          "ru": "Выходить на дневной свет в течение часа после пробуждения",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Open the curtains right after waking", "kg": "Ойгонгондо дароо парданы ачыңыз", "ru": "Открывать шторы сразу после пробуждения" }
+        },
+        {
+          "en": "Avoid naps longer than 20 minutes",
+          "kg": "20 мүнөттөн узун күндүзгү уйкудан качыңыз",
+          "ru": "Не спать днём дольше 20 минут",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a 30-minute alarm when napping", "kg": "Күндүзү уктасаңыз, 30 мүнөткө ойготкуч коюңуз", "ru": "Ставить будильник на 30 минут при дневном сне" }
+        },
+        {
+          "en": "Track sleep for two weeks",
+          "kg": "Эки жума уйкуңузду көзөмөлдөңүз",
+          "ru": "Две недели отслеживать сон",
+          "type": "milestone",
+          "minutes": 10,
+          "easy": { "en": "Note bedtime and wake time for 3 days", "kg": "3 күн жатуу жана туруу убактысын жазыңыз", "ru": "3 дня записывать время отбоя и подъёма" },
+          "steps": [
+            { "en": "Make a simple sleep table", "kg": "Жөнөкөй уйку таблицасын түзүңүз", "ru": "Сделать простую таблицу сна", "minutes": 10 },
+            { "en": "Write bedtime and wake time each day", "kg": "Күн сайын жатуу жана туруу убактысын жазыңыз", "ru": "Каждый день записывать время отбоя и подъёма", "minutes": 5 },
+            { "en": "Rate your energy 1–10 each morning", "kg": "Ар эртең энергияңызды 1ден 10го чейин баалаңыз", "ru": "Каждое утро оценивать бодрость от 1 до 10", "minutes": 5 },
+            { "en": "After a week, find your average sleep", "kg": "Бир жумадан кийин орточо уйкуңузду эсептеңиз", "ru": "Через неделю посчитать среднее время сна", "minutes": 10 },
+            { "en": "After two weeks, pick one thing to fix", "kg": "Эки жумадан кийин оңдой турган бир нерсени тандаңыз", "ru": "Через две недели выбрать одно, что улучшить", "minutes": 15 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Recovery", "kg": "Калыбына келүү", "ru": "Восстановление" },
+      "kind": "support",
       "milestones": [
         { "en": "A month without injuries", "kg": "Жаракатсыз бир ай", "ru": "Месяц без травм" }
       ],
       "actions": [
-        { "en": "Plan at least one rest day a week", "kg": "Жумасына жок дегенде бир эс алуу күнүн пландаңыз", "ru": "Планировать минимум один день отдыха в неделю" },
-        { "en": "Do a light recovery walk after hard days", "kg": "Оор күндөрдөн кийин жеңил басып жүрүңүз", "ru": "Делать лёгкую прогулку после тяжёлых дней" },
-        { "en": "Use a foam roller 3 times a week", "kg": "Жумасына 3 жолу массаждык роликти колдонуңуз", "ru": "Использовать массажный ролик 3 раза в неделю" },
-        { "en": "Listen to pain and don't train through it", "kg": "Ооруну байкап, оорусаңыз машыкпаңыз", "ru": "Прислушиваться к боли и не тренироваться через неё" },
-        { "en": "Take an easier week every fourth week", "kg": "Ар төртүнчү жуманы жеңилирээк өткөрүңүз", "ru": "Каждую четвёртую неделю делать разгрузочной" },
-        { "en": "Breathe deeply for 5 minutes after training", "kg": "Машыгуудан кийин 5 мүнөт терең дем алыңыз", "ru": "5 минут глубокого дыхания после тренировки" },
-        { "en": "Get a massage or sauna once a month", "kg": "Айына бир жолу массаж же мончого барыңыз", "ru": "Раз в месяц массаж или баня" },
-        { "en": "Rate your fatigue from 1 to 10 every day", "kg": "Чарчооңузду күн сайын 1ден 10го чейин баалаңыз", "ru": "Ежедневно оценивать усталость от 1 до 10" }
+        {
+          "en": "Plan at least one rest day a week",
+          "kg": "Жумасына жок дегенде бир эс алуу күнүн пландаңыз",
+          "ru": "Планировать минимум один день отдыха в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Mark one rest day in your calendar", "kg": "Календарга бир эс алуу күнүн белгилеңиз", "ru": "Отметить в календаре один день отдыха" }
+        },
+        {
+          "en": "Do a light recovery walk after hard days",
+          "kg": "Оор күндөрдөн кийин жеңил басып жүрүңүз",
+          "ru": "Делать лёгкую прогулку после тяжёлых дней",
+          "type": "quality",
+          "minutes": 20,
+          "easy": { "en": "Walk 10 minutes after a hard day", "kg": "Оор күндөн кийин 10 мүнөт басыңыз", "ru": "Пройтись 10 минут после тяжёлого дня" }
+        },
+        {
+          "en": "Use a foam roller 3 times a week",
+          "kg": "Жумасына 3 жолу массаждык роликти колдонуңуз",
+          "ru": "Использовать массажный ролик 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Roll your legs for 5 minutes once a week", "kg": "Жумасына бир жолу 5 мүнөт роллер менен буттарды жумшартыңыз", "ru": "Раз в неделю 5 минут прокатывать ноги роллером" }
+        },
+        {
+          "en": "Listen to pain and don't train through it",
+          "kg": "Ооруну байкап, оорусаңыз машыкпаңыз",
+          "ru": "Прислушиваться к боли и не тренироваться через неё",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Stop the exercise if something hurts sharply", "kg": "Кескин ооруса, көнүгүүнү токтотуңуз", "ru": "Останавливать упражнение при резкой боли" }
+        },
+        {
+          "en": "Take an easier week every fourth week",
+          "kg": "Ар төртүнчү жуманы жеңилирээк өткөрүңүз",
+          "ru": "Каждую четвёртую неделю делать разгрузочной",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Make one workout lighter this week", "kg": "Ушул жумада бир машыгууну жеңилдетиңиз", "ru": "Облегчить одну тренировку на этой неделе" }
+        },
+        {
+          "en": "Breathe deeply for 5 minutes after training",
+          "kg": "Машыгуудан кийин 5 мүнөт терең дем алыңыз",
+          "ru": "5 минут глубокого дыхания после тренировки",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 5,
+          "easy": { "en": "Take 10 slow breaths after training", "kg": "Машыгуудан кийин 10 жолу жай дем алыңыз", "ru": "Сделать 10 медленных вдохов после тренировки" }
+        },
+        {
+          "en": "Get a massage or sauna once a month",
+          "kg": "Айына бир жолу массаж же мончого барыңыз",
+          "ru": "Раз в месяц массаж или баня",
+          "type": "quality",
+          "minutes": 60,
+          "easy": { "en": "Take a warm shower to relax", "kg": "Эс алуу үчүн жылуу душка түшүңүз", "ru": "Принять тёплый душ, чтобы расслабиться" }
+        },
+        {
+          "en": "Rate your fatigue from 1 to 10 every day",
+          "kg": "Чарчооңузду күн сайын 1ден 10го чейин баалаңыз",
+          "ru": "Ежедневно оценивать усталость от 1 до 10",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Rate your fatigue after workouts only", "kg": "Чарчооңузду машыгуудан кийин гана баалаңыз", "ru": "Оценивать усталость только после тренировок" }
+        }
       ]
     },
     {
       "title": { "en": "Medical check", "kg": "Медициналык текшерүү", "ru": "Медицина" },
+      "kind": "support",
       "milestones": [
         { "en": "Full check-up completed", "kg": "Толук медициналык текшерүү өттү", "ru": "Пройдено полное обследование" }
       ],
       "actions": [
-        { "en": "Visit a doctor before increasing the load", "kg": "Жүктү көбөйтүүдөн мурун дарыгерге барыңыз", "ru": "Сходить к врачу перед увеличением нагрузок" },
-        { "en": "Do basic blood tests", "kg": "Негизги кан анализдерин тапшырыңыз", "ru": "Сдать базовые анализы крови" },
-        { "en": "Check blood pressure regularly", "kg": "Кан басымын үзгүлтүксүз текшериңиз", "ru": "Регулярно измерять давление" },
-        { "en": "Visit the dentist", "kg": "Тиш дарыгерине барыңыз", "ru": "Посетить стоматолога" },
-        { "en": "Record your weight weekly at the same time", "kg": "Салмагыңызды жума сайын бир убакта жазыңыз", "ru": "Взвешиваться раз в неделю в одно время" },
-        { "en": "Treat small health problems early", "kg": "Кичинекей ден соолук көйгөйлөрүн эрте дарылаңыз", "ru": "Лечить мелкие проблемы со здоровьем вовремя" },
-        { "en": "Get recommended vaccinations", "kg": "Сунушталган эмдөөлөрдү алыңыз", "ru": "Сделать рекомендованные прививки" },
-        { "en": "Keep your medical results in one place", "kg": "Медициналык жыйынтыктарды бир жерде сактаңыз", "ru": "Хранить медицинские результаты в одном месте" }
+        {
+          "en": "Visit a doctor before increasing the load",
+          "kg": "Жүктү көбөйтүүдөн мурун дарыгерге барыңыз",
+          "ru": "Сходить к врачу перед увеличением нагрузок",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write down health questions for a doctor", "kg": "Дарыгерге бере турган суроолорду жазыңыз", "ru": "Записать вопросы о здоровье для врача" },
+          "steps": [
+            { "en": "List your complaints and questions", "kg": "Даттанууларыңызды жана суроолоруңузду жазыңыз", "ru": "Выписать жалобы и вопросы", "minutes": 15 },
+            { "en": "Find your family doctor or a clinic", "kg": "Үй-бүлөлүк дарыгериңизди же клиниканы табыңыз", "ru": "Найти своего семейного врача или клинику", "minutes": 20 },
+            { "en": "Book an appointment", "kg": "Кабыл алууга жазылыңыз", "ru": "Записаться на приём", "minutes": 10 },
+            { "en": "Visit the doctor with your list", "kg": "Тизмеңиз менен дарыгерге барыңыз", "ru": "Сходить к врачу со списком", "minutes": 90 },
+            { "en": "Write down the doctor's advice", "kg": "Дарыгердин кеңештерин жазып алыңыз", "ru": "Записать рекомендации врача", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Do basic blood tests",
+          "kg": "Негизги кан анализдерин тапшырыңыз",
+          "ru": "Сдать базовые анализы крови",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find where blood tests are done near you", "kg": "Жакын жерде кан анализин кайда тапшырса болорун билиңиз", "ru": "Узнать, где рядом сдают анализ крови" },
+          "steps": [
+            { "en": "Ask your doctor which tests you need", "kg": "Кайсы анализ керек экенин дарыгерден сураңыз", "ru": "Спросить у врача, какие анализы нужны", "minutes": 15 },
+            { "en": "Compare prices in 2 laboratories", "kg": "2 лабораториядагы бааларды салыштырыңыз", "ru": "Сравнить цены в 2 лабораториях", "minutes": 20 },
+            { "en": "Check how to prepare for the test", "kg": "Анализге кантип даярдануу керегин билиңиз", "ru": "Узнать, как подготовиться к анализу", "minutes": 10 },
+            { "en": "Give blood in the morning", "kg": "Эртең менен кан тапшырыңыз", "ru": "Сдать кровь утром", "minutes": 45 },
+            { "en": "Show the results to a doctor", "kg": "Жыйынтыкты дарыгерге көрсөтүңүз", "ru": "Показать результаты врачу", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Check blood pressure once a week",
+          "kg": "Кан басымын жумасына бир жолу ченеңиз",
+          "ru": "Измерять давление раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Measure blood pressure once this month", "kg": "Ушул айда бир жолу кан басымын ченеңиз", "ru": "Измерить давление один раз в этом месяце" }
+        },
+        {
+          "en": "Visit the dentist",
+          "kg": "Тиш дарыгерине барыңыз",
+          "ru": "Посетить стоматолога",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Book a dentist check-up", "kg": "Тиш дарыгерине жазылыңыз", "ru": "Записаться на осмотр к стоматологу" },
+          "steps": [
+            { "en": "Choose a dental clinic nearby", "kg": "Жакын жердеги тиш клиникасын тандаңыз", "ru": "Выбрать стоматологию рядом", "minutes": 15 },
+            { "en": "Book a check-up", "kg": "Текшерүүгө жазылыңыз", "ru": "Записаться на осмотр", "minutes": 10 },
+            { "en": "Go to the check-up", "kg": "Текшерүүгө барыңыз", "ru": "Прийти на осмотр", "minutes": 60 },
+            { "en": "Plan the treatment if needed", "kg": "Керек болсо, дарылоону пландаңыз", "ru": "Спланировать лечение, если нужно", "minutes": 15 },
+            { "en": "Set a reminder for a visit in 6 months", "kg": "6 айдан кийинки текшерүүгө эскертме коюңуз", "ru": "Поставить напоминание о визите через 6 месяцев", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Record your weight weekly at the same time",
+          "kg": "Салмагыңызды жума сайын бир убакта жазыңыз",
+          "ru": "Взвешиваться раз в неделю в одно время",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Weigh yourself once this month", "kg": "Ушул айда бир жолу таразага тартылыңыз", "ru": "Взвеситься один раз в этом месяце" }
+        },
+        {
+          "en": "Treat small health problems early",
+          "kg": "Кичинекей ден соолук көйгөйлөрүн эрте дарылаңыз",
+          "ru": "Лечить мелкие проблемы со здоровьем вовремя",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Write down any symptom that lasts 3+ days", "kg": "3 күндөн ашык созулган белгини жазып алыңыз", "ru": "Записывать симптом, если он длится 3+ дня" }
+        },
+        {
+          "en": "Get recommended vaccinations",
+          "kg": "Сунушталган эмдөөлөрдү алыңыз",
+          "ru": "Сделать рекомендованные прививки",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Find your vaccination record", "kg": "Эмдөө картаңызды табыңыз", "ru": "Найти свою карту прививок" },
+          "steps": [
+            { "en": "Look for your old vaccination card at home", "kg": "Үйдөн эски эмдөө картаңызды издеңиз", "ru": "Поискать дома старую карту прививок", "minutes": 15 },
+            { "en": "Ask a doctor which vaccines you need", "kg": "Кайсы эмдөө керек экенин дарыгерден сураңыз", "ru": "Спросить у врача, какие прививки нужны", "minutes": 20 },
+            { "en": "Book the vaccination", "kg": "Эмдөөгө жазылыңыз", "ru": "Записаться на прививку", "minutes": 10 },
+            { "en": "Get vaccinated", "kg": "Эмдөө алыңыз", "ru": "Сделать прививку", "minutes": 60 },
+            { "en": "Save the record in one place", "kg": "Маалыматты бир жерге сактаңыз", "ru": "Сохранить запись в одном месте", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Keep your medical results in one place",
+          "kg": "Медициналык жыйынтыктарды бир жерде сактаңыз",
+          "ru": "Хранить медицинские результаты в одном месте",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Make a folder for medical papers", "kg": "Медициналык кагаздар үчүн папка ачыңыз", "ru": "Завести папку для медицинских бумаг" },
+          "steps": [
+            { "en": "Collect all medical papers at home", "kg": "Үйдөгү бардык медициналык кагаздарды чогултуңуз", "ru": "Собрать все медицинские бумаги дома", "minutes": 20 },
+            { "en": "Photograph each document", "kg": "Ар бир документти сүрөткө тартыңыз", "ru": "Сфотографировать каждый документ", "minutes": 20 },
+            { "en": "Create one folder on your phone", "kg": "Телефонуңузда бир папка түзүңүз", "ru": "Создать одну папку в телефоне", "minutes": 5 },
+            { "en": "Name files by date and type", "kg": "Файлдарды дата жана түрү боюнча атаңыз", "ru": "Назвать файлы по дате и типу", "minutes": 15 },
+            { "en": "Put the paper originals in one file", "kg": "Кагаз нускаларын бир папкага салыңыз", "ru": "Сложить бумажные оригиналы в одну папку", "minutes": 10 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Habits", "kg": "Адаттар", "ru": "Привычки" },
+      "kind": "support",
       "milestones": [
         { "en": "21-day healthy habit streak", "kg": "21 күндүк пайдалуу адат сериясы", "ru": "Серия полезной привычки 21 день" }
       ],
       "actions": [
-        { "en": "Walk 8,000 steps a day", "kg": "Күнүнө 8000 кадам басыңыз", "ru": "Проходить 8000 шагов в день" },
-        { "en": "Drink a glass of water after waking up", "kg": "Ойгонгондон кийин бир стакан суу ичиңиз", "ru": "Выпивать стакан воды после пробуждения" },
-        { "en": "Take the stairs instead of the lift", "kg": "Лифттин ордуна тепкич менен чыгыңыз", "ru": "Ходить по лестнице вместо лифта" },
-        { "en": "Reduce or quit smoking and alcohol", "kg": "Тамеки менен алкоголду азайтыңыз же таштаңыз", "ru": "Сократить или бросить курение и алкоголь" },
-        { "en": "Stand up and move every 45 minutes", "kg": "Ар 45 мүнөттө туруп, кыймылдаңыз", "ru": "Вставать и двигаться каждые 45 минут" },
-        { "en": "Do a 5-minute morning exercise", "kg": "5 мүнөттүк эртең мененки көнүгүү жасаңыз", "ru": "Делать 5-минутную утреннюю зарядку" },
-        { "en": "Mark healthy habits in the Habits module", "kg": "Пайдалуу адаттарды «Адаттар» бөлүмүндө белгилеңиз", "ru": "Отмечать полезные привычки в модуле «Привычки»" },
-        { "en": "Replace one unhealthy habit each month", "kg": "Ар ай бир зыяндуу адатты алмаштырыңыз", "ru": "Каждый месяц заменять одну вредную привычку" }
+        {
+          "en": "Walk 8,000 steps a day",
+          "kg": "Күнүнө 8000 кадам басыңыз",
+          "ru": "Проходить 8000 шагов в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 60,
+          "easy": { "en": "Walk 4,000 steps a day", "kg": "Күнүнө 4 000 кадам басыңыз", "ru": "Проходить 4 000 шагов в день" }
+        },
+        {
+          "en": "Drink a glass of water after waking up",
+          "kg": "Ойгонгондон кийин бир стакан суу ичиңиз",
+          "ru": "Выпивать стакан воды после пробуждения",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Keep a glass of water by the bed", "kg": "Төшөктүн жанына бир стакан суу коюп коюңуз", "ru": "Ставить стакан воды у кровати" }
+        },
+        {
+          "en": "Take the stairs instead of the lift",
+          "kg": "Лифттин ордуна тепкич менен чыгыңыз",
+          "ru": "Ходить по лестнице вместо лифта",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Walk up 2 floors, then take the lift", "kg": "2 кабатка басып чыгып, анан лифтке түшүңүз", "ru": "Подниматься на 2 этажа пешком, дальше на лифте" }
+        },
+        {
+          "en": "Cut smoking or alcohol by half this month",
+          "kg": "Ушул айда тамеки же ичимдикти эки эсе азайтыңыз",
+          "ru": "Сократить курение или алкоголь вдвое за месяц",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Spend one day without cigarettes or alcohol", "kg": "Бир күн тамеки же ичимдиксиз өткөрүңүз", "ru": "Провести один день без сигарет или алкоголя" }
+        },
+        {
+          "en": "Stand up and move every 45 minutes",
+          "kg": "Ар 45 мүнөттө туруп, кыймылдаңыз",
+          "ru": "Вставать и двигаться каждые 45 минут",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Stand up and stretch every 2 hours", "kg": "Ар 2 саатта туруп, керилип алыңыз", "ru": "Вставать и потягиваться каждые 2 часа" }
+        },
+        {
+          "en": "Do a 5-minute morning exercise",
+          "kg": "5 мүнөттүк эртең мененки көнүгүү жасаңыз",
+          "ru": "Делать 5-минутную утреннюю зарядку",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Do 10 squats after waking", "kg": "Ойгонгондон кийин 10 жолу отуруп-туруңуз", "ru": "Сделать 10 приседаний после пробуждения" }
+        },
+        {
+          "en": "Mark healthy habits in the Habits module",
+          "kg": "Пайдалуу адаттарды «Адаттар» бөлүмүндө белгилеңиз",
+          "ru": "Отмечать полезные привычки в модуле «Привычки»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Mark one habit in the Habits module", "kg": "Адаттар модулунда бир адатты белгилеңиз", "ru": "Отмечать одну привычку в модуле «Привычки»" }
+        },
+        {
+          "en": "Replace one unhealthy habit each month",
+          "kg": "Ар ай бир зыяндуу адатты алмаштырыңыз",
+          "ru": "Каждый месяц заменять одну вредную привычку",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Write one unhealthy habit and its trigger", "kg": "Бир зыяндуу адатты жана анын себебин жазыңыз", "ru": "Записать одну вредную привычку и её триггер" }
+        }
       ]
     },
     {
       "title": { "en": "Motivation", "kg": "Мотивация", "ru": "Мотивация" },
+      "kind": "support",
       "milestones": [
         { "en": "First race or challenge booked", "kg": "Биринчи жарыш же чакырык катталды", "ru": "Записались на первый старт или челлендж" }
       ],
       "actions": [
-        { "en": "Sign up for an event with a fixed date", "kg": "Датасы белгиленген иш-чарага катталыңыз", "ru": "Зарегистрироваться на старт с фиксированной датой" },
-        { "en": "Find a training buddy or a club", "kg": "Машыгуу өнөгүн же клубду табыңыз", "ru": "Найти напарника или клуб для тренировок" },
-        { "en": "Take progress photos once a month", "kg": "Айына бир жолу жетишкендик сүрөтүн тартыңыз", "ru": "Раз в месяц делать фото прогресса" },
-        { "en": "Reward yourself for each milestone", "kg": "Ар бир аралык максат үчүн өзүңүздү сыйлаңыз", "ru": "Награждать себя за каждую промежуточную цель" },
-        { "en": "Create a motivating playlist", "kg": "Шыктандыруучу ыр тизмесин түзүңүз", "ru": "Собрать мотивирующий плейлист" },
-        { "en": "Read stories of people who did the same", "kg": "Ушундай кылган адамдардын окуяларын окуңуз", "ru": "Читать истории людей, которые сделали то же" },
-        { "en": "Prepare workout clothes the night before", "kg": "Машыгуу кийимин мурунку кечте даярдаңыз", "ru": "Готовить форму для тренировки с вечера" },
-        { "en": "Remember your 'why' on hard days", "kg": "Оор күндөрү «эмне үчүн» дегенди эстеңиз", "ru": "В трудные дни вспоминать своё «зачем»" }
+        {
+          "en": "Sign up for an event with a fixed date",
+          "kg": "Датасы белгиленген иш-чарага катталыңыз",
+          "ru": "Зарегистрироваться на старт с фиксированной датой",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose an event 2–3 months away", "kg": "2–3 айдан кийинки бир иш-чараны тандаңыз", "ru": "Выбрать событие через 2–3 месяца" },
+          "steps": [
+            { "en": "Search for local runs, swims or tournaments", "kg": "Жергиликтүү чуркоо, сүзүү же турнирлерди издеңиз", "ru": "Найти местные забеги, заплывы или турниры", "minutes": 20 },
+            { "en": "Pick one that fits your level and date", "kg": "Деңгээлиңизге жана убактыңызга ылайыктуусун тандаңыз", "ru": "Выбрать подходящее по уровню и дате", "minutes": 10 },
+            { "en": "Check rules and registration fee", "kg": "Эрежелерин жана катталуу баасын билиңиз", "ru": "Узнать правила и стоимость участия", "minutes": 10 },
+            { "en": "Register and save the confirmation", "kg": "Катталып, ырастоону сактап коюңуз", "ru": "Зарегистрироваться и сохранить подтверждение", "minutes": 15 },
+            { "en": "Add the date to your calendar", "kg": "Датаны календарга кошуңуз", "ru": "Добавить дату в календарь", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Find a training buddy or a club",
+          "kg": "Машыгуу өнөгүн же клубду табыңыз",
+          "ru": "Найти напарника или клуб для тренировок",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Invite one friend to a workout", "kg": "Бир досуңузду машыгууга чакырыңыз", "ru": "Позвать одного друга на тренировку" },
+          "steps": [
+            { "en": "Ask 3 friends who wants to train together", "kg": "Ким бирге машыгат деп 3 досуңуздан сураңыз", "ru": "Спросить 3 друзей, кто хочет тренироваться вместе", "minutes": 10 },
+            { "en": "Look for free clubs or running groups nearby", "kg": "Жакын жерден акысыз клуб же чуркоо тобун издеңиз", "ru": "Найти бесплатные клубы или беговые группы рядом", "minutes": 20 },
+            { "en": "Agree on days and a place", "kg": "Күндөрдү жана жерди макулдашыңыз", "ru": "Договориться о днях и месте", "minutes": 10 },
+            { "en": "Do the first joint workout", "kg": "Биринчи биргелешкен машыгууну өткөрүңүз", "ru": "Провести первую совместную тренировку", "minutes": 60 },
+            { "en": "Plan the next 4 sessions together", "kg": "Кийинки 4 машыгууну бирге пландаңыз", "ru": "Спланировать вместе следующие 4 тренировки", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Take progress photos once a month",
+          "kg": "Айына бир жолу жетишкендик сүрөтүн тартыңыз",
+          "ru": "Раз в месяц делать фото прогресса",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take one progress photo today", "kg": "Бүгүн салыштыруу үчүн бир сүрөт тартыңыз", "ru": "Сделать сегодня одно фото для сравнения" }
+        },
+        {
+          "en": "Reward yourself for each milestone",
+          "kg": "Ар бир аралык максат үчүн өзүңүздү сыйлаңыз",
+          "ru": "Награждать себя за каждую промежуточную цель",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Write a list of 3 small rewards", "kg": "3 кичинекей сыйлыктын тизмесин жазыңыз", "ru": "Составить список из 3 маленьких наград" }
+        },
+        {
+          "en": "Create a motivating playlist",
+          "kg": "Шыктандыруучу ыр тизмесин түзүңүз",
+          "ru": "Собрать мотивирующий плейлист",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Pick 3 songs for your next workout", "kg": "Кийинки машыгууга 3 ыр тандаңыз", "ru": "Выбрать 3 песни для следующей тренировки" },
+          "steps": [
+            { "en": "Pick 5 songs that give you energy", "kg": "Энергия берген 5 ырды тандаңыз", "ru": "Выбрать 5 песен, которые заряжают", "minutes": 10 },
+            { "en": "Add songs to reach 30 minutes", "kg": "30 мүнөткө жеткенче ыр кошуңуз", "ru": "Добавить песни до 30 минут", "minutes": 10 },
+            { "en": "Order them from calm to fast", "kg": "Тынчынан ылдамына карай иреттеңиз", "ru": "Расставить от спокойных к быстрым", "minutes": 5 },
+            { "en": "Download it for offline use", "kg": "Интернетсиз угуу үчүн жүктөп алыңыз", "ru": "Скачать для прослушивания без интернета", "minutes": 5 },
+            { "en": "Test it on your next workout", "kg": "Кийинки машыгууда сынап көрүңүз", "ru": "Проверить на следующей тренировке", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Read stories of people who did the same",
+          "kg": "Ушундай кылган адамдардын окуяларын окуңуз",
+          "ru": "Читать истории людей, которые сделали то же",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Read one short success story", "kg": "Бир кыска ийгилик баянын окуңуз", "ru": "Прочитать одну короткую историю успеха" }
+        },
+        {
+          "en": "Prepare workout clothes the night before",
+          "kg": "Машыгуу кийимин мурунку кечте даярдаңыз",
+          "ru": "Готовить форму для тренировки с вечера",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 5,
+          "easy": { "en": "Put your sports shoes by the door", "kg": "Спорт бут кийимиңизди эшиктин жанына коюңуз", "ru": "Поставить кроссовки у двери" }
+        },
+        {
+          "en": "Reread your written 'why' on hard days",
+          "kg": "Оор күндөрү жазылган «эмне үчүн» дегениңизди кайра окуңуз",
+          "ru": "В трудные дни перечитывать своё записанное «зачем»",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write your 'why' in one line", "kg": "«Эмне үчүн» дегениңизди бир сап кылып жазыңыз", "ru": "Записать своё «зачем» одной строкой" }
+        }
       ]
     },
     {
       "title": { "en": "Mental health", "kg": "Психикалык ден соолук", "ru": "Психическое здоровье" },
+      "kind": "support",
       "milestones": [
         { "en": "Daily calm practice for a month", "kg": "Бир ай күн сайын тынчтануу практикасы", "ru": "Месяц ежедневной практики спокойствия" }
       ],
       "actions": [
-        { "en": "Meditate or breathe calmly for 10 minutes a day", "kg": "Күнүнө 10 мүнөт медитация же тынч дем алуу", "ru": "10 минут в день медитации или спокойного дыхания" },
-        { "en": "Record your mood daily in the Mood module", "kg": "Маанайыңызды күн сайын «Маанай» бөлүмүнө жазыңыз", "ru": "Ежедневно отмечать настроение в модуле «Настроение»" },
-        { "en": "Write down what worries you and one step to solve it", "kg": "Тынчсыздандырган нерсени жана аны чечүүнүн бир кадамын жазыңыз", "ru": "Записывать тревоги и один шаг к решению" },
-        { "en": "Spend time with friends every week", "kg": "Ар жума досторуңуз менен убакыт өткөрүңүз", "ru": "Каждую неделю проводить время с друзьями" },
-        { "en": "Do a hobby that relaxes you", "kg": "Эс алдырган хобби менен алектениңиз", "ru": "Заниматься хобби, которое расслабляет" },
-        { "en": "Limit news and social media", "kg": "Жаңылыктарды жана социалдык тармактарды чектеңиз", "ru": "Ограничить новости и соцсети" },
-        { "en": "Talk to a specialist if stress lasts long", "kg": "Стресс узакка созулса, адиске кайрылыңыз", "ru": "Обратиться к специалисту, если стресс затянулся" },
-        { "en": "Write 3 things you are grateful for", "kg": "Ыраазы болгон 3 нерсени жазыңыз", "ru": "Записывать 3 вещи, за которые благодарны" }
+        {
+          "en": "Meditate or breathe calmly for 10 minutes a day",
+          "kg": "Күнүнө 10 мүнөт медитация же тынч дем алуу",
+          "ru": "10 минут в день медитации или спокойного дыхания",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Breathe calmly for 3 minutes", "kg": "3 мүнөт тынч дем алыңыз", "ru": "3 минуты спокойно подышать" }
+        },
+        {
+          "en": "Record your mood daily in the Mood module",
+          "kg": "Маанайыңызды күн сайын «Маанай» бөлүмүнө жазыңыз",
+          "ru": "Ежедневно отмечать настроение в модуле «Настроение»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Record your mood 3 times a week", "kg": "Маанайыңызды жумасына 3 жолу белгилеңиз", "ru": "Отмечать настроение 3 раза в неделю" }
+        },
+        {
+          "en": "Write down what worries you and one step to solve it",
+          "kg": "Тынчсыздандырган нерсени жана аны чечүүнүн бир кадамын жазыңыз",
+          "ru": "Записывать тревоги и один шаг к решению",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Write one worry and one small step", "kg": "Бир тынчсызданууну жана бир кичинекей кадамды жазыңыз", "ru": "Записать одну тревогу и один маленький шаг" }
+        },
+        {
+          "en": "Spend time with friends every week",
+          "kg": "Ар жума досторуңуз менен убакыт өткөрүңүз",
+          "ru": "Каждую неделю проводить время с друзьями",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Call or text one friend this week", "kg": "Ушул жумада бир досуңузга чалыңыз же жазыңыз", "ru": "Позвонить или написать одному другу на неделе" }
+        },
+        {
+          "en": "Do a hobby that relaxes you",
+          "kg": "Эс алдырган хобби менен алектениңиз",
+          "ru": "Заниматься хобби, которое расслабляет",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Spend 15 minutes on a hobby", "kg": "Хоббиге 15 мүнөт бөлүңүз", "ru": "Уделить хобби 15 минут" }
+        },
+        {
+          "en": "Limit news and social media to 30 min a day",
+          "kg": "Жаңылык жана соцтармактарды күнүнө 30 мүнөт менен чектеңиз",
+          "ru": "Ограничить новости и соцсети 30 минутами в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Turn off news notifications", "kg": "Жаңылык билдирүүлөрүн өчүрүңүз", "ru": "Отключить уведомления новостей" }
+        },
+        {
+          "en": "Talk to a specialist if stress lasts long",
+          "kg": "Стресс узакка созулса, адиске кайрылыңыз",
+          "ru": "Обратиться к специалисту, если стресс затянулся",
+          "type": "quality",
+          "minutes": 60,
+          "easy": { "en": "Talk to someone you trust about stress", "kg": "Ишенген адамыңызга стресс тууралуу айтыңыз", "ru": "Поговорить о стрессе с человеком, которому доверяете" }
+        },
+        {
+          "en": "Write 3 things you are grateful for",
+          "kg": "Ыраазы болгон 3 нерсени жазыңыз",
+          "ru": "Записывать 3 вещи, за которые благодарны",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Write one thing you are grateful for", "kg": "Ыраазы болгон бир нерсени жазыңыз", "ru": "Записать одну вещь, за которую благодарны" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Discipline", "kg": "Тартип", "ru": "Дисциплина" },
+      "kind": "character",
+      "milestones": [
+        { "en": "A month of workouts as planned", "kg": "Бир ай машыгуу пландагыдай өттү", "ru": "Месяц тренировок строго по плану" }
+      ],
+      "actions": [
+        {
+          "en": "Arrive at training on time",
+          "kg": "Машыгууга убагында келиңиз",
+          "ru": "Приходить на тренировку вовремя",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 5,
+          "easy": { "en": "Leave home 10 minutes earlier", "kg": "Үйдөн 10 мүнөт эрте чыгыңыз", "ru": "Выходить из дома на 10 минут раньше" }
+        },
+        {
+          "en": "Put weights and mats back after use",
+          "kg": "Колдонгондон кийин гантель жана килемчени ордуна коюңуз",
+          "ru": "Убирать гантели и коврик на место после себя",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put back one thing you used", "kg": "Колдонгон бир нерсени ордуна коюңуз", "ru": "Вернуть на место одну вещь, которой пользовались" }
+        },
+        {
+          "en": "Greet the coach and others in the gym",
+          "kg": "Залда машыктыруучу жана башкалар менен саламдашыңыз",
+          "ru": "Здороваться с тренером и людьми в зале",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Greet one person at training", "kg": "Машыгууда бир адам менен саламдашыңыз", "ru": "Поздороваться с одним человеком на тренировке" }
+        },
+        {
+          "en": "Finish every planned set, even the last one",
+          "kg": "Пландагы ар бир сетти, акыркысын да бүтүрүңүз",
+          "ru": "Доделывать каждый подход, даже последний",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Finish the last set with fewer reps", "kg": "Акыркы сетти азыраак кайталоо менен бүтүрүңүз", "ru": "Доделать последний подход с меньшим числом повторов" }
+        },
+        {
+          "en": "Log honest numbers, not wished ones",
+          "kg": "Каалаган эмес, чыныгы сандарды жазыңыз",
+          "ru": "Записывать честные цифры, а не желаемые",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Note one honest result today", "kg": "Бүгүн бир чыныгы жыйынтыкты жазыңыз", "ru": "Записать сегодня один честный результат" }
+        },
+        {
+          "en": "Get up at the alarm without snoozing",
+          "kg": "Ойготкуч шыңгыраганда дароо туруңуз",
+          "ru": "Вставать по будильнику без «ещё 5 минут»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Snooze the alarm only once", "kg": "Ойготкучту бир эле жолу кийинкиге калтырыңыз", "ru": "Откладывать будильник только один раз" }
+        },
+        {
+          "en": "Never skip training twice in a row",
+          "kg": "Машыгууну катары менен эки жолу калтырбаңыз",
+          "ru": "Не пропускать тренировку два раза подряд",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "After a skip, do 10 minutes the next day", "kg": "Калтырсаңыз, эртеси 10 мүнөт машыгыңыз", "ru": "После пропуска сделать 10 минут на следующий день" }
+        },
+        {
+          "en": "Help a beginner with a tip or equipment",
+          "kg": "Жаңы келгенге кеңеш же шайман менен жардам бериңиз",
+          "ru": "Помогать новичку советом или инвентарём",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Show a newcomer where things are", "kg": "Жаңы келгенге нерселер кайда экенин көрсөтүңүз", "ru": "Показать новичку, где что лежит" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Active rest", "kg": "Активдүү эс алуу", "ru": "Активный отдых" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First mountain hike done", "kg": "Тоого биринчи жүрүш болду", "ru": "Первый поход в горы пройден" }
+      ],
+      "actions": [
+        {
+          "en": "Go on a day hike in the mountains",
+          "kg": "Бир күндүк тоо жүрүшүнө барыңыз",
+          "ru": "Сходить в однодневный поход в горы",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Walk for an hour in a park", "kg": "Сейил бакта бир саат басыңыз", "ru": "Погулять час в парке" },
+          "steps": [
+            { "en": "Choose an easy trail near your city", "kg": "Шаарыңызга жакын жеңил жолду тандаңыз", "ru": "Выбрать лёгкий маршрут рядом с городом", "minutes": 20 },
+            { "en": "Find 1–2 people to go with", "kg": "Бирге бара турган 1–2 адам табыңыз", "ru": "Найти 1–2 человек для компании", "minutes": 15 },
+            { "en": "Check the weather and the road", "kg": "Аба ырайын жана жолду текшериңиз", "ru": "Проверить погоду и дорогу", "minutes": 10 },
+            { "en": "Pack water, food, a jacket and a charged phone", "kg": "Суу, тамак, куртка жана кубатталган телефон алыңыз", "ru": "Собрать воду, еду, куртку и заряженный телефон", "minutes": 20 },
+            { "en": "Tell family your route and return time", "kg": "Үйдөгүлөргө жолуңузду жана кайтуу убагын айтыңыз", "ru": "Сообщить родным маршрут и время возвращения", "minutes": 5 },
+            { "en": "Walk the route and come back before dark", "kg": "Жолду басып өтүп, караңгы киргенче кайтыңыз", "ru": "Пройти маршрут и вернуться до темноты", "minutes": 120 }
+          ]
+        },
+        {
+          "en": "Walk or cycle outdoors on weekends",
+          "kg": "Дем алыш күндөрү сыртта басыңыз же велосипед тебиңиз",
+          "ru": "По выходным гулять или кататься на велосипеде",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Walk outdoors for 20 minutes on Sunday", "kg": "Жекшембиде 20 мүнөт сыртта басыңыз", "ru": "В воскресенье гулять 20 минут на улице" }
+        },
+        {
+          "en": "Play a team sport once a week",
+          "kg": "Жумасына бир жолу командалык оюн ойноңуз",
+          "ru": "Раз в неделю играть в командную игру",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Play ball with friends for 20 minutes", "kg": "Достор менен 20 мүнөт топ ойноңуз", "ru": "Поиграть с друзьями в мяч 20 минут" }
+        },
+        {
+          "en": "Learn to swim 25 metres without stopping",
+          "kg": "Токтобой 25 метр сүзгөнгө үйрөнүңүз",
+          "ru": "Научиться проплывать 25 метров без остановки",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Go to the pool and practise breathing", "kg": "Бассейнге барып, дем алууну машыгыңыз", "ru": "Сходить в бассейн и потренировать дыхание" },
+          "steps": [
+            { "en": "Find a pool and its prices", "kg": "Бассейнди жана анын бааларын табыңыз", "ru": "Найти бассейн и узнать цены", "minutes": 20 },
+            { "en": "Practise breathing in water for 10 minutes", "kg": "Сууда 10 мүнөт дем алууну машыгыңыз", "ru": "Тренировать дыхание в воде 10 минут", "minutes": 45 },
+            { "en": "Practise floating on chest and back", "kg": "Көкүрөк жана чалкаңыздан сууда жатууну машыгыңыз", "ru": "Отработать лежание на воде на груди и спине", "minutes": 45 },
+            { "en": "Swim 10 metres with a board", "kg": "Тактай менен 10 метр сүзүңүз", "ru": "Проплыть 10 метров с доской", "minutes": 45 },
+            { "en": "Swim 10 metres without support", "kg": "Таянычсыз 10 метр сүзүңүз", "ru": "Проплыть 10 метров без опоры", "minutes": 45 },
+            { "en": "Swim 25 metres in one go", "kg": "Бир демде 25 метр сүзүңүз", "ru": "Проплыть 25 метров за один раз", "minutes": 45 }
+          ]
+        },
+        {
+          "en": "Walk for trips under 2 km",
+          "kg": "2 кмге чейинки жолду жөө басыңыз",
+          "ru": "Ходить пешком, если идти меньше 2 км",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Get off one stop earlier", "kg": "Бир аялдама эрте түшүңүз", "ru": "Выходить на одну остановку раньше" }
+        },
+        {
+          "en": "Play actively with kids or younger relatives",
+          "kg": "Балдар же кичүүлөр менен кыймылдуу оюн ойноңуз",
+          "ru": "Активно играть с детьми или младшими",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Play a 10-minute active game at home", "kg": "Үйдө 10 мүнөт кыймылдуу оюн ойноңуз", "ru": "Поиграть дома в подвижную игру 10 минут" }
+        },
+        {
+          "en": "Try one new sport this month",
+          "kg": "Ушул айда бир жаңы спорт түрүн сынап көрүңүз",
+          "ru": "Попробовать в этом месяце один новый вид спорта",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Watch a lesson of a sport you want to try", "kg": "Сынагыңыз келген спорт боюнча бир сабак көрүңүз", "ru": "Посмотреть урок по виду спорта, который хотите попробовать" },
+          "steps": [
+            { "en": "List 3 sports you are curious about", "kg": "Кызыктырган 3 спорт түрүн жазыңыз", "ru": "Выписать 3 интересных вида спорта", "minutes": 10 },
+            { "en": "Find a free trial or open session", "kg": "Акысыз сынамык же ачык машыгууну табыңыз", "ru": "Найти бесплатное пробное или открытое занятие", "minutes": 20 },
+            { "en": "Prepare clothes and shoes", "kg": "Кийим жана бут кийим даярдаңыз", "ru": "Подготовить одежду и обувь", "minutes": 10 },
+            { "en": "Attend the trial session", "kg": "Сынамык машыгууга барыңыз", "ru": "Сходить на пробное занятие", "minutes": 90 },
+            { "en": "Note what you liked and decide to go on", "kg": "Эмнеси жакканын жазып, улантууну чечиңиз", "ru": "Записать впечатления и решить, продолжать ли", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Spend a weekend morning in nature with family",
+          "kg": "Дем алыш күнү эртең менен үй-бүлө менен жаратылышка чыгыңыз",
+          "ru": "Провести утро выходного с семьёй на природе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 90,
+          "easy": { "en": "Have tea outside with family", "kg": "Үй-бүлө менен сыртта чай ичиңиз", "ru": "Попить чай с семьёй на улице" }
+        }
       ]
     }
   ]

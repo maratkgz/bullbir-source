@@ -1,13 +1,26 @@
 // Pure data helpers for the Mandala chart (Harada method / 9×9 goal grid).
 // Document shape at users/{uid}/mandalas/{id}:
 //   { title, center: Cell, directions: Direction[8] }
-//   Cell      = { text, done, deadline: 'YYYY-MM-DD' | '', note, milestones: Milestone[] }
-//   Direction = Cell & { actions: Cell[8] }
+//   Cell      = { text, done, deadline: 'YYYY-MM-DD' | '', note, milestones: Milestone[],
+//                 type: 'habit'|'milestone'|'quality'|'', freq: 'daily'|'3w'|'weekly'|'',
+//                 minutes: 0..120 (0 = unknown), src: library ref like 'health:3:5' | '' }
+//                 linkedIds: string[] (ids of tasks/habits created from the cell) }
+//   Direction = Cell & { kind: 'direct'|'support'|'character'|'', actions: Cell[8] }
 //   Milestone = { id, text, done, deadline }
+// Mandala-level fields: status 'draft'|'active'|'archived' (missing → 'active'), why (≤300),
+//   interview { life, goal, why, has, failures, obstacles, minutesPerDay, sphere } | null,
+//   timePerDay 5..240 (default 30), checks { 'YYYY-MM-DD': ['d-i', ...] } (last 14 days).
 // All updates return new objects — nothing is mutated in place.
+import { ITEM_TYPES, FREQS, DIRECTION_KINDS } from '../../../ai/library/schema'
 
 export const SLOTS = 8
-export const LIMITS = { text: 80, note: 1000, milestones: 12, milestoneText: 120 }
+export const LIMITS = {
+  text: 80, note: 1000, milestones: 12, milestoneText: 120, minutes: 120, src: 80,
+  linkedIds: 30, linkedId: 128, why: 300, answer: 500, sphere: 40, checkDays: 14,
+}
+export const STATUSES = ['draft', 'active', 'archived']
+export const TIME_PER_DAY = { min: 5, max: 240, fallback: 30 }
+export const INTERVIEW_FIELDS = ['life', 'goal', 'why', 'has', 'failures', 'obstacles']
 
 // The 8 directions sit clockwise around the centre, starting top-left.
 // Index = direction number, value = position (0..8) inside a 3×3 block (4 = centre).
@@ -27,8 +40,21 @@ function localDayKey(date = new Date()) {
 }
 
 export function emptyCell() {
-  return { text: '', done: false, doneAt: '', deadline: '', note: '', milestones: [] }
+  return {
+    text: '', done: false, doneAt: '', deadline: '', note: '', milestones: [],
+    type: '', freq: '', minutes: 0, src: '', linkedIds: [],
+  }
 }
+
+const oneOf = (value, allowed) => (allowed.includes(value) ? value : '')
+
+function cleanMinutes(value) {
+  const n = Math.round(Number(value))
+  return Number.isFinite(n) && n > 0 ? Math.min(n, LIMITS.minutes) : 0
+}
+
+/** Direction kind (direct / support / character) or '' when unknown. */
+export const normalizeKind = (kind) => oneOf(kind, DIRECTION_KINDS)
 
 export function emptyMandala(title = '') {
   const text = title.slice(0, LIMITS.text)
@@ -37,6 +63,7 @@ export function emptyMandala(title = '') {
     center: { ...emptyCell(), text },
     directions: Array.from({ length: SLOTS }, () => ({
       ...emptyCell(),
+      kind: '',
       actions: Array.from({ length: SLOTS }, emptyCell),
     })),
   }
@@ -58,15 +85,64 @@ export function normalizeCell(cell) {
         done: !!m?.done,
         deadline: DATE_RE.test(m?.deadline || '') ? m.deadline : '',
       })),
+    type: oneOf(cell?.type, ITEM_TYPES),
+    freq: oneOf(cell?.freq, FREQS),
+    minutes: cleanMinutes(cell?.minutes),
+    src: typeof cell?.src === 'string' ? cell.src.slice(0, LIMITS.src) : '',
+    linkedIds: cleanLinkedIds(cell?.linkedIds),
   }
 }
 
+function cleanLinkedIds(ids) {
+  if (!Array.isArray(ids)) return []
+  const valid = ids.filter((id) => typeof id === 'string' && id && id.length <= LIMITS.linkedId)
+  return [...new Set(valid)].slice(0, LIMITS.linkedIds)
+}
+
+/** Minutes per day (5..240); anything invalid → 30. */
+export function cleanTimePerDay(value) {
+  const n = Math.round(Number(value))
+  if (!Number.isFinite(n) || n <= 0) return TIME_PER_DAY.fallback
+  return Math.min(Math.max(n, TIME_PER_DAY.min), TIME_PER_DAY.max)
+}
+
+const cleanText = (value, max) => (typeof value === 'string' ? value.trim().slice(0, max) : '')
+
+/** Interview summary or null when absent/invalid. */
+export function normalizeInterview(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null
+  const texts = Object.fromEntries(INTERVIEW_FIELDS.map((f) => [f, cleanText(raw[f], LIMITS.answer)]))
+  const sphere = typeof raw.sphere === 'string' && /^[a-z0-9-]{1,40}$/.test(raw.sphere) ? raw.sphere : ''
+  return { ...texts, minutesPerDay: cleanTimePerDay(raw.minutesPerDay), sphere }
+}
+
+const CHECK_ID_RE = /^[0-7]-[0-7]$/
+
+function shiftDayKey(dayKey, days) {
+  const [y, m, d] = dayKey.split('-').map(Number)
+  return localDayKey(new Date(y, m - 1, d + days))
+}
+
+/** Quality-check ticks: valid day keys only, the 14 days up to `todayKey`, unique 'd-i' ids. */
+export function normalizeChecks(raw, todayKey = localDayKey()) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {}
+  const oldest = shiftDayKey(todayKey, -(LIMITS.checkDays - 1))
+  return Object.fromEntries(
+    Object.keys(raw)
+      .filter((k) => DATE_RE.test(k) && k >= oldest && k <= todayKey && Array.isArray(raw[k]))
+      .sort()
+      .slice(-LIMITS.checkDays)
+      .map((k) => [k, [...new Set(raw[k].filter((id) => typeof id === 'string' && CHECK_ID_RE.test(id)))]]),
+  )
+}
+
 /** Fills gaps so a partially-written document always has the full 8×8 structure. */
-export function normalizeMandala(raw) {
+export function normalizeMandala(raw, { todayKey } = {}) {
   const directions = Array.from({ length: SLOTS }, (_, d) => {
     const src = raw?.directions?.[d] || {}
     return {
       ...normalizeCell(src),
+      kind: normalizeKind(src.kind),
       actions: Array.from({ length: SLOTS }, (__, i) => normalizeCell(src.actions?.[i])),
     }
   })
@@ -76,6 +152,11 @@ export function normalizeMandala(raw) {
     createdAt: raw?.createdAt,
     center: normalizeCell(raw?.center || { text: raw?.title }),
     directions,
+    status: STATUSES.includes(raw?.status) ? raw.status : 'active',
+    why: cleanText(raw?.why, LIMITS.why),
+    interview: normalizeInterview(raw?.interview),
+    timePerDay: cleanTimePerDay(raw?.timePerDay ?? raw?.interview?.minutesPerDay),
+    checks: normalizeChecks(raw?.checks, todayKey),
   }
 }
 
@@ -129,4 +210,20 @@ export function mandalaStats(mandala) {
 /** True when a not-done cell's deadline is before `todayKey` ('YYYY-MM-DD'). */
 export function isOverdue(cell, todayKey) {
   return !cell.done && !!cell.deadline && cell.deadline < todayKey
+}
+
+/**
+ * Mandala-level fields for a table built from the interview (new object, inputs untouched).
+ * @param {{ title, center, directions }} base  e.g. mandalaFromDomain(...) output
+ * @param {object} summary interview summary (nextStep(...).summary, possibly edited)
+ */
+export function withInterview(base, summary) {
+  const interview = normalizeInterview(summary)
+  return {
+    ...base,
+    status: 'active',
+    why: cleanText(interview?.why, LIMITS.why),
+    interview,
+    timePerDay: cleanTimePerDay(interview?.minutesPerDay),
+  }
 }

@@ -1,126 +1,37 @@
 import { useLang } from '../../../context/LangContext'
-import { RING_POSITIONS, DIRECTION_COLORS, directionProgress, isOverdue } from './mandalaModel'
-import { Check } from 'lucide-react'
-import Icon from '../../ui/Icon'
+import { DIRECTION_COLORS } from './mandalaModel'
+import { BLOCK_POSITIONS, blockCells, focusAtBlock, gridDistance } from './gridLayout'
+import { MandalaCell, DirectionCell } from './MandalaCell'
 
-const CENTER_POS = 4
-const BLOCK_POSITIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-// position (0..8) → direction/action index, inverse of RING_POSITIONS
-const INDEX_AT_POS = Object.fromEntries(RING_POSITIONS.map((pos, i) => [pos, i]))
-
-function MandalaCell({ cell, kind, color, todayKey, label, onClick }) {
-  const isEmpty = !cell.text.trim()
-  const msDone = cell.milestones.filter((m) => m.done).length
-  const classes = [
-    'mandala-cell',
-    `mandala-cell--${kind}`,
-    cell.done && 'is-done',
-    isEmpty && 'is-empty',
-    isOverdue(cell, todayKey) && 'is-overdue',
-  ].filter(Boolean).join(' ')
-
-  return (
-    <button
-      type="button"
-      className={classes}
-      style={{ '--c': color }}
-      onClick={onClick}
-      aria-label={`${label}: ${isEmpty ? '—' : cell.text}`}
-      title={cell.text || label}
-    >
-      <span className="mandala-cell-text">{isEmpty ? '+' : cell.text}</span>
-      {(cell.done || cell.milestones.length > 0 || cell.deadline) && (
-        <span className="mandala-cell-meta" aria-hidden="true">
-          {cell.done && <span className="mandala-badge mandala-badge--done"><Icon icon={Check} size="1em" /></span>}
-          {cell.milestones.length > 0 && (
-            <span className="mandala-badge">{msDone}/{cell.milestones.length}</span>
-          )}
-          {cell.deadline && !cell.done && <span className="mandala-dot" />}
-        </span>
-      )}
-    </button>
-  )
+const cellLabel = (item, t) => {
+  if (item.kind === 'center') return t('mandala.mainGoal')
+  if (item.kind === 'direction') return t('mandala.direction', { n: item.d + 1 })
+  return t('mandala.action', { n: item.a + 1 })
 }
 
-function DirectionCell({ dir, d, todayKey, label, onOpen }) {
-  const progress = directionProgress(dir)
-  return (
-    <div className="mandala-dir-wrap" style={{ '--p': `${progress}%`, '--c': DIRECTION_COLORS[d] }}>
-      <MandalaCell
-        cell={dir}
-        kind="direction"
-        color={DIRECTION_COLORS[d]}
-        todayKey={todayKey}
-        label={label}
-        onClick={() => onOpen({ kind: 'direction', d })}
-      />
-      <span className="mandala-dir-bar" aria-hidden="true" />
-    </div>
-  )
-}
+/**
+ * One 3×3 block. `focus` null = centre block (goal + directions), 0..7 = a direction block.
+ * `distanceOf(pos)` gives each cell's distance from the centre for the entrance wave.
+ * `onCellClick(item)` receives { kind, d, a, ref, cell }.
+ */
+export function MandalaBlock({ mandala, focus, todayKey, distanceOf, onCellClick, className = '' }) {
+  const { t } = useLang()
+  const isCenterBlock = focus === null
+  const color = isCenterBlock ? undefined : DIRECTION_COLORS[focus]
+  const classes = ['mandala-block', isCenterBlock && 'mandala-block--center', className].filter(Boolean).join(' ')
 
-function CenterBlock({ mandala, todayKey, onOpen, t }) {
   return (
-    <div className="mandala-block mandala-block--center">
-      {BLOCK_POSITIONS.map((pos) => {
-        if (pos === CENTER_POS) {
-          return (
-            <MandalaCell
-              key={pos}
-              cell={mandala.center}
-              kind="center"
-              color="var(--primary)"
-              todayKey={todayKey}
-              label={t('mandala.mainGoal')}
-              onClick={() => onOpen({ kind: 'center' })}
-            />
-          )
+    <div className={classes} style={color ? { '--c': color } : undefined}>
+      {blockCells(mandala, focus).map((item) => {
+        const common = {
+          todayKey, t,
+          label: cellLabel(item, t),
+          distance: distanceOf(item.pos),
+          onClick: () => onCellClick(item),
         }
-        const d = INDEX_AT_POS[pos]
-        return (
-          <DirectionCell
-            key={pos}
-            dir={mandala.directions[d]}
-            d={d}
-            todayKey={todayKey}
-            label={t('mandala.direction', { n: d + 1 })}
-            onOpen={onOpen}
-          />
-        )
-      })}
-    </div>
-  )
-}
-
-function DirectionBlock({ dir, d, todayKey, onOpen, t }) {
-  const color = DIRECTION_COLORS[d]
-  return (
-    <div className="mandala-block" style={{ '--c': color }}>
-      {BLOCK_POSITIONS.map((pos) => {
-        if (pos === CENTER_POS) {
-          return (
-            <DirectionCell
-              key={pos}
-              dir={dir}
-              d={d}
-              todayKey={todayKey}
-              label={t('mandala.direction', { n: d + 1 })}
-              onOpen={onOpen}
-            />
-          )
-        }
-        const a = INDEX_AT_POS[pos]
-        return (
-          <MandalaCell
-            key={pos}
-            cell={dir.actions[a]}
-            kind="action"
-            color={color}
-            todayKey={todayKey}
-            label={t('mandala.action', { n: a + 1 })}
-            onClick={() => onOpen({ kind: 'action', d, a })}
-          />
-        )
+        if (item.kind === 'direction') return <DirectionCell key={item.pos} dir={item.cell} d={item.d} {...common} />
+        const cellColor = item.kind === 'center' ? 'var(--primary)' : color
+        return <MandalaCell key={item.pos} cell={item.cell} kind={item.kind} color={cellColor} {...common} />
       })}
     </div>
   )
@@ -128,26 +39,19 @@ function DirectionBlock({ dir, d, todayKey, onOpen, t }) {
 
 /** Full 9×9 grid: centre block (goal + 8 directions) surrounded by 8 direction blocks. */
 export default function MandalaGrid({ mandala, zoom, todayKey, onOpen }) {
-  const { t } = useLang()
   return (
     <div className="mandala-scroll">
       <div className="mandala-grid" style={{ '--zoom': zoom }}>
-        {BLOCK_POSITIONS.map((pos) => {
-          if (pos === CENTER_POS) {
-            return <CenterBlock key={pos} mandala={mandala} todayKey={todayKey} onOpen={onOpen} t={t} />
-          }
-          const d = INDEX_AT_POS[pos]
-          return (
-            <DirectionBlock
-              key={pos}
-              dir={mandala.directions[d]}
-              d={d}
-              todayKey={todayKey}
-              onOpen={onOpen}
-              t={t}
-            />
-          )
-        })}
+        {BLOCK_POSITIONS.map((blockPos) => (
+          <MandalaBlock
+            key={blockPos}
+            mandala={mandala}
+            focus={focusAtBlock(blockPos)}
+            todayKey={todayKey}
+            distanceOf={(pos) => gridDistance(blockPos, pos)}
+            onCellClick={(item) => onOpen(item.ref)}
+          />
+        ))}
       </div>
     </div>
   )

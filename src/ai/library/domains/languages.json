@@ -3,139 +3,973 @@
   "icon": "🗣️",
   "title": { "en": "Foreign languages (English)", "kg": "Чет тилдер (англис)", "ru": "Иностранные языки (английский)" },
   "keywords": {
-    "en": ["english", "language", "foreign language", "ielts", "toefl", "speak fluently", "fluent", "vocabulary", "grammar", "turkish", "chinese", "korean", "german"],
-    "kg": ["англис", "англисче", "тил", "чет тили", "айелтс", "сүйлөө", "грамматика", "сөздүк", "түрк", "кытай", "корей", "немис"],
-    "ru": ["английский", "английского", "язык", "языка", "иностранный", "ielts", "айелтс", "toefl", "разговорный", "свободно говорить", "грамматика", "словарный", "турецкий", "китайский", "корейский", "немецкий"]
+    "en": ["english", "language", "foreign language", "ielts", "toefl", "speak fluently", "fluent", "vocabulary", "grammar", "turkish", "chinese", "korean", "german", "learn english", "speaking", "pronunciation", "spanish", "french", "japanese", "english level"],
+    "kg": ["англис", "англисче", "тил", "чет тили", "айелтс", "сүйлөө", "грамматика", "сөздүк", "түрк", "кытай", "корей", "немис", "англисче сүйлөө", "орус тили", "орусча", "япон", "француз", "испан", "ielts", "toefl"],
+    "ru": ["английский", "английского", "язык", "языка", "иностранный", "ielts", "айелтс", "toefl", "разговорный", "свободно говорить", "грамматика", "словарный", "турецкий", "китайский", "корейский", "немецкий", "инглиш", "выучить английский", "испанский", "французский", "японский", "произношение"]
   },
   "directions": [
     {
       "title": { "en": "Level & plan", "kg": "Деңгээл жана план", "ru": "Уровень и план" },
+      "kind": "support",
       "milestones": [
         { "en": "Level test taken", "kg": "Деңгээл тести тапшырылды", "ru": "Пройден тест на уровень" },
         { "en": "Next CEFR level reached", "kg": "Кийинки CEFR деңгээлине жетти", "ru": "Достигнут следующий уровень CEFR" }
       ],
       "actions": [
-        { "en": "Take a CEFR level test (A1–C2)", "kg": "CEFR деңгээл тестин тапшырыңыз (A1–C2)", "ru": "Пройти тест на уровень по шкале CEFR (A1–C2)" },
-        { "en": "Set a target level and a date", "kg": "Максаттуу деңгээлди жана датаны белгилеңиз", "ru": "Определить целевой уровень и срок" },
-        { "en": "Choose one main textbook for your level", "kg": "Деңгээлиңизге бир негизги окуу китебин тандаңыз", "ru": "Выбрать один основной учебник под свой уровень" },
-        { "en": "Study 45 minutes every day", "kg": "Күн сайын 45 мүнөт окуңуз", "ru": "Заниматься 45 минут каждый день" },
-        { "en": "Plan time for all four skills every week", "kg": "Ар жума төрт көндүмгө тең убакыт пландаңыз", "ru": "Каждую неделю планировать время на все 4 навыка" },
-        { "en": "Mark study days in the Habits module", "kg": "Окуу күндөрүн «Адаттар» бөлүмүндө белгилеңиз", "ru": "Отмечать дни занятий в модуле «Привычки»" },
-        { "en": "Retest your level every 3 months", "kg": "Деңгээлиңизди ар 3 айда кайра текшериңиз", "ru": "Каждые 3 месяца перепроверять уровень" },
-        { "en": "Book an official exam (IELTS/TOEFL) if needed", "kg": "Керек болсо расмий экзаменге (IELTS/TOEFL) катталыңыз", "ru": "При необходимости записаться на официальный экзамен (IELTS/TOEFL)" }
+        {
+          "en": "Take a CEFR level test (A1–C2)",
+          "kg": "CEFR деңгээл тестин тапшырыңыз (A1–C2)",
+          "ru": "Пройти тест на уровень по шкале CEFR (A1–C2)",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Take a free 15-minute online level test", "kg": "Акысыз 15 мүнөттүк онлайн деңгээл тестин тапшырыңыз", "ru": "Пройти бесплатный 15-минутный онлайн-тест уровня" },
+          "steps": [
+            { "en": "Choose a free CEFR test online", "kg": "Онлайн акысыз CEFR тестин тандаңыз", "ru": "Выбрать бесплатный тест CEFR онлайн", "minutes": 10 },
+            { "en": "Do the grammar and vocabulary part", "kg": "Грамматика жана сөз байлыгы бөлүгүн аткарыңыз", "ru": "Пройти часть по грамматике и лексике", "minutes": 30 },
+            { "en": "Do the listening and reading part", "kg": "Угуу жана окуу бөлүгүн аткарыңыз", "ru": "Пройти часть по аудированию и чтению", "minutes": 30 },
+            { "en": "Record 2 minutes of speech for a tutor to rate", "kg": "Мугалим баалашы үчүн 2 мүнөт сүйлөп жаздырыңыз", "ru": "Записать 2 минуты речи для оценки преподавателем", "minutes": 15 },
+            { "en": "Write down your level and weakest skill", "kg": "Деңгээлиңизди жана эң алсыз көндүмүңүздү жазыңыз", "ru": "Записать свой уровень и самый слабый навык", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Set a target level and a date",
+          "kg": "Максаттуу деңгээлди жана датаны белгилеңиз",
+          "ru": "Определить целевой уровень и срок",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Write your target level in one sentence", "kg": "Максаттуу деңгээлиңизди бир сүйлөм менен жазыңыз", "ru": "Записать целевой уровень одним предложением" },
+          "steps": [
+            { "en": "Decide why you need the language: study, work, travel", "kg": "Тил эмне үчүн керек экенин чечиңиз: окуу, иш, саякат", "ru": "Решить, зачем нужен язык: учёба, работа, поездки", "minutes": 10 },
+            { "en": "Check which level that requires", "kg": "Ага кайсы деңгээл керек экенин текшериңиз", "ru": "Проверить, какой уровень для этого нужен", "minutes": 15 },
+            { "en": "Count the months you have", "kg": "Канча айыңыз бар экенин эсептеңиз", "ru": "Посчитать, сколько у вас месяцев", "minutes": 5 },
+            { "en": "Write: level, date and hours per week", "kg": "Жазыңыз: деңгээл, дата жана жумасына саат", "ru": "Записать: уровень, дата и часы в неделю", "minutes": 10 },
+            { "en": "Put the target in the Goals module", "kg": "Максатты Максаттар бөлүмүнө кошуңуз", "ru": "Внести цель в модуль Целей", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Choose one main textbook for your level",
+          "kg": "Деңгээлиңизге бир негизги окуу китебин тандаңыз",
+          "ru": "Выбрать один основной учебник под свой уровень",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Look through 3 textbooks for your level", "kg": "Деңгээлиңизге 3 окуу китебин карап чыгыңыз", "ru": "Пролистать 3 учебника своего уровня" },
+          "steps": [
+            { "en": "Ask a teacher or learners which books they use", "kg": "Мугалимден же окуучулардан кайсы китепти колдонорун сураңыз", "ru": "Спросить у преподавателя или учеников про учебники", "minutes": 15 },
+            { "en": "Compare 3 textbooks for your level", "kg": "Деңгээлиңиздеги 3 китепти салыштырыңыз", "ru": "Сравнить 3 учебника своего уровня", "minutes": 30 },
+            { "en": "Check that it has audio and answer keys", "kg": "Аудиосу жана жооптору бар экенин текшериңиз", "ru": "Проверить, есть ли аудио и ответы", "minutes": 10 },
+            { "en": "Get the book: library, shop or a used copy", "kg": "Китепти алыңыз: китепкана, дүкөн же колдонулган", "ru": "Достать учебник: библиотека, магазин или б/у", "minutes": 30 },
+            { "en": "Plan one unit per week", "kg": "Жумасына бир бөлүмдү пландаңыз", "ru": "Запланировать по одному разделу в неделю", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Study 45 minutes every day",
+          "kg": "Күн сайын 45 мүнөт окуңуз",
+          "ru": "Заниматься 45 минут каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 45,
+          "easy": { "en": "Study 15 minutes today", "kg": "Бүгүн 15 мүнөт окуңуз", "ru": "Сегодня позаниматься 15 минут" }
+        },
+        {
+          "en": "Plan time for all four skills every week",
+          "kg": "Ар жума төрт көндүмгө тең убакыт пландаңыз",
+          "ru": "Каждую неделю планировать время на все 4 навыка",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Plan one session for each of the 4 skills", "kg": "4 көндүмдүн ар бирине бир сабак пландаңыз", "ru": "Запланировать по одному занятию на каждый навык" }
+        },
+        {
+          "en": "Mark study days in the Habits module",
+          "kg": "Окуу күндөрүн «Адаттар» бөлүмүндө белгилеңиз",
+          "ru": "Отмечать дни занятий в модуле «Привычки»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Mark today's study day", "kg": "Бүгүнкү окуу күнүн белгилеңиз", "ru": "Отметить сегодняшний учебный день" }
+        },
+        {
+          "en": "Retest your level every 3 months",
+          "kg": "Деңгээлиңизди ар 3 айда кайра текшериңиз",
+          "ru": "Каждые 3 месяца перепроверять уровень",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Do a 15-minute online retest", "kg": "15 мүнөттүк онлайн кайра тест тапшырыңыз", "ru": "Пройти 15-минутный повторный онлайн-тест" },
+          "steps": [
+            { "en": "Put a retest date in the calendar every 3 months", "kg": "Ар 3 айда кайра тест күнүн календарга коюңуз", "ru": "Поставить дату ретеста в календарь раз в 3 месяца", "minutes": 5 },
+            { "en": "Take the same test as last time", "kg": "Мурунку жолку тестти кайра тапшырыңыз", "ru": "Пройти тот же тест, что и в прошлый раз", "minutes": 45 },
+            { "en": "Compare scores by skill", "kg": "Упайларды көндүм боюнча салыштырыңыз", "ru": "Сравнить баллы по навыкам", "minutes": 10 },
+            { "en": "Write what improved and what did not", "kg": "Эмне жакшырып, эмне жакшырбаганын жазыңыз", "ru": "Записать, что улучшилось, а что нет", "minutes": 10 },
+            { "en": "Change the plan for the next 3 months", "kg": "Кийинки 3 айлык планды өзгөртүңүз", "ru": "Скорректировать план на следующие 3 месяца", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Book an official exam (IELTS/TOEFL) if needed",
+          "kg": "Керек болсо расмий экзаменге (IELTS/TOEFL) катталыңыз",
+          "ru": "При необходимости записаться на официальный экзамен (IELTS/TOEFL)",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Read the exam page on the official site", "kg": "Расмий сайттан экзамен барагын окуңуз", "ru": "Прочитать страницу экзамена на официальном сайте" },
+          "steps": [
+            { "en": "Decide which exam your university or job needs", "kg": "Университетиңизге же жумушуңузга кайсы экзамен керек экенин аныктаңыз", "ru": "Узнать, какой экзамен нужен вузу или работодателю", "minutes": 20 },
+            { "en": "Check required score on the official site", "kg": "Керектүү упайды расмий сайттан текшериңиз", "ru": "Проверить нужный балл на официальном сайте", "minutes": 15 },
+            { "en": "Find official test centres in your city", "kg": "Шаарыңыздагы расмий тест борборлорун табыңыз", "ru": "Найти официальные центры тестирования в городе", "minutes": 15 },
+            { "en": "Check dates and fee on the official site", "kg": "Даталарды жана төлөмдү расмий сайттан текшериңиз", "ru": "Уточнить даты и стоимость на официальном сайте", "minutes": 15 },
+            { "en": "Prepare your passport and documents", "kg": "Паспортуңузду жана документтериңизди даярдаңыз", "ru": "Подготовить паспорт и документы", "minutes": 20 },
+            { "en": "Register and save the confirmation", "kg": "Катталып, ырастоону сактаңыз", "ru": "Зарегистрироваться и сохранить подтверждение", "minutes": 20 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Vocabulary", "kg": "Сөз байлыгы", "ru": "Словарный запас" },
+      "kind": "direct",
       "milestones": [
         { "en": "1,000 words learned", "kg": "1000 сөз үйрөнүлдү", "ru": "Выучено 1000 слов" },
         { "en": "3,000 words learned", "kg": "3000 сөз үйрөнүлдү", "ru": "Выучено 3000 слов" }
       ],
       "actions": [
-        { "en": "Learn 15 new words a day with flashcards", "kg": "Карточкалар менен күнүнө 15 жаңы сөз үйрөнүңүз", "ru": "Учить 15 новых слов в день по карточкам" },
-        { "en": "Use spaced repetition every day", "kg": "Күн сайын аралыктуу кайталоону колдонуңуз", "ru": "Каждый день повторять слова по интервалам" },
-        { "en": "Learn words in phrases, not alone", "kg": "Сөздөрдү жалгыз эмес, сөз айкаштарында үйрөнүңүз", "ru": "Учить слова в словосочетаниях, а не по одному" },
-        { "en": "Start with the 1,000 most common words", "kg": "Эң көп колдонулган 1000 сөздөн баштаңыз", "ru": "Начать с 1000 самых частых слов" },
-        { "en": "Write 5 sentences with new words every day", "kg": "Күн сайын жаңы сөздөр менен 5 сүйлөм жазыңыз", "ru": "Каждый день писать 5 предложений с новыми словами" },
-        { "en": "Label things at home in the language", "kg": "Үйдөгү буюмдарга ошол тилде жазуу илиңиз", "ru": "Подписать предметы дома на изучаемом языке" },
-        { "en": "Keep a personal word list in Notes", "kg": "«Эскертмелерде» жеке сөз тизмесин жүргүзүңүз", "ru": "Вести личный словарь в «Заметках»" },
-        { "en": "Learn topic vocabulary for your exam or job", "kg": "Экзамениңизге же жумушуңузга тиешелүү сөздөрдү үйрөнүңүз", "ru": "Выучить тематическую лексику для экзамена или работы" }
+        {
+          "en": "Learn 15 new words a day with flashcards",
+          "kg": "Карточкалар менен күнүнө 15 жаңы сөз үйрөнүңүз",
+          "ru": "Учить 15 новых слов в день по карточкам",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 20,
+          "easy": { "en": "Learn 5 new words today", "kg": "Бүгүн 5 жаңы сөз үйрөнүңүз", "ru": "Сегодня выучить 5 новых слов" }
+        },
+        {
+          "en": "Use spaced repetition every day",
+          "kg": "Күн сайын аралыктуу кайталоону колдонуңуз",
+          "ru": "Каждый день повторять слова по интервалам",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Review 10 flashcards", "kg": "10 карточканы кайталаңыз", "ru": "Повторить 10 карточек" }
+        },
+        {
+          "en": "Learn words in phrases, not alone",
+          "kg": "Сөздөрдү жалгыз эмес, сөз айкаштарында үйрөнүңүз",
+          "ru": "Учить слова в словосочетаниях, а не по одному",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write one new word inside a phrase", "kg": "Бир жаңы сөздү сөз айкашы менен жазыңыз", "ru": "Записать одно новое слово в составе фразы" }
+        },
+        {
+          "en": "Start with the 1,000 most common words",
+          "kg": "Эң көп колдонулган 1000 сөздөн баштаңыз",
+          "ru": "Начать с 1000 самых частых слов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Learn the first 50 most common words", "kg": "Эң көп колдонулган алгачкы 50 сөздү үйрөнүңүз", "ru": "Выучить первые 50 самых частых слов" },
+          "steps": [
+            { "en": "Find a list of the 1,000 most common words", "kg": "Эң көп колдонулган 1000 сөздүн тизмесин табыңыз", "ru": "Найти список 1000 самых частых слов", "minutes": 10 },
+            { "en": "Load them into a flashcard app", "kg": "Аларды карточка тиркемесине жүктөңүз", "ru": "Загрузить их в приложение с карточками", "minutes": 30 },
+            { "en": "Learn words 1–100 this week", "kg": "Бул жумада 1–100-сөздөрдү үйрөнүңүз", "ru": "На этой неделе выучить слова 1–100", "minutes": 30 },
+            { "en": "Learn 100 more each week", "kg": "Ар жума дагы 100 сөз үйрөнүңүз", "ru": "Каждую неделю учить ещё по 100 слов", "minutes": 30 },
+            { "en": "Test yourself on 100 random words", "kg": "Каалаган 100 сөз менен өзүңүздү текшериңиз", "ru": "Проверить себя на 100 случайных словах", "minutes": 20 },
+            { "en": "Relearn the words you missed", "kg": "Билбей калган сөздөрдү кайра үйрөнүңүз", "ru": "Доучить слова, которые не вспомнили", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Write 5 sentences with new words every day",
+          "kg": "Күн сайын жаңы сөздөр менен 5 сүйлөм жазыңыз",
+          "ru": "Каждый день писать 5 предложений с новыми словами",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write 2 sentences with new words", "kg": "Жаңы сөздөр менен 2 сүйлөм жазыңыз", "ru": "Написать 2 предложения с новыми словами" }
+        },
+        {
+          "en": "Label things at home in the language",
+          "kg": "Үйдөгү буюмдарга ошол тилде жазуу илиңиз",
+          "ru": "Подписать предметы дома на изучаемом языке",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Label 5 things in your room", "kg": "Бөлмөңүздөгү 5 буюмга жазуу чаптаңыз", "ru": "Подписать 5 вещей в комнате" },
+          "steps": [
+            { "en": "Write labels for 10 kitchen things", "kg": "Ашканадагы 10 буюмга жазуу даярдаңыз", "ru": "Сделать подписи для 10 вещей на кухне", "minutes": 10 },
+            { "en": "Write labels for 10 things in your room", "kg": "Бөлмөңүздөгү 10 буюмга жазуу даярдаңыз", "ru": "Сделать подписи для 10 вещей в комнате", "minutes": 10 },
+            { "en": "Stick them up where you see them daily", "kg": "Аларды күн сайын көрүнгөн жерге чаптаңыз", "ru": "Наклеить там, где видите каждый день", "minutes": 10 },
+            { "en": "Say each word aloud when you use the thing", "kg": "Буюмду колдонгондо сөздү үн чыгарып айтыңыз", "ru": "Произносить слово, когда берёте вещь", "minutes": 5 },
+            { "en": "Replace the labels with new ones in a week", "kg": "Бир жумадан кийин жазууларды жаңысына алмаштырыңыз", "ru": "Через неделю заменить подписи на новые", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Keep a personal word list in Notes",
+          "kg": "«Эскертмелерде» жеке сөз тизмесин жүргүзүңүз",
+          "ru": "Вести личный словарь в «Заметках»",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Add 3 words to your list", "kg": "Тизмеңизге 3 сөз кошуңуз", "ru": "Добавить 3 слова в свой список" }
+        },
+        {
+          "en": "Learn topic vocabulary for your exam or job",
+          "kg": "Экзамениңизге же жумушуңузга тиешелүү сөздөрдү үйрөнүңүз",
+          "ru": "Выучить тематическую лексику для экзамена или работы",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 10 words on your exam or work topic", "kg": "Экзамен же иш темаңыз боюнча 10 сөз жазыңыз", "ru": "Выписать 10 слов по теме экзамена или работы" },
+          "steps": [
+            { "en": "List 5 topics you need: work, study, exam", "kg": "Керектүү 5 теманы жазыңыз: иш, окуу, экзамен", "ru": "Выписать 5 нужных тем: работа, учёба, экзамен", "minutes": 10 },
+            { "en": "Collect 20 words for topic 1", "kg": "1-тема боюнча 20 сөз чогултуңуз", "ru": "Собрать 20 слов по теме 1", "minutes": 30 },
+            { "en": "Collect 20 words for topics 2 and 3", "kg": "2- жана 3-темалар боюнча 20дан сөз чогултуңуз", "ru": "Собрать по 20 слов по темам 2 и 3", "minutes": 45 },
+            { "en": "Collect 20 words for topics 4 and 5", "kg": "4- жана 5-темалар боюнча 20дан сөз чогултуңуз", "ru": "Собрать по 20 слов по темам 4 и 5", "minutes": 45 },
+            { "en": "Talk 2 minutes on each topic using the words", "kg": "Ар бир тема боюнча ошол сөздөр менен 2 мүнөт сүйлөңүз", "ru": "Говорить 2 минуты на каждую тему с этими словами", "minutes": 20 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Grammar", "kg": "Грамматика", "ru": "Грамматика" },
+      "kind": "direct",
       "milestones": [
         { "en": "All tenses of your level mastered", "kg": "Деңгээлиңиздеги бардык чактар өздөштүрүлдү", "ru": "Освоены все времена своего уровня" }
       ],
       "actions": [
-        { "en": "Learn one grammar topic per week", "kg": "Жумасына бир грамматика темасын үйрөнүңүз", "ru": "Изучать одну грамматическую тему в неделю" },
-        { "en": "Do exercises right after each rule", "kg": "Ар бир эрежеден кийин дароо көнүгүү жасаңыз", "ru": "Сразу после правила делать упражнения" },
-        { "en": "Make a one-page table of verb tenses", "kg": "Этиш чактарынын бир барактык таблицасын түзүңүз", "ru": "Составить таблицу времён на одну страницу" },
-        { "en": "Write a short text using the new grammar", "kg": "Жаңы грамматиканы колдонуп кыска текст жазыңыз", "ru": "Писать короткий текст с новой грамматикой" },
-        { "en": "Keep a list of your typical mistakes", "kg": "Көп кетирген каталарыңыздын тизмесин жүргүзүңүз", "ru": "Вести список своих типичных ошибок" },
-        { "en": "Review difficult topics every month", "kg": "Оор темаларды ай сайын кайталаңыз", "ru": "Каждый месяц повторять сложные темы" },
-        { "en": "Notice grammar in what you read", "kg": "Окуганыңыздагы грамматиканы байкаңыз", "ru": "Замечать грамматику в прочитанном" },
-        { "en": "Ask a teacher to check your writing", "kg": "Мугалимден жазганыңызды текшерүүнү сураңыз", "ru": "Просить преподавателя проверять письменные работы" }
+        {
+          "en": "Learn one grammar topic per week",
+          "kg": "Жумасына бир грамматика темасын үйрөнүңүз",
+          "ru": "Изучать одну грамматическую тему в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Read one rule and do 3 examples", "kg": "Бир эрежени окуп, 3 мисал жасаңыз", "ru": "Прочитать одно правило и сделать 3 примера" }
+        },
+        {
+          "en": "Do exercises right after each rule",
+          "kg": "Ар бир эрежеден кийин дароо көнүгүү жасаңыз",
+          "ru": "Сразу после правила делать упражнения",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Do 3 exercises after a new rule", "kg": "Жаңы эрежеден кийин 3 көнүгүү аткарыңыз", "ru": "Сделать 3 упражнения после нового правила" }
+        },
+        {
+          "en": "Make a one-page table of verb tenses",
+          "kg": "Этиш чактарынын бир барактык таблицасын түзүңүз",
+          "ru": "Составить таблицу времён на одну страницу",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write a table of 3 basic tenses", "kg": "3 негизги чактын таблицасын жазыңыз", "ru": "Составить таблицу 3 основных времён" },
+          "steps": [
+            { "en": "List all tenses of your level", "kg": "Деңгээлиңиздеги бардык чактарды тизмелеңиз", "ru": "Выписать все времена своего уровня", "minutes": 15 },
+            { "en": "Write the form of each tense", "kg": "Ар бир чактын формасын жазыңыз", "ru": "Записать форму каждого времени", "minutes": 20 },
+            { "en": "Add when each tense is used", "kg": "Ар бир чак качан колдонуларын кошуңуз", "ru": "Добавить, когда используется каждое время", "minutes": 20 },
+            { "en": "Add one example sentence for each", "kg": "Ар бирине бир мисал сүйлөм кошуңуз", "ru": "Добавить по одному примеру к каждому", "minutes": 20 },
+            { "en": "Hang the table near your desk", "kg": "Таблицаны столуңуздун жанына илиңиз", "ru": "Повесить таблицу у рабочего стола", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Write a short text using the new grammar",
+          "kg": "Жаңы грамматиканы колдонуп кыска текст жазыңыз",
+          "ru": "Писать короткий текст с новой грамматикой",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 3 sentences with the new rule", "kg": "Жаңы эреже менен 3 сүйлөм жазыңыз", "ru": "Написать 3 предложения на новое правило" }
+        },
+        {
+          "en": "Keep a list of your typical mistakes",
+          "kg": "Көп кетирген каталарыңыздын тизмесин жүргүзүңүз",
+          "ru": "Вести список своих типичных ошибок",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Write down one mistake you made", "kg": "Кетирген бир катаңызды жазып алыңыз", "ru": "Записать одну свою ошибку" }
+        },
+        {
+          "en": "Review one difficult grammar topic every week",
+          "kg": "Ар жума бир кыйын грамматика темасын кайталаңыз",
+          "ru": "Каждую неделю повторять одну трудную тему грамматики",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Redo 3 exercises on a hard topic", "kg": "Кыйын тема боюнча 3 көнүгүүнү кайра аткарыңыз", "ru": "Перерешать 3 упражнения по трудной теме" }
+        },
+        {
+          "en": "Notice grammar in what you read",
+          "kg": "Окуганыңыздагы грамматиканы байкаңыз",
+          "ru": "Замечать грамматику в прочитанном",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Underline one new structure in a text", "kg": "Тексттеги бир жаңы түзүлүштүн астын сызыңыз", "ru": "Подчеркнуть одну новую конструкцию в тексте" }
+        },
+        {
+          "en": "Ask a teacher to check your writing",
+          "kg": "Мугалимден жазганыңызды текшерүүнү сураңыз",
+          "ru": "Просить преподавателя проверять письменные работы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Send one paragraph to a teacher for checking", "kg": "Мугалимге бир абзацты текшерүүгө жибериңиз", "ru": "Отправить преподавателю один абзац на проверку" }
+        }
       ]
     },
     {
       "title": { "en": "Listening", "kg": "Угуу", "ru": "Аудирование" },
+      "kind": "direct",
       "milestones": [
         { "en": "Understands films with subtitles in the language", "kg": "Ошол тилдеги субтитр менен тасмаларды түшүнөт", "ru": "Понимает фильмы с субтитрами на языке" }
       ],
       "actions": [
-        { "en": "Listen to podcasts for learners daily", "kg": "Үйрөнүүчүлөр үчүн подкасттарды күн сайын угуңуз", "ru": "Ежедневно слушать подкасты для изучающих язык" },
-        { "en": "Watch series with subtitles in the language", "kg": "Сериалдарды ошол тилдеги субтитр менен көрүңүз", "ru": "Смотреть сериалы с субтитрами на изучаемом языке" },
-        { "en": "Repeat after audio (shadowing) for 10 minutes", "kg": "10 мүнөт аудиодон кийин кайталаңыз (shadowing)", "ru": "10 минут повторять за диктором (шэдоуинг)" },
-        { "en": "Write dictations from short audio clips", "kg": "Кыска аудиолордон диктант жазыңыз", "ru": "Писать диктанты по коротким аудио" },
-        { "en": "Listen to news in slow English", "kg": "Жай англис тилиндеги жаңылыктарды угуңуз", "ru": "Слушать новости на упрощённом английском" },
-        { "en": "Switch your music and videos to the language", "kg": "Музыка жана видеолоруңузду ошол тилге которуңуз", "ru": "Переключить музыку и видео на изучаемый язык" },
-        { "en": "Do exam-style listening tasks weekly", "kg": "Жума сайын экзамен форматындагы угуу тапшырмаларын аткарыңыз", "ru": "Каждую неделю делать задания на аудирование в формате экзамена" },
-        { "en": "Rewatch one video until you understand everything", "kg": "Бир видеону баарын түшүнгөнгө чейин кайра көрүңүз", "ru": "Пересматривать одно видео, пока не поймёте всё" }
+        {
+          "en": "Listen to podcasts for learners daily",
+          "kg": "Үйрөнүүчүлөр үчүн подкасттарды күн сайын угуңуз",
+          "ru": "Ежедневно слушать подкасты для изучающих язык",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Listen to a learner podcast for 5 minutes", "kg": "Окуучулар үчүн подкастты 5 мүнөт угуңуз", "ru": "Послушать подкаст для учащихся 5 минут" }
+        },
+        {
+          "en": "Watch series with subtitles in the language",
+          "kg": "Сериалдарды ошол тилдеги субтитр менен көрүңүз",
+          "ru": "Смотреть сериалы с субтитрами на изучаемом языке",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 40,
+          "easy": { "en": "Watch one 10-minute clip with subtitles", "kg": "Субтитр менен 10 мүнөттүк бир видео көрүңүз", "ru": "Посмотреть один 10-минутный ролик с субтитрами" }
+        },
+        {
+          "en": "Repeat after audio (shadowing) for 10 minutes",
+          "kg": "10 мүнөт аудиодон кийин кайталаңыз (shadowing)",
+          "ru": "10 минут повторять за диктором (шэдоуинг)",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Shadow 3 sentences after the audio", "kg": "Аудиодон кийин 3 сүйлөмдү кайталаңыз", "ru": "Повторить за аудио 3 предложения" }
+        },
+        {
+          "en": "Write dictations from short audio clips",
+          "kg": "Кыска аудиолордон диктант жазыңыз",
+          "ru": "Писать диктанты по коротким аудио",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write down one sentence from audio", "kg": "Аудиодон бир сүйлөмдү жазып алыңыз", "ru": "Записать на слух одно предложение" }
+        },
+        {
+          "en": "Listen to news in slow English",
+          "kg": "Жай англис тилиндеги жаңылыктарды угуңуз",
+          "ru": "Слушать новости на упрощённом английском",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 15,
+          "easy": { "en": "Listen to one short news story", "kg": "Бир кыска жаңылыкты угуңуз", "ru": "Послушать одну короткую новость" }
+        },
+        {
+          "en": "Switch your music and videos to the language",
+          "kg": "Музыкаңызды жана видеолоруңузду ошол тилге которуңуз",
+          "ru": "Перевести свою музыку и видео на этот язык",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Play one song in the language today", "kg": "Бүгүн ошол тилде бир ыр угуңуз", "ru": "Сегодня включить одну песню на этом языке" }
+        },
+        {
+          "en": "Do exam-style listening tasks weekly",
+          "kg": "Жума сайын экзамен форматындагы угуу тапшырмаларын аткарыңыз",
+          "ru": "Каждую неделю делать задания на аудирование в формате экзамена",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Do one part of an exam listening task", "kg": "Экзамендик угуу тапшырмасынын бир бөлүгүн аткарыңыз", "ru": "Сделать одну часть экзаменационного аудирования" }
+        },
+        {
+          "en": "Rewatch one video until you understand everything",
+          "kg": "Бир видеону баарын түшүнгөнгө чейин кайра көрүңүз",
+          "ru": "Пересматривать одно видео, пока не поймёте всё",
+          "type": "quality",
+          "minutes": 20,
+          "easy": { "en": "Rewatch one minute until it is clear", "kg": "Бир мүнөттү түшүнгөнчө кайра көрүңүз", "ru": "Пересматривать одну минуту, пока не станет понятно" }
+        }
       ]
     },
     {
       "title": { "en": "Speaking", "kg": "Сүйлөө", "ru": "Разговорная речь" },
+      "kind": "direct",
       "milestones": [
         { "en": "10 conversations with native speakers", "kg": "Эне тилдүүлөр менен 10 маек", "ru": "10 разговоров с носителями" }
       ],
       "actions": [
-        { "en": "Speak with a partner or tutor twice a week", "kg": "Жумасына эки жолу өнөк же репетитор менен сүйлөшүңүз", "ru": "Говорить с партнёром или репетитором 2 раза в неделю" },
-        { "en": "Record yourself speaking for 2 minutes", "kg": "2 мүнөт сүйлөгөнүңүздү жазып алыңыз", "ru": "Записывать себя на 2 минуты речи" },
-        { "en": "Think in the language during daily routines", "kg": "Күнүмдүк иштерде ошол тилде ойлонуңуз", "ru": "Думать на языке во время повседневных дел" },
-        { "en": "Join a speaking club", "kg": "Сүйлөшүү клубуна кошулуңуз", "ru": "Ходить в разговорный клуб" },
-        { "en": "Learn ready phrases for common situations", "kg": "Көп кездешкен кырдаалдар үчүн даяр сөз айкаштарын үйрөнүңүз", "ru": "Выучить готовые фразы для частых ситуаций" },
-        { "en": "Practise pronunciation of difficult sounds", "kg": "Оор тыбыштардын айтылышын машыгыңыз", "ru": "Тренировать произношение трудных звуков" },
-        { "en": "Prepare a story about yourself", "kg": "Өзүңүз жөнүндө баян даярдаңыз", "ru": "Подготовить рассказ о себе" },
-        { "en": "Don't fear mistakes — speak anyway", "kg": "Катадан коркпоңуз — баары бир сүйлөңүз", "ru": "Не бояться ошибок — всё равно говорить" }
+        {
+          "en": "Speak with a partner or tutor twice a week",
+          "kg": "Жумасына эки жолу өнөк же репетитор менен сүйлөшүңүз",
+          "ru": "Говорить с партнёром или репетитором 2 раза в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Talk for 10 minutes once this week", "kg": "Бул жумада бир жолу 10 мүнөт сүйлөшүңүз", "ru": "Поговорить 10 минут один раз на этой неделе" }
+        },
+        {
+          "en": "Record yourself speaking for 2 minutes",
+          "kg": "2 мүнөт сүйлөгөнүңүздү жазып алыңыз",
+          "ru": "Записывать себя на 2 минуты речи",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Record 30 seconds about your day", "kg": "Күнүңүз тууралуу 30 секунд жаздырыңыз", "ru": "Записать 30 секунд о своём дне" }
+        },
+        {
+          "en": "Think in the language during daily routines",
+          "kg": "Күнүмдүк иштерде ошол тилде ойлонуңуз",
+          "ru": "Думать на языке во время повседневных дел",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Name 5 things around you in the language", "kg": "Айланаңыздагы 5 нерсенин атын ошол тилде айтыңыз", "ru": "Назвать на языке 5 предметов вокруг" }
+        },
+        {
+          "en": "Join a speaking club",
+          "kg": "Сүйлөшүү клубуна кошулуңуз",
+          "ru": "Ходить в разговорный клуб",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Find one speaking club and its schedule", "kg": "Бир сүйлөшүү клубун жана анын убактысын табыңыз", "ru": "Найти один разговорный клуб и его расписание" },
+          "steps": [
+            { "en": "Find 3 speaking clubs: offline or online", "kg": "3 сүйлөшүү клубун табыңыз: офлайн же онлайн", "ru": "Найти 3 разговорных клуба: офлайн или онлайн", "minutes": 20 },
+            { "en": "Choose one that fits your level and time", "kg": "Деңгээлиңизге жана убактыңызга ылайыктуусун тандаңыз", "ru": "Выбрать подходящий по уровню и времени", "minutes": 10 },
+            { "en": "Prepare 3 phrases to introduce yourself", "kg": "Өзүңүздү тааныштырууга 3 сүйлөм даярдаңыз", "ru": "Подготовить 3 фразы для знакомства", "minutes": 15 },
+            { "en": "Go to the first meeting", "kg": "Биринчи жолугушууга барыңыз", "ru": "Сходить на первую встречу", "minutes": 90 },
+            { "en": "Note 5 new words and go again next week", "kg": "5 жаңы сөздү жазып, кийинки жумада кайра барыңыз", "ru": "Записать 5 новых слов и пойти снова через неделю", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Learn ready phrases for common situations",
+          "kg": "Көп кездешкен кырдаалдар үчүн даяр сөз айкаштарын үйрөнүңүз",
+          "ru": "Выучить готовые фразы для частых ситуаций",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Learn 5 phrases for a shop or a café", "kg": "Дүкөн же кафе үчүн 5 сүйлөм үйрөнүңүз", "ru": "Выучить 5 фраз для магазина или кафе" },
+          "steps": [
+            { "en": "Learn 10 phrases to meet people", "kg": "Таанышуу үчүн 10 сүйлөм үйрөнүңүз", "ru": "Выучить 10 фраз для знакомства", "minutes": 20 },
+            { "en": "Learn 10 phrases for shops and cafés", "kg": "Дүкөн жана кафе үчүн 10 сүйлөм үйрөнүңүз", "ru": "Выучить 10 фраз для магазина и кафе", "minutes": 20 },
+            { "en": "Learn 10 phrases for transport and directions", "kg": "Транспорт жана жол сураш үчүн 10 сүйлөм үйрөнүңүз", "ru": "Выучить 10 фраз о транспорте и дороге", "minutes": 20 },
+            { "en": "Learn 10 phrases for phone calls", "kg": "Телефон аркылуу сүйлөшүү үчүн 10 сүйлөм үйрөнүңүз", "ru": "Выучить 10 фраз для телефонных звонков", "minutes": 20 },
+            { "en": "Act out 2 situations with a partner", "kg": "Өнөгүңүз менен 2 кырдаалды ойноп көрүңүз", "ru": "Разыграть 2 ситуации с партнёром", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Practise pronunciation of difficult sounds",
+          "kg": "Оор тыбыштардын айтылышын машыгыңыз",
+          "ru": "Тренировать произношение трудных звуков",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Repeat one hard sound 10 times", "kg": "Бир кыйын тыбышты 10 жолу кайталаңыз", "ru": "Повторить один трудный звук 10 раз" }
+        },
+        {
+          "en": "Prepare a story about yourself",
+          "kg": "Өзүңүз жөнүндө баян даярдаңыз",
+          "ru": "Подготовить рассказ о себе",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 5 sentences about yourself", "kg": "Өзүңүз тууралуу 5 сүйлөм жазыңыз", "ru": "Написать 5 предложений о себе" },
+          "steps": [
+            { "en": "Write about your family, study and work", "kg": "Үй-бүлөңүз, окууңуз жана ишиңиз тууралуу жазыңыз", "ru": "Написать о семье, учёбе и работе", "minutes": 20 },
+            { "en": "Add your hobbies and plans", "kg": "Хоббиңизди жана пландарыңызды кошуңуз", "ru": "Добавить хобби и планы", "minutes": 15 },
+            { "en": "Ask a teacher or partner to correct it", "kg": "Мугалимге же өнөгүңүзгө оңдотуңуз", "ru": "Попросить преподавателя или партнёра исправить", "minutes": 15 },
+            { "en": "Practise telling it without notes", "kg": "Жазуусуз айтып берүүнү машыгыңыз", "ru": "Потренироваться рассказывать без бумажки", "minutes": 20 },
+            { "en": "Tell it to a real person", "kg": "Аны чыныгы адамга айтып бериңиз", "ru": "Рассказать живому человеку", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Don't fear mistakes — speak anyway",
+          "kg": "Катадан коркпоңуз — баары бир сүйлөңүз",
+          "ru": "Не бояться ошибок — всё равно говорить",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say one sentence aloud even if unsure", "kg": "Ишенбесеңиз да бир сүйлөмдү үн чыгарып айтыңыз", "ru": "Сказать вслух одно предложение, даже если не уверены" }
+        }
       ]
     },
     {
       "title": { "en": "Reading & writing", "kg": "Окуу жана жазуу", "ru": "Чтение и письмо" },
+      "kind": "direct",
       "milestones": [
         { "en": "First book read in the language", "kg": "Ошол тилде биринчи китеп окулду", "ru": "Прочитана первая книга на языке" }
       ],
       "actions": [
-        { "en": "Read adapted books of your level", "kg": "Деңгээлиңизге ылайыкталган китептерди окуңуз", "ru": "Читать адаптированные книги своего уровня" },
-        { "en": "Read one article a day on your interests", "kg": "Кызыгууларыңыз боюнча күнүнө бир макала окуңуз", "ru": "Читать по статье в день на интересную тему" },
-        { "en": "Keep a short daily journal in the language", "kg": "Ошол тилде кыска күнүмдүк күндөлүк жүргүзүңүз", "ru": "Вести короткий дневник на изучаемом языке" },
-        { "en": "Write essays in the exam format", "kg": "Экзамен форматында эссе жазыңыз", "ru": "Писать эссе в формате экзамена" },
-        { "en": "Chat in writing with foreign friends", "kg": "Чет элдик достор менен жазма түрдө баарлашыңыз", "ru": "Переписываться с иностранными друзьями" },
-        { "en": "Summarise what you read in 3 sentences", "kg": "Окуганыңызды 3 сүйлөм менен кыскача баяндаңыз", "ru": "Пересказывать прочитанное в 3 предложениях" },
-        { "en": "Learn to write formal emails", "kg": "Расмий каттарды жазууну үйрөнүңүз", "ru": "Научиться писать официальные письма" },
-        { "en": "Check your texts and correct mistakes", "kg": "Тексттериңизди текшерип, каталарды оңдоңуз", "ru": "Проверять свои тексты и исправлять ошибки" }
+        {
+          "en": "Read adapted books of your level",
+          "kg": "Деңгээлиңизге ылайыкталган китептерди окуңуз",
+          "ru": "Читать адаптированные книги своего уровня",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 20,
+          "easy": { "en": "Read 2 pages of an adapted book", "kg": "Адаптацияланган китептен 2 барак окуңуз", "ru": "Прочитать 2 страницы адаптированной книги" }
+        },
+        {
+          "en": "Read one article a day on your interests",
+          "kg": "Кызыгууларыңыз боюнча күнүнө бир макала окуңуз",
+          "ru": "Читать по статье в день на интересную тему",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Read one paragraph of an article", "kg": "Макаладан бир абзац окуңуз", "ru": "Прочитать один абзац статьи" }
+        },
+        {
+          "en": "Keep a short daily journal in the language",
+          "kg": "Ошол тилде кыска күнүмдүк күндөлүк жүргүзүңүз",
+          "ru": "Вести короткий дневник на изучаемом языке",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write 2 sentences about today", "kg": "Бүгүнкү күн тууралуу 2 сүйлөм жазыңыз", "ru": "Написать 2 предложения о сегодняшнем дне" }
+        },
+        {
+          "en": "Write essays in the exam format",
+          "kg": "Экзамен форматында эссе жазыңыз",
+          "ru": "Писать эссе в формате экзамена",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Write one paragraph of an exam essay", "kg": "Экзамендик эссенин бир абзацын жазыңыз", "ru": "Написать один абзац экзаменационного эссе" }
+        },
+        {
+          "en": "Chat in writing with foreign friends",
+          "kg": "Чет элдик достор менен жазма түрдө баарлашыңыз",
+          "ru": "Переписываться с иностранными друзьями",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 15,
+          "easy": { "en": "Send one message in the language", "kg": "Ошол тилде бир билдирүү жибериңиз", "ru": "Отправить одно сообщение на этом языке" }
+        },
+        {
+          "en": "Summarise what you read in 3 sentences",
+          "kg": "Окуганыңызды 3 сүйлөм менен кыскача баяндаңыз",
+          "ru": "Пересказывать прочитанное в 3 предложениях",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Summarise what you read in one sentence", "kg": "Окуганыңызды бир сүйлөм менен кыскача айтыңыз", "ru": "Пересказать прочитанное одним предложением" }
+        },
+        {
+          "en": "Learn to write formal emails",
+          "kg": "Расмий каттарды жазууну үйрөнүңүз",
+          "ru": "Научиться писать официальные письма",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Learn 5 standard email phrases", "kg": "Катка керектүү 5 туруктуу сүйлөмдү үйрөнүңүз", "ru": "Выучить 5 стандартных фраз для писем" },
+          "steps": [
+            { "en": "Learn the structure: greeting, reason, request, ending", "kg": "Түзүмүн үйрөнүңүз: учурашуу, себеп, өтүнүч, аяктоо", "ru": "Разобрать структуру: приветствие, повод, просьба, конец", "minutes": 20 },
+            { "en": "Collect 15 standard formal phrases", "kg": "15 расмий туруктуу сүйлөм чогултуңуз", "ru": "Собрать 15 стандартных формальных фраз", "minutes": 20 },
+            { "en": "Write a request email to a university or company", "kg": "Университетке же компанияга өтүнүч кат жазыңыз", "ru": "Написать письмо-запрос в вуз или компанию", "minutes": 30 },
+            { "en": "Write a complaint and a thank-you email", "kg": "Даттануу жана ыраазычылык катын жазыңыз", "ru": "Написать письмо-жалобу и письмо-благодарность", "minutes": 40 },
+            { "en": "Get the emails checked and fix mistakes", "kg": "Каттарды текшертип, каталарды оңдоңуз", "ru": "Дать письма на проверку и исправить ошибки", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Check your texts and correct mistakes",
+          "kg": "Тексттериңизди текшерип, каталарды оңдоңуз",
+          "ru": "Проверять свои тексты и исправлять ошибки",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Re-read one text to find your mistakes", "kg": "Каталарды табуу үчүн бир текстти кайра окуңуз", "ru": "Перечитать один текст в поисках своих ошибок" }
+        }
       ]
     },
     {
       "title": { "en": "Exam preparation", "kg": "Экзаменге даярдык", "ru": "Подготовка к экзамену" },
+      "kind": "direct",
       "milestones": [
         { "en": "Mock exam score reached", "kg": "Сыноо экзамениндеги балл алынды", "ru": "Набран нужный балл на пробном экзамене" }
       ],
       "actions": [
-        { "en": "Learn the exam structure and scoring", "kg": "Экзамендин түзүлүшүн жана баалоосун үйрөнүңүз", "ru": "Изучить структуру и критерии оценки экзамена" },
-        { "en": "Take a full mock exam every month", "kg": "Ай сайын толук сыноо экзаменин тапшырыңыз", "ru": "Каждый месяц сдавать полный пробный экзамен" },
-        { "en": "Practise each section with a timer", "kg": "Ар бир бөлүмдү таймер менен машыгыңыз", "ru": "Тренировать каждую часть с таймером" },
-        { "en": "Analyse every mistake after a mock test", "kg": "Сыноо тестинен кийин ар бир катаны талдаңыз", "ru": "Разбирать каждую ошибку после пробного теста" },
-        { "en": "Learn strategies for the weakest section", "kg": "Эң алсыз бөлүм үчүн стратегияларды үйрөнүңүз", "ru": "Изучить стратегии для самой слабой части" },
-        { "en": "Get your essays checked by a teacher", "kg": "Эсселериңизди мугалимге текшертиңиз", "ru": "Отдавать эссе на проверку преподавателю" },
-        { "en": "Prepare documents and register for the exam", "kg": "Документтерди даярдап, экзаменге катталыңыз", "ru": "Подготовить документы и зарегистрироваться на экзамен" },
-        { "en": "Rest and sleep well before the exam", "kg": "Экзамендин алдында жакшы эс алып, уктаңыз", "ru": "Хорошо отдохнуть и выспаться перед экзаменом" }
+        {
+          "en": "Learn the exam structure and scoring",
+          "kg": "Экзамендин түзүлүшүн жана баалоосун үйрөнүңүз",
+          "ru": "Изучить структуру и критерии оценки экзамена",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Read the exam format page for 15 minutes", "kg": "Экзамендин форматы тууралуу баракты 15 мүнөт окуңуз", "ru": "Прочитать 15 минут о формате экзамена" },
+          "steps": [
+            { "en": "Read the official exam description", "kg": "Экзамендин расмий сүрөттөмөсүн окуңуз", "ru": "Прочитать официальное описание экзамена", "minutes": 20 },
+            { "en": "Write out the sections and their timing", "kg": "Бөлүмдөрдү жана алардын убактысын жазыңыз", "ru": "Выписать разделы и время на каждый", "minutes": 15 },
+            { "en": "Learn how each section is scored", "kg": "Ар бир бөлүм кантип бааланарын үйрөнүңүз", "ru": "Разобраться, как оценивается каждый раздел", "minutes": 20 },
+            { "en": "Look at one official sample test", "kg": "Бир расмий үлгү тестти карап чыгыңыз", "ru": "Изучить один официальный образец теста", "minutes": 30 },
+            { "en": "Write the score you need in each section", "kg": "Ар бир бөлүмдөн керектүү упайды жазыңыз", "ru": "Записать нужный балл по каждому разделу", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Take a full mock exam every month",
+          "kg": "Ай сайын толук сыноо экзаменин тапшырыңыз",
+          "ru": "Каждый месяц сдавать полный пробный экзамен",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Do one timed section of a mock exam", "kg": "Пробный экзамендин бир бөлүгүн убакыт менен тапшырыңыз", "ru": "Решить одну часть пробного экзамена на время" },
+          "steps": [
+            { "en": "Choose an official practice test", "kg": "Расмий машыгуу тестин тандаңыз", "ru": "Выбрать официальный пробный тест", "minutes": 10 },
+            { "en": "Set exam conditions: timer, quiet room, no phone", "kg": "Экзамен шартын түзүңүз: таймер, тынч бөлмө, телефонсуз", "ru": "Создать условия экзамена: таймер, тишина, без телефона", "minutes": 10 },
+            { "en": "Do listening and reading", "kg": "Угуу жана окуу бөлүгүн аткарыңыз", "ru": "Выполнить аудирование и чтение", "minutes": 120 },
+            { "en": "Do writing and speaking", "kg": "Жазуу жана сүйлөө бөлүгүн аткарыңыз", "ru": "Выполнить письмо и говорение", "minutes": 90 },
+            { "en": "Check answers and write the score", "kg": "Жоопторду текшерип, упайды жазыңыз", "ru": "Проверить ответы и записать балл", "minutes": 30 },
+            { "en": "Put the next mock date in the calendar", "kg": "Кийинки пробный экзамендин күнүн календарга коюңуз", "ru": "Поставить дату следующего пробника в календарь", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Practise each section with a timer",
+          "kg": "Ар бир бөлүмдү таймер менен машыгыңыз",
+          "ru": "Тренировать каждую часть с таймером",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Do one timed task for 15 minutes", "kg": "15 мүнөт таймер менен бир тапшырма аткарыңыз", "ru": "Сделать одно задание на время за 15 минут" }
+        },
+        {
+          "en": "Analyse every mistake after a mock test",
+          "kg": "Сыноо тестинен кийин ар бир катаны талдаңыз",
+          "ru": "Разбирать каждую ошибку после пробного теста",
+          "type": "quality",
+          "minutes": 20,
+          "easy": { "en": "Analyse 3 mistakes from the last test", "kg": "Акыркы тесттен 3 катаны талдаңыз", "ru": "Разобрать 3 ошибки из последнего теста" }
+        },
+        {
+          "en": "Learn strategies for the weakest section",
+          "kg": "Эң алсыз бөлүм үчүн стратегияларды үйрөнүңүз",
+          "ru": "Изучить стратегии для самой слабой части",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Learn one strategy for your weakest section", "kg": "Эң алсыз бөлүмүңүз үчүн бир ыкма үйрөнүңүз", "ru": "Изучить одну стратегию для самого слабого раздела" },
+          "steps": [
+            { "en": "Find your weakest section from the last mock", "kg": "Акыркы пробныйдан эң алсыз бөлүмүңүздү табыңыз", "ru": "Найти самый слабый раздел по последнему пробнику", "minutes": 10 },
+            { "en": "Learn 3 strategies for this section", "kg": "Ушул бөлүм үчүн 3 ыкма үйрөнүңүз", "ru": "Изучить 3 стратегии для этого раздела", "minutes": 30 },
+            { "en": "Practise strategy 1 on 3 tasks", "kg": "1-ыкманы 3 тапшырмада машыгыңыз", "ru": "Отработать стратегию 1 на 3 заданиях", "minutes": 45 },
+            { "en": "Practise strategies 2 and 3", "kg": "2- жана 3-ыкмаларды машыгыңыз", "ru": "Отработать стратегии 2 и 3", "minutes": 60 },
+            { "en": "Do the section again and compare the score", "kg": "Бөлүмдү кайра тапшырып, упайды салыштырыңыз", "ru": "Решить раздел снова и сравнить балл", "minutes": 45 }
+          ]
+        },
+        {
+          "en": "Get your essays checked by a teacher",
+          "kg": "Эсселериңизди мугалимге текшертиңиз",
+          "ru": "Отдавать эссе на проверку преподавателю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Send one essay to a teacher for checking", "kg": "Мугалимге бир эссени текшерүүгө жибериңиз", "ru": "Отправить преподавателю одно эссе на проверку" }
+        },
+        {
+          "en": "Prepare documents and register for the exam",
+          "kg": "Документтерди даярдап, экзаменге катталыңыз",
+          "ru": "Подготовить документы и зарегистрироваться на экзамен",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Check the registration steps on the official site", "kg": "Катталуу тартибин расмий сайттан текшериңиз", "ru": "Проверить порядок регистрации на официальном сайте" },
+          "steps": [
+            { "en": "Check the documents list on the official site", "kg": "Документтердин тизмесин расмий сайттан текшериңиз", "ru": "Проверить список документов на официальном сайте", "minutes": 15 },
+            { "en": "Make sure your passport is valid", "kg": "Паспортуңуздун мөөнөтү бүтпөгөнүн текшериңиз", "ru": "Убедиться, что паспорт действителен", "minutes": 5 },
+            { "en": "Choose a date and a test centre", "kg": "Датаны жана тест борборун тандаңыз", "ru": "Выбрать дату и центр тестирования", "minutes": 15 },
+            { "en": "Fill in the registration form", "kg": "Каттоо формасын толтуруңуз", "ru": "Заполнить регистрационную форму", "minutes": 30 },
+            { "en": "Pay the fee through the official channel", "kg": "Төлөмдү расмий жол менен төлөңүз", "ru": "Оплатить сбор через официальный канал", "minutes": 15 },
+            { "en": "Save the confirmation and the exam rules", "kg": "Ырастоону жана экзамен эрежелерин сактаңыз", "ru": "Сохранить подтверждение и правила экзамена", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Rest and sleep well before the exam",
+          "kg": "Экзамендин алдында жакшы эс алып, уктаңыз",
+          "ru": "Хорошо отдохнуть и выспаться перед экзаменом",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Go to bed on time the night before the exam", "kg": "Экзамендин алдындагы түнү убагында жатыңыз", "ru": "Лечь спать вовремя накануне экзамена" }
+        }
       ]
     },
     {
       "title": { "en": "Real use", "kg": "Чыныгы колдонуу", "ru": "Язык в жизни" },
+      "kind": "support",
       "milestones": [
         { "en": "Language used at work or travel", "kg": "Тил жумушта же саякатта колдонулду", "ru": "Язык применён на работе или в поездке" }
       ],
       "actions": [
-        { "en": "Find a pen pal or language exchange partner", "kg": "Кат жазышуучу же тил алмашуу өнөгүн табыңыз", "ru": "Найти друга по переписке или партнёра по языковому обмену" },
-        { "en": "Volunteer or work where the language is used", "kg": "Тил колдонулган жерде ыктыярчы болуңуз же иштеңиз", "ru": "Волонтёрить или работать там, где нужен язык" },
-        { "en": "Watch content on your hobby in the language", "kg": "Хоббиңиз боюнча ошол тилдеги контентти көрүңүз", "ru": "Смотреть контент о своём хобби на этом языке" },
-        { "en": "Help someone with lower level", "kg": "Деңгээли төмөн бирөөгө жардам бериңиз", "ru": "Помогать тем, у кого уровень ниже" },
-        { "en": "Take an online course taught in the language", "kg": "Ошол тилде окутулган онлайн курс өтүңүз", "ru": "Пройти онлайн-курс, который ведут на этом языке" },
-        { "en": "Plan a trip where you must speak the language", "kg": "Тилде сүйлөшүү керек болгон саякатты пландаңыз", "ru": "Спланировать поездку, где придётся говорить на языке" },
-        { "en": "Add the language level to your CV", "kg": "Тил деңгээлиңизди резюмеге кошуңуз", "ru": "Указать уровень языка в резюме" },
-        { "en": "Keep a weekly 'language day' at home", "kg": "Үйдө жумасына бир «тил күнүн» өткөрүңүз", "ru": "Раз в неделю устраивать дома «день языка»" }
+        {
+          "en": "Find a pen pal or language exchange partner",
+          "kg": "Кат жазышуучу же тил алмашуу өнөгүн табыңыз",
+          "ru": "Найти друга по переписке или партнёра по языковому обмену",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Send one message on a language exchange app", "kg": "Тил алмашуу тиркемесинде бир билдирүү жибериңиз", "ru": "Написать одно сообщение в приложении языкового обмена" },
+          "steps": [
+            { "en": "Choose a language exchange app or site", "kg": "Тил алмашуу тиркемесин же сайтын тандаңыз", "ru": "Выбрать приложение или сайт языкового обмена", "minutes": 10 },
+            { "en": "Fill in your profile honestly", "kg": "Профилиңизди чынчылдык менен толтуруңуз", "ru": "Честно заполнить профиль", "minutes": 15 },
+            { "en": "Write to 5 people with shared interests", "kg": "Кызыкчылыгы окшош 5 адамга жазыңыз", "ru": "Написать 5 людям с общими интересами", "minutes": 20 },
+            { "en": "Keep chatting with the 1–2 who reply", "kg": "Жооп берген 1–2 адам менен сүйлөшүүнү улантыңыз", "ru": "Продолжить общение с 1–2 ответившими", "minutes": 15 },
+            { "en": "Agree on a regular weekly call", "kg": "Туруктуу жумалык чалууга макулдашыңыз", "ru": "Договориться о регулярном созвоне раз в неделю", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Volunteer or work where the language is used",
+          "kg": "Тил колдонулган жерде ыктыярчы болуңуз же иштеңиз",
+          "ru": "Волонтёрить или работать там, где нужен язык",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find one place where the language is used", "kg": "Ошол тил колдонулган бир жерди табыңыз", "ru": "Найти одно место, где используется этот язык" },
+          "steps": [
+            { "en": "List places: NGOs, hostels, tour firms, IT", "kg": "Жерлерди тизмелеңиз: уюмдар, хостелдер, туризм, IT", "ru": "Составить список: НКО, хостелы, турфирмы, IT", "minutes": 20 },
+            { "en": "Check volunteer or part-time openings", "kg": "Волонтёрлук же жарым күндүк орундарды текшериңиз", "ru": "Посмотреть вакансии волонтёров или подработки", "minutes": 30 },
+            { "en": "Prepare a short CV in the language", "kg": "Ошол тилде кыска резюме даярдаңыз", "ru": "Подготовить короткое резюме на этом языке", "minutes": 45 },
+            { "en": "Apply to 3 places", "kg": "3 жерге арыз бериңиз", "ru": "Откликнуться в 3 места", "minutes": 30 },
+            { "en": "Go to an interview or trial day", "kg": "Маекке же сыноо күнүнө барыңыз", "ru": "Сходить на собеседование или пробный день", "minutes": 90 },
+            { "en": "Start and use the language every shift", "kg": "Иштеп баштап, ар бир сменада тилди колдонуңуз", "ru": "Начать и говорить на языке каждую смену", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Watch content on your hobby in the language",
+          "kg": "Хоббиңиз боюнча ошол тилдеги контентти көрүңүз",
+          "ru": "Смотреть контент о своём хобби на этом языке",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Watch one hobby video in the language", "kg": "Хоббиңиз тууралуу бир видеону ошол тилде көрүңүз", "ru": "Посмотреть одно видео о хобби на этом языке" }
+        },
+        {
+          "en": "Help someone with lower level",
+          "kg": "Деңгээли төмөн бирөөгө жардам бериңиз",
+          "ru": "Помогать тем, у кого уровень ниже",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Answer one question from a beginner", "kg": "Жаңы баштагандын бир суроосуна жооп бериңиз", "ru": "Ответить на один вопрос новичка" }
+        },
+        {
+          "en": "Finish one online course taught in the language",
+          "kg": "Ошол тилде окутулган бир онлайн курсту бүтүрүңүз",
+          "ru": "Пройти один онлайн-курс на этом языке",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Watch the first lesson of a course in the language", "kg": "Ошол тилдеги курстун биринчи сабагын көрүңүз", "ru": "Посмотреть первый урок курса на этом языке" },
+          "steps": [
+            { "en": "Pick a free course on a topic you like", "kg": "Жаккан тема боюнча акысыз курс тандаңыз", "ru": "Выбрать бесплатный курс на интересную тему", "minutes": 20 },
+            { "en": "Watch week 1 with subtitles in the language", "kg": "1-жуманы ошол тилдеги субтитр менен көрүңүз", "ru": "Пройти неделю 1 с субтитрами на языке", "minutes": 60 },
+            { "en": "Write notes in the language", "kg": "Конспектти ошол тилде жазыңыз", "ru": "Вести конспект на этом языке", "minutes": 30 },
+            { "en": "Finish the middle weeks", "kg": "Ортоңку жумаларды бүтүрүңүз", "ru": "Пройти средние недели", "minutes": 90 },
+            { "en": "Do the final task or test", "kg": "Акыркы тапшырманы же тестти аткарыңыз", "ru": "Выполнить итоговое задание или тест", "minutes": 60 },
+            { "en": "Save the certificate or result", "kg": "Сертификатты же жыйынтыкты сактаңыз", "ru": "Сохранить сертификат или результат", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Plan a trip where you must speak the language",
+          "kg": "Тилде сүйлөшүү керек болгон саякатты пландаңыз",
+          "ru": "Спланировать поездку, где придётся говорить на языке",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Choose one city for a trip where you must speak", "kg": "Сүйлөшүүгө туура келе турган саякатка бир шаар тандаңыз", "ru": "Выбрать город для поездки, где придётся говорить" },
+          "steps": [
+            { "en": "Choose a country or city and dates", "kg": "Өлкө же шаар жана даталарды тандаңыз", "ru": "Выбрать страну или город и даты", "minutes": 20 },
+            { "en": "Check entry rules on the official site", "kg": "Кирүү эрежелерин расмий сайттан текшериңиз", "ru": "Проверить правила въезда на официальном сайте", "minutes": 20 },
+            { "en": "Plan the budget and start saving", "kg": "Бюджетти пландап, акча чогулта баштаңыз", "ru": "Спланировать бюджет и начать откладывать", "minutes": 30 },
+            { "en": "Learn 30 phrases for the trip", "kg": "Саякат үчүн 30 сүйлөм үйрөнүңүз", "ru": "Выучить 30 фраз для поездки", "minutes": 45 },
+            { "en": "Plan 3 situations where you will talk", "kg": "Сүйлөшө турган 3 кырдаалды пландаңыз", "ru": "Запланировать 3 ситуации, где будете говорить", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Add the language level to your CV",
+          "kg": "Тил деңгээлиңизди резюмеге кошуңуз",
+          "ru": "Указать уровень языка в резюме",
+          "type": "milestone",
+          "minutes": 15,
+          "easy": { "en": "Write your level line for the CV", "kg": "Резюме үчүн деңгээлиңиз жазылган сапты жазыңыз", "ru": "Написать строку об уровне языка для резюме" },
+          "steps": [
+            { "en": "Check your level with a test or certificate", "kg": "Деңгээлиңизди тест же сертификат менен текшериңиз", "ru": "Подтвердить уровень тестом или сертификатом", "minutes": 30 },
+            { "en": "Write it in CEFR format, e.g. B2", "kg": "CEFR форматында жазыңыз, мисалы B2", "ru": "Указать в формате CEFR, например B2", "minutes": 5 },
+            { "en": "Add the certificate name and year if you have one", "kg": "Сертификат болсо, анын атын жана жылын кошуңуз", "ru": "Добавить название и год сертификата, если есть", "minutes": 5 },
+            { "en": "Update your online profiles too", "kg": "Онлайн профилдериңизди да жаңыртыңыз", "ru": "Обновить и онлайн-профили", "minutes": 10 },
+            { "en": "Be ready to speak it at the interview", "kg": "Маекте ошол тилде сүйлөөгө даяр болуңуз", "ru": "Быть готовым заговорить на нём на собеседовании", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Keep a weekly language day at home",
+          "kg": "Үйдө жумасына бир \"тил күнүн\" өткөрүңүз",
+          "ru": "Устраивать дома «день языка» раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Spend one evening a week in the language", "kg": "Жумасына бир кечти ошол тилде өткөрүңүз", "ru": "Проводить один вечер в неделю на этом языке" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Study discipline", "kg": "Окуу тартиби", "ru": "Учебная дисциплина" },
+      "kind": "character",
+      "milestones": [
+        { "en": "60 days without two misses in a row", "kg": "Катары менен эки жолу калтырбаган 60 күн", "ru": "60 дней без двух пропусков подряд" }
+      ],
+      "actions": [
+        {
+          "en": "Start each session at the planned minute",
+          "kg": "Ар бир сабакты пландалган мүнөттө баштаңыз",
+          "ru": "Начинать каждое занятие в запланированную минуту",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Start today's session on time", "kg": "Бүгүнкү сабакты убагында баштаңыз", "ru": "Сегодня начать занятие вовремя" }
+        },
+        {
+          "en": "Do homework before the next class",
+          "kg": "Үй тапшырманы кийинки сабакка чейин аткарыңыз",
+          "ru": "Делать домашнее задание до следующего урока",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Do half of the homework today", "kg": "Бүгүн үй тапшырманын жарымын аткарыңыз", "ru": "Сегодня сделать половину домашнего задания" }
+        },
+        {
+          "en": "Greet your tutor and partners in the language",
+          "kg": "Мугалимиңиз жана өнөктөрүңүз менен ошол тилде учурашыңыз",
+          "ru": "Здороваться с преподавателем и партнёрами на языке",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say hello in the language once today", "kg": "Бүгүн бир жолу ошол тилде учурашыңыз", "ru": "Сегодня один раз поздороваться на языке" }
+        },
+        {
+          "en": "Be honest about your level in tests and talks",
+          "kg": "Тестте жана сүйлөшүүдө деңгээлиңизди чынчыл көрсөтүңүз",
+          "ru": "Честно показывать свой уровень в тестах и беседах",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Mark one answer you only guessed", "kg": "Божомол менен берген бир жообуңузду белгилеңиз", "ru": "Отметить один ответ, который угадали" }
+        },
+        {
+          "en": "Finish one textbook before buying another",
+          "kg": "Башкасын алардан мурун бир китепти бүтүрүңүз",
+          "ru": "Заканчивать один учебник, прежде чем брать другой",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Finish the current unit first", "kg": "Адегенде азыркы бөлүмдү бүтүрүңүз", "ru": "Сначала закончить текущий раздел" }
+        },
+        {
+          "en": "Never skip two study days in a row",
+          "kg": "Катары менен эки окуу күнүн калтырбаңыз",
+          "ru": "Никогда не пропускать два учебных дня подряд",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do 5 minutes on a busy day", "kg": "Бош эмес күнү 5 мүнөт болсо да окуңуз", "ru": "В загруженный день позаниматься хотя бы 5 минут" }
+        },
+        {
+          "en": "Thank your teacher or partner after each session",
+          "kg": "Ар бир сабактан кийин мугалимге же өнөгүңүзгө ыраазычылык айтыңыз",
+          "ru": "Благодарить преподавателя или партнёра после занятия",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Thank one partner today", "kg": "Бүгүн бир өнөгүңүзгө ыраазычылык айтыңыз", "ru": "Сегодня поблагодарить одного партнёра" }
+        },
+        {
+          "en": "Tidy your study place before you start",
+          "kg": "Окуудан мурун окуу ордуңузду тазалаңыз",
+          "ru": "Наводить порядок на месте учёбы перед началом",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Clear the desk before one session", "kg": "Бир сабактын алдында столду тазалаңыз", "ru": "Убрать со стола перед одним занятием" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Culture", "kg": "Маданият", "ru": "Культура страны" },
+      "kind": "support",
+      "milestones": [
+        { "en": "10 films and 5 songs in the language", "kg": "Ошол тилде 10 тасма жана 5 ыр", "ru": "10 фильмов и 5 песен на этом языке" }
+      ],
+      "actions": [
+        {
+          "en": "Write 10 facts about a country of the language",
+          "kg": "Ошол тилдеги өлкө тууралуу 10 факт жазыңыз",
+          "ru": "Записать 10 фактов о стране изучаемого языка",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 facts about the country", "kg": "Өлкө тууралуу 3 факт жазыңыз", "ru": "Записать 3 факта о стране" },
+          "steps": [
+            { "en": "Read a short overview of the country", "kg": "Өлкө тууралуу кыскача маалымат окуңуз", "ru": "Прочитать короткий обзор о стране", "minutes": 20 },
+            { "en": "Learn its holidays and traditions", "kg": "Анын майрамдарын жана салттарын үйрөнүңүз", "ru": "Узнать её праздники и традиции", "minutes": 20 },
+            { "en": "Learn 3 famous people from there", "kg": "Ал жактан чыккан 3 белгилүү адамды үйрөнүңүз", "ru": "Узнать о 3 известных людях оттуда", "minutes": 20 },
+            { "en": "Write 10 facts in the language", "kg": "10 фактты ошол тилде жазыңыз", "ru": "Записать 10 фактов на этом языке", "minutes": 30 },
+            { "en": "Tell them to a partner or tutor", "kg": "Аларды өнөгүңүзгө же мугалимге айтып бериңиз", "ru": "Рассказать их партнёру или преподавателю", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Watch one film from that country a week",
+          "kg": "Жумасына ошол өлкөнүн бир тасмасын көрүңүз",
+          "ru": "Смотреть один фильм из этой страны в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 100,
+          "easy": { "en": "Watch one 20-minute episode", "kg": "20 мүнөттүк бир серия көрүңүз", "ru": "Посмотреть одну 20-минутную серию" }
+        },
+        {
+          "en": "Learn polite forms and basic etiquette",
+          "kg": "Сылык сөз формаларын жана негизги адепти үйрөнүңүз",
+          "ru": "Изучить вежливые формы и базовый этикет",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Learn 3 polite phrases", "kg": "3 сылык сөз айкашын үйрөнүңүз", "ru": "Выучить 3 вежливые фразы" },
+          "steps": [
+            { "en": "Learn formal and informal \"you\"", "kg": "Расмий жана расмий эмес кайрылууну үйрөнүңүз", "ru": "Разобрать формальное и неформальное обращение", "minutes": 15 },
+            { "en": "Learn 10 polite phrases", "kg": "10 сылык сөз айкашын үйрөнүңүз", "ru": "Выучить 10 вежливых фраз", "minutes": 20 },
+            { "en": "Learn how people greet and say goodbye", "kg": "Кантип учурашып, коштошорун үйрөнүңүз", "ru": "Узнать, как здороваются и прощаются", "minutes": 15 },
+            { "en": "Learn 3 things that are rude there", "kg": "Ал жакта адепсиз саналган 3 нерсени билиңиз", "ru": "Узнать 3 вещи, которые там считаются грубыми", "minutes": 15 },
+            { "en": "Use the polite forms in your next talk", "kg": "Кийинки сүйлөшүүдө сылык формаларды колдонуңуз", "ru": "Использовать вежливые формы в следующем разговоре", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Cook one dish from a recipe in the language",
+          "kg": "Ошол тилдеги рецепт менен бир тамак жасаңыз",
+          "ru": "Приготовить одно блюдо по рецепту на этом языке",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Read one recipe in the language", "kg": "Ошол тилде бир рецепт окуңуз", "ru": "Прочитать один рецепт на этом языке" },
+          "steps": [
+            { "en": "Find a simple national recipe in the language", "kg": "Ошол тилде жөнөкөй улуттук рецепт табыңыз", "ru": "Найти простой национальный рецепт на этом языке", "minutes": 15 },
+            { "en": "Translate the ingredient words", "kg": "Азык-түлүктүн аттарын которуңуз", "ru": "Перевести названия продуктов", "minutes": 15 },
+            { "en": "Buy the ingredients", "kg": "Азыктарды сатып алыңыз", "ru": "Купить продукты", "minutes": 45 },
+            { "en": "Cook following the recipe", "kg": "Рецепт боюнча тамак жасаңыз", "ru": "Приготовить по рецепту", "minutes": 60 },
+            { "en": "Describe the cooking aloud in the language", "kg": "Тамак жасаганыңызды ошол тилде үн чыгарып айтыңыз", "ru": "Рассказать вслух на языке, как готовили", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Learn 5 idioms a week",
+          "kg": "Жумасына 5 туруктуу сөз айкашын үйрөнүңүз",
+          "ru": "Учить 5 идиом в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Learn one idiom", "kg": "Бир туруктуу сөз айкашын үйрөнүңүз", "ru": "Выучить одну идиому" }
+        },
+        {
+          "en": "Follow 3 creators from that country",
+          "kg": "Ошол өлкөнүн 3 блогерине жазылыңыз",
+          "ru": "Подписаться на 3 авторов из этой страны",
+          "type": "milestone",
+          "minutes": 15,
+          "easy": { "en": "Follow one creator from that country", "kg": "Ошол өлкөнүн бир блогерине жазылыңыз", "ru": "Подписаться на одного автора из этой страны" },
+          "steps": [
+            { "en": "Search for creators on your hobby in the language", "kg": "Хоббиңиз боюнча ошол тилдеги блогерлерди издеңиз", "ru": "Найти авторов по своему хобби на этом языке", "minutes": 15 },
+            { "en": "Watch one video from 5 of them", "kg": "Алардын 5өөнөн бирден видео көрүңүз", "ru": "Посмотреть по одному видео у 5 из них", "minutes": 45 },
+            { "en": "Follow the 3 you understand best", "kg": "Эң жакшы түшүнгөн 3үнө жазылыңыз", "ru": "Подписаться на 3 самых понятных", "minutes": 5 },
+            { "en": "Unfollow 3 accounts that waste your time", "kg": "Убактыңызды алган 3 аккаунттан жазылууну алып салыңыз", "ru": "Отписаться от 3 аккаунтов, крадущих время", "minutes": 5 },
+            { "en": "Leave one comment in the language", "kg": "Ошол тилде бир комментарий калтырыңыз", "ru": "Оставить один комментарий на этом языке", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Read one news story from that country weekly",
+          "kg": "Жумасына ошол өлкөдөн бир жаңылык окуңуз",
+          "ru": "Читать одну новость из этой страны в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Read one headline and its first line", "kg": "Бир аталышты жана биринчи сабын окуңуз", "ru": "Прочитать один заголовок и первую строку" }
+        },
+        {
+          "en": "Learn one song by heart",
+          "kg": "Бир ырды жатка үйрөнүңүз",
+          "ru": "Выучить одну песню наизусть",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Learn the chorus of one song", "kg": "Бир ырдын кайырмасын үйрөнүңүз", "ru": "Выучить припев одной песни" },
+          "steps": [
+            { "en": "Choose a song you like in the language", "kg": "Ошол тилде жаккан ырды тандаңыз", "ru": "Выбрать понравившуюся песню на этом языке", "minutes": 10 },
+            { "en": "Find the lyrics and translate them", "kg": "Сөзүн таап, которуңуз", "ru": "Найти текст и перевести его", "minutes": 20 },
+            { "en": "Learn the first verse", "kg": "Биринчи куплетти үйрөнүңүз", "ru": "Выучить первый куплет", "minutes": 20 },
+            { "en": "Learn the chorus and the rest", "kg": "Кайырманы жана калганын үйрөнүңүз", "ru": "Выучить припев и остальное", "minutes": 30 },
+            { "en": "Sing along without the text", "kg": "Текстсиз кошо ырдаңыз", "ru": "Спеть вместе с записью без текста", "minutes": 10 }
+          ]
+        }
       ]
     }
   ]

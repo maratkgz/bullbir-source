@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
@@ -33,9 +33,26 @@ import PersonalProgress from './components/modules/PersonalProgress'
 import Profile from './components/modules/Profile'
 import CompletionHistory from './components/modules/CompletionHistory'
 import Habits from './components/modules/Habits'
-import Mandala from './components/modules/mandala/Mandala'
-import Assistant from './components/modules/assistant/Assistant'
-import AiAdmin from './components/admin/AiAdmin'
+// Pages that use the AI knowledge library (~1.8 MB of JSON) load on demand, so the library
+// never weighs down the main bundle (and stays under the PWA precache size limit).
+const Mandala = lazy(() => import('./components/modules/mandala/Mandala'))
+const Assistant = lazy(() => import('./components/modules/assistant/Assistant'))
+const AiAdmin = lazy(() => import('./components/admin/AiAdmin'))
+const WeeklyReview = lazy(() => import('./components/modules/mandala/WeeklyReview'))
+
+function PageLoading() {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--space-8) 0' }}>
+      <span className="spinner" aria-hidden="true" />
+    </div>
+  )
+}
+
+const lazyPage = (Page) => (
+  <Suspense fallback={<PageLoading />}>
+    <Page />
+  </Suspense>
+)
 import Landing from './components/Landing'
 
 // Where a verified user belongs. Only a loaded profile can say "onboarding not done"; while it is
@@ -117,9 +134,10 @@ export default function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="completion-history" element={<CompletionHistory />} />
           <Route path="habits" element={<Habits />} />
-          <Route path="mandala" element={<Mandala />} />
-          <Route path="assistant" element={<Assistant />} />
-          <Route path="admin/ai" element={<AiAdmin />} />
+          <Route path="mandala" element={lazyPage(Mandala)} />
+          <Route path="review" element={lazyPage(WeeklyReview)} />
+          <Route path="assistant" element={lazyPage(Assistant)} />
+          <Route path="admin/ai" element={lazyPage(AiAdmin)} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

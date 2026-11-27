@@ -7,8 +7,7 @@ import { mandalaFromDomain } from '../../../ai/engine/mandalaGenerator'
 import { pick } from '../../../ai/library/schema'
 import { Sparkles } from 'lucide-react'
 import Icon from '../../ui/Icon'
-
-const SUGGESTIONS_SHOWN = 3
+import SpherePicker from './SpherePicker'
 
 /**
  * "Fill with AI": picks a library domain for the goal, previews the 8 directions and
@@ -23,7 +22,6 @@ export default function MandalaAiFill({ mandala, onApply, onCancel, isSaving }) 
   const ranked = useMemo(() => classifyGoal(goal, domains, { feedback }), [goal, domains, feedback])
   const [domainId, setDomainId] = useState(() => ranked[0]?.id)
   const domain = domains.find((d) => d.id === domainId) || domains[0]
-  const top = ranked.slice(0, SUGGESTIONS_SHOWN).map((r) => domains.find((d) => d.id === r.id)).filter(Boolean)
 
   const apply = async () => {
     const patch = mandalaFromDomain(domain, goal, lang, { existing: mandala })
@@ -39,25 +37,7 @@ export default function MandalaAiFill({ mandala, onApply, onCancel, isSaving }) 
         {t('ai.fill.intro', { goal })}
       </p>
 
-      <div className="mandala-field">
-        <span>{t('ai.fill.suggested')}</span>
-        <div className="ai-chips">
-          {top.map((d, i) => (
-            <button
-              key={d.id}
-              type="button"
-              className={`ai-chip${d.id === domain.id ? ' is-active' : ''}`}
-              onClick={() => setDomainId(d.id)}
-            >
-              <span aria-hidden="true">{d.icon}</span> {pick(d.title, lang)}
-              {i === 0 && !ranked[0].isFallback && <span className="ai-chip-badge">{t('ai.fill.best')}</span>}
-            </button>
-          ))}
-        </div>
-        <select className="select" value={domain.id} onChange={(e) => setDomainId(e.target.value)} aria-label={t('ai.fill.allSpheres')}>
-          {domains.map((d) => <option key={d.id} value={d.id}>{d.icon} {pick(d.title, lang)}</option>)}
-        </select>
-      </div>
+      <SpherePicker domains={domains} ranked={ranked} value={domain.id} onChange={setDomainId} />
 
       <div className="mandala-field">
         <span>{t('ai.fill.preview')}</span>

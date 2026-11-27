@@ -1,0 +1,960 @@
+{
+  "id": "business",
+  "icon": "🏪",
+  "title": { "en": "Business", "kg": "Бизнес жана ишкердик", "ru": "Бизнес и своё дело" },
+  "keywords": {
+    "en": ["!business", "!startup", "!entrepreneur", "own business", "shop", "store", "cafe", "coffee shop", "sell", "sales", "clients", "customers", "product", "brand", "profit", "small business", "delivery", "instagram shop", "open a business", "marketing", "trade"],
+    "kg": ["!бизнес", "!ишкер", "!ишкердик", "өз ишим", "өз бизнесим", "дүкөн", "кафе", "кофейня", "сатуу", "сатам", "кардар", "кардарлар", "товар", "бренд", "пайда", "бизнес ачуу", "жеткирүү", "соода", "стартап", "маркетинг", "инстаграм дүкөн"],
+    "ru": ["!бизнес", "!предприниматель", "!стартап", "своё дело", "свой бизнес", "магазин", "кафе", "кофейня", "продажи", "продавать", "клиенты", "покупатели", "товар", "бренд", "прибыль", "открыть бизнес", "ип", "доставка", "маркетинг", "торговля", "инстаграм магазин"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Idea & market", "kg": "Идея жана рынок", "ru": "Идея и рынок" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "10 potential customers interviewed", "kg": "10 потенциалдуу кардар менен сүйлөшүлдү", "ru": "Проведено 10 разговоров с потенциальными клиентами" },
+        { "en": "Idea tested with the first sale", "kg": "Идея биринчи сатуу менен текшерилди", "ru": "Идея проверена первой продажей" }
+      ],
+      "actions": [
+        {
+          "en": "Describe your customer and their problem in 3 sentences",
+          "kg": "Кардарыңызды жана анын көйгөйүн 3 сүйлөм менен жазыңыз",
+          "ru": "Описать клиента и его проблему в 3 предложениях",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write one sentence: who buys and why", "kg": "Бир сүйлөм жазыңыз: ким жана эмне үчүн сатып алат", "ru": "Написать одно предложение: кто купит и зачем" },
+          "steps": [
+            { "en": "Write who your customer is: age, city, habits", "kg": "Кардарыңыз ким экенин жазыңыз: жашы, шаары, адаттары", "ru": "Записать, кто клиент: возраст, город, привычки", "minutes": 15 },
+            { "en": "List 3 problems this customer has", "kg": "Ошол кардардын 3 көйгөйүн тизмелеңиз", "ru": "Выписать 3 проблемы этого клиента", "minutes": 15 },
+            { "en": "Pick one problem people already pay to solve", "kg": "Адамдар чечүү үчүн акча төлөгөн бир көйгөйдү тандаңыз", "ru": "Выбрать одну проблему, за решение которой уже платят", "minutes": 10 },
+            { "en": "Write how your product solves it", "kg": "Продуктуңуз аны кантип чечерин жазыңыз", "ru": "Записать, как продукт её решает", "minutes": 15 },
+            { "en": "Read it to a friend and fix what is unclear", "kg": "Досуңузга окуп берип, түшүнүксүз жерин оңдоңуз", "ru": "Прочитать другу и исправить неясное", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Talk to 10 potential customers about their problem",
+          "kg": "10 потенциалдуу кардар менен көйгөйү тууралуу сүйлөшүңүз",
+          "ru": "Поговорить с 10 потенциальными клиентами об их проблеме",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask 2 people about their problem", "kg": "2 адамдан көйгөйү тууралуу сураңыз", "ru": "Расспросить 2 человек об их проблеме" },
+          "steps": [
+            { "en": "Write 5 questions about the problem, not the product", "kg": "Продукт эмес, көйгөй тууралуу 5 суроо жазыңыз", "ru": "Составить 5 вопросов о проблеме, а не о продукте", "minutes": 20 },
+            { "en": "List 15 people who fit your customer profile", "kg": "Кардарыңызга окшош 15 адамды тизмелеңиз", "ru": "Выписать 15 человек, похожих на вашего клиента", "minutes": 20 },
+            { "en": "Message them asking for a 15-minute talk", "kg": "Аларга 15 мүнөт сүйлөшүүнү сурап жазыңыз", "ru": "Написать им с просьбой о 15-минутном разговоре", "minutes": 30 },
+            { "en": "Hold the first 5 talks and take notes", "kg": "Алгачкы 5 сүйлөшүүнү өткөрүп, жазып алыңыз", "ru": "Провести первые 5 разговоров и записать ответы", "minutes": 90 },
+            { "en": "Hold 5 more talks", "kg": "Дагы 5 сүйлөшүү өткөрүңүз", "ru": "Провести ещё 5 разговоров", "minutes": 90 },
+            { "en": "Write down the 3 most repeated answers", "kg": "Эң көп кайталанган 3 жоопту жазыңыз", "ru": "Выписать 3 самых частых ответа", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Study 5 competitors: prices, offer, reviews",
+          "kg": "5 атаандашты изилдеңиз: баасы, сунушу, пикирлер",
+          "ru": "Изучить 5 конкурентов: цены, предложение, отзывы",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Look at 2 competitors’ pages and prices", "kg": "2 атаандаштын баракчасын жана баасын караңыз", "ru": "Посмотреть страницы и цены 2 конкурентов" },
+          "steps": [
+            { "en": "Find 5 competitors on Instagram, 2GIS or lalafo.kg", "kg": "Instagram, 2GIS же lalafo.kg аркылуу 5 атаандаш табыңыз", "ru": "Найти 5 конкурентов в Instagram, 2GIS или на lalafo.kg", "minutes": 20 },
+            { "en": "Put their prices into one table", "kg": "Алардын бааларын бир таблицага жазыңыз", "ru": "Свести их цены в одну таблицу", "minutes": 20 },
+            { "en": "Read 10 reviews and note the complaints", "kg": "10 пикир окуп, нааразычылыктарды белгилеңиз", "ru": "Прочитать 10 отзывов и выписать жалобы", "minutes": 20 },
+            { "en": "Note what each competitor does well", "kg": "Ар бир атаандаш эмнени жакшы кыларын белгилеңиз", "ru": "Отметить, что каждый конкурент делает хорошо", "minutes": 15 },
+            { "en": "Write how you will be different", "kg": "Алардан эмнеси менен айырмаланарыңызды жазыңыз", "ru": "Записать, чем вы будете отличаться", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Calculate cost price and set a price for 1 product",
+          "kg": "1 продукттун өздүк наркын эсептеп, баа коюңуз",
+          "ru": "Посчитать себестоимость и цену одного продукта",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "List all costs for 1 unit", "kg": "1 даанага кеткен бардык чыгымды жазыңыз", "ru": "Выписать все расходы на 1 единицу" },
+          "steps": [
+            { "en": "List materials and their cost per unit", "kg": "Материалдарды жана 1 даанага кеткен баасын жазыңыз", "ru": "Выписать материалы и их стоимость на единицу", "minutes": 20 },
+            { "en": "Add delivery, packaging and fees", "kg": "Жеткирүү, таңгак жана комиссияны кошуңуз", "ru": "Добавить доставку, упаковку и комиссии", "minutes": 15 },
+            { "en": "Estimate the cost of your time per unit", "kg": "1 даанага кеткен убактыңыздын баасын эсептеңиз", "ru": "Оценить стоимость своего времени на единицу", "minutes": 15 },
+            { "en": "Compare with competitor prices", "kg": "Атаандаштардын баасы менен салыштырыңыз", "ru": "Сравнить с ценами конкурентов", "minutes": 15 },
+            { "en": "Set a price with at least 30% margin", "kg": "Кеминде 30% үстөк менен баа коюңуз", "ru": "Назначить цену с наценкой не меньше 30%", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Make a test offer and get the first 3 orders",
+          "kg": "Сыноо сунушун жасап, алгачкы 3 буйрутма алыңыз",
+          "ru": "Сделать тестовое предложение и получить первые 3 заказа",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Offer the product to 3 acquaintances", "kg": "Продуктуңузду 3 тааныш адамга сунуштаңыз", "ru": "Предложить продукт 3 знакомым" },
+          "steps": [
+            { "en": "Write the offer: what, price, how to order", "kg": "Сунуш жазыңыз: эмне, канча турат, кантип буйрутма берет", "ru": "Написать предложение: что, сколько стоит, как заказать", "minutes": 20 },
+            { "en": "Take 3 good photos of the product", "kg": "Продукттун 3 жакшы сүрөтүн тартыңыз", "ru": "Сделать 3 хорошие фотографии продукта", "minutes": 30 },
+            { "en": "Post it in Instagram stories and Telegram", "kg": "Аны Instagram сторис жана Telegramга жарыялаңыз", "ru": "Опубликовать в сторис Instagram и в Telegram", "minutes": 15 },
+            { "en": "Send the offer to 20 people personally", "kg": "Сунушту 20 адамга жеке жөнөтүңүз", "ru": "Отправить предложение 20 людям лично", "minutes": 40 },
+            { "en": "Reply to everyone who answered the same day", "kg": "Жооп бергендердин баарына ошол эле күнү жооп жазыңыз", "ru": "Ответить всем откликнувшимся в тот же день", "minutes": 30 },
+            { "en": "Deliver the orders and ask for feedback", "kg": "Буйрутмаларды жеткирип, пикир сураңыз", "ru": "Выполнить заказы и попросить отзыв", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Write down 3 customer requests heard this week",
+          "kg": "Ушул жумада уккан 3 кардар суранычын жазыңыз",
+          "ru": "Записывать 3 запроса клиентов, услышанных за неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write down 1 customer request a week", "kg": "Жумасына 1 кардар суранычын жазыңыз", "ru": "Записывать 1 запрос клиента в неделю" }
+        },
+        {
+          "en": "Ask every buyer: why did you choose us?",
+          "kg": "Ар бир кардардан сураңыз: эмне үчүн бизди тандадыңыз?",
+          "ru": "Спрашивать каждого покупателя: почему выбрали нас?",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Ask 1 buyer a week why they chose you", "kg": "Жумасына 1 кардардан эмне үчүн тандаганын сураңыз", "ru": "Раз в неделю спрашивать покупателя, почему выбрал вас" }
+        },
+        {
+          "en": "Review one idea from your notes: test it or drop it",
+          "kg": "Жазуулардагы бир идеяны карап чечиңиз: сынайм же таштайм",
+          "ru": "Разбирать одну идею из заметок: проверить или отказаться",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Spend 10 minutes looking through your idea list", "kg": "Идеялар тизмесин 10 мүнөт карап чыгыңыз", "ru": "Потратить 10 минут на просмотр списка идей" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Product", "kg": "Продукт", "ru": "Продукт" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First version ready to sell", "kg": "Биринчи версиясы сатууга даяр", "ru": "Первая версия готова к продаже" },
+        { "en": "Quality checklist in use", "kg": "Сапат текшерүү тизмеси колдонулууда", "ru": "Чек-лист качества в работе" }
+      ],
+      "actions": [
+        {
+          "en": "Make the first version of the product in 2 weeks",
+          "kg": "Продукттун биринчи версиясын 2 жумада жасаңыз",
+          "ru": "Сделать первую версию продукта за 2 недели",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Make one sample of the product", "kg": "Продукттун бир үлгүсүн жасаңыз", "ru": "Сделать один образец продукта" },
+          "steps": [
+            { "en": "List what the first version must include", "kg": "Биринчи версияда эмне болушу керек экенин жазыңыз", "ru": "Записать, что обязательно войдёт в первую версию", "minutes": 20 },
+            { "en": "Cross out everything that is not essential", "kg": "Анча маанилүү эмес нерселердин баарын сызып салыңыз", "ru": "Вычеркнуть всё, без чего можно обойтись", "minutes": 15 },
+            { "en": "Buy or gather materials within budget", "kg": "Бюджеттин чегинде материал сатып алыңыз же чогултуңуз", "ru": "Купить или собрать материалы в рамках бюджета", "minutes": 60 },
+            { "en": "Make 3 samples", "kg": "3 үлгү жасаңыз", "ru": "Сделать 3 образца", "minutes": 120 },
+            { "en": "Give 2 samples to people for honest feedback", "kg": "2 үлгүнү адамдарга берип, ачык пикир сураңыз", "ru": "Отдать 2 образца людям за честным отзывом", "minutes": 30 },
+            { "en": "Fix the top 2 problems from feedback", "kg": "Пикирлердеги эң негизги 2 кемчиликти оңдоңуз", "ru": "Исправить 2 главных недостатка по отзывам", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Write a quality checklist of 5 points",
+          "kg": "5 пункттан турган сапат тизмесин жазыңыз",
+          "ru": "Составить чек-лист качества из 5 пунктов",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 2 things to check before selling", "kg": "Сатардан мурун текшере турган 2 нерсени жазыңыз", "ru": "Записать 2 вещи, которые проверять перед продажей" },
+          "steps": [
+            { "en": "Recall the last 3 customer complaints", "kg": "Акыркы 3 кардар нааразычылыгын эстеңиз", "ru": "Вспомнить 3 последние жалобы клиентов", "minutes": 10 },
+            { "en": "Turn each complaint into a check point", "kg": "Ар бир нааразычылыкты текшерүү пунктуна айлантыңыз", "ru": "Превратить каждую жалобу в пункт проверки", "minutes": 15 },
+            { "en": "Add 2 points about packaging and look", "kg": "Таңгак жана сырткы көрүнүш тууралуу 2 пункт кошуңуз", "ru": "Добавить 2 пункта про упаковку и внешний вид", "minutes": 10 },
+            { "en": "Keep the checklist near your workplace", "kg": "Тизмени иш ордуңуздун жанында сактаңыз", "ru": "Держать чек-лист у рабочего места", "minutes": 10 },
+            { "en": "Check the next 5 orders against it", "kg": "Кийинки 5 буйрутманы ушул тизме менен текшериңиз", "ru": "Проверить по нему следующие 5 заказов", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Check every order against the checklist before sending",
+          "kg": "Ар бир буйрутманы жөнөтөрдөн мурун тизме менен текшериңиз",
+          "ru": "Проверять каждый заказ по чек-листу перед отправкой",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check at least 1 order a day against the checklist", "kg": "Күнүнө кеминде 1 буйрутманы тизме менен текшериңиз", "ru": "Проверять по чек-листу хотя бы 1 заказ в день" }
+        },
+        {
+          "en": "Read all new reviews and pick 1 thing to improve",
+          "kg": "Бардык жаңы пикирлерди окуп, жакшырта турган 1 нерсе тандаңыз",
+          "ru": "Читать все новые отзывы и выбирать 1 улучшение",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Read 3 new reviews this week", "kg": "Ушул жумада 3 жаңы пикир окуңуз", "ru": "Прочитать 3 новых отзыва за неделю" }
+        },
+        {
+          "en": "Design simple packaging with your name and contacts",
+          "kg": "Атыңыз жана байланышыңыз жазылган жөнөкөй таңгак жасаңыз",
+          "ru": "Сделать простую упаковку с названием и контактами",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Make a sticker with your name and phone", "kg": "Атыңыз жана телефонуңуз жазылган стикер жасаңыз", "ru": "Сделать наклейку с названием и телефоном" },
+          "steps": [
+            { "en": "Pick 1 color and 1 font for the brand", "kg": "Бренд үчүн 1 түс жана 1 шрифт тандаңыз", "ru": "Выбрать 1 цвет и 1 шрифт для бренда", "minutes": 20 },
+            { "en": "Make a logo or name label in Canva", "kg": "Canvaда логотип же аталыш жазуусун жасаңыз", "ru": "Сделать логотип или надпись в Canva", "minutes": 45 },
+            { "en": "Find a local print shop and compare 2 prices", "kg": "Жергиликтүү басмакананы таап, 2 бааны салыштырыңыз", "ru": "Найти местную типографию и сравнить 2 цены", "minutes": 30 },
+            { "en": "Order a small test batch of stickers", "kg": "Стикерлердин чакан сыноо партиясын заказ кылыңыз", "ru": "Заказать небольшую тестовую партию наклеек", "minutes": 20 },
+            { "en": "Pack 1 order and photograph the result", "kg": "1 буйрутманы таңгактап, сүрөткө тартыңыз", "ru": "Упаковать 1 заказ и сфотографировать результат", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Count returns and complaints every week",
+          "kg": "Ар жумада кайтарылган товарларды жана нааразычылыктарды санаңыз",
+          "ru": "Каждую неделю считать возвраты и жалобы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write down each complaint when it happens", "kg": "Ар бир нааразычылыкты ошол замат жазыңыз", "ru": "Записывать каждую жалобу сразу" }
+        },
+        {
+          "en": "Test one product improvement a week",
+          "kg": "Жумасына продукттун бир жакшыртуусун сынаңыз",
+          "ru": "Проверять одно улучшение продукта в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Test one improvement a month", "kg": "Айына бир жакшыртууну сынаңыз", "ru": "Проверять одно улучшение в месяц" }
+        },
+        {
+          "en": "Take 10 clear product photos on a plain background",
+          "kg": "Жөнөкөй фондо продукттун 10 так сүрөтүн тартыңыз",
+          "ru": "Сделать 10 чётких фото продукта на простом фоне",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Take 3 product photos near a window", "kg": "Терезенин жанында продукттун 3 сүрөтүн тартыңыз", "ru": "Сделать 3 фото продукта у окна" },
+          "steps": [
+            { "en": "Find a spot with daylight and a plain wall", "kg": "Күндүзгү жарыгы жана жөнөкөй дубалы бар жер табыңыз", "ru": "Найти место с дневным светом и простой стеной", "minutes": 10 },
+            { "en": "Wipe the phone camera and the product", "kg": "Телефондун камерасын жана продуктту сүртүңүз", "ru": "Протереть камеру телефона и сам продукт", "minutes": 5 },
+            { "en": "Shoot from 3 angles plus close-up details", "kg": "3 тараптан жана майда деталдарын жакындан тартыңыз", "ru": "Снять с 3 ракурсов и крупно детали", "minutes": 30 },
+            { "en": "Pick the best 10 and adjust the light", "kg": "Эң жакшы 10ун тандап, жарыгын оңдоңуз", "ru": "Выбрать 10 лучших и поправить свет", "minutes": 20 },
+            { "en": "Save them in one folder for posts", "kg": "Посттор үчүн бир папкага сактаңыз", "ru": "Сохранить в одну папку для постов", "minutes": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Sales", "kg": "Сатуу", "ru": "Продажи" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First 10 paying customers", "kg": "Алгачкы 10 төлөгөн кардар", "ru": "Первые 10 платящих клиентов" },
+        { "en": "Steady sales every week for a month", "kg": "Бир ай бою ар жумада туруктуу сатуу", "ru": "Месяц стабильных продаж каждую неделю" }
+      ],
+      "actions": [
+        {
+          "en": "Reply to every customer message within 1 hour",
+          "kg": "Кардардын ар бир билдирүүсүнө 1 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать на каждое сообщение клиента в течение часа",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Reply to all messages by the end of the day", "kg": "Бардык билдирүүлөргө күндүн аягына чейин жооп бериңиз", "ru": "Отвечать на все сообщения до конца дня" }
+        },
+        {
+          "en": "Offer the product to 5 new people every day",
+          "kg": "Күн сайын 5 жаңы адамга продуктту сунуштаңыз",
+          "ru": "Каждый день предлагать продукт 5 новым людям",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Offer the product to 2 new people a day", "kg": "Күнүнө 2 жаңы адамга сунуштаңыз", "ru": "Предлагать продукт 2 новым людям в день" }
+        },
+        {
+          "en": "Write a sales script with answers to 5 common questions",
+          "kg": "5 көп берилүүчү суроого жооптору бар сатуу скриптин жазыңыз",
+          "ru": "Написать скрипт продаж с ответами на 5 частых вопросов",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write answers to the 2 most common questions", "kg": "Эң көп берилген 2 суроого жооп жазыңыз", "ru": "Написать ответы на 2 самых частых вопроса" },
+          "steps": [
+            { "en": "Collect the 5 questions customers ask most", "kg": "Кардарлар эң көп берген 5 суроону чогултуңуз", "ru": "Собрать 5 самых частых вопросов клиентов", "minutes": 15 },
+            { "en": "Write a short, polite answer to each", "kg": "Ар бирине кыска, сылык жооп жазыңыз", "ru": "Написать короткий вежливый ответ на каждый", "minutes": 25 },
+            { "en": "Write a greeting and a closing line", "kg": "Учурашуу жана коштошуу сөзүн жазыңыз", "ru": "Написать приветствие и завершающую фразу", "minutes": 10 },
+            { "en": "Save them as quick replies in WhatsApp or Telegram", "kg": "Аларды WhatsApp же Telegramда даяр жооп катары сактаңыз", "ru": "Сохранить как быстрые ответы в WhatsApp или Telegram", "minutes": 15 },
+            { "en": "Use the script with the next 5 customers", "kg": "Скриптти кийинки 5 кардар менен колдонуңуз", "ru": "Использовать скрипт со следующими 5 клиентами", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Count sales, orders and average check every Sunday",
+          "kg": "Ар жекшембиде сатууну, буйрутманы жана орточо чекти эсептеңиз",
+          "ru": "Каждое воскресенье считать продажи, заказы и средний чек",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Count the number of orders every Sunday", "kg": "Ар жекшембиде буйрутмалардын санын эсептеңиз", "ru": "Каждое воскресенье считать количество заказов" }
+        },
+        {
+          "en": "Message 5 past customers with a new offer",
+          "kg": "Мурунку 5 кардарга жаңы сунуш менен жазыңыз",
+          "ru": "Писать 5 прошлым клиентам с новым предложением",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Message 2 past customers a week", "kg": "Жумасына 2 мурунку кардарга жазыңыз", "ru": "Писать 2 прошлым клиентам в неделю" }
+        },
+        {
+          "en": "Set up 2 payment options: cash and transfer or QR",
+          "kg": "2 төлөм ыкмасын даярдаңыз: накталай жана которуу же QR",
+          "ru": "Настроить 2 способа оплаты: наличные и перевод или QR",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write your transfer details in one ready message", "kg": "Которуу реквизиттериңизди бир даяр билдирүүгө жазыңыз", "ru": "Записать реквизиты для перевода в одно готовое сообщение" },
+          "steps": [
+            { "en": "Check which payment apps your customers use", "kg": "Кардарларыңыз кайсы төлөм тиркемелерин колдонорун билиңиз", "ru": "Узнать, какими приложениями платят ваши клиенты", "minutes": 15 },
+            { "en": "Get a QR code or transfer number in your bank app", "kg": "Банк тиркемесинен QR код же которуу номерин алыңыз", "ru": "Получить QR-код или номер для перевода в приложении банка", "minutes": 20 },
+            { "en": "Write a payment message template", "kg": "Төлөм тууралуу билдирүүнүн үлгүсүн жазыңыз", "ru": "Составить шаблон сообщения об оплате", "minutes": 10 },
+            { "en": "Test a payment with a friend", "kg": "Дос менен сыноо төлөмүн жасап көрүңүз", "ru": "Проверить оплату с другом", "minutes": 10 },
+            { "en": "Add payment info to your profile", "kg": "Төлөм маалыматын профилиңизге кошуңуз", "ru": "Добавить информацию об оплате в профиль", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Follow up with everyone who asked but did not buy",
+          "kg": "Сурап, бирок сатып албаган адамдарга кайра жазыңыз",
+          "ru": "Возвращаться ко всем, кто спрашивал, но не купил",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 40,
+          "easy": { "en": "Follow up with 2 people who asked but did not buy", "kg": "Сурап, бирок албаган 2 адамга кайра жазыңыз", "ru": "Написать повторно 2 людям, которые спрашивали" }
+        },
+        {
+          "en": "Get 10 written reviews from real customers",
+          "kg": "Чыныгы кардарлардан 10 жазуу жүзүндөгү пикир алыңыз",
+          "ru": "Собрать 10 письменных отзывов от реальных клиентов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask 2 happy customers for a short review", "kg": "Ыраазы болгон 2 кардардан кыска пикир сураңыз", "ru": "Попросить 2 довольных клиентов о коротком отзыве" },
+          "steps": [
+            { "en": "List customers who were happy with the order", "kg": "Буйрутмадан ыраазы болгон кардарлардын тизмесин түзүңүз", "ru": "Составить список довольных клиентов", "minutes": 15 },
+            { "en": "Write a polite request for a 2-sentence review", "kg": "2 сүйлөмдүк пикир сураган сылык билдирүү жазыңыз", "ru": "Написать вежливую просьбу об отзыве в 2 предложения", "minutes": 10 },
+            { "en": "Send it to 15 customers", "kg": "Аны 15 кардарга жөнөтүңүз", "ru": "Отправить её 15 клиентам", "minutes": 30 },
+            { "en": "Thank everyone who answered", "kg": "Жооп бергендердин баарына ыраазычылык билдириңиз", "ru": "Поблагодарить всех ответивших", "minutes": 15 },
+            { "en": "Save reviews as screenshots in a highlight", "kg": "Пикирлерди скриншот кылып, highlightка сактаңыз", "ru": "Сохранить отзывы скриншотами в «Актуальное»", "minutes": 20 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Marketing", "kg": "Маркетинг", "ru": "Маркетинг" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Profile looks finished and clear", "kg": "Профиль толук жана түшүнүктүү көрүнөт", "ru": "Профиль выглядит завершённым и понятным" },
+        { "en": "First 300 followers from your city", "kg": "Шаарыңыздан алгачкы 300 жазылуучу", "ru": "Первые 300 подписчиков из вашего города" }
+      ],
+      "actions": [
+        {
+          "en": "Set up a business profile on Instagram or Telegram",
+          "kg": "Instagram же Telegramда бизнес-профиль ачыңыз",
+          "ru": "Оформить бизнес-профиль в Instagram или Telegram",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write a clear one-line bio with what you sell", "kg": "Эмне сатарыңызды бир сап менен так жазыңыз", "ru": "Написать понятное описание в одну строку" },
+          "steps": [
+            { "en": "Choose a short name that is easy to type", "kg": "Жазууга оңой кыска ат тандаңыз", "ru": "Выбрать короткое имя, которое легко набрать", "minutes": 15 },
+            { "en": "Write a bio: what, for whom, how to order", "kg": "Био жазыңыз: эмне, ким үчүн, кантип буйрутма берет", "ru": "Написать описание: что, для кого, как заказать", "minutes": 20 },
+            { "en": "Add a phone, address or 2GIS link", "kg": "Телефон, дарек же 2GIS шилтемесин кошуңуз", "ru": "Добавить телефон, адрес или ссылку на 2GIS", "minutes": 10 },
+            { "en": "Publish 6 first posts with products and prices", "kg": "Продукт жана баасы менен алгачкы 6 пост жарыялаңыз", "ru": "Опубликовать первые 6 постов с товарами и ценами", "minutes": 60 },
+            { "en": "Create highlights: prices, reviews, delivery", "kg": "Highlight түзүңүз: баалар, пикирлер, жеткирүү", "ru": "Создать «Актуальное»: цены, отзывы, доставка", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Post content 3 times a week",
+          "kg": "Жумасына 3 жолу контент жарыялаңыз",
+          "ru": "Публиковать контент 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Post once a week", "kg": "Жумасына бир жолу жарыялаңыз", "ru": "Публиковать раз в неделю" }
+        },
+        {
+          "en": "Post at least 1 story a day",
+          "kg": "Күнүнө кеминде 1 сторис жарыялаңыз",
+          "ru": "Выкладывать хотя бы 1 сторис в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Post a story every other day", "kg": "Күн аралатып сторис жарыялаңыз", "ru": "Выкладывать сторис через день" }
+        },
+        {
+          "en": "Make a content plan for 2 weeks",
+          "kg": "2 жумалык контент-план түзүңүз",
+          "ru": "Составить контент-план на 2 недели",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write 3 post ideas for this week", "kg": "Ушул жумага 3 посттун идеясын жазыңыз", "ru": "Записать 3 идеи постов на эту неделю" },
+          "steps": [
+            { "en": "List 10 questions customers ask", "kg": "Кардарлар берген 10 суроону тизмелеңиз", "ru": "Выписать 10 вопросов, которые задают клиенты", "minutes": 15 },
+            { "en": "Turn them into 6 post topics", "kg": "Аларды 6 посттун темасына айлантыңыз", "ru": "Превратить их в 6 тем для постов", "minutes": 15 },
+            { "en": "Add 2 behind-the-scenes and 2 review posts", "kg": "Иш процесси тууралуу 2 жана пикир менен 2 пост кошуңуз", "ru": "Добавить 2 поста о процессе и 2 с отзывами", "minutes": 10 },
+            { "en": "Put a date on each post in a calendar", "kg": "Ар бир посттун датасын календарга коюңуз", "ru": "Расставить даты постов в календаре", "minutes": 10 },
+            { "en": "Prepare photos for the first 3 posts", "kg": "Алгачкы 3 пост үчүн сүрөт даярдаңыз", "ru": "Подготовить фото для первых 3 постов", "minutes": 40 }
+          ]
+        },
+        {
+          "en": "Check which post brought the most messages",
+          "kg": "Кайсы пост эң көп билдирүү алып келгенин текшериңиз",
+          "ru": "Проверять, какой пост принёс больше всего сообщений",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Look at likes and messages once a month", "kg": "Айына бир жолу лайк жана билдирүүлөрдү карап чыгыңыз", "ru": "Раз в месяц смотреть лайки и сообщения" }
+        },
+        {
+          "en": "Agree on 2 collaborations with local pages or shops",
+          "kg": "Жергиликтүү баракча же дүкөндөр менен 2 кызматташтык макулдашыңыз",
+          "ru": "Договориться о 2 коллаборациях с местными страницами",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write to 1 local page about a collaboration", "kg": "Кызматташуу тууралуу 1 жергиликтүү баракчага жазыңыз", "ru": "Написать 1 местной странице о сотрудничестве" },
+          "steps": [
+            { "en": "Find 10 local pages with the same audience", "kg": "Аудиториясы окшош 10 жергиликтүү баракча табыңыз", "ru": "Найти 10 местных страниц с похожей аудиторией", "minutes": 30 },
+            { "en": "Think of a fair exchange: giveaway or mutual post", "kg": "Адилет алмашуу ойлоңуз: розыгрыш же өз ара пост", "ru": "Придумать честный обмен: розыгрыш или взаимный пост", "minutes": 15 },
+            { "en": "Write a short, polite proposal", "kg": "Кыска, сылык сунуш жазыңыз", "ru": "Написать короткое вежливое предложение", "minutes": 15 },
+            { "en": "Send it to all 10 pages", "kg": "Аны 10 баракчанын баарына жөнөтүңүз", "ru": "Отправить его всем 10 страницам", "minutes": 30 },
+            { "en": "Agree on dates with those who said yes", "kg": "Макул болгондор менен датасын бекитиңиз", "ru": "Согласовать даты с теми, кто согласился", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Show real prices in every post",
+          "kg": "Ар бир постто чыныгы бааны көрсөтүңүз",
+          "ru": "Указывать реальную цену в каждом посте",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Add a price list to your highlights", "kg": "Highlightка баалар тизмесин кошуңуз", "ru": "Добавить прайс в «Актуальное»" }
+        },
+        {
+          "en": "Spend 30 minutes a week learning one marketing skill",
+          "kg": "Жумасына 30 мүнөт маркетингдин бир көндүмүн үйрөнүңүз",
+          "ru": "Тратить 30 минут в неделю на один навык маркетинга",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Watch one 10-minute marketing video a week", "kg": "Жумасына маркетинг тууралуу 10 мүнөттүк бир видео көрүңүз", "ru": "Смотреть одно 10-минутное видео о маркетинге в неделю" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Money & records", "kg": "Акча жана эсеп", "ru": "Деньги и учёт" },
+      "kind": "support",
+      "milestones": [
+        { "en": "3 months of clean income and expense records", "kg": "3 ай бою киреше жана чыгым так эсептелди", "ru": "3 месяца чистого учёта доходов и расходов" },
+        { "en": "Business pays for itself", "kg": "Бизнес өз чыгымын өзү жабат", "ru": "Бизнес окупает себя" }
+      ],
+      "actions": [
+        {
+          "en": "Write down every sale and expense the same day",
+          "kg": "Ар бир сатууну жана чыгымды ошол эле күнү жазыңыз",
+          "ru": "Записывать каждую продажу и расход в тот же день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write down the day’s sales every evening", "kg": "Ар кечте күндүк сатууну жазыңыз", "ru": "Записывать продажи за день каждый вечер" }
+        },
+        {
+          "en": "Open a separate card or account for the business",
+          "kg": "Бизнес үчүн өзүнчө карта же эсеп ачыңыз",
+          "ru": "Завести отдельную карту или счёт для бизнеса",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Start a separate note for business money", "kg": "Бизнестин акчасы үчүн өзүнчө жазуу баштаңыз", "ru": "Завести отдельную заметку для денег бизнеса" },
+          "steps": [
+            { "en": "Compare card fees in 2 local banks", "kg": "2 жергиликтүү банктын карта комиссиясын салыштырыңыз", "ru": "Сравнить комиссии по картам в 2 местных банках", "minutes": 20 },
+            { "en": "Open a free or cheap card for the business", "kg": "Бизнес үчүн акысыз же арзан карта ачыңыз", "ru": "Открыть бесплатную или дешёвую карту для бизнеса", "minutes": 45 },
+            { "en": "Move all business payments to this card", "kg": "Бизнестин бардык төлөмдөрүн ушул картага өткөрүңүз", "ru": "Перевести все платежи бизнеса на эту карту", "minutes": 15 },
+            { "en": "Tell regular customers the new details", "kg": "Туруктуу кардарларга жаңы реквизитти билдириңиз", "ru": "Сообщить постоянным клиентам новые реквизиты", "minutes": 15 },
+            { "en": "Check after a week that nothing is mixed", "kg": "Бир жумадан кийин эч нерсе аралашпаганын текшериңиз", "ru": "Через неделю проверить, что ничего не смешалось", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Count profit every week: income minus all costs",
+          "kg": "Ар жумада пайданы эсептеңиз: киреше минус бардык чыгым",
+          "ru": "Каждую неделю считать прибыль: доход минус все расходы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Count profit once a month", "kg": "Пайданы айына бир жолу эсептеңиз", "ru": "Считать прибыль раз в месяц" }
+        },
+        {
+          "en": "Pay yourself a fixed amount, not from the till",
+          "kg": "Өзүңүзгө кассадан эмес, белгиленген сумма төлөңүз",
+          "ru": "Платить себе фиксированную сумму, а не брать из кассы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write down every time you take business money", "kg": "Бизнестин акчасын алган сайын жазып коюңуз", "ru": "Записывать каждый раз, когда берёте деньги бизнеса" }
+        },
+        {
+          "en": "Set aside 10% of income as a reserve",
+          "kg": "Кирешенин 10%ын запаска калтырыңыз",
+          "ru": "Откладывать 10% выручки в резерв",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Set aside 5% of income as a reserve", "kg": "Кирешенин 5%ын запаска калтырыңыз", "ru": "Откладывать 5% выручки в резерв" }
+        },
+        {
+          "en": "Learn your tax regime: patent or single tax",
+          "kg": "Салык режимиңизди билиңиз: патент же бирдиктүү салык",
+          "ru": "Разобраться в налоговом режиме: патент или единый налог",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Read one official page on small business taxes", "kg": "Чакан бизнестин салыгы тууралуу бир расмий баракчаны окуңуз", "ru": "Прочитать одну официальную страницу о налогах для малого бизнеса" },
+          "steps": [
+            { "en": "Find the official tax service website", "kg": "Салык кызматынын расмий сайтын табыңыз", "ru": "Найти официальный сайт налоговой службы", "minutes": 10 },
+            { "en": "Read the patent and single tax rules", "kg": "Патент жана бирдиктүү салык эрежелерин окуңуз", "ru": "Прочитать правила патента и единого налога", "minutes": 30 },
+            { "en": "Write down which one fits your activity", "kg": "Ишиңизге кайсынысы туура келерин жазыңыз", "ru": "Записать, какой подходит вашему виду деятельности", "minutes": 15 },
+            { "en": "Ask an accountant or business friend to check", "kg": "Бухгалтерге же ишкер досуңузга текшертиңиз", "ru": "Попросить бухгалтера или знакомого предпринимателя проверить", "minutes": 30 },
+            { "en": "Put tax dates in your calendar", "kg": "Салык мөөнөттөрүн календарыңызга коюңуз", "ru": "Внести сроки налогов в календарь", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Grow only from profit, without loans",
+          "kg": "Кредитсиз, пайданын эсебинен гана өсүңүз",
+          "ru": "Расти только на прибыль, без кредитов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Before a big purchase, wait 3 days and recount", "kg": "Чоң сатып алуудан мурун 3 күн күтүп, кайра эсептеңиз", "ru": "Перед крупной покупкой ждать 3 дня и пересчитать" }
+        },
+        {
+          "en": "Check stock and order materials on a fixed day",
+          "kg": "Белгиленген күнү калдыкты текшерип, материал заказ кылыңыз",
+          "ru": "Проверять остатки и заказывать материалы в определённый день",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Check stock once every 2 weeks", "kg": "2 жумада бир жолу калдыкты текшериңиз", "ru": "Проверять остатки раз в 2 недели" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Routine & time", "kg": "Тартип жана убакыт", "ru": "Режим и время" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Weekly plan made 4 weeks in a row", "kg": "4 жума катары менен жумалык план түзүлдү", "ru": "4 недели подряд составлен план на неделю" }
+      ],
+      "actions": [
+        {
+          "en": "Plan the week every Sunday: 3 main business tasks",
+          "kg": "Ар жекшембиде жуманы пландаңыз: бизнестин 3 негизги иши",
+          "ru": "Планировать неделю в воскресенье: 3 главные задачи бизнеса",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Write 1 main business task for the week", "kg": "Жумага бизнестин 1 негизги ишин жазыңыз", "ru": "Записать 1 главную задачу бизнеса на неделю" }
+        },
+        {
+          "en": "Work on the business 1 focused hour a day",
+          "kg": "Күнүнө 1 саат алаксыбай бизнеске иштеңиз",
+          "ru": "Работать над бизнесом 1 час в день без отвлечений",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 60,
+          "easy": { "en": "Work on the business for 20 focused minutes", "kg": "Бизнеске 20 мүнөт алаксыбай иштеңиз", "ru": "Работать над бизнесом 20 минут без отвлечений" }
+        },
+        {
+          "en": "Answer messages in 2–3 fixed slots, not all day",
+          "kg": "Билдирүүлөргө күн бою эмес, 2–3 белгиленген убакта жооп бериңиз",
+          "ru": "Отвечать на сообщения в 2–3 фиксированных окна",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Turn off chat notifications for 1 hour a day", "kg": "Күнүнө 1 саатка чат билдирмелерин өчүрүңүз", "ru": "Отключать уведомления чатов на 1 час в день" }
+        },
+        {
+          "en": "Write a weekly schedule: production, sales, posts",
+          "kg": "Жумалык график жазыңыз: өндүрүш, сатуу, посттор",
+          "ru": "Составить расписание недели: производство, продажи, посты",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose 1 fixed day for production", "kg": "Өндүрүш үчүн 1 туруктуу күн тандаңыз", "ru": "Выбрать 1 фиксированный день для производства" },
+          "steps": [
+            { "en": "List all recurring business tasks", "kg": "Бизнестин бардык кайталанган иштерин тизмелеңиз", "ru": "Выписать все повторяющиеся задачи бизнеса", "minutes": 15 },
+            { "en": "Estimate how long each one takes", "kg": "Ар бири канча убакыт аларын эсептеңиз", "ru": "Оценить, сколько времени занимает каждая", "minutes": 10 },
+            { "en": "Give each task a day of the week", "kg": "Ар бир ишке жуманын бир күнүн бериңиз", "ru": "Закрепить за каждой задачей день недели", "minutes": 15 },
+            { "en": "Leave 1 day completely free", "kg": "1 күндү толугу менен бош калтырыңыз", "ru": "Оставить 1 день полностью свободным", "minutes": 5 },
+            { "en": "Follow the schedule for 1 week and adjust", "kg": "Графикти 1 жума сактап, тууралаңыз", "ru": "Прожить неделю по расписанию и скорректировать", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Write tomorrow’s top 3 tasks every evening",
+          "kg": "Ар кечте эртеңки 3 негизги ишти жазыңыз",
+          "ru": "Каждый вечер записывать 3 главные задачи на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write tomorrow’s 1 main task", "kg": "Эртеңки 1 негизги ишти жазыңыз", "ru": "Записывать 1 главную задачу на завтра" }
+        },
+        {
+          "en": "Sleep at least 7 hours on working days",
+          "kg": "Иш күндөрү кеминде 7 саат уктаңыз",
+          "ru": "Спать не меньше 7 часов в рабочие дни",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Go to bed 30 minutes earlier twice a week", "kg": "Жумасына эки жолу 30 мүнөт эрте жатыңыз", "ru": "Ложиться на 30 минут раньше 2 раза в неделю" }
+        },
+        {
+          "en": "Take 1 full day off every week",
+          "kg": "Ар жумада 1 толук эс алуу күнүн алыңыз",
+          "ru": "Брать 1 полный выходной каждую неделю",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take half a day off every week", "kg": "Ар жумада жарым күн эс алыңыз", "ru": "Брать полдня отдыха каждую неделю" }
+        },
+        {
+          "en": "Review the week: what worked, what to change",
+          "kg": "Жуманы талдаңыз: эмне иштеди, эмнени өзгөртүү керек",
+          "ru": "Подводить итоги недели: что сработало, что изменить",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 1 lesson from the week", "kg": "Жумадан 1 сабак жазыңыз", "ru": "Записать 1 вывод из недели" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "People & network", "kg": "Адамдар жана байланыш", "ru": "Люди и связи" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A mentor or experienced friend to ask", "kg": "Кеңеш сурай турган устат же тажрыйбалуу дос бар", "ru": "Есть наставник или опытный знакомый для советов" },
+        { "en": "3 reliable suppliers or partners", "kg": "3 ишенимдүү жеткирүүчү же өнөктөш", "ru": "3 надёжных поставщика или партнёра" }
+      ],
+      "actions": [
+        {
+          "en": "Find a mentor: an entrepreneur with 3+ years in business",
+          "kg": "Устат табыңыз: 3 жылдан ашык иштеген ишкер",
+          "ru": "Найти наставника: предпринимателя с опытом от 3 лет",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Ask one experienced entrepreneur one question", "kg": "Тажрыйбалуу бир ишкерге бир суроо бериңиз", "ru": "Задать один вопрос опытному предпринимателю" },
+          "steps": [
+            { "en": "List 5 entrepreneurs you know or follow", "kg": "Тааныган же ээрчиген 5 ишкерди тизмелеңиз", "ru": "Выписать 5 знакомых или известных вам предпринимателей", "minutes": 15 },
+            { "en": "Prepare 3 specific questions", "kg": "3 так суроо даярдаңыз", "ru": "Подготовить 3 конкретных вопроса", "minutes": 15 },
+            { "en": "Write to them politely asking for 20 minutes", "kg": "Аларга сылык жазып, 20 мүнөт убакыт сураңыз", "ru": "Вежливо написать им с просьбой о 20 минутах", "minutes": 20 },
+            { "en": "Meet or call the one who agreed", "kg": "Макул болгон адам менен жолугуңуз же чалыңыз", "ru": "Встретиться или созвониться с тем, кто согласился", "minutes": 45 },
+            { "en": "Thank them and share your progress in a month", "kg": "Ыраазычылык билдирип, бир айдан кийин жыйынтыгыңызды айтыңыз", "ru": "Поблагодарить и через месяц рассказать о прогрессе", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Meet or call 1 person from business each week",
+          "kg": "Жумасына ишкерлер чөйрөсүнөн 1 адам менен жолугуңуз же чалыңыз",
+          "ru": "Раз в неделю общаться с 1 человеком из бизнеса",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Write to 1 person from business each month", "kg": "Ар айда бизнес чөйрөсүнөн 1 адамга жазыңыз", "ru": "Раз в месяц писать 1 человеку из бизнеса" }
+        },
+        {
+          "en": "Find 3 suppliers and compare their terms",
+          "kg": "3 жеткирүүчү таап, шарттарын салыштырыңыз",
+          "ru": "Найти 3 поставщиков и сравнить условия",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find 1 backup supplier", "kg": "1 запастагы жеткирүүчү табыңыз", "ru": "Найти 1 запасного поставщика" },
+          "steps": [
+            { "en": "List what you buy regularly", "kg": "Дайыма эмне сатып аларыңызды тизмелеңиз", "ru": "Выписать, что вы регулярно закупаете", "minutes": 15 },
+            { "en": "Find 5 suppliers at markets, online or via friends", "kg": "Базардан, интернеттен же тааныштар аркылуу 5 жеткирүүчү табыңыз", "ru": "Найти 5 поставщиков на рынке, онлайн или через знакомых", "minutes": 45 },
+            { "en": "Ask each about prices, minimum order, delivery", "kg": "Ар биринен баасын, минималдуу буйрутманы, жеткирүүнү сураңыз", "ru": "Узнать у каждого цены, минимальный заказ и доставку", "minutes": 30 },
+            { "en": "Compare in a table and pick 3", "kg": "Таблицада салыштырып, 3үн тандаңыз", "ru": "Сравнить в таблице и выбрать 3", "minutes": 20 },
+            { "en": "Make a small test order from the best one", "kg": "Эң жакшысынан чакан сыноо буйрутмасын жасаңыз", "ru": "Сделать небольшой тестовый заказ у лучшего", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Attend 1 business meetup or event a month",
+          "kg": "Айына 1 ишкерлер жолугушуусуна же иш-чарага барыңыз",
+          "ru": "Посещать 1 бизнес-встречу или мероприятие в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Watch 1 online business meetup a month", "kg": "Айына 1 онлайн бизнес-жолугушууну көрүңүз", "ru": "Смотреть 1 онлайн-встречу предпринимателей в месяц" }
+        },
+        {
+          "en": "Tell your family about your progress once a week",
+          "kg": "Жумасына бир жолу үй-бүлөңүзгө жетишкендигиңизди айтыңыз",
+          "ru": "Раз в неделю рассказывать семье о прогрессе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Share 1 business news with someone close", "kg": "Жакын адамга бизнестен 1 жаңылык айтыңыз", "ru": "Поделиться 1 новостью о бизнесе с близким" }
+        },
+        {
+          "en": "Keep every promise to partners and suppliers",
+          "kg": "Өнөктөштөргө жана жеткирүүчүлөргө берген ар бир убадаңызды аткарыңыз",
+          "ru": "Выполнять каждое обещание партнёрам и поставщикам",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Promise only what you are sure you can do", "kg": "Аткарарыңызга ишенген нерсени гана убада кылыңыз", "ru": "Обещать только то, в чём уверены" }
+        },
+        {
+          "en": "Help 1 beginner entrepreneur a month",
+          "kg": "Айына 1 башталгыч ишкерге жардам бериңиз",
+          "ru": "Помогать 1 начинающему предпринимателю в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Answer 1 question from a beginner", "kg": "Башталгычтын 1 суроосуна жооп бериңиз", "ru": "Ответить на 1 вопрос новичка" }
+        },
+        {
+          "en": "Join 2 local business chats in Telegram",
+          "kg": "Telegramдагы 2 жергиликтүү бизнес-чатка кошулуңуз",
+          "ru": "Вступить в 2 местных бизнес-чата в Telegram",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Join 1 local business chat", "kg": "1 жергиликтүү бизнес-чатка кошулуңуз", "ru": "Вступить в 1 местный бизнес-чат" },
+          "steps": [
+            { "en": "Search Telegram for business chats in your city", "kg": "Telegramдан шаарыңыздагы бизнес-чаттарды издеңиз", "ru": "Найти в Telegram бизнес-чаты вашего города", "minutes": 15 },
+            { "en": "Read the rules of 3–4 chats", "kg": "3–4 чаттын эрежелерин окуңуз", "ru": "Прочитать правила 3–4 чатов", "minutes": 10 },
+            { "en": "Join the 2 most active ones", "kg": "Эң активдүү 2сине кошулуңуз", "ru": "Вступить в 2 самых активных", "minutes": 5 },
+            { "en": "Introduce yourself in one short message", "kg": "Бир кыска билдирүү менен өзүңүздү тааныштырыңыз", "ru": "Представиться одним коротким сообщением", "minutes": 10 },
+            { "en": "Answer 1 question there with useful advice", "kg": "Ал жакта 1 суроого пайдалуу кеңеш менен жооп бериңиз", "ru": "Ответить там на 1 вопрос полезным советом", "minutes": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Reliability", "kg": "Ишенимдүүлүк", "ru": "Надёжность" },
+      "kind": "character",
+      "milestones": [
+        { "en": "A month without a missed deadline", "kg": "Бир ай бир дагы мөөнөт бузулган жок", "ru": "Месяц без сорванных сроков" }
+      ],
+      "actions": [
+        {
+          "en": "Deliver every order on the promised day",
+          "kg": "Ар бир буйрутманы убада кылган күнү жеткириңиз",
+          "ru": "Отдавать каждый заказ в обещанный день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Warn the customer in advance if you are late", "kg": "Кечиксеңиз, кардарга алдын ала эскертиңиз", "ru": "Заранее предупреждать клиента о задержке" }
+        },
+        {
+          "en": "Admit a mistake and fix it the same day",
+          "kg": "Катаңызды моюнга алып, ошол эле күнү оңдоңуз",
+          "ru": "Признавать ошибку и исправлять её в тот же день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Apologize to the customer within a day", "kg": "Кардардан бир күндүн ичинде кечирим сураңыз", "ru": "Извиняться перед клиентом в течение дня" }
+        },
+        {
+          "en": "Greet and thank every customer by name",
+          "kg": "Ар бир кардар менен аты менен учурашып, рахмат айтыңыз",
+          "ru": "Здороваться и благодарить каждого клиента по имени",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say thank you after every order", "kg": "Ар бир буйрутмадан кийин рахмат айтыңыз", "ru": "Говорить спасибо после каждого заказа" }
+        },
+        {
+          "en": "Describe products honestly, with real photos",
+          "kg": "Продуктту чынчылдык менен, чыныгы сүрөт менен сүрөттөңүз",
+          "ru": "Описывать товар честно, с реальными фото",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Replace 1 edited photo with a real one", "kg": "1 оңдолгон сүрөттү чыныгы сүрөткө алмаштырыңыз", "ru": "Заменить 1 отретушированное фото реальным" }
+        },
+        {
+          "en": "Leave your workplace clean at the end of each day",
+          "kg": "Ар күндүн аягында иш ордуңузду таза калтырыңыз",
+          "ru": "Оставлять рабочее место чистым в конце каждого дня",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Tidy your workplace for 5 minutes", "kg": "Иш ордуңузду 5 мүнөт жыйнаңыз", "ru": "Наводить порядок на рабочем месте 5 минут" }
+        },
+        {
+          "en": "Always pay suppliers and partners on time",
+          "kg": "Жеткирүүчүлөргө жана өнөктөштөргө ар дайым өз убагында төлөңүз",
+          "ru": "Всегда платить поставщикам и партнёрам вовремя",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write payment dates in the calendar", "kg": "Төлөм күндөрүн календарга жазыңыз", "ru": "Записывать даты платежей в календарь" }
+        },
+        {
+          "en": "Finish one started task before starting a new one",
+          "kg": "Жаңы ишти баштоодон мурун башталган бир ишти бүтүрүңүз",
+          "ru": "Доводить начатое до конца, прежде чем браться за новое",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Close 1 unfinished task this week", "kg": "Ушул жумада бүтпөй калган 1 ишти жабыңыз", "ru": "Закрыть 1 незавершённую задачу на этой неделе" }
+        },
+        {
+          "en": "Answer negative reviews calmly and politely",
+          "kg": "Терс пикирлерге сабырдуу жана сылык жооп бериңиз",
+          "ru": "Спокойно и вежливо отвечать на негативные отзывы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait 1 hour before answering a harsh review", "kg": "Катуу пикирге жооп берерден мурун 1 саат күтүңүз", "ru": "Подождать час, прежде чем отвечать на резкий отзыв" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Registration", "kg": "Каттоо", "ru": "Оформление" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Business officially registered", "kg": "Бизнес расмий катталды", "ru": "Бизнес официально оформлен" }
+      ],
+      "actions": [
+        {
+          "en": "Choose a legal form: entrepreneur or patent",
+          "kg": "Укуктук форманы тандаңыз: жеке ишкер же патент",
+          "ru": "Выбрать форму: ИП или патент",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Read 1 official guide on registering a business", "kg": "Бизнести каттоо тууралуу 1 расмий нускаманы окуңуз", "ru": "Прочитать 1 официальную инструкцию по регистрации" },
+          "steps": [
+            { "en": "Find the official registration rules online", "kg": "Каттоонун расмий эрежелерин интернеттен табыңыз", "ru": "Найти официальные правила регистрации", "minutes": 15 },
+            { "en": "Compare patent and entrepreneur status", "kg": "Патент менен жеке ишкер статусун салыштырыңыз", "ru": "Сравнить патент и статус ИП", "minutes": 30 },
+            { "en": "Ask an accountant or friend in business", "kg": "Бухгалтерден же ишкер досуңуздан сураңыз", "ru": "Спросить бухгалтера или знакомого предпринимателя", "minutes": 30 },
+            { "en": "Write down the chosen form and why", "kg": "Тандалган форманы жана себебин жазыңыз", "ru": "Записать выбранную форму и причину", "minutes": 10 },
+            { "en": "List the documents you need", "kg": "Керектүү документтердин тизмесин түзүңүз", "ru": "Составить список нужных документов", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Register the business at the tax office or service center",
+          "kg": "Бизнести салык кызматында же ЦОНдо каттаңыз",
+          "ru": "Зарегистрировать бизнес в налоговой или ЦОНе",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Collect all documents in one folder", "kg": "Бардык документтерди бир папкага чогултуңуз", "ru": "Собрать все документы в одну папку" },
+          "steps": [
+            { "en": "Check the office address and opening hours", "kg": "Мекеменин дарегин жана иш убактысын текшериңиз", "ru": "Уточнить адрес и часы работы учреждения", "minutes": 10 },
+            { "en": "Make copies of your passport and documents", "kg": "Паспорттун жана документтердин көчүрмөсүн жасаңыз", "ru": "Сделать копии паспорта и документов", "minutes": 20 },
+            { "en": "Fill out the application form", "kg": "Арызды толтуруңуз", "ru": "Заполнить заявление", "minutes": 30 },
+            { "en": "Submit the documents in person or online", "kg": "Документтерди өзүңүз же онлайн тапшырыңыз", "ru": "Подать документы лично или онлайн", "minutes": 90 },
+            { "en": "Save the registration certificate", "kg": "Каттоо күбөлүгүн сактап коюңуз", "ru": "Сохранить свидетельство о регистрации", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Keep all receipts and contracts in one folder",
+          "kg": "Бардык чек жана келишимдерди бир папкада сактаңыз",
+          "ru": "Хранить все чеки и договоры в одной папке",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Photograph receipts once a week", "kg": "Жумасына бир жолу чектерди сүрөткө тартыңыз", "ru": "Раз в неделю фотографировать чеки" }
+        },
+        {
+          "en": "Check tax deadlines every Monday",
+          "kg": "Ар дүйшөмбүдө салык мөөнөттөрүн текшериңиз",
+          "ru": "Каждый понедельник проверять сроки налогов",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Check tax deadlines once a month", "kg": "Айына бир жолу салык мөөнөттөрүн текшериңиз", "ru": "Раз в месяц проверять сроки налогов" }
+        },
+        {
+          "en": "Make a simple contract template for clients",
+          "kg": "Кардарлар үчүн жөнөкөй келишим үлгүсүн жасаңыз",
+          "ru": "Сделать простой шаблон договора для клиентов",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write the order terms in 5 lines", "kg": "Буйрутма шарттарын 5 сап менен жазыңыз", "ru": "Записать условия заказа в 5 строк" },
+          "steps": [
+            { "en": "Find a free sample contract online", "kg": "Интернеттен акысыз келишим үлгүсүн табыңыз", "ru": "Найти бесплатный образец договора", "minutes": 15 },
+            { "en": "Write terms: price, deadline, payment, returns", "kg": "Шарттарды жазыңыз: баа, мөөнөт, төлөм, кайтаруу", "ru": "Прописать условия: цена, срок, оплата, возврат", "minutes": 30 },
+            { "en": "Remove what does not fit your business", "kg": "Бизнесиңизге туура келбеген жерлерин алып салыңыз", "ru": "Убрать то, что не подходит вашему бизнесу", "minutes": 15 },
+            { "en": "Show it to someone with legal experience", "kg": "Юридикалык тажрыйбасы бар адамга көрсөтүңүз", "ru": "Показать человеку с юридическим опытом", "minutes": 30 },
+            { "en": "Save it as a ready-to-send file", "kg": "Жөнөтүүгө даяр файл катары сактаңыз", "ru": "Сохранить как готовый к отправке файл", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Give a receipt for every sale",
+          "kg": "Ар бир сатуу үчүн чек бериңиз",
+          "ru": "Выдавать чек за каждую продажу",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Send an electronic receipt in the chat", "kg": "Чатка электрондук чек жөнөтүңүз", "ru": "Отправлять электронный чек в чат" }
+        },
+        {
+          "en": "Read 1 news item on small business rules a week",
+          "kg": "Жумасына чакан бизнестин эрежелери тууралуу 1 жаңылык окуңуз",
+          "ru": "Читать 1 новость о правилах для малого бизнеса в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Read 1 such news item a month", "kg": "Айына ушундай 1 жаңылык окуңуз", "ru": "Читать 1 такую новость в месяц" }
+        },
+        {
+          "en": "Renew all permits and documents on time",
+          "kg": "Бардык уруксат жана документтерди мөөнөтүндө жаңыртыңыз",
+          "ru": "Своевременно продлевать все разрешения и документы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write document expiry dates in the calendar", "kg": "Документтердин бүтүү мөөнөтүн календарга жазыңыз", "ru": "Записать сроки документов в календарь" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Energy & health", "kg": "Күч-кубат, ден соолук", "ru": "Энергия и здоровье" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A month of regular rest and movement", "kg": "Бир ай туруктуу эс алуу жана кыймыл", "ru": "Месяц регулярного отдыха и движения" }
+      ],
+      "actions": [
+        {
+          "en": "Walk 30 minutes a day",
+          "kg": "Күнүнө 30 мүнөт сейилдеңиз",
+          "ru": "Гулять 30 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk 10 minutes a day", "kg": "Күнүнө 10 мүнөт сейилдеңиз", "ru": "Гулять 10 минут в день" }
+        },
+        {
+          "en": "Eat lunch away from the phone and work",
+          "kg": "Түшкү тамакты телефонсуз жана жумушсуз жеңиз",
+          "ru": "Обедать без телефона и работы",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Eat one meal a day without the phone", "kg": "Күнүнө бир жолу телефонсуз тамактаныңыз", "ru": "Есть один раз в день без телефона" }
+        },
+        {
+          "en": "Stop working at a fixed time in the evening",
+          "kg": "Кечинде белгиленген убакта жумушту токтотуңуз",
+          "ru": "Заканчивать работу в фиксированное время вечером",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Stop work on time 3 days a week", "kg": "Жумасына 3 күн жумушту өз убагында токтотуңуз", "ru": "Заканчивать работу вовремя 3 дня в неделю" }
+        },
+        {
+          "en": "Keep a water bottle on the desk and drink it",
+          "kg": "Столдо суу бөтөлкөсү турсун, аны ичип туруңуз",
+          "ru": "Держать бутылку воды на столе и выпивать её",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Drink a glass of water each morning", "kg": "Ар таңда бир стакан суу ичиңиз", "ru": "Выпивать стакан воды каждое утро" }
+        },
+        {
+          "en": "Do any sport 3 times a week",
+          "kg": "Жумасына 3 жолу каалаган спорт менен машыгыңыз",
+          "ru": "Заниматься любым спортом 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Do a 10-minute workout once a week", "kg": "Жумасына бир жолу 10 мүнөт машыгыңыз", "ru": "Делать 10-минутную зарядку раз в неделю" }
+        },
+        {
+          "en": "No phone 30 minutes before sleep",
+          "kg": "Уктаардан 30 мүнөт мурун телефон кармабаңыз",
+          "ru": "Не брать телефон за 30 минут до сна",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "No phone 10 minutes before sleep", "kg": "Уктаардан 10 мүнөт мурун телефонду коюңуз", "ru": "Не брать телефон за 10 минут до сна" }
+        },
+        {
+          "en": "Spend 1 evening a week with family or friends",
+          "kg": "Жумасына 1 кечти үй-бүлө же достор менен өткөрүңүз",
+          "ru": "Проводить 1 вечер в неделю с семьёй или друзьями",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Call someone close once a week", "kg": "Жумасына бир жолу жакын адамга чалыңыз", "ru": "Звонить близкому раз в неделю" }
+        },
+        {
+          "en": "Take a 5-minute break every 90 minutes of work",
+          "kg": "Ар 90 мүнөт иштеген сайын 5 мүнөт тыныгыңыз",
+          "ru": "Делать 5-минутный перерыв каждые 90 минут работы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take 2 short breaks a day", "kg": "Күнүнө 2 кыска тыныгуу алыңыз", "ru": "Делать 2 коротких перерыва в день" }
+        }
+      ]
+    }
+  ]
+}

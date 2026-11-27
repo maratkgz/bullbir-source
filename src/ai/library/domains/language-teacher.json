@@ -1,494 +1,1030 @@
 {
   "id": "language-teacher",
   "icon": "🧑‍🏫",
-  "title": {
-    "en": "Becoming a language teacher",
-    "kg": "Тил мугалими болуу",
-    "ru": "Стать преподавателем языка"
-  },
+  "title": { "en": "Becoming a language teacher", "kg": "Тил мугалими болуу", "ru": "Стать преподавателем языка" },
   "keywords": {
-    "en": [
-      "!teacher",
-      "teach",
-      "teaching",
-      "!tutor",
-      "tutoring",
-      "celta",
-      "tkt",
-      "students"
-    ],
-    "kg": [
-      "!мугалим",
-      "!мугалими",
-      "окутуу",
-      "сабак берүү",
-      "!репетитор",
-      "окуучулар"
-    ],
-    "ru": [
-      "!преподаватель",
-      "!преподавателем",
-      "!преподавать",
-      "!учитель",
-      "!учителем",
-      "!репетитор",
-      "!репетитором",
-      "ученики",
-      "celta",
-      "методика"
-    ]
+    "en": ["!teacher", "teach", "teaching", "!tutor", "tutoring", "celta", "tkt", "students", "language teacher", "teacher training", "lesson plan", "lessons", "give lessons", "classroom", "pedagogy", "methodology", "private tutor", "tefl"],
+    "kg": ["!мугалим", "!мугалими", "окутуу", "сабак берүү", "!репетитор", "окуучулар", "мугалим болуу", "мугалимдик", "сабак өтүү", "педагог", "педагогика", "методика", "сабак планы", "окутуучу", "жеке сабак", "репетиторлук"],
+    "ru": ["!преподаватель", "!преподавателем", "!преподавать", "!учитель", "!учителем", "!репетитор", "!репетитором", "ученики", "celta", "методика", "преподавание", "педагог", "педагогика", "уроки", "вести уроки", "давать уроки", "план урока", "учеников", "тьютор", "репетиторство"]
   },
   "directions": [
     {
-      "title": {
-        "en": "Own language level",
-        "kg": "Өз тил деңгээлиңиз",
-        "ru": "Свой уровень языка"
-      },
+      "title": { "en": "Own language level", "kg": "Өз тил деңгээлиңиз", "ru": "Свой уровень языка" },
+      "kind": "support",
       "milestones": [
-        {
-          "en": "C1 level confirmed",
-          "kg": "C1 деңгээли ырасталды",
-          "ru": "Подтверждён уровень C1"
-        }
+        { "en": "C1 level confirmed", "kg": "C1 деңгээли ырасталды", "ru": "Подтверждён уровень C1" }
       ],
       "actions": [
         {
           "en": "Test your level and aim for C1 or higher",
           "kg": "Деңгээлиңизди текшерип, C1 же андан жогоруну көздөңүз",
-          "ru": "Проверить уровень и стремиться к C1 и выше"
+          "ru": "Проверить уровень и стремиться к C1 и выше",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Take a free 20-minute level test", "kg": "20 мүнөттүк акысыз деңгээл тестин тапшырыңыз", "ru": "Пройти бесплатный тест уровня на 20 минут" },
+          "steps": [
+            { "en": "Choose a reliable online CEFR test", "kg": "Ишенимдүү онлайн CEFR тестин тандаңыз", "ru": "Выбрать надёжный онлайн-тест CEFR", "minutes": 15 },
+            { "en": "Do the reading and grammar sections", "kg": "Окуу жана грамматика бөлүмдөрүн тапшырыңыз", "ru": "Пройти разделы чтения и грамматики", "minutes": 45 },
+            { "en": "Do the listening section", "kg": "Угуу бөлүмүн тапшырыңыз", "ru": "Пройти раздел аудирования", "minutes": 30 },
+            { "en": "Record a 3-minute talk and get it rated", "kg": "3 мүнөттүк сөзүңүздү жаздырып, баалатыңыз", "ru": "Записать 3-минутную речь и получить оценку", "minutes": 30 },
+            { "en": "Write your level and the gap to C1", "kg": "Деңгээлиңизди жана C1 деңгээлине чейинки айырманы жазыңыз", "ru": "Записать свой уровень и разрыв до C1", "minutes": 15 }
+          ]
         },
         {
           "en": "Fill gaps in grammar you will have to explain",
           "kg": "Түшүндүрүүгө туура келген грамматикадагы боштуктарды толтуруңуз",
-          "ru": "Закрыть пробелы в грамматике, которую придётся объяснять"
+          "ru": "Закрыть пробелы в грамматике, которую придётся объяснять",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Review one grammar topic for 10 minutes", "kg": "Бир грамматика темасын 10 мүнөт кайталаңыз", "ru": "10 минут повторить одну тему грамматики" }
         },
         {
           "en": "Work on pronunciation with a native speaker",
           "kg": "Эне тилдүү менен айтылыш үстүндө иштеңиз",
-          "ru": "Работать над произношением с носителем"
+          "ru": "Работать над произношением с носителем",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Practise 5 hard words with audio", "kg": "5 оор сөздү аудио менен машыгыңыз", "ru": "Отработать 5 трудных слов по аудио" }
         },
         {
           "en": "Read and listen to authentic materials daily",
           "kg": "Күн сайын түпнуска материалдарды окуп, угуңуз",
-          "ru": "Ежедневно читать и слушать аутентичные материалы"
+          "ru": "Ежедневно читать и слушать аутентичные материалы",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 20,
+          "easy": { "en": "Read or listen for 10 minutes", "kg": "10 мүнөт окуңуз же угуңуз", "ru": "Читать или слушать 10 минут" }
         },
         {
           "en": "Pass an international language exam",
           "kg": "Эл аралык тил экзаменин тапшырыңыз",
-          "ru": "Сдать международный языковой экзамен"
+          "ru": "Сдать международный языковой экзамен",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Do one sample section of the exam", "kg": "Экзамендин бир үлгү бөлүмүн аткарыңыз", "ru": "Выполнить один пробный раздел экзамена" },
+          "steps": [
+            { "en": "Pick the exam that schools in your city accept", "kg": "Шаарыңыздагы мектептер тааныган экзаменди тандаңыз", "ru": "Выбрать экзамен, который признают школы города", "minutes": 30 },
+            { "en": "Check dates and fees on the official site", "kg": "Даталарды жана төлөмдү расмий сайттан текшериңиз", "ru": "Проверить даты и стоимость на официальном сайте", "minutes": 20 },
+            { "en": "Take a full mock test to find weak parts", "kg": "Алсыз жерлерди табуу үчүн толук сынак тест тапшырыңыз", "ru": "Пройти полный пробный тест и найти слабые места", "minutes": 120 },
+            { "en": "Make a study plan for the weakest section", "kg": "Эң алсыз бөлүм үчүн окуу планын түзүңүз", "ru": "Составить план для самого слабого раздела", "minutes": 30 },
+            { "en": "Register and pay for the exam", "kg": "Экзаменге катталып, төлөңүз", "ru": "Зарегистрироваться и оплатить экзамен", "minutes": 30 },
+            { "en": "Take a second mock test a week before", "kg": "Бир жума калганда экинчи сынак тест тапшырыңыз", "ru": "За неделю пройти второй пробный тест", "minutes": 120 },
+            { "en": "Prepare documents and your route the day before", "kg": "Бир күн мурун документтерди жана жолду даярдаңыз", "ru": "Накануне подготовить документы и маршрут", "minutes": 20 }
+          ]
         },
         {
           "en": "Learn to explain rules simply",
           "kg": "Эрежелерди жөнөкөй түшүндүрүүнү үйрөнүңүз",
-          "ru": "Научиться просто объяснять правила"
+          "ru": "Научиться просто объяснять правила",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Explain one rule in 3 sentences", "kg": "Бир эрежени 3 сүйлөм менен түшүндүрүңүз", "ru": "Объяснить одно правило тремя предложениями" }
         },
         {
           "en": "Keep improving: one advanced book a month",
           "kg": "Өнүгүүнү улантыңыз: айына бир жогорку деңгээлдеги китеп",
-          "ru": "Продолжать расти: одна книга продвинутого уровня в месяц"
+          "ru": "Продолжать расти: одна книга продвинутого уровня в месяц",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 20,
+          "easy": { "en": "Read 5 pages of an advanced book", "kg": "Жогорку деңгээлдеги китептен 5 бет окуңуз", "ru": "Прочитать 5 страниц книги продвинутого уровня" }
         },
         {
           "en": "Study the culture of the language's countries",
           "kg": "Тил колдонулган өлкөлөрдүн маданиятын үйрөнүңүз",
-          "ru": "Изучать культуру стран изучаемого языка"
+          "ru": "Изучать культуру стран изучаемого языка",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Watch one short video about the culture", "kg": "Маданият жөнүндө бир кыска видео көрүңүз", "ru": "Посмотреть одно короткое видео о культуре" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Teaching methods",
-        "kg": "Окутуу ыкмалары",
-        "ru": "Методика преподавания"
-      },
+      "title": { "en": "Teaching methods", "kg": "Окутуу ыкмалары", "ru": "Методика преподавания" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "Methodology course finished",
-          "kg": "Методика курсу бүттү",
-          "ru": "Пройден курс методики"
-        }
+        { "en": "Methodology course finished", "kg": "Методика курсу бүттү", "ru": "Пройден курс методики" }
       ],
       "actions": [
         {
           "en": "Learn the communicative approach",
           "kg": "Коммуникативдик ыкманы үйрөнүңүз",
-          "ru": "Изучить коммуникативный подход"
+          "ru": "Изучить коммуникативный подход",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Read one article on the communicative approach", "kg": "Коммуникативдик ыкма боюнча бир макала окуңуз", "ru": "Прочитать одну статью о коммуникативном подходе" },
+          "steps": [
+            { "en": "Read an overview of the approach", "kg": "Ыкма боюнча жалпы маалыматты окуңуз", "ru": "Прочитать обзор подхода", "minutes": 30 },
+            { "en": "Watch 2 communicative lessons online", "kg": "Онлайн 2 коммуникативдик сабакты көрүңүз", "ru": "Посмотреть онлайн 2 коммуникативных урока", "minutes": 45 },
+            { "en": "Write 5 principles in your own words", "kg": "5 принципти өз сөзүңүз менен жазыңыз", "ru": "Записать 5 принципов своими словами", "minutes": 20 },
+            { "en": "Design one speaking task by this approach", "kg": "Ушул ыкма менен бир сүйлөө тапшырмасын түзүңүз", "ru": "Придумать одно речевое задание по этому подходу", "minutes": 30 },
+            { "en": "Try it with a friend or a student", "kg": "Аны дос же окуучу менен сынап көрүңүз", "ru": "Опробовать его с другом или учеником", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn how to teach vocabulary and grammar",
           "kg": "Сөздөрдү жана грамматиканы кантип окутууну үйрөнүңүз",
-          "ru": "Изучить, как преподавать лексику и грамматику"
+          "ru": "Изучить, как преподавать лексику и грамматику",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Learn one way to present new words", "kg": "Жаңы сөздөрдү көрсөтүүнүн бир ыкмасын үйрөнүңүз", "ru": "Освоить один способ подачи новых слов" },
+          "steps": [
+            { "en": "Learn 3 ways to present new words", "kg": "Жаңы сөздөрдү көрсөтүүнүн 3 ыкмасын үйрөнүңүз", "ru": "Изучить 3 способа подачи новых слов", "minutes": 30 },
+            { "en": "Learn the PPP and TTT grammar lesson models", "kg": "Грамматика сабагынын PPP жана TTT моделдерин үйрөнүңүз", "ru": "Изучить модели урока грамматики PPP и TTT", "minutes": 40 },
+            { "en": "Write a 20-minute vocabulary activity", "kg": "20 мүнөттүк сөз байлыгы тапшырмасын жазыңыз", "ru": "Написать 20-минутное задание на лексику", "minutes": 30 },
+            { "en": "Write a 20-minute grammar activity", "kg": "20 мүнөттүк грамматика тапшырмасын жазыңыз", "ru": "Написать 20-минутное задание на грамматику", "minutes": 30 },
+            { "en": "Teach both to a friend and note the results", "kg": "Экөөнү тең досуңузга өтүп, жыйынтыгын жазыңыз", "ru": "Провести оба с другом и записать итоги", "minutes": 45 }
+          ]
         },
         {
           "en": "Learn how to teach the four skills",
           "kg": "Төрт көндүмдү кантип окутууну үйрөнүңүз",
-          "ru": "Освоить методику обучения четырём навыкам"
+          "ru": "Освоить методику обучения четырём навыкам",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Plan one listening activity", "kg": "Бир угуу тапшырмасын пландаңыз", "ru": "Спланировать одно задание на аудирование" },
+          "steps": [
+            { "en": "Learn the stages of a listening lesson", "kg": "Угуу сабагынын этаптарын үйрөнүңүз", "ru": "Изучить этапы урока аудирования", "minutes": 30 },
+            { "en": "Learn the stages of a reading lesson", "kg": "Окуу сабагынын этаптарын үйрөнүңүз", "ru": "Изучить этапы урока чтения", "minutes": 30 },
+            { "en": "Learn how to set up speaking tasks", "kg": "Сүйлөө тапшырмаларын кантип уюштурууну үйрөнүңүз", "ru": "Изучить, как организовать говорение", "minutes": 30 },
+            { "en": "Learn how to teach writing step by step", "kg": "Жазууну кадам сайын окутууну үйрөнүңүз", "ru": "Изучить поэтапное обучение письму", "minutes": 30 },
+            { "en": "Plan one short task for each skill", "kg": "Ар бир көндүм үчүн бир кыска тапшырма пландаңыз", "ru": "Спланировать по одному заданию на каждый навык", "minutes": 45 }
+          ]
         },
         {
           "en": "Learn how children and adults learn differently",
           "kg": "Балдар менен чоңдор кантип башкача үйрөнөрүн билиңиз",
-          "ru": "Разобраться, чем обучение детей отличается от обучения взрослых"
+          "ru": "Разобраться, чем обучение детей отличается от обучения взрослых",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "List 3 differences in teaching children", "kg": "Балдарды окутуудагы 3 айырманы жазыңыз", "ru": "Выписать 3 отличия в обучении детей" },
+          "steps": [
+            { "en": "Read about how children learn languages", "kg": "Балдар тилди кантип үйрөнөрү жөнүндө окуңуз", "ru": "Прочитать, как дети учат языки", "minutes": 30 },
+            { "en": "Read about how adults learn languages", "kg": "Чоңдор тилди кантип үйрөнөрү жөнүндө окуңуз", "ru": "Прочитать, как взрослые учат языки", "minutes": 30 },
+            { "en": "Make a table of 5 key differences", "kg": "5 негизги айырманын таблицасын түзүңүз", "ru": "Составить таблицу из 5 главных отличий", "minutes": 20 },
+            { "en": "Adapt one activity for kids and for adults", "kg": "Бир тапшырманы балдарга жана чоңдорго ылайыктаңыз", "ru": "Адаптировать одно задание для детей и взрослых", "minutes": 30 },
+            { "en": "Discuss the table with a working teacher", "kg": "Таблицаны иштеп жүргөн мугалим менен талкуулаңыз", "ru": "Обсудить таблицу с практикующим учителем", "minutes": 30 }
+          ]
         },
         {
           "en": "Read one methodology book",
           "kg": "Методика боюнча бир китеп окуңуз",
-          "ru": "Прочитать книгу по методике"
+          "ru": "Прочитать книгу по методике",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 20,
+          "easy": { "en": "Read 5 pages of the book", "kg": "Китептен 5 бет окуңуз", "ru": "Прочитать 5 страниц книги" }
         },
         {
           "en": "Watch lessons of experienced teachers",
           "kg": "Тажрыйбалуу мугалимдердин сабактарын көрүңүз",
-          "ru": "Смотреть уроки опытных преподавателей"
+          "ru": "Смотреть уроки опытных преподавателей",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Watch 15 minutes of one lesson", "kg": "Бир сабактын 15 мүнөтүн көрүңүз", "ru": "Посмотреть 15 минут одного урока" }
         },
         {
-          "en": "Learn how to correct mistakes kindly",
-          "kg": "Каталарды боорукердик менен оңдоону үйрөнүңүз",
-          "ru": "Научиться деликатно исправлять ошибки"
+          "en": "Correct mistakes after praising what was right",
+          "kg": "Адегенде туурасын мактап, андан кийин катаны оңдоңуз",
+          "ru": "Исправлять ошибки после похвалы за верное",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Praise one correct thing before a correction", "kg": "Оңдоодон мурун бир туура нерсени мактаңыз", "ru": "Перед исправлением похвалить одно верное" }
         },
         {
           "en": "Learn ways to assess students' progress",
           "kg": "Окуучулардын жетишкендигин баалоо ыкмаларын үйрөнүңүз",
-          "ru": "Изучить способы оценки прогресса учеников"
+          "ru": "Изучить способы оценки прогресса учеников",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write 5 questions to check one topic", "kg": "Бир теманы текшерүү үчүн 5 суроо жазыңыз", "ru": "Написать 5 вопросов для проверки одной темы" },
+          "steps": [
+            { "en": "Learn formative and summative assessment", "kg": "Калыптандыруучу жана жыйынтыктоочу баалоону үйрөнүңүз", "ru": "Изучить формирующее и итоговое оценивание", "minutes": 30 },
+            { "en": "Make a simple speaking rubric", "kg": "Сүйлөө үчүн жөнөкөй баалоо критерийлерин түзүңүз", "ru": "Составить простые критерии оценки говорения", "minutes": 30 },
+            { "en": "Make a simple writing rubric", "kg": "Жазуу үчүн жөнөкөй баалоо критерийлерин түзүңүз", "ru": "Составить простые критерии оценки письма", "minutes": 30 },
+            { "en": "Write a 10-question progress quiz", "kg": "10 суроодон турган жетишкендик тестин жазыңыз", "ru": "Написать тест на прогресс из 10 вопросов", "minutes": 40 },
+            { "en": "Try the quiz and rubric with one student", "kg": "Тестти жана критерийлерди бир окуучуда сынаңыз", "ru": "Опробовать тест и критерии на одном ученике", "minutes": 40 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "Certification",
-        "kg": "Сертификация",
-        "ru": "Квалификация"
-      },
+      "title": { "en": "Certification", "kg": "Сертификация", "ru": "Квалификация" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "Teaching certificate received",
-          "kg": "Мугалимдик сертификат алынды",
-          "ru": "Получен сертификат преподавателя"
-        }
+        { "en": "Teaching certificate received", "kg": "Мугалимдик сертификат алынды", "ru": "Получен сертификат преподавателя" }
       ],
       "actions": [
         {
           "en": "Find out which documents schools in your city require",
           "kg": "Шаарыңыздагы мектептер кандай документтерди талап кыларын билиңиз",
-          "ru": "Узнать, какие документы требуют школы в вашем городе"
+          "ru": "Узнать, какие документы требуют школы в вашем городе",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask one school which documents they need", "kg": "Бир мектептен кандай документтер керек экенин сураңыз", "ru": "Спросить в одной школе, какие нужны документы" },
+          "steps": [
+            { "en": "List 5 schools or centres you'd like to join", "kg": "Иштегиңиз келген 5 мектепти же борборду жазыңыз", "ru": "Выписать 5 школ или центров, где хотите работать", "minutes": 20 },
+            { "en": "Read their vacancy requirements", "kg": "Алардын бош орундарга талаптарын окуңуз", "ru": "Прочитать их требования к вакансиям", "minutes": 30 },
+            { "en": "Call or message 3 of them to ask", "kg": "Алардын үчөөнө чалып же жазып сураңыз", "ru": "Позвонить или написать трём из них", "minutes": 30 },
+            { "en": "Make a table of the required documents", "kg": "Талап кылынган документтердин таблицасын түзүңүз", "ru": "Составить таблицу требуемых документов", "minutes": 20 },
+            { "en": "Mark which documents you already have", "kg": "Кайсы документтер бар экенин белгилеңиз", "ru": "Отметить, какие документы уже есть", "minutes": 10 }
+          ]
         },
         {
           "en": "For English: consider TKT or CELTA",
           "kg": "Англис тили үчүн: TKT же CELTA карап көрүңүз",
-          "ru": "Для английского: рассмотреть TKT или CELTA"
+          "ru": "Для английского: рассмотреть TKT или CELTA",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Read the official TKT and CELTA pages", "kg": "TKT жана CELTA расмий барактарын окуңуз", "ru": "Прочитать официальные страницы TKT и CELTA" },
+          "steps": [
+            { "en": "Read what TKT and CELTA include", "kg": "TKT жана CELTA эмнени камтырын окуңуз", "ru": "Прочитать, что включают TKT и CELTA", "minutes": 30 },
+            { "en": "Check requirements on the official sites", "kg": "Талаптарды расмий сайттардан текшериңиз", "ru": "Проверить требования на официальных сайтах", "minutes": 20 },
+            { "en": "Find the nearest centres or online options", "kg": "Эң жакын борборлорду же онлайн варианттарды табыңыз", "ru": "Найти ближайшие центры или онлайн-варианты", "minutes": 30 },
+            { "en": "Ask a teacher who has passed one", "kg": "Аны тапшырган мугалимден сураңыз", "ru": "Расспросить учителя, который его проходил", "minutes": 30 },
+            { "en": "Choose one and write a target date", "kg": "Бирөөнү тандап, максаттуу датаны жазыңыз", "ru": "Выбрать один и записать целевую дату", "minutes": 10 }
+          ]
         },
         {
           "en": "For Arabic: choose an accredited teacher-training program",
           "kg": "Араб тили үчүн: аккредитацияланган мугалим даярдоо программасын тандаңыз",
-          "ru": "Для арабского: выбрать аккредитованную программу подготовки преподавателей"
+          "ru": "Для арабского: выбрать аккредитованную программу подготовки преподавателей",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "List 2 accredited programmes", "kg": "2 аккредитацияланган программаны жазыңыз", "ru": "Выписать 2 аккредитованные программы" },
+          "steps": [
+            { "en": "List 3–5 teacher-training programmes", "kg": "3–5 мугалим даярдоо программасын жазыңыз", "ru": "Выписать 3–5 программ подготовки преподавателей", "minutes": 30 },
+            { "en": "Check accreditation on the official sites", "kg": "Аккредитацияны расмий сайттардан текшериңиз", "ru": "Проверить аккредитацию на официальных сайтах", "minutes": 30 },
+            { "en": "Compare format, length and cost", "kg": "Форматын, узактыгын жана баасын салыштырыңыз", "ru": "Сравнить формат, длительность и цену", "minutes": 30 },
+            { "en": "Talk to a graduate of the top options", "kg": "Мыкты варианттардын бүтүрүүчүсү менен сүйлөшүңүз", "ru": "Поговорить с выпускником лучших вариантов", "minutes": 30 },
+            { "en": "Choose a programme and note the deadline", "kg": "Программаны тандап, мөөнөтүн белгилеңиз", "ru": "Выбрать программу и отметить срок подачи", "minutes": 10 }
+          ]
         },
         {
           "en": "Consider a pedagogical degree or retraining",
           "kg": "Педагогикалык билим же кайра даярдоону карап көрүңүз",
-          "ru": "Рассмотреть педагогическое образование или переподготовку"
+          "ru": "Рассмотреть педагогическое образование или переподготовку",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "List 2 universities with retraining", "kg": "Кайра даярдоосу бар 2 университетти жазыңыз", "ru": "Выписать 2 вуза с переподготовкой" },
+          "steps": [
+            { "en": "Find pedagogical programmes in your city", "kg": "Шаарыңыздагы педагогикалык программаларды табыңыз", "ru": "Найти педагогические программы в своём городе", "minutes": 30 },
+            { "en": "Compare a full degree and retraining", "kg": "Толук билим берүүнү жана кайра даярдоону салыштырыңыз", "ru": "Сравнить полное образование и переподготовку", "minutes": 20 },
+            { "en": "Check entry requirements on official sites", "kg": "Кабыл алуу талаптарын расмий сайттардан текшериңиз", "ru": "Проверить условия поступления на официальных сайтах", "minutes": 20 },
+            { "en": "Discuss time and costs with your family", "kg": "Убакыт жана чыгымдарды үй-бүлө менен талкуулаңыз", "ru": "Обсудить время и расходы с семьёй", "minutes": 30 },
+            { "en": "Decide and write the next step", "kg": "Чечим кабыл алып, кийинки кадамды жазыңыз", "ru": "Принять решение и записать следующий шаг", "minutes": 10 }
+          ]
         },
         {
           "en": "Budget time and money for the course",
           "kg": "Курс үчүн убакыт жана акча пландаңыз",
-          "ru": "Заложить время и деньги на курс"
+          "ru": "Заложить время и деньги на курс",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write the course cost and hours per week", "kg": "Курстун баасын жана жумалык саатын жазыңыз", "ru": "Записать цену курса и часы в неделю" },
+          "steps": [
+            { "en": "Write the full course cost and hours", "kg": "Курстун толук баасын жана саатын жазыңыз", "ru": "Записать полную стоимость и часы курса", "minutes": 15 },
+            { "en": "Count your free hours per week", "kg": "Жумасына канча бош саатыңыз бар экенин эсептеңиз", "ru": "Посчитать свободные часы в неделю", "minutes": 20 },
+            { "en": "Plan how much to save each month", "kg": "Ай сайын канча чогултууну пландаңыз", "ru": "Спланировать, сколько откладывать в месяц", "minutes": 20 },
+            { "en": "Ask about discounts or grants", "kg": "Арзандатуу же грант жөнүндө сураңыз", "ru": "Узнать о скидках или грантах", "minutes": 20 },
+            { "en": "Put the plan into the Finance module", "kg": "Планды «Финансы» бөлүмүнө киргизиңиз", "ru": "Внести план в модуль «Финансы»", "minutes": 15 }
+          ]
         },
         {
           "en": "Prepare for the course entry interview",
           "kg": "Курска кирүү маегине даярданыңыз",
-          "ru": "Подготовиться к вступительному собеседованию на курс"
+          "ru": "Подготовиться к вступительному собеседованию на курс",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Prepare answers to 3 likely questions", "kg": "Болжолдуу 3 суроого жооп даярдаңыз", "ru": "Подготовить ответы на 3 вероятных вопроса" },
+          "steps": [
+            { "en": "Read the interview format on the official site", "kg": "Маектин форматын расмий сайттан окуңуз", "ru": "Прочитать формат собеседования на сайте", "minutes": 20 },
+            { "en": "Write answers to 10 typical questions", "kg": "10 типтүү суроого жооп жазыңыз", "ru": "Написать ответы на 10 типичных вопросов", "minutes": 45 },
+            { "en": "Prepare an idea for a 5-minute sample lesson", "kg": "5 мүнөттүк үлгү сабактын идеясын даярдаңыз", "ru": "Подготовить идею 5-минутного пробного урока", "minutes": 45 },
+            { "en": "Do a mock interview with a friend", "kg": "Досуңуз менен сынак маек өткөрүңүз", "ru": "Провести пробное собеседование с другом", "minutes": 40 },
+            { "en": "Fix weak answers and rehearse", "kg": "Алсыз жоопторду оңдоп, кайра машыгыңыз", "ru": "Доработать слабые ответы и отрепетировать", "minutes": 30 }
+          ]
         },
         {
-          "en": "Complete all practical assignments",
-          "kg": "Бардык практикалык тапшырмаларды аткарыңыз",
-          "ru": "Выполнить все практические задания"
+          "en": "Submit every course assignment before the deadline",
+          "kg": "Курстун ар бир тапшырмасын мөөнөтүнөн мурун тапшырыңыз",
+          "ru": "Сдавать каждое задание курса до дедлайна",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Do one part of the assignment today", "kg": "Бүгүн тапшырманын бир бөлүгүн аткарыңыз", "ru": "Сделать сегодня одну часть задания" }
         },
         {
           "en": "Keep copies of all certificates",
           "kg": "Бардык сертификаттардын көчүрмөлөрүн сактаңыз",
-          "ru": "Хранить копии всех сертификатов"
+          "ru": "Хранить копии всех сертификатов",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Scan one certificate", "kg": "Бир сертификатты сканерлеңиз", "ru": "Отсканировать один сертификат" },
+          "steps": [
+            { "en": "Collect all certificates and diplomas", "kg": "Бардык сертификаттарды жана дипломдорду чогултуңуз", "ru": "Собрать все сертификаты и дипломы", "minutes": 15 },
+            { "en": "Scan or photograph each one clearly", "kg": "Ар бирин так сканерлеңиз же сүрөткө тартыңыз", "ru": "Чётко отсканировать или сфотографировать каждый", "minutes": 20 },
+            { "en": "Save them in one cloud folder", "kg": "Аларды бир булут папкасына сактаңыз", "ru": "Сохранить их в одну облачную папку", "minutes": 10 },
+            { "en": "Name the files by date and title", "kg": "Файлдарды дата жана аталыш боюнча атаңыз", "ru": "Назвать файлы по дате и названию", "minutes": 10 },
+            { "en": "Keep the paper originals in one folder", "kg": "Кагаз түп нускаларын бир папкада сактаңыз", "ru": "Хранить бумажные оригиналы в одной папке", "minutes": 10 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "Lesson planning",
-        "kg": "Сабакты пландоо",
-        "ru": "Планирование уроков"
-      },
+      "title": { "en": "Lesson planning", "kg": "Сабакты пландоо", "ru": "Планирование уроков" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "20 lesson plans ready",
-          "kg": "20 сабак планы даяр",
-          "ru": "Готово 20 планов уроков"
-        }
+        { "en": "20 lesson plans ready", "kg": "20 сабак планы даяр", "ru": "Готово 20 планов уроков" }
       ],
       "actions": [
         {
           "en": "Learn the structure of a good lesson",
           "kg": "Жакшы сабактын түзүлүшүн үйрөнүңүз",
-          "ru": "Изучить структуру хорошего урока"
+          "ru": "Изучить структуру хорошего урока",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Learn the 5 stages of a lesson", "kg": "Сабактын 5 этабын үйрөнүңүз", "ru": "Выучить 5 этапов урока" },
+          "steps": [
+            { "en": "Read about lesson stages and timing", "kg": "Сабактын этаптары жана убактысы жөнүндө окуңуз", "ru": "Прочитать об этапах урока и тайминге", "minutes": 30 },
+            { "en": "Watch one lesson and mark its stages", "kg": "Бир сабакты көрүп, этаптарын белгилеңиз", "ru": "Посмотреть урок и отметить его этапы", "minutes": 45 },
+            { "en": "Write a one-page lesson plan template", "kg": "Бир барактык сабак планынын үлгүсүн жазыңыз", "ru": "Написать шаблон плана урока на одну страницу", "minutes": 30 },
+            { "en": "Show the template to an experienced teacher", "kg": "Үлгүнү тажрыйбалуу мугалимге көрсөтүңүз", "ru": "Показать шаблон опытному учителю", "minutes": 20 },
+            { "en": "Fix it and save it for every plan", "kg": "Аны оңдоп, ар бир план үчүн сактаңыз", "ru": "Доработать и сохранить для всех планов", "minutes": 15 }
+          ]
         },
         {
           "en": "Write a plan for every lesson with clear aims",
           "kg": "Ар бир сабакка так максаттары бар план жазыңыз",
-          "ru": "Писать план каждого урока с чёткими целями"
+          "ru": "Писать план каждого урока с чёткими целями",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Write 3 aims and 3 stages for the lesson", "kg": "Сабак үчүн 3 максат жана 3 этап жазыңыз", "ru": "Записать 3 цели и 3 этапа урока" }
         },
         {
           "en": "Prepare warm-up activities and games",
           "kg": "Жылытуу көнүгүүлөрүн жана оюндарды даярдаңыз",
-          "ru": "Подготовить разминки и игры"
+          "ru": "Подготовить разминки и игры",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Prepare 3 warm-up games", "kg": "3 жылытуу оюнун даярдаңыз", "ru": "Подготовить 3 игры для разминки" },
+          "steps": [
+            { "en": "Collect 10 warm-up ideas from books or sites", "kg": "Китептерден же сайттардан 10 жылытуу идеясын чогултуңуз", "ru": "Собрать 10 идей разминок из книг и сайтов", "minutes": 30 },
+            { "en": "Sort them by level and group size", "kg": "Аларды деңгээл жана топтун көлөмү боюнча бөлүңүз", "ru": "Разделить их по уровню и размеру группы", "minutes": 20 },
+            { "en": "Prepare cards or slides for 5 of them", "kg": "Алардын бешөө үчүн карточка же слайд даярдаңыз", "ru": "Подготовить карточки или слайды для пяти", "minutes": 45 },
+            { "en": "Try 2 games with friends or students", "kg": "2 оюнду достор же окуучулар менен сынаңыз", "ru": "Опробовать 2 игры с друзьями или учениками", "minutes": 30 },
+            { "en": "Note which worked and why", "kg": "Кайсынысы иштегенин жана эмне үчүн экенин жазыңыз", "ru": "Записать, что сработало и почему", "minutes": 10 }
+          ]
         },
         {
           "en": "Build a bank of materials by level",
           "kg": "Деңгээлдер боюнча материалдар банкын түзүңүз",
-          "ru": "Собрать банк материалов по уровням"
+          "ru": "Собрать банк материалов по уровням",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Add one worksheet to your bank", "kg": "Банкыңызга бир иш баракчасын кошуңуз", "ru": "Добавить в банк один рабочий лист" }
         },
         {
           "en": "Plan a course of 12 lessons for one level",
           "kg": "Бир деңгээл үчүн 12 сабактан турган курс пландаңыз",
-          "ru": "Спланировать курс из 12 уроков для одного уровня"
+          "ru": "Спланировать курс из 12 уроков для одного уровня",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Plan the topics of 4 lessons", "kg": "4 сабактын темаларын пландаңыз", "ru": "Спланировать темы 4 уроков" },
+          "steps": [
+            { "en": "Choose the level and the course goal", "kg": "Деңгээлди жана курстун максатын тандаңыз", "ru": "Выбрать уровень и цель курса", "minutes": 20 },
+            { "en": "List 12 lesson topics in order", "kg": "12 сабактын темасын ирети менен жазыңыз", "ru": "Выписать 12 тем уроков по порядку", "minutes": 30 },
+            { "en": "Write aims for lessons 1–4", "kg": "1–4-сабактардын максаттарын жазыңыз", "ru": "Написать цели уроков 1–4", "minutes": 60 },
+            { "en": "Write aims for lessons 5–8", "kg": "5–8-сабактардын максаттарын жазыңыз", "ru": "Написать цели уроков 5–8", "minutes": 60 },
+            { "en": "Write aims for lessons 9–12", "kg": "9–12-сабактардын максаттарын жазыңыз", "ru": "Написать цели уроков 9–12", "minutes": 60 },
+            { "en": "Plan two review lessons and a final test", "kg": "Эки кайталоо сабагын жана жыйынтык тестти пландаңыз", "ru": "Запланировать два урока повторения и итоговый тест", "minutes": 45 }
+          ]
         },
         {
           "en": "Prepare homework and answer keys",
           "kg": "Үй тапшырмаларын жана жоопторду даярдаңыз",
-          "ru": "Подготовить домашние задания и ключи к ним"
+          "ru": "Подготовить домашние задания и ключи к ним",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Prepare homework for one lesson", "kg": "Бир сабакка үй тапшырма даярдаңыз", "ru": "Подготовить домашнее задание к одному уроку" }
         },
         {
           "en": "Create tests for each unit",
           "kg": "Ар бир бөлүм үчүн тесттерди түзүңүз",
-          "ru": "Составить тесты к каждому разделу"
+          "ru": "Составить тесты к каждому разделу",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write a 10-question test for one unit", "kg": "Бир бөлүм үчүн 10 суроолуу тест жазыңыз", "ru": "Написать тест из 10 вопросов на один раздел" },
+          "steps": [
+            { "en": "List the aims of each unit", "kg": "Ар бир бөлүмдүн максаттарын жазыңыз", "ru": "Выписать цели каждого раздела", "minutes": 20 },
+            { "en": "Write 10 questions for unit 1", "kg": "1-бөлүм үчүн 10 суроо жазыңыз", "ru": "Написать 10 вопросов к разделу 1", "minutes": 40 },
+            { "en": "Write tests for the remaining units", "kg": "Калган бөлүмдөр үчүн тесттерди жазыңыз", "ru": "Написать тесты к остальным разделам", "minutes": 90 },
+            { "en": "Make answer keys and a scoring system", "kg": "Жооптордун ачкычын жана упай системасын жасаңыз", "ru": "Сделать ключи и систему баллов", "minutes": 30 },
+            { "en": "Ask a colleague to check one test", "kg": "Кесиптешиңизден бир тестти текшерүүнү сураңыз", "ru": "Попросить коллегу проверить один тест", "minutes": 20 }
+          ]
         },
         {
           "en": "Reflect after each lesson: what worked",
           "kg": "Ар бир сабактан кийин эмне иштегенин ойлонуңуз",
-          "ru": "После каждого урока анализировать, что сработало"
+          "ru": "После каждого урока анализировать, что сработало",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Write one thing that worked today", "kg": "Бүгүн иштеген бир нерсени жазыңыз", "ru": "Записать одну вещь, которая сработала" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Teaching practice",
-        "kg": "Окутуу практикасы",
-        "ru": "Практика преподавания"
-      },
+      "title": { "en": "Teaching practice", "kg": "Окутуу практикасы", "ru": "Практика преподавания" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "First paid lesson",
-          "kg": "Биринчи акылуу сабак",
-          "ru": "Первый оплачиваемый урок"
-        },
-        {
-          "en": "50 lessons taught",
-          "kg": "50 сабак өтүлдү",
-          "ru": "Проведено 50 уроков"
-        }
+        { "en": "First paid lesson", "kg": "Биринчи акылуу сабак", "ru": "Первый оплачиваемый урок" },
+        { "en": "50 lessons taught", "kg": "50 сабак өтүлдү", "ru": "Проведено 50 уроков" }
       ],
       "actions": [
         {
           "en": "Give free trial lessons to friends",
           "kg": "Досторго акысыз сыноо сабактарын бериңиз",
-          "ru": "Провести бесплатные пробные уроки друзьям"
+          "ru": "Провести бесплатные пробные уроки друзьям",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Give one 20-minute lesson to a friend", "kg": "Досуңузга 20 мүнөттүк бир сабак өтүңүз", "ru": "Провести другу один урок на 20 минут" },
+          "steps": [
+            { "en": "Find 3 friends who want to practise", "kg": "Машыккысы келген 3 досуңузду табыңыз", "ru": "Найти 3 друзей, желающих позаниматься", "minutes": 20 },
+            { "en": "Plan a 45-minute trial lesson", "kg": "45 мүнөттүк сыноо сабагын пландаңыз", "ru": "Спланировать пробный урок на 45 минут", "minutes": 45 },
+            { "en": "Teach the first friend", "kg": "Биринчи досуңузга сабак өтүңүз", "ru": "Провести урок первому другу", "minutes": 45 },
+            { "en": "Ask for honest feedback", "kg": "Ак ниет пикир сураңыз", "ru": "Попросить честную обратную связь", "minutes": 10 },
+            { "en": "Improve the plan and teach the other two", "kg": "Планды жакшыртып, калган экөөнө сабак өтүңүз", "ru": "Улучшить план и провести урок двум другим", "minutes": 90 }
+          ]
         },
         {
           "en": "Assist an experienced teacher in class",
           "kg": "Тажрыйбалуу мугалимге сабакта жардам бериңиз",
-          "ru": "Ассистировать опытному преподавателю на занятиях"
+          "ru": "Ассистировать опытному преподавателю на занятиях",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Help a teacher for 20 minutes", "kg": "Мугалимге 20 мүнөт жардам бериңиз", "ru": "Помочь преподавателю 20 минут" }
         },
         {
           "en": "Record your lessons and review them",
           "kg": "Сабактарыңызды жазып, кайра карап чыгыңыз",
-          "ru": "Записывать свои уроки и пересматривать их"
+          "ru": "Записывать свои уроки и пересматривать их",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Rewatch 10 minutes of your lesson", "kg": "Сабагыңыздын 10 мүнөтүн кайра көрүңүз", "ru": "Пересмотреть 10 минут своего урока" }
         },
         {
           "en": "Ask observers for feedback",
           "kg": "Байкоочулардан пикир сураңыз",
-          "ru": "Просить обратную связь у наблюдателей"
+          "ru": "Просить обратную связь у наблюдателей",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Ask one question about your lesson", "kg": "Сабагыңыз жөнүндө бир суроо бериңиз", "ru": "Задать один вопрос о своём уроке" }
         },
         {
           "en": "Teach both individual and group lessons",
           "kg": "Жеке жана топтук сабактарды өтүңүз",
-          "ru": "Вести и индивидуальные, и групповые занятия"
+          "ru": "Вести и индивидуальные, и групповые занятия",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 90,
+          "easy": { "en": "Teach one lesson this week", "kg": "Ушул жумада бир сабак өтүңүз", "ru": "Провести один урок на этой неделе" }
         },
         {
           "en": "Learn classroom management techniques",
           "kg": "Класс башкаруу ыкмаларын үйрөнүңүз",
-          "ru": "Освоить приёмы управления классом"
+          "ru": "Освоить приёмы управления классом",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Learn 3 signals to get a class's attention", "kg": "Класстын көңүлүн буруунун 3 белгисин үйрөнүңүз", "ru": "Освоить 3 сигнала внимания для класса" },
+          "steps": [
+            { "en": "Read about classroom management basics", "kg": "Класс башкаруунун негиздери жөнүндө окуңуз", "ru": "Прочитать об основах управления классом", "minutes": 30 },
+            { "en": "Write 5 class rules with students in mind", "kg": "Окуучуларды эске алып, 5 класс эрежесин жазыңыз", "ru": "Написать 5 правил класса с учётом учеников", "minutes": 20 },
+            { "en": "Learn 3 signals to get attention", "kg": "Көңүл буруунун 3 белгисин үйрөнүңүз", "ru": "Освоить 3 сигнала для привлечения внимания", "minutes": 20 },
+            { "en": "Plan how to react to 3 common problems", "kg": "3 кеңири таралган көйгөйгө кандай жооп берүүнү пландаңыз", "ru": "Продумать реакцию на 3 частые проблемы", "minutes": 30 },
+            { "en": "Use one technique in a lesson and note results", "kg": "Сабакта бир ыкманы колдонуп, жыйынтыгын жазыңыз", "ru": "Применить один приём на уроке и записать итог", "minutes": 45 }
+          ]
         },
         {
           "en": "Teach online with screen sharing",
           "kg": "Экранды бөлүшүү менен онлайн сабак өтүңүз",
-          "ru": "Проводить онлайн-уроки с демонстрацией экрана"
+          "ru": "Проводить онлайн-уроки с демонстрацией экрана",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Run a 15-minute test call with a friend", "kg": "Дос менен 15 мүнөттүк сыноо чалуусун өткөрүңүз", "ru": "Провести 15-минутный тестовый звонок с другом" },
+          "steps": [
+            { "en": "Choose a video platform and set it up", "kg": "Видео платформаны тандап, жөндөңүз", "ru": "Выбрать видеоплатформу и настроить её", "minutes": 20 },
+            { "en": "Check the camera, microphone and light", "kg": "Камераны, микрофонду жана жарыкты текшериңиз", "ru": "Проверить камеру, микрофон и свет", "minutes": 15 },
+            { "en": "Prepare slides and a shared document", "kg": "Слайддарды жана жалпы документти даярдаңыз", "ru": "Подготовить слайды и общий документ", "minutes": 45 },
+            { "en": "Practise screen sharing with a friend", "kg": "Досуңуз менен экранды бөлүшүүнү машыгыңыз", "ru": "Отработать демонстрацию экрана с другом", "minutes": 20 },
+            { "en": "Teach your first full online lesson", "kg": "Биринчи толук онлайн сабагыңызды өтүңүз", "ru": "Провести первый полный онлайн-урок", "minutes": 60 }
+          ]
         },
         {
           "en": "Track hours taught in the Shifts module",
           "kg": "Өтүлгөн сааттарды «Сменалар» бөлүмүндө эсептеңиз",
-          "ru": "Учитывать часы преподавания в модуле «Смены»"
+          "ru": "Учитывать часы преподавания в модуле «Смены»",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Log today's lesson in Shifts", "kg": "Бүгүнкү сабакты «Сменалар» бөлүмүнө жазыңыз", "ru": "Записать сегодняшний урок в «Смены»" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Students",
-        "kg": "Окуучулар",
-        "ru": "Ученики"
-      },
+      "title": { "en": "Students", "kg": "Окуучулар", "ru": "Ученики" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "First 5 regular students",
-          "kg": "Биринчи 5 туруктуу окуучу",
-          "ru": "Первые 5 постоянных учеников"
-        }
+        { "en": "First 5 regular students", "kg": "Биринчи 5 туруктуу окуучу", "ru": "Первые 5 постоянных учеников" }
       ],
       "actions": [
         {
           "en": "Define who you will teach: kids, adults, exam prep",
           "kg": "Кимге сабак берерсиз, аныктаңыз: балдар, чоңдор, экзаменге даярдоо",
-          "ru": "Определить свою аудиторию: дети, взрослые, подготовка к экзаменам"
+          "ru": "Определить свою аудиторию: дети, взрослые, подготовка к экзаменам",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Choose one group: kids, adults or exams", "kg": "Бир топту тандаңыз: балдар, чоңдор же экзамен", "ru": "Выбрать одну группу: дети, взрослые или экзамены" },
+          "steps": [
+            { "en": "List the groups you could teach", "kg": "Окута ала турган топторду жазыңыз", "ru": "Выписать группы, которых можете учить", "minutes": 10 },
+            { "en": "Rate your interest and skill for each", "kg": "Ар бири боюнча кызыгууңузду жана тажрыйбаңызды баалаңыз", "ru": "Оценить интерес и навыки для каждой", "minutes": 15 },
+            { "en": "Check demand in your city or online", "kg": "Шаарыңыздагы же онлайндагы суроо-талапты текшериңиз", "ru": "Проверить спрос в городе или онлайн", "minutes": 30 },
+            { "en": "Choose one main group", "kg": "Бир негизги топту тандаңыз", "ru": "Выбрать одну основную группу", "minutes": 10 },
+            { "en": "Write a one-line description of your lessons", "kg": "Сабактарыңыздын бир саптык сүрөттөмөсүн жазыңыз", "ru": "Написать описание уроков в одну строку", "minutes": 15 }
+          ]
         },
         {
           "en": "Make a simple profile describing your lessons",
           "kg": "Сабактарыңызды сүрөттөгөн жөнөкөй профиль түзүңүз",
-          "ru": "Сделать простой профиль с описанием занятий"
+          "ru": "Сделать простой профиль с описанием занятий",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write 3 sentences about your lessons", "kg": "Сабактарыңыз жөнүндө 3 сүйлөм жазыңыз", "ru": "Написать 3 предложения о своих уроках" },
+          "steps": [
+            { "en": "Take a clear, friendly photo", "kg": "Так, жылуу сүрөткө түшүңүз", "ru": "Сделать чёткое дружелюбное фото", "minutes": 20 },
+            { "en": "Write whom you teach and how", "kg": "Кимди жана кантип окутарыңызды жазыңыз", "ru": "Написать, кого и как вы учите", "minutes": 30 },
+            { "en": "Add your level, certificates and experience", "kg": "Деңгээлиңизди, сертификаттарды жана тажрыйбаңызды кошуңуз", "ru": "Добавить уровень, сертификаты и опыт", "minutes": 20 },
+            { "en": "Add the price, format and contacts", "kg": "Баасын, форматын жана байланышты кошуңуз", "ru": "Добавить цену, формат и контакты", "minutes": 15 },
+            { "en": "Ask a friend to read it, then fix it", "kg": "Досуңузга окутуп, андан соң оңдоңуз", "ru": "Дать другу прочитать и доработать", "minutes": 20 }
+          ]
         },
         {
           "en": "Tell friends and family that you teach",
           "kg": "Досторуңузга жана үй-бүлөңүзгө сабак берериңизди айтыңыз",
-          "ru": "Рассказать знакомым, что вы преподаёте"
+          "ru": "Рассказать знакомым, что вы преподаёте",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Tell 3 people that you teach", "kg": "Сабак берериңизди 3 адамга айтыңыз", "ru": "Рассказать 3 людям, что вы преподаёте" },
+          "steps": [
+            { "en": "Write a short message about your lessons", "kg": "Сабактарыңыз жөнүндө кыска билдирүү жазыңыз", "ru": "Написать короткое сообщение о своих уроках", "minutes": 15 },
+            { "en": "Send it to 10 friends and relatives", "kg": "Аны 10 досуңузга жана тууганыңызга жөнөтүңүз", "ru": "Отправить его 10 друзьям и родственникам", "minutes": 20 },
+            { "en": "Post it in your status or stories", "kg": "Аны статусуңузга же сторизге жарыялаңыз", "ru": "Опубликовать его в статусе или сторис", "minutes": 10 },
+            { "en": "Ask them to share it further", "kg": "Аны башкаларга жөнөтүүнү сураңыз", "ru": "Попросить переслать его дальше", "minutes": 5 },
+            { "en": "Reply to everyone who asks", "kg": "Сураган ар бир адамга жооп бериңиз", "ru": "Ответить каждому, кто спросит", "minutes": 20 }
+          ]
         },
         {
           "en": "Register on tutoring platforms",
           "kg": "Репетитор платформаларына катталыңыз",
-          "ru": "Зарегистрироваться на платформах для репетиторов"
+          "ru": "Зарегистрироваться на платформах для репетиторов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Register on one tutoring platform", "kg": "Бир репетитор платформасына катталыңыз", "ru": "Зарегистрироваться на одной платформе" },
+          "steps": [
+            { "en": "Compare 3 tutoring platforms and their rules", "kg": "Репетиторлор үчүн 3 платформаны жана эрежелерин салыштырыңыз", "ru": "Сравнить 3 платформы для репетиторов и их правила", "minutes": 30 },
+            { "en": "Register on the best fit", "kg": "Эң ылайыктуусуна катталыңыз", "ru": "Зарегистрироваться на самой подходящей", "minutes": 20 },
+            { "en": "Fill in the profile with a photo and video", "kg": "Профилди сүрөт жана видео менен толтуруңуз", "ru": "Заполнить профиль с фото и видео", "minutes": 60 },
+            { "en": "Set your working hours and price", "kg": "Иш убактыңызды жана баасын коюңуз", "ru": "Указать рабочие часы и цену", "minutes": 15 },
+            { "en": "Answer the first requests within a day", "kg": "Алгачкы өтүнүчтөргө бир күндүн ичинде жооп бериңиз", "ru": "Отвечать на первые заявки в течение дня", "minutes": 15 }
+          ]
         },
         {
           "en": "Set fair prices and clear rules",
           "kg": "Адилет баа жана так эрежелерди белгилеңиз",
-          "ru": "Установить честные цены и понятные правила"
+          "ru": "Установить честные цены и понятные правила",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write your price and cancellation rule", "kg": "Бааңызды жана сабакты жокко чыгаруу эрежесин жазыңыз", "ru": "Записать цену и правило отмены урока" },
+          "steps": [
+            { "en": "Check the prices of 10 tutors at your level", "kg": "Деңгээлиңиздеги 10 репетитордун баасын текшериңиз", "ru": "Узнать цены 10 репетиторов вашего уровня", "minutes": 30 },
+            { "en": "Choose your price for 60 minutes in som", "kg": "60 мүнөт үчүн бааңызды сом менен тандаңыз", "ru": "Выбрать цену за 60 минут в сомах", "minutes": 15 },
+            { "en": "Write rules on cancellations and payment", "kg": "Сабакты жокко чыгаруу жана төлөм эрежелерин жазыңыз", "ru": "Написать правила отмены и оплаты", "minutes": 20 },
+            { "en": "Write rules on homework and lateness", "kg": "Үй тапшырма жана кечигүү эрежелерин жазыңыз", "ru": "Написать правила о домашке и опозданиях", "minutes": 15 },
+            { "en": "Send the rules to every new student", "kg": "Эрежелерди ар бир жаңы окуучуга жөнөтүңүз", "ru": "Отправлять правила каждому новому ученику", "minutes": 5 }
+          ]
         },
         {
           "en": "Ask happy students for reviews",
           "kg": "Ыраазы окуучулардан пикир сураңыз",
-          "ru": "Просить довольных учеников оставить отзыв"
+          "ru": "Просить довольных учеников оставить отзыв",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Ask one student for a short review", "kg": "Бир окуучудан кыска пикир сураңыз", "ru": "Попросить одного ученика о коротком отзыве" }
         },
         {
           "en": "Track each student's progress",
           "kg": "Ар бир окуучунун жетишкендигин көзөмөлдөңүз",
-          "ru": "Отслеживать прогресс каждого ученика"
+          "ru": "Отслеживать прогресс каждого ученика",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write one line on one student's progress", "kg": "Бир окуучунун жетишкендиги жөнүндө бир сап жазыңыз", "ru": "Записать строку о прогрессе одного ученика" }
         },
         {
           "en": "Apply to schools and language centres",
           "kg": "Мектептерге жана тил борборлоруна арыз бериңиз",
-          "ru": "Откликаться в школы и языковые центры"
+          "ru": "Откликаться в школы и языковые центры",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Send your CV to one language centre", "kg": "Резюмеңизди бир тил борборуна жөнөтүңүз", "ru": "Отправить резюме в один языковой центр" },
+          "steps": [
+            { "en": "Update your CV with teaching experience", "kg": "Резюмеңизди окутуу тажрыйбасы менен жаңыртыңыз", "ru": "Обновить резюме с опытом преподавания", "minutes": 45 },
+            { "en": "List 10 schools and language centres", "kg": "10 мектепти жана тил борборун жазыңыз", "ru": "Выписать 10 школ и языковых центров", "minutes": 30 },
+            { "en": "Write a short cover letter template", "kg": "Кыска коштомо каттын үлгүсүн жазыңыз", "ru": "Написать шаблон короткого сопроводительного письма", "minutes": 30 },
+            { "en": "Send 5 applications", "kg": "5 арыз жөнөтүңүз", "ru": "Отправить 5 откликов", "minutes": 30 },
+            { "en": "Send the other 5 and follow up in a week", "kg": "Калган бешөөнө жөнөтүп, бир жумадан кийин кайра кайрылыңыз", "ru": "Отправить остальные 5 и через неделю напомнить", "minutes": 30 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "Professional growth",
-        "kg": "Кесиптик өсүү",
-        "ru": "Профессиональный рост"
-      },
+      "title": { "en": "Professional growth", "kg": "Кесиптик өсүү", "ru": "Профессиональный рост" },
+      "kind": "support",
       "milestones": [
-        {
-          "en": "One year of teaching experience",
-          "kg": "Бир жылдык окутуу тажрыйбасы",
-          "ru": "Год преподавательского опыта"
-        }
+        { "en": "One year of teaching experience", "kg": "Бир жылдык окутуу тажрыйбасы", "ru": "Год преподавательского опыта" }
       ],
       "actions": [
         {
           "en": "Join a teachers' community",
           "kg": "Мугалимдер коомчулугуна кошулуңуз",
-          "ru": "Вступить в сообщество преподавателей"
+          "ru": "Вступить в сообщество преподавателей",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Join one teachers' chat", "kg": "Мугалимдердин бир чатына кошулуңуз", "ru": "Вступить в один чат учителей" },
+          "steps": [
+            { "en": "Find 3 teacher communities online or nearby", "kg": "Онлайн же жакын жердеги 3 мугалимдер коомчулугун табыңыз", "ru": "Найти 3 сообщества учителей онлайн или рядом", "minutes": 20 },
+            { "en": "Join the most active one", "kg": "Эң активдүүсүнө кошулуңуз", "ru": "Вступить в самое активное", "minutes": 5 },
+            { "en": "Introduce yourself in a short post", "kg": "Кыска билдирүү менен өзүңүздү тааныштырыңыз", "ru": "Представиться коротким постом", "minutes": 15 },
+            { "en": "Read the useful threads of the last month", "kg": "Акыркы айдагы пайдалуу талкууларды окуңуз", "ru": "Прочитать полезные обсуждения за месяц", "minutes": 30 },
+            { "en": "Ask or answer one question", "kg": "Бир суроо бериңиз же бирөөгө жооп бериңиз", "ru": "Задать или ответить на один вопрос", "minutes": 10 }
+          ]
         },
         {
           "en": "Attend a teacher-training webinar monthly",
           "kg": "Ар ай мугалимдер үчүн вебинарга катышыңыз",
-          "ru": "Раз в месяц посещать вебинар для преподавателей"
+          "ru": "Раз в месяц посещать вебинар для преподавателей",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Watch a 20-minute recorded talk", "kg": "20 мүнөттүк жазылган баяндаманы көрүңүз", "ru": "Посмотреть 20-минутную запись выступления" },
+          "steps": [
+            { "en": "Find a free webinar for teachers this month", "kg": "Ушул айда мугалимдер үчүн акысыз вебинар табыңыз", "ru": "Найти бесплатный вебинар для учителей на месяц", "minutes": 20 },
+            { "en": "Register and put it in the calendar", "kg": "Катталып, календарга жазыңыз", "ru": "Зарегистрироваться и внести в календарь", "minutes": 5 },
+            { "en": "Attend and take notes", "kg": "Катышып, конспект жазыңыз", "ru": "Посетить и законспектировать", "minutes": 60 },
+            { "en": "Pick one idea to try", "kg": "Сынап көрүү үчүн бир идея тандаңыз", "ru": "Выбрать одну идею для пробы", "minutes": 10 },
+            { "en": "Use the idea in a lesson this week", "kg": "Ушул жумада идеяны сабакта колдонуңуз", "ru": "Применить идею на уроке на этой неделе", "minutes": 30 }
+          ]
         },
         {
           "en": "Observe colleagues' lessons",
           "kg": "Кесиптештердин сабактарына катышып байкаңыз",
-          "ru": "Посещать уроки коллег"
+          "ru": "Посещать уроки коллег",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Watch 15 minutes of a colleague's lesson", "kg": "Кесиптешиңиздин сабагынын 15 мүнөтүн көрүңүз", "ru": "Посмотреть 15 минут урока коллеги" }
         },
         {
           "en": "Learn digital tools for teaching",
           "kg": "Окутуу үчүн санариптик куралдарды үйрөнүңүз",
-          "ru": "Освоить цифровые инструменты для обучения"
+          "ru": "Освоить цифровые инструменты для обучения",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Learn one quiz tool", "kg": "Тест түзүүчү бир куралды үйрөнүңүз", "ru": "Освоить один сервис для тестов" },
+          "steps": [
+            { "en": "List 5 popular tools for teachers", "kg": "Мугалимдер үчүн 5 популярдуу куралды жазыңыз", "ru": "Выписать 5 популярных сервисов для учителей", "minutes": 20 },
+            { "en": "Learn a quiz tool and make one quiz", "kg": "Тест куралын үйрөнүп, бир тест жасаңыз", "ru": "Освоить сервис тестов и сделать один тест", "minutes": 45 },
+            { "en": "Learn an online whiteboard", "kg": "Онлайн тактаны колдонууну үйрөнүңүз", "ru": "Освоить онлайн-доску", "minutes": 30 },
+            { "en": "Make a flashcard set for one topic", "kg": "Бир тема боюнча карточкалар топтомун жасаңыз", "ru": "Сделать набор карточек по одной теме", "minutes": 30 },
+            { "en": "Use one tool in a real lesson", "kg": "Бир куралды чыныгы сабакта колдонуңуз", "ru": "Использовать один сервис на реальном уроке", "minutes": 45 }
+          ]
         },
         {
           "en": "Specialise: exams, business language or kids",
           "kg": "Адистешиңиз: экзамендер, бизнес тили же балдар",
-          "ru": "Выбрать специализацию: экзамены, деловой язык или дети"
+          "ru": "Выбрать специализацию: экзамены, деловой язык или дети",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose one specialisation", "kg": "Бир адистикти тандаңыз", "ru": "Выбрать одну специализацию" },
+          "steps": [
+            { "en": "Compare exams, business language and kids", "kg": "Экзамен, бизнес тили жана балдар багытын салыштырыңыз", "ru": "Сравнить экзамены, деловой язык и детей", "minutes": 30 },
+            { "en": "Check the demand for each in your area", "kg": "Аймагыңызда ар бирине суроо-талапты текшериңиз", "ru": "Проверить спрос на каждое в своём районе", "minutes": 30 },
+            { "en": "Choose one and find a course on it", "kg": "Бирөөнү тандап, ал боюнча курс табыңыз", "ru": "Выбрать одно и найти по нему курс", "minutes": 30 },
+            { "en": "Prepare 3 materials for this niche", "kg": "Ушул багыт үчүн 3 материал даярдаңыз", "ru": "Подготовить 3 материала для этой ниши", "minutes": 60 },
+            { "en": "Add the specialisation to your profile", "kg": "Адистикти профилиңизге кошуңуз", "ru": "Добавить специализацию в профиль", "minutes": 10 }
+          ]
         },
         {
           "en": "Write down your teaching principles",
           "kg": "Окутуу принциптериңизди жазыңыз",
-          "ru": "Сформулировать свои принципы преподавания"
+          "ru": "Сформулировать свои принципы преподавания",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 teaching principles", "kg": "3 окутуу принцибин жазыңыз", "ru": "Записать 3 принципа преподавания" },
+          "steps": [
+            { "en": "Recall your best and worst teachers", "kg": "Эң мыкты жана эң начар мугалимдериңизди эстеңиз", "ru": "Вспомнить лучших и худших своих учителей", "minutes": 15 },
+            { "en": "Write what made their lessons work", "kg": "Сабактарын эмне натыйжалуу кылганын жазыңыз", "ru": "Записать, что делало их уроки удачными", "minutes": 15 },
+            { "en": "Formulate 5 principles, one line each", "kg": "5 принципти бирден сап менен түзүңүз", "ru": "Сформулировать 5 принципов по одной строке", "minutes": 20 },
+            { "en": "Check one recent lesson against them", "kg": "Акыркы сабагыңызды аларга салыштырып текшериңиз", "ru": "Сверить с ними один недавний урок", "minutes": 15 },
+            { "en": "Keep the list in Notes", "kg": "Тизмени «Эскертмелерде» сактаңыз", "ru": "Сохранить список в «Заметках»", "minutes": 5 }
+          ]
         },
         {
           "en": "Share your materials with other teachers",
           "kg": "Материалдарыңызды башка мугалимдер менен бөлүшүңүз",
-          "ru": "Делиться материалами с коллегами"
+          "ru": "Делиться материалами с коллегами",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Share one worksheet with a colleague", "kg": "Кесиптешиңиз менен бир иш баракчасын бөлүшүңүз", "ru": "Поделиться одним рабочим листом с коллегой" }
         },
         {
           "en": "Plan your next qualification step",
           "kg": "Кийинки квалификация кадамыңызды пландаңыз",
-          "ru": "Спланировать следующий шаг в квалификации"
+          "ru": "Спланировать следующий шаг в квалификации",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write the name of your next course", "kg": "Кийинки курсуңуздун атын жазыңыз", "ru": "Записать название следующего курса" },
+          "steps": [
+            { "en": "List 3 possible next qualifications", "kg": "Кийинки 3 мүмкүн болгон квалификацияны жазыңыз", "ru": "Выписать 3 возможные следующие квалификации", "minutes": 20 },
+            { "en": "Check the requirements on official sites", "kg": "Талаптарды расмий сайттардан карап чыгыңыз", "ru": "Изучить требования на официальных сайтах", "minutes": 30 },
+            { "en": "Estimate time and cost for each", "kg": "Ар бирине убакыт жана чыгымды эсептеңиз", "ru": "Оценить время и стоимость каждой", "minutes": 20 },
+            { "en": "Choose one and set a start date", "kg": "Бирөөнү тандап, баштоо датасын коюңуз", "ru": "Выбрать одну и назначить дату старта", "minutes": 10 },
+            { "en": "Add the first step to Tasks", "kg": "Биринчи кадамды «Тапшырмаларга» кошуңуз", "ru": "Добавить первый шаг в «Задачи»", "minutes": 5 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "Teacher well-being",
-        "kg": "Мугалимдин ал-абалы",
-        "ru": "Баланс преподавателя"
-      },
+      "title": { "en": "Teacher well-being", "kg": "Мугалимдин ал-абалы", "ru": "Баланс преподавателя" },
+      "kind": "support",
       "milestones": [
-        {
-          "en": "Sustainable weekly teaching load",
-          "kg": "Туруктуу жумалык окутуу жүгү",
-          "ru": "Устойчивая недельная нагрузка"
-        }
+        { "en": "Sustainable weekly teaching load", "kg": "Туруктуу жумалык окутуу жүгү", "ru": "Устойчивая недельная нагрузка" }
       ],
       "actions": [
         {
-          "en": "Limit the number of lessons per day",
-          "kg": "Күнүнө сабактардын санын чектеңиз",
-          "ru": "Ограничить количество уроков в день"
+          "en": "Teach no more lessons a day than your set limit",
+          "kg": "Күнүнө белгиленген чектен ашык сабак бербеңиз",
+          "ru": "Не вести в день больше уроков, чем свой лимит",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set your daily lesson limit", "kg": "Күнүмдүк сабак чегиңизди коюңуз", "ru": "Установить свой дневной лимит уроков" }
         },
         {
           "en": "Prepare lessons in advance, not at night",
           "kg": "Сабактарды түнкүсүн эмес, алдын ала даярдаңыз",
-          "ru": "Готовиться к урокам заранее, а не ночью"
+          "ru": "Готовиться к урокам заранее, а не ночью",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Prepare tomorrow's lesson before 8 pm", "kg": "Эртеңки сабакты саат 20:00гө чейин даярдаңыз", "ru": "Подготовить завтрашний урок до 20:00" }
         },
         {
-          "en": "Take care of your voice",
-          "kg": "Үнүңүздү сактаңыз",
-          "ru": "Беречь голос"
+          "en": "Warm up your voice 5 minutes before lessons",
+          "kg": "Сабактан мурун үнүңүздү 5 мүнөт жылытыңыз",
+          "ru": "Разогревать голос 5 минут перед уроками",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Drink water between lessons", "kg": "Сабактардын ортосунда суу ичиңиз", "ru": "Пить воду между уроками" }
         },
         {
           "en": "Keep one day a week free of teaching",
           "kg": "Жумасына бир күндү сабаксыз калтырыңыз",
-          "ru": "Оставлять один день в неделю без занятий"
+          "ru": "Оставлять один день в неделю без занятий",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep one evening a week free", "kg": "Жумасына бир кечти бош калтырыңыз", "ru": "Оставлять один вечер в неделю свободным" }
         },
         {
           "en": "Celebrate students' successes",
           "kg": "Окуучулардын ийгиликтерин белгилеңиз",
-          "ru": "Радоваться успехам учеников"
+          "ru": "Радоваться успехам учеников",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Praise one student's progress", "kg": "Бир окуучунун жетишкендигин мактаңыз", "ru": "Похвалить прогресс одного ученика" }
         },
         {
           "en": "Write down what inspires you in teaching",
           "kg": "Окутууда сизди эмне шыктандырарын жазыңыз",
-          "ru": "Записать, что вдохновляет вас в преподавании"
+          "ru": "Записать, что вдохновляет вас в преподавании",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Write one inspiring moment", "kg": "Бир шыктандырган учурду жазыңыз", "ru": "Записать один вдохновивший момент" }
         },
         {
           "en": "Discuss difficult cases with a mentor",
           "kg": "Оор учурларды устат менен талкуулаңыз",
-          "ru": "Обсуждать сложные случаи с наставником"
+          "ru": "Обсуждать сложные случаи с наставником",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Write down one difficult case", "kg": "Бир татаал учурду жазып алыңыз", "ru": "Записать один трудный случай" }
         },
         {
           "en": "Review workload and income every month",
           "kg": "Жүктү жана кирешени ар ай карап чыгыңыз",
-          "ru": "Каждый месяц пересматривать нагрузку и доход"
+          "ru": "Каждый месяц пересматривать нагрузку и доход",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Count this month's lessons", "kg": "Ушул айдагы сабактарды санаңыз", "ru": "Посчитать уроки за этот месяц" },
+          "steps": [
+            { "en": "Count the lessons and hours of the month", "kg": "Айдагы сабактарды жана сааттарды санаңыз", "ru": "Посчитать уроки и часы за месяц", "minutes": 15 },
+            { "en": "Count your income in the Finance module", "kg": "Кирешени «Финансы» бөлүмүндө эсептеңиз", "ru": "Подсчитать доход в модуле «Финансы»", "minutes": 15 },
+            { "en": "Rate your tiredness from 1 to 10", "kg": "Чарчооңузду 1ден 10го чейин баалаңыз", "ru": "Оценить усталость от 1 до 10", "minutes": 5 },
+            { "en": "Decide: add, keep or cut lessons", "kg": "Чечиңиз: сабак кошуу, калтыруу же азайтуу", "ru": "Решить: добавить, оставить или сократить уроки", "minutes": 10 },
+            { "en": "Plan next month's lesson times", "kg": "Кийинки айдын сабак убакыттарын пландаңыз", "ru": "Спланировать расписание следующего месяца", "minutes": 20 }
+          ]
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Respect & punctuality", "kg": "Урмат жана тактык", "ru": "Уважение и пунктуальность" },
+      "kind": "character",
+      "milestones": [
+        { "en": "One month without being late to a lesson", "kg": "Сабакка бир ай кечикпөө", "ru": "Месяц без опозданий на уроки" }
+      ],
+      "actions": [
+        {
+          "en": "Start every lesson exactly on time",
+          "kg": "Ар бир сабакты так өз убагында баштаңыз",
+          "ru": "Начинать каждый урок точно вовремя",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Be ready 5 minutes before the next lesson", "kg": "Кийинки сабакка 5 мүнөт мурун даяр болуңуз", "ru": "Быть готовым за 5 минут до следующего урока" }
+        },
+        {
+          "en": "Greet each student by name",
+          "kg": "Ар бир окуучу менен атын атап саламдашыңыз",
+          "ru": "Здороваться с каждым учеником по имени",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Learn the names of all your students", "kg": "Бардык окуучуларыңыздын атын жаттап алыңыз", "ru": "Выучить имена всех своих учеников" }
+        },
+        {
+          "en": "Check and return homework within 2 days",
+          "kg": "Үй тапшырманы 2 күндүн ичинде текшерип кайтарыңыз",
+          "ru": "Проверять и возвращать домашку за 2 дня",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Check the homework of 3 students", "kg": "3 окуучунун үй тапшырмасын текшериңиз", "ru": "Проверить домашку 3 учеников" }
+        },
+        {
+          "en": "Admit your mistake when you are wrong",
+          "kg": "Жаңылганыңызда катаңызды мойнуңузга алыңыз",
+          "ru": "Признавать свою ошибку, когда неправы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say \"let me check\" when unsure", "kg": "Ишенбесеңиз «текшерип көрөйүн» деңиз", "ru": "Говорить «давайте я проверю», если не уверены" }
+        },
+        {
+          "en": "Never discuss a student with other students",
+          "kg": "Окуучу жөнүндө башка окуучулар менен эч качан сүйлөшпөңүз",
+          "ru": "Никогда не обсуждать ученика с другими учениками",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Talk about progress only in private", "kg": "Жетишкендик жөнүндө жеке гана сүйлөшүңүз", "ru": "Обсуждать прогресс только наедине" }
+        },
+        {
+          "en": "Leave the classroom cleaner than you found it",
+          "kg": "Класстан чыгарда аны келгендегиден таза калтырыңыз",
+          "ru": "Оставлять класс чище, чем он был",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wipe the board after your lesson", "kg": "Сабактан кийин досканы аарчыңыз", "ru": "Вытереть доску после урока" }
+        },
+        {
+          "en": "Reply to students' messages within 24 hours",
+          "kg": "Окуучулардын билдирүүлөрүнө 24 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать на сообщения учеников в течение суток",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Answer the oldest message today", "kg": "Бүгүн эң эски билдирүүгө жооп бериңиз", "ru": "Ответить сегодня на самое старое сообщение" }
+        },
+        {
+          "en": "Finish every course you start with a final lesson",
+          "kg": "Баштаган ар бир курсту жыйынтык сабак менен бүтүрүңүз",
+          "ru": "Доводить каждый начатый курс до итогового урока",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Plan the final lesson of your current course", "kg": "Учурдагы курстун акыркы сабагын пландаңыз", "ru": "Запланировать последний урок текущего курса" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Student results", "kg": "Окуучулардын жыйынтыгы", "ru": "Результаты учеников" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First student reached the next level", "kg": "Биринчи окуучу кийинки деңгээлге жетти", "ru": "Первый ученик перешёл на следующий уровень" }
+      ],
+      "actions": [
+        {
+          "en": "Test each new student's level in the first lesson",
+          "kg": "Ар бир жаңы окуучунун деңгээлин биринчи сабакта текшериңиз",
+          "ru": "Проверять уровень нового ученика на первом уроке",
+          "type": "quality",
+          "minutes": 20,
+          "easy": { "en": "Ask a new student 5 level questions", "kg": "Жаңы окуучуга деңгээл боюнча 5 суроо бериңиз", "ru": "Задать новому ученику 5 вопросов на уровень" }
+        },
+        {
+          "en": "Set a goal and a deadline with each student",
+          "kg": "Ар бир окуучу менен максат жана мөөнөт коюңуз",
+          "ru": "Поставить цель и срок с каждым учеником",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write one goal for one student", "kg": "Бир окуучу үчүн бир максат жазыңыз", "ru": "Записать одну цель для одного ученика" },
+          "steps": [
+            { "en": "Ask the student why they learn the language", "kg": "Окуучудан тилди эмне үчүн үйрөнөрүн сураңыз", "ru": "Спросить ученика, зачем ему язык", "minutes": 10 },
+            { "en": "Agree on a target level or exam", "kg": "Максаттуу деңгээл же экзамен боюнча макулдашыңыз", "ru": "Договориться о целевом уровне или экзамене", "minutes": 10 },
+            { "en": "Set a realistic deadline together", "kg": "Чогуу реалдуу мөөнөт коюңуз", "ru": "Вместе назначить реальный срок", "minutes": 10 },
+            { "en": "Split the goal into monthly steps", "kg": "Максатты айлык кадамдарга бөлүңүз", "ru": "Разбить цель на ежемесячные шаги", "minutes": 20 },
+            { "en": "Write the plan and send it to the student", "kg": "Планды жазып, окуучуга жөнөтүңүз", "ru": "Записать план и отправить ученику", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Give a 10-minute mini test every 4 lessons",
+          "kg": "Ар 4 сабакта 10 мүнөттүк мини-тест бериңиз",
+          "ru": "Каждые 4 урока давать мини-тест на 10 минут",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Ask 5 review questions at the lesson start", "kg": "Сабактын башында 5 кайталоо суроосун бериңиз", "ru": "Задать 5 вопросов на повторение в начале урока" }
+        },
+        {
+          "en": "Send a short progress note every 4 lessons",
+          "kg": "Ар 4 сабактан кийин кыска жетишкендик кабарын жөнөтүңүз",
+          "ru": "Каждые 4 урока отправлять заметку о прогрессе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Send one progress note this week", "kg": "Ушул жумада бир жетишкендик кабарын жөнөтүңүз", "ru": "Отправить одну заметку о прогрессе на неделе" }
+        },
+        {
+          "en": "Keep a list of each student's typical mistakes",
+          "kg": "Ар бир окуучунун типтүү каталарынын тизмесин жүргүзүңүз",
+          "ru": "Вести список типичных ошибок каждого ученика",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write 2 typical mistakes of one student", "kg": "Бир окуучунун 2 типтүү катасын жазыңыз", "ru": "Записать 2 типичные ошибки одного ученика" }
+        },
+        {
+          "en": "Plan one lesson on a student's weakest skill",
+          "kg": "Окуучунун эң алсыз көндүмүнө бир сабак пландаңыз",
+          "ru": "Планировать урок на самый слабый навык ученика",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Add a 10-minute task on the weak skill", "kg": "Алсыз көндүм боюнча 10 мүнөттүк тапшырма кошуңуз", "ru": "Добавить 10-минутное задание на слабый навык" }
+        },
+        {
+          "en": "Run a full mock exam for an exam student",
+          "kg": "Экзаменге даярданган окуучуга толук сынак экзамен өткөрүңүз",
+          "ru": "Провести полный пробный экзамен для ученика",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Run one timed section of a mock exam", "kg": "Сынак экзамендин бир бөлүгүн убакыт менен өткөрүңүз", "ru": "Провести один раздел пробного экзамена на время" },
+          "steps": [
+            { "en": "Choose an official sample test", "kg": "Расмий үлгү тестти тандаңыз", "ru": "Выбрать официальный пробный тест", "minutes": 15 },
+            { "en": "Agree on a date and a quiet room or call", "kg": "Дата жана тынч бөлмө же чалуу боюнча макулдашыңыз", "ru": "Договориться о дате и тихой комнате или звонке", "minutes": 10 },
+            { "en": "Run the test with exam timing", "kg": "Тестти экзамендеги убакыт менен өткөрүңүз", "ru": "Провести тест по экзаменационному времени", "minutes": 120 },
+            { "en": "Check and score it by official criteria", "kg": "Аны расмий критерийлер менен текшерип, баалаңыз", "ru": "Проверить и оценить по официальным критериям", "minutes": 60 },
+            { "en": "Discuss the results and next steps", "kg": "Жыйынтыкты жана кийинки кадамдарды талкуулаңыз", "ru": "Обсудить результаты и следующие шаги", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Ask students for 1–10 feedback every 4 lessons",
+          "kg": "Ар 4 сабакта окуучулардан 1–10 баа сураңыз",
+          "ru": "Каждые 4 урока просить учеников оценить 1–10",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Ask one student what to improve", "kg": "Бир окуучудан эмнени жакшыртуу керектигин сураңыз", "ru": "Спросить одного ученика, что улучшить" }
         }
       ]
     }

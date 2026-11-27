@@ -3,138 +3,996 @@
   "icon": "💰",
   "title": { "en": "Money & finance", "kg": "Акча жана каржы", "ru": "Деньги и финансы" },
   "keywords": {
-    "en": ["money", "finance", "save", "saving", "savings", "budget", "debt", "loan", "invest", "investment", "income", "salary", "apartment", "house", "car", "rich", "earn", "wealth"],
-    "kg": ["акча", "каржы", "топтоо", "үнөмдөө", "бюджет", "карыз", "кредит", "инвестиция", "киреше", "айлык", "батир", "үй", "унаа", "бай", "табыш"],
-    "ru": ["деньги", "финансы", "накопить", "копить", "сбережения", "бюджет", "долг", "кредит", "ипотека", "инвестиции", "инвестировать", "доход", "зарплата", "квартира", "дом", "машина", "богатство", "заработать"]
+    "en": ["money", "finance", "save", "saving", "savings", "budget", "debt", "loan", "invest", "investment", "income", "salary", "apartment", "house", "car", "rich", "earn", "wealth", "emergency fund", "deposit", "expenses", "spend less", "pay off", "som"],
+    "kg": ["акча", "каржы", "топтоо", "үнөмдөө", "бюджет", "карыз", "кредит", "инвестиция", "киреше", "айлык", "батир", "үй", "унаа", "бай", "табыш", "акча топтоо", "депозит", "чыгым", "сом", "үнөмдүү", "карыздан кутулуу"],
+    "ru": ["деньги", "финансы", "накопить", "копить", "сбережения", "бюджет", "долг", "кредит", "ипотека", "инвестиции", "инвестировать", "доход", "зарплата", "квартира", "дом", "машина", "богатство", "заработать", "сом", "копилка", "депозит", "экономить", "расходы", "подушка безопасности", "накопления"]
   },
   "directions": [
     {
       "title": { "en": "Budget", "kg": "Бюджет", "ru": "Бюджет" },
+      "kind": "direct",
       "milestones": [
         { "en": "Three months of tracked expenses", "kg": "Үч ай бою чыгымдар эсепке алынды", "ru": "Три месяца учёта расходов" }
       ],
       "actions": [
-        { "en": "Record every expense in the Finance module", "kg": "Ар бир чыгымды «Каржы» бөлүмүнө жазыңыз", "ru": "Записывать каждый расход в модуле «Финансы»" },
-        { "en": "Group expenses into categories", "kg": "Чыгымдарды категорияларга бөлүңүз", "ru": "Разбить расходы на категории" },
-        { "en": "Set a monthly limit for each category", "kg": "Ар бир категорияга айлык чек коюңуз", "ru": "Установить месячный лимит на каждую категорию" },
-        { "en": "Review the budget every Sunday", "kg": "Бюджетти ар жекшембиде карап чыгыңыз", "ru": "Проверять бюджет каждое воскресенье" },
-        { "en": "Use the 50/30/20 rule as a starting point", "kg": "Баштоо үчүн 50/30/20 эрежесин колдонуңуз", "ru": "Взять за основу правило 50/30/20" },
-        { "en": "Plan large purchases a month ahead", "kg": "Чоң сатып алууларды бир ай алдын пландаңыз", "ru": "Планировать крупные покупки за месяц" },
-        { "en": "Pay bills on the same day each month", "kg": "Төлөмдөрдү ар айдын бир күнүндө төлөңүз", "ru": "Оплачивать счета в один и тот же день месяца" },
-        { "en": "Compare actual spending with the plan monthly", "kg": "Чыныгы чыгымды план менен ай сайын салыштырыңыз", "ru": "Ежемесячно сравнивать факт расходов с планом" }
+        {
+          "en": "Record every expense in the Finance module",
+          "kg": "Ар бир чыгымды «Каржы» бөлүмүнө жазыңыз",
+          "ru": "Записывать каждый расход в модуле «Финансы»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Record only expenses over 500 som", "kg": "500 сомдон ашык чыгымдарды гана жазыңыз", "ru": "Записывать только траты больше 500 сомов" }
+        },
+        {
+          "en": "Group expenses into categories",
+          "kg": "Чыгымдарды категорияларга бөлүңүз",
+          "ru": "Разбить расходы на категории",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Split last week's spending into 3 groups", "kg": "Өткөн жуманын чыгымдарын 3 топко бөлүңүз", "ru": "Разделить траты прошлой недели на 3 группы" },
+          "steps": [
+            { "en": "Collect last month's expenses", "kg": "Өткөн айдагы чыгымдарды чогултуңуз", "ru": "Собрать траты за прошлый месяц", "minutes": 20 },
+            { "en": "Pick 6–8 categories: food, rent, transport…", "kg": "6–8 категория тандаңыз: тамак, ижара, жол…", "ru": "Выбрать 6–8 категорий: еда, аренда, транспорт…", "minutes": 10 },
+            { "en": "Assign each expense to a category", "kg": "Ар бир чыгымды категорияга бөлүңүз", "ru": "Отнести каждую трату к категории", "minutes": 30 },
+            { "en": "Sum up each category", "kg": "Ар бир категориянын суммасын эсептеңиз", "ru": "Посчитать сумму по каждой категории", "minutes": 15 },
+            { "en": "Mark the 2 biggest categories", "kg": "Эң чоң 2 категорияны белгилеңиз", "ru": "Отметить 2 самые большие категории", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Set a monthly limit for each category",
+          "kg": "Ар бир категорияга айлык чек коюңуз",
+          "ru": "Установить месячный лимит на каждую категорию",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Set a limit for one category", "kg": "Бир категорияга чек коюңуз", "ru": "Установить лимит для одной категории" },
+          "steps": [
+            { "en": "Write your monthly income after taxes", "kg": "Салыктан кийинки айлык кирешеңизди жазыңыз", "ru": "Записать месячный доход после налогов", "minutes": 5 },
+            { "en": "List fixed payments: rent, utilities, phone", "kg": "Туруктуу төлөмдөрдү жазыңыз: ижара, коммуналдык, байланыш", "ru": "Выписать обязательные платежи: аренда, коммуналка, связь", "minutes": 15 },
+            { "en": "Set a limit for every category", "kg": "Ар бир категорияга чек белгилеңиз", "ru": "Задать лимит для каждой категории", "minutes": 20 },
+            { "en": "Check that limits fit your income", "kg": "Чектер кирешеңизге батарын текшериңиз", "ru": "Проверить, что лимиты укладываются в доход", "minutes": 10 },
+            { "en": "Enter the limits in the Finance module", "kg": "Чектерди Каржы модулуна киргизиңиз", "ru": "Внести лимиты в модуль «Финансы»", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Review the budget every Sunday",
+          "kg": "Бюджетти ар жекшембиде карап чыгыңыз",
+          "ru": "Проверять бюджет каждое воскресенье",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Check one category on Sunday", "kg": "Жекшембиде бир категорияны текшериңиз", "ru": "В воскресенье проверить одну категорию" }
+        },
+        {
+          "en": "Use the 50/30/20 rule as a starting point",
+          "kg": "Баштоо үчүн 50/30/20 эрежесин колдонуңуз",
+          "ru": "Взять за основу правило 50/30/20",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Calculate 20% of your income", "kg": "Кирешеңиздин 20% канча экенин эсептеңиз", "ru": "Посчитать 20% от своего дохода" },
+          "steps": [
+            { "en": "Learn the rule: needs, wants, savings", "kg": "Эрежени билиңиз: зарылдык, каалоо, топтоо", "ru": "Разобраться в правиле: нужды, желания, накопления", "minutes": 10 },
+            { "en": "Calculate 50%, 30% and 20% of income", "kg": "Кирешенин 50%, 30% жана 20% эсептеңиз", "ru": "Посчитать 50%, 30% и 20% от дохода", "minutes": 10 },
+            { "en": "Compare with your real spending", "kg": "Чыныгы чыгымдарыңыз менен салыштырыңыз", "ru": "Сравнить с реальными тратами", "minutes": 20 },
+            { "en": "Adjust the shares to your life", "kg": "Үлүштөрдү жашооңузга ылайыкташтырыңыз", "ru": "Подогнать доли под свою жизнь", "minutes": 15 },
+            { "en": "Write the final split in your budget", "kg": "Акыркы бөлүштүрүүнү бюджетке жазыңыз", "ru": "Записать итоговое распределение в бюджет", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Plan large purchases a month ahead",
+          "kg": "Чоң сатып алууларды бир ай алдын пландаңыз",
+          "ru": "Планировать крупные покупки за месяц",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Write down your next big purchase and price", "kg": "Кийинки чоң сатып алууну жана баасын жазыңыз", "ru": "Записать следующую крупную покупку и цену" }
+        },
+        {
+          "en": "Pay bills on the same day each month",
+          "kg": "Төлөмдөрдү ар айдын бир күнүндө төлөңүз",
+          "ru": "Оплачивать счета в один и тот же день месяца",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Set a reminder for one bill", "kg": "Бир төлөм үчүн эскертме коюңуз", "ru": "Поставить напоминание для одного счёта" }
+        },
+        {
+          "en": "Compare actual spending with the plan monthly",
+          "kg": "Чыныгы чыгымды план менен ай сайын салыштырыңыз",
+          "ru": "Ежемесячно сравнивать факт расходов с планом",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Compare one category with the plan", "kg": "Бир категорияны план менен салыштырыңыз", "ru": "Сравнить одну категорию с планом" }
+        }
       ]
     },
     {
       "title": { "en": "Savings", "kg": "Топтоо", "ru": "Накопления" },
+      "kind": "direct",
       "milestones": [
         { "en": "First 10% of the target saved", "kg": "Максаттын алгачкы 10% топтолду", "ru": "Накоплены первые 10% от цели" },
         { "en": "Half of the target saved", "kg": "Максаттын жарымы топтолду", "ru": "Накоплена половина суммы" }
       ],
       "actions": [
-        { "en": "Calculate the exact amount and deadline", "kg": "Так сумманы жана мөөнөттү эсептеңиз", "ru": "Рассчитать точную сумму и срок" },
-        { "en": "Save on payday, before spending", "kg": "Айлык түшкөн күнү, чыгымдан мурун топтоңуз", "ru": "Откладывать в день зарплаты, до трат" },
-        { "en": "Open a separate account for the goal", "kg": "Максат үчүн өзүнчө эсеп ачыңыз", "ru": "Открыть отдельный счёт под цель" },
-        { "en": "Set up an automatic monthly transfer", "kg": "Ай сайын автоматтык которууну орнотуңуз", "ru": "Настроить автоматический ежемесячный перевод" },
-        { "en": "Create a goal in the Savings module", "kg": "«Топтоо» бөлүмүндө максат түзүңүз", "ru": "Создать цель в модуле «Накопления»" },
-        { "en": "Put all unexpected income into savings", "kg": "Күтүлбөгөн кирешенин баарын топтоого салыңыз", "ru": "Откладывать все неожиданные доходы" },
-        { "en": "Raise the saving rate by 1% every quarter", "kg": "Топтоо үлүшүн ар чейректе 1%га көбөйтүңүз", "ru": "Каждый квартал повышать долю накоплений на 1%" },
-        { "en": "Build an emergency fund of 3 months of expenses", "kg": "3 айлык чыгымга барабар запас фонд түзүңүз", "ru": "Собрать подушку безопасности на 3 месяца" }
+        {
+          "en": "Calculate the exact amount and deadline",
+          "kg": "Так сумманы жана мөөнөттү эсептеңиз",
+          "ru": "Рассчитать точную сумму и срок",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write the target amount in som", "kg": "Максаттуу сумманы сом менен жазыңыз", "ru": "Записать нужную сумму в сомах" },
+          "steps": [
+            { "en": "Find the real price of what you save for", "kg": "Топтоп жаткан нерсеңиздин чыныгы баасын табыңыз", "ru": "Узнать реальную цену того, на что копите", "minutes": 20 },
+            { "en": "Add 10% for price changes", "kg": "Баанын өзгөрүшүнө 10% кошуңуз", "ru": "Добавить 10% на изменение цен", "minutes": 5 },
+            { "en": "Choose a realistic deadline", "kg": "Реалдуу мөөнөт тандаңыз", "ru": "Выбрать реальный срок", "minutes": 10 },
+            { "en": "Divide the amount by the months left", "kg": "Сумманы калган айларга бөлүңүз", "ru": "Разделить сумму на оставшиеся месяцы", "minutes": 5 },
+            { "en": "Check the monthly sum fits your budget", "kg": "Айлык сумма бюджетке батарын текшериңиз", "ru": "Проверить, что ежемесячная сумма по силам", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Save on payday, before spending",
+          "kg": "Айлык түшкөн күнү, чыгымдан мурун топтоңуз",
+          "ru": "Откладывать в день зарплаты, до трат",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Save 5% of income on payday", "kg": "Айлык алган күнү кирешенин 5% четке салыңыз", "ru": "Откладывать 5% дохода в день зарплаты" }
+        },
+        {
+          "en": "Open a separate account for the goal",
+          "kg": "Максат үчүн өзүнчө эсеп ачыңыз",
+          "ru": "Открыть отдельный счёт под цель",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Keep savings in a separate envelope", "kg": "Топтолгон акчаны өзүнчө конвертте сактаңыз", "ru": "Хранить накопления в отдельном конверте" },
+          "steps": [
+            { "en": "Compare savings accounts in 2–3 banks", "kg": "2–3 банктагы топтоо эсептерин салыштырыңыз", "ru": "Сравнить накопительные счета в 2–3 банках", "minutes": 30 },
+            { "en": "Check fees and withdrawal rules", "kg": "Комиссияларды жана акча алуу эрежелерин текшериңиз", "ru": "Проверить комиссии и правила снятия", "minutes": 15 },
+            { "en": "Open the account in the app or branch", "kg": "Эсепти тиркемеден же филиалдан ачыңыз", "ru": "Открыть счёт в приложении или отделении", "minutes": 30 },
+            { "en": "Name the account after your goal", "kg": "Эсепке максатыңыздын атын бериңиз", "ru": "Назвать счёт именем цели", "minutes": 5 },
+            { "en": "Make the first deposit", "kg": "Биринчи салымды салыңыз", "ru": "Сделать первый взнос", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Set up an automatic monthly transfer",
+          "kg": "Ай сайын автоматтык которууну орнотуңуз",
+          "ru": "Настроить автоматический ежемесячный перевод",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Set a monthly reminder to move savings", "kg": "Акча которууга айлык эскертме коюңуз", "ru": "Поставить ежемесячное напоминание о переводе" },
+          "steps": [
+            { "en": "Choose the amount to transfer", "kg": "Которула турган сумманы тандаңыз", "ru": "Выбрать сумму перевода", "minutes": 5 },
+            { "en": "Pick the day right after payday", "kg": "Айлыктан кийинки күндү тандаңыз", "ru": "Выбрать день сразу после зарплаты", "minutes": 5 },
+            { "en": "Find auto-transfer in your bank app", "kg": "Банк тиркемесинен автокотормону табыңыз", "ru": "Найти автоперевод в банковском приложении", "minutes": 10 },
+            { "en": "Set up the transfer", "kg": "Которууну орнотуңуз", "ru": "Настроить перевод", "minutes": 10 },
+            { "en": "Check next month that it worked", "kg": "Кийинки айда иштегенин текшериңиз", "ru": "В следующем месяце проверить, что сработало", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Create a goal in the Savings module",
+          "kg": "«Топтоо» бөлүмүндө максат түзүңүз",
+          "ru": "Создать цель в модуле «Накопления»",
+          "type": "milestone",
+          "minutes": 10,
+          "easy": { "en": "Write the goal name and amount", "kg": "Максаттын атын жана суммасын жазыңыз", "ru": "Записать название цели и сумму" },
+          "steps": [
+            { "en": "Open the Savings module", "kg": "Топтоо модулун ачыңыз", "ru": "Открыть модуль «Накопления»", "minutes": 5 },
+            { "en": "Enter the goal name and amount", "kg": "Максаттын атын жана суммасын киргизиңиз", "ru": "Ввести название цели и сумму", "minutes": 5 },
+            { "en": "Set the deadline", "kg": "Мөөнөттү коюңуз", "ru": "Указать срок", "minutes": 5 },
+            { "en": "Add what you have already saved", "kg": "Буга чейин топтогонуңузду кошуңуз", "ru": "Добавить уже накопленное", "minutes": 5 },
+            { "en": "Choose an emoji for motivation", "kg": "Мотивация үчүн эмодзи тандаңыз", "ru": "Выбрать эмодзи для мотивации", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Put all unexpected income into savings",
+          "kg": "Күтүлбөгөн кирешенин баарын топтоого салыңыз",
+          "ru": "Откладывать все неожиданные доходы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put half of any bonus into savings", "kg": "Ар кандай бонустун жарымын топтоого салыңыз", "ru": "Откладывать половину любой премии" }
+        },
+        {
+          "en": "Raise the saving rate by 1% every quarter",
+          "kg": "Топтоо үлүшүн ар чейректе 1%га көбөйтүңүз",
+          "ru": "Каждый квартал повышать долю накоплений на 1%",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Add 100 som to your monthly saving", "kg": "Айлык топтоого 100 сом кошуңуз", "ru": "Добавить 100 сомов к ежемесячному взносу" }
+        },
+        {
+          "en": "Build an emergency fund of 3 months of expenses",
+          "kg": "3 айлык чыгымга барабар запас фонд түзүңүз",
+          "ru": "Собрать подушку безопасности на 3 месяца",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Save one week of expenses as a reserve", "kg": "Бир жумалык чыгымды резерв кылып топтоңуз", "ru": "Накопить резерв на одну неделю расходов" },
+          "steps": [
+            { "en": "Calculate your monthly must-pay expenses", "kg": "Айлык милдеттүү чыгымдарды эсептеңиз", "ru": "Посчитать обязательные расходы в месяц", "minutes": 20 },
+            { "en": "Multiply by 3 to get the target", "kg": "Максатты табуу үчүн 3кө көбөйтүңүз", "ru": "Умножить на 3, чтобы получить цель", "minutes": 5 },
+            { "en": "Open a separate place for the fund", "kg": "Фонд үчүн өзүнчө жер ачыңыз", "ru": "Завести отдельное место для фонда", "minutes": 15 },
+            { "en": "Set a fixed monthly contribution", "kg": "Ай сайынкы туруктуу салымды белгилеңиз", "ru": "Назначить фиксированный ежемесячный взнос", "minutes": 10 },
+            { "en": "Mark progress each month", "kg": "Ар айда жылышты белгилеп туруңуз", "ru": "Отмечать прогресс каждый месяц", "minutes": 5 },
+            { "en": "Agree when the fund may be used", "kg": "Фондду качан колдонууга болорун чечиңиз", "ru": "Решить, в каких случаях можно трогать фонд", "minutes": 10 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Income", "kg": "Киреше", "ru": "Доход" },
+      "kind": "direct",
       "milestones": [
         { "en": "Income increased by 10%", "kg": "Киреше 10%га көбөйдү", "ru": "Доход вырос на 10%" }
       ],
       "actions": [
-        { "en": "Find out the market salary for your role", "kg": "Кызматыңыз боюнча базардагы айлыкты билиңиз", "ru": "Узнать рыночную зарплату для своей должности" },
-        { "en": "Prepare arguments for a raise", "kg": "Айлык көтөрүү үчүн далилдерди даярдаңыз", "ru": "Подготовить аргументы для повышения" },
-        { "en": "Learn one skill that pays more", "kg": "Көбүрөөк акы төлөнгөн бир көндүмдү үйрөнүңүз", "ru": "Освоить один более оплачиваемый навык" },
-        { "en": "Try one source of extra income", "kg": "Кошумча кирешенин бир булагын сынап көрүңүз", "ru": "Попробовать один источник дополнительного дохода" },
-        { "en": "Sell things you no longer use", "kg": "Колдонбогон буюмдарды сатыңыз", "ru": "Продать вещи, которыми не пользуетесь" },
-        { "en": "Track working hours in the Shifts module", "kg": "Иш сааттарын «Сменалар» бөлүмүндө эсептеңиз", "ru": "Учитывать рабочие часы в модуле «Смены»" },
-        { "en": "Update your CV and profile", "kg": "Резюмеңизди жана профилиңизди жаңылаңыз", "ru": "Обновить резюме и профиль" },
-        { "en": "Grow your network in your field", "kg": "Тармагыңыздагы байланыштарды кеңейтиңиз", "ru": "Расширять профессиональные связи" }
+        {
+          "en": "Find out the market salary for your role",
+          "kg": "Кызматыңыз боюнча базардагы айлыкты билиңиз",
+          "ru": "Узнать рыночную зарплату для своей должности",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Check 5 job ads for your role", "kg": "Ролуңуз боюнча 5 вакансияны карап чыгыңыз", "ru": "Посмотреть 5 вакансий по своей роли" },
+          "steps": [
+            { "en": "Find 10 job ads for your role", "kg": "Ролуңуз боюнча 10 вакансия табыңыз", "ru": "Найти 10 вакансий по своей роли", "minutes": 30 },
+            { "en": "Write down the salaries in a table", "kg": "Айлыктарды таблицага жазыңыз", "ru": "Записать зарплаты в таблицу", "minutes": 15 },
+            { "en": "Ask 2 people in the field about pay", "kg": "Тармактагы 2 адамдан айлык тууралуу сураңыз", "ru": "Спросить 2 людей из сферы о зарплатах", "minutes": 20 },
+            { "en": "Find the middle salary", "kg": "Орточо айлыкты табыңыз", "ru": "Найти среднюю зарплату", "minutes": 10 },
+            { "en": "Compare it with your income", "kg": "Аны өз кирешеңиз менен салыштырыңыз", "ru": "Сравнить со своим доходом", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Prepare arguments for a raise",
+          "kg": "Айлык көтөрүү үчүн далилдерди даярдаңыз",
+          "ru": "Подготовить аргументы для повышения",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "List 3 results you achieved this year", "kg": "Быйыл жеткен 3 жыйынтыгыңызды жазыңыз", "ru": "Выписать 3 результата за этот год" },
+          "steps": [
+            { "en": "List your results in numbers", "kg": "Жыйынтыктарыңызды сандар менен жазыңыз", "ru": "Выписать свои результаты в цифрах", "minutes": 30 },
+            { "en": "Add new duties you took on", "kg": "Кошумча алган милдеттериңизди жазыңыз", "ru": "Добавить новые обязанности, которые взяли", "minutes": 15 },
+            { "en": "Compare with the market salary", "kg": "Рыноктогу айлык менен салыштырыңыз", "ru": "Сравнить с рыночной зарплатой", "minutes": 10 },
+            { "en": "Name the exact raise you want", "kg": "Каалаган так сумманы аныктаңыз", "ru": "Определить точную желаемую прибавку", "minutes": 10 },
+            { "en": "Rehearse the talk with a friend", "kg": "Сүйлөшүүнү дос менен машыгыңыз", "ru": "Отрепетировать разговор с другом", "minutes": 20 },
+            { "en": "Ask your manager for a meeting", "kg": "Жетекчиңизден жолугушуу сураңыз", "ru": "Попросить руководителя о встрече", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Learn one skill that pays more",
+          "kg": "Көбүрөөк акы төлөнгөн бир көндүмдү үйрөнүңүз",
+          "ru": "Освоить один более оплачиваемый навык",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 45,
+          "easy": { "en": "Spend 15 minutes on the new skill", "kg": "Жаңы көндүмгө 15 мүнөт бөлүңүз", "ru": "Уделить новому навыку 15 минут" }
+        },
+        {
+          "en": "Try one source of extra income",
+          "kg": "Кошумча кирешенин бир булагын сынап көрүңүз",
+          "ru": "Попробовать один источник дополнительного дохода",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write 3 ideas for side income", "kg": "Кошумча киреше үчүн 3 идея жазыңыз", "ru": "Записать 3 идеи дополнительного дохода" },
+          "steps": [
+            { "en": "List skills people would pay for", "kg": "Адамдар акча төлөй турган көндүмдөрүңүздү жазыңыз", "ru": "Выписать навыки, за которые готовы платить", "minutes": 15 },
+            { "en": "Pick one idea that needs no big costs", "kg": "Чоң чыгым талап кылбаган бир идеяны тандаңыз", "ru": "Выбрать одну идею без больших затрат", "minutes": 10 },
+            { "en": "Set a price for your service", "kg": "Кызматыңызга баа коюңуз", "ru": "Назначить цену за услугу", "minutes": 15 },
+            { "en": "Tell 10 people or post an offer", "kg": "10 адамга айтыңыз же сунуш жарыялаңыз", "ru": "Рассказать 10 людям или опубликовать предложение", "minutes": 30 },
+            { "en": "Complete the first paid order", "kg": "Биринчи акылуу буйрутманы аткарыңыз", "ru": "Выполнить первый платный заказ", "minutes": 120 },
+            { "en": "Record what you earned", "kg": "Тапкан акчаңызды жазып алыңыз", "ru": "Записать заработанное", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Sell things you no longer use",
+          "kg": "Колдонбогон буюмдарды сатыңыз",
+          "ru": "Продать вещи, которыми не пользуетесь",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Post one unused item for sale", "kg": "Колдонулбаган бир буюмду сатууга коюңуз", "ru": "Выставить на продажу одну ненужную вещь" },
+          "steps": [
+            { "en": "Find 5 things you haven't used for a year", "kg": "Бир жылдан бери колдонулбаган 5 буюм табыңыз", "ru": "Найти 5 вещей, которыми не пользовались год", "minutes": 20 },
+            { "en": "Clean them and take good photos", "kg": "Аларды тазалап, жакшы сүрөткө тартыңыз", "ru": "Почистить и красиво сфотографировать", "minutes": 30 },
+            { "en": "Check prices of similar items online", "kg": "Окшош буюмдардын баасын интернеттен караңыз", "ru": "Посмотреть цены на похожие вещи в интернете", "minutes": 15 },
+            { "en": "Post ads on a local marketplace", "kg": "Жергиликтүү сайтка жарыя бериңиз", "ru": "Разместить объявления на местной площадке", "minutes": 20 },
+            { "en": "Meet buyers in a safe public place", "kg": "Сатып алуучулар менен эл көп жерде жолугуңуз", "ru": "Встречаться с покупателями в людном месте", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Track working hours in the Shifts module",
+          "kg": "Иш сааттарын «Сменалар» бөлүмүндө эсептеңиз",
+          "ru": "Учитывать рабочие часы в модуле «Смены»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Log your hours once a week", "kg": "Иштеген саатыңызды жумасына бир жолу жазыңыз", "ru": "Записывать часы раз в неделю" }
+        },
+        {
+          "en": "Update your CV and profile",
+          "kg": "Резюмеңизди жана профилиңизди жаңылаңыз",
+          "ru": "Обновить резюме и профиль",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Add your latest job to your CV", "kg": "Акыркы ишиңизди резюмеге кошуңуз", "ru": "Добавить последнее место работы в резюме" },
+          "steps": [
+            { "en": "List achievements of the last year", "kg": "Акыркы жылдагы жетишкендиктерди жазыңыз", "ru": "Выписать достижения за последний год", "minutes": 20 },
+            { "en": "Update your CV with numbers", "kg": "Резюмени сандар менен жаңылаңыз", "ru": "Обновить резюме с цифрами", "minutes": 45 },
+            { "en": "Ask a friend to proofread it", "kg": "Досуңуздан текшерип берүүсүн сураңыз", "ru": "Попросить друга проверить текст", "minutes": 10 },
+            { "en": "Update your photo and job profiles", "kg": "Сүрөтүңүздү жана жумуш профилдериңизди жаңылаңыз", "ru": "Обновить фото и профили на сайтах вакансий", "minutes": 30 },
+            { "en": "Save the CV as PDF", "kg": "Резюмени PDF кылып сактаңыз", "ru": "Сохранить резюме в PDF", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Message one person in your field each week",
+          "kg": "Ар жума тармагыңыздагы бир адамга жазыңыз",
+          "ru": "Каждую неделю писать одному человеку из своей сферы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Thank or congratulate one colleague", "kg": "Бир кесиптешиңизге ыраазычылык айтыңыз же куттуктаңыз", "ru": "Поблагодарить или поздравить одного коллегу" }
+        }
       ]
     },
     {
       "title": { "en": "Debts", "kg": "Карыздар", "ru": "Долги" },
+      "kind": "direct",
       "milestones": [
         { "en": "Most expensive debt closed", "kg": "Эң кымбат карыз жабылды", "ru": "Закрыт самый дорогой долг" }
       ],
       "actions": [
-        { "en": "List all debts with rates and dates", "kg": "Бардык карыздарды пайызы жана мөөнөтү менен тизмелеңиз", "ru": "Выписать все долги со ставками и сроками" },
-        { "en": "Pay off the highest-interest debt first", "kg": "Эң жогорку пайыздуу карызды биринчи жабыңыз", "ru": "Сначала гасить долг с самой высокой ставкой" },
-        { "en": "Never miss a minimum payment", "kg": "Минималдуу төлөмдү эч качан калтырбаңыз", "ru": "Никогда не пропускать минимальный платёж" },
-        { "en": "Stop taking new consumer loans", "kg": "Жаңы керектөө кредиттерин алууну токтотуңуз", "ru": "Перестать брать новые потребительские кредиты" },
-        { "en": "Ask the bank about refinancing", "kg": "Банктан кайра каржылоо жөнүндө сураңыз", "ru": "Узнать в банке о рефинансировании" },
-        { "en": "Use extra money for early repayment", "kg": "Ашыкча акчаны мөөнөтүнөн мурда төлөөгө жумшаңыз", "ru": "Направлять лишние деньги на досрочное погашение" },
-        { "en": "Remove saved cards from shopping sites", "kg": "Соода сайттарынан сакталган карталарды өчүрүңүз", "ru": "Удалить сохранённые карты из интернет-магазинов" },
-        { "en": "Celebrate every closed debt", "kg": "Ар бир жабылган карызды белгилеңиз", "ru": "Отмечать каждый закрытый долг" }
+        {
+          "en": "List all debts with rates and dates",
+          "kg": "Бардык карыздарды пайызы жана мөөнөтү менен тизмелеңиз",
+          "ru": "Выписать все долги со ставками и сроками",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write down your biggest debt and its rate", "kg": "Эң чоң карызыңызды жана пайызын жазыңыз", "ru": "Записать самый крупный долг и его ставку" },
+          "steps": [
+            { "en": "Collect all contracts and app records", "kg": "Бардык келишимдерди жана тиркемедеги маалыматты чогултуңуз", "ru": "Собрать все договоры и данные из приложений", "minutes": 20 },
+            { "en": "Include debts to friends and family", "kg": "Досторго жана туугандарга карызды да кошуңуз", "ru": "Учесть долги друзьям и родным", "minutes": 10 },
+            { "en": "Write amount, rate and payment date", "kg": "Сумманы, пайызды жана төлөм күнүн жазыңыз", "ru": "Записать сумму, ставку и дату платежа", "minutes": 20 },
+            { "en": "Sum up the total debt", "kg": "Жалпы карызды эсептеңиз", "ru": "Посчитать общий долг", "minutes": 5 },
+            { "en": "Sort debts by interest rate", "kg": "Карыздарды пайызы боюнча иреттеңиз", "ru": "Отсортировать долги по ставке", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Pay off the highest-interest debt first",
+          "kg": "Эң жогорку пайыздуу карызды биринчи жабыңыз",
+          "ru": "Сначала гасить долг с самой высокой ставкой",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Add 200 som to your most expensive debt", "kg": "Эң кымбат карызга 200 сом кошуп төлөңүз", "ru": "Доплатить 200 сомов к самому дорогому долгу" }
+        },
+        {
+          "en": "Never miss a minimum payment",
+          "kg": "Минималдуу төлөмдү эч качан калтырбаңыз",
+          "ru": "Никогда не пропускать минимальный платёж",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set reminders 3 days before each payment", "kg": "Ар бир төлөмдөн 3 күн мурун эскертме коюңуз", "ru": "Ставить напоминания за 3 дня до платежа" }
+        },
+        {
+          "en": "Stop taking new consumer loans",
+          "kg": "Жаңы керектөө кредиттерин алууну токтотуңуз",
+          "ru": "Перестать брать новые потребительские кредиты",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Turn off borrowing offers in bank apps", "kg": "Банк тиркемелериндеги карыз сунуштарын өчүрүңүз", "ru": "Отключить предложения займов в приложениях банков" }
+        },
+        {
+          "en": "Ask the bank about refinancing",
+          "kg": "Банктан кайра каржылоо жөнүндө сураңыз",
+          "ru": "Узнать в банке о рефинансировании",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Ask your bank about lowering your rate", "kg": "Банктан пайызды азайтуу тууралуу сураңыз", "ru": "Спросить банк о снижении ставки" },
+          "steps": [
+            { "en": "Write your current rates and balances", "kg": "Учурдагы пайыздарды жана калдыктарды жазыңыз", "ru": "Выписать текущие ставки и остатки", "minutes": 15 },
+            { "en": "Check refinancing terms in 2–3 banks", "kg": "2–3 банктагы кайра каржылоо шарттарын текшериңиз", "ru": "Узнать условия рефинансирования в 2–3 банках", "minutes": 30 },
+            { "en": "Count all fees, not only the rate", "kg": "Пайызды гана эмес, бардык комиссияларды эсептеңиз", "ru": "Учесть все комиссии, а не только ставку", "minutes": 15 },
+            { "en": "Calculate the real saving", "kg": "Чыныгы үнөмдү эсептеңиз", "ru": "Посчитать реальную экономию", "minutes": 15 },
+            { "en": "Decide only if the total cost goes down", "kg": "Жалпы чыгым азайса гана чечим кабыл алыңыз", "ru": "Решаться, только если общая сумма снижается", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Use extra money for early repayment",
+          "kg": "Ашыкча акчаны мөөнөтүнөн мурда төлөөгө жумшаңыз",
+          "ru": "Направлять лишние деньги на досрочное погашение",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put 10% of any extra money to debt", "kg": "Ар кандай кошумча акчанын 10% карызга салыңыз", "ru": "Направлять 10% лишних денег на долг" }
+        },
+        {
+          "en": "Remove saved cards from shopping sites",
+          "kg": "Соода сайттарынан сакталган карталарды өчүрүңүз",
+          "ru": "Удалить сохранённые карты из интернет-магазинов",
+          "type": "milestone",
+          "minutes": 15,
+          "easy": { "en": "Remove your card from one shopping app", "kg": "Бир соода тиркемесинен картаңызды өчүрүңүз", "ru": "Удалить карту из одного приложения магазина" },
+          "steps": [
+            { "en": "List sites and apps where you shop", "kg": "Соода кылган сайттарды жана тиркемелерди жазыңыз", "ru": "Выписать сайты и приложения для покупок", "minutes": 5 },
+            { "en": "Delete saved cards on each one", "kg": "Ар биринен сакталган карталарды өчүрүңүз", "ru": "Удалить сохранённые карты в каждом", "minutes": 15 },
+            { "en": "Turn off one-click payments", "kg": "Бир басуу менен төлөөнү өчүрүңүз", "ru": "Отключить оплату в один клик", "minutes": 5 },
+            { "en": "Log out of shops you rarely use", "kg": "Сейрек колдонгон дүкөндөрдөн чыгып кетиңиз", "ru": "Выйти из редко используемых магазинов", "minutes": 5 },
+            { "en": "Check again in a month", "kg": "Бир айдан кийин кайра текшериңиз", "ru": "Проверить снова через месяц", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Celebrate every closed debt",
+          "kg": "Ар бир жабылган карызды белгилеңиз",
+          "ru": "Отмечать каждый закрытый долг",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Cross out a closed debt on your list", "kg": "Жабылган карызды тизмеден сызып салыңыз", "ru": "Вычеркнуть закрытый долг из списка" }
+        }
       ]
     },
     {
       "title": { "en": "Spending less", "kg": "Чыгымды азайтуу", "ru": "Экономия" },
+      "kind": "direct",
       "milestones": [
         { "en": "Monthly expenses down by 15%", "kg": "Айлык чыгымдар 15%га азайды", "ru": "Месячные расходы снижены на 15%" }
       ],
       "actions": [
-        { "en": "Cancel subscriptions you don't use", "kg": "Колдонбогон жазылууларды өчүрүңүз", "ru": "Отменить неиспользуемые подписки" },
-        { "en": "Wait 48 hours before non-essential purchases", "kg": "Зарыл эмес сатып алуудан мурун 48 саат күтүңүз", "ru": "Ждать 48 часов перед необязательной покупкой" },
-        { "en": "Shop with a list", "kg": "Тизме менен соода кылыңыз", "ru": "Ходить в магазин со списком" },
-        { "en": "Cook at home instead of ordering food", "kg": "Тамак буйрутмалоонун ордуна үйдө жасаңыз", "ru": "Готовить дома вместо доставки" },
-        { "en": "Compare prices before big purchases", "kg": "Чоң сатып алуудан мурун бааларды салыштырыңыз", "ru": "Сравнивать цены перед крупной покупкой" },
-        { "en": "Review phone and internet tariffs", "kg": "Телефон жана интернет тарифтерин карап чыгыңыз", "ru": "Пересмотреть тарифы связи и интернета" },
-        { "en": "Use cashback and discounts wisely", "kg": "Кэшбэк жана арзандатууларды акыл менен колдонуңуз", "ru": "Разумно пользоваться кешбэком и скидками" },
-        { "en": "Have one no-spend day each week", "kg": "Жумасына бир күнү эч нерсе сатып албаңыз", "ru": "Один день в неделю без трат" }
+        {
+          "en": "Cancel subscriptions you don't use",
+          "kg": "Колдонбогон жазылууларды өчүрүңүз",
+          "ru": "Отменить неиспользуемые подписки",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Cancel one subscription you don't use", "kg": "Колдонулбаган бир жазылууну токтотуңуз", "ru": "Отменить одну ненужную подписку" },
+          "steps": [
+            { "en": "Check card statements for regular charges", "kg": "Картадагы туруктуу төлөмдөрдү текшериңиз", "ru": "Найти в выписке регулярные списания", "minutes": 15 },
+            { "en": "List every subscription and its price", "kg": "Ар бир жазылууну жана баасын жазыңыз", "ru": "Выписать все подписки и цены", "minutes": 10 },
+            { "en": "Mark ones unused in the last month", "kg": "Акыркы айда колдонулбагандарын белгилеңиз", "ru": "Отметить неиспользованные за месяц", "minutes": 5 },
+            { "en": "Cancel the marked subscriptions", "kg": "Белгиленген жазылууларды токтотуңуз", "ru": "Отменить отмеченные подписки", "minutes": 15 },
+            { "en": "Write down the monthly saving", "kg": "Айлык үнөмдү жазыңыз", "ru": "Записать месячную экономию", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Wait 48 hours before non-essential purchases",
+          "kg": "Зарыл эмес сатып алуудан мурун 48 саат күтүңүз",
+          "ru": "Ждать 48 часов перед необязательной покупкой",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait one night before buying", "kg": "Сатып алардан мурун бир түн күтүңүз", "ru": "Ждать одну ночь перед покупкой" }
+        },
+        {
+          "en": "Shop with a list",
+          "kg": "Тизме менен соода кылыңыз",
+          "ru": "Ходить в магазин со списком",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Write a list of 5 items before shopping", "kg": "Дүкөнгө барардан мурун 5 нерселик тизме жазыңыз", "ru": "Перед магазином записать 5 нужных вещей" }
+        },
+        {
+          "en": "Cook at home instead of ordering food",
+          "kg": "Тамак буйрутмалоонун ордуна үйдө жасаңыз",
+          "ru": "Готовить дома вместо доставки",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 45,
+          "easy": { "en": "Replace one delivery a week with home food", "kg": "Жумасына бир жеткирүүнү үй тамагына алмаштырыңыз", "ru": "Заменять одну доставку в неделю домашней едой" }
+        },
+        {
+          "en": "Compare prices before big purchases",
+          "kg": "Чоң сатып алуудан мурун бааларды салыштырыңыз",
+          "ru": "Сравнивать цены перед крупной покупкой",
+          "type": "quality",
+          "minutes": 20,
+          "easy": { "en": "Check prices in 2 shops", "kg": "2 дүкөндөгү бааны салыштырыңыз", "ru": "Сравнить цены в 2 магазинах" }
+        },
+        {
+          "en": "Review phone and internet tariffs",
+          "kg": "Телефон жана интернет тарифтерин карап чыгыңыз",
+          "ru": "Пересмотреть тарифы связи и интернета",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Check how many GB and minutes you really use", "kg": "Чынында канча ГБ жана мүнөт колдоноруңузду текшериңиз", "ru": "Проверить, сколько ГБ и минут реально тратите" },
+          "steps": [
+            { "en": "Check your real usage for 3 months", "kg": "3 айлык чыныгы колдонууңузду текшериңиз", "ru": "Посмотреть реальное потребление за 3 месяца", "minutes": 10 },
+            { "en": "Compare tariffs of local operators", "kg": "Жергиликтүү операторлордун тарифтерин салыштырыңыз", "ru": "Сравнить тарифы местных операторов", "minutes": 20 },
+            { "en": "Check home internet offers", "kg": "Үй интернетинин сунуштарын текшериңиз", "ru": "Узнать предложения по домашнему интернету", "minutes": 15 },
+            { "en": "Switch to a cheaper plan that fits", "kg": "Ылайыктуу арзаныраак тарифке өтүңүз", "ru": "Перейти на подходящий тариф дешевле", "minutes": 20 },
+            { "en": "Record the monthly saving", "kg": "Айлык үнөмдү белгилеңиз", "ru": "Записать ежемесячную экономию", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Use cashback and discounts wisely",
+          "kg": "Кэшбэк жана арзандатууларды акыл менен колдонуңуз",
+          "ru": "Разумно пользоваться кешбэком и скидками",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Use cashback only on planned purchases", "kg": "Кэшбэкти пландалган сатып алууда гана колдонуңуз", "ru": "Пользоваться кэшбэком только для плановых покупок" }
+        },
+        {
+          "en": "Have one no-spend day each week",
+          "kg": "Жумасына бир күнү эч нерсе сатып албаңыз",
+          "ru": "Один день в неделю без трат",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Have one no-spend day this month", "kg": "Ушул айда бир күн эч нерсе сатып албаңыз", "ru": "Провести один день без трат в этом месяце" }
+        }
       ]
     },
     {
       "title": { "en": "Investing", "kg": "Инвестиция", "ru": "Инвестиции" },
+      "kind": "direct",
       "milestones": [
         { "en": "First investment made", "kg": "Биринчи инвестиция жасалды", "ru": "Сделана первая инвестиция" }
       ],
       "actions": [
-        { "en": "Learn the basics: risk, return, diversification", "kg": "Негиздерди үйрөнүңүз: тобокелдик, киреше, диверсификация", "ru": "Изучить основы: риск, доходность, диверсификация" },
-        { "en": "Invest only after an emergency fund exists", "kg": "Запас фонд болгондон кийин гана инвестиция салыңыз", "ru": "Инвестировать только при наличии подушки" },
-        { "en": "Compare deposit rates in several banks", "kg": "Бир нече банктын депозит пайыздарын салыштырыңыз", "ru": "Сравнить ставки по вкладам в нескольких банках" },
-        { "en": "Start with a small regular amount", "kg": "Кичинекей туруктуу суммадан баштаңыз", "ru": "Начать с небольшой регулярной суммы" },
-        { "en": "Never invest in what you don't understand", "kg": "Түшүнбөгөн нерсеге эч качан акча салбаңыз", "ru": "Не вкладывать в то, чего не понимаете" },
-        { "en": "Beware of promises of quick profit", "kg": "Тез пайда убадаларынан сак болуңуз", "ru": "Остерегаться обещаний быстрой прибыли" },
-        { "en": "Review investments once a quarter", "kg": "Инвестицияларды чейрек сайын карап чыгыңыз", "ru": "Пересматривать вложения раз в квартал" },
-        { "en": "Write down your long-term financial plan", "kg": "Узак мөөнөттүү каржы планыңызды жазыңыз", "ru": "Записать долгосрочный финансовый план" }
+        {
+          "en": "Learn the basics: risk, return, diversification",
+          "kg": "Негиздерди үйрөнүңүз: тобокелдик, киреше, диверсификация",
+          "ru": "Изучить основы: риск, доходность, диверсификация",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Read one article about risk and return", "kg": "Тобокел жана киреше тууралуу бир макала окуңуз", "ru": "Прочитать одну статью о риске и доходности" },
+          "steps": [
+            { "en": "Learn what risk and return mean", "kg": "Тобокел жана киреше эмне экенин билиңиз", "ru": "Разобраться, что такое риск и доходность", "minutes": 20 },
+            { "en": "Learn why diversification matters", "kg": "Диверсификация эмне үчүн керек экенин билиңиз", "ru": "Понять, зачем нужна диверсификация", "minutes": 20 },
+            { "en": "Learn how inflation eats savings", "kg": "Инфляция топтолгон акчаны кантип азайтарын билиңиз", "ru": "Понять, как инфляция съедает сбережения", "minutes": 20 },
+            { "en": "Write 5 key terms in your own words", "kg": "5 негизги терминди өз сөзүңүз менен жазыңыз", "ru": "Записать 5 ключевых терминов своими словами", "minutes": 15 },
+            { "en": "Explain the basics to a friend", "kg": "Негиздерин досуңузга түшүндүрүңүз", "ru": "Объяснить основы другу", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Invest only after an emergency fund exists",
+          "kg": "Запас фонд болгондон кийин гана инвестиция салыңыз",
+          "ru": "Инвестировать только при наличии подушки",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check if your reserve covers one month", "kg": "Резервиңиз бир айга жетерин текшериңиз", "ru": "Проверить, хватит ли резерва на месяц" }
+        },
+        {
+          "en": "Compare deposit rates in several banks",
+          "kg": "Бир нече банктын депозит пайыздарын салыштырыңыз",
+          "ru": "Сравнить ставки по вкладам в нескольких банках",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Check deposit rates in one bank", "kg": "Бир банктагы депозит пайызын текшериңиз", "ru": "Узнать ставки по депозиту в одном банке" },
+          "steps": [
+            { "en": "List 3–5 reliable banks", "kg": "3–5 ишенимдүү банкты тизмелеңиз", "ru": "Выписать 3–5 надёжных банков", "minutes": 10 },
+            { "en": "Write rates for 6 and 12 months", "kg": "6 жана 12 айлык пайыздарды жазыңыз", "ru": "Записать ставки на 6 и 12 месяцев", "minutes": 20 },
+            { "en": "Check early withdrawal rules", "kg": "Мөөнөтүнөн мурда алуу эрежелерин текшериңиз", "ru": "Проверить условия досрочного снятия", "minutes": 10 },
+            { "en": "Check the deposit is insured", "kg": "Депозит камсыздандырылганын текшериңиз", "ru": "Проверить, застрахован ли вклад", "minutes": 10 },
+            { "en": "Choose the best option for you", "kg": "Өзүңүзгө ылайыктуусун тандаңыз", "ru": "Выбрать лучший для себя вариант", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Start with a small regular amount",
+          "kg": "Кичинекей туруктуу суммадан баштаңыз",
+          "ru": "Начать с небольшой регулярной суммы",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Put 500 som into your deposit this month", "kg": "Ушул айда депозитке 500 сом салыңыз", "ru": "Положить 500 сомов на вклад в этом месяце" }
+        },
+        {
+          "en": "Never invest in what you don't understand",
+          "kg": "Түшүнбөгөн нерсеге эч качан акча салбаңыз",
+          "ru": "Не вкладывать в то, чего не понимаете",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Ask 3 questions before any offer", "kg": "Ар кандай сунуштан мурун 3 суроо бериңиз", "ru": "Задавать 3 вопроса перед любым предложением" }
+        },
+        {
+          "en": "Beware of promises of quick profit",
+          "kg": "Тез пайда убадаларынан сак болуңуз",
+          "ru": "Остерегаться обещаний быстрой прибыли",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say no to any 'guaranteed profit' offer", "kg": "«Кепилденген киреше» сунушуна макул болбоңуз", "ru": "Отказываться от «гарантированной прибыли»" }
+        },
+        {
+          "en": "Review investments once a quarter",
+          "kg": "Инвестицияларды чейрек сайын карап чыгыңыз",
+          "ru": "Пересматривать вложения раз в квартал",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Check your deposit balance once", "kg": "Депозит калдыгын бир жолу текшериңиз", "ru": "Один раз проверить остаток вклада" }
+        },
+        {
+          "en": "Write down your long-term financial plan",
+          "kg": "Узак мөөнөттүү каржы планыңызды жазыңыз",
+          "ru": "Записать долгосрочный финансовый план",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write one money goal for 5 years", "kg": "5 жылга бир акча максатын жазыңыз", "ru": "Записать одну денежную цель на 5 лет" },
+          "steps": [
+            { "en": "Write goals for 1, 5 and 10 years", "kg": "1, 5 жана 10 жылдык максаттарды жазыңыз", "ru": "Записать цели на 1, 5 и 10 лет", "minutes": 20 },
+            { "en": "Estimate the cost of each goal", "kg": "Ар бир максаттын баасын эсептеңиз", "ru": "Оценить стоимость каждой цели", "minutes": 20 },
+            { "en": "Calculate how much to save monthly", "kg": "Ай сайын канча топтош керектигин эсептеңиз", "ru": "Посчитать, сколько откладывать в месяц", "minutes": 15 },
+            { "en": "Discuss the plan with your family", "kg": "Планды үй-бүлөңүз менен талкуулаңыз", "ru": "Обсудить план с семьёй", "minutes": 30 },
+            { "en": "Set a yearly date to review it", "kg": "Жыл сайын карап чыгуучу күндү белгилеңиз", "ru": "Назначить ежегодную дату пересмотра", "minutes": 5 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Knowledge", "kg": "Каржылык сабаттуулук", "ru": "Финграмотность" },
+      "kind": "support",
       "milestones": [
         { "en": "Two finance books read", "kg": "Каржы боюнча эки китеп окулду", "ru": "Прочитаны две книги о финансах" }
       ],
       "actions": [
-        { "en": "Read one personal finance book", "kg": "Жеке каржы боюнча бир китеп окуңуз", "ru": "Прочитать книгу о личных финансах" },
-        { "en": "Understand how loan interest is calculated", "kg": "Кредиттин пайызы кантип эсептелерин түшүнүңүз", "ru": "Разобраться, как считаются проценты по кредиту" },
-        { "en": "Learn about taxes that apply to you", "kg": "Сизге тиешелүү салыктарды үйрөнүңүз", "ru": "Изучить налоги, которые вас касаются" },
-        { "en": "Calculate your net worth", "kg": "Таза байлыгыңызды эсептеңиз", "ru": "Рассчитать свой чистый капитал" },
-        { "en": "Discuss money goals with your family", "kg": "Акча максаттарын үй-бүлөңүз менен талкуулаңыз", "ru": "Обсудить финансовые цели с семьёй" },
-        { "en": "Learn to recognise financial scams", "kg": "Каржылык алдамчылыкты таанууну үйрөнүңүз", "ru": "Научиться распознавать финансовое мошенничество" },
-        { "en": "Follow one reliable finance source", "kg": "Бир ишенимдүү каржы булагын карап туруңуз", "ru": "Следить за одним надёжным источником о финансах" },
-        { "en": "Write down 3 money lessons each month", "kg": "Ар ай акча жөнүндө 3 сабакты жазыңыз", "ru": "Каждый месяц записывать 3 финансовых урока" }
+        {
+          "en": "Read one personal finance book",
+          "kg": "Жеке каржы боюнча бир китеп окуңуз",
+          "ru": "Прочитать книгу о личных финансах",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Read 10 pages of a finance book", "kg": "Каржы китебинен 10 бет окуңуз", "ru": "Прочитать 10 страниц книги о финансах" },
+          "steps": [
+            { "en": "Choose one popular finance book", "kg": "Бир белгилүү каржы китебин тандаңыз", "ru": "Выбрать одну известную книгу о финансах", "minutes": 10 },
+            { "en": "Plan 20 pages a day", "kg": "Күнүнө 20 бет окууну пландаңыз", "ru": "Запланировать по 20 страниц в день", "minutes": 5 },
+            { "en": "Read the first chapter", "kg": "Биринчи бөлүмдү окуңуз", "ru": "Прочитать первую главу", "minutes": 45 },
+            { "en": "Write 3 ideas from each chapter", "kg": "Ар бир бөлүмдөн 3 идея жазыңыз", "ru": "Выписывать 3 идеи из каждой главы", "minutes": 10 },
+            { "en": "Finish the book", "kg": "Китепти бүтүрүңүз", "ru": "Дочитать книгу", "minutes": 60 },
+            { "en": "Apply one idea this month", "kg": "Ушул айда бир идеяны колдонуңуз", "ru": "Применить одну идею в этом месяце", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Understand how loan interest is calculated",
+          "kg": "Кредиттин пайызы кантип эсептелерин түшүнүңүз",
+          "ru": "Разобраться, как считаются проценты по кредиту",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Watch one video on how interest works", "kg": "Пайыз кантип эсептелерин түшүндүргөн бир видео көрүңүз", "ru": "Посмотреть одно видео о том, как считаются проценты" },
+          "steps": [
+            { "en": "Learn simple vs. compound interest", "kg": "Жөнөкөй жана татаал пайыздын айырмасын билиңиз", "ru": "Разобраться в простых и сложных процентах", "minutes": 20 },
+            { "en": "Learn what the effective rate is", "kg": "Эффективдүү пайыз эмне экенин билиңиз", "ru": "Понять, что такое эффективная ставка", "minutes": 15 },
+            { "en": "Calculate overpayment on a sample case", "kg": "Мисал боюнча ашыкча төлөмдү эсептеңиз", "ru": "Посчитать переплату на примере", "minutes": 20 },
+            { "en": "Use a bank's online calculator", "kg": "Банктын онлайн калькуляторун колдонуңуз", "ru": "Воспользоваться онлайн-калькулятором банка", "minutes": 10 },
+            { "en": "Write the main rule in one sentence", "kg": "Негизги эрежени бир сүйлөм менен жазыңыз", "ru": "Записать главное правило одним предложением", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Learn about taxes that apply to you",
+          "kg": "Сизге тиешелүү салыктарды үйрөнүңүз",
+          "ru": "Изучить налоги, которые вас касаются",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Find out which taxes you pay now", "kg": "Азыр кайсы салыктарды төлөрүңүздү билиңиз", "ru": "Узнать, какие налоги вы сейчас платите" },
+          "steps": [
+            { "en": "Check your pay slip for taxes", "kg": "Айлык баракчаңыздан салыктарды караңыз", "ru": "Посмотреть налоги в расчётном листке", "minutes": 10 },
+            { "en": "Read the official tax service site", "kg": "Салык кызматынын расмий сайтын окуңуз", "ru": "Почитать официальный сайт налоговой службы", "minutes": 20 },
+            { "en": "Learn taxes on side income", "kg": "Кошумча кирешеге салыкты билиңиз", "ru": "Узнать налоги на подработку", "minutes": 20 },
+            { "en": "Note deadlines for any declarations", "kg": "Декларация мөөнөттөрүн жазып алыңыз", "ru": "Записать сроки деклараций, если нужны", "minutes": 5 },
+            { "en": "Ask an accountant if unsure", "kg": "Ишенбесеңиз, бухгалтерден сураңыз", "ru": "Если сомневаетесь, спросить бухгалтера", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Calculate your net worth",
+          "kg": "Таза байлыгыңызды эсептеңиз",
+          "ru": "Рассчитать свой чистый капитал",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "List what you own and what you owe", "kg": "Эмнеңиз бар жана кимге карызсыз, тизмелеңиз", "ru": "Выписать, что у вас есть и что вы должны" },
+          "steps": [
+            { "en": "List savings and cash", "kg": "Топтолгон жана накталай акчаны жазыңыз", "ru": "Выписать сбережения и наличные", "minutes": 10 },
+            { "en": "List valuable property", "kg": "Баалуу мүлктү жазыңыз", "ru": "Выписать ценное имущество", "minutes": 10 },
+            { "en": "List all debts", "kg": "Бардык карыздарды жазыңыз", "ru": "Выписать все долги", "minutes": 10 },
+            { "en": "Subtract debts from assets", "kg": "Активдерден карыздарды кемитиңиз", "ru": "Вычесть долги из активов", "minutes": 5 },
+            { "en": "Save the number to compare next year", "kg": "Кийинки жылы салыштыруу үчүн санды сактаңыз", "ru": "Сохранить число, чтобы сравнить через год", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Discuss money goals with your family",
+          "kg": "Акча максаттарын үй-бүлөңүз менен талкуулаңыз",
+          "ru": "Обсудить финансовые цели с семьёй",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Share one money goal with a family member", "kg": "Бир акча максатыңызды үй-бүлө мүчөсү менен бөлүшүңүз", "ru": "Поделиться одной денежной целью с близким" },
+          "steps": [
+            { "en": "Pick a calm time for the talk", "kg": "Сүйлөшүү үчүн тынч убакыт тандаңыз", "ru": "Выбрать спокойное время для разговора", "minutes": 5 },
+            { "en": "Write your goals before the talk", "kg": "Сүйлөшүүдөн мурун максаттарыңызды жазыңыз", "ru": "Записать свои цели до разговора", "minutes": 15 },
+            { "en": "Listen to each person's wishes", "kg": "Ар бир адамдын каалоосун угуңуз", "ru": "Выслушать пожелания каждого", "minutes": 30 },
+            { "en": "Agree on 1–2 shared goals", "kg": "1–2 жалпы максатка макулдашыңыз", "ru": "Договориться о 1–2 общих целях", "minutes": 15 },
+            { "en": "Set a date for the next talk", "kg": "Кийинки сүйлөшүүнүн күнүн белгилеңиз", "ru": "Назначить дату следующего разговора", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Learn to recognise financial scams",
+          "kg": "Каржылык алдамчылыкты таанууну үйрөнүңүз",
+          "ru": "Научиться распознавать финансовое мошенничество",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Read about one common scam scheme", "kg": "Бир кеңири таралган алдамчылык схемасы тууралуу окуңуз", "ru": "Прочитать об одной частой схеме мошенников" },
+          "steps": [
+            { "en": "Read about fake calls from 'the bank'", "kg": "«Банктан» келген жасалма чалуулар тууралуу окуңуз", "ru": "Почитать о фальшивых звонках «из банка»", "minutes": 10 },
+            { "en": "Learn signs of financial pyramids", "kg": "Каржы пирамидаларынын белгилерин билиңиз", "ru": "Изучить признаки финансовых пирамид", "minutes": 15 },
+            { "en": "Learn about fake online shops", "kg": "Жасалма онлайн дүкөндөр тууралуу билиңиз", "ru": "Узнать о поддельных интернет-магазинах", "minutes": 10 },
+            { "en": "Write 5 warning signs", "kg": "5 коркунуч белгисин жазыңыз", "ru": "Записать 5 тревожных признаков", "minutes": 10 },
+            { "en": "Tell your parents about these signs", "kg": "Бул белгилер тууралуу ата-энеңизге айтыңыз", "ru": "Рассказать об этих признаках родителям", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Follow one reliable finance source",
+          "kg": "Бир ишенимдүү каржы булагын карап туруңуз",
+          "ru": "Следить за одним надёжным источником о финансах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Save one reliable finance source", "kg": "Бир ишенимдүү каржы булагын сактап коюңуз", "ru": "Сохранить один надёжный источник о финансах" }
+        },
+        {
+          "en": "Write down 3 money lessons each month",
+          "kg": "Ар ай акча жөнүндө 3 сабакты жазыңыз",
+          "ru": "Каждый месяц записывать 3 финансовых урока",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Write one money lesson this month", "kg": "Ушул айда бир акча сабагын жазыңыз", "ru": "Записать один денежный урок за месяц" }
+        }
       ]
     },
     {
       "title": { "en": "Protection", "kg": "Коргоо", "ru": "Защита" },
+      "kind": "support",
       "milestones": [
         { "en": "Important documents and accounts secured", "kg": "Маанилүү документтер жана эсептер корголду", "ru": "Защищены важные документы и счета" }
       ],
       "actions": [
-        { "en": "Enable two-factor authentication in banking apps", "kg": "Банк тиркемелеринде эки факторлуу текшерүүнү күйгүзүңүз", "ru": "Включить двухфакторную защиту в банковских приложениях" },
-        { "en": "Never share card codes or SMS codes", "kg": "Карта коддорун жана SMS коддорду эч кимге айтпаңыз", "ru": "Никому не сообщать коды карт и SMS" },
-        { "en": "Keep copies of important documents", "kg": "Маанилүү документтердин көчүрмөлөрүн сактаңыз", "ru": "Хранить копии важных документов" },
-        { "en": "Consider health or property insurance", "kg": "Ден соолук же мүлк камсыздандыруусун карап көрүңүз", "ru": "Рассмотреть страховку здоровья или имущества" },
-        { "en": "Check bank statements every month", "kg": "Банк көчүрмөлөрүн ай сайын текшериңиз", "ru": "Ежемесячно проверять банковские выписки" },
-        { "en": "Set spending limits on cards", "kg": "Карталарга чыгым чектерин коюңуз", "ru": "Установить лимиты на картах" },
-        { "en": "Don't lend more than you can afford to lose", "kg": "Жоготууга даяр болгондон ашык карызга бербеңиз", "ru": "Не давать в долг больше, чем готовы потерять" },
-        { "en": "Make a plan for financial emergencies", "kg": "Каржылык кырдаалдар үчүн план түзүңүз", "ru": "Составить план на случай финансовых трудностей" }
+        {
+          "en": "Enable two-factor authentication in banking apps",
+          "kg": "Банк тиркемелеринде эки факторлуу текшерүүнү күйгүзүңүз",
+          "ru": "Включить двухфакторную защиту в банковских приложениях",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Turn on two-factor login in one bank app", "kg": "Бир банк тиркемесинде эки факторлуу кирүүнү күйгүзүңүз", "ru": "Включить двухфакторный вход в одном банке" },
+          "steps": [
+            { "en": "List all your banking and payment apps", "kg": "Бардык банк жана төлөм тиркемелериңизди жазыңыз", "ru": "Выписать все банковские и платёжные приложения", "minutes": 5 },
+            { "en": "Turn on two-factor login in each", "kg": "Ар биринде эки факторлуу кирүүнү күйгүзүңүз", "ru": "Включить двухфакторный вход в каждом", "minutes": 15 },
+            { "en": "Set a strong unique PIN", "kg": "Күчтүү, кайталанбас PIN-код коюңуз", "ru": "Поставить надёжный уникальный PIN-код", "minutes": 10 },
+            { "en": "Turn on login alerts", "kg": "Кирүү эскертмелерин күйгүзүңүз", "ru": "Включить уведомления о входе", "minutes": 5 },
+            { "en": "Update the apps to the latest version", "kg": "Тиркемелерди акыркы версияга жаңылаңыз", "ru": "Обновить приложения до последней версии", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Never share card codes or SMS codes",
+          "kg": "Карта коддорун жана SMS коддорду эч кимге айтпаңыз",
+          "ru": "Никому не сообщать коды карт и SMS",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Hang up when asked for an SMS code", "kg": "SMS-кодду сурашса, сүйлөшүүнү токтотуңуз", "ru": "Класть трубку, если просят код из SMS" }
+        },
+        {
+          "en": "Keep copies of important documents",
+          "kg": "Маанилүү документтердин көчүрмөлөрүн сактаңыз",
+          "ru": "Хранить копии важных документов",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Photograph your passport and store it safely", "kg": "Паспортуңузду сүрөткө тартып, коопсуз сактаңыз", "ru": "Сфотографировать паспорт и надёжно сохранить" },
+          "steps": [
+            { "en": "List important documents", "kg": "Маанилүү документтерди тизмелеңиз", "ru": "Составить список важных документов", "minutes": 10 },
+            { "en": "Scan or photograph each one", "kg": "Ар бирин скандап же сүрөткө тартыңыз", "ru": "Отсканировать или сфотографировать каждый", "minutes": 20 },
+            { "en": "Save copies in a protected cloud folder", "kg": "Көчүрмөлөрдү корголгон булут папкасына сактаңыз", "ru": "Сохранить копии в защищённой облачной папке", "minutes": 10 },
+            { "en": "Keep paper originals in one safe place", "kg": "Кагаз нускаларын бир коопсуз жерде сактаңыз", "ru": "Хранить бумажные оригиналы в одном надёжном месте", "minutes": 15 },
+            { "en": "Tell a trusted relative where they are", "kg": "Ишенимдүү тууганыңызга алар кайда экенин айтыңыз", "ru": "Сказать близкому родственнику, где они лежат", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Consider health or property insurance",
+          "kg": "Ден соолук же мүлк камсыздандыруусун карап көрүңүз",
+          "ru": "Рассмотреть страховку здоровья или имущества",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Read what one insurance policy covers", "kg": "Бир камсыздандыруу эмнени камтыйт, окуп чыгыңыз", "ru": "Прочитать, что покрывает одна страховка" },
+          "steps": [
+            { "en": "List risks: health, home, car, travel", "kg": "Тобокелдерди жазыңыз: ден соолук, үй, унаа, сапар", "ru": "Выписать риски: здоровье, жильё, авто, поездки", "minutes": 10 },
+            { "en": "Check which insurance you already have", "kg": "Кайсы камсыздандыруу бар экенин текшериңиз", "ru": "Проверить, какие страховки уже есть", "minutes": 10 },
+            { "en": "Compare offers from 2–3 insurers", "kg": "2–3 камсыздандыруучунун сунушун салыштырыңыз", "ru": "Сравнить предложения 2–3 страховщиков", "minutes": 30 },
+            { "en": "Read what is not covered", "kg": "Эмнелер камтылбаганын окуңуз", "ru": "Прочитать, что не покрывается", "minutes": 20 },
+            { "en": "Decide whether the price is worth it", "kg": "Баасы татыктуубу, чечиңиз", "ru": "Решить, стоит ли страховка своих денег", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Check bank statements every month",
+          "kg": "Банк көчүрмөлөрүн ай сайын текшериңиз",
+          "ru": "Ежемесячно проверять банковские выписки",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Check last week's card transactions", "kg": "Өткөн жуманын карта операцияларын текшериңиз", "ru": "Проверить операции по карте за прошлую неделю" }
+        },
+        {
+          "en": "Set spending limits on cards",
+          "kg": "Карталарга чыгым чектерин коюңуз",
+          "ru": "Установить лимиты на картах",
+          "type": "milestone",
+          "minutes": 15,
+          "easy": { "en": "Set a daily online limit on one card", "kg": "Бир картага күнүмдүк онлайн чек коюңуз", "ru": "Установить дневной онлайн-лимит на одну карту" },
+          "steps": [
+            { "en": "Open card settings in the bank app", "kg": "Банк тиркемесинде картанын жөндөөлөрүн ачыңыз", "ru": "Открыть настройки карты в приложении банка", "minutes": 5 },
+            { "en": "Set a daily spending limit", "kg": "Күнүмдүк чыгым чегин коюңуз", "ru": "Установить дневной лимит трат", "minutes": 5 },
+            { "en": "Set a limit for online payments", "kg": "Онлайн төлөмдөргө чек коюңуз", "ru": "Установить лимит на онлайн-платежи", "minutes": 5 },
+            { "en": "Turn off payments abroad if not needed", "kg": "Керек эмес болсо, чет өлкөдөгү төлөмдөрдү өчүрүңүз", "ru": "Отключить платежи за рубежом, если не нужны", "minutes": 5 },
+            { "en": "Turn on notifications for every payment", "kg": "Ар бир төлөм үчүн билдирмени күйгүзүңүз", "ru": "Включить уведомления о каждой операции", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Don't lend more than you can afford to lose",
+          "kg": "Жоготууга даяр болгондон ашык карызга бербеңиз",
+          "ru": "Не давать в долг больше, чем готовы потерять",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Decide your maximum lending sum in advance", "kg": "Карызга бере турган эң көп сумманы алдын ала чечиңиз", "ru": "Заранее решить максимальную сумму в долг" }
+        },
+        {
+          "en": "Make a plan for financial emergencies",
+          "kg": "Каржылык кырдаалдар үчүн план түзүңүз",
+          "ru": "Составить план на случай финансовых трудностей",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 3 steps for the case of lost income", "kg": "Киреше жоголсо, эмне кыларыңызды 3 кадам менен жазыңыз", "ru": "Записать 3 шага на случай потери дохода" },
+          "steps": [
+            { "en": "List possible emergencies: job loss, illness", "kg": "Мүмкүн болгон кырдаалдарды жазыңыз: жумушсуз калуу, оору", "ru": "Выписать возможные ЧП: потеря работы, болезнь", "minutes": 10 },
+            { "en": "Write which expenses you can cut first", "kg": "Биринчи кайсы чыгымдарды кыскартарыңызды жазыңыз", "ru": "Записать, какие расходы урезать первыми", "minutes": 15 },
+            { "en": "Note where your reserve is kept", "kg": "Резерв кайда сакталарын жазыңыз", "ru": "Отметить, где хранится резерв", "minutes": 5 },
+            { "en": "Save bank hotline numbers", "kg": "Банктын ишеним телефондорун сактаңыз", "ru": "Сохранить номера горячих линий банков", "minutes": 5 },
+            { "en": "Share the plan with a close person", "kg": "Планды жакын адамыңыз менен бөлүшүңүз", "ru": "Поделиться планом с близким человеком", "minutes": 10 }
+          ]
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Honest money", "kg": "Акчада чынчылдык", "ru": "Честность в деньгах" },
+      "kind": "character",
+      "milestones": [
+        { "en": "All borrowed money returned on time", "kg": "Карызга алынгандын баары убагында кайтарылды", "ru": "Все занятые деньги возвращены вовремя" }
+      ],
+      "actions": [
+        {
+          "en": "Return borrowed money on the agreed day",
+          "kg": "Карызга алган акчаны макулдашкан күнү кайтарыңыз",
+          "ru": "Возвращать занятые деньги в оговорённый день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write down whom you owe and by when", "kg": "Кимге качанга чейин карыз экениңизди жазыңыз", "ru": "Записать, кому и до какого числа вы должны" }
+        },
+        {
+          "en": "Give back extra change when a seller errs",
+          "kg": "Сатуучу ашык кайтарса, кайра бериңиз",
+          "ru": "Возвращать лишнюю сдачу, если продавец ошибся",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Count your change at the till", "kg": "Кассада кайтарымды санап алыңыз", "ru": "Пересчитывать сдачу на кассе" }
+        },
+        {
+          "en": "Pay your fair share for shared meals",
+          "kg": "Биргелешкен тамакка өз үлүшүңүздү төлөңүз",
+          "ru": "Платить свою долю за общий стол",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Offer to split the bill", "kg": "Эсепти бөлүп төлөөнү сунуштаңыз", "ru": "Предложить разделить счёт" }
+        },
+        {
+          "en": "Keep money promises made to family",
+          "kg": "Үй-бүлөгө акча боюнча берген убадаңызды аткарыңыз",
+          "ru": "Выполнять денежные обещания семье",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Make only money promises you can keep", "kg": "Аткара ала турган акча убадасын гана бериңиз", "ru": "Давать только выполнимые денежные обещания" }
+        },
+        {
+          "en": "Thank those who lent or helped you",
+          "kg": "Карыз берген же жардам бергендерге ыраазычылык айтыңыз",
+          "ru": "Благодарить тех, кто одолжил или помог",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Send one thank-you message today", "kg": "Бүгүн бир ыраазычылык кабарын жөнөтүңүз", "ru": "Отправить сегодня одно сообщение с благодарностью" }
+        },
+        {
+          "en": "Close the week's budget, even when it's off",
+          "kg": "Бюджет туура келбесе да, жуманы жыйынтыктаңыз",
+          "ru": "Подводить итог недели, даже если бюджет не сошёлся",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write the week's total spending", "kg": "Жуманын жалпы чыгымын жазыңыз", "ru": "Записать общую сумму трат за неделю" }
+        },
+        {
+          "en": "Admit money mistakes and fix them quickly",
+          "kg": "Акчадагы катаңызды мойнуңузга алып, тез оңдоңуз",
+          "ru": "Признавать денежные ошибки и быстро исправлять",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write one money mistake and its fix", "kg": "Бир акча катаңызды жана аны оңдоо жолун жазыңыз", "ru": "Записать одну ошибку с деньгами и как её исправить" }
+        },
+        {
+          "en": "Set aside a small sum for charity monthly",
+          "kg": "Ай сайын кайрымдуулукка аз сумма бөлүңүз",
+          "ru": "Каждый месяц откладывать небольшую сумму на добрые дела",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Help one person with 100 som", "kg": "Бир адамга 100 сом жардам бериңиз", "ru": "Помочь одному человеку на 100 сомов" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Family budget", "kg": "Үй-бүлө бюджети", "ru": "Семейный бюджет" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Family agrees on a monthly plan", "kg": "Үй-бүлө айлык планга макул болду", "ru": "Семья согласовала план на месяц" }
+      ],
+      "actions": [
+        {
+          "en": "Make a shared list of family expenses",
+          "kg": "Үй-бүлөнүн жалпы чыгымдарынын тизмесин түзүңүз",
+          "ru": "Составить общий список семейных расходов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "List the 5 biggest family expenses", "kg": "Үй-бүлөнүн эң чоң 5 чыгымын жазыңыз", "ru": "Выписать 5 самых крупных семейных расходов" },
+          "steps": [
+            { "en": "Collect bills for rent, utilities and food", "kg": "Ижара, коммуналдык жана тамак чыгымдарын чогултуңуз", "ru": "Собрать счета за жильё, коммуналку и еду", "minutes": 20 },
+            { "en": "Ask each member about regular costs", "kg": "Ар бир мүчөдөн туруктуу чыгымдарын сураңыз", "ru": "Спросить у каждого его регулярные траты", "minutes": 20 },
+            { "en": "Put everything in one table", "kg": "Баарын бир таблицага киргизиңиз", "ru": "Свести всё в одну таблицу", "minutes": 20 },
+            { "en": "Mark who pays for what", "kg": "Ким эмнеге төлөрүн белгилеңиз", "ru": "Отметить, кто за что платит", "minutes": 10 },
+            { "en": "Show the table to the family", "kg": "Таблицаны үй-бүлөгө көрсөтүңүз", "ru": "Показать таблицу семье", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Plan toi and holiday costs in advance",
+          "kg": "Той жана майрам чыгымдарын алдын ала пландаңыз",
+          "ru": "Заранее планировать расходы на тои и праздники",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Write dates of upcoming toi and holidays", "kg": "Алдыдагы той жана майрамдардын күнүн жазыңыз", "ru": "Записать даты ближайших тоев и праздников" }
+        },
+        {
+          "en": "Set a fixed sum for a gift per event",
+          "kg": "Ар бир иш-чарага белектин туруктуу суммасын коюңуз",
+          "ru": "Установить фиксированную сумму подарка на событие",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Decide the gift sum before the event", "kg": "Белектин суммасын иш-чарадан мурун чечиңиз", "ru": "Решать сумму подарка до события" }
+        },
+        {
+          "en": "Plan the week's groceries with family",
+          "kg": "Жуманын азык-түлүгүн үй-бүлө менен пландаңыз",
+          "ru": "Планировать продукты на неделю вместе с семьёй",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Agree on 3 dinners for the week", "kg": "Жумага 3 кечки тамакты макулдашыңыз", "ru": "Договориться о 3 ужинах на неделю" }
+        },
+        {
+          "en": "Teach a younger family member to save",
+          "kg": "Үй-бүлөдөгү кичүүгө акча топтогонду үйрөтүңүз",
+          "ru": "Научить младшего в семье копить",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Give a child a jar for coins", "kg": "Балага тыйын салуучу банка бериңиз", "ru": "Дать ребёнку банку для монет" },
+          "steps": [
+            { "en": "Explain with an example why we save", "kg": "Эмне үчүн топтой турганыбызды мисал менен түшүндүрүңүз", "ru": "Объяснить на примере, зачем копить", "minutes": 15 },
+            { "en": "Help them choose a small goal", "kg": "Кичинекей максат тандоого жардам бериңиз", "ru": "Помочь выбрать небольшую цель", "minutes": 10 },
+            { "en": "Make a jar or envelope for the goal", "kg": "Максат үчүн банка же конверт жасаңыз", "ru": "Сделать банку или конверт для цели", "minutes": 15 },
+            { "en": "Agree on a weekly saving amount", "kg": "Жумалык топтоо суммасын макулдашыңыз", "ru": "Договориться о еженедельной сумме", "minutes": 5 },
+            { "en": "Celebrate together when the goal is met", "kg": "Максатка жеткенде чогуу белгилеңиз", "ru": "Вместе отметить достижение цели", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Help parents with bills once you earn",
+          "kg": "Иштеп калганда ата-энеңизге төлөмдөргө жардам бериңиз",
+          "ru": "Помогать родителям со счетами, когда зарабатываете",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Pay one family bill this month", "kg": "Ушул айда үй-бүлөнүн бир төлөмүн төлөңүз", "ru": "Оплатить в этом месяце один семейный счёт" }
+        },
+        {
+          "en": "Agree on big purchases together",
+          "kg": "Чоң сатып алууларды бирге макулдашыңыз",
+          "ru": "Согласовывать крупные покупки вместе",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Ask family before one big purchase", "kg": "Бир чоң сатып алуудан мурун үй-бүлөдөн сураңыз", "ru": "Спросить семью перед одной крупной покупкой" }
+        },
+        {
+          "en": "Review family spending together each week",
+          "kg": "Үй-бүлөнүн чыгымын ар жума бирге карап чыгыңыз",
+          "ru": "Каждую неделю вместе смотреть семейные траты",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Share the week's total with family", "kg": "Жуманын жалпы чыгымын үй-бүлө менен бөлүшүңүз", "ru": "Сообщать семье общую сумму трат за неделю" }
+        }
       ]
     }
   ]

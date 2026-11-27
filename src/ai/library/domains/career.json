@@ -3,138 +3,991 @@
   "icon": "💼",
   "title": { "en": "Career & business", "kg": "Карьера жана бизнес", "ru": "Карьера и бизнес" },
   "keywords": {
-    "en": ["career", "job", "work", "promotion", "manager", "business", "startup", "company", "clients", "sales", "interview", "resume", "boss", "leader", "freelance", "profession"],
-    "kg": ["карьера", "жумуш", "иш", "кызмат", "жетекчи", "бизнес", "стартап", "компания", "кардарлар", "сатуу", "маек", "резюме", "лидер", "фриланс", "кесип"],
-    "ru": ["карьера", "работа", "работу", "должность", "повышение", "руководитель", "бизнес", "стартап", "компания", "клиенты", "продажи", "собеседование", "резюме", "начальник", "лидер", "фриланс", "профессия", "открыть"]
+    "en": ["career", "job", "work", "promotion", "manager", "business", "startup", "company", "clients", "sales", "interview", "resume", "boss", "leader", "freelance", "profession", "salary", "raise", "get hired", "employer", "internship"],
+    "kg": ["карьера", "жумуш", "иш", "кызмат", "жетекчи", "бизнес", "стартап", "компания", "кардарлар", "сатуу", "маек", "резюме", "лидер", "фриланс", "кесип", "айлык", "кызматка көтөрүлүү", "иш берүүчү", "жумушка орношуу", "стажировка"],
+    "ru": ["карьера", "работа", "работу", "должность", "повышение", "руководитель", "бизнес", "стартап", "компания", "клиенты", "продажи", "собеседование", "резюме", "начальник", "лидер", "фриланс", "профессия", "открыть", "зарплата", "карьерный рост", "трудоустройство", "работодатель"]
   },
   "directions": [
     {
       "title": { "en": "Professional skills", "kg": "Кесиптик көндүмдөр", "ru": "Профессиональные навыки" },
+      "kind": "direct",
       "milestones": [
         { "en": "Key skill confirmed by a certificate or project", "kg": "Негизги көндүм сертификат же долбоор менен ырасталды", "ru": "Ключевой навык подтверждён сертификатом или проектом" }
       ],
       "actions": [
-        { "en": "List the skills required for the target role", "kg": "Максаттуу кызмат үчүн керектүү көндүмдөрдү тизмелеңиз", "ru": "Выписать навыки, нужные для целевой должности" },
-        { "en": "Rate yourself on each skill from 1 to 10", "kg": "Ар бир көндүм боюнча өзүңүздү 1ден 10го чейин баалаңыз", "ru": "Оценить себя по каждому навыку от 1 до 10" },
-        { "en": "Take one course on your weakest skill", "kg": "Эң алсыз көндүмүңүз боюнча бир курс өтүңүз", "ru": "Пройти курс по самому слабому навыку" },
-        { "en": "Learn a tool used by the best in your field", "kg": "Тармагыңыздагы мыктылар колдонгон куралды үйрөнүңүз", "ru": "Освоить инструмент, которым пользуются лучшие" },
-        { "en": "Practise the new skill on a real task", "kg": "Жаңы көндүмдү чыныгы тапшырмада колдонуңуз", "ru": "Применить новый навык на реальной задаче" },
-        { "en": "Read one professional article a day", "kg": "Күнүнө бир кесиптик макала окуңуз", "ru": "Читать одну профессиональную статью в день" },
-        { "en": "Get a certificate that employers value", "kg": "Иш берүүчүлөр баалаган сертификат алыңыз", "ru": "Получить сертификат, который ценят работодатели" },
-        { "en": "Improve presentation and speaking skills", "kg": "Презентация жана сүйлөө көндүмдөрүн өркүндөтүңүз", "ru": "Прокачать навыки презентации и выступлений" }
+        {
+          "en": "List the skills required for the target role",
+          "kg": "Максаттуу кызмат үчүн керектүү көндүмдөрдү тизмелеңиз",
+          "ru": "Выписать навыки, нужные для целевой должности",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 5 skills from one job ad", "kg": "Бир вакансиядан 5 көндүмдү жазыңыз", "ru": "Выписать 5 навыков из одной вакансии" },
+          "steps": [
+            { "en": "Find 5 job ads for your target role", "kg": "Максаттуу кызматка 5 вакансия табыңыз", "ru": "Найти 5 вакансий на целевую должность", "minutes": 20 },
+            { "en": "Copy all required skills into one list", "kg": "Талап кылынган бардык көндүмдөрдү бир тизмеге көчүрүңүз", "ru": "Выписать все требуемые навыки в один список", "minutes": 20 },
+            { "en": "Mark skills that appear in 3+ ads", "kg": "3 же андан көп вакансияда кездешкенин белгилеңиз", "ru": "Отметить навыки, что есть в 3+ вакансиях", "minutes": 10 },
+            { "en": "Ask a person in that role to check the list", "kg": "Ошол кызматтагы адамдан тизмени текшерүүнү сураңыз", "ru": "Попросить человека в этой роли проверить список", "minutes": 15 },
+            { "en": "Save the final list of 8–10 skills", "kg": "Акыркы 8–10 көндүмдүн тизмесин сактаңыз", "ru": "Сохранить итоговый список из 8–10 навыков", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Rate yourself on each skill from 1 to 10",
+          "kg": "Ар бир көндүм боюнча өзүңүздү 1ден 10го чейин баалаңыз",
+          "ru": "Оценить себя по каждому навыку от 1 до 10",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Rate yourself on 3 skills", "kg": "3 көндүм боюнча өзүңүздү баалаңыз", "ru": "Оценить себя по 3 навыкам" },
+          "steps": [
+            { "en": "Open your list of required skills", "kg": "Керектүү көндүмдөр тизмесин ачыңыз", "ru": "Открыть список нужных навыков", "minutes": 5 },
+            { "en": "Give each skill a score from 1 to 10", "kg": "Ар бир көндүмгө 1ден 10го чейин баа коюңуз", "ru": "Поставить каждому навыку балл от 1 до 10", "minutes": 10 },
+            { "en": "Write one proof next to each score", "kg": "Ар бир баанын жанына бир далил жазыңыз", "ru": "Написать одно доказательство к каждой оценке", "minutes": 15 },
+            { "en": "Ask a colleague to rate you too", "kg": "Кесиптешиңизден да баа коюуну сураңыз", "ru": "Попросить коллегу тоже оценить вас", "minutes": 10 },
+            { "en": "Pick the 2 lowest skills to work on", "kg": "Иштей турган эң төмөн 2 көндүмдү тандаңыз", "ru": "Выбрать 2 самых слабых навыка для работы", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Take one course on your weakest skill",
+          "kg": "Эң алсыз көндүмүңүз боюнча бир курс өтүңүз",
+          "ru": "Пройти курс по самому слабому навыку",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Finish the first lesson of a course", "kg": "Курстун биринчи сабагын бүтүрүңүз", "ru": "Пройти первый урок курса" },
+          "steps": [
+            { "en": "Find 3 courses on your weakest skill", "kg": "Эң алсыз көндүмүңүз боюнча 3 курс табыңыз", "ru": "Найти 3 курса по самому слабому навыку", "minutes": 20 },
+            { "en": "Choose one by reviews and length", "kg": "Пикирлер жана узактыгы боюнча бирин тандаңыз", "ru": "Выбрать один по отзывам и длительности", "minutes": 15 },
+            { "en": "Book 3 slots a week for it", "kg": "Ага жумасына 3 убакыт бөлүңүз", "ru": "Выделить на него 3 слота в неделю", "minutes": 10 },
+            { "en": "Finish the first quarter of the course", "kg": "Курстун биринчи төрттөн бирин бүтүрүңүз", "ru": "Пройти первую четверть курса", "minutes": 120 },
+            { "en": "Finish the course and save the result", "kg": "Курсту бүтүрүп, жыйынтыкты сактаңыз", "ru": "Закончить курс и сохранить результат", "minutes": 120 }
+          ]
+        },
+        {
+          "en": "Learn a tool used by the best in your field",
+          "kg": "Тармагыңыздагы мыктылар колдонгон куралды үйрөнүңүз",
+          "ru": "Освоить инструмент, которым пользуются лучшие",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Install the tool and do one tutorial", "kg": "Куралды орнотуп, бир сабакты өтүңүз", "ru": "Установить инструмент и пройти один урок" },
+          "steps": [
+            { "en": "Ask strong people in your field which tool they use", "kg": "Тармактагы күчтүү адамдардан кайсы куралды колдонорун сураңыз", "ru": "Спросить сильных людей, каким инструментом пользуются", "minutes": 15 },
+            { "en": "Install it or open a free version", "kg": "Аны орнотуңуз же акысыз версиясын ачыңыз", "ru": "Установить его или открыть бесплатную версию", "minutes": 15 },
+            { "en": "Do the official beginner tutorial", "kg": "Расмий баштапкы сабакты өтүңүз", "ru": "Пройти официальный урок для новичков", "minutes": 60 },
+            { "en": "Use it on one small real task", "kg": "Аны бир кичине чыныгы тапшырмада колдонуңуз", "ru": "Применить его на одной небольшой реальной задаче", "minutes": 60 },
+            { "en": "Write 5 tips you learned", "kg": "Үйрөнгөн 5 кеңешти жазыңыз", "ru": "Записать 5 приёмов, которые освоили", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Use the new skill on a real task every week",
+          "kg": "Жаңы көндүмдү ар жума чыныгы тапшырмада колдонуңуз",
+          "ru": "Каждую неделю применять навык на реальной задаче",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Use the new skill once this week", "kg": "Жаңы көндүмдү ушул жумада бир жолу колдонуңуз", "ru": "Применить новый навык один раз на неделе" }
+        },
+        {
+          "en": "Read one professional article a day",
+          "kg": "Күнүнө бир кесиптик макала окуңуз",
+          "ru": "Читать одну профессиональную статью в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Read one page of a professional article", "kg": "Кесиптик макаланын бир бетин окуңуз", "ru": "Прочитать одну страницу профессиональной статьи" }
+        },
+        {
+          "en": "Get a certificate that employers value",
+          "kg": "Иш берүүчүлөр баалаган сертификат алыңыз",
+          "ru": "Получить сертификат, который ценят работодатели",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Find which certificate employers ask for", "kg": "Иш берүүчүлөр кайсы сертификатты сурарын табыңыз", "ru": "Узнать, какой сертификат просят работодатели" },
+          "steps": [
+            { "en": "Check which certificates appear in job ads", "kg": "Вакансияларда кайсы сертификаттар бар экенин текшериңиз", "ru": "Проверить, какие сертификаты есть в вакансиях", "minutes": 20 },
+            { "en": "Read requirements on the official site", "kg": "Талаптарды расмий сайттан окуңуз", "ru": "Прочитать требования на официальном сайте", "minutes": 20 },
+            { "en": "Plan study time and cost in som", "kg": "Окуу убактысын жана баасын сом менен пландаңыз", "ru": "Спланировать время учёбы и стоимость в сомах", "minutes": 20 },
+            { "en": "Study the exam topics", "kg": "Экзамендин темаларын окуңуз", "ru": "Изучить темы экзамена", "minutes": 120 },
+            { "en": "Take a practice test", "kg": "Сыноо тестин тапшырыңыз", "ru": "Пройти пробный тест", "minutes": 60 },
+            { "en": "Register and pass the exam", "kg": "Катталып, экзаменди тапшырыңыз", "ru": "Зарегистрироваться и сдать экзамен", "minutes": 120 }
+          ]
+        },
+        {
+          "en": "Record a 3-minute talk on video every week",
+          "kg": "Ар жума 3 мүнөттүк сөздү видеого жаздырыңыз",
+          "ru": "Каждую неделю записывать 3-минутное выступление",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Record a 1-minute talk about your work", "kg": "Ишиңиз тууралуу 1 мүнөттүк сөз жаздырыңыз", "ru": "Записать минутный рассказ о своей работе" }
+        }
       ]
     },
     {
       "title": { "en": "Results at work", "kg": "Иштеги жыйынтыктар", "ru": "Результаты в работе" },
+      "kind": "direct",
       "milestones": [
         { "en": "Visible project delivered", "kg": "Көрүнүктүү долбоор аткарылды", "ru": "Сдан заметный проект" }
       ],
       "actions": [
-        { "en": "Agree on clear goals with your manager", "kg": "Жетекчиңиз менен так максаттарды макулдашыңыз", "ru": "Согласовать с руководителем чёткие цели" },
-        { "en": "Write down your achievements every week", "kg": "Жетишкендиктериңизди ар жума жазыңыз", "ru": "Каждую неделю записывать свои достижения" },
-        { "en": "Take responsibility for one important project", "kg": "Бир маанилүү долбоор үчүн жоопкерчилик алыңыз", "ru": "Взять ответственность за важный проект" },
-        { "en": "Measure your results in numbers", "kg": "Жыйынтыктарыңызды сандар менен өлчөңүз", "ru": "Измерять свои результаты в цифрах" },
-        { "en": "Finish tasks before the deadline", "kg": "Тапшырмаларды мөөнөтүнөн мурда бүтүрүңүз", "ru": "Сдавать задачи раньше срока" },
-        { "en": "Propose one improvement each month", "kg": "Ар ай бир жакшыртуу сунуштаңыз", "ru": "Каждый месяц предлагать одно улучшение" },
-        { "en": "Ask for feedback after every big task", "kg": "Ар бир чоң тапшырмадан кийин пикир сураңыз", "ru": "Просить обратную связь после крупных задач" },
-        { "en": "Help colleagues with your expertise", "kg": "Кесиптештериңизге билимиңиз менен жардам бериңиз", "ru": "Помогать коллегам своей экспертизой" }
+        {
+          "en": "Agree on clear goals with your manager",
+          "kg": "Жетекчиңиз менен так максаттарды макулдашыңыз",
+          "ru": "Согласовать с руководителем чёткие цели",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 3 goals and send them to your manager", "kg": "3 максатты жазып, жетекчиңизге жөнөтүңүз", "ru": "Записать 3 цели и отправить руководителю" },
+          "steps": [
+            { "en": "Write what results you think are expected", "kg": "Сизден кандай жыйынтык күтүлөрүн жазыңыз", "ru": "Записать, каких результатов от вас ждут", "minutes": 15 },
+            { "en": "Turn them into 3 goals with numbers", "kg": "Аларды сандары бар 3 максатка айлантыңыз", "ru": "Превратить их в 3 цели с цифрами", "minutes": 15 },
+            { "en": "Ask your manager for 30 minutes", "kg": "Жетекчиңизден 30 мүнөт сураңыз", "ru": "Попросить у руководителя 30 минут", "minutes": 5 },
+            { "en": "Discuss and agree on the goals", "kg": "Максаттарды талкуулап, макулдашыңыз", "ru": "Обсудить и согласовать цели", "minutes": 30 },
+            { "en": "Send a short summary in writing", "kg": "Кыскача жыйынтыкты жазуу түрүндө жөнөтүңүз", "ru": "Отправить краткий итог письменно", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Write down your achievements every week",
+          "kg": "Жетишкендиктериңизди ар жума жазыңыз",
+          "ru": "Каждую неделю записывать свои достижения",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Write one result of this week", "kg": "Ушул жуманын бир жыйынтыгын жазыңыз", "ru": "Записать один результат этой недели" }
+        },
+        {
+          "en": "Take responsibility for one important project",
+          "kg": "Бир маанилүү долбоор үчүн жоопкерчилик алыңыз",
+          "ru": "Взять ответственность за важный проект",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Offer help on one important project", "kg": "Бир маанилүү долбоорго жардам сунуштаңыз", "ru": "Предложить помощь в одном важном проекте" },
+          "steps": [
+            { "en": "List projects that matter most to the team", "kg": "Командага эң маанилүү долбоорлорду тизмелеңиз", "ru": "Перечислить самые важные для команды проекты", "minutes": 15 },
+            { "en": "Choose one that fits your skills", "kg": "Көндүмүңүзгө туура келгенин тандаңыз", "ru": "Выбрать один, подходящий вашим навыкам", "minutes": 10 },
+            { "en": "Tell your manager you want to lead it", "kg": "Жетекчиңизге аны жетектегиңиз келерин айтыңыз", "ru": "Сказать руководителю, что хотите его вести", "minutes": 15 },
+            { "en": "Write a plan with steps and dates", "kg": "Кадамдары жана даталары бар план жазыңыз", "ru": "Написать план с шагами и датами", "minutes": 45 },
+            { "en": "Hold the kickoff meeting", "kg": "Баштоо жолугушуусун өткөрүңүз", "ru": "Провести стартовую встречу", "minutes": 45 },
+            { "en": "Report progress every week", "kg": "Ар жума жыйынтыкты билдириңиз", "ru": "Отчитываться о ходе каждую неделю", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Write one result in numbers every Friday",
+          "kg": "Ар жума кечинде бир жыйынтыкты сан менен жазыңыз",
+          "ru": "Каждую пятницу записывать один результат в цифрах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write one number about your work", "kg": "Ишиңиз тууралуу бир санды жазыңыз", "ru": "Записать одну цифру о своей работе" }
+        },
+        {
+          "en": "Finish tasks before the deadline",
+          "kg": "Тапшырмаларды мөөнөтүнөн мурда бүтүрүңүз",
+          "ru": "Сдавать задачи раньше срока",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Finish one task a day before its deadline", "kg": "Бир тапшырманы мөөнөтүнөн бир күн мурун бүтүрүңүз", "ru": "Сдать одну задачу на день раньше срока" }
+        },
+        {
+          "en": "Propose one improvement each month",
+          "kg": "Ар ай бир жакшыртуу сунуштаңыз",
+          "ru": "Каждый месяц предлагать одно улучшение",
+          "type": "quality",
+          "minutes": 20,
+          "easy": { "en": "Write one improvement idea this month", "kg": "Ушул айда бир жакшыртуу идеясын жазыңыз", "ru": "Записать одну идею улучшения в этом месяце" }
+        },
+        {
+          "en": "Ask for feedback after every big task",
+          "kg": "Ар бир чоң тапшырмадан кийин пикир сураңыз",
+          "ru": "Просить обратную связь после крупных задач",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Ask “what could be better?” after one task", "kg": "Бир тапшырмадан кийин «эмнени жакшыртса болот?» деп сураңыз", "ru": "Спросить «что можно улучшить?» после одной задачи" }
+        },
+        {
+          "en": "Help colleagues with your expertise",
+          "kg": "Кесиптештериңизге билимиңиз менен жардам бериңиз",
+          "ru": "Помогать коллегам своей экспертизой",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Answer one colleague’s question today", "kg": "Бүгүн бир кесиптешиңиздин суроосуна жооп бериңиз", "ru": "Ответить сегодня на вопрос одного коллеги" }
+        }
       ]
     },
     {
       "title": { "en": "Network", "kg": "Байланыштар", "ru": "Нетворкинг" },
+      "kind": "support",
       "milestones": [
         { "en": "20 new professional contacts", "kg": "20 жаңы кесиптик байланыш", "ru": "20 новых профессиональных контактов" }
       ],
       "actions": [
-        { "en": "Update your professional profile online", "kg": "Онлайн кесиптик профилиңизди жаңылаңыз", "ru": "Обновить профессиональный профиль в сети" },
-        { "en": "Meet one new person from your field each week", "kg": "Ар жума тармагыңыздан бир жаңы адам менен таанышыңыз", "ru": "Каждую неделю знакомиться с одним человеком из сферы" },
-        { "en": "Attend an industry event every month", "kg": "Ар ай тармактык иш-чарага барыңыз", "ru": "Каждый месяц посещать отраслевое мероприятие" },
-        { "en": "Keep in touch with former colleagues", "kg": "Мурунку кесиптештер менен байланышты үзбөңүз", "ru": "Поддерживать связь с бывшими коллегами" },
-        { "en": "Offer help before asking for it", "kg": "Жардам сураардан мурун жардам сунуштаңыз", "ru": "Предлагать помощь, прежде чем просить" },
-        { "en": "Find a mentor one level above you", "kg": "Сизден бир деңгээл жогору устат табыңыз", "ru": "Найти наставника на уровень выше" },
-        { "en": "Share useful content in your field", "kg": "Тармагыңызда пайдалуу маалымат бөлүшүңүз", "ru": "Делиться полезным контентом по своей теме" },
-        { "en": "Prepare a short story about yourself", "kg": "Өзүңүз жөнүндө кыска баян даярдаңыз", "ru": "Подготовить короткий рассказ о себе" }
+        {
+          "en": "Update your professional profile online",
+          "kg": "Онлайн кесиптик профилиңизди жаңылаңыз",
+          "ru": "Обновить профессиональный профиль в сети",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Update your profile photo and headline", "kg": "Профилдин сүрөтүн жана аталышын жаңылаңыз", "ru": "Обновить фото и заголовок профиля" },
+          "steps": [
+            { "en": "Choose the platform employers use in your field", "kg": "Тармагыңызда иш берүүчүлөр колдонгон платформаны тандаңыз", "ru": "Выбрать платформу, где ищут работодатели", "minutes": 10 },
+            { "en": "Add a clear photo and a headline", "kg": "Так сүрөт жана аталыш кошуңуз", "ru": "Добавить чёткое фото и заголовок", "minutes": 15 },
+            { "en": "Write a 3-sentence summary about you", "kg": "Өзүңүз тууралуу 3 сүйлөм жазыңыз", "ru": "Написать о себе 3 предложения", "minutes": 20 },
+            { "en": "Add experience with results in numbers", "kg": "Тажрыйбаны сандар менен жыйынтыктары аркылуу кошуңуз", "ru": "Добавить опыт с результатами в цифрах", "minutes": 30 },
+            { "en": "Ask a friend to check it for mistakes", "kg": "Досуңуздан каталарды текшерүүнү сураңыз", "ru": "Попросить друга проверить на ошибки", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Meet one new person from your field each week",
+          "kg": "Ар жума тармагыңыздан бир жаңы адам менен таанышыңыз",
+          "ru": "Каждую неделю знакомиться с одним человеком из сферы",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Write to one new person from your field", "kg": "Тармагыңыздагы бир жаңы адамга жазыңыз", "ru": "Написать одному новому человеку из своей сферы" }
+        },
+        {
+          "en": "Attend an industry event every month",
+          "kg": "Ар ай тармактык иш-чарага барыңыз",
+          "ru": "Каждый месяц посещать отраслевое мероприятие",
+          "type": "quality",
+          "minutes": 120,
+          "easy": { "en": "Find one industry event this month", "kg": "Ушул айда бир тармактык иш-чара табыңыз", "ru": "Найти одно отраслевое мероприятие в этом месяце" }
+        },
+        {
+          "en": "Message one former colleague every week",
+          "kg": "Ар жума бир мурунку кесиптешиңизге жазыңыз",
+          "ru": "Каждую неделю писать одному бывшему коллеге",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Like or comment one ex-colleague’s post", "kg": "Мурунку кесиптештин бир постуна пикир жазыңыз", "ru": "Прокомментировать пост бывшего коллеги" }
+        },
+        {
+          "en": "Offer help before asking for it",
+          "kg": "Жардам сураардан мурун жардам сунуштаңыз",
+          "ru": "Предлагать помощь, прежде чем просить",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Send one useful link to a contact", "kg": "Бир байланышка пайдалуу шилтеме жөнөтүңүз", "ru": "Отправить одному контакту полезную ссылку" }
+        },
+        {
+          "en": "Find a mentor one level above you",
+          "kg": "Сизден бир деңгээл жогору устат табыңыз",
+          "ru": "Найти наставника на уровень выше",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write to one possible mentor", "kg": "Бир мүмкүн болгон устатка жазыңыз", "ru": "Написать одному возможному наставнику" },
+          "steps": [
+            { "en": "List 3 people one level above you", "kg": "Сизден бир деңгээл жогору 3 адамды тизмелеңиз", "ru": "Выписать 3 людей на уровень выше вас", "minutes": 10 },
+            { "en": "Study their path and work", "kg": "Алардын жолун жана ишин изилдеңиз", "ru": "Изучить их путь и работу", "minutes": 20 },
+            { "en": "Write a short polite message with one question", "kg": "Бир суроосу бар кыска сылык кат жазыңыз", "ru": "Написать короткое вежливое сообщение с вопросом", "minutes": 15 },
+            { "en": "Suggest a 20-minute call or coffee", "kg": "20 мүнөттүк чалуу же чай сунуштаңыз", "ru": "Предложить звонок на 20 минут или кофе", "minutes": 5 },
+            { "en": "After the talk, thank them and agree on next time", "kg": "Сүйлөшүүдөн кийин ыраазычылык айтып, кийинкисин макулдашыңыз", "ru": "После встречи поблагодарить и договориться о следующей", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Share useful content in your field",
+          "kg": "Тармагыңызда пайдалуу маалымат бөлүшүңүз",
+          "ru": "Делиться полезным контентом по своей теме",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Repost one useful thing with a comment", "kg": "Бир пайдалуу нерсени пикир менен бөлүшүңүз", "ru": "Сделать репост полезного с комментарием" }
+        },
+        {
+          "en": "Prepare a short story about yourself",
+          "kg": "Өзүңүз жөнүндө кыска баян даярдаңыз",
+          "ru": "Подготовить короткий рассказ о себе",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 sentences about yourself", "kg": "Өзүңүз тууралуу 3 сүйлөм жазыңыз", "ru": "Написать о себе 3 предложения" },
+          "steps": [
+            { "en": "Write who you are and what you do", "kg": "Ким экениңизди жана эмне кыларыңызды жазыңыз", "ru": "Записать, кто вы и чем занимаетесь", "minutes": 10 },
+            { "en": "Add one result you are proud of", "kg": "Сыймыктанган бир жыйынтыгыңызды кошуңуз", "ru": "Добавить один результат, которым гордитесь", "minutes": 10 },
+            { "en": "Add what you are looking for now", "kg": "Азыр эмне издеп жатканыңызды кошуңуз", "ru": "Добавить, что вы сейчас ищете", "minutes": 5 },
+            { "en": "Cut it to 30 seconds when spoken", "kg": "Аны айтканда 30 секундага чейин кыскартыңыз", "ru": "Сократить до 30 секунд вслух", "minutes": 10 },
+            { "en": "Say it aloud 5 times", "kg": "Аны 5 жолу үн чыгарып айтыңыз", "ru": "Произнести вслух 5 раз", "minutes": 5 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Job search", "kg": "Жумуш издөө", "ru": "Поиск работы" },
+      "kind": "direct",
       "milestones": [
         { "en": "Three interviews passed", "kg": "Үч маектен өттү", "ru": "Пройдено три собеседования" },
         { "en": "Offer received", "kg": "Сунуш алынды", "ru": "Получен оффер" }
       ],
       "actions": [
-        { "en": "Write a CV focused on results", "kg": "Жыйынтыктарга басым жасаган резюме жазыңыз", "ru": "Написать резюме с упором на результаты" },
-        { "en": "Make a list of 20 target companies", "kg": "20 максаттуу компаниянын тизмесин түзүңүз", "ru": "Составить список из 20 целевых компаний" },
-        { "en": "Send 5 tailored applications a week", "kg": "Жумасына 5 ылайыкташтырылган арыз жөнөтүңүз", "ru": "Отправлять 5 адаптированных откликов в неделю" },
-        { "en": "Prepare answers to common interview questions", "kg": "Маектеги көп берилген суроолорго жооп даярдаңыз", "ru": "Подготовить ответы на частые вопросы собеседования" },
-        { "en": "Do a mock interview with a friend", "kg": "Дос менен машыгуу маегин өткөрүңүз", "ru": "Провести пробное собеседование с другом" },
-        { "en": "Research each company before the interview", "kg": "Маектин алдында ар бир компанияны изилдеңиз", "ru": "Изучать компанию перед собеседованием" },
-        { "en": "Ask for referrals from your network", "kg": "Тааныштарыңыздан сунуштама сураңыз", "ru": "Просить рекомендации у знакомых" },
-        { "en": "Track applications in the Tasks module", "kg": "Арыздарды «Тапшырмалар» бөлүмүндө көзөмөлдөңүз", "ru": "Вести отклики в модуле «Задачи»" }
+        {
+          "en": "Write a CV focused on results",
+          "kg": "Жыйынтыктарга басым жасаган резюме жазыңыз",
+          "ru": "Написать резюме с упором на результаты",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Rewrite one CV section with numbers", "kg": "Резюменин бир бөлүгүн сандар менен кайра жазыңыз", "ru": "Переписать один раздел резюме с цифрами" },
+          "steps": [
+            { "en": "Collect your jobs, studies and projects", "kg": "Жумуштарыңызды, окууңузду жана долбоорлоруңузду чогултуңуз", "ru": "Собрать места работы, учёбу и проекты", "minutes": 20 },
+            { "en": "Write 2–3 results with numbers for each", "kg": "Ар бирине сандары бар 2–3 жыйынтык жазыңыз", "ru": "Написать по 2–3 результата с цифрами", "minutes": 40 },
+            { "en": "Fit everything on one page", "kg": "Баарын бир бетке батырыңыз", "ru": "Уместить всё на одну страницу", "minutes": 30 },
+            { "en": "Check spelling and contacts", "kg": "Орфографияны жана байланыштарды текшериңиз", "ru": "Проверить орфографию и контакты", "minutes": 10 },
+            { "en": "Get feedback from one person in your field", "kg": "Тармагыңыздагы бир адамдан пикир алыңыз", "ru": "Получить отзыв от человека из своей сферы", "minutes": 15 },
+            { "en": "Save it as PDF", "kg": "Аны PDF катары сактаңыз", "ru": "Сохранить в PDF", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Make a list of 20 target companies",
+          "kg": "20 максаттуу компаниянын тизмесин түзүңүз",
+          "ru": "Составить список из 20 целевых компаний",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write 5 target companies", "kg": "5 максаттуу компанияны жазыңыз", "ru": "Выписать 5 целевых компаний" },
+          "steps": [
+            { "en": "Write what kind of company you want", "kg": "Кандай компания каалаарыңызды жазыңыз", "ru": "Записать, какую компанию хотите", "minutes": 10 },
+            { "en": "Search job sites and ask friends", "kg": "Жумуш сайттарын карап, достордон сураңыз", "ru": "Поискать на сайтах вакансий и спросить друзей", "minutes": 30 },
+            { "en": "List 20 companies in a table", "kg": "20 компанияны таблицага жазыңыз", "ru": "Внести 20 компаний в таблицу", "minutes": 30 },
+            { "en": "Add a contact or career page for each", "kg": "Ар бирине байланыш же карьера баракчасын кошуңуз", "ru": "Добавить контакт или страницу карьеры к каждой", "minutes": 30 },
+            { "en": "Mark the top 5", "kg": "Эң жакшы 5ин белгилеңиз", "ru": "Отметить топ-5", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Send 5 tailored applications a week",
+          "kg": "Жумасына 5 ылайыкташтырылган арыз жөнөтүңүз",
+          "ru": "Отправлять 5 адаптированных откликов в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 90,
+          "easy": { "en": "Send 2 tailored applications", "kg": "2 ылайыкташтырылган арыз жөнөтүңүз", "ru": "Отправить 2 адаптированных отклика" }
+        },
+        {
+          "en": "Prepare answers to common interview questions",
+          "kg": "Маектеги көп берилген суроолорго жооп даярдаңыз",
+          "ru": "Подготовить ответы на частые вопросы собеседования",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Prepare answers to 3 common questions", "kg": "3 көп берилүүчү суроого жооп даярдаңыз", "ru": "Подготовить ответы на 3 частых вопроса" },
+          "steps": [
+            { "en": "Collect 10 common interview questions", "kg": "10 көп берилүүчү маек суроосун чогултуңуз", "ru": "Собрать 10 частых вопросов собеседования", "minutes": 15 },
+            { "en": "Write short answers with examples", "kg": "Мисалдары бар кыска жоопторду жазыңыз", "ru": "Написать краткие ответы с примерами", "minutes": 60 },
+            { "en": "Prepare 2 stories about your results", "kg": "Жыйынтыктарыңыз тууралуу 2 окуя даярдаңыз", "ru": "Подготовить 2 истории о своих результатах", "minutes": 30 },
+            { "en": "Prepare 3 questions for the employer", "kg": "Иш берүүчүгө 3 суроо даярдаңыз", "ru": "Подготовить 3 вопроса работодателю", "minutes": 15 },
+            { "en": "Say the answers aloud on a recording", "kg": "Жоопторду үн чыгарып жаздырыңыз", "ru": "Проговорить ответы вслух на запись", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Do a mock interview with a friend",
+          "kg": "Дос менен машыгуу маегин өткөрүңүз",
+          "ru": "Провести пробное собеседование с другом",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Answer 3 questions to a friend", "kg": "Досуңузга 3 суроого жооп бериңиз", "ru": "Ответить другу на 3 вопроса" },
+          "steps": [
+            { "en": "Ask a friend or mentor to play the interviewer", "kg": "Досуңуздан же устаттан маек алуучу болууну сураңыз", "ru": "Попросить друга или наставника быть интервьюером", "minutes": 5 },
+            { "en": "Give them your list of questions", "kg": "Аларга суроолор тизмесин бериңиз", "ru": "Дать им список вопросов", "minutes": 5 },
+            { "en": "Hold a 30-minute mock interview", "kg": "30 мүнөттүк сыноо маегин өткөрүңүз", "ru": "Провести 30-минутное пробное собеседование", "minutes": 30 },
+            { "en": "Ask for 3 things to improve", "kg": "Жакшыртуу үчүн 3 нерсени сураңыз", "ru": "Попросить 3 пункта для улучшения", "minutes": 10 },
+            { "en": "Rewrite the weakest answer", "kg": "Эң алсыз жоопту кайра жазыңыз", "ru": "Переписать самый слабый ответ", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Research each company before the interview",
+          "kg": "Маектин алдында ар бир компанияны изилдеңиз",
+          "ru": "Изучать компанию перед собеседованием",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Read the company site before an interview", "kg": "Маектин алдында компаниянын сайтын окуңуз", "ru": "Прочитать сайт компании перед собеседованием" }
+        },
+        {
+          "en": "Ask for referrals from your network",
+          "kg": "Тааныштарыңыздан сунуштама сураңыз",
+          "ru": "Просить рекомендации у знакомых",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Ask one contact for a referral", "kg": "Бир тааныштан сунуштама сураңыз", "ru": "Попросить у одного знакомого рекомендацию" }
+        },
+        {
+          "en": "Track applications in the Tasks module",
+          "kg": "Арыздарды «Тапшырмалар» бөлүмүндө көзөмөлдөңүз",
+          "ru": "Вести отклики в модуле «Задачи»",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Add today’s application to Tasks", "kg": "Бүгүнкү арызды Tasks бөлүмүнө кошуңуз", "ru": "Добавить сегодняшний отклик в Задачи" }
+        }
       ]
     },
     {
       "title": { "en": "Business idea", "kg": "Бизнес идея", "ru": "Бизнес-идея" },
+      "kind": "direct",
       "milestones": [
         { "en": "First paying customer", "kg": "Биринчи акы төлөгөн кардар", "ru": "Первый платящий клиент" }
       ],
       "actions": [
-        { "en": "Describe the problem your product solves", "kg": "Продуктуңуз чечкен көйгөйдү сүрөттөңүз", "ru": "Описать проблему, которую решает продукт" },
-        { "en": "Talk to 10 potential customers", "kg": "10 потенциалдуу кардар менен сүйлөшүңүз", "ru": "Поговорить с 10 потенциальными клиентами" },
-        { "en": "Study 3 competitors", "kg": "3 атаандашты изилдеңиз", "ru": "Изучить трёх конкурентов" },
-        { "en": "Make the simplest version of the product", "kg": "Продуктун эң жөнөкөй версиясын жасаңыз", "ru": "Сделать самую простую версию продукта" },
-        { "en": "Calculate costs and the price", "kg": "Чыгымдарды жана бааны эсептеңиз", "ru": "Рассчитать себестоимость и цену" },
-        { "en": "Get the first sale before big investment", "kg": "Чоң инвестициядан мурун биринчи сатууну жасаңыз", "ru": "Получить первую продажу до больших вложений" },
-        { "en": "Register the business legally", "kg": "Бизнести мыйзамдуу түрдө каттаңыз", "ru": "Официально зарегистрировать бизнес" },
-        { "en": "Track income and expenses separately", "kg": "Киреше менен чыгымды өзүнчө эсептеңиз", "ru": "Вести доходы и расходы бизнеса отдельно" }
+        {
+          "en": "Describe the problem your product solves",
+          "kg": "Продуктуңуз чечкен көйгөйдү сүрөттөңүз",
+          "ru": "Описать проблему, которую решает продукт",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write the problem in one sentence", "kg": "Көйгөйдү бир сүйлөм менен жазыңыз", "ru": "Описать проблему одним предложением" },
+          "steps": [
+            { "en": "Write who has the problem", "kg": "Көйгөй кимде экенин жазыңыз", "ru": "Записать, у кого есть проблема", "minutes": 10 },
+            { "en": "Write when and how often it happens", "kg": "Качан жана канча жолу болорун жазыңыз", "ru": "Записать, когда и как часто она возникает", "minutes": 10 },
+            { "en": "Write how people solve it now", "kg": "Азыр адамдар аны кантип чечерин жазыңыз", "ru": "Записать, как люди решают её сейчас", "minutes": 10 },
+            { "en": "Write why your way is better", "kg": "Сиздин жол эмне үчүн жакшы экенин жазыңыз", "ru": "Записать, чем ваш способ лучше", "minutes": 10 },
+            { "en": "Fit it all into 2 sentences", "kg": "Баарын 2 сүйлөмгө батырыңыз", "ru": "Уместить всё в 2 предложения", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Talk to 10 potential customers",
+          "kg": "10 потенциалдуу кардар менен сүйлөшүңүз",
+          "ru": "Поговорить с 10 потенциальными клиентами",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Talk to 2 potential customers", "kg": "2 мүмкүн болгон кардар менен сүйлөшүңүз", "ru": "Поговорить с 2 потенциальными клиентами" },
+          "steps": [
+            { "en": "Write 5 questions about their problem", "kg": "Алардын көйгөйү тууралуу 5 суроо жазыңыз", "ru": "Написать 5 вопросов об их проблеме", "minutes": 15 },
+            { "en": "Find 10 people who may have the problem", "kg": "Көйгөйү болушу мүмкүн 10 адамды табыңыз", "ru": "Найти 10 человек, у которых может быть проблема", "minutes": 30 },
+            { "en": "Talk to the first 5", "kg": "Алгачкы 5и менен сүйлөшүңүз", "ru": "Поговорить с первыми 5", "minutes": 120 },
+            { "en": "Talk to the other 5", "kg": "Калган 5и менен сүйлөшүңүз", "ru": "Поговорить с остальными 5", "minutes": 120 },
+            { "en": "Write the 3 most repeated answers", "kg": "Эң көп кайталанган 3 жоопту жазыңыз", "ru": "Выписать 3 самых частых ответа", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Study 3 competitors",
+          "kg": "3 атаандашты изилдеңиз",
+          "ru": "Изучить трёх конкурентов",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Look at one competitor’s offer", "kg": "Бир атаандаштын сунушун карап чыгыңыз", "ru": "Изучить предложение одного конкурента" },
+          "steps": [
+            { "en": "Find 3 businesses that solve the same problem", "kg": "Ошол эле көйгөйдү чечкен 3 бизнести табыңыз", "ru": "Найти 3 бизнеса, решающих ту же проблему", "minutes": 20 },
+            { "en": "Write their prices and offers", "kg": "Алардын бааларын жана сунуштарын жазыңыз", "ru": "Записать их цены и предложения", "minutes": 30 },
+            { "en": "Read their customer reviews", "kg": "Алардын кардарларынын пикирлерин окуңуз", "ru": "Прочитать отзывы их клиентов", "minutes": 30 },
+            { "en": "Write what customers complain about", "kg": "Кардарлар эмнеге нааразы экенин жазыңыз", "ru": "Записать, на что жалуются клиенты", "minutes": 15 },
+            { "en": "Write how you will be different", "kg": "Сиз эмнеси менен айырмаланарыңызды жазыңыз", "ru": "Записать, чем вы будете отличаться", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Make the simplest version of the product",
+          "kg": "Продуктун эң жөнөкөй версиясын жасаңыз",
+          "ru": "Сделать самую простую версию продукта",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Sketch the simplest version on paper", "kg": "Эң жөнөкөй версиясын кагазга чийиңиз", "ru": "Набросать простейшую версию на бумаге" },
+          "steps": [
+            { "en": "List only the 1–2 must-have features", "kg": "Сөзсүз керек 1–2 мүмкүнчүлүктү гана жазыңыз", "ru": "Выписать только 1–2 обязательные функции", "minutes": 15 },
+            { "en": "Choose the cheapest way to make it", "kg": "Аны жасоонун эң арзан жолун тандаңыз", "ru": "Выбрать самый дешёвый способ сделать", "minutes": 15 },
+            { "en": "Make the first draft", "kg": "Биринчи нускасын жасаңыз", "ru": "Сделать первый черновик", "minutes": 120 },
+            { "en": "Show it to 3 potential customers", "kg": "Аны 3 мүмкүн болгон кардарга көрсөтүңүз", "ru": "Показать его 3 потенциальным клиентам", "minutes": 60 },
+            { "en": "Fix the top problem they named", "kg": "Алар айткан негизги көйгөйдү оңдоңуз", "ru": "Исправить главную названную ими проблему", "minutes": 90 }
+          ]
+        },
+        {
+          "en": "Calculate costs and the price",
+          "kg": "Чыгымдарды жана бааны эсептеңиз",
+          "ru": "Рассчитать себестоимость и цену",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "List all costs for one month", "kg": "Бир айдын бардык чыгымдарын тизмелеңиз", "ru": "Выписать все расходы за один месяц" },
+          "steps": [
+            { "en": "List one-time costs in som", "kg": "Бир жолку чыгымдарды сом менен жазыңыз", "ru": "Выписать разовые расходы в сомах", "minutes": 20 },
+            { "en": "List monthly costs in som", "kg": "Айлык чыгымдарды сом менен жазыңыз", "ru": "Выписать ежемесячные расходы в сомах", "minutes": 20 },
+            { "en": "Calculate the cost of one unit or service", "kg": "Бир товардын же кызматтын өздүк наркын эсептеңиз", "ru": "Посчитать себестоимость одной единицы", "minutes": 20 },
+            { "en": "Compare with competitors’ prices", "kg": "Атаандаштардын баалары менен салыштырыңыз", "ru": "Сравнить с ценами конкурентов", "minutes": 15 },
+            { "en": "Set a price and how many sales cover costs", "kg": "Баа коюп, канча сатуу чыгымды жабарын эсептеңиз", "ru": "Назначить цену и посчитать точку окупаемости", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Get the first sale before big investment",
+          "kg": "Чоң инвестициядан мурун биринчи сатууну жасаңыз",
+          "ru": "Получить первую продажу до больших вложений",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Ask one person to pre-pay or pre-order", "kg": "Бир адамдан алдын ала төлөм же буйрутма сураңыз", "ru": "Попросить одного человека о предзаказе" }
+        },
+        {
+          "en": "Register the business legally",
+          "kg": "Бизнести мыйзамдуу түрдө каттаңыз",
+          "ru": "Официально зарегистрировать бизнес",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Read the registration rules on the official site", "kg": "Каттоо эрежелерин расмий сайттан окуңуз", "ru": "Прочитать правила регистрации на официальном сайте" },
+          "steps": [
+            { "en": "Check business forms on the official state site", "kg": "Бизнес формаларын мамлекеттик расмий сайттан текшериңиз", "ru": "Изучить формы бизнеса на официальном госсайте", "minutes": 30 },
+            { "en": "Ask an accountant or a business centre for advice", "kg": "Бухгалтерден же бизнес борборунан кеңеш сураңыз", "ru": "Спросить совета у бухгалтера или бизнес-центра", "minutes": 30 },
+            { "en": "Choose the form and tax regime", "kg": "Форманы жана салык режимин тандаңыз", "ru": "Выбрать форму и налоговый режим", "minutes": 20 },
+            { "en": "Prepare the required documents", "kg": "Керектүү документтерди даярдаңыз", "ru": "Подготовить необходимые документы", "minutes": 60 },
+            { "en": "Submit the application", "kg": "Арызды тапшырыңыз", "ru": "Подать заявление", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Track income and expenses separately",
+          "kg": "Киреше менен чыгымды өзүнчө эсептеңиз",
+          "ru": "Вести доходы и расходы бизнеса отдельно",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write this week’s business income", "kg": "Ушул жуманын бизнес кирешесин жазыңыз", "ru": "Записать доход бизнеса за неделю" }
+        }
       ]
     },
     {
       "title": { "en": "Productivity", "kg": "Өндүрүмдүүлүк", "ru": "Продуктивность" },
+      "kind": "support",
       "milestones": [
         { "en": "Weekly planning habit", "kg": "Жумалык пландоо адаты", "ru": "Привычка планировать неделю" }
       ],
       "actions": [
-        { "en": "Plan the week on Monday morning", "kg": "Жуманы дүйшөмбү эртең менен пландаңыз", "ru": "Планировать неделю в понедельник утром" },
-        { "en": "Choose 3 priorities for each day", "kg": "Ар күнгө 3 артыкчылык тандаңыз", "ru": "Выбирать 3 приоритета на день" },
-        { "en": "Work in focus blocks without notifications", "kg": "Билдирүүлөрсүз көңүл буруу блокторунда иштеңиз", "ru": "Работать фокус-блоками без уведомлений" },
-        { "en": "Check email only at set times", "kg": "Почтаны белгиленген убакта гана текшериңиз", "ru": "Проверять почту только в определённое время" },
-        { "en": "Delegate tasks others can do", "kg": "Башкалар аткара алган тапшырмаларды тапшырыңыз", "ru": "Делегировать задачи, которые могут сделать другие" },
-        { "en": "Automate one repetitive task", "kg": "Бир кайталанган тапшырманы автоматташтырыңыз", "ru": "Автоматизировать одну рутинную задачу" },
-        { "en": "End the day with a short plan for tomorrow", "kg": "Күндү эртеңки кыска план менен аяктаңыз", "ru": "Завершать день коротким планом на завтра" },
-        { "en": "Avoid overtime as a habit", "kg": "Ашыкча иштөөнү адатка айландырбаңыз", "ru": "Не превращать переработки в привычку" }
+        {
+          "en": "Plan the week on Monday morning",
+          "kg": "Жуманы дүйшөмбү эртең менен пландаңыз",
+          "ru": "Планировать неделю в понедельник утром",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 3 goals for the week", "kg": "Жумага 3 максат жазыңыз", "ru": "Записать 3 цели на неделю" }
+        },
+        {
+          "en": "Choose 3 priorities for each day",
+          "kg": "Ар күнгө 3 артыкчылык тандаңыз",
+          "ru": "Выбирать 3 приоритета на день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Choose 1 priority for today", "kg": "Бүгүнкү 1 артыкчылыкты тандаңыз", "ru": "Выбрать 1 приоритет на сегодня" }
+        },
+        {
+          "en": "Work in focus blocks without notifications",
+          "kg": "Билдирүүлөрсүз көңүл буруу блокторунда иштеңиз",
+          "ru": "Работать фокус-блоками без уведомлений",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 50,
+          "easy": { "en": "Work 25 minutes with notifications off", "kg": "Билдирмелерди өчүрүп, 25 мүнөт иштеңиз", "ru": "Поработать 25 минут без уведомлений" }
+        },
+        {
+          "en": "Check email only at set times",
+          "kg": "Почтаны белгиленген убакта гана текшериңиз",
+          "ru": "Проверять почту только в определённое время",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check email only twice today", "kg": "Бүгүн почтаны эки гана жолу текшериңиз", "ru": "Проверить почту сегодня только два раза" }
+        },
+        {
+          "en": "Delegate tasks others can do",
+          "kg": "Башкалар аткара алган тапшырмаларды тапшырыңыз",
+          "ru": "Делегировать задачи, которые могут сделать другие",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Hand over one small task this week", "kg": "Ушул жумада бир кичине тапшырманы башкага бериңиз", "ru": "Передать одну мелкую задачу на этой неделе" }
+        },
+        {
+          "en": "Automate one repetitive task",
+          "kg": "Бир кайталанган тапшырманы автоматташтырыңыз",
+          "ru": "Автоматизировать одну рутинную задачу",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Make one template for a repeated message", "kg": "Кайталанган кат үчүн бир шаблон жасаңыз", "ru": "Сделать шаблон для повторяющегося сообщения" },
+          "steps": [
+            { "en": "Write tasks you repeat every week", "kg": "Ар жума кайталанган тапшырмаларды жазыңыз", "ru": "Выписать задачи, которые повторяются каждую неделю", "minutes": 15 },
+            { "en": "Pick the one that takes most time", "kg": "Эң көп убакыт алганын тандаңыз", "ru": "Выбрать ту, что занимает больше всего времени", "minutes": 5 },
+            { "en": "Find a template, shortcut or tool for it", "kg": "Ага шаблон, ыкчам жол же курал табыңыз", "ru": "Найти для неё шаблон, горячую клавишу или сервис", "minutes": 30 },
+            { "en": "Set it up and test once", "kg": "Аны орнотуп, бир жолу сынаңыз", "ru": "Настроить и проверить один раз", "minutes": 30 },
+            { "en": "Write how many minutes it saves weekly", "kg": "Жумасына канча мүнөт үнөмдөлөрүн жазыңыз", "ru": "Записать, сколько минут экономит в неделю", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "End the day with a short plan for tomorrow",
+          "kg": "Күндү эртеңки кыска план менен аяктаңыз",
+          "ru": "Завершать день коротким планом на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Write tomorrow’s first task", "kg": "Эртеңки биринчи тапшырманы жазыңыз", "ru": "Записать первую задачу на завтра" }
+        },
+        {
+          "en": "Avoid overtime as a habit",
+          "kg": "Ашыкча иштөөнү адатка айландырбаңыз",
+          "ru": "Не превращать переработки в привычку",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Leave on time at least 2 days this week", "kg": "Ушул жумада жок дегенде 2 күн өз убагында кетиңиз", "ru": "Уйти вовремя хотя бы 2 дня на этой неделе" }
+        }
       ]
     },
     {
       "title": { "en": "Personal brand", "kg": "Жеке бренд", "ru": "Личный бренд" },
+      "kind": "support",
       "milestones": [
         { "en": "10 public posts about your expertise", "kg": "Тажрыйбаңыз жөнүндө 10 ачык жазуу", "ru": "10 публикаций о своей экспертизе" }
       ],
       "actions": [
-        { "en": "Define what you want to be known for", "kg": "Эмне менен таанылууну каалайсыз, аныктаңыз", "ru": "Определить, чем хотите быть известны" },
-        { "en": "Publish one post about your work a week", "kg": "Ишиңиз жөнүндө жумасына бир жазуу жарыялаңыз", "ru": "Публиковать пост о работе раз в неделю" },
-        { "en": "Speak at a meetup or webinar", "kg": "Жолугушууда же вебинарда сүйлөңүз", "ru": "Выступить на митапе или вебинаре" },
-        { "en": "Collect recommendations from colleagues", "kg": "Кесиптештерден сунуштамаларды чогултуңуз", "ru": "Собрать рекомендации от коллег" },
-        { "en": "Create a simple portfolio page", "kg": "Жөнөкөй портфолио баракчасын түзүңүз", "ru": "Сделать простую страницу-портфолио" },
-        { "en": "Keep your online profiles consistent", "kg": "Онлайн профилдериңизди бирдей кармаңыз", "ru": "Поддерживать профили в сети в едином стиле" },
-        { "en": "Answer questions in professional communities", "kg": "Кесиптик коомчулуктарда суроолорго жооп бериңиз", "ru": "Отвечать на вопросы в профессиональных сообществах" },
-        { "en": "Write a case study of your best project", "kg": "Эң мыкты долбооруңуз жөнүндө кейс жазыңыз", "ru": "Описать кейс своего лучшего проекта" }
+        {
+          "en": "Define what you want to be known for",
+          "kg": "Эмне менен таанылууну каалайсыз, аныктаңыз",
+          "ru": "Определить, чем хотите быть известны",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 topics you know well", "kg": "Жакшы билген 3 темаңызды жазыңыз", "ru": "Записать 3 темы, в которых вы сильны" },
+          "steps": [
+            { "en": "Write 5 topics people ask you about", "kg": "Адамдар сизден сураган 5 теманы жазыңыз", "ru": "Выписать 5 тем, о которых вас спрашивают", "minutes": 10 },
+            { "en": "Mark the ones you enjoy most", "kg": "Эң жакканын белгилеңиз", "ru": "Отметить самые любимые", "minutes": 5 },
+            { "en": "Choose one main topic", "kg": "Бир негизги теманы тандаңыз", "ru": "Выбрать одну главную тему", "minutes": 5 },
+            { "en": "Write one sentence: “I help … with …”", "kg": "Бир сүйлөм жазыңыз: «Мен … үчүн … жардам берем»", "ru": "Написать фразу: «Я помогаю … с …»", "minutes": 10 },
+            { "en": "Use it in your profile headline", "kg": "Аны профилиңиздин аталышына жазыңыз", "ru": "Использовать её в заголовке профиля", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Publish one post about your work a week",
+          "kg": "Ишиңиз жөнүндө жумасына бир жазуу жарыялаңыз",
+          "ru": "Публиковать пост о работе раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Write a 3-sentence post about work", "kg": "Иш тууралуу 3 сүйлөмдүк пост жазыңыз", "ru": "Написать пост о работе в 3 предложения" }
+        },
+        {
+          "en": "Speak at a meetup or webinar",
+          "kg": "Жолугушууда же вебинарда сүйлөңүз",
+          "ru": "Выступить на митапе или вебинаре",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Apply to speak at one meetup", "kg": "Бир жолугушууда сүйлөөгө арыз бериңиз", "ru": "Подать заявку на выступление на одной встрече" },
+          "steps": [
+            { "en": "Find a meetup or webinar that takes speakers", "kg": "Спикер кабыл алган жолугушуу же вебинар табыңыз", "ru": "Найти встречу или вебинар, где ищут спикеров", "minutes": 20 },
+            { "en": "Choose a topic from your real experience", "kg": "Чыныгы тажрыйбаңыздан тема тандаңыз", "ru": "Выбрать тему из реального опыта", "minutes": 10 },
+            { "en": "Send a short talk proposal", "kg": "Кыска баяндама сунушун жөнөтүңүз", "ru": "Отправить короткую заявку на доклад", "minutes": 20 },
+            { "en": "Make 8–10 simple slides", "kg": "8–10 жөнөкөй слайд жасаңыз", "ru": "Сделать 8–10 простых слайдов", "minutes": 90 },
+            { "en": "Rehearse twice with a timer", "kg": "Таймер менен эки жолу машыгыңыз", "ru": "Дважды отрепетировать с таймером", "minutes": 60 },
+            { "en": "Give the talk and collect questions", "kg": "Баяндама жасап, суроолорду чогултуңуз", "ru": "Выступить и собрать вопросы", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Collect recommendations from colleagues",
+          "kg": "Кесиптештерден сунуштамаларды чогултуңуз",
+          "ru": "Собрать рекомендации от коллег",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask one colleague for a recommendation", "kg": "Бир кесиптештен сунуштама сураңыз", "ru": "Попросить рекомендацию у одного коллеги" },
+          "steps": [
+            { "en": "List 3 people who saw your work closely", "kg": "Ишиңизди жакындан көргөн 3 адамды тизмелеңиз", "ru": "Выписать 3 людей, близко видевших вашу работу", "minutes": 10 },
+            { "en": "Remind each of one shared project", "kg": "Ар бирине бир жалпы долбоорду эске салыңыз", "ru": "Напомнить каждому об общем проекте", "minutes": 10 },
+            { "en": "Ask politely for a short recommendation", "kg": "Кыска сунуштаманы сылык сураңыз", "ru": "Вежливо попросить короткую рекомендацию", "minutes": 10 },
+            { "en": "Thank them and offer one in return", "kg": "Ыраазычылык айтып, жооп иретинде сунуштаңыз", "ru": "Поблагодарить и предложить ответную", "minutes": 5 },
+            { "en": "Add the recommendations to your profile", "kg": "Сунуштамаларды профилиңизге кошуңуз", "ru": "Добавить рекомендации в профиль", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Create a simple portfolio page",
+          "kg": "Жөнөкөй портфолио баракчасын түзүңүз",
+          "ru": "Сделать простую страницу-портфолио",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Put one project on a free page", "kg": "Бир долбоорду акысыз баракчага коюңуз", "ru": "Разместить один проект на бесплатной странице" },
+          "steps": [
+            { "en": "Choose a free page builder or profile site", "kg": "Акысыз сайт куруучу же профиль сайтын тандаңыз", "ru": "Выбрать бесплатный конструктор или профиль", "minutes": 15 },
+            { "en": "Write a short “About me” block", "kg": "Кыска «Мен жөнүндө» бөлүгүн жазыңыз", "ru": "Написать короткий блок «Обо мне»", "minutes": 20 },
+            { "en": "Add 3 best projects with results", "kg": "Жыйынтыктары менен эң жакшы 3 долбоорду кошуңуз", "ru": "Добавить 3 лучших проекта с результатами", "minutes": 60 },
+            { "en": "Add contacts", "kg": "Байланыштарды кошуңуз", "ru": "Добавить контакты", "minutes": 5 },
+            { "en": "Publish and put the link in your CV", "kg": "Жарыялап, шилтемени резюмеге кошуңуз", "ru": "Опубликовать и добавить ссылку в резюме", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Make all online profiles match in one evening",
+          "kg": "Бардык онлайн профилдерди бир кечте бирдей кылыңыз",
+          "ru": "За вечер привести все онлайн-профили к единому виду",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Use the same photo on 2 profiles", "kg": "2 профилде бирдей сүрөт колдонуңуз", "ru": "Поставить одно фото в 2 профилях" },
+          "steps": [
+            { "en": "List all your public profiles", "kg": "Бардык ачык профилдериңизди тизмелеңиз", "ru": "Выписать все публичные профили", "minutes": 5 },
+            { "en": "Use one clear photo on all of them", "kg": "Баарында бир так сүрөт колдонуңуз", "ru": "Поставить везде одно чёткое фото", "minutes": 10 },
+            { "en": "Make headlines say the same thing", "kg": "Аталыштарды бирдей кылыңыз", "ru": "Сделать заголовки одинаковыми по смыслу", "minutes": 10 },
+            { "en": "Remove old or awkward posts", "kg": "Эски же ыңгайсыз постторду өчүрүңүз", "ru": "Удалить старые или неудачные посты", "minutes": 20 },
+            { "en": "Check contacts are the same everywhere", "kg": "Байланыштар бардык жерде бирдей экенин текшериңиз", "ru": "Проверить, что контакты везде одинаковые", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Answer questions in professional communities",
+          "kg": "Кесиптик коомчулуктарда суроолорго жооп бериңиз",
+          "ru": "Отвечать на вопросы в профессиональных сообществах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Answer one question in a pro chat", "kg": "Кесиптик чатта бир суроого жооп бериңиз", "ru": "Ответить на один вопрос в профчате" }
+        },
+        {
+          "en": "Write a case study of your best project",
+          "kg": "Эң мыкты долбооруңуз жөнүндө кейс жазыңыз",
+          "ru": "Описать кейс своего лучшего проекта",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Write the case outline in 5 points", "kg": "Кейстин планын 5 пунктка жазыңыз", "ru": "Набросать план кейса в 5 пунктах" },
+          "steps": [
+            { "en": "Choose the project with the clearest result", "kg": "Жыйынтыгы эң так долбоорду тандаңыз", "ru": "Выбрать проект с самым понятным результатом", "minutes": 10 },
+            { "en": "Write the problem and the starting point", "kg": "Көйгөйдү жана баштапкы абалды жазыңыз", "ru": "Описать проблему и исходную точку", "minutes": 20 },
+            { "en": "Write what you did step by step", "kg": "Эмне кылганыңызды кадам сайын жазыңыз", "ru": "Описать по шагам, что вы сделали", "minutes": 30 },
+            { "en": "Add the result in numbers", "kg": "Жыйынтыкты сандар менен кошуңуз", "ru": "Добавить результат в цифрах", "minutes": 15 },
+            { "en": "Get approval if company data is used", "kg": "Компаниянын маалыматы болсо, уруксат алыңыз", "ru": "Получить согласие, если есть данные компании", "minutes": 10 },
+            { "en": "Publish it on your portfolio page", "kg": "Аны портфолио баракчаңызга жарыялаңыз", "ru": "Опубликовать на странице портфолио", "minutes": 10 }
+          ]
+        }
       ]
     },
     {
       "title": { "en": "Balance", "kg": "Тең салмак", "ru": "Баланс" },
+      "kind": "support",
       "milestones": [
         { "en": "Month without burnout signs", "kg": "Күйүп кетүү белгилерисиз бир ай", "ru": "Месяц без признаков выгорания" }
       ],
       "actions": [
-        { "en": "Set clear working hours", "kg": "Так иш убактысын белгилеңиз", "ru": "Установить чёткие рабочие часы" },
-        { "en": "Take full weekends regularly", "kg": "Дем алыш күндөрүн толук эс алыңыз", "ru": "Регулярно полноценно отдыхать в выходные" },
-        { "en": "Plan your vacation in advance", "kg": "Өргүүңүздү алдын ала пландаңыз", "ru": "Заранее планировать отпуск" },
-        { "en": "Do sport to relieve work stress", "kg": "Иш стрессин басуу үчүн спорт менен машыгыңыз", "ru": "Снимать рабочий стресс спортом" },
-        { "en": "Notice early signs of burnout", "kg": "Күйүп кетүүнүн алгачкы белгилерин байкаңыз", "ru": "Замечать ранние признаки выгорания" },
-        { "en": "Spend evenings with family and friends", "kg": "Кечтерди үй-бүлө жана достор менен өткөрүңүз", "ru": "Проводить вечера с семьёй и друзьями" },
-        { "en": "Have a hobby not related to work", "kg": "Жумушка тиешеси жок хоббиңиз болсун", "ru": "Иметь хобби, не связанное с работой" },
-        { "en": "Review your career direction every half year", "kg": "Карьера багытыңызды жарым жылда бир карап чыгыңыз", "ru": "Раз в полгода пересматривать направление карьеры" }
+        {
+          "en": "Set clear working hours",
+          "kg": "Так иш убактысын белгилеңиз",
+          "ru": "Установить чёткие рабочие часы",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Stop work at a set time 3 days this week", "kg": "Ушул жумада 3 күн белгиленген убакта ишти токтотуңуз", "ru": "Заканчивать работу в срок 3 дня на этой неделе" }
+        },
+        {
+          "en": "Take full weekends regularly",
+          "kg": "Дем алыш күндөрүн толук эс алыңыз",
+          "ru": "Регулярно полноценно отдыхать в выходные",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Keep one weekend day work-free", "kg": "Дем алыштын бир күнүн жумушсуз өткөрүңүз", "ru": "Провести один выходной без работы" }
+        },
+        {
+          "en": "Plan your vacation in advance",
+          "kg": "Өргүүңүздү алдын ала пландаңыз",
+          "ru": "Заранее планировать отпуск",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose your vacation dates", "kg": "Эс алуу даталарыңызды тандаңыз", "ru": "Выбрать даты отпуска" },
+          "steps": [
+            { "en": "Check how many vacation days you have", "kg": "Канча эс алуу күнүңүз бар экенин текшериңиз", "ru": "Проверить, сколько у вас дней отпуска", "minutes": 5 },
+            { "en": "Choose dates with family", "kg": "Даталарды үй-бүлө менен тандаңыз", "ru": "Выбрать даты вместе с семьёй", "minutes": 15 },
+            { "en": "Agree on the dates with your manager", "kg": "Даталарды жетекчиңиз менен макулдашыңыз", "ru": "Согласовать даты с руководителем", "minutes": 10 },
+            { "en": "Plan a budget in som", "kg": "Бюджетти сом менен пландаңыз", "ru": "Спланировать бюджет в сомах", "minutes": 20 },
+            { "en": "Plan who covers your work while away", "kg": "Жокто ишиңизди ким аткарарын пландаңыз", "ru": "Решить, кто подменит вас на время отпуска", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Do sport to relieve work stress",
+          "kg": "Иш стрессин басуу үчүн спорт менен машыгыңыз",
+          "ru": "Снимать рабочий стресс спортом",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 40,
+          "easy": { "en": "Walk 20 minutes after work", "kg": "Жумуштан кийин 20 мүнөт басыңыз", "ru": "Пройтись 20 минут после работы" }
+        },
+        {
+          "en": "Rate work stress from 1 to 10 every Friday",
+          "kg": "Ар жума жумуштагы стрессти 1ден 10го чейин баалаңыз",
+          "ru": "Каждую пятницу оценивать стресс от 1 до 10",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Write your stress level once", "kg": "Стресс деңгээлиңизди бир жолу жазыңыз", "ru": "Один раз записать уровень стресса" }
+        },
+        {
+          "en": "Spend evenings with family and friends",
+          "kg": "Кечтерди үй-бүлө жана достор менен өткөрүңүз",
+          "ru": "Проводить вечера с семьёй и друзьями",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 60,
+          "easy": { "en": "Have one evening with family this week", "kg": "Ушул жумада бир кечти үй-бүлө менен өткөрүңүз", "ru": "Провести один вечер с семьёй на этой неделе" }
+        },
+        {
+          "en": "Have a hobby not related to work",
+          "kg": "Жумушка тиешеси жок хоббиңиз болсун",
+          "ru": "Иметь хобби, не связанное с работой",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Spend 20 minutes on your hobby", "kg": "Хоббиңизге 20 мүнөт бөлүңүз", "ru": "Уделить 20 минут хобби" }
+        },
+        {
+          "en": "Review your career direction every half year",
+          "kg": "Карьера багытыңызды жарым жылда бир карап чыгыңыз",
+          "ru": "Раз в полгода пересматривать направление карьеры",
+          "type": "quality",
+          "minutes": 60,
+          "easy": { "en": "Write one thing to change in your career", "kg": "Карьераңызда өзгөртө турган бир нерсени жазыңыз", "ru": "Записать одну вещь, которую изменить в карьере" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Work ethic", "kg": "Иш адеби", "ru": "Рабочая этика" },
+      "kind": "character",
+      "milestones": [
+        { "en": "A month of kept promises at work", "kg": "Жумушта убада бузулбаган бир ай", "ru": "Месяц без нарушенных обещаний на работе" }
+      ],
+      "actions": [
+        {
+          "en": "Greet every colleague you meet in the morning",
+          "kg": "Эртең менен жолуккан ар бир кесиптешиңиз менен саламдашыңыз",
+          "ru": "Здороваться утром с каждым встречным коллегой",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Greet 3 colleagues first today", "kg": "Бүгүн 3 кесиптеш менен биринчи саламдашыңыз", "ru": "Первым поздороваться с 3 коллегами сегодня" }
+        },
+        {
+          "en": "Come to every meeting 5 minutes early",
+          "kg": "Ар бир жолугушууга 5 мүнөт эрте келиңиз",
+          "ru": "Приходить на каждую встречу за 5 минут",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Come to one meeting early today", "kg": "Бүгүн бир жолугушууга эрте келиңиз", "ru": "Прийти сегодня заранее на одну встречу" }
+        },
+        {
+          "en": "Say “I don’t know, I’ll check” instead of guessing",
+          "kg": "Божомолдоонун ордуна «билбейм, текшерем» деңиз",
+          "ru": "Говорить «не знаю, уточню» вместо догадок",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check one fact before answering today", "kg": "Бүгүн жооп берээрден мурун бир фактыны текшериңиз", "ru": "Сегодня проверить один факт перед ответом" }
+        },
+        {
+          "en": "Write promised deadlines down and keep them",
+          "kg": "Убада кылган мөөнөттөрдү жазып, аткарыңыз",
+          "ru": "Записывать обещанные сроки и соблюдать их",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Keep one promised deadline this week", "kg": "Ушул жумада убада кылган бир мөөнөттү аткарыңыз", "ru": "Соблюсти один обещанный срок на этой неделе" }
+        },
+        {
+          "en": "Leave your workplace clean at the end of the day",
+          "kg": "Күндүн аягында жумуш ордуңузду таза калтырыңыз",
+          "ru": "Оставлять рабочее место чистым в конце дня",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Throw away trash from your desk", "kg": "Столуңуздагы таштандыны ыргытыңыз", "ru": "Выбросить мусор со стола" }
+        },
+        {
+          "en": "Report “done” only after checking the result",
+          "kg": "Жыйынтыкты текшергенден кийин гана «бүттү» деңиз",
+          "ru": "Говорить «готово» только после проверки результата",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Check one finished task twice", "kg": "Бүткөн бир тапшырманы эки жолу текшериңиз", "ru": "Перепроверить одну законченную задачу" }
+        },
+        {
+          "en": "Reply to work messages within 24 hours",
+          "kg": "Жумуш каттарына 24 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать на рабочие сообщения в течение 24 часов",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Reply to one old message today", "kg": "Бүгүн бир эски катка жооп бериңиз", "ru": "Ответить сегодня на одно старое сообщение" }
+        },
+        {
+          "en": "Thank one colleague for help by name",
+          "kg": "Бир кесиптешке жардамы үчүн атын атап ыраазычылык айтыңыз",
+          "ru": "Поблагодарить коллегу за помощь по имени",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Say “thank you” to one person today", "kg": "Бүгүн бир адамга «рахмат» деңиз", "ru": "Сказать сегодня «спасибо» одному человеку" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Salary talks", "kg": "Айлык боюнча сүйлөшүү", "ru": "Разговор о зарплате" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Market salary range known", "kg": "Рыноктогу айлык чеги белгилүү", "ru": "Известна рыночная вилка зарплаты" },
+        { "en": "Salary or promotion talk held", "kg": "Айлык же кызмат боюнча сүйлөшүү өттү", "ru": "Проведён разговор о зарплате или повышении" }
+      ],
+      "actions": [
+        {
+          "en": "Prepare a one-page list of your results",
+          "kg": "Жыйынтыктарыңыздын бир беттик тизмесин даярдаңыз",
+          "ru": "Подготовить список своих результатов на страницу",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write 3 results of this year", "kg": "Ушул жылдын 3 жыйынтыгын жазыңыз", "ru": "Записать 3 результата этого года" },
+          "steps": [
+            { "en": "Collect your weekly result notes", "kg": "Жумалык жыйынтык жазууларыңызды чогултуңуз", "ru": "Собрать еженедельные записи о результатах", "minutes": 15 },
+            { "en": "Choose the 5 strongest results", "kg": "Эң күчтүү 5 жыйынтыкты тандаңыз", "ru": "Выбрать 5 самых сильных результатов", "minutes": 10 },
+            { "en": "Add numbers: time, money, clients", "kg": "Сандарды кошуңуз: убакыт, акча, кардарлар", "ru": "Добавить цифры: время, деньги, клиенты", "minutes": 20 },
+            { "en": "Add new duties you took on", "kg": "Алган жаңы милдеттериңизди кошуңуз", "ru": "Добавить новые обязанности, которые взяли", "minutes": 10 },
+            { "en": "Fit it on one page", "kg": "Аны бир бетке батырыңыз", "ru": "Уместить на одну страницу", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Find salary ranges for your role in 3 sources",
+          "kg": "Кызматыңыздын айлык чегин 3 булактан табыңыз",
+          "ru": "Найти вилку зарплат по своей роли в 3 источниках",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Check salaries in 3 job ads", "kg": "3 вакансиядан айлыкты текшериңиз", "ru": "Посмотреть зарплаты в 3 вакансиях" },
+          "steps": [
+            { "en": "Look at 10 job ads for your role and city", "kg": "Шаарыңыздагы кызматыңызга 10 вакансияны караңыз", "ru": "Посмотреть 10 вакансий по роли и городу", "minutes": 20 },
+            { "en": "Write the salary ranges in som", "kg": "Айлык чектерин сом менен жазыңыз", "ru": "Записать вилки зарплат в сомах", "minutes": 10 },
+            { "en": "Ask 2 people in the field about pay", "kg": "Тармактагы 2 адамдан айлык тууралуу сураңыз", "ru": "Спросить 2 людей из сферы об оплате", "minutes": 20 },
+            { "en": "Check a salary survey if one exists", "kg": "Айлык боюнча изилдөө болсо, текшериңиз", "ru": "Посмотреть обзор зарплат, если он есть", "minutes": 15 },
+            { "en": "Write your fair range: min and target", "kg": "Адилет чегиңизди жазыңыз: эң аз жана максат", "ru": "Записать свою вилку: минимум и цель", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Hold a salary or promotion talk with your manager",
+          "kg": "Жетекчиңиз менен айлык же кызмат тууралуу сүйлөшүңүз",
+          "ru": "Провести разговор о зарплате или повышении",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Ask your manager for a meeting", "kg": "Жетекчиңизден жолугушуу сураңыз", "ru": "Попросить руководителя о встрече" },
+          "steps": [
+            { "en": "Pick a calm time, not a crisis week", "kg": "Кризис эмес, тынч убакытты тандаңыз", "ru": "Выбрать спокойное время, не кризисную неделю", "minutes": 5 },
+            { "en": "Ask for a 30-minute meeting", "kg": "30 мүнөттүк жолугушуу сураңыз", "ru": "Попросить встречу на 30 минут", "minutes": 5 },
+            { "en": "Write your opening sentence and your number", "kg": "Ачылыш сүйлөмүңүздү жана санды жазыңыз", "ru": "Записать первую фразу и свою цифру", "minutes": 15 },
+            { "en": "Rehearse it aloud twice", "kg": "Аны эки жолу үн чыгарып машыгыңыз", "ru": "Дважды отрепетировать вслух", "minutes": 20 },
+            { "en": "Hold the talk with your results list", "kg": "Жыйынтыктар тизмеси менен сүйлөшүүнү өткөрүңүз", "ru": "Провести разговор со списком результатов", "minutes": 30 },
+            { "en": "Send a short written summary after", "kg": "Андан кийин кыскача жазуу түрүндө жыйынтык жөнөтүңүз", "ru": "После отправить краткий письменный итог", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Rehearse a negotiation aloud with a friend",
+          "kg": "Досуңуз менен сүйлөшүүнү үн чыгарып машыгыңыз",
+          "ru": "Репетировать переговоры вслух с другом",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Say your key sentence aloud once", "kg": "Негизги сүйлөмүңүздү бир жолу үн чыгарып айтыңыз", "ru": "Произнести вслух свою ключевую фразу" }
+        },
+        {
+          "en": "Name your number first, backed by facts",
+          "kg": "Санды биринчи айтыңыз, фактылар менен",
+          "ru": "Первым называть свою цифру, опираясь на факты",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Write your number and one fact", "kg": "Санды жана бир фактыны жазыңыз", "ru": "Записать свою цифру и один факт" }
+        },
+        {
+          "en": "Take a day to think before accepting terms",
+          "kg": "Шартка макул болуудан мурун бир күн ойлонуңуз",
+          "ru": "Брать день на раздумье перед согласием",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Pause 10 seconds before saying yes", "kg": "«Макул» дээрден мурун 10 секунд токтоңуз", "ru": "Помолчать 10 секунд перед «да»" }
+        },
+        {
+          "en": "Get every agreement confirmed in writing",
+          "kg": "Ар бир макулдашууну жазуу түрүндө бекитиңиз",
+          "ru": "Подтверждать каждую договорённость письменно",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Send one recap message after a talk", "kg": "Сүйлөшүүдөн кийин бир жыйынтык кат жөнөтүңүз", "ru": "Отправить итоговое сообщение после разговора" }
+        },
+        {
+          "en": "Politely refuse one extra task that isn’t yours",
+          "kg": "Сизге тиешеси жок бир кошумча тапшырмадан сылык баш тартыңыз",
+          "ru": "Вежливо отказаться от одной чужой задачи",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask “whose task is this?” once", "kg": "Бир жолу «бул кимдин тапшырмасы?» деп сураңыз", "ru": "Один раз спросить «чья это задача?»" }
+        }
       ]
     }
   ]

@@ -50,10 +50,10 @@ describe('built-in library', () => {
     ['Run a marathon', 'health'],
     ['Save money for a car', 'finance'],
     ['Англис тилин үйрөнүү', 'languages'],
-    ['Бизнес ачуу', 'career'],
+    ['Бизнес ачуу', 'business'],
     ['Ден соолугумду чыңдоо', 'health'],
-    ['Научиться медитировать', 'learning'],
-    ['Переехать жить к морю', 'universal'],
+    ['Научиться медитировать', 'mental'],
+    ['Переехать жить к морю', 'relocation'],
   ])('classifies “%s” as %s', (goal, expected) => {
     expect(classifyGoal(goal, BUILTIN_DOMAINS)[0].id).toBe(expected)
   })

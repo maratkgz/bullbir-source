@@ -87,7 +87,7 @@ export function useCollection(name, { orderField = 'createdAt', direction = 'des
       }))
       return ref.id
     },
-    [path, name, inBackground],
+    [path, inBackground],
   )
 
   const update = useCallback(

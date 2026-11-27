@@ -1,0 +1,874 @@
+{
+  "id": "creativity",
+  "icon": "🎨",
+  "title": { "en": "Creativity", "kg": "Чыгармачылык", "ru": "Творчество" },
+  "keywords": {
+    "en": ["!creativity", "!music", "!art", "creative", "song", "guitar", "piano", "komuz", "sing", "draw", "drawing", "painting", "write", "writing", "book", "poems", "video", "film", "editing", "design", "photography"],
+    "kg": ["!чыгармачылык", "!музыка", "!сүрөт тартуу", "ыр", "ырдоо", "гитара", "пианино", "комуз", "обон", "сүрөт", "жазуу", "китеп жазуу", "поэзия", "аңгеме", "видео", "кино", "монтаж", "дизайн", "фото", "чыгарма"],
+    "ru": ["!творчество", "!музыка", "!рисовать", "песня", "петь", "вокал", "гитара", "пианино", "комуз", "рисование", "живопись", "писать", "написать книгу", "стихи", "рассказ", "видео", "снимать", "монтаж", "дизайн", "фотография", "иллюстрация"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Daily practice", "kg": "Күнүмдүк машыгуу", "ru": "Ежедневная практика" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "30 days of practice in a row", "kg": "Катары менен 30 күн машыгуу", "ru": "30 дней практики подряд" }
+      ],
+      "actions": [
+        {
+          "en": "Practice your art 30 minutes every day",
+          "kg": "Күн сайын 30 мүнөт чыгармачылык менен машыгыңыз",
+          "ru": "Заниматься творчеством 30 минут каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Practice 10 minutes a day", "kg": "Күнүнө 10 мүнөт машыгыңыз", "ru": "Практиковаться 10 минут в день" }
+        },
+        {
+          "en": "Practice at the same time every day",
+          "kg": "Ар күнү бир убакта машыгыңыз",
+          "ru": "Заниматься в одно и то же время каждый день",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Pick 1 fixed time 3 days a week", "kg": "Жумасына 3 күнгө 1 туруктуу убакыт тандаңыз", "ru": "Выбрать 1 фиксированное время на 3 дня в неделю" }
+        },
+        {
+          "en": "Set up a creative corner ready to start in 1 minute",
+          "kg": "1 мүнөттө баштоого даяр чыгармачылык бурчун жасаңыз",
+          "ru": "Обустроить творческий уголок, где можно начать за минуту",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Keep your tools in one visible place", "kg": "Куралдарыңызды бир көрүнгөн жерде сактаңыз", "ru": "Держать инструменты в одном видном месте" },
+          "steps": [
+            { "en": "Choose a corner with light and quiet", "kg": "Жарык жана тынч бурч тандаңыз", "ru": "Выбрать уголок со светом и тишиной", "minutes": 5 },
+            { "en": "Gather all tools in one place", "kg": "Бардык куралдарды бир жерге чогултуңуз", "ru": "Собрать все инструменты в одном месте", "minutes": 15 },
+            { "en": "Remove what distracts", "kg": "Алаксыткан нерселерди алып салыңыз", "ru": "Убрать то, что отвлекает", "minutes": 10 },
+            { "en": "Leave the instrument or sketchbook open", "kg": "Аспапты же блокнотту ачык калтырыңыз", "ru": "Оставить инструмент или скетчбук открытым", "minutes": 5 },
+            { "en": "Start practice there for 3 days", "kg": "3 күн ошол жерде машыгыңыз", "ru": "Позаниматься там 3 дня", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Mark every practice day in the app",
+          "kg": "Ар бир машыгуу күнүн тиркемеде белгилеңиз",
+          "ru": "Отмечать каждый день практики в приложении",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Mark practice days once a week", "kg": "Машыгуу күндөрүн жумасына бир жолу белгилеңиз", "ru": "Отмечать дни практики раз в неделю" }
+        },
+        {
+          "en": "Make 1 small sketch, line or loop daily",
+          "kg": "Күн сайын 1 кичине эскиз, сап же мотив жасаңыз",
+          "ru": "Каждый день делать 1 маленький эскиз, строчку или луп",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Make 1 small sketch 3 times a week", "kg": "Жумасына 3 жолу 1 кичине эскиз жасаңыз", "ru": "Делать 1 эскиз 3 раза в неделю" }
+        },
+        {
+          "en": "Warm up 10 minutes before each session",
+          "kg": "Ар бир сабактан мурун 10 мүнөт жылыныңыз",
+          "ru": "Разминаться 10 минут перед каждым занятием",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Warm up 3 minutes before practice", "kg": "Машыгуудан мурун 3 мүнөт жылыныңыз", "ru": "Разминаться 3 минуты перед практикой" }
+        },
+        {
+          "en": "Put the phone in another room during practice",
+          "kg": "Машыгуу учурунда телефонду башка бөлмөгө коюңуз",
+          "ru": "Убирать телефон в другую комнату во время практики",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Turn on airplane mode during practice", "kg": "Машыгуу учурунда учак режимин күйгүзүңүз", "ru": "Включать авиарежим во время практики" }
+        },
+        {
+          "en": "Have 1 long 2-hour session on a day off",
+          "kg": "Эс алуу күнү 1 узак 2 сааттык сабак өткөрүңүз",
+          "ru": "Проводить 1 длинное занятие на 2 часа в выходной",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Have 1 one-hour session a week", "kg": "Жумасына 1 сааттык 1 сабак өткөрүңүз", "ru": "Проводить 1 часовое занятие в неделю" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Skills & technique", "kg": "Техника", "ru": "Техника и навыки" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "1 course or tutorial series finished", "kg": "1 курс же сабактар сериясы бүттү", "ru": "Пройден 1 курс или серия уроков" },
+        { "en": "Clear progress visible in 3 months", "kg": "3 айда ачык өсүш көрүнөт", "ru": "Через 3 месяца виден явный прогресс" }
+      ],
+      "actions": [
+        {
+          "en": "Choose a free learning path for 3 months",
+          "kg": "3 айга акысыз окуу жолун тандаңыз",
+          "ru": "Выбрать бесплатный путь обучения на 3 месяца",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find 1 good free tutorial series", "kg": "1 жакшы акысыз сабактар сериясын табыңыз", "ru": "Найти 1 хорошую бесплатную серию уроков" },
+          "steps": [
+            { "en": "Write 3 skills you want to improve", "kg": "Жакшырткыңыз келген 3 көндүмдү жазыңыз", "ru": "Записать 3 навыка, которые хотите улучшить", "minutes": 10 },
+            { "en": "Find 3 free courses or YouTube series", "kg": "3 акысыз курс же YouTube серия табыңыз", "ru": "Найти 3 бесплатных курса или серии на YouTube", "minutes": 30 },
+            { "en": "Watch the first lesson of each", "kg": "Ар биринин биринчи сабагын көрүңүз", "ru": "Посмотреть первый урок каждого", "minutes": 45 },
+            { "en": "Pick 1 and plan lessons by weeks", "kg": "1ин тандап, сабактарды жумаларга бөлүңүз", "ru": "Выбрать 1 и расписать уроки по неделям", "minutes": 15 },
+            { "en": "Put lesson days in the calendar", "kg": "Сабак күндөрүн календарга коюңуз", "ru": "Внести дни уроков в календарь", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Do 1 lesson with practice 3 times a week",
+          "kg": "Жумасына 3 жолу практикасы менен 1 сабак өтүңүз",
+          "ru": "Проходить 1 урок с практикой 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 45,
+          "easy": { "en": "Do 1 lesson a week", "kg": "Жумасына 1 сабак өтүңүз", "ru": "Проходить 1 урок в неделю" }
+        },
+        {
+          "en": "Copy 1 work of a master to learn technique",
+          "kg": "Техниканы үйрөнүү үчүн устаттын 1 чыгармасын кайталаңыз",
+          "ru": "Копировать 1 работу мастера, чтобы изучить технику",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Study 1 master’s work for 15 minutes", "kg": "Устаттын 1 чыгармасын 15 мүнөт изилдеңиз", "ru": "Разбирать 1 работу мастера 15 минут" }
+        },
+        {
+          "en": "Work on your weakest skill 15 minutes a day",
+          "kg": "Эң алсыз көндүмүңүзгө күнүнө 15 мүнөт бөлүңүз",
+          "ru": "Работать над самым слабым навыком 15 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Work on your weakest skill twice a week", "kg": "Алсыз көндүмүңүзгө жумасына эки жолу бөлүңүз", "ru": "Работать над слабым навыком 2 раза в неделю" }
+        },
+        {
+          "en": "Record a “before” sample to compare in 3 months",
+          "kg": "3 айдан кийин салыштыруу үчүн «чейинки» үлгүнү жаздырыңыз",
+          "ru": "Записать образец «до», чтобы сравнить через 3 месяца",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Save 1 current work as “before”", "kg": "Азыркы 1 ишиңизди «чейинки» катары сактаңыз", "ru": "Сохранить 1 текущую работу как «до»" },
+          "steps": [
+            { "en": "Choose 1 typical piece: song, drawing, text", "kg": "1 мүнөздүү иш тандаңыз: ыр, сүрөт, текст", "ru": "Выбрать 1 типичную работу: песня, рисунок, текст", "minutes": 5 },
+            { "en": "Do it as well as you can now", "kg": "Аны азыр колуңуздан келишинче жакшы жасаңыз", "ru": "Сделать её так хорошо, как можете сейчас", "minutes": 45 },
+            { "en": "Record or photograph it", "kg": "Аны жаздырып же сүрөткө тартыңыз", "ru": "Записать или сфотографировать", "minutes": 10 },
+            { "en": "Write 3 things you want to improve", "kg": "Жакшырткыңыз келген 3 нерсени жазыңыз", "ru": "Записать 3 вещи, которые хотите улучшить", "minutes": 10 },
+            { "en": "Set a reminder in 3 months to compare", "kg": "Салыштыруу үчүн 3 айдан кийинки эскерткич коюңуз", "ru": "Поставить напоминание сравнить через 3 месяца", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Learn 1 new technique or tool a week",
+          "kg": "Жумасына 1 жаңы ыкма же курал үйрөнүңүз",
+          "ru": "Осваивать 1 новый приём или инструмент в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Learn 1 new technique a month", "kg": "Айына 1 жаңы ыкма үйрөнүңүз", "ru": "Осваивать 1 новый приём в месяц" }
+        },
+        {
+          "en": "Analyze 1 favorite work: why does it work?",
+          "kg": "1 сүйүктүү чыгарманы талдаңыз: эмнеси менен күчтүү?",
+          "ru": "Разбирать 1 любимую работу: почему она работает?",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 1 thing you like in a favorite work", "kg": "Сүйүктүү чыгармада жаккан 1 нерсени жазыңыз", "ru": "Записать 1 вещь, которая нравится в любимой работе" }
+        },
+        {
+          "en": "Practice slowly and correctly before fast",
+          "kg": "Тез эмес, адегенде жай жана туура машыгыңыз",
+          "ru": "Сначала практиковаться медленно и правильно, потом быстро",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do 1 slow repetition of the hardest part", "kg": "Эң оор бөлүгүн 1 жолу жай кайталаңыз", "ru": "Сделать 1 медленный повтор самой трудной части" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Finished works", "kg": "Бүткөн иштер", "ru": "Готовые работы" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First finished work", "kg": "Биринчи бүткөн иш", "ru": "Первая законченная работа" },
+        { "en": "5 finished works", "kg": "5 бүткөн иш", "ru": "5 законченных работ" }
+      ],
+      "actions": [
+        {
+          "en": "Finish 1 small complete work in 2 weeks",
+          "kg": "2 жумада 1 кичине толук иш бүтүрүңүз",
+          "ru": "Закончить 1 небольшую законченную работу за 2 недели",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Finish 1 very short piece: 1 verse or 1 sketch", "kg": "1 өтө кыска иш бүтүрүңүз: 1 куплет же 1 эскиз", "ru": "Закончить 1 очень короткую вещь: куплет или эскиз" },
+          "steps": [
+            { "en": "Choose a small format: 1-minute song, short story", "kg": "Кичине формат тандаңыз: 1 мүнөттүк ыр, кыска аңгеме", "ru": "Выбрать малый формат: песня на минуту, короткий рассказ", "minutes": 10 },
+            { "en": "Write the idea and plan in 5 lines", "kg": "Идеяны жана планды 5 сап менен жазыңыз", "ru": "Записать идею и план в 5 строк", "minutes": 15 },
+            { "en": "Make a rough first version", "kg": "Биринчи орой вариантын жасаңыз", "ru": "Сделать первый черновой вариант", "minutes": 90 },
+            { "en": "Improve the 3 weakest places", "kg": "Эң алсыз 3 жерин жакшыртыңыз", "ru": "Улучшить 3 самых слабых места", "minutes": 60 },
+            { "en": "Call it finished and save the final file", "kg": "Бүттү деп эсептеп, акыркы файлды сактаңыз", "ru": "Признать работу готовой и сохранить финальный файл", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Finish 1 small work every week",
+          "kg": "Ар жумада 1 кичине иш бүтүрүңүз",
+          "ru": "Заканчивать 1 небольшую работу каждую неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Finish 1 small work a month", "kg": "Айына 1 кичине иш бүтүрүңүз", "ru": "Заканчивать 1 небольшую работу в месяц" }
+        },
+        {
+          "en": "Set a deadline for every work",
+          "kg": "Ар бир иш үчүн мөөнөт коюңуз",
+          "ru": "Ставить срок каждой работе",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a deadline for the current work", "kg": "Азыркы иш үчүн мөөнөт коюңуз", "ru": "Поставить срок текущей работе" }
+        },
+        {
+          "en": "Make a 3-month project: album, collection or short film",
+          "kg": "3 айлык долбоор жасаңыз: альбом, жыйнак же кыска тасма",
+          "ru": "Сделать проект на 3 месяца: альбом, сборник или короткий фильм",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Plan a mini project of 3 works", "kg": "3 иштен турган мини долбоор пландаңыз", "ru": "Спланировать мини-проект из 3 работ" },
+          "steps": [
+            { "en": "Choose a project theme", "kg": "Долбоордун темасын тандаңыз", "ru": "Выбрать тему проекта", "minutes": 15 },
+            { "en": "Split it into 5–6 parts", "kg": "Аны 5–6 бөлүккө бөлүңүз", "ru": "Разбить его на 5–6 частей", "minutes": 15 },
+            { "en": "Give each part a 2-week deadline", "kg": "Ар бир бөлүккө 2 жумалык мөөнөт бериңиз", "ru": "Дать каждой части срок 2 недели", "minutes": 10 },
+            { "en": "Make the first part", "kg": "Биринчи бөлүгүн жасаңыз", "ru": "Сделать первую часть", "minutes": 120 },
+            { "en": "Show the first part to 1 person", "kg": "Биринчи бөлүгүн 1 адамга көрсөтүңүз", "ru": "Показать первую часть 1 человеку", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Keep an idea notebook and add 3 ideas a week",
+          "kg": "Идеялар дептерин жүргүзүп, жумасына 3 идея кошуңуз",
+          "ru": "Вести блокнот идей и добавлять 3 идеи в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Add 1 idea a week", "kg": "Жумасына 1 идея кошуңуз", "ru": "Добавлять 1 идею в неделю" }
+        },
+        {
+          "en": "Finish a draft before polishing it",
+          "kg": "Жылмалоодон мурун черновикти аягына чыгарыңыз",
+          "ru": "Закончить черновик, прежде чем шлифовать",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write “done” on 1 draft this week", "kg": "Ушул жумада 1 черновикке «бүттү» деп жазыңыз", "ru": "Поставить «готово» на 1 черновик на этой неделе" }
+        },
+        {
+          "en": "Save every finished work in one archive",
+          "kg": "Бүткөн ар бир ишти бир архивге сактаңыз",
+          "ru": "Сохранять каждую готовую работу в один архив",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Back up works once a month", "kg": "Иштерди айына бир жолу сактап коюңуз", "ru": "Делать резервную копию работ раз в месяц" }
+        },
+        {
+          "en": "Take part in 1 challenge or contest a month",
+          "kg": "Айына 1 челленджге же сынакка катышыңыз",
+          "ru": "Участвовать в 1 челлендже или конкурсе в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Take part in 1 challenge a season", "kg": "Мезгилине 1 челленджге катышыңыз", "ru": "Участвовать в 1 челлендже за сезон" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Sharing work", "kg": "Ишти көрсөтүү", "ru": "Показывать работы" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "10 works shared publicly", "kg": "10 иш элге көрсөтүлдү", "ru": "10 работ опубликовано" }
+      ],
+      "actions": [
+        {
+          "en": "Create a page for your works: Instagram, YouTube or Telegram",
+          "kg": "Иштериңиз үчүн баракча ачыңыз: Instagram, YouTube же Telegram",
+          "ru": "Создать страницу для работ: Instagram, YouTube или Telegram",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Choose 1 platform for your works", "kg": "Иштериңиз үчүн 1 платформа тандаңыз", "ru": "Выбрать 1 площадку для своих работ" },
+          "steps": [
+            { "en": "Choose the platform where your art fits best", "kg": "Чыгармаңызга эң туура келген платформаны тандаңыз", "ru": "Выбрать площадку, где ваше творчество смотрится лучше", "minutes": 10 },
+            { "en": "Pick a short name and avatar", "kg": "Кыска ат жана аватар тандаңыз", "ru": "Выбрать короткое имя и аватар", "minutes": 15 },
+            { "en": "Write a 1-line bio", "kg": "1 саптуу маалымат жазыңыз", "ru": "Написать описание в 1 строку", "minutes": 10 },
+            { "en": "Post your 3 best works", "kg": "Эң жакшы 3 ишиңизди жарыялаңыз", "ru": "Опубликовать 3 лучшие работы", "minutes": 30 },
+            { "en": "Send the link to 5 friends", "kg": "Шилтемени 5 досуңузга жөнөтүңүз", "ru": "Отправить ссылку 5 друзьям", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Publish 1 work or process video a week",
+          "kg": "Жумасына 1 иш же процесс видеосун жарыялаңыз",
+          "ru": "Публиковать 1 работу или видео процесса в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Publish 1 work a month", "kg": "Айына 1 иш жарыялаңыз", "ru": "Публиковать 1 работу в месяц" }
+        },
+        {
+          "en": "Show 1 work to family or friends weekly",
+          "kg": "Жумасына 1 ишти үй-бүлөгө же досторго көрсөтүңүз",
+          "ru": "Показывать 1 работу семье или друзьям в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Show 1 work to 1 person a month", "kg": "Айына 1 ишти 1 адамга көрсөтүңүз", "ru": "Показывать 1 работу 1 человеку в месяц" }
+        },
+        {
+          "en": "Perform or exhibit once: open mic, school, family event",
+          "kg": "Бир жолу эл алдына чыгыңыз: open mic, мектеп, үй-бүлөлүк той",
+          "ru": "Выступить или показать работы: open mic, школа, семейный праздник",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Show your work to 3 people at once", "kg": "Ишиңизди бир эле учурда 3 адамга көрсөтүңүз", "ru": "Показать работу сразу 3 людям" },
+          "steps": [
+            { "en": "Find a local open mic, fair or event", "kg": "Жергиликтүү open mic, жарманке же иш-чара табыңыз", "ru": "Найти местный open mic, ярмарку или мероприятие", "minutes": 20 },
+            { "en": "Register or ask the organizers", "kg": "Катталыңыз же уюштуруучулардан сураңыз", "ru": "Записаться или договориться с организаторами", "minutes": 15 },
+            { "en": "Prepare 1–2 best works", "kg": "Эң жакшы 1–2 ишти даярдаңыз", "ru": "Подготовить 1–2 лучшие работы", "minutes": 60 },
+            { "en": "Rehearse in front of 1 friend", "kg": "1 досуңуздун алдында машыгыңыз", "ru": "Прорепетировать перед 1 другом", "minutes": 30 },
+            { "en": "Perform and thank the audience", "kg": "Чыгып, көрүүчүлөргө рахмат айтыңыз", "ru": "Выступить и поблагодарить зрителей", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Reply to every comment on your works",
+          "kg": "Иштериңиздеги ар бир комментарийге жооп бериңиз",
+          "ru": "Отвечать на каждый комментарий к работам",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Reply to comments once a week", "kg": "Комментарийлерге жумасына бир жолу жооп бериңиз", "ru": "Отвечать на комментарии раз в неделю" }
+        },
+        {
+          "en": "Credit music, fonts and footage you use",
+          "kg": "Колдонгон музыка, шрифт жана видеолордун авторун көрсөтүңүз",
+          "ru": "Указывать авторов музыки, шрифтов и футажей",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Use only free-license resources", "kg": "Акысыз лицензиядагы ресурстарды гана колдонуңуз", "ru": "Использовать только ресурсы со свободной лицензией" }
+        },
+        {
+          "en": "Write a short story behind each work you share",
+          "kg": "Бөлүшкөн ар бир иштин тарыхын кыскача жазыңыз",
+          "ru": "Писать короткую историю к каждой опубликованной работе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Add 1 sentence about the idea", "kg": "Идея тууралуу 1 сүйлөм кошуңуз", "ru": "Добавлять 1 предложение об идее" }
+        },
+        {
+          "en": "Post even if the work is not perfect",
+          "kg": "Иш кемчиликсиз болбосо да жарыялаңыз",
+          "ru": "Публиковать, даже если работа неидеальна",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Post 1 “imperfect” work this month", "kg": "Ушул айда 1 «кемчиликтүү» ишти жарыялаңыз", "ru": "Опубликовать 1 «неидеальную» работу в этом месяце" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Inspiration", "kg": "Шыктануу", "ru": "Вдохновение" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Steady flow of ideas", "kg": "Идеялардын туруктуу агымы", "ru": "Постоянный поток идей" }
+      ],
+      "actions": [
+        {
+          "en": "Watch, read or listen to 1 great work a week",
+          "kg": "Жумасына 1 мыкты чыгарманы көрүңүз, окуңуз же угуңуз",
+          "ru": "Смотреть, читать или слушать 1 сильное произведение в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Discover 1 new artist a month", "kg": "Айына 1 жаңы авторду ачыңыз", "ru": "Открывать 1 нового автора в месяц" }
+        },
+        {
+          "en": "Save 1 inspiring thing a day to a board",
+          "kg": "Күнүнө шыктандырган 1 нерсени тактага сактаңыз",
+          "ru": "Сохранять 1 вдохновляющую вещь в день на доску",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Save 1 inspiring thing a week", "kg": "Жумасына шыктандырган 1 нерсени сактаңыз", "ru": "Сохранять 1 вдохновляющую вещь в неделю" }
+        },
+        {
+          "en": "Walk 1 hour a week with no headphones, just notice",
+          "kg": "Жумасына 1 саат кулакчынсыз басып, айланаңызды байкаңыз",
+          "ru": "Гулять 1 час в неделю без наушников, просто замечать",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Walk 15 minutes without headphones", "kg": "15 мүнөт кулакчынсыз басыңыз", "ru": "Погулять 15 минут без наушников" }
+        },
+        {
+          "en": "Visit 1 museum, concert or exhibition a month",
+          "kg": "Айына 1 музейге, концертке же көргөзмөгө барыңыз",
+          "ru": "Ходить в 1 музей, на концерт или выставку в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Watch 1 concert or exhibition online", "kg": "1 концертти же көргөзмөнү онлайн көрүңүз", "ru": "Посмотреть 1 концерт или выставку онлайн" }
+        },
+        {
+          "en": "Look for ideas in Kyrgyz culture: epics, ornaments, melodies",
+          "kg": "Идеяны кыргыз маданиятынан издеңиз: эпостор, оймо-чийме, обондор",
+          "ru": "Искать идеи в местной культуре: эпос, орнаменты, мелодии",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Study 1 local ornament or melody", "kg": "1 жергиликтүү оймо-чийме же обонду изилдеңиз", "ru": "Изучить 1 местный орнамент или мелодию" }
+        },
+        {
+          "en": "Write down 3 ideas from life every week",
+          "kg": "Ар жумада жашоодон 3 идея жазып алыңыз",
+          "ru": "Записывать 3 идеи из жизни каждую неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write down 1 idea a week", "kg": "Жумасына 1 идея жазыңыз", "ru": "Записывать 1 идею в неделю" }
+        },
+        {
+          "en": "Try 1 creative form outside your field monthly",
+          "kg": "Айына өз тармагыңыздан тышкары 1 чыгармачылык түрүн сынаңыз",
+          "ru": "Пробовать 1 творческий формат вне своей сферы в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Try 1 new medium for 15 minutes", "kg": "1 жаңы ыкманы 15 мүнөт сынаңыз", "ru": "Попробовать 1 новый материал 15 минут" }
+        },
+        {
+          "en": "Create even without inspiration: start and it comes",
+          "kg": "Шыктануусуз да иштеңиз: баштасаңыз, келет",
+          "ru": "Творить и без вдохновения: начать — и оно придёт",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Start with just 5 minutes on low-mood days", "kg": "Маанай жок күндөрү 5 мүнөттөн гана баштаңыз", "ru": "В дни без настроения начинать всего с 5 минут" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Tools & budget", "kg": "Куралдар жана бюджет", "ru": "Инструменты и бюджет" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Basic toolkit ready without debt", "kg": "Негизги куралдар карызсыз даяр", "ru": "Базовые инструменты есть без долгов" }
+      ],
+      "actions": [
+        {
+          "en": "Make a list of the minimum tools you really need",
+          "kg": "Чындап керектүү минималдуу куралдардын тизмесин түзүңүз",
+          "ru": "Составить список минимально нужных инструментов",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Use what you already have for 1 month", "kg": "Бир ай бою колуңуздагы нерселерди колдонуңуз", "ru": "Месяц пользоваться тем, что уже есть" },
+          "steps": [
+            { "en": "Write what you already have", "kg": "Колуңузда эмне бар экенин жазыңыз", "ru": "Записать, что уже есть", "minutes": 10 },
+            { "en": "Write what blocks you now", "kg": "Азыр эмне тоскоол болуп жатканын жазыңыз", "ru": "Записать, что мешает сейчас", "minutes": 10 },
+            { "en": "Find free alternatives: apps, borrowing", "kg": "Акысыз альтернатива табыңыз: тиркемелер, убактылуу алуу", "ru": "Найти бесплатные альтернативы: приложения, взять на время", "minutes": 20 },
+            { "en": "Keep only 1–2 truly needed purchases", "kg": "Чындап керектүү 1–2 сатып алууну гана калтырыңыз", "ru": "Оставить только 1–2 действительно нужные покупки", "minutes": 5 },
+            { "en": "Check used prices on OLX or lalafo.kg", "kg": "OLX же lalafo.kgдан колдонулган баасын караңыз", "ru": "Посмотреть цены б/у на OLX или lalafo.kg", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Save a small sum weekly for 1 needed tool",
+          "kg": "Керектүү 1 курал үчүн жумасына чакан сумма топтоңуз",
+          "ru": "Откладывать небольшую сумму в неделю на 1 нужный инструмент",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Save a small sum monthly", "kg": "Айына чакан сумма топтоңуз", "ru": "Откладывать небольшую сумму в месяц" }
+        },
+        {
+          "en": "Buy tools only from savings, not on credit",
+          "kg": "Куралды кредитке эмес, топтогон акчага гана алыңыз",
+          "ru": "Покупать инструменты только на накопления, не в кредит",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait 7 days before any creative purchase", "kg": "Ар кандай сатып алуудан мурун 7 күн күтүңүз", "ru": "Ждать 7 дней перед любой творческой покупкой" }
+        },
+        {
+          "en": "Learn 1 free program well: CapCut, Canva, GIMP or BandLab",
+          "kg": "1 акысыз программаны жакшы өздөштүрүңүз: CapCut, Canva, GIMP же BandLab",
+          "ru": "Хорошо освоить 1 бесплатную программу: CapCut, Canva, GIMP или BandLab",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Watch 1 beginner tutorial for a free program", "kg": "Акысыз программа боюнча 1 башталгыч сабак көрүңүз", "ru": "Посмотреть 1 урок для новичков по бесплатной программе" },
+          "steps": [
+            { "en": "Choose 1 free program for your art", "kg": "Чыгармаңыз үчүн 1 акысыз программа тандаңыз", "ru": "Выбрать 1 бесплатную программу под своё творчество", "minutes": 10 },
+            { "en": "Install it and explore the interface", "kg": "Аны орнотуп, интерфейсин карап чыгыңыз", "ru": "Установить и изучить интерфейс", "minutes": 20 },
+            { "en": "Do 3 beginner tutorials", "kg": "3 башталгыч сабакты өтүңүз", "ru": "Пройти 3 урока для начинающих", "minutes": 60 },
+            { "en": "Learn 5 key shortcuts", "kg": "5 негизги ыкчам баскычты жаттаңыз", "ru": "Выучить 5 главных горячих клавиш", "minutes": 15 },
+            { "en": "Make 1 finished work in it", "kg": "Анда 1 бүткөн иш жасаңыз", "ru": "Сделать в ней 1 законченную работу", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Clean and care for your tools weekly",
+          "kg": "Куралдарыңызды жумасына тазалап, кам көрүңүз",
+          "ru": "Чистить и ухаживать за инструментами раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Clean your tools once a month", "kg": "Куралдарыңызды айына бир жолу тазалаңыз", "ru": "Чистить инструменты раз в месяц" }
+        },
+        {
+          "en": "Back up project files every week",
+          "kg": "Долбоор файлдарын ар жумада сактап коюңуз",
+          "ru": "Делать резервную копию файлов проектов каждую неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Back up files once a month", "kg": "Файлдарды айына бир жолу сактап коюңуз", "ru": "Делать резервную копию раз в месяц" }
+        },
+        {
+          "en": "Use only legal software and free resources",
+          "kg": "Мыйзамдуу программаларды жана акысыз ресурстарды гана колдонуңуз",
+          "ru": "Использовать только легальные программы и свободные ресурсы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Replace 1 pirated tool with a free one", "kg": "1 уурдалган куралды акысыз курал менен алмаштырыңыз", "ru": "Заменить 1 пиратскую программу бесплатной" }
+        },
+        {
+          "en": "Swap or borrow tools with other creators",
+          "kg": "Башка чыгармачыл адамдар менен куралдарды алмашыңыз",
+          "ru": "Обмениваться инструментами с другими авторами",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Ask 1 creator to lend a tool once", "kg": "1 автордон бир жолу курал сурап туруңуз", "ru": "Попросить у 1 автора инструмент на время" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "People & feedback", "kg": "Адамдар жана пикир", "ru": "Люди и отзывы" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A group of creators to grow with", "kg": "Бирге өсө турган чыгармачыл адамдар тобу", "ru": "Группа авторов, с которыми растёте вместе" }
+      ],
+      "actions": [
+        {
+          "en": "Join 1 creative club, studio or online group",
+          "kg": "1 чыгармачыл клубга, студияга же онлайн топко кошулуңуз",
+          "ru": "Вступить в 1 творческий клуб, студию или онлайн-группу",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Find 1 creative chat in Telegram", "kg": "Telegramдан 1 чыгармачыл чат табыңыз", "ru": "Найти 1 творческий чат в Telegram" },
+          "steps": [
+            { "en": "Search for clubs and chats in your city", "kg": "Шаарыңыздагы клубдарды жана чаттарды издеңиз", "ru": "Найти клубы и чаты в своём городе", "minutes": 20 },
+            { "en": "Read their rules and recent posts", "kg": "Алардын эрежелерин жана акыркы постторун окуңуз", "ru": "Прочитать правила и последние посты", "minutes": 15 },
+            { "en": "Join 1 that is active and friendly", "kg": "Активдүү жана ачык-жарык 1ине кошулуңуз", "ru": "Вступить в 1 активное и дружелюбное", "minutes": 5 },
+            { "en": "Introduce yourself and share 1 work", "kg": "Өзүңүздү тааныштырып, 1 ишти бөлүшүңүз", "ru": "Представиться и показать 1 работу", "minutes": 15 },
+            { "en": "Comment on 3 works of others", "kg": "Башкалардын 3 ишине комментарий жазыңыз", "ru": "Прокомментировать 3 чужие работы", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Ask 1 person for specific feedback on a work",
+          "kg": "1 адамдан ишиңизге так пикир сураңыз",
+          "ru": "Просить у 1 человека конкретный отзыв о работе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Ask for feedback once a month", "kg": "Айына бир жолу пикир сураңыз", "ru": "Просить отзыв раз в месяц" }
+        },
+        {
+          "en": "Ask “what would you change?”, not “do you like it?”",
+          "kg": "«Жактыбы?» эмес, «эмнени өзгөртмөк элең?» деп сураңыз",
+          "ru": "Спрашивать «что бы ты изменил?», а не «нравится?»",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask 1 precise question about your work", "kg": "Ишиңиз тууралуу 1 так суроо бериңиз", "ru": "Задать 1 точный вопрос о своей работе" }
+        },
+        {
+          "en": "Thank for criticism, then decide calmly",
+          "kg": "Сын үчүн рахмат айтып, анан тынч чечиңиз",
+          "ru": "Благодарить за критику, потом спокойно решать",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wait a day before reacting to criticism", "kg": "Сынга жооп берерден мурун бир күн күтүңүз", "ru": "Подождать день, прежде чем реагировать на критику" }
+        },
+        {
+          "en": "Give useful feedback to 2 other creators a week",
+          "kg": "Жумасына 2 башка авторго пайдалуу пикир бериңиз",
+          "ru": "Давать полезный отзыв 2 другим авторам в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Give feedback to 1 creator a month", "kg": "Айына 1 авторго пикир бериңиз", "ru": "Давать отзыв 1 автору в месяц" }
+        },
+        {
+          "en": "Create together with someone once a month",
+          "kg": "Айына бир жолу бирөө менен бирге чыгарма жасаңыз",
+          "ru": "Создавать что-то вместе с кем-то раз в месяц",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Discuss a joint idea with 1 creator", "kg": "1 автор менен жалпы идеяны талкуулаңыз", "ru": "Обсудить совместную идею с 1 автором" }
+        },
+        {
+          "en": "Find a teacher or mentor for 1 lesson",
+          "kg": "1 сабак үчүн мугалим же устат табыңыз",
+          "ru": "Найти преподавателя или наставника на 1 урок",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Ask 1 experienced creator 1 question", "kg": "Тажрыйбалуу 1 авторго 1 суроо бериңиз", "ru": "Задать 1 вопрос опытному автору" },
+          "steps": [
+            { "en": "List 3 experienced creators you respect", "kg": "Урматтаган 3 тажрыйбалуу авторду тизмелеңиз", "ru": "Выписать 3 опытных автора, которых уважаете", "minutes": 10 },
+            { "en": "Prepare 2 works and 3 questions", "kg": "2 иш жана 3 суроо даярдаңыз", "ru": "Подготовить 2 работы и 3 вопроса", "minutes": 15 },
+            { "en": "Write politely asking for a lesson or review", "kg": "Сабак же баалоо сурап сылык жазыңыз", "ru": "Вежливо написать с просьбой об уроке или разборе", "minutes": 10 },
+            { "en": "Have the lesson and take notes", "kg": "Сабакты өтүп, жазып алыңыз", "ru": "Пройти урок и записать советы", "minutes": 60 },
+            { "en": "Apply 1 advice in the next work", "kg": "Кийинки ишке 1 кеңешти колдонуңуз", "ru": "Применить 1 совет в следующей работе", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Tell family what you are creating",
+          "kg": "Үй-бүлөңүзгө эмне жаратып жатканыңызды айтыңыз",
+          "ru": "Рассказывать семье, что вы создаёте",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Share 1 work with family a month", "kg": "Айына 1 ишти үй-бүлө менен бөлүшүңүз", "ru": "Делиться 1 работой с семьёй в месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Finishing things", "kg": "Аягына чыгаруу", "ru": "Доводить до конца" },
+      "kind": "character",
+      "milestones": [
+        { "en": "A month without abandoned projects", "kg": "Бир ай таштап коюлган долбоорсуз", "ru": "Месяц без брошенных проектов" }
+      ],
+      "actions": [
+        {
+          "en": "Finish 1 started work before starting a new one",
+          "kg": "Жаңысын баштоодон мурун башталган 1 ишти бүтүрүңүз",
+          "ru": "Заканчивать 1 начатую работу, прежде чем браться за новую",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Close 1 unfinished draft this week", "kg": "Ушул жумада бүтпөгөн 1 черновикти бүтүрүңүз", "ru": "Закрыть 1 незаконченный черновик на этой неделе" }
+        },
+        {
+          "en": "Keep no more than 3 projects open at once",
+          "kg": "Бир эле учурда 3төн ашык долбоор ачык болбосун",
+          "ru": "Держать открытыми не больше 3 проектов одновременно",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Pause 1 extra project in writing", "kg": "1 ашыкча долбоорду жазуу түрүндө токтотуңуз", "ru": "Письменно поставить на паузу 1 лишний проект" }
+        },
+        {
+          "en": "Keep promises to collaborators and deadlines",
+          "kg": "Бирге иштегендерге жана мөөнөттөргө берген убаданы аткарыңыз",
+          "ru": "Выполнять обещания соавторам и сроки",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Warn collaborators 2 days before a delay", "kg": "Кечиксеңиз, шериктерге 2 күн мурун эскертиңиз", "ru": "Предупреждать соавторов о задержке за 2 дня" }
+        },
+        {
+          "en": "Tidy your creative space after each session",
+          "kg": "Ар бир сабактан кийин чыгармачыл ордуңузду жыйнаңыз",
+          "ru": "Убирать творческое место после каждого занятия",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Tidy for 3 minutes after practice", "kg": "Машыгуудан кийин 3 мүнөт жыйнаңыз", "ru": "Наводить порядок 3 минуты после практики" }
+        },
+        {
+          "en": "Respect others’ work: never copy without credit",
+          "kg": "Башкалардын эмгегин урматтаңыз: авторун көрсөтпөй көчүрбөңүз",
+          "ru": "Уважать чужой труд: не копировать без указания автора",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Credit 1 source you learned from", "kg": "Үйрөнгөн 1 булагыңызды көрсөтүңүз", "ru": "Указать 1 источник, у которого учились" }
+        },
+        {
+          "en": "Practice on days without mood too",
+          "kg": "Маанай жок күндөрү да машыгыңыз",
+          "ru": "Практиковаться и в дни без настроения",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do 5 minutes on a hard day", "kg": "Оор күнү 5 мүнөт болсо да машыгыңыз", "ru": "В трудный день заниматься хотя бы 5 минут" }
+        },
+        {
+          "en": "Support other creators with kind words",
+          "kg": "Башка авторлорду жылуу сөз менен колдоңуз",
+          "ru": "Поддерживать других авторов добрым словом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Leave 1 kind comment to a creator a week", "kg": "Жумасына 1 авторго жылуу комментарий калтырыңыз", "ru": "Оставлять 1 добрый комментарий автору в неделю" }
+        },
+        {
+          "en": "Review the week: what got finished",
+          "kg": "Жуманы карап чыгыңыз: эмне бүттү",
+          "ru": "Подводить итоги недели: что закончено",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write 1 finished thing a week", "kg": "Жумасына бүткөн 1 нерсени жазыңыз", "ru": "Записывать 1 законченную вещь в неделю" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Earning from art", "kg": "Чыгармадан киреше", "ru": "Заработок на творчестве" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First paid creative order", "kg": "Биринчи акы төлөнгөн чыгармачыл буйрутма", "ru": "Первый оплаченный творческий заказ" }
+      ],
+      "actions": [
+        {
+          "en": "Make 1 paid service from your art with a price",
+          "kg": "Чыгармаңыздан баасы менен 1 акы төлөнүүчү кызмат түзүңүз",
+          "ru": "Сделать из творчества 1 платную услугу с ценой",
+          "type": "milestone",
+          "minutes": 40,
+          "easy": { "en": "Write 1 service you could sell", "kg": "Сата ала турган 1 кызматты жазыңыз", "ru": "Записать 1 услугу, которую можно продать" },
+          "steps": [
+            { "en": "List what people already ask you for", "kg": "Адамдар сизден эмне сурап жүрөрүн тизмелеңиз", "ru": "Выписать, о чём вас уже просят люди", "minutes": 10 },
+            { "en": "Choose 1 service: portrait, cover, edit, song", "kg": "1 кызмат тандаңыз: портрет, мукаба, монтаж, ыр", "ru": "Выбрать 1 услугу: портрет, обложка, монтаж, песня", "minutes": 5 },
+            { "en": "Check 10 market prices in som", "kg": "Рыноктогу 10 бааны сом менен караңыз", "ru": "Посмотреть 10 рыночных цен в сомах", "minutes": 20 },
+            { "en": "Set a price and what is included", "kg": "Баасын жана эмнелер кирерин белгилеңиз", "ru": "Назначить цену и что входит", "minutes": 10 },
+            { "en": "Post the offer on your page", "kg": "Сунушту баракчаңызга жарыялаңыз", "ru": "Опубликовать предложение на странице", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Offer your service to 5 people or businesses a week",
+          "kg": "Жумасына кызматыңызды 5 адамга же бизнеске сунуштаңыз",
+          "ru": "Предлагать услугу 5 людям или бизнесам в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Offer your service to 1 person a week", "kg": "Жумасына кызматыңызды 1 адамга сунуштаңыз", "ru": "Предлагать услугу 1 человеку в неделю" }
+        },
+        {
+          "en": "Check orders on Kwork, fl.ru or local chats",
+          "kg": "Kwork, fl.ru же жергиликтүү чаттардагы буйрутмаларды текшериңиз",
+          "ru": "Проверять заказы на Kwork, fl.ru или в местных чатах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Check orders once a week", "kg": "Буйрутмаларды жумасына бир жолу текшериңиз", "ru": "Проверять заказы раз в неделю" }
+        },
+        {
+          "en": "Agree on price, edits and deadline in writing",
+          "kg": "Баасын, оңдоолорду жана мөөнөттү жазуу түрүндө макулдашыңыз",
+          "ru": "Письменно согласовывать цену, правки и срок",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Confirm the deadline in a chat message", "kg": "Мөөнөттү чатта ырастаңыз", "ru": "Подтверждать срок сообщением в чате" }
+        },
+        {
+          "en": "Take prepayment from new clients",
+          "kg": "Жаңы кардарлардан алдын ала төлөм алыңыз",
+          "ru": "Брать предоплату с новых клиентов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take prepayment for big orders", "kg": "Чоң буйрутмаларга алдын ала төлөм алыңыз", "ru": "Брать предоплату за крупные заказы" }
+        },
+        {
+          "en": "Record creative income and spending weekly",
+          "kg": "Чыгармачылыктан түшкөн киреше жана чыгымды жумада жазыңыз",
+          "ru": "Записывать доходы и расходы от творчества еженедельно",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Record creative income monthly", "kg": "Чыгармачыл кирешени айына жазыңыз", "ru": "Записывать доход от творчества раз в месяц" }
+        },
+        {
+          "en": "Make 1 portfolio work for the service you sell",
+          "kg": "Саткан кызматыңыз үчүн 1 портфолио иши жасаңыз",
+          "ru": "Делать 1 работу для портфолио под продаваемую услугу",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Add 1 work to the portfolio a month", "kg": "Айына портфолиого 1 иш кошуңуз", "ru": "Добавлять 1 работу в портфолио в месяц" }
+        },
+        {
+          "en": "Keep some art just for yourself, not for sale",
+          "kg": "Кээ бир чыгармаларды сатуу үчүн эмес, өзүңүз үчүн жасаңыз",
+          "ru": "Оставлять часть творчества для себя, не на продажу",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Make 1 work a month just for joy", "kg": "Айына 1 ишти жөн гана кубаныч үчүн жасаңыз", "ru": "Делать 1 работу в месяц просто для радости" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Creator’s health", "kg": "Ден соолук", "ru": "Здоровье автора" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Practice without pain or strain", "kg": "Оорусуз жана чыңалуусуз машыгуу", "ru": "Практика без боли и перенапряжения" }
+      ],
+      "actions": [
+        {
+          "en": "Take a 5-minute break every 45 minutes of work",
+          "kg": "Ар 45 мүнөт иштеген сайын 5 мүнөт тыныгыңыз",
+          "ru": "Делать 5-минутный перерыв каждые 45 минут работы",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Take 2 breaks per session", "kg": "Ар бир сабакта 2 тыныгуу алыңыз", "ru": "Делать 2 перерыва за занятие" }
+        },
+        {
+          "en": "Stretch hands, neck and back before work",
+          "kg": "Иштин алдында колуңузду, моюнуңузду жана белиңизди созуңуз",
+          "ru": "Разминать руки, шею и спину перед работой",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Stretch your hands for 1 minute", "kg": "Колуңузду 1 мүнөт созуңуз", "ru": "Разминать руки 1 минуту" }
+        },
+        {
+          "en": "Look into the distance 20 seconds every 20 minutes",
+          "kg": "Ар 20 мүнөттө 20 секунд алыска караңыз",
+          "ru": "Каждые 20 минут смотреть вдаль 20 секунд",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Rest your eyes 3 times a day", "kg": "Күнүнө 3 жолу көзүңүздү эс алдырыңыз", "ru": "Давать отдых глазам 3 раза в день" }
+        },
+        {
+          "en": "Sit with a straight back and the screen at eye level",
+          "kg": "Түз отуруп, экранды көз деңгээлинде кармаңыз",
+          "ru": "Сидеть прямо, экран на уровне глаз",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Raise your screen with a stack of books", "kg": "Экранды китептер менен көтөрүңүз", "ru": "Поднять экран стопкой книг" }
+        },
+        {
+          "en": "Stop when you feel pain and rest",
+          "kg": "Оору сезсеңиз, токтоп эс алыңыз",
+          "ru": "Останавливаться и отдыхать при боли",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Shorten the session when tired", "kg": "Чарчасаңыз, сабакты кыскартыңыз", "ru": "Сокращать занятие при усталости" }
+        },
+        {
+          "en": "Drink water during long sessions",
+          "kg": "Узак сабак учурунда суу ичиңиз",
+          "ru": "Пить воду во время долгих занятий",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Keep a glass of water nearby", "kg": "Жаныңызда бир стакан суу турсун", "ru": "Держать стакан воды рядом" }
+        },
+        {
+          "en": "Do sport or walk 3 times a week",
+          "kg": "Жумасына 3 жолу спорт менен машыгыңыз же сейилдеңиз",
+          "ru": "Заниматься спортом или гулять 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Walk 20 minutes once a week", "kg": "Жумасына бир жолу 20 мүнөт басыңыз", "ru": "Гулять 20 минут раз в неделю" }
+        },
+        {
+          "en": "Sleep 7–8 hours, no late-night creating",
+          "kg": "7–8 саат уктаңыз, түн ортосунда иштебеңиз",
+          "ru": "Спать 7–8 часов, не творить до глубокой ночи",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Stop creative work by 23:00 3 days a week", "kg": "Жумасына 3 күн чыгармачылык ишти 23:00гө чейин бүтүрүңүз", "ru": "Заканчивать творческую работу к 23:00 3 дня в неделю" }
+        }
+      ]
+    }
+  ]
+}

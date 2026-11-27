@@ -41,7 +41,7 @@ service cloud.firestore {
       return col in [
         'tasks', 'journalEntries', 'events', 'transactions', 'moods', 'notes',
         'goals', 'habits', 'pomodoro', 'reminders', 'shifts', 'savingsGoals',
-        'mandalas', 'aiState'
+        'mandalas', 'aiState', 'weeklyReviews'
       ];
     }
 

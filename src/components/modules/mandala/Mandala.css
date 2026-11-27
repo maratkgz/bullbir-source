@@ -88,9 +88,10 @@
   text-align: center;
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  /* transform/opacity are driven by Framer Motion (entrance wave + hover lift) */
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.mandala-cell:hover { border-color: var(--c, var(--primary)); transform: translateY(-1px); }
+.mandala-cell:hover { border-color: var(--c, var(--primary)); }
 .mandala-cell:focus-visible { outline: 2px solid var(--c, var(--primary)); outline-offset: 1px; }
 
 .mandala-cell-text {
@@ -273,6 +274,53 @@
 .mandala-ms-date { width: auto !important; padding: 4px 6px !important; font-size: var(--text-xs) !important; height: auto !important; }
 .mandala-ms-add { display: flex; gap: 6px; }
 .mandala-ms-add .input { flex: 1; }
+
+/* Item type icon (habit / milestone / quality), bottom-left corner of an action cell */
+.mandala-type {
+  position: absolute;
+  left: 3px;
+  bottom: 2px;
+  display: inline-flex;
+  font-size: clamp(8px, calc(var(--cell) * 0.13), 13px);
+  color: var(--c, var(--primary));
+  opacity: 0.85;
+  pointer-events: none;
+}
+.mandala-cell.is-done .mandala-type { color: var(--success); }
+
+/* Cell editor: "Not for me" / "Too hard" */
+.mandala-regen { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.mandala-regen-note { font-size: var(--text-xs); color: var(--text-muted); }
+
+.mandala-empty-actions { display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; }
+
+/* Mobile: one 3×3 block at a time */
+.mandala-mobile { display: flex; flex-direction: column; gap: var(--space-3); }
+.mandala-mobile-head { display: flex; align-items: center; gap: var(--space-2); min-height: 36px; }
+.mandala-mobile-head .mandala-hint { margin: 0; }
+.mandala-mobile-title {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--c) 18%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.mandala-block--mobile {
+  --cell: min(calc((100vw - 64px) / 3), 132px);
+  --zoom: 1;
+  gap: 6px;
+  padding: 6px;
+  width: max-content;
+  margin: 0 auto;
+}
+.mandala-block--mobile .mandala-cell { font-size: var(--text-sm); padding: 6px; }
+.mandala-block--mobile .mandala-cell-text { -webkit-line-clamp: 5; }
+.mandala-block--mobile .mandala-cell.is-empty { font-size: 22px; }
 
 @media (prefers-reduced-motion: reduce) {
   .mandala-cell, .mandala-card, .mandala-ring-fg { transition: none; }

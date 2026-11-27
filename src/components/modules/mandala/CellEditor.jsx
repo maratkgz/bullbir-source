@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useLang } from '../../../context/LangContext'
 import { LIMITS, normalizeCell } from './mandalaModel'
+import { ITEM_TYPES, FREQS } from '../../../ai/library/schema'
+import { RefreshCw, Feather } from 'lucide-react'
+import Icon from '../../ui/Icon'
 
 const newId = () =>
   (typeof crypto !== 'undefined' && crypto.randomUUID)
@@ -58,8 +61,51 @@ function MilestoneList({ milestones, onChange, t }) {
   )
 }
 
+function TypeFields({ form, set, t }) {
+  const setType = (type) => set({ type, freq: type === 'habit' ? form.freq || 'daily' : '' })
+  return (
+    <div className="mandala-field-row">
+      <label className="mandala-field mandala-field--inline">
+        <span>{t('mandala.type.label')}</span>
+        <select className="select" value={form.type} onChange={(e) => setType(e.target.value)}>
+          <option value="">{t('mandala.type.none')}</option>
+          {ITEM_TYPES.map((type) => <option key={type} value={type}>{t(`mandala.type.${type}`)}</option>)}
+        </select>
+      </label>
+      {form.type === 'habit' && (
+        <label className="mandala-field mandala-field--inline">
+          <span>{t('mandala.freq.label')}</span>
+          <select className="select" value={form.freq || 'daily'} onChange={(e) => set({ freq: e.target.value })}>
+            {FREQS.map((freq) => <option key={freq} value={freq}>{t(`mandala.freq.${freq}`)}</option>)}
+          </select>
+        </label>
+      )}
+    </div>
+  )
+}
+
+/** "Not for me" / "Too hard": asks the coach for another suggestion (never for done cells). */
+function RegenerateButtons({ isDone, isBusy, onRegenerate, t }) {
+  return (
+    <div className="mandala-field">
+      <span>{t('mandala.regen.title')}</span>
+      <div className="mandala-regen">
+        <button type="button" className="btn btn-secondary btn-sm" disabled={isDone || isBusy}
+          onClick={() => onRegenerate('not_me')}>
+          <Icon icon={RefreshCw} size="1em" /> {t('mandala.regen.notMe')}
+        </button>
+        <button type="button" className="btn btn-secondary btn-sm" disabled={isDone || isBusy}
+          onClick={() => onRegenerate('too_hard')}>
+          <Icon icon={Feather} size="1em" /> {t('mandala.regen.tooHard')}
+        </button>
+      </div>
+      {isDone && <p className="mandala-regen-note">{t('mandala.regen.doneLocked')}</p>}
+    </div>
+  )
+}
+
 /** Edits one mandala cell. Parent should pass `key` so state resets per cell. */
-export default function CellEditor({ cell, kind, onSave, onCancel, isSaving }) {
+export default function CellEditor({ cell, kind, onSave, onCancel, isSaving, onRegenerate }) {
   const { t } = useLang()
   const [form, setForm] = useState(() => normalizeCell(cell))
   const set = (change) => setForm((f) => ({ ...f, ...change }))
@@ -90,6 +136,12 @@ export default function CellEditor({ cell, kind, onSave, onCancel, isSaving }) {
           placeholder={t(`mandala.placeholder.${kind}`)}
         />
       </label>
+
+      {kind === 'action' && <TypeFields form={form} set={set} t={t} />}
+
+      {onRegenerate && kind !== 'center' && (
+        <RegenerateButtons isDone={cell.done} isBusy={isSaving} onRegenerate={onRegenerate} t={t} />
+      )}
 
       <div className="mandala-field-row">
         <label className="mandala-check">

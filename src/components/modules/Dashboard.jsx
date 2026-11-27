@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useCollection } from '../../hooks/useCollection'
 import { useAuth } from '../../context/AuthContext'
@@ -9,6 +9,8 @@ import { SkeletonCard } from '../ui/Skeleton'
 import { CircleCheck, DollarSign, Flame, Hand, ListChecks, PartyPopper, Plus, SmilePlus, Target, TrendingUp } from 'lucide-react'
 import Icon from '../ui/Icon'
 import { MODULE_ICONS } from '../../config/moduleIcons'
+import TodayCard from './dashboard/TodayCard'
+import { todayFromSearch } from '../../ai/engine/weekPlan'
 
 const MOOD_EMOJI = ['😔', '😕', '😐', '🙂', '😄']
 const MOOD_COLORS = ['#ef4444','#f97316','#fbbf24','#84cc16','#22c55e']
@@ -94,6 +96,9 @@ export default function Dashboard() {
   const { profile, user } = useAuth()
   const { t, quote } = useLang()
   const navigate = useNavigate()
+  const location = useLocation()
+  // Dev-only ?today=YYYY-MM-DD override to try the Sunday review flow.
+  const today = useMemo(() => todayFromSearch(location.search, import.meta.env.DEV), [location.search])
 
   const tasks = useCollection('tasks')
   const habits = useCollection('habits', { orderField: 'createdAt', direction: 'asc' })
@@ -182,6 +187,11 @@ export default function Dashboard() {
             </div>
           </div>
         )}
+      </motion.div>
+
+      {/* My day: weekly review banner, 3 tasks for today, morning checklist */}
+      <motion.div variants={item}>
+        <TodayCard today={today} />
       </motion.div>
 
       {/* Stat cards row */}

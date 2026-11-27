@@ -1,0 +1,966 @@
+{
+  "id": "home",
+  "icon": "🏠",
+  "title": { "en": "Home & household", "kg": "Үй жана үй чарбасы", "ru": "Дом и быт" },
+  "keywords": {
+    "en": ["!home", "!household", "!housework", "cleaning", "clean the house", "tidy", "declutter", "cooking", "cook", "repair", "renovation", "apartment", "flat", "chores", "order at home", "cosy", "laundry", "kitchen"],
+    "kg": ["!үй", "!үй иштери", "тазалык", "үй тазалоо", "жыйноо", "тамак жасоо", "ашкана", "оңдоо", "ремонт", "батир", "тартип", "үй чарбасы", "кир жуу", "ыңгайлуу үй", "идиш жуу", "бөлмө"],
+    "ru": ["!дом", "!быт", "!домашние дела", "уборка", "убираться", "порядок", "порядок дома", "расхламление", "готовить", "готовка", "кухня", "ремонт", "квартира", "уют", "стирка", "хозяйство", "домашнее хозяйство", "починить"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Clean home", "kg": "Таза үй", "ru": "Чистый дом" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Cleaning schedule kept for 4 weeks", "kg": "Тазалык графиги 4 жума сакталды", "ru": "График уборки соблюдается 4 недели" }
+      ],
+      "actions": [
+        {
+          "en": "Tidy up for 15 minutes every evening",
+          "kg": "Ар кечте 15 мүнөт үйдү жыйнаңыз",
+          "ru": "Каждый вечер 15 минут наводить порядок",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Tidy one surface for 5 minutes", "kg": "Бир столду же текчени 5 мүнөт жыйнаңыз", "ru": "5 минут убрать одну поверхность" }
+        },
+        {
+          "en": "Make a weekly cleaning schedule by zones",
+          "kg": "Аймактар боюнча жумалык тазалык графигин түзүңүз",
+          "ru": "Составить недельный график уборки по зонам",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "List the 5 zones of your home", "kg": "Үйүңүздүн 5 аймагын жазыңыз", "ru": "Выписать 5 зон дома" },
+          "steps": [
+            { "en": "List rooms and zones: kitchen, bath, floors…", "kg": "Бөлмөлөрдү жана аймактарды жазыңыз: ашкана, ванна, пол…", "ru": "Выписать комнаты и зоны: кухня, ванная, полы…", "minutes": 10 },
+            { "en": "Note how often each zone needs cleaning", "kg": "Ар бир аймакты канча жолу тазалоо керек экенин жазыңыз", "ru": "Отметить, как часто убирать каждую зону", "minutes": 10 },
+            { "en": "Spread the zones over the week", "kg": "Аймактарды жуманын күндөрүнө бөлүңүз", "ru": "Распределить зоны по дням недели", "minutes": 10 },
+            { "en": "Agree with family who does what", "kg": "Үй-бүлө менен ким эмне кыларын макулдашыңыз", "ru": "Договориться с семьёй, кто что делает", "minutes": 20 },
+            { "en": "Hang the schedule on the fridge", "kg": "Графикти муздаткычка илип коюңуз", "ru": "Повесить график на холодильник", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Wash the dishes right after every meal",
+          "kg": "Ар бир тамактан кийин идишти дароо жууңуз",
+          "ru": "Мыть посуду сразу после каждой еды",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Wash your own plate and cup", "kg": "Өз тарелкаңызды жана чыныңызды жууңуз", "ru": "Помыть свою тарелку и чашку" }
+        },
+        {
+          "en": "Fully clean one room every week",
+          "kg": "Ар жума бир бөлмөнү толук тазалаңыз",
+          "ru": "Каждую неделю делать генеральную уборку одной комнаты",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Wash the floor in one room", "kg": "Бир бөлмөнүн полун жууңуз", "ru": "Помыть пол в одной комнате" }
+        },
+        {
+          "en": "Make your bed every morning",
+          "kg": "Ар эртең төшөгүңүздү жыйнаңыз",
+          "ru": "Заправлять кровать каждое утро",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Straighten the blanket and pillow", "kg": "Жууркан менен жаздыкты түзөтүңүз", "ru": "Поправить одеяло и подушку" }
+        },
+        {
+          "en": "Take out the rubbish 3 times a week",
+          "kg": "Жумасына 3 жолу таштанды чыгарыңыз",
+          "ru": "Выносить мусор 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Take out the rubbish today", "kg": "Бүгүн таштандыны чыгарыңыз", "ru": "Вынести мусор сегодня" }
+        },
+        {
+          "en": "Do the laundry on a fixed day each week",
+          "kg": "Ар жума белгиленген күнү кир жууңуз",
+          "ru": "Стирать в фиксированный день каждую неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Wash one load of laundry", "kg": "Бир жолу кир жууп алыңыз", "ru": "Постирать одну загрузку" }
+        },
+        {
+          "en": "Deep-clean the kitchen once this month",
+          "kg": "Ушул айда ашкананы бир жолу толук тазалаңыз",
+          "ru": "В этом месяце сделать генеральную уборку кухни",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Clean the top of the stove", "kg": "Плитанын үстүн тазалаңыз", "ru": "Помыть плиту сверху" },
+          "steps": [
+            { "en": "Empty and wipe the fridge", "kg": "Муздаткычты бошотуп, сүртүңүз", "ru": "Освободить и протереть холодильник", "minutes": 30 },
+            { "en": "Clean the stove and oven", "kg": "Плита менен духовканы тазалаңыз", "ru": "Почистить плиту и духовку", "minutes": 40 },
+            { "en": "Wipe the cabinets inside and out", "kg": "Шкафтарды ичи-тышынан сүртүңүз", "ru": "Протереть шкафчики внутри и снаружи", "minutes": 40 },
+            { "en": "Throw away expired food", "kg": "Мөөнөтү өткөн азыктарды ыргытыңыз", "ru": "Выбросить просроченные продукты", "minutes": 15 },
+            { "en": "Wash the floor and the sink", "kg": "Полду жана раковинаны жууңуз", "ru": "Помыть пол и раковину", "minutes": 30 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Home cooking", "kg": "Үй тамагы", "ru": "Домашняя кухня" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "10 dishes you cook with confidence", "kg": "Ишенимдүү жасай турган 10 тамак", "ru": "10 блюд, которые готовите уверенно" }
+      ],
+      "actions": [
+        {
+          "en": "Plan the week's menu every Sunday",
+          "kg": "Ар жекшембиде жумалык менюну пландаңыз",
+          "ru": "Каждое воскресенье планировать меню на неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Plan dinners for 3 days", "kg": "3 күнгө кечки тамакты пландаңыз", "ru": "Спланировать ужины на 3 дня" }
+        },
+        {
+          "en": "Learn to cook one new dish every week",
+          "kg": "Ар жума бир жаңы тамак жасаганды үйрөнүңүз",
+          "ru": "Каждую неделю осваивать одно новое блюдо",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Cook a familiar dish with one new ingredient", "kg": "Тааныш тамакка бир жаңы азык кошуп жасаңыз", "ru": "Приготовить знакомое блюдо с одним новым продуктом" }
+        },
+        {
+          "en": "Cook at home at least 3 times a week",
+          "kg": "Жумасына жок дегенде 3 жолу үйдө тамак жасаңыз",
+          "ru": "Готовить дома минимум 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 45,
+          "easy": { "en": "Cook one simple meal at home", "kg": "Үйдө бир жөнөкөй тамак жасаңыз", "ru": "Приготовить дома одно простое блюдо" }
+        },
+        {
+          "en": "Learn 3 family recipes from parents or grandparents",
+          "kg": "Ата-энеңизден же чоң энеңизден 3 үй-бүлөлүк рецепт үйрөнүңүз",
+          "ru": "Перенять 3 семейных рецепта у родителей или бабушки",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Ask for one family recipe", "kg": "Бир үй-бүлөлүк рецептти сураңыз", "ru": "Попросить один семейный рецепт" },
+          "steps": [
+            { "en": "Ask which 3 dishes the family loves most", "kg": "Үй-бүлө эң жакшы көргөн 3 тамакты сураңыз", "ru": "Спросить, какие 3 блюда семья любит больше всего", "minutes": 10 },
+            { "en": "Write down the first recipe step by step", "kg": "Биринчи рецептти кадам-кадамы менен жазыңыз", "ru": "Записать первый рецепт по шагам", "minutes": 30 },
+            { "en": "Cook it together with the elder", "kg": "Аны улуу киши менен бирге жасаңыз", "ru": "Приготовить его вместе со старшим", "minutes": 90 },
+            { "en": "Repeat with the other 2 recipes", "kg": "Калган 2 рецепт менен да кайталаңыз", "ru": "Повторить с двумя другими рецептами", "minutes": 120 },
+            { "en": "Save all 3 recipes in Notes", "kg": "3 рецепттин баарын эскертмелерге сактаңыз", "ru": "Сохранить все 3 рецепта в заметках", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Cook a full meal for guests once this month",
+          "kg": "Ушул айда меймандар үчүн толук дасторкон даярдаңыз",
+          "ru": "В этом месяце приготовить полный обед для гостей",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Cook one dish for a guest", "kg": "Бир мейман үчүн бир тамак жасаңыз", "ru": "Приготовить одно блюдо для гостя" },
+          "steps": [
+            { "en": "Choose the date and invite the guests", "kg": "Күндү тандап, меймандарды чакырыңыз", "ru": "Выбрать дату и пригласить гостей", "minutes": 10 },
+            { "en": "Plan 3 dishes and tea", "kg": "3 тамакты жана чайды пландаңыз", "ru": "Спланировать 3 блюда и чай", "minutes": 15 },
+            { "en": "Buy the products by a list", "kg": "Азыктарды тизме менен сатып алыңыз", "ru": "Купить продукты по списку", "minutes": 60 },
+            { "en": "Prepare what you can a day before", "kg": "Мүмкүн болгонун бир күн мурун даярдаңыз", "ru": "Накануне приготовить то, что можно", "minutes": 90 },
+            { "en": "Cook, set the table and greet the guests", "kg": "Тамак жасап, дасторкон жайып, меймандарды тосуңуз", "ru": "Приготовить, накрыть стол и встретить гостей", "minutes": 120 }
+          ]
+        },
+        {
+          "en": "Keep the kitchen clean while you cook",
+          "kg": "Тамак жасап жатканда ашкананы таза кармаңыз",
+          "ru": "Поддерживать чистоту на кухне во время готовки",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Wash one tool while the food cooks", "kg": "Тамак бышып жатканда бир идишти жууңуз", "ru": "Помыть одну вещь, пока готовится еда" }
+        },
+        {
+          "en": "Use leftovers before cooking something new",
+          "kg": "Жаңы тамак жасаардан мурун калган тамакты колдонуңуз",
+          "ru": "Использовать остатки, прежде чем готовить новое",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Plan one meal from leftovers", "kg": "Калган азыктан бир тамак пландаңыз", "ru": "Спланировать одно блюдо из остатков" }
+        },
+        {
+          "en": "Stock a basic pantry: rice, pasta, oil, spices",
+          "kg": "Негизги азык запасын түзүңүз: күрүч, макарон, май, татымал",
+          "ru": "Собрать базовые запасы: рис, макароны, масло, специи",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Check which basics you are missing", "kg": "Кайсы негизги азыктар жок экенин текшериңиз", "ru": "Проверить, каких базовых продуктов не хватает" },
+          "steps": [
+            { "en": "Check what is already in the cupboards", "kg": "Шкафтарда эмне бар экенин текшериңиз", "ru": "Проверить, что уже есть в шкафах", "minutes": 10 },
+            { "en": "Write a list of 10 basic products", "kg": "10 негизги азыктын тизмесин жазыңыз", "ru": "Составить список из 10 базовых продуктов", "minutes": 10 },
+            { "en": "Set a budget in som for the stock", "kg": "Запас үчүн сом менен бюджет коюңуз", "ru": "Задать бюджет в сомах на запасы", "minutes": 5 },
+            { "en": "Buy at a market or wholesale shop", "kg": "Базардан же дүң дүкөндөн сатып алыңыз", "ru": "Купить на рынке или в оптовом магазине", "minutes": 60 },
+            { "en": "Store them in closed jars and label them", "kg": "Жабык банкаларга салып, белги коюңуз", "ru": "Разложить по закрытым банкам и подписать", "minutes": 20 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Repairs", "kg": "Оңдоо иштери", "ru": "Мелкий ремонт" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Basic tool kit at home", "kg": "Үйдө негизги шаймандар бар", "ru": "Дома есть базовый набор инструментов" },
+        { "en": "Home fix list closed", "kg": "Үйдөгү оңдоо тизмеси бүттү", "ru": "Закрыт список домашних починок" }
+      ],
+      "actions": [
+        {
+          "en": "Walk through the home and list everything to fix",
+          "kg": "Үйдү кыдырып, оңдой турган нерселердин баарын жазыңыз",
+          "ru": "Обойти дом и выписать всё, что нужно починить",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write 3 things that need fixing", "kg": "Оңдоо керек болгон 3 нерсени жазыңыз", "ru": "Записать 3 вещи, которые нужно починить" },
+          "steps": [
+            { "en": "Check taps, sockets and lights", "kg": "Крандарды, розеткаларды жана жарыкты текшериңиз", "ru": "Проверить краны, розетки и свет", "minutes": 15 },
+            { "en": "Check doors, windows and furniture", "kg": "Эшик, терезе жана эмеректи текшериңиз", "ru": "Проверить двери, окна и мебель", "minutes": 15 },
+            { "en": "Write each problem in Tasks", "kg": "Ар бир көйгөйдү тапшырмаларга жазыңыз", "ru": "Записать каждую проблему в задачи", "minutes": 10 },
+            { "en": "Mark what you can fix yourself", "kg": "Өзүңүз оңдой аларыңызды белгилеңиз", "ru": "Отметить, что можете починить сами", "minutes": 5 },
+            { "en": "Mark what needs a professional", "kg": "Уста керек болгондорун белгилеңиз", "ru": "Отметить, где нужен мастер", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Collect a basic tool kit",
+          "kg": "Негизги шаймандар топтомун чогултуңуз",
+          "ru": "Собрать базовый набор инструментов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find a screwdriver and a hammer at home", "kg": "Үйдөн бурагыч менен балка табыңыз", "ru": "Найти дома отвёртку и молоток" },
+          "steps": [
+            { "en": "Check which tools you already have", "kg": "Кайсы шаймандар бар экенин текшериңиз", "ru": "Проверить, какие инструменты уже есть", "minutes": 10 },
+            { "en": "List what is missing: screwdrivers, pliers, tape…", "kg": "Эмне жок экенин жазыңыз: бурагыч, кычкач, изолента…", "ru": "Выписать недостающее: отвёртки, плоскогубцы, изолента…", "minutes": 10 },
+            { "en": "Ask relatives if they can share tools", "kg": "Туугандардан шайман бөлүшө алабы, сураңыз", "ru": "Спросить родных, могут ли поделиться инструментами", "minutes": 15 },
+            { "en": "Buy the rest at a building market", "kg": "Калганын курулуш базарынан алыңыз", "ru": "Докупить остальное на строительном рынке", "minutes": 60 },
+            { "en": "Keep all tools in one box", "kg": "Бардык шаймандарды бир кутуда сактаңыз", "ru": "Хранить все инструменты в одной коробке", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Fix one small thing every weekend",
+          "kg": "Ар дем алышта бир майда нерсени оңдоңуз",
+          "ru": "Каждые выходные чинить одну мелочь",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Tighten one loose screw or handle", "kg": "Бир бош бураманы же тутканы бекитиңиз", "ru": "Подтянуть один шуруп или ручку" }
+        },
+        {
+          "en": "Learn 3 basic repairs from videos or a relative",
+          "kg": "Видеодон же тууганыңыздан 3 жөнөкөй оңдоону үйрөнүңүз",
+          "ru": "Освоить 3 простых ремонта по видео или у родственника",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Watch one repair video to the end", "kg": "Бир оңдоо видеосун аягына чейин көрүңүз", "ru": "Досмотреть одно видео о ремонте" },
+          "steps": [
+            { "en": "Choose the 3 repairs you need most", "kg": "Эң керектүү 3 оңдоону тандаңыз", "ru": "Выбрать 3 самых нужных ремонта", "minutes": 10 },
+            { "en": "Watch a clear video on the first one", "kg": "Биринчиси боюнча түшүнүктүү видео көрүңүз", "ru": "Посмотреть понятное видео по первому", "minutes": 20 },
+            { "en": "Do it with a relative who knows how", "kg": "Аны билген тууганыңыз менен бирге жасаңыз", "ru": "Сделать вместе с родственником, который умеет", "minutes": 60 },
+            { "en": "Repeat with the other 2 repairs", "kg": "Калган 2 оңдоону да ушинтип жасаңыз", "ru": "Повторить с двумя другими ремонтами", "minutes": 120 },
+            { "en": "Write short notes on each repair", "kg": "Ар бир оңдоо боюнча кыска жазуу калтырыңыз", "ru": "Кратко записать, как делали каждый ремонт", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Call a licensed specialist for gas and electrics",
+          "kg": "Газ жана электр иштерине лицензиясы бар адисти чакырыңыз",
+          "ru": "Для газа и электрики вызывать лицензированного мастера",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Save the number of one trusted specialist", "kg": "Бир ишенимдүү устанын номерин сактаңыз", "ru": "Сохранить номер одного проверенного мастера" }
+        },
+        {
+          "en": "Fix a small problem within a week of noticing it",
+          "kg": "Майда көйгөйдү байкагандан кийин бир жуманын ичинде оңдоңуз",
+          "ru": "Чинить мелкую поломку в течение недели после обнаружения",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write the problem in Tasks today", "kg": "Бүгүн көйгөйдү тапшырмаларга жазыңыз", "ru": "Сегодня записать поломку в задачи" }
+        },
+        {
+          "en": "Prepare the home for winter: windows, heating, doors",
+          "kg": "Үйдү кышка даярдаңыз: терезе, жылытуу, эшик",
+          "ru": "Подготовить дом к зиме: окна, отопление, двери",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Seal one window that lets in cold", "kg": "Суук кирген бир терезени жылуулаңыз", "ru": "Утеплить одно окно, которое продувает" },
+          "steps": [
+            { "en": "Find drafts at windows and doors", "kg": "Терезе жана эшиктен суук кирген жерлерди табыңыз", "ru": "Найти, где продувает у окон и дверей", "minutes": 15 },
+            { "en": "Buy sealing tape or foam", "kg": "Жылуулоочу тасма же көбүк сатып алыңыз", "ru": "Купить уплотнитель или пену", "minutes": 45 },
+            { "en": "Seal the gaps in windows and doors", "kg": "Терезе менен эшиктин жылчыктарын бекитиңиз", "ru": "Заделать щели окон и дверей", "minutes": 60 },
+            { "en": "Check that heaters or radiators work", "kg": "Жылыткычтар иштеп жатканын текшериңиз", "ru": "Проверить работу обогревателей и батарей", "minutes": 15 },
+            { "en": "Have the chimney or boiler checked by a specialist", "kg": "Мору же казанды адиске текшертиңиз", "ru": "Проверить дымоход или котёл у специалиста", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Check taps and pipes for leaks once a week",
+          "kg": "Крандарды жана түтүктөрдү жумасына бир жолу текшериңиз",
+          "ru": "Раз в неделю проверять краны и трубы на протечки",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Look under the kitchen sink", "kg": "Ашкана раковинасынын астын карап чыгыңыз", "ru": "Заглянуть под кухонную раковину" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Declutter", "kg": "Ашыкчадан арылуу", "ru": "Расхламление" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Every item has its place", "kg": "Ар бир буюмдун өз орду бар", "ru": "У каждой вещи есть своё место" }
+      ],
+      "actions": [
+        {
+          "en": "Remove 5 unneeded items a day for 30 days",
+          "kg": "30 күн бою күнүнө 5 керексиз буюмдан арылыңыз",
+          "ru": "30 дней убирать по 5 ненужных вещей в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Remove 1 unneeded item today", "kg": "Бүгүн 1 керексиз буюмдан арылыңыз", "ru": "Сегодня убрать 1 ненужную вещь" }
+        },
+        {
+          "en": "Sort your wardrobe and give away what you don't wear",
+          "kg": "Кийим шкафыңызды иреттеп, кийбеген кийимдерди бериңиз",
+          "ru": "Разобрать шкаф и отдать вещи, которые не носите",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Sort one shelf of the wardrobe", "kg": "Шкафтын бир текчесин иреттеңиз", "ru": "Разобрать одну полку шкафа" },
+          "steps": [
+            { "en": "Take everything out of one section", "kg": "Бир бөлүктөгү нерселердин баарын чыгарыңыз", "ru": "Достать всё из одной секции", "minutes": 10 },
+            { "en": "Make 3 piles: keep, give, throw away", "kg": "3 топ кылыңыз: калтыруу, берүү, ыргытуу", "ru": "Разложить на 3 кучки: оставить, отдать, выбросить", "minutes": 30 },
+            { "en": "Keep only what you wore this year", "kg": "Ушул жылы кийгениңизди гана калтырыңыз", "ru": "Оставить только то, что носили в этом году", "minutes": 15 },
+            { "en": "Fold and put back what you keep", "kg": "Калтырганыңызды бүктөп, ордуна коюңуз", "ru": "Сложить и вернуть на место оставленное", "minutes": 20 },
+            { "en": "Take the give pile to relatives or charity", "kg": "Бериле турганын туугандарга же кайрымдуулукка жеткириңиз", "ru": "Отвезти отложенное родным или на благотворительность", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Put things back right after using them",
+          "kg": "Буюмду колдонгондон кийин дароо ордуна коюңуз",
+          "ru": "Класть вещь на место сразу после использования",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Return 3 things to their places now", "kg": "Азыр 3 буюмду ордуна коюңуз", "ru": "Сейчас вернуть на место 3 вещи" }
+        },
+        {
+          "en": "When one new item comes in, one old item goes out",
+          "kg": "Бир жаңы буюм кирсе, бир эскиси чыксын",
+          "ru": "Одна новая вещь в дом — одна старая из дома",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Remove one old item after your next purchase", "kg": "Кийинки сатып алуудан кийин бир эски буюмдан арылыңыз", "ru": "После следующей покупки убрать одну старую вещь" }
+        },
+        {
+          "en": "Sort papers and keep documents in one folder",
+          "kg": "Кагаздарды иреттеп, документтерди бир папкада сактаңыз",
+          "ru": "Разобрать бумаги и хранить документы в одной папке",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Put your passport and key papers in one place", "kg": "Паспорт жана негизги документтерди бир жерге коюңуз", "ru": "Сложить паспорт и важные документы в одно место" },
+          "steps": [
+            { "en": "Collect all papers from drawers and bags", "kg": "Тартмалардагы жана сумкалардагы кагаздарды чогултуңуз", "ru": "Собрать все бумаги из ящиков и сумок", "minutes": 20 },
+            { "en": "Throw away old receipts and ads", "kg": "Эски чектерди жана жарнамаларды ыргытыңыз", "ru": "Выбросить старые чеки и рекламу", "minutes": 15 },
+            { "en": "Group documents: personal, home, study, work", "kg": "Документтерди топтоңуз: жеке, үй, окуу, иш", "ru": "Разделить документы: личные, жильё, учёба, работа", "minutes": 20 },
+            { "en": "Put each group in a labelled file", "kg": "Ар бир топту белгиленген папкага салыңыз", "ru": "Разложить группы по подписанным папкам", "minutes": 15 },
+            { "en": "Photograph the most important ones", "kg": "Эң маанилүүлөрүн сүрөткө тартып алыңыз", "ru": "Сфотографировать самые важные", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Clear out the balcony or storage room",
+          "kg": "Балконду же кампаны бошотуңуз",
+          "ru": "Разобрать балкон или кладовку",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Remove 3 items from the balcony", "kg": "Балкондон 3 буюмду алып салыңыз", "ru": "Убрать с балкона 3 вещи" },
+          "steps": [
+            { "en": "Take a photo of how it looks now", "kg": "Азыркы абалын сүрөткө тартыңыз", "ru": "Сфотографировать, как сейчас", "minutes": 5 },
+            { "en": "Take out everything broken or unused", "kg": "Сынган же колдонулбаган нерселердин баарын чыгарыңыз", "ru": "Вынести всё сломанное и ненужное", "minutes": 45 },
+            { "en": "Sell or give away what still works", "kg": "Иштеп турганын сатыңыз же бериңиз", "ru": "Продать или отдать то, что ещё работает", "minutes": 30 },
+            { "en": "Group what remains in boxes", "kg": "Калганын кутуларга топтоңуз", "ru": "Разложить оставшееся по коробкам", "minutes": 30 },
+            { "en": "Label each box", "kg": "Ар бир кутуга белги жазыңыз", "ru": "Подписать каждую коробку", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Clear the \"everything\" shelf every Sunday",
+          "kg": "Ар жекшембиде «баары турган» текчени бошотуңуз",
+          "ru": "Каждое воскресенье разбирать «полку для всего»",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Clear the top of one table", "kg": "Бир столдун үстүн бошотуңуз", "ru": "Освободить поверхность одного стола" }
+        },
+        {
+          "en": "Give every often-used item a fixed place",
+          "kg": "Көп колдонулган ар бир буюмга туруктуу орун бериңиз",
+          "ru": "Назначить постоянное место каждой частой вещи",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Choose a fixed place for your keys", "kg": "Ачкычтарыңызга туруктуу орун тандаңыз", "ru": "Выбрать постоянное место для ключей" },
+          "steps": [
+            { "en": "List 10 items you often search for", "kg": "Көп издей турган 10 буюмду жазыңыз", "ru": "Выписать 10 вещей, которые часто ищете", "minutes": 10 },
+            { "en": "Pick a place near where you use each", "kg": "Ар бирине колдонгон жериңиздин жанынан орун тандаңыз", "ru": "Выбрать каждой место рядом с местом использования", "minutes": 10 },
+            { "en": "Find or buy hooks, boxes or trays", "kg": "Илгич, куту же лоток табыңыз же сатып алыңыз", "ru": "Найти или купить крючки, коробки, лотки", "minutes": 30 },
+            { "en": "Put each item in its new place", "kg": "Ар бир буюмду жаңы ордуна коюңуз", "ru": "Разложить вещи по новым местам", "minutes": 20 },
+            { "en": "Tell the family where things now live", "kg": "Үй-бүлөгө буюмдар эми кайда турарын айтыңыз", "ru": "Сказать семье, где теперь лежат вещи", "minutes": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Home routine", "kg": "Үй тартиби", "ru": "Домашний режим" },
+      "kind": "support",
+      "milestones": [
+        { "en": "21 days of morning and evening routine", "kg": "21 күн эртең мененки жана кечки тартип", "ru": "21 день утреннего и вечернего режима" }
+      ],
+      "actions": [
+        {
+          "en": "Spend 10 minutes each morning: bed, fresh air, dishes",
+          "kg": "Эртең менен 10 мүнөт төшөк жыйнап, үйдү желдетип, идиш жууңуз",
+          "ru": "Утром 10 минут: кровать, проветривание, посуда",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Make the bed and open the window", "kg": "Төшөктү жыйнап, терезени ачыңыз", "ru": "Заправить кровать и открыть окно" }
+        },
+        {
+          "en": "Plan home tasks for the week every Sunday",
+          "kg": "Ар жекшембиде жумалык үй иштерин пландаңыз",
+          "ru": "Каждое воскресенье планировать домашние дела на неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Choose 3 home tasks for the week", "kg": "Жумага 3 үй ишин тандаңыз", "ru": "Выбрать 3 домашних дела на неделю" }
+        },
+        {
+          "en": "Prepare clothes and bag for tomorrow each evening",
+          "kg": "Ар кечте эртеңки кийимди жана сумканы даярдаңыз",
+          "ru": "Каждый вечер готовить одежду и сумку на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Prepare tomorrow's clothes", "kg": "Эртеңки кийимди даярдаңыз", "ru": "Приготовить одежду на завтра" }
+        },
+        {
+          "en": "Do any task under 2 minutes right away",
+          "kg": "2 мүнөткө жетпеген ар бир ишти дароо аткарыңыз",
+          "ru": "Делать сразу любое дело меньше 2 минут",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do one 2-minute task now", "kg": "Азыр бир 2 мүнөттүк ишти аткарыңыз", "ru": "Сделать сейчас одно 2-минутное дело" }
+        },
+        {
+          "en": "Do the weekly shopping by a list on a fixed day",
+          "kg": "Жумалык базарлыкты белгиленген күнү тизме менен жасаңыз",
+          "ru": "Делать недельные покупки по списку в фиксированный день",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Write a shopping list for 3 days", "kg": "3 күнгө базарлык тизмесин жазыңыз", "ru": "Составить список покупок на 3 дня" }
+        },
+        {
+          "en": "Do big chores with a 25-minute timer 3 times a week",
+          "kg": "Чоң үй иштерин жумасына 3 жолу 25 мүнөттүк таймер менен жасаңыз",
+          "ru": "3 раза в неделю делать большие дела по таймеру 25 минут",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 25,
+          "easy": { "en": "Set a 10-minute timer and clean", "kg": "10 мүнөттүк таймер коюп, тазалаңыз", "ru": "Поставить таймер на 10 минут и убраться" }
+        },
+        {
+          "en": "Check tomorrow's home tasks before sleep",
+          "kg": "Уктаардан мурун эртеңки үй иштерин карап чыгыңыз",
+          "ru": "Перед сном просматривать домашние дела на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Pick one home task for tomorrow", "kg": "Эртеңки бир үй ишин тандаңыз", "ru": "Выбрать одно домашнее дело на завтра" }
+        },
+        {
+          "en": "Choose fixed days for laundry, cleaning and shopping",
+          "kg": "Кир жуу, тазалык жана базарлык үчүн туруктуу күндөрдү тандаңыз",
+          "ru": "Назначить постоянные дни для стирки, уборки и покупок",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose one fixed day for laundry", "kg": "Кир жууганга бир туруктуу күн тандаңыз", "ru": "Выбрать один постоянный день для стирки" },
+          "steps": [
+            { "en": "Look at your work or study schedule", "kg": "Иш же окуу графигиңизди караңыз", "ru": "Посмотреть свой график работы или учёбы", "minutes": 10 },
+            { "en": "Pick the day for laundry", "kg": "Кир жуу күнүн тандаңыз", "ru": "Выбрать день для стирки", "minutes": 5 },
+            { "en": "Pick the day for the big clean", "kg": "Чоң тазалык күнүн тандаңыз", "ru": "Выбрать день для большой уборки", "minutes": 5 },
+            { "en": "Pick the day for shopping", "kg": "Базарлык күнүн тандаңыз", "ru": "Выбрать день для покупок", "minutes": 5 },
+            { "en": "Add them to Calendar as repeating events", "kg": "Аларды календарга кайталануучу окуя кылып кошуңуз", "ru": "Добавить их в календарь как повторяющиеся", "minutes": 10 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Household money", "kg": "Үй бюджети", "ru": "Бюджет дома" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Utility bills paid on time for 3 months", "kg": "Коммуналдык төлөмдөр 3 ай өз убагында төлөндү", "ru": "Коммуналка 3 месяца оплачена вовремя" }
+      ],
+      "actions": [
+        {
+          "en": "Record all household spending once a week",
+          "kg": "Үйгө кеткен бардык чыгымдарды жумасына бир жолу жазыңыз",
+          "ru": "Раз в неделю записывать все расходы на дом",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Record today's grocery spending", "kg": "Бүгүнкү азык-түлүк чыгымын жазыңыз", "ru": "Записать сегодняшние траты на продукты" }
+        },
+        {
+          "en": "Set a monthly budget in som for food and household",
+          "kg": "Тамак-аш жана үй буюмдарына айлык бюджетти сом менен коюңуз",
+          "ru": "Задать месячный бюджет в сомах на еду и быт",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write last month's food spending", "kg": "Өткөн айдагы тамак-аш чыгымын жазыңыз", "ru": "Записать траты на еду за прошлый месяц" },
+          "steps": [
+            { "en": "Collect last month's receipts or bank history", "kg": "Өткөн айдын чектерин же банк тарыхын чогултуңуз", "ru": "Собрать чеки или историю банка за прошлый месяц", "minutes": 15 },
+            { "en": "Add up spending on food and household goods", "kg": "Тамак-аш жана үй буюмдарына кеткенди эсептеңиз", "ru": "Посчитать траты на еду и бытовые товары", "minutes": 15 },
+            { "en": "Set a limit 10% lower", "kg": "10% төмөн чек коюңуз", "ru": "Установить лимит на 10% ниже", "minutes": 5 },
+            { "en": "Split the limit by weeks", "kg": "Чекти жумаларга бөлүңүз", "ru": "Разбить лимит по неделям", "minutes": 5 },
+            { "en": "Write the weekly limit on the fridge list", "kg": "Жумалык чекти муздаткычтагы тизмеге жазыңыз", "ru": "Записать недельный лимит в список на холодильнике", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Pay utility bills on the same day each month",
+          "kg": "Коммуналдык төлөмдөрдү ар айда бир эле күнү төлөңүз",
+          "ru": "Оплачивать коммунальные услуги в один день месяца",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a monthly reminder for bills", "kg": "Төлөмдөр үчүн айлык эскертме коюңуз", "ru": "Поставить ежемесячное напоминание о счетах" }
+        },
+        {
+          "en": "Turn off lights and chargers when leaving a room",
+          "kg": "Бөлмөдөн чыкканда жарыкты жана кубаттагычты өчүрүңүз",
+          "ru": "Выключать свет и зарядки, выходя из комнаты",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Unplug one unused charger", "kg": "Колдонулбаган бир кубаттагычты сууруп коюңуз", "ru": "Выдернуть одну неиспользуемую зарядку" }
+        },
+        {
+          "en": "Compare 3 months of utility bills and find savings",
+          "kg": "3 айлык коммуналдык төлөмдөрдү салыштырып, үнөмдөөнү табыңыз",
+          "ru": "Сравнить коммуналку за 3 месяца и найти экономию",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Look at last month's electricity bill", "kg": "Өткөн айдагы электр төлөмүн карап чыгыңыз", "ru": "Посмотреть счёт за свет за прошлый месяц" },
+          "steps": [
+            { "en": "Collect the last 3 bills", "kg": "Акыркы 3 төлөм баракчасын чогултуңуз", "ru": "Собрать последние 3 квитанции", "minutes": 10 },
+            { "en": "Write the sums in one table", "kg": "Суммаларды бир таблицага жазыңыз", "ru": "Записать суммы в одну таблицу", "minutes": 10 },
+            { "en": "Find the bill that grows fastest", "kg": "Эң тез өсүп жаткан төлөмдү табыңыз", "ru": "Найти счёт, который растёт быстрее всего", "minutes": 5 },
+            { "en": "Choose 2 ways to reduce it", "kg": "Аны азайтуунун 2 жолун тандаңыз", "ru": "Выбрать 2 способа его снизить", "minutes": 10 },
+            { "en": "Check the result on next month's bill", "kg": "Жыйынтыгын кийинки айдагы төлөмдөн текшериңиз", "ru": "Проверить результат по следующему счёту", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Buy household goods only from the list",
+          "kg": "Үй буюмдарын тизме боюнча гана сатып алыңыз",
+          "ru": "Покупать бытовые товары только по списку",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write a list before your next shop", "kg": "Кийинки базарлыктан мурун тизме жазыңыз", "ru": "Написать список перед следующим походом в магазин" }
+        },
+        {
+          "en": "Agree on household costs with family or flatmates",
+          "kg": "Үй чыгымдарын үй-бүлө же бирге жашагандар менен макулдашыңыз",
+          "ru": "Договориться о расходах на дом с семьёй или соседями",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "List the shared monthly costs", "kg": "Жалпы айлык чыгымдарды жазыңыз", "ru": "Выписать общие ежемесячные расходы" },
+          "steps": [
+            { "en": "List all shared costs: rent, bills, food", "kg": "Бардык жалпы чыгымдарды жазыңыз: ижара, төлөм, тамак", "ru": "Выписать все общие расходы: аренда, счета, еда", "minutes": 15 },
+            { "en": "Propose a fair way to split them", "kg": "Аларды адилет бөлүштүрүүнү сунуштаңыз", "ru": "Предложить справедливый способ разделить", "minutes": 10 },
+            { "en": "Discuss it calmly together", "kg": "Чогуу тынч талкуулаңыз", "ru": "Спокойно обсудить вместе", "minutes": 30 },
+            { "en": "Write down who pays what and when", "kg": "Ким эмнени жана качан төлөрүн жазыңыз", "ru": "Записать, кто что и когда платит", "minutes": 10 },
+            { "en": "Review the agreement after 3 months", "kg": "Макулдашууну 3 айдан кийин кайра караңыз", "ru": "Пересмотреть договорённость через 3 месяца", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Set aside a fixed sum weekly for home repairs",
+          "kg": "Үй оңдоосу үчүн ар жума белгилүү сумма четке салыңыз",
+          "ru": "Каждую неделю откладывать сумму на ремонт дома",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Put aside 200 som this week", "kg": "Ушул жумада 200 сом четке салыңыз", "ru": "На этой неделе отложить 200 сомов" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Family & neighbours", "kg": "Үй-бүлө жана кошуна", "ru": "Семья и соседи" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Chores shared fairly at home", "kg": "Үй иштери адилет бөлүштүрүлдү", "ru": "Домашние дела распределены честно" }
+      ],
+      "actions": [
+        {
+          "en": "Share chores fairly with everyone at home",
+          "kg": "Үй иштерин үйдөгүлөрдүн баары менен адилет бөлүшүңүз",
+          "ru": "Честно распределить дела между всеми домашними",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask one person to take one chore", "kg": "Бир адамдан бир үй ишин алуусун сураңыз", "ru": "Попросить одного человека взять одно дело" },
+          "steps": [
+            { "en": "List all regular chores", "kg": "Бардык туруктуу үй иштерин жазыңыз", "ru": "Выписать все регулярные дела", "minutes": 15 },
+            { "en": "Ask everyone what they prefer to do", "kg": "Ар кимден эмне кылгысы келерин сураңыз", "ru": "Спросить у каждого, что ему удобнее", "minutes": 15 },
+            { "en": "Split chores by age and free time", "kg": "Иштерди жашка жана бош убакытка жараша бөлүңүз", "ru": "Распределить дела по возрасту и времени", "minutes": 15 },
+            { "en": "Write a chore chart", "kg": "Үй иштеринин таблицасын жазыңыз", "ru": "Составить таблицу обязанностей", "minutes": 15 },
+            { "en": "Review it together after 2 weeks", "kg": "2 жумадан кийин чогуу карап чыгыңыз", "ru": "Через 2 недели вместе пересмотреть", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Help your parents with one home task every week",
+          "kg": "Ар жума ата-энеңизге бир үй ишинде жардам бериңиз",
+          "ru": "Каждую неделю помогать родителям с одним делом по дому",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Ask your parents what help they need", "kg": "Ата-энеңизден кандай жардам керек экенин сураңыз", "ru": "Спросить родителей, какая помощь нужна" }
+        },
+        {
+          "en": "Share one family meal without phones every week",
+          "kg": "Жумасына бир жолу телефонсуз үй-бүлө менен бирге тамактаныңыз",
+          "ru": "Раз в неделю есть всей семьёй без телефонов",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Have tea together for 15 minutes", "kg": "15 мүнөт бирге чай ичиңиз", "ru": "15 минут попить чай вместе" }
+        },
+        {
+          "en": "Greet neighbours first when you meet them",
+          "kg": "Кошуналарды жолуктурганда биринчи салам бериңиз",
+          "ru": "Первым здороваться с соседями при встрече",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Greet one neighbour today", "kg": "Бүгүн бир кошунаңызга салам бериңиз", "ru": "Сегодня поздороваться с одним соседом" }
+        },
+        {
+          "en": "Keep noise low after 22:00",
+          "kg": "Саат 22:00дөн кийин ызы-чуу салбаңыз",
+          "ru": "Не шуметь после 22:00",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Turn the music down tonight", "kg": "Бүгүн кечинде музыканын үнүн басаңдатыңыз", "ru": "Сегодня вечером убавить громкость музыки" }
+        },
+        {
+          "en": "Join one ashar or yard clean-up this season",
+          "kg": "Ушул мезгилде бир ашарга же короо тазалоого катышыңыз",
+          "ru": "В этом сезоне поучаствовать в ашаре или уборке двора",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Sweep the area by your entrance", "kg": "Подъездиңиздин алдын шыпырыңыз", "ru": "Подмести у своего подъезда" },
+          "steps": [
+            { "en": "Ask neighbours about the next clean-up", "kg": "Кошуналардан кийинки тазалык күнүн сураңыз", "ru": "Спросить соседей о следующем субботнике", "minutes": 10 },
+            { "en": "Offer your help or propose a date", "kg": "Жардамыңызды сунуштаңыз же күн белгилеңиз", "ru": "Предложить помощь или дату", "minutes": 10 },
+            { "en": "Prepare gloves, bags and a broom", "kg": "Колкап, баштык жана шыпыргы даярдаңыз", "ru": "Подготовить перчатки, мешки и метлу", "minutes": 15 },
+            { "en": "Work together for 2 hours", "kg": "2 саат бирге иштеңиз", "ru": "Поработать вместе 2 часа", "minutes": 120 },
+            { "en": "Thank everyone and share a photo in the chat", "kg": "Баарына ыраазычылык айтып, чатка сүрөт салыңыз", "ru": "Поблагодарить всех и отправить фото в чат", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Check on an elderly neighbour or relative weekly",
+          "kg": "Ар жума улгайган кошунаңыздын же тууганыңыздын абалын сураңыз",
+          "ru": "Каждую неделю проведывать пожилого соседа или родственника",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Call one elderly relative", "kg": "Бир улгайган тууганыңызга чалыңыз", "ru": "Позвонить одному пожилому родственнику" }
+        },
+        {
+          "en": "Welcome guests with tea, as our tradition says",
+          "kg": "Салтыбыз боюнча меймандарды чай менен тосуңуз",
+          "ru": "Встречать гостей чаем, как принято у нас",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Keep tea and something sweet ready", "kg": "Чай жана таттуу даяр кармаңыз", "ru": "Держать наготове чай и сладкое" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Finishing things", "kg": "Ишти бүтүрүү", "ru": "Доводить до конца" },
+      "kind": "character",
+      "milestones": [
+        { "en": "30 days of finishing what you start", "kg": "Баштаганды бүтүргөн 30 күн", "ru": "30 дней доводить начатое до конца" }
+      ],
+      "actions": [
+        {
+          "en": "Finish one chore before starting another",
+          "kg": "Бир ишти бүтүрмөйүнчө экинчисин баштабаңыз",
+          "ru": "Заканчивать одно дело, прежде чем начать другое",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Finish the chore you started today", "kg": "Бүгүн баштаган ишиңизди бүтүрүңүз", "ru": "Закончить сегодня начатое дело" }
+        },
+        {
+          "en": "Leave the kitchen clean before going to bed",
+          "kg": "Уктаардан мурун ашкананы таза калтырыңыз",
+          "ru": "Оставлять кухню чистой перед сном",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Clear the table before bed", "kg": "Уктаардан мурун столду жыйнаңыз", "ru": "Убрать со стола перед сном" }
+        },
+        {
+          "en": "Pick up one piece of litter in your yard daily",
+          "kg": "Күн сайын короодон бир таштандыны жерден алыңыз",
+          "ru": "Каждый день поднимать один мусор во дворе",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Pick up one piece of litter today", "kg": "Бүгүн бир таштандыны жерден алыңыз", "ru": "Сегодня поднять с земли один мусор" }
+        },
+        {
+          "en": "Clean up after yourself everywhere, not only at home",
+          "kg": "Үйдө гана эмес, бардык жерде өзүңүздөн кийин жыйнаңыз",
+          "ru": "Убирать за собой везде, не только дома",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Clear your table after eating out", "kg": "Сыртта тамактангандан кийин столуңузду жыйнаңыз", "ru": "Убрать за собой стол после еды вне дома" }
+        },
+        {
+          "en": "Keep every home promise to family on time",
+          "kg": "Үй-бүлөгө берген ар бир убадаңызды өз убагында аткарыңыз",
+          "ru": "Вовремя выполнять каждое обещание семье по дому",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do one thing you promised at home today", "kg": "Бүгүн үйдө убада кылган бир ишти аткарыңыз", "ru": "Сегодня сделать одно обещанное по дому" }
+        },
+        {
+          "en": "Say thank you for every meal and help at home",
+          "kg": "Үйдөгү ар бир тамак жана жардам үчүн ыраазычылык айтыңыз",
+          "ru": "Благодарить за каждую еду и помощь дома",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Thank one family member today", "kg": "Бүгүн үй-бүлөнүн бир мүчөсүнө рахмат айтыңыз", "ru": "Сегодня поблагодарить одного из домашних" }
+        },
+        {
+          "en": "On Sunday, finish or reschedule every open home task",
+          "kg": "Жекшембиде бүтпөгөн үй иштерин бүтүрүңүз же жаңы күнгө коюңуз",
+          "ru": "В воскресенье закрыть или перенести все незаконченные дела",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Close one unfinished task on Sunday", "kg": "Жекшембиде бир бүтпөгөн ишти бүтүрүңүз", "ru": "В воскресенье закрыть одно незаконченное дело" }
+        },
+        {
+          "en": "Do chores without waiting to be asked",
+          "kg": "Айтылганды күтпөй үй иштерин аткарыңыз",
+          "ru": "Делать домашние дела, не дожидаясь просьбы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do one chore before anyone asks", "kg": "Эч ким айта электе бир үй ишин аткарыңыз", "ru": "Сделать одно дело до того, как попросят" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Home safety", "kg": "Үй коопсуздугу", "ru": "Безопасность дома" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Home safety check done", "kg": "Үй коопсуздугу текшерилди", "ru": "Проверена безопасность дома" }
+      ],
+      "actions": [
+        {
+          "en": "Write emergency numbers and hang them by the door",
+          "kg": "Шашылыш номерлерди жазып, эшиктин жанына илиңиз",
+          "ru": "Записать экстренные номера и повесить у двери",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Save 3 emergency numbers in your phone", "kg": "Телефонуңузга 3 шашылыш номерди сактаңыз", "ru": "Сохранить 3 экстренных номера в телефоне" },
+          "steps": [
+            { "en": "Find the numbers: fire, ambulance, police, gas", "kg": "Номерлерди табыңыз: өрт, тез жардам, милиция, газ", "ru": "Найти номера: пожарные, скорая, милиция, газ", "minutes": 10 },
+            { "en": "Add the numbers of 2 close neighbours", "kg": "Жакын 2 кошунанын номерин кошуңуз", "ru": "Добавить номера 2 близких соседей", "minutes": 5 },
+            { "en": "Write them large on one sheet", "kg": "Аларды бир баракка ири тамга менен жазыңыз", "ru": "Крупно записать их на одном листе", "minutes": 5 },
+            { "en": "Hang the sheet by the door", "kg": "Баракты эшиктин жанына илиңиз", "ru": "Повесить лист у двери", "minutes": 5 },
+            { "en": "Show the list to children and elders", "kg": "Тизмени балдарга жана улууларга көрсөтүңүз", "ru": "Показать список детям и старшим", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Have the gas equipment checked by the gas service",
+          "kg": "Газ жабдууларын газ кызматына текшертиңиз",
+          "ru": "Проверить газовое оборудование у газовой службы",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find the gas service phone number", "kg": "Газ кызматынын телефонун табыңыз", "ru": "Найти телефон газовой службы" },
+          "steps": [
+            { "en": "Find the official gas service number", "kg": "Газ кызматынын расмий номерин табыңыз", "ru": "Найти официальный номер газовой службы", "minutes": 10 },
+            { "en": "Book a visit for a check", "kg": "Текшерүүгө чакыртыңыз", "ru": "Записаться на проверку", "minutes": 10 },
+            { "en": "Clear access to the stove and pipes", "kg": "Плитага жана түтүктөргө жол ачыңыз", "ru": "Освободить доступ к плите и трубам", "minutes": 15 },
+            { "en": "Be at home during the check", "kg": "Текшерүү учурунда үйдө болуңуз", "ru": "Быть дома во время проверки", "minutes": 60 },
+            { "en": "Keep the check report", "kg": "Текшерүү актысын сактаңыз", "ru": "Сохранить акт проверки", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Check the stove and iron are off before leaving",
+          "kg": "Чыгаардан мурун плита менен үтүк өчүк экенин текшериңиз",
+          "ru": "Перед уходом проверять, что плита и утюг выключены",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Check the stove before leaving today", "kg": "Бүгүн чыгаардан мурун плитаны текшериңиз", "ru": "Сегодня перед уходом проверить плиту" }
+        },
+        {
+          "en": "Install a smoke detector near the kitchen",
+          "kg": "Ашкананын жанына түтүн сезгич орнотуңуз",
+          "ru": "Установить датчик дыма рядом с кухней",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find where to buy a smoke detector", "kg": "Түтүн сезгичти кайдан алууну билиңиз", "ru": "Узнать, где купить датчик дыма" },
+          "steps": [
+            { "en": "Choose a battery smoke detector", "kg": "Батареялуу түтүн сезгич тандаңыз", "ru": "Выбрать датчик дыма на батарейке", "minutes": 15 },
+            { "en": "Buy it at a building or electronics shop", "kg": "Аны курулуш же электроника дүкөнүнөн алыңыз", "ru": "Купить в строительном или электромагазине", "minutes": 45 },
+            { "en": "Fix it on the ceiling near the kitchen", "kg": "Аны ашкананын жанындагы шыпка бекитиңиз", "ru": "Закрепить на потолке рядом с кухней", "minutes": 30 },
+            { "en": "Press the test button", "kg": "Текшерүү баскычын басыңыз", "ru": "Нажать кнопку проверки", "minutes": 5 },
+            { "en": "Set a reminder to test it every 3 months", "kg": "Аны 3 айда бир текшерүү үчүн эскертме коюңуз", "ru": "Поставить напоминание проверять раз в 3 месяца", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Never leave cooking food unattended",
+          "kg": "Бышып жаткан тамакты эч качан кароосуз калтырбаңыз",
+          "ru": "Никогда не оставлять готовящуюся еду без присмотра",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a timer when you leave the kitchen", "kg": "Ашканадан чыкканда таймер коюңуз", "ru": "Ставить таймер, выходя из кухни" }
+        },
+        {
+          "en": "Teach the family what to do in an earthquake",
+          "kg": "Жер титирегенде эмне кылуу керектигин үй-бүлөгө үйрөтүңүз",
+          "ru": "Научить семью, что делать при землетрясении",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Choose a safe spot in each room", "kg": "Ар бир бөлмөдөн коопсуз жер тандаңыз", "ru": "Выбрать безопасное место в каждой комнате" },
+          "steps": [
+            { "en": "Read the official earthquake guide of the emergency ministry", "kg": "Өзгөчө кырдаалдар министрлигинин расмий эскертмесин окуңуз", "ru": "Прочитать официальную памятку МЧС о землетрясении", "minutes": 15 },
+            { "en": "Mark a safe spot in each room", "kg": "Ар бир бөлмөдөн коопсуз жерди белгилеңиз", "ru": "Отметить безопасное место в каждой комнате", "minutes": 10 },
+            { "en": "Fix tall furniture to the wall", "kg": "Бийик эмеректерди дубалга бекитиңиз", "ru": "Закрепить высокую мебель к стене", "minutes": 60 },
+            { "en": "Agree on a meeting place outside", "kg": "Сыртта чогула турган жерди макулдашыңыз", "ru": "Договориться о месте встречи на улице", "minutes": 10 },
+            { "en": "Practise once with the whole family", "kg": "Бүт үй-бүлө менен бир жолу машыгыңыз", "ru": "Один раз потренироваться всей семьёй", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Pack an emergency bag: water, torch, document copies",
+          "kg": "Шашылыш сумка даярдаңыз: суу, фонарь, документ көчүрмөлөрү",
+          "ru": "Собрать тревожный рюкзак: вода, фонарик, копии документов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Put a torch and water by the door", "kg": "Эшиктин жанына фонарь жана суу коюңуз", "ru": "Поставить у двери фонарик и воду" },
+          "steps": [
+            { "en": "Check the official list for an emergency bag", "kg": "Шашылыш сумканын расмий тизмесин текшериңиз", "ru": "Проверить официальный список тревожного рюкзака", "minutes": 10 },
+            { "en": "Add water, snacks, a torch and batteries", "kg": "Суу, жеңил тамак, фонарь жана батарея салыңыз", "ru": "Положить воду, перекус, фонарик и батарейки", "minutes": 20 },
+            { "en": "Add document copies and some cash", "kg": "Документтердин көчүрмөсүн жана бир аз акча салыңыз", "ru": "Положить копии документов и немного денег", "minutes": 15 },
+            { "en": "Add warm clothes and a power bank", "kg": "Жылуу кийим жана повербанк салыңыз", "ru": "Положить тёплую одежду и пауэрбанк", "minutes": 10 },
+            { "en": "Keep the bag by the exit", "kg": "Сумканы чыгуучу эшиктин жанында сактаңыз", "ru": "Хранить рюкзак у выхода", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Lock the door and close windows every night",
+          "kg": "Ар түнү эшикти кулпулап, терезелерди жабыңыз",
+          "ru": "Каждую ночь запирать дверь и закрывать окна",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Check the front door lock tonight", "kg": "Бүгүн түнү эшиктин кулпусун текшериңиз", "ru": "Сегодня проверить замок входной двери" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Eco home", "kg": "Эко үй", "ru": "Экодом" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Waste sorted at home for a month", "kg": "Үй таштандысы бир ай бөлүнүп турду", "ru": "Месяц сортировки бытовых отходов" }
+      ],
+      "actions": [
+        {
+          "en": "Turn off the tap while brushing teeth or soaping dishes",
+          "kg": "Тиш жууганда же идиш самындаганда кранды жабыңыз",
+          "ru": "Закрывать кран, пока чистите зубы или мылите посуду",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Turn off the tap while brushing today", "kg": "Бүгүн тиш жууганда кранды жабыңыз", "ru": "Сегодня закрывать кран, пока чистите зубы" }
+        },
+        {
+          "en": "Set up 2 bins: plastic and other waste",
+          "kg": "2 таштанды челек коюңуз: пластик жана калганы",
+          "ru": "Поставить 2 ведра: пластик и остальной мусор",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Collect plastic bottles in one bag", "kg": "Пластик бөтөлкөлөрдү бир баштыкка чогултуңуз", "ru": "Собирать пластиковые бутылки в один пакет" },
+          "steps": [
+            { "en": "Find the nearest recycling point", "kg": "Эң жакын кайра иштетүү пунктун табыңыз", "ru": "Найти ближайший пункт приёма вторсырья", "minutes": 20 },
+            { "en": "Check what it accepts", "kg": "Ал эмнелерди кабыл аларын текшериңиз", "ru": "Узнать, что там принимают", "minutes": 10 },
+            { "en": "Place a second bin or bag", "kg": "Экинчи челек же баштык коюңуз", "ru": "Поставить второе ведро или пакет", "minutes": 10 },
+            { "en": "Explain the rule to the family", "kg": "Эрежени үй-бүлөгө түшүндүрүңүз", "ru": "Объяснить правило семье", "minutes": 10 },
+            { "en": "Take the first bag to the point", "kg": "Биринчи баштыкты пунктка жеткириңиз", "ru": "Отнести первый пакет в пункт", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Take sorted waste to a recycling point weekly",
+          "kg": "Бөлүнгөн таштандыны ар жума кайра иштетүү пунктуна жеткириңиз",
+          "ru": "Каждую неделю относить отсортированное в пункт приёма",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Take one bag of plastic this week", "kg": "Ушул жумада бир баштык пластик жеткириңиз", "ru": "На этой неделе отнести один пакет пластика" }
+        },
+        {
+          "en": "Take your own bag to the shop",
+          "kg": "Дүкөнгө өз баштыгыңызды ала барыңыз",
+          "ru": "Брать в магазин свою сумку",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put a cloth bag in your backpack", "kg": "Рюкзагыңызга кездеме баштык салып коюңуз", "ru": "Положить тканевую сумку в рюкзак" }
+        },
+        {
+          "en": "Replace the 3 most-used bulbs with LED ones",
+          "kg": "Эң көп күйгөн 3 лампаны LED лампага алмаштырыңыз",
+          "ru": "Заменить 3 самые используемые лампы на светодиодные",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Replace one bulb with an LED one", "kg": "Бир лампаны LED лампага алмаштырыңыз", "ru": "Заменить одну лампу на светодиодную" },
+          "steps": [
+            { "en": "Find the 3 lamps that burn longest", "kg": "Эң көп күйгөн 3 лампаны табыңыз", "ru": "Найти 3 лампы, которые горят дольше всего", "minutes": 5 },
+            { "en": "Check the socket type and power", "kg": "Патрондун түрүн жана кубаттуулугун текшериңиз", "ru": "Проверить тип цоколя и мощность", "minutes": 10 },
+            { "en": "Buy LED bulbs of the same type", "kg": "Ошол эле түрдөгү LED лампаларды сатып алыңыз", "ru": "Купить светодиодные лампы того же типа", "minutes": 30 },
+            { "en": "Switch off the power and replace them", "kg": "Жарыкты өчүрүп, лампаларды алмаштырыңыз", "ru": "Выключить свет и заменить лампы", "minutes": 15 },
+            { "en": "Compare the next electricity bill", "kg": "Кийинки электр төлөмүн салыштырыңыз", "ru": "Сравнить следующий счёт за свет", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Water and care for home plants every week",
+          "kg": "Үй өсүмдүктөрүн ар жума сугарып, багыңыз",
+          "ru": "Каждую неделю поливать растения и ухаживать за ними",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Water one plant today", "kg": "Бүгүн бир өсүмдүктү сугарыңыз", "ru": "Сегодня полить одно растение" }
+        },
+        {
+          "en": "Try to repair things before replacing them",
+          "kg": "Буюмду алмаштыруудан мурун оңдоп көрүңүз",
+          "ru": "Сначала пытаться починить вещь, а потом заменять",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Try to fix one broken item", "kg": "Бир сынган буюмду оңдоп көрүңүз", "ru": "Попробовать починить одну сломанную вещь" }
+        },
+        {
+          "en": "Plant a tree or flowers in your yard this season",
+          "kg": "Ушул мезгилде короого дарак же гүл отургузуңуз",
+          "ru": "В этом сезоне посадить во дворе дерево или цветы",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Plant one flower in a pot", "kg": "Идишке бир гүл отургузуңуз", "ru": "Посадить один цветок в горшок" },
+          "steps": [
+            { "en": "Agree on the place with neighbours", "kg": "Ордун кошуналар менен макулдашыңыз", "ru": "Согласовать место с соседями", "minutes": 15 },
+            { "en": "Choose a local tree or flowers", "kg": "Жергиликтүү дарак же гүл тандаңыз", "ru": "Выбрать местное дерево или цветы", "minutes": 15 },
+            { "en": "Buy a seedling at the market", "kg": "Базардан көчөт сатып алыңыз", "ru": "Купить саженец на рынке", "minutes": 45 },
+            { "en": "Dig a hole and plant it", "kg": "Чуңкур казып, отургузуңуз", "ru": "Выкопать яму и посадить", "minutes": 45 },
+            { "en": "Water it twice a week for a month", "kg": "Бир ай бою жумасына эки жолу сугарыңыз", "ru": "Месяц поливать два раза в неделю", "minutes": 10 }
+          ]
+        }
+      ]
+    }
+  ]
+}

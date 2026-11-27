@@ -1,0 +1,890 @@
+{
+  "id": "faith",
+  "icon": "🕊️",
+  "title": { "en": "Faith & spirituality", "kg": "Ыйман жана руханият", "ru": "Вера и духовность" },
+  "keywords": {
+    "en": ["!faith", "!spiritual", "spirituality", "!religion", "religious", "prayer", "pray", "worship", "scripture", "bible", "mosque", "church", "god", "believe", "fasting", "charity", "soul", "inner peace", "practice my faith", "closer to god"],
+    "kg": ["!ыйман", "!дин", "диний", "руханият", "рухий", "намаз", "дуба", "сыйынуу", "мечит", "чиркөө", "кудай", "алла", "орозо", "садака", "жан дүйнө", "ибадат", "ыймандуу болуу", "динди үйрөнүү", "ыйык китеп"],
+    "ru": ["!вера", "!религия", "!духовность", "духовный", "молитва", "молиться", "намаз", "мечеть", "церковь", "храм", "бог", "аллах", "библия", "ураза", "поститься", "милостыня", "садака", "душа", "верующий", "укрепить веру", "душевный покой"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Prayer & practice", "kg": "Сыйынуу тартиби", "ru": "Молитва и практика" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "30 days of regular prayer", "kg": "30 күн үзгүлтүксүз сыйынуу", "ru": "30 дней регулярной молитвы" }
+      ],
+      "actions": [
+        {
+          "en": "Pray at the times your faith sets, every day",
+          "kg": "Ишенимиңиз белгилеген убакта күн сайын сыйыныңыз",
+          "ru": "Молиться в установленное вашей верой время каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Pray at least once a day at a fixed time", "kg": "Күнүнө жок дегенде бир жолу белгилүү убакта сыйыныңыз", "ru": "Молиться хотя бы раз в день в одно и то же время" }
+        },
+        {
+          "en": "Start the morning with a 5-minute prayer or thanks",
+          "kg": "Эртең мененки күндү 5 мүнөт дуба же шүгүр менен баштаңыз",
+          "ru": "Начинать утро с 5-минутной молитвы или благодарности",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Say one short prayer of thanks after waking", "kg": "Ойгонгондон кийин бир кыска шүгүр дубасын айтыңыз", "ru": "После пробуждения произнести одну короткую благодарность" }
+        },
+        {
+          "en": "Attend your place of worship once a week",
+          "kg": "Жумасына бир жолу сыйынуу жайына барыңыз",
+          "ru": "Раз в неделю посещать место поклонения",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Attend your place of worship twice a month", "kg": "Айына эки жолу сыйынуу жайына барыңыз", "ru": "Посещать место поклонения два раза в месяц" }
+        },
+        {
+          "en": "Learn by heart one prayer you use daily",
+          "kg": "Күн сайын окуган бир дубаңызды жатка үйрөнүңүз",
+          "ru": "Выучить наизусть одну молитву, которую читаете ежедневно",
+          "type": "milestone",
+          "minutes": 15,
+          "easy": { "en": "Learn the first lines of one daily prayer", "kg": "Күнүмдүк бир дубанын алгачкы саптарын жаттаңыз", "ru": "Выучить первые строки одной ежедневной молитвы" },
+          "steps": [
+            { "en": "Choose the prayer and write it down", "kg": "Дубаны тандап, жазып алыңыз", "ru": "Выбрать молитву и записать её", "minutes": 10 },
+            { "en": "Read its meaning in your language", "kg": "Анын маанисин өз тилиңизде окуңуз", "ru": "Прочитать её смысл на своём языке", "minutes": 15 },
+            { "en": "Memorise the first part", "kg": "Биринчи бөлүгүн жаттаңыз", "ru": "Выучить первую часть", "minutes": 15 },
+            { "en": "Memorise the second part", "kg": "Экинчи бөлүгүн жаттаңыз", "ru": "Выучить вторую часть", "minutes": 15 },
+            { "en": "Recite it 3 times without looking", "kg": "Карабай туруп 3 жолу кайталаңыз", "ru": "Прочитать её 3 раза, не подглядывая", "minutes": 10 },
+            { "en": "Check pronunciation with a teacher", "kg": "Айтылышын устазга текшертиңиз", "ru": "Проверить произношение у наставника", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Never miss prayer twice in a row",
+          "kg": "Сыйынууну катары менен эки жолу калтырбаңыз",
+          "ru": "Никогда не пропускать молитву два раза подряд",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "If you missed a prayer, make a short one later", "kg": "Сыйынуу калып калса, кийин кыска дуба кылыңыз", "ru": "Пропустив молитву, позже прочитать короткую" }
+        },
+        {
+          "en": "Make a short prayer before meals",
+          "kg": "Тамактан мурун кыска дуба кылыңыз",
+          "ru": "Перед едой произносить короткую молитву",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Make a prayer before one meal a day", "kg": "Күнүнө бир тамактан мурун дуба кылыңыз", "ru": "Читать молитву перед одним приёмом пищи в день" }
+        },
+        {
+          "en": "End the day with 10 minutes of prayer and reflection",
+          "kg": "Күндү 10 мүнөт дуба жана ой жүгүртүү менен аяктаңыз",
+          "ru": "Заканчивать день 10 минутами молитвы и размышления",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Spend 3 minutes in prayer before sleep", "kg": "Уктаар алдында 3 мүнөт дуба кылыңыз", "ru": "Перед сном 3 минуты провести в молитве" }
+        },
+        {
+          "en": "Set up a quiet corner for prayer at home by Sunday",
+          "kg": "Жекшембиге чейин үйдө сыйынуу үчүн тынч бурч жасаңыз",
+          "ru": "До воскресенья обустроить дома тихий уголок для молитвы",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Choose a clean quiet place to pray at home", "kg": "Үйдөн сыйынуу үчүн таза, тынч жер тандаңыз", "ru": "Выбрать дома чистое тихое место для молитвы" },
+          "steps": [
+            { "en": "Pick a quiet spot with your family's consent", "kg": "Үй-бүлө менен макулдашып, тынч жер тандаңыз", "ru": "Выбрать тихое место, согласовав с семьёй", "minutes": 10 },
+            { "en": "Clean and tidy the spot", "kg": "Ал жерди тазалап, иретке келтириңиз", "ru": "Убрать и навести порядок в этом месте", "minutes": 20 },
+            { "en": "Put a mat, scripture or what you use there", "kg": "Килемче, ыйык китеп же керектүүсүн коюңуз", "ru": "Положить коврик, писание или то, что используете", "minutes": 10 },
+            { "en": "Remove noise and screens from it", "kg": "Ал жерден ызы-чууну жана экрандарды алып салыңыз", "ru": "Убрать оттуда шум и экраны", "minutes": 10 },
+            { "en": "Pray there for the first time", "kg": "Ал жерде биринчи жолу сыйыныңыз", "ru": "Впервые помолиться в этом месте", "minutes": 15 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Sacred texts", "kg": "Ыйык тексттер", "ru": "Священные тексты" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Scripture read daily for 40 days", "kg": "40 күн ыйык китеп күн сайын окулду", "ru": "40 дней ежедневного чтения писания" },
+        { "en": "Key passages understood and noted", "kg": "Негизги үзүндүлөр түшүнүлүп, жазылды", "ru": "Ключевые отрывки поняты и записаны" }
+      ],
+      "actions": [
+        {
+          "en": "Read your scripture for 15 minutes a day",
+          "kg": "Ыйык китебиңизди күнүнө 15 мүнөт окуңуз",
+          "ru": "Читать своё писание 15 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Read one page of your scripture a day", "kg": "Ыйык китебиңизден күнүнө бир бет окуңуз", "ru": "Читать одну страницу писания в день" }
+        },
+        {
+          "en": "Read the translation and meaning, not only the text",
+          "kg": "Текст менен кошо котормосун жана маанисин окуңуз",
+          "ru": "Читать не только текст, но и перевод со смыслом",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Read the meaning of one passage a day", "kg": "Күнүнө бир үзүндүнүн маанисин окуңуз", "ru": "Читать смысл одного отрывка в день" }
+        },
+        {
+          "en": "Write one lesson from your reading every week",
+          "kg": "Окуганыңыздан ар жума бир сабак жазып алыңыз",
+          "ru": "Каждую неделю записывать один урок из прочитанного",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write one sentence you liked this week", "kg": "Ушул жумада жаккан бир сүйлөмдү жазыңыз", "ru": "Записать одну понравившуюся фразу за неделю" }
+        },
+        {
+          "en": "Make a plan to finish one book of scripture",
+          "kg": "Ыйык китептин бир бөлүгүн бүтүрүүгө план түзүңүз",
+          "ru": "Составить план, чтобы дочитать одну книгу писания",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Plan your reading for the next 2 weeks", "kg": "Кийинки 2 жумалык окууңузду пландаңыз", "ru": "Спланировать чтение на ближайшие 2 недели" },
+          "steps": [
+            { "en": "Choose the book or part to read", "kg": "Окуй турган китепти же бөлүктү тандаңыз", "ru": "Выбрать книгу или часть для чтения", "minutes": 10 },
+            { "en": "Count its pages or chapters", "kg": "Анын барактарын же бөлүмдөрүн санаңыз", "ru": "Посчитать страницы или главы", "minutes": 10 },
+            { "en": "Divide them by days up to a deadline", "kg": "Аларды мөөнөткө чейинки күндөргө бөлүңүз", "ru": "Разделить их по дням до срока", "minutes": 10 },
+            { "en": "Write the plan in Tasks", "kg": "Планды «Тапшырмалар» бөлүмүнө жазыңыз", "ru": "Записать план в «Задачи»", "minutes": 10 },
+            { "en": "Read the first day's portion", "kg": "Биринчи күндүн бөлүгүн окуңуз", "ru": "Прочитать порцию первого дня", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Memorise one short passage every week",
+          "kg": "Ар жума бир кыска үзүндүнү жаттаңыз",
+          "ru": "Каждую неделю учить наизусть один короткий отрывок",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Memorise one line every week", "kg": "Ар жума бир сапты жаттаңыз", "ru": "Каждую неделю учить наизусть одну строку" }
+        },
+        {
+          "en": "Listen to a reading of your scripture 3 times a week",
+          "kg": "Ыйык тексттин окулушун жумасына 3 жолу угуңуз",
+          "ru": "Слушать чтение писания 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Listen to a 5-minute reading once a week", "kg": "Жумасына бир жолу 5 мүнөттүк окууну угуңуз", "ru": "Раз в неделю слушать 5-минутное чтение" }
+        },
+        {
+          "en": "Ask a teacher when a passage is unclear",
+          "kg": "Үзүндү түшүнүксүз болсо, устаздан сураңыз",
+          "ru": "Спрашивать наставника, если отрывок непонятен",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Write unclear passages down to ask later", "kg": "Түшүнүксүз үзүндүлөрдү кийин суроо үчүн жазыңыз", "ru": "Записывать непонятные отрывки, чтобы спросить позже" }
+        },
+        {
+          "en": "Discuss one passage with family or friends weekly",
+          "kg": "Ар жума бир үзүндүнү үй-бүлө же достор менен талкуулаңыз",
+          "ru": "Раз в неделю обсуждать отрывок с семьёй или друзьями",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Share one thought from your reading with someone", "kg": "Окугандан бир оюңузду бирөө менен бөлүшүңүз", "ru": "Поделиться с кем-то одной мыслью из прочитанного" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Religious knowledge", "kg": "Дин боюнча билим", "ru": "Знание веры" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Trusted teacher or class found", "kg": "Ишенимдүү устаз же сабак табылды", "ru": "Найден надёжный наставник или занятия" },
+        { "en": "Basics of your faith studied", "kg": "Ишенимиңиздин негиздери үйрөнүлдү", "ru": "Изучены основы своей веры" }
+      ],
+      "actions": [
+        {
+          "en": "Find a qualified teacher or class within a month",
+          "kg": "Бир айдын ичинде билимдүү устаз же сабак табыңыз",
+          "ru": "За месяц найти знающего наставника или занятия",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask 2 people you trust to recommend a teacher", "kg": "Ишенген 2 адамдан устаз сунуштоосун сураңыз", "ru": "Попросить 2 надёжных людей посоветовать наставника" },
+          "steps": [
+            { "en": "Write what you want to learn", "kg": "Эмнени үйрөнгүңүз келерин жазыңыз", "ru": "Записать, что хотите изучить", "minutes": 10 },
+            { "en": "Ask family and elders for advice", "kg": "Үй-бүлөдөн жана улуулардан кеңеш сураңыз", "ru": "Спросить совета у семьи и старших", "minutes": 20 },
+            { "en": "Ask at your place of worship about classes", "kg": "Сыйынуу жайынан сабактар жөнүндө сураңыз", "ru": "Узнать о занятиях в месте поклонения", "minutes": 30 },
+            { "en": "Check the teacher's education and reputation", "kg": "Устаздын билимин жана абройун текшериңиз", "ru": "Проверить образование и репутацию наставника", "minutes": 30 },
+            { "en": "Attend one trial class", "kg": "Бир сыноо сабагына катышыңыз", "ru": "Посетить одно пробное занятие", "minutes": 60 },
+            { "en": "Decide and agree on a schedule", "kg": "Чечим кабыл алып, убакытты макулдашыңыз", "ru": "Решить и договориться о расписании", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Attend a class or lecture once a week",
+          "kg": "Жумасына бир жолу сабакка же лекцияга катышыңыз",
+          "ru": "Раз в неделю посещать занятие или лекцию",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Watch one 20-minute lecture a week", "kg": "Жумасына бир 20 мүнөттүк лекция көрүңүз", "ru": "Смотреть одну 20-минутную лекцию в неделю" }
+        },
+        {
+          "en": "Study the basics of your faith 3 times a week",
+          "kg": "Жумасына 3 жолу ишенимиңиздин негиздерин үйрөнүңүз",
+          "ru": "Изучать основы своей веры 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Study one basic topic once a week", "kg": "Жумасына бир жолу бир негизги теманы окуңуз", "ru": "Раз в неделю изучать одну базовую тему" }
+        },
+        {
+          "en": "Keep notes from every class in Notes",
+          "kg": "Ар бир сабакты «Эскертмелер» бөлүмүнө жазып алыңыз",
+          "ru": "Вести конспект каждого занятия в «Заметках»",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write 3 key points after each class", "kg": "Ар сабактан кийин 3 негизги ойду жазыңыз", "ru": "После занятия записать 3 главные мысли" }
+        },
+        {
+          "en": "Learn only from trusted, qualified scholars",
+          "kg": "Ишенимдүү, билимдүү аалымдардан гана үйрөнүңүз",
+          "ru": "Учиться только у надёжных, знающих учёных",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask your teacher if a source is reliable", "kg": "Булак ишенимдүүбү, устаздан сураңыз", "ru": "Спросить наставника, надёжен ли источник" }
+        },
+        {
+          "en": "Read one book on the history of your faith",
+          "kg": "Ишенимиңиздин тарыхы боюнча бир китеп окуңуз",
+          "ru": "Прочитать одну книгу об истории своей веры",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Read one chapter on the history of your faith", "kg": "Ишенимиңиздин тарыхы боюнча бир бөлүм окуңуз", "ru": "Прочитать одну главу об истории своей веры" },
+          "steps": [
+            { "en": "Ask your teacher to recommend a book", "kg": "Устаздан китеп сунуштоосун сураңыз", "ru": "Попросить наставника посоветовать книгу", "minutes": 10 },
+            { "en": "Get the book from a library or shop", "kg": "Китепти китепканадан же дүкөндөн алыңыз", "ru": "Взять книгу в библиотеке или магазине", "minutes": 60 },
+            { "en": "Read the first quarter", "kg": "Биринчи чейрегин окуңуз", "ru": "Прочитать первую четверть", "minutes": 60 },
+            { "en": "Read the second quarter", "kg": "Экинчи чейрегин окуңуз", "ru": "Прочитать вторую четверть", "minutes": 60 },
+            { "en": "Read the second half", "kg": "Экинчи жарымын окуңуз", "ru": "Прочитать вторую половину", "minutes": 120 },
+            { "en": "Write a one-page summary", "kg": "Бир барактык корутунду жазыңыз", "ru": "Написать конспект на одну страницу", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Respect people of other faiths in every discussion",
+          "kg": "Ар бир талкууда башка диндеги адамдарды урматтаңыз",
+          "ru": "Уважать людей других вер в любом разговоре",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Listen to a different view without arguing", "kg": "Башка пикирди талашпай угуңуз", "ru": "Выслушать иное мнение, не споря" }
+        },
+        {
+          "en": "Ask your teacher one prepared question weekly",
+          "kg": "Устазга ар жума бир даярдалган суроо бериңиз",
+          "ru": "Каждую неделю задавать наставнику один вопрос",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Write down one question for your teacher", "kg": "Устаз үчүн бир суроо жазып алыңыз", "ru": "Записать один вопрос для наставника" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Charity & help", "kg": "Кайрымдуулук", "ru": "Милосердие и помощь" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Regular giving for 3 months", "kg": "3 ай туруктуу кайрымдуулук", "ru": "3 месяца регулярной помощи" }
+      ],
+      "actions": [
+        {
+          "en": "Put aside an amount for charity every week",
+          "kg": "Ар жума кайрымдуулук үчүн бир сумма бөлүңүз",
+          "ru": "Каждую неделю откладывать сумму на благотворительность",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Put aside 50 som for charity every week", "kg": "Ар жума кайрымдуулукка 50 сом бөлүңүз", "ru": "Каждую неделю откладывать 50 сомов на помощь" }
+        },
+        {
+          "en": "Visit or call an elderly relative every week",
+          "kg": "Ар жума улгайган тууганыңызга барыңыз же чалыңыз",
+          "ru": "Каждую неделю навещать или звонить пожилому родственнику",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Call an elderly relative for 10 minutes weekly", "kg": "Ар жума улгайган тууганыңызга 10 мүнөт чалыңыз", "ru": "Раз в неделю 10 минут звонить пожилому родственнику" }
+        },
+        {
+          "en": "Do one good deed for a neighbour each week",
+          "kg": "Ар жума кошунаңызга бир жакшылык кылыңыз",
+          "ru": "Каждую неделю делать одно доброе дело для соседа",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Offer help to one neighbour this month", "kg": "Ушул айда бир кошунага жардам сунуштаңыз", "ru": "В этом месяце предложить помощь одному соседу" }
+        },
+        {
+          "en": "Organise one charity collection for people in need",
+          "kg": "Муктаж адамдар үчүн бир кайрымдуулук чогултууну уюштуруңуз",
+          "ru": "Организовать один сбор помощи для нуждающихся",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Join a charity collection someone else organises", "kg": "Башкалар уюштурган кайрымдуулукка кошулуңуз", "ru": "Присоединиться к сбору, который организовал другой" },
+          "steps": [
+            { "en": "Choose who you will help and what they need", "kg": "Кимге жардам берерди жана эмне керегин тандаңыз", "ru": "Выбрать, кому помочь и что нужно", "minutes": 20 },
+            { "en": "Agree with family or friends to join", "kg": "Үй-бүлө же достор менен кошулууну макулдашыңыз", "ru": "Договориться с семьёй или друзьями об участии", "minutes": 30 },
+            { "en": "Announce the collection in your chat", "kg": "Чогултууну чатыңызда жарыялаңыз", "ru": "Объявить сбор в своём чате", "minutes": 15 },
+            { "en": "Collect items or money for 1 week", "kg": "1 жума буюм же акча чогултуңуз", "ru": "Собирать вещи или деньги 1 неделю", "minutes": 30 },
+            { "en": "Hand over the help in person", "kg": "Жардамды өзүңүз тапшырыңыз", "ru": "Лично передать помощь", "minutes": 60 },
+            { "en": "Report the result to everyone who gave", "kg": "Жардам бергендердин баарына жыйынтыгын айтыңыз", "ru": "Сообщить итог всем, кто помог", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Give quietly, without boasting about it",
+          "kg": "Мактанбай, жашыруун жардам бериңиз",
+          "ru": "Помогать тихо, не хвастаясь",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Do one good deed this week without telling anyone", "kg": "Ушул жумада эч кимге айтпай бир жакшылык кылыңыз", "ru": "На этой неделе сделать доброе дело, никому не говоря" }
+        },
+        {
+          "en": "Give one unused item to someone in need weekly",
+          "kg": "Ар жума керексиз бир буюмду муктаж адамга бериңиз",
+          "ru": "Каждую неделю отдавать нуждающимся одну ненужную вещь",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Give away one unused item this month", "kg": "Ушул айда керексиз бир буюмду бериңиз", "ru": "В этом месяце отдать одну ненужную вещь" }
+        },
+        {
+          "en": "Volunteer 1 hour a week where help is needed",
+          "kg": "Жардам керек жерде жумасына 1 саат ыктыярчы болуңуз",
+          "ru": "Час в неделю помогать волонтёром там, где нужно",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Volunteer for 1 hour once a month", "kg": "Айына бир жолу 1 саат ыктыярчы болуңуз", "ru": "Раз в месяц час помогать волонтёром" }
+        },
+        {
+          "en": "Answer every request for help kindly, even if you refuse",
+          "kg": "Жардам сурагандарга, баш тартсаңыз да, жылуу жооп бериңиз",
+          "ru": "Отвечать на просьбы о помощи по-доброму, даже отказывая",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say a kind word to the next person who asks", "kg": "Кийинки сураган адамга жылуу сөз айтыңыз", "ru": "Сказать доброе слово следующему, кто попросит" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Inner peace", "kg": "Жан тынчтыгы", "ru": "Душевный покой" },
+      "kind": "support",
+      "milestones": [
+        { "en": "A month of daily gratitude notes", "kg": "Бир ай күн сайын ыраазычылык жазуу", "ru": "Месяц ежедневных записей благодарности" }
+      ],
+      "actions": [
+        {
+          "en": "Write 3 things you are thankful for each evening",
+          "kg": "Ар кечте ыраазы болгон 3 нерсени жазыңыз",
+          "ru": "Каждый вечер записывать 3 повода для благодарности",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Name 1 thing you are thankful for before sleep", "kg": "Уктаар алдында ыраазы болгон 1 нерсени айтыңыз", "ru": "Перед сном назвать 1 повод для благодарности" }
+        },
+        {
+          "en": "Sit in silence for 10 minutes a day",
+          "kg": "Күнүнө 10 мүнөт тынчтыкта отуруңуз",
+          "ru": "10 минут в день проводить в тишине",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Sit in silence for 3 minutes a day", "kg": "Күнүнө 3 мүнөт тынчтыкта отуруңуз", "ru": "3 минуты в день проводить в тишине" }
+        },
+        {
+          "en": "Take 5 slow breaths before answering in anger",
+          "kg": "Ачууланганда жооп берерден мурун 5 жолу терең дем алыңыз",
+          "ru": "Злясь, сделать 5 медленных вдохов перед ответом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Count to 10 before answering when upset", "kg": "Капа болгондо жооп берерден мурун ондон санаңыз", "ru": "В расстройстве сосчитать до 10 перед ответом" }
+        },
+        {
+          "en": "Write your worries weekly with one step for each",
+          "kg": "Ар жума тынчсызданууларды жана ар бирине бир кадам жазыңыз",
+          "ru": "Раз в неделю записывать тревоги и шаг для каждой",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Write one worry and one small step", "kg": "Бир тынчсызданууну жана бир кичине кадамды жазыңыз", "ru": "Записать одну тревогу и один маленький шаг" }
+        },
+        {
+          "en": "Walk in nature 3 times a week without the phone",
+          "kg": "Жумасына 3 жолу телефонсуз жаратылышта басыңыз",
+          "ru": "3 раза в неделю гулять на природе без телефона",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Walk outdoors for 15 minutes once a week", "kg": "Жумасына бир жолу 15 мүнөт сыртта басыңыз", "ru": "Раз в неделю 15 минут гулять на улице" }
+        },
+        {
+          "en": "Forgive small offences within one day",
+          "kg": "Майда таарынычтарды бир күндүн ичинде кечириңиз",
+          "ru": "Прощать мелкие обиды в течение дня",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Let go of one small offence this week", "kg": "Ушул жумада бир майда таарынычты унутуңуз", "ru": "На этой неделе отпустить одну мелкую обиду" }
+        },
+        {
+          "en": "Limit news and social media to 30 minutes a day",
+          "kg": "Жаңылык менен соцтармакты күнүнө 30 мүнөткө чектеңиз",
+          "ru": "Ограничить новости и соцсети 30 минутами в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Keep one hour a day free from news and feeds", "kg": "Күнүнө бир саатты жаңылыксыз өткөрүңүз", "ru": "Один час в день проводить без новостей и лент" }
+        },
+        {
+          "en": "Write your personal values on one page",
+          "kg": "Жеке баалуулуктарыңызды бир баракка жазыңыз",
+          "ru": "Записать свои ценности на одной странице",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write down your 3 main values", "kg": "3 негизги баалуулугуңузду жазыңыз", "ru": "Записать 3 свои главные ценности" },
+          "steps": [
+            { "en": "List 10 things that matter most to you", "kg": "Сиз үчүн эң маанилүү 10 нерсени тизмелеңиз", "ru": "Выписать 10 самых важных для вас вещей", "minutes": 15 },
+            { "en": "Choose the 5 most important", "kg": "Алардын эң маанилүү бешин тандаңыз", "ru": "Выбрать из них 5 главных", "minutes": 10 },
+            { "en": "Write what each means in your life", "kg": "Ар бири жашооңузда эмнени билдирерин жазыңыз", "ru": "Описать, что каждая значит в вашей жизни", "minutes": 20 },
+            { "en": "Compare them with how you spent last week", "kg": "Аларды өткөн жумаңыз менен салыштырыңыз", "ru": "Сравнить их с тем, как прошла прошлая неделя", "minutes": 15 },
+            { "en": "Keep the page where you see it daily", "kg": "Баракты күн сайын көрүнгөн жерге коюңуз", "ru": "Положить лист туда, где видите его каждый день", "minutes": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Routine & time", "kg": "Тартип жана убакыт", "ru": "Режим и время" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Stable daily routine for 3 weeks", "kg": "3 жума туруктуу күн тартиби", "ru": "3 недели стабильного распорядка" }
+      ],
+      "actions": [
+        {
+          "en": "Plan your day around prayer and rest times",
+          "kg": "Күнүңүздү сыйынуу жана эс алуу убактысына карап пландаңыз",
+          "ru": "Спланировать день вокруг времени молитвы и отдыха",
+          "type": "milestone",
+          "minutes": 20,
+          "easy": { "en": "Mark prayer times in tomorrow's plan", "kg": "Эртеңки планга сыйынуу убактыларын белгилеңиз", "ru": "Отметить время молитвы в плане на завтра" },
+          "steps": [
+            { "en": "Write your fixed prayer or reflection times", "kg": "Туруктуу сыйынуу же ой жүгүртүү убактыңызды жазыңыз", "ru": "Записать постоянное время молитвы или размышлений", "minutes": 10 },
+            { "en": "Add work or study hours", "kg": "Иш же окуу сааттарын кошуңуз", "ru": "Добавить часы работы или учёбы", "minutes": 10 },
+            { "en": "Add sleep, meals and family time", "kg": "Уйку, тамак жана үй-бүлө убактысын кошуңуз", "ru": "Добавить сон, еду и время для семьи", "minutes": 10 },
+            { "en": "Find free slots to study your faith", "kg": "Ишенимди үйрөнүү үчүн бош убакыт табыңыз", "ru": "Найти свободные окна для изучения веры", "minutes": 10 },
+            { "en": "Put the plan into the calendar", "kg": "Планды календарга киргизиңиз", "ru": "Внести план в календарь", "minutes": 15 },
+            { "en": "Live by it for 3 days and adjust", "kg": "3 күн ошол план менен жашап, тууралаңыз", "ru": "Прожить по нему 3 дня и поправить", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Go to bed at the same time every night",
+          "kg": "Күн сайын бир убакта уктаңыз",
+          "ru": "Ложиться спать в одно и то же время",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Go to bed on time 3 nights a week", "kg": "Жумасына 3 түн өз убагында жатыңыз", "ru": "3 ночи в неделю ложиться вовремя" }
+        },
+        {
+          "en": "Wake up 20 minutes earlier for quiet time",
+          "kg": "Тынч убакыт үчүн 20 мүнөт эрте туруңуз",
+          "ru": "Вставать на 20 минут раньше ради тихого времени",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Wake up 5 minutes earlier", "kg": "5 мүнөт эрте туруңуз", "ru": "Вставать на 5 минут раньше" }
+        },
+        {
+          "en": "Review the week's practice once a week",
+          "kg": "Жумасына бир жолу жуманын амалдарын карап чыгыңыз",
+          "ru": "Раз в неделю подводить итоги практики за неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Answer once a week: what went well?", "kg": "Жумасына бир жолу жооп бериңиз: эмне жакшы болду?", "ru": "Раз в неделю ответить: что получилось?" }
+        },
+        {
+          "en": "Put the phone away during prayer and meals",
+          "kg": "Сыйынуу жана тамак учурунда телефонду алып коюңуз",
+          "ru": "Убирать телефон во время молитвы и еды",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Put the phone away during one meal a day", "kg": "Күнүнө бир тамакта телефонду алып коюңуз", "ru": "Убирать телефон хотя бы за одним приёмом пищи" }
+        },
+        {
+          "en": "Check tomorrow's plan every evening",
+          "kg": "Ар кечте эртеңки планды карап чыгыңыз",
+          "ru": "Каждый вечер проверять план на завтра",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Choose one main task for tomorrow", "kg": "Эртеңге бир негизги иш тандаңыз", "ru": "Выбрать одно главное дело на завтра" }
+        },
+        {
+          "en": "Arrive 5 minutes early to class and prayer",
+          "kg": "Сабакка жана сыйынууга 5 мүнөт эрте келиңиз",
+          "ru": "Приходить на занятия и молитву на 5 минут раньше",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Arrive on time to the next class", "kg": "Кийинки сабакка өз убагында келиңиз", "ru": "Прийти вовремя на следующее занятие" }
+        },
+        {
+          "en": "Keep one evening a week free for family",
+          "kg": "Жумасына бир кечти үй-бүлөгө бош калтырыңыз",
+          "ru": "Оставлять один вечер в неделю свободным для семьи",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Spend 1 free hour with family a week", "kg": "Жумасына 1 бош саатты үй-бүлө менен өткөрүңүз", "ru": "Час в неделю проводить с семьёй без дел" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Family & community", "kg": "Үй-бүлө жана жамаат", "ru": "Семья и община" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Regular family gatherings", "kg": "Үй-бүлөлүк туруктуу чогулуштар", "ru": "Регулярные семейные встречи" }
+      ],
+      "actions": [
+        {
+          "en": "Share a meal with parents or elders every week",
+          "kg": "Ар жума ата-энеңиз же улуулар менен бирге тамактаныңыз",
+          "ru": "Раз в неделю есть вместе с родителями или старшими",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Call your parents for 10 minutes twice a week", "kg": "Жумасына эки жолу ата-энеңизге 10 мүнөт чалыңыз", "ru": "Звонить родителям по 10 минут два раза в неделю" }
+        },
+        {
+          "en": "Ask the elders to tell your family's story",
+          "kg": "Улуулардан үй-бүлөңүздүн тарыхын айтып беришин сураңыз",
+          "ru": "Попросить старших рассказать историю семьи",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask one elder about your grandparents", "kg": "Бир улуудан чоң ата-энеңиз жөнүндө сураңыз", "ru": "Спросить одного старшего о бабушке и дедушке" },
+          "steps": [
+            { "en": "Agree on a day with an elder", "kg": "Улуу киши менен күндү макулдашыңыз", "ru": "Договориться со старшим о дне", "minutes": 10 },
+            { "en": "Prepare 10 questions", "kg": "10 суроо даярдаңыз", "ru": "Подготовить 10 вопросов", "minutes": 20 },
+            { "en": "Listen and take notes", "kg": "Угуп, жазып алыңыз", "ru": "Выслушать и записать", "minutes": 60 },
+            { "en": "Write ancestors' names as far as known", "kg": "Белгилүү болсо, жети атаңыздын ысымын жазыңыз", "ru": "Записать имена предков, насколько известно", "minutes": 30 },
+            { "en": "Share the notes with your family", "kg": "Жазууларды үй-бүлөңүз менен бөлүшүңүз", "ru": "Поделиться записями с семьёй", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Greet elders first and with respect",
+          "kg": "Улууларга биринчи болуп урмат менен салам бериңиз",
+          "ru": "Первым и уважительно приветствовать старших",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Greet every elder you meet today", "kg": "Бүгүн жолуккан ар бир улууга салам бериңиз", "ru": "Сегодня поздороваться с каждым старшим" }
+        },
+        {
+          "en": "Join a community gathering or study circle weekly",
+          "kg": "Ар жума жамааттын чогулушуна же сабагына катышыңыз",
+          "ru": "Каждую неделю бывать на встрече общины или кружке",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Join a community gathering twice a month", "kg": "Айына эки жолу жамаат чогулушуна катышыңыз", "ru": "Дважды в месяц бывать на встрече общины" }
+        },
+        {
+          "en": "Pray or read together with family once a week",
+          "kg": "Жумасына бир жолу үй-бүлө менен бирге сыйыныңыз же окуңуз",
+          "ru": "Раз в неделю молиться или читать вместе с семьёй",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Read one short passage with family this month", "kg": "Ушул айда үй-бүлө менен бир кыска үзүндү окуңуз", "ru": "В этом месяце прочитать с семьёй один отрывок" }
+        },
+        {
+          "en": "Respect family members whose views differ",
+          "kg": "Көз карашы башка туугандарды урматтаңыз",
+          "ru": "Уважать родных, чьи взгляды отличаются",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Skip one argument about religion at home", "kg": "Үйдө дин тууралуу бир талаштан качыңыз", "ru": "Не начинать один спор о религии дома" }
+        },
+        {
+          "en": "Call a relative who lives far away every week",
+          "kg": "Ар жума алыста жашаган тууганыңызга чалыңыз",
+          "ru": "Каждую неделю звонить родственнику, живущему далеко",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Send a kind message to a relative weekly", "kg": "Ар жума тууганыңызга жылуу билдирүү жөнөтүңүз", "ru": "Раз в неделю отправлять родственнику доброе сообщение" }
+        },
+        {
+          "en": "Help prepare a family celebration or tradition",
+          "kg": "Үй-бүлөлүк майрамды же салтты даярдоого жардамдашыңыз",
+          "ru": "Помочь подготовить семейный праздник или обычай",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Take one task for the next family event", "kg": "Кийинки үй-бүлөлүк иш-чарада бир милдетти алыңыз", "ru": "Взять одну задачу на ближайшем семейном событии" },
+          "steps": [
+            { "en": "Ask the hosts what help is needed", "kg": "Үй ээлеринен кандай жардам керегин сураңыз", "ru": "Спросить хозяев, какая помощь нужна", "minutes": 10 },
+            { "en": "Take one clear task with a deadline", "kg": "Мөөнөтү бар бир так милдетти алыңыз", "ru": "Взять одну чёткую задачу со сроком", "minutes": 10 },
+            { "en": "Buy or prepare what is needed", "kg": "Керектүүнү сатып алыңыз же даярдаңыз", "ru": "Купить или подготовить нужное", "minutes": 90 },
+            { "en": "Arrive early to help set up", "kg": "Даярдыкка жардам берүү үчүн эрте келиңиз", "ru": "Прийти пораньше и помочь с подготовкой", "minutes": 120 },
+            { "en": "Stay to help clean up after", "kg": "Кийин жыйнаштырууга жардамдашып калыңыз", "ru": "Остаться и помочь с уборкой", "minutes": 60 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Honesty & promises", "kg": "Чынчылдык жана убада", "ru": "Честность и слово" },
+      "kind": "character",
+      "milestones": [
+        { "en": "30 days of kept promises", "kg": "Убада аткарылган 30 күн", "ru": "30 дней выполненных обещаний" }
+      ],
+      "actions": [
+        {
+          "en": "Promise only what you can really do",
+          "kg": "Колуңуздан келгенди гана убада кылыңыз",
+          "ru": "Обещать только то, что действительно сможете",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Before promising, check if you have time", "kg": "Убада берерден мурун убактыңызды текшериңиз", "ru": "Перед обещанием проверить, есть ли время" }
+        },
+        {
+          "en": "Write every promise you give in Tasks",
+          "kg": "Берген ар бир убадаңызды «Тапшырмаларга» жазыңыз",
+          "ru": "Записывать каждое данное обещание в «Задачи»",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Write down promises given to family", "kg": "Үй-бүлөгө берген убадаларды жазыңыз", "ru": "Записывать обещания, данные семье" }
+        },
+        {
+          "en": "Tell the truth even when it is uncomfortable",
+          "kg": "Ыңгайсыз болсо да чындыкты айтыңыз",
+          "ru": "Говорить правду, даже когда неудобно",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Avoid one small lie today", "kg": "Бүгүн бир майда калптан качыңыз", "ru": "Сегодня избежать одной маленькой лжи" }
+        },
+        {
+          "en": "Warn in advance if you cannot keep your word",
+          "kg": "Сөзүңүздү аткара албасаңыз, алдын ала эскертиңиз",
+          "ru": "Предупреждать заранее, если не сдержите слово",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Message at once if you are going to be late", "kg": "Кечигерде дароо билдирүү жазыңыз", "ru": "Сразу написать, если опаздываете" }
+        },
+        {
+          "en": "Greet neighbours and colleagues first every day",
+          "kg": "Кошуналарга жана кесиптештерге күн сайын биринчи салам бериңиз",
+          "ru": "Каждый день первым здороваться с соседями и коллегами",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Greet 3 people first today", "kg": "Бүгүн 3 адамга биринчи салам бериңиз", "ru": "Сегодня первым поздороваться с 3 людьми" }
+        },
+        {
+          "en": "Pick up one piece of litter you see each day",
+          "kg": "Күн сайын көргөн бир таштандыны жерден алыңыз",
+          "ru": "Каждый день поднимать один замеченный мусор",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Pick up litter once this week", "kg": "Ушул жумада бир жолу таштанды териңиз", "ru": "На этой неделе один раз поднять мусор" }
+        },
+        {
+          "en": "Return everything you borrowed by the end of the month",
+          "kg": "Ай аягына чейин алган нерселериңиздин баарын кайтарыңыз",
+          "ru": "До конца месяца вернуть всё, что брали взаймы",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Return one borrowed thing this week", "kg": "Ушул жумада алган бир буюмду кайтарыңыз", "ru": "На этой неделе вернуть одну взятую вещь" },
+          "steps": [
+            { "en": "List everything you borrowed", "kg": "Алган нерселериңиздин баарын тизмелеңиз", "ru": "Составить список всего взятого", "minutes": 15 },
+            { "en": "Note who to return it to and when", "kg": "Кимге жана качан кайтарарыңызды белгилеңиз", "ru": "Отметить, кому и когда вернуть", "minutes": 10 },
+            { "en": "Return the easiest items first", "kg": "Адегенде оңой кайтарылчуларды кайтарыңыз", "ru": "Сначала вернуть самое простое", "minutes": 30 },
+            { "en": "Agree new dates for what you cannot return now", "kg": "Азыр кайтара албаганга жаңы мөөнөт макулдашыңыз", "ru": "Договориться о новом сроке для остального", "minutes": 20 },
+            { "en": "Thank each person when returning", "kg": "Кайтарып жатып ар бирине ыраазычылык айтыңыз", "ru": "Поблагодарить каждого при возврате", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Check weekly: which promises did I keep?",
+          "kg": "Ар жума текшериңиз: кайсы убадаларымды аткардым?",
+          "ru": "Раз в неделю проверять: какие обещания я сдержал?",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Recall one kept promise at the end of the week", "kg": "Жума аягында аткарылган бир убаданы эстеңиз", "ru": "В конце недели вспомнить одно сдержанное обещание" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Fasting & restraint", "kg": "Орозо жана сабыр", "ru": "Пост и воздержание" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "One fasting period completed", "kg": "Бир орозо мезгили аткарылды", "ru": "Пройден один период поста" }
+      ],
+      "actions": [
+        {
+          "en": "Learn the fasting rules of your faith with a teacher",
+          "kg": "Ишенимиңиздеги орозо эрежелерин устаз менен үйрөнүңүз",
+          "ru": "Изучить правила поста своей веры с наставником",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Read one page about fasting in your faith", "kg": "Ишенимиңиздеги орозо жөнүндө бир бет окуңуз", "ru": "Прочитать страницу о посте в своей вере" },
+          "steps": [
+            { "en": "Ask a teacher which fasts apply to you", "kg": "Устаздан сизге кайсы орозолор тиешелүү экенин сураңыз", "ru": "Спросить наставника, какие посты касаются вас", "minutes": 15 },
+            { "en": "Write the basic rules on one page", "kg": "Негизги эрежелерди бир баракка жазыңыз", "ru": "Записать основные правила на одной странице", "minutes": 20 },
+            { "en": "Learn who is exempt for health reasons", "kg": "Ден соолугу боюнча кимдер бошотуларын билиңиз", "ru": "Узнать, кто освобождён по здоровью", "minutes": 15 },
+            { "en": "Mark the next fasting dates in the calendar", "kg": "Кийинки орозо күндөрүн календарга белгилеңиз", "ru": "Отметить ближайшие даты поста в календаре", "minutes": 10 },
+            { "en": "Discuss the plan with your family", "kg": "Планды үй-бүлөңүз менен талкуулаңыз", "ru": "Обсудить план с семьёй", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "With health issues, ask a doctor before fasting",
+          "kg": "Ден соолукта көйгөй болсо, орозо кармоодон мурун дарыгерден сураңыз",
+          "ru": "При проблемах со здоровьем спросить врача перед постом",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Tell your family how you feel while fasting", "kg": "Орозо учурунда абалыңызды үй-бүлөгө айтыңыз", "ru": "Говорить семье о самочувствии во время поста" }
+        },
+        {
+          "en": "Give up one comfort for a day each week",
+          "kg": "Ар жума бир күнгө бир ыңгайлуулуктан баш тартыңыз",
+          "ru": "Раз в неделю на день отказываться от одного удобства",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 5,
+          "easy": { "en": "Give up sweets or social media for half a day", "kg": "Жарым күнгө таттуудан же соцтармактан баш тартыңыз", "ru": "На полдня отказаться от сладкого или соцсетей" }
+        },
+        {
+          "en": "Guard your tongue: no gossip while fasting",
+          "kg": "Тилиңизди тыйыңыз: орозо учурунда ушак айтпаңыз",
+          "ru": "Хранить язык: не сплетничать во время поста",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Leave one conversation that turns to gossip", "kg": "Ушакка айланган бир маектен чыгыңыз", "ru": "Выйти из одного разговора, ставшего сплетней" }
+        },
+        {
+          "en": "Share food with someone on fasting days",
+          "kg": "Орозо күндөрү бирөө менен тамак бөлүшүңүз",
+          "ru": "В дни поста делиться едой с кем-то",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Share a meal with someone once a week", "kg": "Жумасына бир жолу бирөө менен тамак бөлүшүңүз", "ru": "Раз в неделю разделить с кем-то трапезу" }
+        },
+        {
+          "en": "Add 15 minutes of reading on fasting days",
+          "kg": "Орозо күндөрү 15 мүнөт кошумча окуңуз",
+          "ru": "В дни поста добавлять 15 минут чтения",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Add 5 minutes of reading on fasting days", "kg": "Орозо күндөрү 5 мүнөт кошумча окуңуз", "ru": "В дни поста добавлять 5 минут чтения" }
+        },
+        {
+          "en": "Keep your work and study duties while fasting",
+          "kg": "Орозо учурунда да иш жана окуу милдеттерин аткарыңыз",
+          "ru": "Выполнять рабочие и учебные дела и во время поста",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Plan hard tasks for the morning on fasting days", "kg": "Орозо күндөрү оор иштерди эртең менен пландаңыз", "ru": "В дни поста ставить трудные дела на утро" }
+        },
+        {
+          "en": "After each fasting week, write what you learned",
+          "kg": "Ар бир орозо жумасынан кийин эмне үйрөнгөнүңүздү жазыңыз",
+          "ru": "После каждой недели поста записывать, чему научились",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Write one sentence about how the fast went", "kg": "Орозо кандай өткөнүн бир сүйлөм менен жазыңыз", "ru": "Записать одно предложение о том, как прошёл пост" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Energy & health", "kg": "Ден соолук", "ru": "Энергия и здоровье" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Two weeks of regular sleep", "kg": "Эки жума туруктуу уйку", "ru": "Две недели регулярного сна" }
+      ],
+      "actions": [
+        {
+          "en": "Sleep 7–8 hours to wake up for morning prayer",
+          "kg": "Эртең мененки сыйынууга туруу үчүн 7–8 саат уктаңыз",
+          "ru": "Спать 7–8 часов, чтобы вставать на утреннюю молитву",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Go to bed 30 minutes earlier", "kg": "30 мүнөт эрте жатыңыз", "ru": "Ложиться на 30 минут раньше" }
+        },
+        {
+          "en": "Walk 30 minutes a day, e.g. to your place of worship",
+          "kg": "Күнүнө 30 мүнөт басыңыз, мисалы, сыйынуу жайына",
+          "ru": "Ходить пешком 30 минут в день, например на молитву",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk 10 minutes a day", "kg": "Күнүнө 10 мүнөт басыңыз", "ru": "Ходить пешком 10 минут в день" }
+        },
+        {
+          "en": "Drink a glass of water after waking",
+          "kg": "Ойгонгондон кийин бир стакан суу ичиңиз",
+          "ru": "Выпивать стакан воды после пробуждения",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Keep a bottle of water on your desk", "kg": "Столуңузда бир бөтөлкө суу кармаңыз", "ru": "Держать бутылку воды на столе" }
+        },
+        {
+          "en": "Do light exercise 3 times a week",
+          "kg": "Жумасына 3 жолу жеңил көнүгүү жасаңыз",
+          "ru": "3 раза в неделю делать лёгкую зарядку",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Stretch for 5 minutes twice a week", "kg": "Жумасына эки жолу 5 мүнөт керилиңиз", "ru": "2 раза в неделю 5 минут растяжки" }
+        },
+        {
+          "en": "Don't overeat at evening meals and feasts",
+          "kg": "Кечки тамакта жана тойлордо ашык жебеңиз",
+          "ru": "Не переедать вечером и на застольях",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Take a smaller portion at one meal a day", "kg": "Күнүнө бир тамакта азыраак үлүш алыңыз", "ru": "За одним приёмом пищи брать порцию поменьше" }
+        },
+        {
+          "en": "No screens 30 minutes before sleep",
+          "kg": "Уктаардан 30 мүнөт мурун экран карабаңыз",
+          "ru": "Не смотреть в экран за 30 минут до сна",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Leave the phone out of bed", "kg": "Төшөккө телефон алып жатпаңыз", "ru": "Не брать телефон в постель" }
+        },
+        {
+          "en": "Rest fully one day a week",
+          "kg": "Жумасына бир күн толук эс алыңыз",
+          "ru": "Один день в неделю полностью отдыхать",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Rest fully for half a day each week", "kg": "Ар жума жарым күн толук эс алыңыз", "ru": "Раз в неделю полдня полноценно отдыхать" }
+        },
+        {
+          "en": "Have a basic health check-up this quarter",
+          "kg": "Ушул чейректе ден соолугуңузду текшертиңиз",
+          "ru": "В этом квартале пройти базовый медосмотр",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Book a check-up at your clinic", "kg": "Поликлиникага текшерүүгө жазылыңыз", "ru": "Записаться на осмотр в поликлинику" },
+          "steps": [
+            { "en": "Find your clinic's working hours", "kg": "Поликлиниканын иш убактысын билиңиз", "ru": "Узнать часы работы поликлиники", "minutes": 10 },
+            { "en": "Book an appointment with a family doctor", "kg": "Үй-бүлөлүк дарыгерге жазылыңыз", "ru": "Записаться к семейному врачу", "minutes": 15 },
+            { "en": "Write your questions about health", "kg": "Ден соолук боюнча суроолоруңузду жазыңыз", "ru": "Записать вопросы о здоровье", "minutes": 10 },
+            { "en": "Visit the doctor and do basic tests", "kg": "Дарыгерге барып, негизги анализдерди тапшырыңыз", "ru": "Сходить к врачу и сдать базовые анализы", "minutes": 120 },
+            { "en": "Save the results in one folder", "kg": "Жыйынтыктарды бир папкага сактаңыз", "ru": "Сохранить результаты в одной папке", "minutes": 10 }
+          ]
+        }
+      ]
+    }
+  ]
+}

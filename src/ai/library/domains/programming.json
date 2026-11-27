@@ -1,526 +1,1068 @@
 {
   "id": "programming",
   "icon": "💻",
-  "title": {
-    "en": "Becoming a programmer",
-    "kg": "Программист болуу",
-    "ru": "Стать программистом"
-  },
+  "title": { "en": "Becoming a programmer", "kg": "Программист болуу", "ru": "Стать программистом" },
   "keywords": {
-    "en": [
-      "!programmer",
-      "programming",
-      "!developer",
-      "developer job",
-      "code",
-      "coding",
-      "it",
-      "software",
-      "frontend",
-      "backend",
-      "python",
-      "javascript",
-      "web",
-      "app",
-      "junior",
-      "data",
-      "devops"
-    ],
-    "kg": [
-      "!программист",
-      "программалоо",
-      "иштеп чыгуучу",
-      "код",
-      "айти",
-      "веб",
-      "сайт",
-      "тиркеме",
-      "питон",
-      "джуниор"
-    ],
-    "ru": [
-      "!программист",
-      "!программистом",
-      "программирование",
-      "!разработчик",
-      "разработка",
-      "код",
-      "айти",
-      "frontend",
-      "backend",
-      "фронтенд",
-      "бэкенд",
-      "питон",
-      "python",
-      "javascript",
-      "сайты",
-      "приложения",
-      "джуниор",
-      "тестировщик",
-      "аналитик"
-    ]
+    "en": ["!programmer", "programming", "!developer", "developer job", "code", "coding", "it", "software", "frontend", "backend", "python", "javascript", "web", "app", "junior", "data", "devops", "coder", "web developer", "mobile developer", "computer science", "it job"],
+    "kg": ["!программист", "программалоо", "иштеп чыгуучу", "код", "айти", "веб", "сайт", "тиркеме", "питон", "джуниор", "айтишник", "фронтенд", "бэкенд", "код жазуу", "программа жазуу", "кодду", "python", "javascript", "мобилдик тиркеме", "сайт жасоо", "IT адис"],
+    "ru": ["!программист", "!программистом", "программирование", "!разработчик", "разработка", "код", "айти", "frontend", "backend", "фронтенд", "бэкенд", "питон", "python", "javascript", "сайты", "приложения", "джуниор", "тестировщик", "аналитик", "айтишник", "кодить", "веб-разработчик", "верстка", "войти в айти"]
   },
   "directions": [
     {
-      "title": {
-        "en": "Foundations",
-        "kg": "Негиздер",
-        "ru": "Основы"
-      },
+      "title": { "en": "Foundations", "kg": "Негиздер", "ru": "Основы" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "First program written",
-          "kg": "Биринчи программа жазылды",
-          "ru": "Написана первая программа"
-        },
-        {
-          "en": "Basics course finished",
-          "kg": "Негиздер курсу бүттү",
-          "ru": "Пройден курс основ"
-        }
+        { "en": "First program written", "kg": "Биринчи программа жазылды", "ru": "Написана первая программа" },
+        { "en": "Basics course finished", "kg": "Негиздер курсу бүттү", "ru": "Пройден курс основ" }
       ],
       "actions": [
         {
           "en": "Choose a direction: web, mobile, data or testing",
           "kg": "Багыт тандаңыз: веб, мобилдик, маалымат же тестирлөө",
-          "ru": "Выбрать направление: веб, мобильная разработка, данные или тестирование"
+          "ru": "Выбрать направление: веб, мобильная разработка, данные или тестирование",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Read about 4 IT directions for 15 minutes", "kg": "4 IT багыты тууралуу 15 мүнөт окуңуз", "ru": "Почитать 15 минут о 4 направлениях в IT" },
+          "steps": [
+            { "en": "List 4 directions: web, mobile, data, testing", "kg": "4 багытты жазыңыз: веб, мобилдик, data, тестирлөө", "ru": "Выписать 4 направления: веб, мобильное, данные, тесты", "minutes": 10 },
+            { "en": "Watch one short intro video for each", "kg": "Ар бири боюнча бир кыска видео көрүңүз", "ru": "Посмотреть по одному короткому видео о каждом", "minutes": 40 },
+            { "en": "Check 5 local job ads for each direction", "kg": "Ар бир багыт боюнча 5 жергиликтүү вакансия караңыз", "ru": "Посмотреть 5 местных вакансий по каждому направлению", "minutes": 30 },
+            { "en": "Ask one working developer which they advise", "kg": "Иштеген бир программисттен кеңеш сураңыз", "ru": "Спросить совета у одного работающего разработчика", "minutes": 20 },
+            { "en": "Choose one direction and write why", "kg": "Бир багытты тандап, себебин жазыңыз", "ru": "Выбрать одно направление и записать почему", "minutes": 15 }
+          ]
         },
         {
           "en": "Learn how computers, the internet and browsers work",
           "kg": "Компьютер, интернет жана браузер кантип иштээрин үйрөнүңүз",
-          "ru": "Разобраться, как работают компьютер, интернет и браузер"
+          "ru": "Разобраться, как работают компьютер, интернет и браузер",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Watch one video on how the internet works", "kg": "Интернет кантип иштээрин бир видеодон көрүңүз", "ru": "Посмотреть одно видео о том, как работает интернет" },
+          "steps": [
+            { "en": "Learn what CPU, memory and disk do", "kg": "Процессор, эс тутум жана диск эмне кыларын үйрөнүңүз", "ru": "Разобраться, что делают процессор, память и диск", "minutes": 40 },
+            { "en": "Learn what IP, DNS and a server are", "kg": "IP, DNS жана сервер деген эмне экенин үйрөнүңүз", "ru": "Узнать, что такое IP, DNS и сервер", "minutes": 40 },
+            { "en": "Learn how a browser loads a page", "kg": "Браузер баракты кантип жүктөөрүн үйрөнүңүз", "ru": "Понять, как браузер загружает страницу", "minutes": 40 },
+            { "en": "Learn what HTTP requests and responses are", "kg": "HTTP суроо-жооп деген эмне экенин үйрөнүңүз", "ru": "Узнать, что такое HTTP-запрос и ответ", "minutes": 40 },
+            { "en": "Explain it all to a friend in 5 minutes", "kg": "Баарын досуңузга 5 мүнөттө түшүндүрүп бериңиз", "ru": "Объяснить всё другу за 5 минут", "minutes": 15 }
+          ]
         },
         {
           "en": "Finish a free beginner programming course",
           "kg": "Жаңы баштагандар үчүн акысыз курсту бүтүрүңүз",
-          "ru": "Пройти бесплатный курс программирования для новичков"
+          "ru": "Пройти бесплатный курс программирования для новичков",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Finish the first 3 lessons of a free course", "kg": "Акысыз курстун алгачкы 3 сабагын бүтүрүңүз", "ru": "Пройти первые 3 урока бесплатного курса" },
+          "steps": [
+            { "en": "Pick one free course and save the link", "kg": "Бир акысыз курс тандап, шилтемесин сактаңыз", "ru": "Выбрать один бесплатный курс и сохранить ссылку", "minutes": 20 },
+            { "en": "Split the course into weekly parts", "kg": "Курсту жумалык бөлүктөргө бөлүңүз", "ru": "Разбить курс на недельные части", "minutes": 20 },
+            { "en": "Finish the first module with all exercises", "kg": "Биринчи модулду бардык көнүгүүлөрү менен бүтүрүңүз", "ru": "Пройти первый модуль со всеми упражнениями", "minutes": 120 },
+            { "en": "Finish the middle modules week by week", "kg": "Ортоңку модулдарды жума сайын бүтүрүңүз", "ru": "Проходить средние модули неделя за неделей", "minutes": 120 },
+            { "en": "Do the final project of the course", "kg": "Курстун акыркы долбоорун аткарыңыз", "ru": "Выполнить финальный проект курса", "minutes": 120 },
+            { "en": "Save the certificate or a screenshot of results", "kg": "Сертификатты же жыйынтыктын скриншотун сактаңыз", "ru": "Сохранить сертификат или скриншот результата", "minutes": 10 }
+          ]
         },
         {
           "en": "Learn variables, conditions and loops",
           "kg": "Өзгөрмөлөрдү, шарттарды жана циклдерди үйрөнүңүз",
-          "ru": "Освоить переменные, условия и циклы"
+          "ru": "Освоить переменные, условия и циклы",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 3 programs: one with a variable, an if and a loop", "kg": "Үч программа жазыңыз: өзгөрмө, шарт жана цикл менен", "ru": "Написать 3 программы: с переменной, условием и циклом" },
+          "steps": [
+            { "en": "Learn variables and data types", "kg": "Өзгөрмөлөрдү жана маалымат түрлөрүн үйрөнүңүз", "ru": "Изучить переменные и типы данных", "minutes": 45 },
+            { "en": "Learn if/else with 5 examples", "kg": "if/else шартын 5 мисал менен үйрөнүңүз", "ru": "Изучить if/else на 5 примерах", "minutes": 45 },
+            { "en": "Learn for and while loops", "kg": "for жана while циклдерин үйрөнүңүз", "ru": "Изучить циклы for и while", "minutes": 45 },
+            { "en": "Write a number-guessing game", "kg": "Санды табуу оюнун жазыңыз", "ru": "Написать игру «угадай число»", "minutes": 60 },
+            { "en": "Write a multiplication table program", "kg": "Көбөйтүү таблицасын чыгарган программа жазыңыз", "ru": "Написать программу таблицы умножения", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn functions and data structures: lists, objects",
           "kg": "Функцияларды жана маалымат түзүмдөрүн үйрөнүңүз: тизмелер, объекттер",
-          "ru": "Освоить функции и структуры данных: списки, объекты"
+          "ru": "Освоить функции и структуры данных: списки, объекты",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write 5 functions that work with lists", "kg": "Тизмелер менен иштеген 5 функция жазыңыз", "ru": "Написать 5 функций, работающих со списками" },
+          "steps": [
+            { "en": "Learn how to write and call a function", "kg": "Функцияны жазып, чакырганды үйрөнүңүз", "ru": "Научиться писать и вызывать функции", "minutes": 45 },
+            { "en": "Learn lists/arrays and their methods", "kg": "Тизмелерди жана алардын методдорун үйрөнүңүз", "ru": "Изучить списки/массивы и их методы", "minutes": 45 },
+            { "en": "Learn objects/dictionaries", "kg": "Объекттерди/сөздүктөрдү үйрөнүңүз", "ru": "Изучить объекты/словари", "minutes": 45 },
+            { "en": "Write a function that finds the max in a list", "kg": "Тизмедеги эң чоң санды тапкан функция жазыңыз", "ru": "Написать функцию поиска максимума в списке", "minutes": 30 },
+            { "en": "Build a small contact book with objects", "kg": "Объекттер менен кичине байланыш китепчесин жасаңыз", "ru": "Сделать маленькую телефонную книгу на объектах", "minutes": 60 }
+          ]
         },
         {
           "en": "Write code every day, at least 1 hour",
           "kg": "Күн сайын жок дегенде 1 саат код жазыңыз",
-          "ru": "Писать код каждый день минимум 1 час"
+          "ru": "Писать код каждый день минимум 1 час",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 60,
+          "easy": { "en": "Write code for 20 minutes today", "kg": "Бүгүн 20 мүнөт код жазыңыз", "ru": "Сегодня писать код 20 минут" }
         },
         {
           "en": "Solve 30 simple beginner exercises",
           "kg": "30 жөнөкөй көнүгүүнү чечиңиз",
-          "ru": "Решить 30 простых задач для начинающих"
+          "ru": "Решить 30 простых задач для начинающих",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Solve 5 simple exercises", "kg": "5 жөнөкөй көнүгүү чечиңиз", "ru": "Решить 5 простых упражнений" },
+          "steps": [
+            { "en": "Choose a practice site with beginner tasks", "kg": "Жаңы баштагандар үчүн көнүгүү сайтын тандаңыз", "ru": "Выбрать сайт с задачами для новичков", "minutes": 15 },
+            { "en": "Solve exercises 1–5", "kg": "1–5-көнүгүүлөрдү чечиңиз", "ru": "Решить упражнения 1–5", "minutes": 45 },
+            { "en": "Solve exercises 6–12", "kg": "6–12-көнүгүүлөрдү чечиңиз", "ru": "Решить упражнения 6–12", "minutes": 60 },
+            { "en": "Solve exercises 13–20", "kg": "13–20-көнүгүүлөрдү чечиңиз", "ru": "Решить упражнения 13–20", "minutes": 60 },
+            { "en": "Solve exercises 21–30", "kg": "21–30-көнүгүүлөрдү чечиңиз", "ru": "Решить упражнения 21–30", "minutes": 75 },
+            { "en": "Redo the 3 hardest ones from memory", "kg": "Эң кыйын 3 көнүгүүнү эстен кайра чечиңиз", "ru": "Перерешать по памяти 3 самых трудных", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn to read error messages and debug",
           "kg": "Ката билдирүүлөрүн окуп, мүчүлүштүктү табууну үйрөнүңүз",
-          "ru": "Научиться читать ошибки и отлаживать код"
+          "ru": "Научиться читать ошибки и отлаживать код",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Read the whole error text before searching", "kg": "Издөөдөн мурун катанын текстин толук окуңуз", "ru": "Читать текст ошибки целиком, прежде чем искать" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Main language",
-        "kg": "Негизги тил",
-        "ru": "Язык программирования"
-      },
+      "title": { "en": "Main language", "kg": "Негизги тил", "ru": "Язык программирования" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "Comfortable with one language",
-          "kg": "Бир тилде эркин иштейт",
-          "ru": "Уверенно владеет одним языком"
-        }
+        { "en": "Comfortable with one language", "kg": "Бир тилде эркин иштейт", "ru": "Уверенно владеет одним языком" }
       ],
       "actions": [
         {
           "en": "Pick one language (Python or JavaScript) and stick to it",
           "kg": "Бир тил тандап (Python же JavaScript), ага берилиңиз",
-          "ru": "Выбрать один язык (Python или JavaScript) и не распыляться"
+          "ru": "Выбрать один язык (Python или JavaScript) и не распыляться",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Don't start a second language this month", "kg": "Бул айда экинчи тилди баштабаңыз", "ru": "Не начинать второй язык в этом месяце" }
         },
         {
           "en": "Read the official documentation of the language",
           "kg": "Тилдин расмий документтерин окуңуз",
-          "ru": "Читать официальную документацию языка"
+          "ru": "Читать официальную документацию языка",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Read one docs page for 10 minutes", "kg": "Документациянын бир барагын 10 мүнөт окуңуз", "ru": "Прочитать одну страницу документации за 10 минут" }
         },
         {
           "en": "Learn working with files, dates and strings",
           "kg": "Файлдар, даталар жана саптар менен иштөөнү үйрөнүңүз",
-          "ru": "Освоить работу с файлами, датами и строками"
+          "ru": "Освоить работу с файлами, датами и строками",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write one script that reads a text file", "kg": "Текст файлын окуган бир скрипт жазыңыз", "ru": "Написать один скрипт, читающий текстовый файл" },
+          "steps": [
+            { "en": "Learn string methods: split, replace, format", "kg": "Сап методдорун үйрөнүңүз: split, replace, format", "ru": "Изучить методы строк: split, replace, format", "minutes": 45 },
+            { "en": "Learn to read and write a text file", "kg": "Текст файлын окуп-жазганды үйрөнүңүз", "ru": "Научиться читать и записывать текстовый файл", "minutes": 45 },
+            { "en": "Learn dates: today, difference in days", "kg": "Даталарды үйрөнүңүз: бүгүн, күндөрдүн айырмасы", "ru": "Изучить даты: сегодня, разница в днях", "minutes": 45 },
+            { "en": "Write a script that counts words in a file", "kg": "Файлдагы сөздөрдү санаган скрипт жазыңыз", "ru": "Написать скрипт подсчёта слов в файле", "minutes": 45 },
+            { "en": "Write a script: days left to your birthday", "kg": "Туулган күнгө чейин канча күн калганын эсептеңиз", "ru": "Написать скрипт: сколько дней до дня рождения", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn object-oriented programming basics",
           "kg": "Объектке багытталган программалоонун негиздерин үйрөнүңүз",
-          "ru": "Изучить основы ООП"
+          "ru": "Изучить основы ООП",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write one class with two methods", "kg": "Эки методу бар бир класс жазыңыз", "ru": "Написать один класс с двумя методами" },
+          "steps": [
+            { "en": "Learn what a class and an object are", "kg": "Класс жана объект деген эмне экенин үйрөнүңүз", "ru": "Разобраться, что такое класс и объект", "minutes": 45 },
+            { "en": "Learn constructors and methods", "kg": "Конструктор жана методдорду үйрөнүңүз", "ru": "Изучить конструкторы и методы", "minutes": 45 },
+            { "en": "Learn inheritance with one example", "kg": "Мурастоону бир мисал менен үйрөнүңүз", "ru": "Изучить наследование на одном примере", "minutes": 45 },
+            { "en": "Learn encapsulation: private and public", "kg": "Инкапсуляцияны үйрөнүңүз: private жана public", "ru": "Изучить инкапсуляцию: private и public", "minutes": 45 },
+            { "en": "Model a bank account as a class", "kg": "Банк эсебин класс катары жазыңыз", "ru": "Описать банковский счёт классом", "minutes": 60 },
+            { "en": "Ask someone to review your class", "kg": "Классыңызды бирөөгө текшертиңиз", "ru": "Попросить кого-то проверить ваш класс", "minutes": 20 }
+          ]
         },
         {
           "en": "Learn asynchronous code and working with APIs",
           "kg": "Асинхрондук кодду жана API менен иштөөнү үйрөнүңүз",
-          "ru": "Освоить асинхронный код и работу с API"
+          "ru": "Освоить асинхронный код и работу с API",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Fetch data from one public API", "kg": "Бир ачык API аркылуу маалымат алыңыз", "ru": "Получить данные из одного открытого API" },
+          "steps": [
+            { "en": "Learn what async code and promises are", "kg": "Асинхрондук код жана promise эмне экенин үйрөнүңүз", "ru": "Разобраться, что такое асинхронность и промисы", "minutes": 45 },
+            { "en": "Learn async/await with 3 examples", "kg": "async/await синтаксисин 3 мисал менен үйрөнүңүз", "ru": "Изучить async/await на 3 примерах", "minutes": 45 },
+            { "en": "Learn what REST API and JSON are", "kg": "REST API жана JSON эмне экенин үйрөнүңүз", "ru": "Узнать, что такое REST API и JSON", "minutes": 40 },
+            { "en": "Pick a free public API (weather, currency)", "kg": "Акысыз ачык API тандаңыз (аба ырайы, валюта)", "ru": "Выбрать бесплатный открытый API (погода, валюта)", "minutes": 20 },
+            { "en": "Write code that prints data from the API", "kg": "API маалыматын чыгарган код жазыңыз", "ru": "Написать код, выводящий данные из API", "minutes": 60 },
+            { "en": "Handle errors when the API is unavailable", "kg": "API иштебей калганда катаны иштетиңиз", "ru": "Обработать ошибку, если API недоступен", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn one popular framework of your direction",
           "kg": "Багытыңыздагы бир популярдуу фреймворкту үйрөнүңүз",
-          "ru": "Изучить один популярный фреймворк своего направления"
+          "ru": "Изучить один популярный фреймворк своего направления",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Follow the official framework tutorial for one hour", "kg": "Фреймворктун расмий окуу куралын бир саат өтүңүз", "ru": "Пройти час официального туториала фреймворка" },
+          "steps": [
+            { "en": "Choose the most demanded framework in local job ads", "kg": "Жергиликтүү вакансияларда эң суралган фреймворкту тандаңыз", "ru": "Выбрать самый востребованный в местных вакансиях фреймворк", "minutes": 30 },
+            { "en": "Install it and run the starter project", "kg": "Аны орнотуп, баштапкы долбоорду иштетиңиз", "ru": "Установить и запустить стартовый проект", "minutes": 45 },
+            { "en": "Finish the official tutorial part 1", "kg": "Расмий окуу куралынын 1-бөлүгүн бүтүрүңүз", "ru": "Пройти первую часть официального туториала", "minutes": 90 },
+            { "en": "Finish the official tutorial part 2", "kg": "Расмий окуу куралынын 2-бөлүгүн бүтүрүңүз", "ru": "Пройти вторую часть официального туториала", "minutes": 90 },
+            { "en": "Learn routing and forms", "kg": "Маршрутизацияны жана формаларды үйрөнүңүз", "ru": "Изучить маршрутизацию и формы", "minutes": 90 },
+            { "en": "Rebuild one old exercise with the framework", "kg": "Эски бир көнүгүүнү фреймворк менен кайра жазыңыз", "ru": "Переписать одно старое упражнение на фреймворке", "minutes": 90 },
+            { "en": "Write down 5 things you learned", "kg": "Үйрөнгөн 5 нерсени жазып коюңуз", "ru": "Записать 5 вещей, которые вы узнали", "minutes": 15 }
+          ]
         },
         {
           "en": "Read other people's code on GitHub",
           "kg": "GitHubдан башкалардын кодун окуңуз",
-          "ru": "Читать чужой код на GitHub"
+          "ru": "Читать чужой код на GitHub",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Read one file of someone else's code", "kg": "Башка бирөөнүн кодунан бир файл окуңуз", "ru": "Прочитать один файл чужого кода" }
         },
         {
           "en": "Write tests for your own code",
           "kg": "Өз кодуңузга тесттерди жазыңыз",
-          "ru": "Писать тесты для своего кода"
+          "ru": "Писать тесты для своего кода",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Write one test for one function", "kg": "Бир функцияга бир тест жазыңыз", "ru": "Написать один тест для одной функции" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Tools",
-        "kg": "Куралдар",
-        "ru": "Инструменты"
-      },
+      "title": { "en": "Tools", "kg": "Куралдар", "ru": "Инструменты" },
+      "kind": "support",
       "milestones": [
-        {
-          "en": "Own GitHub profile with commits",
-          "kg": "Коммиттери бар өз GitHub профили",
-          "ru": "Свой GitHub с коммитами"
-        }
+        { "en": "Own GitHub profile with commits", "kg": "Коммиттери бар өз GitHub профили", "ru": "Свой GitHub с коммитами" }
       ],
       "actions": [
         {
           "en": "Set up a code editor (VS Code) and extensions",
           "kg": "Код редакторун (VS Code) жана кеңейтүүлөрдү орнотуңуз",
-          "ru": "Настроить редактор кода (VS Code) и расширения"
+          "ru": "Настроить редактор кода (VS Code) и расширения",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Install VS Code and open one project", "kg": "VS Code орнотуп, бир долбоорду ачыңыз", "ru": "Установить VS Code и открыть один проект" },
+          "steps": [
+            { "en": "Download and install VS Code", "kg": "VS Code жүктөп, орнотуңуз", "ru": "Скачать и установить VS Code", "minutes": 15 },
+            { "en": "Install the extension for your language", "kg": "Тилиңиз үчүн кеңейтүүнү орнотуңуз", "ru": "Установить расширение для своего языка", "minutes": 10 },
+            { "en": "Install a code formatter extension", "kg": "Кодду форматтоочу кеңейтүүнү орнотуңуз", "ru": "Установить расширение-форматтер кода", "minutes": 10 },
+            { "en": "Learn 10 keyboard shortcuts", "kg": "10 ыкчам клавишаны үйрөнүңүз", "ru": "Выучить 10 горячих клавиш", "minutes": 20 },
+            { "en": "Set auto-save and a readable font size", "kg": "Автосактоону жана ыңгайлуу шрифтти коюңуз", "ru": "Включить автосохранение и удобный шрифт", "minutes": 10 }
+          ]
         },
         {
           "en": "Learn the terminal: basic commands",
           "kg": "Терминалды үйрөнүңүз: негизги буйруктар",
-          "ru": "Освоить терминал: базовые команды"
+          "ru": "Освоить терминал: базовые команды",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Learn 5 commands: cd, ls, mkdir, cp, rm", "kg": "5 буйрук үйрөнүңүз: cd, ls, mkdir, cp, rm", "ru": "Выучить 5 команд: cd, ls, mkdir, cp, rm" },
+          "steps": [
+            { "en": "Open the terminal and learn cd, ls, pwd", "kg": "Терминалды ачып, cd, ls, pwd үйрөнүңүз", "ru": "Открыть терминал и изучить cd, ls, pwd", "minutes": 20 },
+            { "en": "Learn mkdir, touch, cp, mv, rm", "kg": "mkdir, touch, cp, mv, rm буйруктарын үйрөнүңүз", "ru": "Изучить mkdir, touch, cp, mv, rm", "minutes": 20 },
+            { "en": "Run your program from the terminal", "kg": "Программаңызды терминалдан иштетиңиз", "ru": "Запустить свою программу из терминала", "minutes": 20 },
+            { "en": "Learn to install packages with a package manager", "kg": "Пакет менеджери менен пакет орнотууну үйрөнүңүз", "ru": "Научиться ставить пакеты через менеджер пакетов", "minutes": 30 },
+            { "en": "Do one day of work without the file manager", "kg": "Бир күн файл менеджерисиз иштеп көрүңүз", "ru": "Один день работать без файлового менеджера", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn Git: commit, branch, merge",
           "kg": "Gitти үйрөнүңүз: commit, branch, merge",
-          "ru": "Изучить Git: commit, branch, merge"
+          "ru": "Изучить Git: commit, branch, merge",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Make 3 commits in a practice repository", "kg": "Машыгуу репозиторийинде 3 коммит жасаңыз", "ru": "Сделать 3 коммита в учебном репозитории" },
+          "steps": [
+            { "en": "Install Git and set your name and email", "kg": "Git орнотуп, атыңызды жана почтаңызды жазыңыз", "ru": "Установить Git и указать имя и почту", "minutes": 15 },
+            { "en": "Learn init, add, commit, status, log", "kg": "init, add, commit, status, log үйрөнүңүз", "ru": "Изучить init, add, commit, status, log", "minutes": 40 },
+            { "en": "Create a branch and switch between branches", "kg": "Бутак түзүп, бутактар арасында которулуңуз", "ru": "Создать ветку и переключаться между ветками", "minutes": 30 },
+            { "en": "Merge a branch and resolve one conflict", "kg": "Бутакты бириктирип, бир конфликтти чечиңиз", "ru": "Слить ветку и разрешить один конфликт", "minutes": 45 },
+            { "en": "Learn to undo changes safely", "kg": "Өзгөртүүлөрдү коопсуз артка кайтарууну үйрөнүңүз", "ru": "Научиться безопасно откатывать изменения", "minutes": 30 },
+            { "en": "Commit your work daily for a week", "kg": "Бир жума бою ишиңизди күн сайын коммит кылыңыз", "ru": "Неделю коммитить работу каждый день", "minutes": 10 }
+          ]
         },
         {
           "en": "Create a GitHub account and push the first project",
           "kg": "GitHub аккаунтун ачып, биринчи долбоорду жүктөңүз",
-          "ru": "Создать GitHub и выложить первый проект"
+          "ru": "Создать GitHub и выложить первый проект",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Create a GitHub account", "kg": "GitHubта аккаунт ачыңыз", "ru": "Создать аккаунт на GitHub" },
+          "steps": [
+            { "en": "Sign up with a professional username", "kg": "Кесипкөй ат менен катталыңыз", "ru": "Зарегистрироваться с профессиональным ником", "minutes": 10 },
+            { "en": "Add a photo and a short bio", "kg": "Сүрөт жана кыскача маалымат кошуңуз", "ru": "Добавить фото и короткое описание", "minutes": 10 },
+            { "en": "Create a new repository", "kg": "Жаңы репозиторий түзүңүз", "ru": "Создать новый репозиторий", "minutes": 10 },
+            { "en": "Connect it to your local project", "kg": "Аны жергиликтүү долбооруңузга туташтырыңыз", "ru": "Связать его с локальным проектом", "minutes": 20 },
+            { "en": "Push the code and check it on the site", "kg": "Кодду жүктөп, сайттан текшериңиз", "ru": "Отправить код и проверить его на сайте", "minutes": 15 }
+          ]
         },
         {
           "en": "Learn to use the browser developer tools",
           "kg": "Браузердин иштеп чыгуучу куралдарын колдонууну үйрөнүңүз",
-          "ru": "Научиться пользоваться инструментами разработчика в браузере"
+          "ru": "Научиться пользоваться инструментами разработчика в браузере",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Open DevTools and inspect one page", "kg": "DevTools ачып, бир баракты карап чыгыңыз", "ru": "Открыть DevTools и изучить одну страницу" },
+          "steps": [
+            { "en": "Learn the Elements tab: change text and color", "kg": "Elements бөлүмүндө текст жана түстү өзгөртүңүз", "ru": "Вкладка Elements: изменить текст и цвет", "minutes": 20 },
+            { "en": "Learn the Console tab: run a line of code", "kg": "Console бөлүмүндө бир сап код иштетиңиз", "ru": "Вкладка Console: выполнить строку кода", "minutes": 20 },
+            { "en": "Learn the Network tab: find one request", "kg": "Network бөлүмүнөн бир суроону табыңыз", "ru": "Вкладка Network: найти один запрос", "minutes": 20 },
+            { "en": "Set a breakpoint in your own code", "kg": "Өз кодуңузга breakpoint коюңуз", "ru": "Поставить breakpoint в своём коде", "minutes": 30 },
+            { "en": "Test your site in mobile view", "kg": "Сайтыңызды мобилдик көрүнүштө текшериңиз", "ru": "Проверить свой сайт в мобильном режиме", "minutes": 15 }
+          ]
         },
         {
           "en": "Learn basic SQL and one database",
           "kg": "Негизги SQLди жана бир маалымат базасын үйрөнүңүз",
-          "ru": "Изучить основы SQL и одну базу данных"
+          "ru": "Изучить основы SQL и одну базу данных",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write 5 SQL queries on a practice database", "kg": "Машыгуу базасында 5 SQL суроо жазыңыз", "ru": "Написать 5 SQL-запросов к учебной базе" },
+          "steps": [
+            { "en": "Learn what tables, rows and keys are", "kg": "Таблица, сап жана ачкыч эмне экенин үйрөнүңүз", "ru": "Разобраться, что такое таблицы, строки и ключи", "minutes": 30 },
+            { "en": "Learn SELECT, WHERE, ORDER BY", "kg": "SELECT, WHERE, ORDER BY үйрөнүңүз", "ru": "Изучить SELECT, WHERE, ORDER BY", "minutes": 45 },
+            { "en": "Learn INSERT, UPDATE, DELETE", "kg": "INSERT, UPDATE, DELETE үйрөнүңүз", "ru": "Изучить INSERT, UPDATE, DELETE", "minutes": 45 },
+            { "en": "Learn JOIN and GROUP BY", "kg": "JOIN жана GROUP BY үйрөнүңүз", "ru": "Изучить JOIN и GROUP BY", "minutes": 60 },
+            { "en": "Install one database locally", "kg": "Бир маалымат базасын компьютериңизге орнотуңуз", "ru": "Установить одну базу данных локально", "minutes": 30 },
+            { "en": "Connect your program to the database", "kg": "Программаңызды базага туташтырыңыз", "ru": "Подключить свою программу к базе", "minutes": 60 }
+          ]
         },
         {
           "en": "Learn how to deploy a project online",
           "kg": "Долбоорду интернетке жайгаштырууну үйрөнүңүз",
-          "ru": "Научиться выкладывать проект в интернет"
+          "ru": "Научиться выкладывать проект в интернет",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Publish one HTML page online for free", "kg": "Бир HTML баракты интернетке акысыз жарыялаңыз", "ru": "Бесплатно выложить одну HTML-страницу в интернет" },
+          "steps": [
+            { "en": "Choose a free hosting for static sites", "kg": "Статикалык сайттар үчүн акысыз хостинг тандаңыз", "ru": "Выбрать бесплатный хостинг для статичных сайтов", "minutes": 20 },
+            { "en": "Connect the hosting to your GitHub repo", "kg": "Хостингди GitHub репоңузга туташтырыңыз", "ru": "Подключить хостинг к своему репозиторию на GitHub", "minutes": 20 },
+            { "en": "Deploy and open the public link", "kg": "Жарыялап, ачык шилтемени ачыңыз", "ru": "Задеплоить и открыть публичную ссылку", "minutes": 20 },
+            { "en": "Fix anything that breaks online", "kg": "Интернетте бузулган нерселерди оңдоңуз", "ru": "Исправить то, что сломалось в продакшене", "minutes": 45 },
+            { "en": "Add the link to your README", "kg": "Шилтемени README файлына кошуңуз", "ru": "Добавить ссылку в README", "minutes": 10 }
+          ]
         },
         {
           "en": "Use an AI assistant only to explain, not to copy",
           "kg": "AI жардамчыны көчүрүү үчүн эмес, түшүнүү үчүн гана колдонуңуз",
-          "ru": "Использовать ИИ-помощников для объяснений, а не для копирования"
+          "ru": "Использовать ИИ-помощников для объяснений, а не для копирования",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Try alone for 10 minutes before asking AI", "kg": "AIдан сурардан мурун 10 мүнөт өзүңүз аракет кылыңыз", "ru": "Перед вопросом ИИ 10 минут пробовать самому" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Algorithms",
-        "kg": "Алгоритмдер",
-        "ru": "Алгоритмы"
-      },
+      "title": { "en": "Algorithms", "kg": "Алгоритмдер", "ru": "Алгоритмы" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "100 problems solved",
-          "kg": "100 маселе чечилди",
-          "ru": "Решено 100 задач"
-        }
+        { "en": "100 problems solved", "kg": "100 маселе чечилди", "ru": "Решено 100 задач" }
       ],
       "actions": [
         {
           "en": "Learn Big O notation",
           "kg": "Big O белгилөөсүн үйрөнүңүз",
-          "ru": "Разобраться в нотации Big O"
+          "ru": "Разобраться в нотации Big O",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Compare O(n) and O(n²) on one example", "kg": "O(n) менен O(n²) бир мисалда салыштырыңыз", "ru": "Сравнить O(n) и O(n²) на одном примере" },
+          "steps": [
+            { "en": "Watch one clear video on Big O", "kg": "Big O боюнча бир түшүнүктүү видео көрүңүз", "ru": "Посмотреть одно понятное видео про Big O", "minutes": 20 },
+            { "en": "Learn O(1), O(n), O(log n), O(n²)", "kg": "O(1), O(n), O(log n), O(n²) үйрөнүңүз", "ru": "Разобрать O(1), O(n), O(log n), O(n²)", "minutes": 30 },
+            { "en": "Rate 5 of your own functions", "kg": "Өз функцияларыңыздын 5ин баалаңыз", "ru": "Оценить 5 своих функций", "minutes": 30 },
+            { "en": "Rewrite one O(n²) solution to O(n)", "kg": "Бир O(n²) чечимди O(n)ге кайра жазыңыз", "ru": "Переписать одно решение с O(n²) на O(n)", "minutes": 45 },
+            { "en": "Explain Big O to a friend in 3 minutes", "kg": "Big O түшүнүгүн досуңузга 3 мүнөттө түшүндүрүңүз", "ru": "Объяснить Big O другу за 3 минуты", "minutes": 10 }
+          ]
         },
         {
           "en": "Learn sorting and searching algorithms",
           "kg": "Иреттөө жана издөө алгоритмдерин үйрөнүңүз",
-          "ru": "Изучить алгоритмы сортировки и поиска"
+          "ru": "Изучить алгоритмы сортировки и поиска",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write linear and binary search", "kg": "Сызыктуу жана бинардык издөөнү жазыңыз", "ru": "Написать линейный и бинарный поиск" },
+          "steps": [
+            { "en": "Write linear search", "kg": "Сызыктуу издөөнү жазыңыз", "ru": "Написать линейный поиск", "minutes": 30 },
+            { "en": "Write binary search", "kg": "Бинардык издөөнү жазыңыз", "ru": "Написать бинарный поиск", "minutes": 45 },
+            { "en": "Write bubble sort", "kg": "Көбүкчө менен сорттоону жазыңыз", "ru": "Написать сортировку пузырьком", "minutes": 45 },
+            { "en": "Write merge sort", "kg": "Бириктирүү менен сорттоону жазыңыз", "ru": "Написать сортировку слиянием", "minutes": 60 },
+            { "en": "Compare their speed on 10,000 numbers", "kg": "Алардын ылдамдыгын 10 000 санда салыштырыңыз", "ru": "Сравнить их скорость на 10 000 чисел", "minutes": 30 }
+          ]
         },
         {
           "en": "Learn stacks, queues, hash tables and trees",
           "kg": "Стек, кезек, хэш-таблица жана дарактарды үйрөнүңүз",
-          "ru": "Изучить стеки, очереди, хеш-таблицы и деревья"
+          "ru": "Изучить стеки, очереди, хеш-таблицы и деревья",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Implement a stack and a queue", "kg": "Стек жана кезек түзүмүн жазыңыз", "ru": "Реализовать стек и очередь" },
+          "steps": [
+            { "en": "Implement a stack with push and pop", "kg": "push жана pop менен стек жазыңыз", "ru": "Реализовать стек с push и pop", "minutes": 45 },
+            { "en": "Implement a queue", "kg": "Кезек түзүмүн жазыңыз", "ru": "Реализовать очередь", "minutes": 45 },
+            { "en": "Learn hash tables: solve 2 tasks with a map", "kg": "Хэш-таблицаны үйрөнүп, map менен 2 маселе чечиңиз", "ru": "Хеш-таблицы: решить 2 задачи через map", "minutes": 60 },
+            { "en": "Learn binary trees and draw one on paper", "kg": "Бинардык дарактарды үйрөнүп, кагазга бирин тартыңыз", "ru": "Изучить бинарные деревья и нарисовать одно", "minutes": 45 },
+            { "en": "Write tree traversal", "kg": "Даракты айланып чыгуу кодун жазыңыз", "ru": "Написать обход дерева", "minutes": 60 },
+            { "en": "Solve 3 problems using these structures", "kg": "Ушул түзүмдөр менен 3 маселе чечиңиз", "ru": "Решить 3 задачи с этими структурами", "minutes": 90 }
+          ]
         },
         {
           "en": "Solve 3 problems on a practice site every week",
           "kg": "Жума сайын машыгуу сайтында 3 маселе чечиңиз",
-          "ru": "Решать 3 задачи на тренажёре каждую неделю"
+          "ru": "Решать 3 задачи на тренажёре каждую неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Solve 1 easy problem this week", "kg": "Бул жумада 1 жеңил маселе чечиңиз", "ru": "На этой неделе решить 1 лёгкую задачу" }
         },
         {
           "en": "Explain your solution out loud",
           "kg": "Чечимиңизди үн чыгарып түшүндүрүңүз",
-          "ru": "Объяснять своё решение вслух"
+          "ru": "Объяснять своё решение вслух",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Explain one solution in 3 sentences", "kg": "Бир чечимди 3 сүйлөм менен түшүндүрүңүз", "ru": "Объяснить одно решение тремя предложениями" }
         },
         {
           "en": "Review solutions of others after solving",
           "kg": "Чечкенден кийин башкалардын чечимдерин карап чыгыңыз",
-          "ru": "После решения разбирать чужие решения"
+          "ru": "После решения разбирать чужие решения",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Read one other solution to a solved problem", "kg": "Чечилген маселенин башка бир чечимин окуңуз", "ru": "Прочитать одно чужое решение решённой задачи" }
         },
         {
           "en": "Learn recursion with simple examples",
           "kg": "Рекурсияны жөнөкөй мисалдар менен үйрөнүңүз",
-          "ru": "Освоить рекурсию на простых примерах"
+          "ru": "Освоить рекурсию на простых примерах",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Write factorial with recursion", "kg": "Факториалды рекурсия менен жазыңыз", "ru": "Написать факториал через рекурсию" },
+          "steps": [
+            { "en": "Learn the base case and the recursive step", "kg": "Базалык учурду жана рекурсивдүү кадамды үйрөнүңүз", "ru": "Разобрать базовый случай и шаг рекурсии", "minutes": 30 },
+            { "en": "Write factorial recursively", "kg": "Факториалды рекурсия менен жазыңыз", "ru": "Написать факториал рекурсивно", "minutes": 20 },
+            { "en": "Write Fibonacci recursively", "kg": "Фибоначчини рекурсия менен жазыңыз", "ru": "Написать Фибоначчи рекурсивно", "minutes": 30 },
+            { "en": "Draw the call stack for one call", "kg": "Бир чакыруунун стегин кагазга тартыңыз", "ru": "Нарисовать стек вызовов для одного вызова", "minutes": 20 },
+            { "en": "Solve 2 problems on recursion", "kg": "Рекурсия боюнча 2 маселе чечиңиз", "ru": "Решить 2 задачи на рекурсию", "minutes": 60 }
+          ]
         },
         {
           "en": "Take part in a beginner coding contest",
           "kg": "Жаңы баштагандар үчүн программалоо сынагына катышыңыз",
-          "ru": "Поучаствовать в соревновании по программированию для новичков"
+          "ru": "Поучаствовать в соревновании по программированию для новичков",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Solve the practice round of a contest", "kg": "Мелдештин машыгуу турун чечиңиз", "ru": "Решить тренировочный тур соревнования" },
+          "steps": [
+            { "en": "Find a beginner contest online or in your city", "kg": "Онлайн же шаарыңыздан жаңы баштагандар мелдешин табыңыз", "ru": "Найти контест для новичков онлайн или в городе", "minutes": 20 },
+            { "en": "Register and read the rules", "kg": "Катталып, эрежелерди окуңуз", "ru": "Зарегистрироваться и прочитать правила", "minutes": 15 },
+            { "en": "Solve one past contest as practice", "kg": "Мурунку бир мелдешти машыгуу катары чечиңиз", "ru": "Решить один прошлый контест для тренировки", "minutes": 120 },
+            { "en": "Take part in the contest", "kg": "Мелдешке катышыңыз", "ru": "Принять участие в соревновании", "minutes": 120 },
+            { "en": "Read the editorial and fix unsolved tasks", "kg": "Талдоону окуп, чечилбеген маселелерди бүтүрүңүз", "ru": "Прочитать разбор и дорешать задачи", "minutes": 90 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "Projects & portfolio",
-        "kg": "Долбоорлор жана портфолио",
-        "ru": "Проекты и портфолио"
-      },
+      "title": { "en": "Projects & portfolio", "kg": "Долбоорлор жана портфолио", "ru": "Проекты и портфолио" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "First project online",
-          "kg": "Биринчи долбоор интернетте",
-          "ru": "Первый проект опубликован"
-        },
-        {
-          "en": "Three projects in the portfolio",
-          "kg": "Портфолиодо үч долбоор",
-          "ru": "Три проекта в портфолио"
-        }
+        { "en": "First project online", "kg": "Биринчи долбоор интернетте", "ru": "Первый проект опубликован" },
+        { "en": "Three projects in the portfolio", "kg": "Портфолиодо үч долбоор", "ru": "Три проекта в портфолио" }
       ],
       "actions": [
         {
           "en": "Build a simple personal website",
           "kg": "Жөнөкөй жеке сайт жасаңыз",
-          "ru": "Сделать простой личный сайт"
+          "ru": "Сделать простой личный сайт",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Make one page with your name and photo", "kg": "Атыңыз жана сүрөтүңүз менен бир барак жасаңыз", "ru": "Сделать одну страницу с именем и фото" },
+          "steps": [
+            { "en": "Sketch the site on paper: 3 sections", "kg": "Сайтты кагазга 3 бөлүм менен чийиңиз", "ru": "Нарисовать сайт на бумаге: 3 раздела", "minutes": 20 },
+            { "en": "Write the HTML structure", "kg": "HTML түзүмүн жазыңыз", "ru": "Написать HTML-структуру", "minutes": 60 },
+            { "en": "Style it with CSS", "kg": "CSS менен жасалгалаңыз", "ru": "Оформить стилями CSS", "minutes": 90 },
+            { "en": "Make it work on a phone screen", "kg": "Телефон экранында иштегидей кылыңыз", "ru": "Адаптировать под экран телефона", "minutes": 60 },
+            { "en": "Add your projects and contacts", "kg": "Долбоорлоруңузду жана байланыштарды кошуңуз", "ru": "Добавить проекты и контакты", "minutes": 30 },
+            { "en": "Publish it online", "kg": "Интернетке жарыялаңыз", "ru": "Опубликовать в интернете", "minutes": 30 },
+            { "en": "Ask 2 friends for feedback", "kg": "2 досуңуздан пикир сураңыз", "ru": "Попросить 2 друзей дать отзыв", "minutes": 15 }
+          ]
         },
         {
           "en": "Build a to-do app with saving data",
           "kg": "Маалыматты сактаган тапшырма тиркемесин жасаңыз",
-          "ru": "Сделать приложение задач с сохранением данных"
+          "ru": "Сделать приложение задач с сохранением данных",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Make a to-do list that adds and deletes items", "kg": "Кошуп жана өчүргөн тапшырмалар тизмесин жасаңыз", "ru": "Сделать список задач с добавлением и удалением" },
+          "steps": [
+            { "en": "Plan the features: add, done, delete", "kg": "Мүмкүнчүлүктөрдү пландаңыз: кошуу, бүттү, өчүрүү", "ru": "Спланировать функции: добавить, готово, удалить", "minutes": 20 },
+            { "en": "Build the interface", "kg": "Интерфейсти жасаңыз", "ru": "Сделать интерфейс", "minutes": 90 },
+            { "en": "Add new tasks", "kg": "Жаңы тапшырма кошууну жазыңыз", "ru": "Реализовать добавление задач", "minutes": 60 },
+            { "en": "Mark done and delete tasks", "kg": "Бүттү белгисин жана өчүрүүнү жазыңыз", "ru": "Реализовать отметку и удаление задач", "minutes": 60 },
+            { "en": "Save tasks so they survive a reload", "kg": "Тапшырмалар барак жаңырганда сакталсын", "ru": "Сохранять задачи после перезагрузки", "minutes": 60 },
+            { "en": "Add a filter: all, active, done", "kg": "Чыпка кошуңуз: баары, активдүү, бүткөн", "ru": "Добавить фильтр: все, активные, готовые", "minutes": 45 },
+            { "en": "Publish it and add it to GitHub", "kg": "Жарыялап, GitHubка кошуңуз", "ru": "Опубликовать и выложить на GitHub", "minutes": 30 }
+          ]
         },
         {
           "en": "Build a project that uses a public API",
           "kg": "Ачык APIни колдонгон долбоор жасаңыз",
-          "ru": "Сделать проект с использованием публичного API"
+          "ru": "Сделать проект с использованием публичного API",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Show data from one API on a page", "kg": "Бир API маалыматын баракта көрсөтүңүз", "ru": "Вывести данные одного API на страницу" },
+          "steps": [
+            { "en": "Choose a free API: weather, currency, films", "kg": "Акысыз API тандаңыз: аба ырайы, валюта, кино", "ru": "Выбрать бесплатный API: погода, валюта, фильмы", "minutes": 20 },
+            { "en": "Fetch and print the data", "kg": "Маалыматты алып, чыгарыңыз", "ru": "Получить и вывести данные", "minutes": 60 },
+            { "en": "Build a search or filter", "kg": "Издөө же чыпка жасаңыз", "ru": "Сделать поиск или фильтр", "minutes": 90 },
+            { "en": "Show loading and error states", "kg": "Жүктөлүү жана ката абалын көрсөтүңүз", "ru": "Показать состояния загрузки и ошибки", "minutes": 45 },
+            { "en": "Make it look good on a phone", "kg": "Телефондо жакшы көрүнгөндөй кылыңыз", "ru": "Сделать удобным на телефоне", "minutes": 60 },
+            { "en": "Publish it and write a README", "kg": "Жарыялап, README жазыңыз", "ru": "Опубликовать и написать README", "minutes": 30 }
+          ]
         },
         {
           "en": "Build one project that solves a real problem",
           "kg": "Чыныгы көйгөйдү чечкен бир долбоор жасаңыз",
-          "ru": "Сделать проект, решающий реальную проблему"
+          "ru": "Сделать проект, решающий реальную проблему",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Write down one real problem your project will solve", "kg": "Долбооруңуз чече турган бир чыныгы көйгөйдү жазыңыз", "ru": "Записать одну реальную проблему для проекта" },
+          "steps": [
+            { "en": "Ask 5 people about a daily problem they have", "kg": "5 адамдан күнүмдүк көйгөйүн сураңыз", "ru": "Спросить 5 людей об их ежедневной проблеме", "minutes": 60 },
+            { "en": "Choose one problem and describe the user", "kg": "Бир көйгөй тандап, колдонуучуну сүрөттөңүз", "ru": "Выбрать одну проблему и описать пользователя", "minutes": 30 },
+            { "en": "List 3 must-have features", "kg": "Сөзсүз керек 3 мүмкүнчүлүктү жазыңыз", "ru": "Выписать 3 обязательные функции", "minutes": 20 },
+            { "en": "Build feature 1", "kg": "1-мүмкүнчүлүктү жасаңыз", "ru": "Сделать функцию 1", "minutes": 120 },
+            { "en": "Build feature 2", "kg": "2-мүмкүнчүлүктү жасаңыз", "ru": "Сделать функцию 2", "minutes": 120 },
+            { "en": "Build feature 3", "kg": "3-мүмкүнчүлүктү жасаңыз", "ru": "Сделать функцию 3", "minutes": 120 },
+            { "en": "Give it to 3 real users", "kg": "Аны 3 чыныгы колдонуучуга бериңиз", "ru": "Дать проект 3 реальным пользователям", "minutes": 30 },
+            { "en": "Fix the top 3 issues they report", "kg": "Алар айткан негизги 3 кемчиликти оңдоңуз", "ru": "Исправить 3 главные проблемы из отзывов", "minutes": 120 }
+          ]
         },
         {
-          "en": "Write a clear README for each project",
-          "kg": "Ар бир долбоорго так README жазыңыз",
-          "ru": "Написать понятный README к каждому проекту"
+          "en": "Write a clear README for every project",
+          "kg": "Ар бир долбоорго түшүнүктүү README жазыңыз",
+          "ru": "Писать понятный README к каждому проекту",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Write 3 README lines: what, how to run, screenshot", "kg": "README үчүн 3 сап жазыңыз: эмне, кантип иштетүү, сүрөт", "ru": "Написать 3 строки README: что, как запустить, скрин" }
         },
         {
-          "en": "Ask a developer to review your code",
-          "kg": "Иштеп чыгуучудан кодуңузду карап берүүнү сураңыз",
-          "ru": "Попросить разработчика сделать ревью кода"
+          "en": "Ask a developer to review each finished project",
+          "kg": "Ар бир бүткөн долбоорду программистке текшертиңиз",
+          "ru": "Давать на ревью разработчику каждый готовый проект",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Send one file to a developer for review", "kg": "Бир файлды программистке текшерүүгө жибериңиз", "ru": "Отправить один файл разработчику на ревью" }
         },
         {
           "en": "Contribute to an open-source project",
           "kg": "Ачык булактуу долбоорго салым кошуңуз",
-          "ru": "Сделать вклад в open-source проект"
+          "ru": "Сделать вклад в open-source проект",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Fix one typo in an open-source project", "kg": "Ачык булактуу долбоордон бир катаны оңдоңуз", "ru": "Исправить одну опечатку в open-source проекте" },
+          "steps": [
+            { "en": "Find projects with a \"good first issue\" label", "kg": "\"good first issue\" белгиси бар долбоорлорду табыңыз", "ru": "Найти проекты с меткой \"good first issue\"", "minutes": 30 },
+            { "en": "Read the contributing guide", "kg": "Салым кошуу эрежелерин окуңуз", "ru": "Прочитать правила для контрибьюторов", "minutes": 20 },
+            { "en": "Choose one small issue and comment on it", "kg": "Бир кичине маселе тандап, комментарий жазыңыз", "ru": "Выбрать небольшую задачу и оставить комментарий", "minutes": 20 },
+            { "en": "Fork, clone and run the project", "kg": "Долбоорду fork кылып, жүктөп, иштетиңиз", "ru": "Сделать форк, клонировать и запустить проект", "minutes": 60 },
+            { "en": "Make the fix and test it", "kg": "Оңдоп, текшериңиз", "ru": "Внести исправление и проверить", "minutes": 90 },
+            { "en": "Open a pull request", "kg": "Pull request ачыңыз", "ru": "Открыть pull request", "minutes": 20 },
+            { "en": "Answer review comments", "kg": "Текшерүүчүнүн пикирлерине жооп бериңиз", "ru": "Ответить на комментарии ревьюеров", "minutes": 45 }
+          ]
         },
         {
           "en": "Collect projects on one portfolio page",
           "kg": "Долбоорлорду бир портфолио баракчасына чогултуңуз",
-          "ru": "Собрать проекты на одной странице-портфолио"
+          "ru": "Собрать проекты на одной странице-портфолио",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Make a list of your projects with links", "kg": "Долбоорлоруңуздун тизмесин шилтемелери менен түзүңүз", "ru": "Составить список своих проектов со ссылками" },
+          "steps": [
+            { "en": "Choose your 3 best projects", "kg": "Эң мыкты 3 долбооруңузду тандаңыз", "ru": "Выбрать 3 лучших проекта", "minutes": 20 },
+            { "en": "Take screenshots of each", "kg": "Ар биринин скриншотун алыңыз", "ru": "Сделать скриншоты каждого", "minutes": 20 },
+            { "en": "Write 2–3 lines about each: task, stack, result", "kg": "Ар бирине 2–3 сап жазыңыз: маселе, стек, жыйынтык", "ru": "Описать каждый в 2–3 строки: задача, стек, итог", "minutes": 45 },
+            { "en": "Put them on one page with links", "kg": "Аларды шилтемелери менен бир баракка коюңуз", "ru": "Собрать их на одной странице со ссылками", "minutes": 90 },
+            { "en": "Add contacts and your CV", "kg": "Байланыштарды жана резюмеңизди кошуңуз", "ru": "Добавить контакты и резюме", "minutes": 20 },
+            { "en": "Put the link in your profiles", "kg": "Шилтемени профилдериңизге коюңуз", "ru": "Добавить ссылку в свои профили", "minutes": 10 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "English for IT",
-        "kg": "IT үчүн англис тили",
-        "ru": "Английский для IT"
-      },
+      "title": { "en": "English for IT", "kg": "IT үчүн англис тили", "ru": "Английский для IT" },
+      "kind": "support",
       "milestones": [
-        {
-          "en": "Reads documentation without a translator",
-          "kg": "Документтерди котормочусуз окуйт",
-          "ru": "Читает документацию без переводчика"
-        }
+        { "en": "Reads documentation without a translator", "kg": "Документтерди котормочусуз окуйт", "ru": "Читает документацию без переводчика" }
       ],
       "actions": [
         {
           "en": "Learn 10 technical words a day",
           "kg": "Күнүнө 10 техникалык сөз үйрөнүңүз",
-          "ru": "Учить 10 технических слов в день"
+          "ru": "Учить 10 технических слов в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 15,
+          "easy": { "en": "Learn 3 tech words today", "kg": "Бүгүн 3 техникалык сөз үйрөнүңүз", "ru": "Сегодня выучить 3 технических слова" }
         },
         {
           "en": "Read documentation in English",
           "kg": "Документтерди англис тилинде окуңуз",
-          "ru": "Читать документацию на английском"
+          "ru": "Читать документацию на английском",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Read one paragraph of English docs", "kg": "Англисче документациядан бир абзац окуңуз", "ru": "Прочитать один абзац документации на английском" }
         },
         {
           "en": "Watch programming tutorials in English",
           "kg": "Программалоо сабактарын англис тилинде көрүңүз",
-          "ru": "Смотреть уроки по программированию на английском"
+          "ru": "Смотреть уроки по программированию на английском",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Watch 10 minutes of an English tutorial", "kg": "Англисче сабактан 10 мүнөт көрүңүз", "ru": "Посмотреть 10 минут туториала на английском" }
         },
         {
           "en": "Write commit messages in English",
           "kg": "Коммит билдирүүлөрүн англисче жазыңыз",
-          "ru": "Писать сообщения коммитов на английском"
+          "ru": "Писать сообщения коммитов на английском",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Write today's commit message in English", "kg": "Бүгүнкү коммит билдирүүсүн англисче жазыңыз", "ru": "Написать сегодняшний коммит на английском" }
         },
         {
           "en": "Ask questions on English forums",
           "kg": "Англис форумдарында суроо бериңиз",
-          "ru": "Задавать вопросы на англоязычных форумах"
+          "ru": "Задавать вопросы на англоязычных форумах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Read 3 answers on an English forum", "kg": "Англисче форумдан 3 жоопту окуңуз", "ru": "Прочитать 3 ответа на английском форуме" }
         },
         {
           "en": "Practise speaking about your projects",
           "kg": "Долбоорлоруңуз жөнүндө сүйлөөнү машыгыңыз",
-          "ru": "Тренироваться рассказывать о своих проектах"
+          "ru": "Тренироваться рассказывать о своих проектах",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Describe one project aloud for 2 minutes", "kg": "Бир долбоорду 2 мүнөт үн чыгарып сүрөттөңүз", "ru": "Рассказать вслух о проекте 2 минуты" }
         },
         {
           "en": "Prepare an English self-introduction for interviews",
           "kg": "Маек үчүн өзүңүздү англисче тааныштырууну даярдаңыз",
-          "ru": "Подготовить рассказ о себе на английском для собеседований"
+          "ru": "Подготовить рассказ о себе на английском для собеседований",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write 3 sentences about yourself in English", "kg": "Өзүңүз тууралуу англисче 3 сүйлөм жазыңыз", "ru": "Написать о себе 3 предложения на английском" },
+          "steps": [
+            { "en": "Write a 1-minute intro: name, stack, projects", "kg": "1 мүнөттүк таанышуу жазыңыз: ат, стек, долбоорлор", "ru": "Написать рассказ на минуту: имя, стек, проекты", "minutes": 30 },
+            { "en": "Ask someone to correct the text", "kg": "Текстти бирөөгө оңдотуңуз", "ru": "Попросить кого-то исправить текст", "minutes": 20 },
+            { "en": "Learn it by heart", "kg": "Аны жатка үйрөнүңүз", "ru": "Выучить наизусть", "minutes": 30 },
+            { "en": "Record it on video and watch it back", "kg": "Видеого жаздырып, кайра көрүңүз", "ru": "Записать на видео и пересмотреть", "minutes": 20 },
+            { "en": "Say it to a friend or tutor", "kg": "Аны досуңузга же мугалимге айтып бериңиз", "ru": "Рассказать другу или преподавателю", "minutes": 15 }
+          ]
         },
         {
           "en": "Use the phone in English",
           "kg": "Телефонуңузду англис тилинде колдонуңуз",
-          "ru": "Переключить телефон на английский"
+          "ru": "Переключить телефон на английский",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Switch one app on your phone to English", "kg": "Телефондогу бир тиркемени англис тилине которуңуз", "ru": "Переключить одно приложение на английский" }
         }
       ]
     },
     {
-      "title": {
-        "en": "Community & mentor",
-        "kg": "Коомчулук жана устат",
-        "ru": "Сообщество и наставник"
-      },
+      "title": { "en": "Community & mentor", "kg": "Коомчулук жана устат", "ru": "Сообщество и наставник" },
+      "kind": "support",
       "milestones": [
-        {
-          "en": "Mentor found",
-          "kg": "Устат табылды",
-          "ru": "Найден наставник"
-        }
+        { "en": "Mentor found", "kg": "Устат табылды", "ru": "Найден наставник" }
       ],
       "actions": [
         {
           "en": "Join local IT communities and chats",
           "kg": "Жергиликтүү IT коомчулуктарына жана чаттарга кошулуңуз",
-          "ru": "Вступить в местные IT-сообщества и чаты"
+          "ru": "Вступить в местные IT-сообщества и чаты",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Join one local IT chat today", "kg": "Бүгүн бир жергиликтүү IT чатка кошулуңуз", "ru": "Сегодня вступить в один местный IT-чат" },
+          "steps": [
+            { "en": "Ask developers which local chats they use", "kg": "Программисттерден кайсы чаттарды колдонорун сураңыз", "ru": "Спросить разработчиков, какие чаты они читают", "minutes": 15 },
+            { "en": "Join 2–3 chats or communities", "kg": "2–3 чатка же коомчулукка кошулуңуз", "ru": "Вступить в 2–3 чата или сообщества", "minutes": 10 },
+            { "en": "Read the rules and pinned posts", "kg": "Эрежелерди жана бекитилген билдирүүлөрдү окуңуз", "ru": "Прочитать правила и закреплённые сообщения", "minutes": 15 },
+            { "en": "Introduce yourself in one message", "kg": "Бир билдирүү менен өзүңүздү тааныштырыңыз", "ru": "Представиться одним сообщением", "minutes": 10 },
+            { "en": "Leave the chats that give no value", "kg": "Пайдасы жок чаттардан чыгыңыз", "ru": "Выйти из бесполезных чатов", "minutes": 5 }
+          ]
         },
         {
-          "en": "Attend meetups and hackathons",
-          "kg": "Митаптарга жана хакатондорго катышыңыз",
-          "ru": "Ходить на митапы и хакатоны"
+          "en": "Attend an IT meetup or a hackathon",
+          "kg": "IT митапка же хакатонго катышыңыз",
+          "ru": "Сходить на IT-митап или хакатон",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Watch one meetup recording online", "kg": "Бир митаптын жазуусун онлайн көрүңүз", "ru": "Посмотреть запись одного митапа онлайн" },
+          "steps": [
+            { "en": "Find upcoming IT meetups or hackathons", "kg": "Жакынкы IT митаптарды же хакатондорду табыңыз", "ru": "Найти ближайшие IT-митапы или хакатоны", "minutes": 20 },
+            { "en": "Register for one", "kg": "Бирөөсүнө катталыңыз", "ru": "Зарегистрироваться на один", "minutes": 10 },
+            { "en": "Prepare a short intro and 2 questions", "kg": "Кыска таанышуу жана 2 суроо даярдаңыз", "ru": "Подготовить короткое представление и 2 вопроса", "minutes": 15 },
+            { "en": "Attend and meet 3 new people", "kg": "Катышып, 3 жаңы адам менен таанышыңыз", "ru": "Сходить и познакомиться с 3 новыми людьми", "minutes": 120 },
+            { "en": "Message the new contacts the next day", "kg": "Эртеси күнү жаңы тааныштарга жазыңыз", "ru": "На следующий день написать новым знакомым", "minutes": 15 }
+          ]
         },
         {
           "en": "Find a mentor among working developers",
           "kg": "Иштеп жаткан программисттердин арасынан устат табыңыз",
-          "ru": "Найти наставника среди работающих разработчиков"
+          "ru": "Найти наставника среди работающих разработчиков",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Write to one developer asking for advice", "kg": "Бир программистке кеңеш сурап жазыңыз", "ru": "Написать одному разработчику с просьбой о совете" },
+          "steps": [
+            { "en": "List 5 developers you could ask", "kg": "Сурай ала турган 5 программистти жазыңыз", "ru": "Выписать 5 разработчиков, к кому можно обратиться", "minutes": 20 },
+            { "en": "Prepare a short message with a clear request", "kg": "Так өтүнүч менен кыска билдирүү даярдаңыз", "ru": "Подготовить короткое сообщение с чётким запросом", "minutes": 20 },
+            { "en": "Send it to 3 of them", "kg": "Аны алардын үчөөсүнө жибериңиз", "ru": "Отправить его троим из них", "minutes": 10 },
+            { "en": "Agree on a 30-minute call", "kg": "30 мүнөттүк чалууга макулдашыңыз", "ru": "Договориться о звонке на 30 минут", "minutes": 10 },
+            { "en": "Bring 3 questions and your code to the call", "kg": "Чалууга 3 суроо жана кодуңузду алып келиңиз", "ru": "Принести на звонок 3 вопроса и свой код", "minutes": 30 },
+            { "en": "Agree on the next meeting date", "kg": "Кийинки жолугушуу күнүн белгилеңиз", "ru": "Договориться о дате следующей встречи", "minutes": 5 }
+          ]
         },
         {
           "en": "Find a study buddy at the same level",
           "kg": "Деңгээли бирдей окуу өнөгүн табыңыз",
-          "ru": "Найти напарника по учёбе того же уровня"
+          "ru": "Найти напарника по учёбе того же уровня",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Post a \"looking for a study buddy\" message", "kg": "\"Чогуу окуйбуз\" деген билдирүү жазыңыз", "ru": "Написать пост «ищу напарника по учёбе»" },
+          "steps": [
+            { "en": "Write who you are and what you study", "kg": "Ким экениңизди жана эмне окуп жатканыңызды жазыңыз", "ru": "Написать, кто вы и что изучаете", "minutes": 10 },
+            { "en": "Post it in 2 communities", "kg": "Аны 2 коомчулукка жарыялаңыз", "ru": "Опубликовать в 2 сообществах", "minutes": 10 },
+            { "en": "Talk to the people who replied", "kg": "Жооп бергендер менен сүйлөшүңүз", "ru": "Поговорить с откликнувшимися", "minutes": 30 },
+            { "en": "Choose one partner at your level", "kg": "Деңгээлиңиздеги бир өнөктү тандаңыз", "ru": "Выбрать одного напарника своего уровня", "minutes": 10 },
+            { "en": "Set a weekly call to share progress", "kg": "Жетишкендикти бөлүшүү үчүн жумалык чалуу белгилеңиз", "ru": "Назначить еженедельный созвон по прогрессу", "minutes": 10 }
+          ]
         },
         {
           "en": "Share your learning progress publicly",
           "kg": "Окуудагы жетишкендигиңизди ачык бөлүшүңүз",
-          "ru": "Публично делиться прогрессом в обучении"
+          "ru": "Публично делиться прогрессом в обучении",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Post one line about what you learned", "kg": "Эмне үйрөнгөнүңүз тууралуу бир сап жазыңыз", "ru": "Написать одну строку о том, что изучили" }
         },
         {
           "en": "Help beginners who know less than you",
           "kg": "Сизден аз билген жаңы баштагандарга жардам бериңиз",
-          "ru": "Помогать новичкам, которые знают меньше вас"
+          "ru": "Помогать новичкам, которые знают меньше вас",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Answer one beginner question in a chat", "kg": "Чатта жаңы баштагандын бир суроосуна жооп бериңиз", "ru": "Ответить на один вопрос новичка в чате" }
         },
         {
           "en": "Follow experienced developers and their blogs",
           "kg": "Тажрыйбалуу программисттерди жана алардын блогдорун карап туруңуз",
-          "ru": "Следить за опытными разработчиками и их блогами"
+          "ru": "Следить за опытными разработчиками и их блогами",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Read one developer blog post", "kg": "Программисттин блогунан бир макала окуңуз", "ru": "Прочитать одну статью из блога разработчика" }
         },
         {
           "en": "Take part in a team project",
           "kg": "Командалык долбоорго катышыңыз",
-          "ru": "Поучаствовать в командном проекте"
+          "ru": "Поучаствовать в командном проекте",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Fix one small task in a friend's project", "kg": "Досуңуздун долбоорунан бир кичине тапшырманы аткарыңыз", "ru": "Сделать одну небольшую задачу в проекте друга" },
+          "steps": [
+            { "en": "Find a team: friends, a chat or a hackathon", "kg": "Команда табыңыз: достор, чат же хакатон", "ru": "Найти команду: друзья, чат или хакатон", "minutes": 30 },
+            { "en": "Agree on the idea and split the tasks", "kg": "Идеяга макулдашып, тапшырмаларды бөлүңүз", "ru": "Согласовать идею и распределить задачи", "minutes": 45 },
+            { "en": "Set up a shared repository and a task board", "kg": "Жалпы репозиторий жана тапшырмалар тактасын ачыңыз", "ru": "Создать общий репозиторий и доску задач", "minutes": 30 },
+            { "en": "Finish your first task in a branch", "kg": "Биринчи тапшырмаңызды өз бутагыңызда бүтүрүңүз", "ru": "Сделать первую задачу в своей ветке", "minutes": 120 },
+            { "en": "Review a teammate's pull request", "kg": "Команданын мүчөсүнүн pull requestин текшериңиз", "ru": "Проверить pull request товарища", "minutes": 30 },
+            { "en": "Finish your remaining tasks", "kg": "Калган тапшырмаларыңызды бүтүрүңүз", "ru": "Доделать оставшиеся задачи", "minutes": 120 },
+            { "en": "Present the result together", "kg": "Жыйынтыкты чогуу көрсөтүңүз", "ru": "Вместе показать результат", "minutes": 30 }
+          ]
         }
       ]
     },
     {
-      "title": {
-        "en": "First job",
-        "kg": "Биринчи жумуш",
-        "ru": "Первая работа"
-      },
+      "title": { "en": "First job", "kg": "Биринчи жумуш", "ru": "Первая работа" },
+      "kind": "direct",
       "milestones": [
-        {
-          "en": "First interview",
-          "kg": "Биринчи маек",
-          "ru": "Первое собеседование"
-        },
-        {
-          "en": "Junior offer received",
-          "kg": "Junior кызматына сунуш алынды",
-          "ru": "Получен оффер на junior"
-        }
+        { "en": "First interview", "kg": "Биринчи маек", "ru": "Первое собеседование" },
+        { "en": "Junior offer received", "kg": "Junior кызматына сунуш алынды", "ru": "Получен оффер на junior" }
       ],
       "actions": [
         {
           "en": "Study junior job requirements in your city",
           "kg": "Шаарыңыздагы junior вакансияларынын талаптарын изилдеңиз",
-          "ru": "Изучить требования к junior-вакансиям в своём городе"
+          "ru": "Изучить требования к junior-вакансиям в своём городе",
+          "type": "milestone",
+          "minutes": 45,
+          "easy": { "en": "Read 5 junior job ads in your city", "kg": "Шаарыңыздагы 5 джуниор вакансияны окуңуз", "ru": "Прочитать 5 вакансий джуниора в своём городе" },
+          "steps": [
+            { "en": "Find 15 junior job ads in your city or remote", "kg": "Шаарыңыздан же алыстан 15 джуниор вакансия табыңыз", "ru": "Найти 15 вакансий джуниора в городе или удалённо", "minutes": 30 },
+            { "en": "Write out every required skill", "kg": "Талап кылынган ар бир көндүмдү жазып алыңыз", "ru": "Выписать все требуемые навыки", "minutes": 30 },
+            { "en": "Count which skills repeat most", "kg": "Кайсы көндүмдөр көп кайталанарын санаңыз", "ru": "Посчитать, какие навыки повторяются чаще", "minutes": 15 },
+            { "en": "Mark the skills you already have", "kg": "Сизде бар көндүмдөрдү белгилеңиз", "ru": "Отметить навыки, которые уже есть", "minutes": 10 },
+            { "en": "Plan to learn the top 3 missing skills", "kg": "Жетишпеген негизги 3 көндүмдү үйрөнүүнү пландаңыз", "ru": "Запланировать изучение 3 главных недостающих", "minutes": 20 }
+          ]
         },
         {
           "en": "Write a CV with projects and skills",
           "kg": "Долбоорлор жана көндүмдөр менен резюме жазыңыз",
-          "ru": "Составить резюме с проектами и навыками"
+          "ru": "Составить резюме с проектами и навыками",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write the projects section of your CV", "kg": "Резюмеңиздин долбоорлор бөлүгүн жазыңыз", "ru": "Написать раздел резюме с проектами" },
+          "steps": [
+            { "en": "Look at 3 good junior CVs as examples", "kg": "Мисал катары 3 жакшы джуниор резюмени караңыз", "ru": "Посмотреть 3 хороших резюме джуниоров", "minutes": 20 },
+            { "en": "Write a 2-line summary about yourself", "kg": "Өзүңүз тууралуу 2 саптык кыскача маалымат жазыңыз", "ru": "Написать краткое описание о себе в 2 строки", "minutes": 20 },
+            { "en": "List skills you can show in your projects", "kg": "Долбоорлоруңузда көрсөтө алган көндүмдөрдү жазыңыз", "ru": "Перечислить навыки, подтверждённые проектами", "minutes": 20 },
+            { "en": "Describe 3 projects with links and results", "kg": "3 долбоорду шилтеме жана жыйынтыгы менен сүрөттөңүз", "ru": "Описать 3 проекта со ссылками и результатами", "minutes": 45 },
+            { "en": "Fit everything on one page", "kg": "Баарын бир баракка батырыңыз", "ru": "Уместить всё на одну страницу", "minutes": 20 },
+            { "en": "Ask a developer to review the CV", "kg": "Резюмени программистке текшертиңиз", "ru": "Дать резюме на проверку разработчику", "minutes": 15 }
+          ]
         },
         {
-          "en": "Apply for internships and junior positions",
-          "kg": "Стажировкаларга жана junior кызматтарына арыз бериңиз",
-          "ru": "Откликаться на стажировки и junior-позиции"
+          "en": "Apply to 5 internships or junior jobs a week",
+          "kg": "Жумасына 5 стажировкага же джуниор жумушка арыз бериңиз",
+          "ru": "Отправлять 5 откликов в неделю на стажировки и джуниор",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Send 1 application this week", "kg": "Бул жумада 1 арыз жибериңиз", "ru": "На этой неделе отправить 1 отклик" }
         },
         {
           "en": "Prepare for technical interview questions",
           "kg": "Техникалык маек суроолоруна даярданыңыз",
-          "ru": "Готовиться к вопросам технического собеседования"
+          "ru": "Готовиться к вопросам технического собеседования",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 45,
+          "easy": { "en": "Answer 2 interview questions aloud", "kg": "2 интервью суроосуна үн чыгарып жооп бериңиз", "ru": "Ответить вслух на 2 вопроса с собеседования" }
         },
         {
           "en": "Do a mock interview with a mentor",
           "kg": "Устат менен машыгуу маегин өткөрүңүз",
-          "ru": "Провести пробное собеседование с наставником"
+          "ru": "Провести пробное собеседование с наставником",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Answer 5 interview questions to a friend", "kg": "Досуңузга 5 интервью суроосуна жооп бериңиз", "ru": "Ответить другу на 5 вопросов с собеседования" },
+          "steps": [
+            { "en": "Collect 20 typical junior interview questions", "kg": "Джуниорлорго берилүүчү 20 суроо чогултуңуз", "ru": "Собрать 20 типичных вопросов для джуниора", "minutes": 30 },
+            { "en": "Prepare short answers to each", "kg": "Ар бирине кыска жооп даярдаңыз", "ru": "Подготовить короткие ответы на каждый", "minutes": 60 },
+            { "en": "Agree on a time with a mentor", "kg": "Устат менен убакытты макулдашыңыз", "ru": "Договориться о времени с наставником", "minutes": 5 },
+            { "en": "Do a 45-minute mock interview", "kg": "45 мүнөттүк машыгуу интервьюсун өткөрүңүз", "ru": "Провести пробное собеседование на 45 минут", "minutes": 45 },
+            { "en": "Write down feedback and fix weak answers", "kg": "Пикирди жазып, алсыз жоопторду оңдоңуз", "ru": "Записать отзыв и улучшить слабые ответы", "minutes": 30 }
+          ]
         },
         {
-          "en": "Try freelance tasks for first experience",
-          "kg": "Биринчи тажрыйба үчүн фриланс тапшырмаларын аткарып көрүңүз",
-          "ru": "Брать фриланс-задачи для первого опыта"
+          "en": "Complete one freelance task for first experience",
+          "kg": "Тажрыйба үчүн бир фриланс тапшырманы аткарыңыз",
+          "ru": "Выполнить один фриланс-заказ для первого опыта",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Create a freelancer profile", "kg": "Фрилансер профилин түзүңүз", "ru": "Создать профиль фрилансера" },
+          "steps": [
+            { "en": "Choose a freelance platform or local chat", "kg": "Фриланс платформасын же жергиликтүү чатты тандаңыз", "ru": "Выбрать фриланс-площадку или местный чат", "minutes": 20 },
+            { "en": "Fill in the profile with portfolio links", "kg": "Профилди портфолио шилтемелери менен толтуруңуз", "ru": "Заполнить профиль со ссылками на портфолио", "minutes": 45 },
+            { "en": "Offer help to a friend's small business", "kg": "Досуңуздун чакан бизнесине жардам сунуштаңыз", "ru": "Предложить помощь малому бизнесу знакомых", "minutes": 20 },
+            { "en": "Agree on the task and deadline in writing", "kg": "Тапшырманы жана мөөнөттү жазуу түрүндө бекитиңиз", "ru": "Письменно согласовать задачу и срок", "minutes": 20 },
+            { "en": "Do the task and deliver on time", "kg": "Тапшырманы аткарып, убагында тапшырыңыз", "ru": "Выполнить задачу и сдать вовремя", "minutes": 120 },
+            { "en": "Ask the client for a review", "kg": "Кардардан пикир сураңыз", "ru": "Попросить у заказчика отзыв", "minutes": 10 }
+          ]
         },
         {
           "en": "Ask for feedback after every rejection",
           "kg": "Ар бир баш тартуудан кийин пикир сураңыз",
-          "ru": "Просить обратную связь после каждого отказа"
+          "ru": "Просить обратную связь после каждого отказа",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Reply to one rejection asking for feedback", "kg": "Бир баш тартууга пикир сурап жооп жазыңыз", "ru": "Ответить на один отказ с просьбой об отзыве" }
         },
         {
           "en": "Keep learning while searching for a job",
           "kg": "Жумуш издеп жатканда да окууну улантыңыз",
-          "ru": "Продолжать учиться во время поиска работы"
+          "ru": "Продолжать учиться во время поиска работы",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Study 10 minutes on job-search days", "kg": "Жумуш издеген күндөрү 10 мүнөт окуңуз", "ru": "В дни поиска работы учиться по 10 минут" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Discipline & honesty", "kg": "Тартип жана чынчылдык", "ru": "Дисциплина и честность" },
+      "kind": "character",
+      "milestones": [
+        { "en": "30 days of finishing planned tasks", "kg": "Пландалган иштерди бүтүргөн 30 күн", "ru": "30 дней завершённых запланированных задач" }
+      ],
+      "actions": [
+        {
+          "en": "Finish every started tutorial before a new one",
+          "kg": "Жаңысын баштоодон мурун башталган сабакты бүтүрүңүз",
+          "ru": "Доводить начатый курс до конца, прежде чем брать новый",
+          "type": "quality",
+          "minutes": 30,
+          "easy": { "en": "Finish one small unfinished task today", "kg": "Бүгүн бүтпөй калган бир кичине ишти бүтүрүңүз", "ru": "Сегодня закончить одну мелкую недоделку" }
+        },
+        {
+          "en": "Never present copied code as your own",
+          "kg": "Көчүрүлгөн кодду эч качан өзүңүздүкү деп көрсөтпөңүз",
+          "ru": "Никогда не выдавать чужой код за свой",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Add a source link to one borrowed snippet", "kg": "Алынган бир кодго булагынын шилтемесин кошуңуз", "ru": "Добавить ссылку на источник к одному чужому куску кода" }
+        },
+        {
+          "en": "Reply to team messages within 24 hours",
+          "kg": "Команданын билдирүүлөрүнө 24 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать на сообщения команды в течение 24 часов",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Answer one pending message today", "kg": "Бүгүн күтүп турган бир билдирүүгө жооп бериңиз", "ru": "Сегодня ответить на одно ждущее сообщение" }
+        },
+        {
+          "en": "Join calls and meetups on time",
+          "kg": "Чалууларга жана митаптарга убагында келиңиз",
+          "ru": "Приходить на созвоны и митапы вовремя",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Join the next call 2 minutes early", "kg": "Кийинки чалууга 2 мүнөт эрте кошулуңуз", "ru": "На следующий созвон подключиться на 2 минуты раньше" }
+        },
+        {
+          "en": "Say \"I don't know, I'll check\" instead of guessing",
+          "kg": "Божомолдогондун ордуна \"Билбейм, текшерем\" деңиз",
+          "ru": "Говорить «не знаю, проверю» вместо догадок",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Admit one knowledge gap honestly this week", "kg": "Бул жумада бир билбегениңизди ачык мойнуңузга алыңыз", "ru": "На этой неделе честно признать один пробел" }
+        },
+        {
+          "en": "Thank everyone who reviews your code",
+          "kg": "Кодуңузду текшергендердин баарына ыраазычылык айтыңыз",
+          "ru": "Благодарить каждого, кто проверяет ваш код",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Thank one reviewer today", "kg": "Бүгүн бир текшерүүчүгө ыраазычылык айтыңыз", "ru": "Сегодня поблагодарить одного ревьюера" }
+        },
+        {
+          "en": "Leave the code cleaner than you found it",
+          "kg": "Кодду тапканыңыздан таза калтырыңыз",
+          "ru": "Оставлять код чище, чем он был",
+          "type": "quality",
+          "minutes": 15,
+          "easy": { "en": "Rename one unclear variable", "kg": "Түшүнүксүз бир өзгөрмөнүн атын өзгөртүңүз", "ru": "Переименовать одну непонятную переменную" }
+        },
+        {
+          "en": "Stop coding at the planned time",
+          "kg": "Код жазууну пландалган убакта токтотуңуз",
+          "ru": "Заканчивать писать код в запланированное время",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Stop on time once this week", "kg": "Бул жумада бир жолу убагында токтоңуз", "ru": "На этой неделе один раз закончить вовремя" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Desk health", "kg": "Отуруп иштөө", "ru": "Здоровье за компьютером" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Month of daily walks", "kg": "Күн сайын басылган бир ай", "ru": "Месяц ежедневных прогулок" }
+      ],
+      "actions": [
+        {
+          "en": "Stand up and stretch every 50 minutes of coding",
+          "kg": "Ар 50 мүнөт код жазгандан кийин туруп, керилиңиз",
+          "ru": "Вставать и тянуться каждые 50 минут за кодом",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Stand up once between two sessions", "kg": "Эки сессиянын ортосунда бир жолу туруңуз", "ru": "Встать хотя бы раз между двумя сессиями" }
+        },
+        {
+          "en": "Every 20 minutes look 20 seconds into the distance",
+          "kg": "Ар 20 мүнөттө 20 секунд алыска караңыз",
+          "ru": "Каждые 20 минут смотреть вдаль 20 секунд",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Look out of the window for 20 seconds", "kg": "20 секунд терезеден сыртка караңыз", "ru": "Посмотреть в окно 20 секунд" }
+        },
+        {
+          "en": "Set up the desk: screen at eye level, chair upright",
+          "kg": "Иш ордун тууралаңыз: экран көз деңгээлинде, отургуч түз",
+          "ru": "Настроить рабочее место: экран на уровне глаз, ровный стул",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Raise the screen to eye level", "kg": "Экранды көз деңгээлине көтөрүңүз", "ru": "Поднять экран до уровня глаз" },
+          "steps": [
+            { "en": "Raise the monitor or laptop to eye level", "kg": "Мониторду же ноутбукту көз деңгээлине көтөрүңүз", "ru": "Поднять монитор или ноутбук до уровня глаз", "minutes": 10 },
+            { "en": "Adjust the chair: feet flat, knees at 90°", "kg": "Отургучту тууралаңыз: таман жерде, тизе 90°", "ru": "Настроить стул: стопы на полу, колени 90°", "minutes": 10 },
+            { "en": "Put the keyboard so elbows are at 90°", "kg": "Чыканак 90° болгудай клавиатураны коюңуз", "ru": "Поставить клавиатуру так, чтобы локти были под 90°", "minutes": 10 },
+            { "en": "Move the desk so light falls from the side", "kg": "Жарык капталдан түшкүдөй столду жылдырыңыз", "ru": "Переставить стол, чтобы свет падал сбоку", "minutes": 15 },
+            { "en": "Clear the desk of extra things", "kg": "Столдон ашыкча нерселерди алыңыз", "ru": "Убрать со стола лишнее", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Walk 30 minutes a day",
+          "kg": "Күнүнө 30 мүнөт басыңыз",
+          "ru": "Гулять пешком 30 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk 10 minutes after lunch", "kg": "Түшкү тамактан кийин 10 мүнөт басыңыз", "ru": "Пройтись 10 минут после обеда" }
+        },
+        {
+          "en": "Stop coding by 23:00 to sleep 7–8 hours",
+          "kg": "7–8 саат уктаганга кодду саат 23:00дө токтотуңуз",
+          "ru": "Заканчивать код к 23:00, чтобы спать 7–8 часов",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Stop coding by midnight tonight", "kg": "Бүгүн түн ортосуна чейин кодду токтотуңуз", "ru": "Сегодня закончить код до полуночи" }
+        },
+        {
+          "en": "Keep a bottle of water on the desk and finish it",
+          "kg": "Столдо бир бөтөлкө суу кармап, аны ичип бүтүрүңүз",
+          "ru": "Держать бутылку воды на столе и выпивать её",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Drink one glass of water before coding", "kg": "Код жазардан мурун бир стакан суу ичиңиз", "ru": "Выпить стакан воды перед кодом" }
+        },
+        {
+          "en": "Do a 10-minute workout 3 times a week",
+          "kg": "Жумасына 3 жолу 10 мүнөттүк көнүгүү жасаңыз",
+          "ru": "Делать 10-минутную зарядку 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 10,
+          "easy": { "en": "Do 10 squats between sessions", "kg": "Сессиялардын ортосунда 10 жолу отуруп-туруңуз", "ru": "Сделать 10 приседаний между сессиями" }
+        },
+        {
+          "en": "Keep one day a week free from code",
+          "kg": "Жумасына бир күндү коддон бош калтырыңыз",
+          "ru": "Оставлять один день в неделю без кода",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Keep one evening this week free from code", "kg": "Бул жумада бир кечти коддон бош калтырыңыз", "ru": "Оставить один вечер на неделе без кода" }
         }
       ]
     }

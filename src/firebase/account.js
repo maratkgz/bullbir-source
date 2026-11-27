@@ -12,7 +12,7 @@ import { broadcastSignOut, writeSignedInHint } from '../auth/sessionSignals'
 export const USER_COLLECTIONS = [
   'tasks', 'journalEntries', 'events', 'transactions', 'moods', 'notes',
   'goals', 'habits', 'pomodoro', 'reminders', 'shifts', 'savingsGoals',
-  'mandalas', 'aiState',
+  'mandalas', 'aiState', 'weeklyReviews',
 ]
 
 // Service-worker cache that may hold Firebase/Google API responses.

@@ -1,0 +1,1022 @@
+{
+  "id": "relocation",
+  "icon": "✈️",
+  "title": { "en": "Moving abroad", "kg": "Чет өлкөгө көчүү", "ru": "Переезд за границу" },
+  "keywords": {
+    "en": ["!relocation", "!relocate", "!move abroad", "!study abroad", "emigrate", "emigration", "moving", "visa", "work abroad", "abroad", "live abroad", "overseas", "residence permit", "new country", "exchange student", "master abroad", "work permit"],
+    "kg": ["!көчүү", "!чет өлкөгө", "чет өлкөдө окуу", "чет өлкөдө иштөө", "көчүп кетүү", "виза", "эмиграция", "миграция", "чет элге", "чет өлкө", "башка өлкө", "окууга кетүү", "жумушка кетүү", "грант менен окуу", "жашоого уруксат", "чет жакка"],
+    "ru": ["!переезд", "!переехать", "!эмиграция", "!эмигрировать", "за границу", "за границей", "учёба за рубежом", "учиться за границей", "работа за границей", "виза", "релокация", "уехать", "вид на жительство", "внж", "другая страна", "стажировка за рубежом", "миграция", "грант на учёбу"]
+  },
+  "directions": [
+    {
+      "title": { "en": "Destination", "kg": "Багыт тандоо", "ru": "Выбор страны" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Country and city chosen", "kg": "Өлкө жана шаар тандалды", "ru": "Выбраны страна и город" },
+        { "en": "Top 3 programs or jobs listed", "kg": "Эң мыкты 3 программа же жумуш тизмеленди", "ru": "Составлен топ-3 программ или вакансий" }
+      ],
+      "actions": [
+        {
+          "en": "Write why you want to move and what you expect",
+          "kg": "Эмне үчүн көчкүңүз келерин жана эмнени күтөрүңүздү жазыңыз",
+          "ru": "Записать, зачем переезжать и чего вы ожидаете",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write 3 reasons to move", "kg": "Көчүүнүн 3 себебин жазыңыз", "ru": "Записать 3 причины переезда" },
+          "steps": [
+            { "en": "List what you lack where you live now", "kg": "Азыр жашаган жериңизде эмне жетишпесин жазыңыз", "ru": "Выписать, чего не хватает там, где живёте сейчас", "minutes": 15 },
+            { "en": "Write what you want to gain in 2 years", "kg": "2 жылда эмнеге жеткиңиз келерин жазыңыз", "ru": "Записать, что хотите получить за 2 года", "minutes": 15 },
+            { "en": "Note what you are ready to give up", "kg": "Эмнеден баш тартууга даяр экениңизди белгилеңиз", "ru": "Отметить, от чего готовы отказаться", "minutes": 10 },
+            { "en": "Discuss the reasons with your family", "kg": "Себептерди үй-бүлөңүз менен талкуулаңыз", "ru": "Обсудить причины с семьёй", "minutes": 30 },
+            { "en": "Save the final list in Notes", "kg": "Акыркы тизмени эскертмелерге сактаңыз", "ru": "Сохранить итоговый список в заметках", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Compare 3 countries by study, work and cost of living",
+          "kg": "3 өлкөнү окуу, иш жана жашоо наркы боюнча салыштырыңыз",
+          "ru": "Сравнить 3 страны по учёбе, работе и стоимости жизни",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Compare 2 countries on one criterion", "kg": "2 өлкөнү бир критерий боюнча салыштырыңыз", "ru": "Сравнить 2 страны по одному критерию" },
+          "steps": [
+            { "en": "Pick 3 candidate countries", "kg": "3 талапкер өлкөнү тандаңыз", "ru": "Выбрать 3 страны-кандидата", "minutes": 15 },
+            { "en": "Make a table: study, work, rent, language", "kg": "Таблица түзүңүз: окуу, иш, ижара, тил", "ru": "Сделать таблицу: учёба, работа, аренда, язык", "minutes": 20 },
+            { "en": "Fill it in from official sources only", "kg": "Аны расмий булактардан гана толтуруңуз", "ru": "Заполнить её только по официальным источникам", "minutes": 60 },
+            { "en": "Ask 1 person living there about real costs", "kg": "Ал жакта жашаган 1 адамдан чыныгы чыгымдарды сураңыз", "ru": "Спросить у 1 живущего там человека о реальных расходах", "minutes": 30 },
+            { "en": "Score each country from 1 to 10", "kg": "Ар бир өлкөгө 1ден 10го чейин упай коюңуз", "ru": "Оценить каждую страну от 1 до 10", "minutes": 15 },
+            { "en": "Choose one main and one backup country", "kg": "Бир негизги жана бир запастагы өлкө тандаңыз", "ru": "Выбрать одну основную и одну запасную страну", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Read 2 official sources about the country weekly",
+          "kg": "Ар жума өлкө жөнүндө 2 расмий булакты окуңуз",
+          "ru": "Каждую неделю читать 2 официальных источника о стране",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Read 1 official page about the country", "kg": "Өлкө жөнүндө 1 расмий баракты окуңуз", "ru": "Прочитать 1 официальную страницу о стране" }
+        },
+        {
+          "en": "Talk to 3 people from home who already live there",
+          "kg": "Ал жакта жашап жүргөн 3 жердешиңиз менен сүйлөшүңүз",
+          "ru": "Поговорить с 3 земляками, которые уже там живут",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Message 1 person who lives there", "kg": "Ал жакта жашаган 1 адамга жазыңыз", "ru": "Написать 1 человеку, который там живёт" },
+          "steps": [
+            { "en": "Find people via friends, alumni or communities", "kg": "Достор, бүтүрүүчүлөр же коомчулук аркылуу адам табыңыз", "ru": "Найти людей через друзей, выпускников или сообщества", "minutes": 30 },
+            { "en": "Prepare 5 questions about life and costs", "kg": "Жашоо жана чыгым боюнча 5 суроо даярдаңыз", "ru": "Подготовить 5 вопросов о жизни и расходах", "minutes": 15 },
+            { "en": "Write politely and ask for 15 minutes", "kg": "Сылык жазып, 15 мүнөт убакыт сураңыз", "ru": "Вежливо написать и попросить 15 минут", "minutes": 10 },
+            { "en": "Hold the 3 calls and take notes", "kg": "3 чалууну өткөрүп, жазып алыңыз", "ru": "Провести 3 звонка и записать ответы", "minutes": 60 },
+            { "en": "Thank each person after the call", "kg": "Чалуудан кийин ар бирине ыраазычылык айтыңыз", "ru": "Поблагодарить каждого после звонка", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Check every rumour about visas on the official site",
+          "kg": "Виза жөнүндө ар бир угулган сөздү расмий сайттан текшериңиз",
+          "ru": "Проверять каждый слух о визах на официальном сайте",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask yourself: where is the official source?", "kg": "Өзүңүздөн сураңыз: расмий булагы кайда?", "ru": "Спросить себя: где официальный источник?" }
+        },
+        {
+          "en": "Set a target moving date and write it down",
+          "kg": "Көчүүнүн болжолдуу датасын белгилеп, жазып коюңуз",
+          "ru": "Назначить целевую дату переезда и записать её",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Choose the season you want to move", "kg": "Көчкүңүз келген мезгилди тандаңыз", "ru": "Выбрать сезон, когда хотите переехать" },
+          "steps": [
+            { "en": "Check when programs or contracts usually start", "kg": "Программалар же келишимдер качан башталарын текшериңиз", "ru": "Узнать, когда обычно стартуют программы или контракты", "minutes": 20 },
+            { "en": "Count the months needed for documents", "kg": "Документтерге канча ай керек экенин эсептеңиз", "ru": "Посчитать, сколько месяцев нужно на документы", "minutes": 15 },
+            { "en": "Pick a date with a 1-month reserve", "kg": "1 ай запасы менен дата тандаңыз", "ru": "Выбрать дату с запасом в 1 месяц", "minutes": 10 },
+            { "en": "Mark monthly checkpoints until that date", "kg": "Ошол датага чейин ай сайын текшерүү чекиттерин коюңуз", "ru": "Отметить ежемесячные контрольные точки до даты", "minutes": 15 },
+            { "en": "Tell your family the planned date", "kg": "Пландалган датаны үй-бүлөңүзгө айтыңыз", "ru": "Сообщить семье планируемую дату", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Make a backup plan in case the first option fails",
+          "kg": "Биринчи вариант ишке ашпаса, запастагы план түзүңүз",
+          "ru": "Составить план Б, если первый вариант не выйдет",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Write one backup option", "kg": "Бир запастагы вариантты жазыңыз", "ru": "Записать один запасной вариант" },
+          "steps": [
+            { "en": "List what can go wrong: visa, money, admission", "kg": "Эмне туура эмес болушу мүмкүн: виза, акча, кабыл алуу", "ru": "Выписать, что может пойти не так: виза, деньги, приём", "minutes": 15 },
+            { "en": "Choose a backup country or program", "kg": "Запастагы өлкөнү же программаны тандаңыз", "ru": "Выбрать запасную страну или программу", "minutes": 30 },
+            { "en": "Note what you will do at home meanwhile", "kg": "Ага чейин үйдө эмне кыларыңызды белгилеңиз", "ru": "Записать, чем займётесь дома в это время", "minutes": 15 },
+            { "en": "Set a date to choose between plan A and B", "kg": "Негизги жана запастагы пландын бирин тандай турган дата коюңуз", "ru": "Назначить дату выбора между планом А и Б", "minutes": 10 },
+            { "en": "Share plan B with one close person", "kg": "Запастагы планды бир жакын адамга айтыңыз", "ru": "Рассказать о плане Б одному близкому", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Review your moving plan every Sunday",
+          "kg": "Көчүү планыңызды ар жекшембиде карап чыгыңыз",
+          "ru": "Каждое воскресенье пересматривать план переезда",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 20,
+          "easy": { "en": "Check one item of the plan on Sunday", "kg": "Жекшембиде пландын бир пунктун текшериңиз", "ru": "В воскресенье проверить один пункт плана" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Documents", "kg": "Документтер", "ru": "Документы" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Passport and diplomas ready", "kg": "Паспорт жана дипломдор даяр", "ru": "Паспорт и дипломы готовы" },
+        { "en": "Visa or permit application submitted", "kg": "Виза же уруксат алуу үчүн арыз тапшырылды", "ru": "Подана заявка на визу или разрешение" }
+      ],
+      "actions": [
+        {
+          "en": "Check passport expiry and renew it if needed",
+          "kg": "Паспорттун мөөнөтүн текшерип, керек болсо жаңыртыңыз",
+          "ru": "Проверить срок паспорта и обновить при необходимости",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Check your passport expiry date today", "kg": "Бүгүн паспортуңуздун мөөнөтүн текшериңиз", "ru": "Сегодня проверить срок действия паспорта" },
+          "steps": [
+            { "en": "Find the expiry date in your passport", "kg": "Паспорттон мөөнөтү бүтө турган датаны табыңыз", "ru": "Найти в паспорте дату окончания срока", "minutes": 5 },
+            { "en": "Check the validity rule on the official site", "kg": "Мөөнөт боюнча талапты расмий сайттан текшериңиз", "ru": "Проверить требование к сроку на официальном сайте", "minutes": 20 },
+            { "en": "Find out where and how to renew it", "kg": "Аны кайда жана кантип жаңыртууну билиңиз", "ru": "Узнать, где и как его обновить", "minutes": 20 },
+            { "en": "Collect the needed papers and photos", "kg": "Керектүү кагаздарды жана сүрөттөрдү чогултуңуз", "ru": "Собрать нужные бумаги и фото", "minutes": 60 },
+            { "en": "Submit the application and keep the receipt", "kg": "Арызды тапшырып, квитанцияны сактаңыз", "ru": "Подать заявление и сохранить квитанцию", "minutes": 60 }
+          ]
+        },
+        {
+          "en": "Write out the full document list from the official site",
+          "kg": "Расмий сайттан керектүү документтердин толук тизмесин жазыңыз",
+          "ru": "Выписать с официального сайта полный список документов",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find the official page with the document list", "kg": "Документтер тизмеси бар расмий баракты табыңыз", "ru": "Найти официальную страницу со списком документов" },
+          "steps": [
+            { "en": "Find the official site of the embassy or university", "kg": "Элчиликтин же университеттин расмий сайтын табыңыз", "ru": "Найти официальный сайт посольства или вуза", "minutes": 15 },
+            { "en": "Copy the document list into a checklist", "kg": "Документтер тизмесин текшерүү тизмесине көчүрүңүз", "ru": "Перенести список документов в чек-лист", "minutes": 20 },
+            { "en": "Mark what you already have", "kg": "Колуңузда бар документтерди белгилеңиз", "ru": "Отметить, что уже есть", "minutes": 15 },
+            { "en": "Note the deadline and validity of each paper", "kg": "Ар бир кагаздын мөөнөтүн белгилеңиз", "ru": "Записать сроки и действие каждой бумаги", "minutes": 20 },
+            { "en": "Add each missing document to Tasks", "kg": "Жетишпеген ар бир документти тапшырмаларга кошуңуз", "ru": "Добавить каждый недостающий документ в задачи", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Get certified translations of your diplomas",
+          "kg": "Дипломдоруңуздун күбөлөндүрүлгөн котормосун алыңыз",
+          "ru": "Сделать заверенные переводы дипломов",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Find 2 translation offices and ask their terms", "kg": "2 котормо кеңсесин таап, шарттарын сураңыз", "ru": "Найти 2 бюро переводов и узнать условия" },
+          "steps": [
+            { "en": "Check which translation the other side accepts", "kg": "Кабыл алуучу тарап кандай котормону аларын текшериңиз", "ru": "Узнать, какой перевод принимает принимающая сторона", "minutes": 20 },
+            { "en": "Check if an apostille or legalisation is needed", "kg": "Апостиль же легализация керекпи, текшериңиз", "ru": "Проверить, нужен ли апостиль или легализация", "minutes": 20 },
+            { "en": "Compare 2 licensed translation offices", "kg": "Лицензиясы бар 2 котормо кеңсесин салыштырыңыз", "ru": "Сравнить 2 лицензированных бюро переводов", "minutes": 30 },
+            { "en": "Hand in the documents and get a receipt", "kg": "Документтерди тапшырып, квитанция алыңыз", "ru": "Сдать документы и получить квитанцию", "minutes": 60 },
+            { "en": "Proofread names and dates in the translation", "kg": "Котормодогу ысымдарды жана даталарды текшериңиз", "ru": "Вычитать имена и даты в переводе", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Scan every new document into one cloud folder",
+          "kg": "Ар бир жаңы документти бир булут папкага сканерлеңиз",
+          "ru": "Сканировать каждый новый документ в одну облачную папку",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Photograph one document and save it", "kg": "Бир документти сүрөткө тартып сактаңыз", "ru": "Сфотографировать один документ и сохранить" }
+        },
+        {
+          "en": "Book the visa or permit appointment on time",
+          "kg": "Виза же уруксат боюнча кабыл алууга өз убагында жазылыңыз",
+          "ru": "Вовремя записаться на подачу визы или разрешения",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Find where appointments are booked", "kg": "Кайда жазылуу керек экенин табыңыз", "ru": "Узнать, где проходит запись на подачу" },
+          "steps": [
+            { "en": "Find the official booking page or phone", "kg": "Расмий жазылуу барагын же телефонун табыңыз", "ru": "Найти официальную страницу или телефон записи", "minutes": 15 },
+            { "en": "Check processing times on the official site", "kg": "Кароо мөөнөтүн расмий сайттан текшериңиз", "ru": "Проверить сроки рассмотрения на официальном сайте", "minutes": 15 },
+            { "en": "Fill in the application form carefully", "kg": "Арыз формасын кылдат толтуруңуз", "ru": "Внимательно заполнить анкету", "minutes": 90 },
+            { "en": "Book the earliest suitable date", "kg": "Эң жакынкы ылайыктуу күнгө жазылыңыз", "ru": "Записаться на ближайшую подходящую дату", "minutes": 15 },
+            { "en": "Prepare the document folder the day before", "kg": "Документтер папкасын бир күн мурун даярдаңыз", "ru": "Подготовить папку документов за день", "minutes": 30 },
+            { "en": "Attend and keep all receipts", "kg": "Барып, бардык квитанцияларды сактаңыз", "ru": "Прийти на подачу и сохранить все квитанции", "minutes": 120 }
+          ]
+        },
+        {
+          "en": "Never pay agents who promise a guaranteed visa",
+          "kg": "Визаны кепилдеген ортомчуларга эч качан акча бербеңиз",
+          "ru": "Никогда не платить посредникам с «гарантией визы»",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check any agent on the official site first", "kg": "Ар бир ортомчуну адегенде расмий сайттан текшериңиз", "ru": "Сначала проверять любого посредника на официальном сайте" }
+        },
+        {
+          "en": "Get a medical certificate if the rules require it",
+          "kg": "Эреже талап кылса, медициналык маалымкат алыңыз",
+          "ru": "Получить медсправку, если её требуют правила",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Check if a medical certificate is required", "kg": "Медициналык маалымкат керекпи, текшериңиз", "ru": "Узнать, нужна ли медсправка" },
+          "steps": [
+            { "en": "Check the official list of medical papers", "kg": "Медициналык кагаздардын расмий тизмесин текшериңиз", "ru": "Проверить официальный список медицинских документов", "minutes": 15 },
+            { "en": "Find out which clinics are accepted", "kg": "Кайсы клиникалар кабыл алынарын билиңиз", "ru": "Узнать, какие клиники принимаются", "minutes": 20 },
+            { "en": "Book a visit", "kg": "Кабыл алууга жазылыңыз", "ru": "Записаться на приём", "minutes": 10 },
+            { "en": "Pass the check-up", "kg": "Текшерүүдөн өтүңүз", "ru": "Пройти обследование", "minutes": 120 },
+            { "en": "Keep the certificate with your documents", "kg": "Маалымкатты документтериңиз менен кошо сактаңыз", "ru": "Хранить справку вместе с документами", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Keep copies of key documents apart from the originals",
+          "kg": "Негизги документтердин көчүрмөсүн түп нускадан бөлөк сактаңыз",
+          "ru": "Хранить копии ключевых документов отдельно от оригиналов",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Make one copy of your passport", "kg": "Паспортуңуздун бир көчүрмөсүн жасаңыз", "ru": "Сделать одну копию паспорта" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Local language", "kg": "Жергиликтүү тил", "ru": "Язык страны" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Basic everyday phrases learned", "kg": "Күнүмдүк негизги сөз айкаштары үйрөнүлдү", "ru": "Выучены базовые бытовые фразы" },
+        { "en": "Required language test passed", "kg": "Талап кылынган тил тести тапшырылды", "ru": "Сдан требуемый языковой тест" }
+      ],
+      "actions": [
+        {
+          "en": "Check which language level the program or job requires",
+          "kg": "Программа же жумуш кандай тил деңгээлин талап кыларын текшериңиз",
+          "ru": "Узнать, какой уровень языка требует программа или работа",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Find the language requirement on one site", "kg": "Бир сайттан тил боюнча талапты табыңыз", "ru": "Найти требование к языку на одном сайте" },
+          "steps": [
+            { "en": "Open the official program or vacancy page", "kg": "Программанын же вакансиянын расмий барагын ачыңыз", "ru": "Открыть официальную страницу программы или вакансии", "minutes": 10 },
+            { "en": "Find the required test and minimum score", "kg": "Талап кылынган тестти жана эң аз упайды табыңыз", "ru": "Найти нужный тест и минимальный балл", "minutes": 15 },
+            { "en": "Take a free online level test", "kg": "Акысыз онлайн деңгээл тестин тапшырыңыз", "ru": "Пройти бесплатный онлайн-тест уровня", "minutes": 40 },
+            { "en": "Write the gap between your level and the target", "kg": "Деңгээлиңиз менен максаттын ортосундагы айырманы жазыңыз", "ru": "Записать разрыв между вашим уровнем и целью", "minutes": 10 },
+            { "en": "Set a date to reach the target level", "kg": "Керектүү деңгээлге жетүү датасын коюңуз", "ru": "Назначить дату достижения нужного уровня", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Study the language 30 minutes every day",
+          "kg": "Тилди күн сайын 30 мүнөт үйрөнүңүз",
+          "ru": "Заниматься языком 30 минут каждый день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Study the language 10 minutes today", "kg": "Бүгүн тилди 10 мүнөт үйрөнүңүз", "ru": "Сегодня позаниматься языком 10 минут" }
+        },
+        {
+          "en": "Learn everyday phrases 3 times a week: shop, bus, doctor",
+          "kg": "Жумасына 3 жолу күнүмдүк сөздөрдү үйрөнүңүз: дүкөн, автобус, дарыгер",
+          "ru": "Учить бытовые фразы 3 раза в неделю: магазин, автобус, врач",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 15,
+          "easy": { "en": "Learn 3 phrases for the shop", "kg": "Дүкөн үчүн 3 сөз айкашын үйрөнүңүз", "ru": "Выучить 3 фразы для магазина" }
+        },
+        {
+          "en": "Speak with a tutor or partner once a week",
+          "kg": "Жумасына бир жолу репетитор же өнөк менен сүйлөшүңүз",
+          "ru": "Раз в неделю говорить с репетитором или партнёром",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 45,
+          "easy": { "en": "Send a 1-minute voice message in the language", "kg": "Ошол тилде 1 мүнөттүк үн билдирүү жөнөтүңүз", "ru": "Отправить голосовое на 1 минуту на этом языке" }
+        },
+        {
+          "en": "Watch local news or videos 3 times a week",
+          "kg": "Жумасына 3 жолу ошол өлкөнүн жаңылыктарын же видеосун көрүңүз",
+          "ru": "Смотреть местные новости или видео 3 раза в неделю",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 20,
+          "easy": { "en": "Watch one 5-minute local video", "kg": "Бир 5 мүнөттүк жергиликтүү видео көрүңүз", "ru": "Посмотреть одно 5-минутное местное видео" }
+        },
+        {
+          "en": "Register for the required language test on the official site",
+          "kg": "Талап кылынган тил тестине расмий сайттан катталыңыз",
+          "ru": "Записаться на нужный языковой тест на официальном сайте",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Find the official test registration page", "kg": "Тестке катталуучу расмий баракты табыңыз", "ru": "Найти официальную страницу регистрации на тест" },
+          "steps": [
+            { "en": "Check test dates and centres on the official site", "kg": "Тесттин даталарын жана борборлорун расмий сайттан текшериңиз", "ru": "Проверить даты и центры теста на официальном сайте", "minutes": 20 },
+            { "en": "Choose a date that leaves 2 months to prepare", "kg": "Даярданууга 2 ай кала турган датаны тандаңыз", "ru": "Выбрать дату с запасом 2 месяца на подготовку", "minutes": 10 },
+            { "en": "Prepare your passport and the payment", "kg": "Паспортту жана төлөмдү даярдаңыз", "ru": "Подготовить паспорт и оплату", "minutes": 15 },
+            { "en": "Complete the registration form", "kg": "Каттоо формасын толтуруңуз", "ru": "Заполнить форму регистрации", "minutes": 30 },
+            { "en": "Save the confirmation and add the date to Calendar", "kg": "Ырастоону сактап, датаны календарга кошуңуз", "ru": "Сохранить подтверждение и внести дату в календарь", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Take one full practice test every week before the exam",
+          "kg": "Сынакка чейин ар жума бир толук машыгуу тестин тапшырыңыз",
+          "ru": "Перед экзаменом каждую неделю решать полный пробный тест",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Do one section of a practice test", "kg": "Машыгуу тестинин бир бөлүгүн аткарыңыз", "ru": "Решить одну часть пробного теста" }
+        },
+        {
+          "en": "Speak the local language first, even with mistakes",
+          "kg": "Ката кетсе да, адегенде жергиликтүү тилде сүйлөңүз",
+          "ru": "Сначала говорить на местном языке, даже с ошибками",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Say one greeting in the language today", "kg": "Бүгүн ошол тилде бир жолу саламдашыңыз", "ru": "Сегодня поздороваться на этом языке" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Study & work", "kg": "Окуу жана иш", "ru": "Учёба и работа" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Applications sent to 5 places", "kg": "5 жерге арыз жөнөтүлдү", "ru": "Отправлены заявки в 5 мест" },
+        { "en": "Offer or admission received", "kg": "Чакыруу же кабыл алуу каты алынды", "ru": "Получено приглашение или зачисление" }
+      ],
+      "actions": [
+        {
+          "en": "List 10 programs or employers that fit you",
+          "kg": "Сизге ылайыктуу 10 программаны же иш берүүчүнү тизмелеңиз",
+          "ru": "Составить список 10 подходящих программ или работодателей",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Find 3 programs or employers", "kg": "3 программа же иш берүүчү табыңыз", "ru": "Найти 3 программы или работодателя" },
+          "steps": [
+            { "en": "Search only official university or job sites", "kg": "Университеттердин же жумуштун расмий сайттарынан гана издеңиз", "ru": "Искать только на официальных сайтах вузов и вакансий", "minutes": 60 },
+            { "en": "Note the requirements and deadlines of each", "kg": "Ар биринин талаптарын жана мөөнөтүн жазыңыз", "ru": "Записать требования и сроки каждого", "minutes": 30 },
+            { "en": "Check scholarships or grants on official pages", "kg": "Стипендия же гранттарды расмий барактардан текшериңиз", "ru": "Проверить стипендии и гранты на официальных страницах", "minutes": 30 },
+            { "en": "Remove the options that do not fit", "kg": "Ылайык келбегендерин тизмеден алып салыңыз", "ru": "Убрать неподходящие варианты", "minutes": 15 },
+            { "en": "Rank the ones that remain", "kg": "Калгандарын маанилүүлүгү боюнча иреттеңиз", "ru": "Расставить оставшиеся по приоритету", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Write a CV or motivation letter for that country",
+          "kg": "Ошол өлкөгө ылайык резюме же мотивациялык кат жазыңыз",
+          "ru": "Написать резюме или мотивационное письмо под страну",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Write the first paragraph of the letter", "kg": "Каттын биринчи абзацын жазыңыз", "ru": "Написать первый абзац письма" },
+          "steps": [
+            { "en": "Find the format used in that country", "kg": "Ошол өлкөдө колдонулган форматты табыңыз", "ru": "Найти формат, принятый в этой стране", "minutes": 20 },
+            { "en": "List your 5 strongest results", "kg": "Эң күчтүү 5 жетишкендигиңизди тизмелеңиз", "ru": "Выписать 5 самых сильных результатов", "minutes": 20 },
+            { "en": "Write the first draft", "kg": "Биринчи нускасын жазыңыз", "ru": "Написать первый черновик", "minutes": 60 },
+            { "en": "Ask a teacher or friend to check it", "kg": "Мугалимден же досуңуздан текшерип берүүсүн сураңыз", "ru": "Попросить учителя или друга проверить", "minutes": 15 },
+            { "en": "Fix mistakes and save it as PDF", "kg": "Каталарды оңдоп, PDF кылып сактаңыз", "ru": "Исправить ошибки и сохранить в PDF", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Send 2 tailored applications every week",
+          "kg": "Ар жума 2 ылайыкталган арыз жөнөтүңүз",
+          "ru": "Каждую неделю отправлять 2 адаптированные заявки",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Send 1 application this week", "kg": "Ушул жумада 1 арыз жөнөтүңүз", "ru": "На этой неделе отправить 1 заявку" }
+        },
+        {
+          "en": "Ask 2 teachers or managers for recommendation letters",
+          "kg": "2 мугалимден же жетекчиден сунуш кат сураңыз",
+          "ru": "Попросить у 2 учителей или руководителей рекомендации",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask 1 person for a recommendation", "kg": "1 адамдан сунуш кат сураңыз", "ru": "Попросить рекомендацию у 1 человека" },
+          "steps": [
+            { "en": "Choose 2 people who know your work well", "kg": "Ишиңизди жакшы билген 2 адамды тандаңыз", "ru": "Выбрать 2 людей, хорошо знающих вашу работу", "minutes": 10 },
+            { "en": "Ask them politely in person or by phone", "kg": "Алардан жеке же телефон аркылуу сылык сураңыз", "ru": "Вежливо попросить лично или по телефону", "minutes": 20 },
+            { "en": "Send them the deadline and requirements", "kg": "Мөөнөттү жана талаптарды жөнөтүңүз", "ru": "Отправить им сроки и требования", "minutes": 10 },
+            { "en": "Remind them kindly a week before the deadline", "kg": "Мөөнөткө бир жума калганда сылык эскертиңиз", "ru": "Мягко напомнить за неделю до срока", "minutes": 5 },
+            { "en": "Thank them when the letters are ready", "kg": "Каттар даяр болгондо ыраазычылык айтыңыз", "ru": "Поблагодарить, когда письма будут готовы", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Prepare for the interview with 10 common questions",
+          "kg": "Маекке көп берилүүчү 10 суроо менен даярданыңыз",
+          "ru": "Подготовиться к собеседованию по 10 частым вопросам",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Answer 3 questions out loud", "kg": "3 суроого үн чыгарып жооп бериңиз", "ru": "Ответить вслух на 3 вопроса" },
+          "steps": [
+            { "en": "Collect 10 typical interview questions", "kg": "Көп берилүүчү 10 суроону чогултуңуз", "ru": "Собрать 10 типичных вопросов собеседования", "minutes": 20 },
+            { "en": "Write short answers with examples", "kg": "Мисалдар менен кыска жооп жазыңыз", "ru": "Написать короткие ответы с примерами", "minutes": 60 },
+            { "en": "Practise the answers out loud", "kg": "Жоопторду үн чыгарып машыгыңыз", "ru": "Отработать ответы вслух", "minutes": 30 },
+            { "en": "Do a mock interview by video call", "kg": "Видеочалуу аркылуу сынамык маек өткөрүңүз", "ru": "Провести пробное собеседование по видеосвязи", "minutes": 45 },
+            { "en": "Prepare 2 questions for the interviewer", "kg": "Маек алуучуга 2 суроо даярдаңыз", "ru": "Подготовить 2 вопроса интервьюеру", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Update your applications table every week",
+          "kg": "Арыздар таблицасын ар жума жаңыртыңыз",
+          "ru": "Каждую неделю обновлять таблицу заявок",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Add one new application to the table", "kg": "Таблицага бир жаңы арызды кошуңуз", "ru": "Добавить в таблицу одну новую заявку" }
+        },
+        {
+          "en": "Submit every application at least 3 days before the deadline",
+          "kg": "Ар бир арызды мөөнөттөн жок дегенде 3 күн мурун тапшырыңыз",
+          "ru": "Подавать каждую заявку минимум за 3 дня до срока",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a reminder 3 days before a deadline", "kg": "Мөөнөткө 3 күн калганда эскертме коюңуз", "ru": "Поставить напоминание за 3 дня до срока" }
+        },
+        {
+          "en": "Work only with a written contract you understand",
+          "kg": "Түшүнгөн жазуу жүзүндөгү келишим менен гана иштеңиз",
+          "ru": "Работать только по понятному письменному договору",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask for the contract in writing before agreeing", "kg": "Макул болордон мурун келишимди жазуу түрүндө сураңыз", "ru": "Попросить договор письменно, прежде чем соглашаться" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Money", "kg": "Акча", "ru": "Деньги" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Moving budget calculated", "kg": "Көчүү бюджети эсептелди", "ru": "Рассчитан бюджет переезда" },
+        { "en": "Reserve for 3 months saved", "kg": "3 айлык запас топтолду", "ru": "Накоплен запас на 3 месяца" }
+      ],
+      "actions": [
+        {
+          "en": "Calculate the full moving budget in som",
+          "kg": "Көчүүнүн толук бюджетин сом менен эсептеңиз",
+          "ru": "Рассчитать полный бюджет переезда в сомах",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "List the 5 biggest moving costs", "kg": "Көчүүнүн эң чоң 5 чыгымын жазыңыз", "ru": "Выписать 5 самых крупных расходов на переезд" },
+          "steps": [
+            { "en": "List costs: documents, tickets, housing, first month", "kg": "Чыгымдарды жазыңыз: документ, билет, турак жай, биринчи ай", "ru": "Выписать расходы: документы, билеты, жильё, первый месяц", "minutes": 20 },
+            { "en": "Find each price in official or real sources", "kg": "Ар бир бааны расмий же чыныгы булактардан табыңыз", "ru": "Найти каждую цену в официальных или реальных источниках", "minutes": 45 },
+            { "en": "Convert all sums to som at today's rate", "kg": "Бардык сумманы бүгүнкү курс менен сомго которуңуз", "ru": "Перевести все суммы в сомы по текущему курсу", "minutes": 15 },
+            { "en": "Add 20% for unexpected costs", "kg": "Күтүлбөгөн чыгымдар үчүн 20% кошуңуз", "ru": "Добавить 20% на непредвиденные расходы", "minutes": 5 },
+            { "en": "Save the budget in one table", "kg": "Бюджетти бир таблицага сактаңыз", "ru": "Сохранить бюджет в одной таблице", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Put a fixed sum into the moving fund every week",
+          "kg": "Ар жума көчүү фондуна белгилүү сумма салыңыз",
+          "ru": "Каждую неделю откладывать фиксированную сумму на переезд",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 10,
+          "easy": { "en": "Put aside 500 som this week", "kg": "Ушул жумада 500 сом четке салыңыз", "ru": "На этой неделе отложить 500 сомов" }
+        },
+        {
+          "en": "Plan how you will live for the first 3 months",
+          "kg": "Алгачкы 3 айда кантип жашай турганыңызды пландаңыз",
+          "ru": "Спланировать, на что жить первые 3 месяца",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Estimate the cost of the first month", "kg": "Биринчи айдын чыгымын болжолдоңуз", "ru": "Оценить расходы первого месяца" },
+          "steps": [
+            { "en": "Ask residents about typical rent and food costs", "kg": "Ал жактагылардан ижара жана тамак-аш чыгымын сураңыз", "ru": "Узнать у живущих там типичные аренду и расходы на еду", "minutes": 30 },
+            { "en": "Add transport, phone and study costs", "kg": "Транспорт, байланыш жана окуу чыгымдарын кошуңуз", "ru": "Добавить транспорт, связь и учёбу", "minutes": 15 },
+            { "en": "Multiply by 3 and compare with your savings", "kg": "3кө көбөйтүп, топтогонуңуз менен салыштырыңыз", "ru": "Умножить на 3 и сравнить с накоплениями", "minutes": 10 },
+            { "en": "Decide what to cut if money is short", "kg": "Акча жетпесе, эмнени кыскартарыңызды чечиңиз", "ru": "Решить, что сократить, если денег не хватит", "minutes": 15 },
+            { "en": "Write the plan and discuss it with family", "kg": "Планды жазып, үй-бүлө менен талкуулаңыз", "ru": "Записать план и обсудить с семьёй", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Find out how to send and receive money legally",
+          "kg": "Акчаны мыйзамдуу түрдө кантип жөнөтүп, алууну билиңиз",
+          "ru": "Узнать, как легально отправлять и получать деньги",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Ask your bank about transfers abroad", "kg": "Банкыңыздан чет өлкөгө которуу жөнүндө сураңыз", "ru": "Спросить в своём банке о переводах за границу" },
+          "steps": [
+            { "en": "Ask your bank about cards that work abroad", "kg": "Банктан чет өлкөдө иштеген карталар жөнүндө сураңыз", "ru": "Спросить в банке о картах, работающих за границей", "minutes": 30 },
+            { "en": "Compare 2 official money transfer services", "kg": "2 расмий акча которуу кызматын салыштырыңыз", "ru": "Сравнить 2 официальных сервиса переводов", "minutes": 30 },
+            { "en": "Check what account you can open on arrival", "kg": "Барганда кандай эсеп ача аларыңызды текшериңиз", "ru": "Узнать, какой счёт можно открыть по приезде", "minutes": 20 },
+            { "en": "Keep some cash in the local currency", "kg": "Бир аз накталай акчаны ошол өлкөнүн валютасында кармаңыз", "ru": "Иметь немного наличных в местной валюте", "minutes": 15 },
+            { "en": "Write down your bank's emergency contacts", "kg": "Банкыңыздын шашылыш байланыштарын жазып алыңыз", "ru": "Записать экстренные контакты своего банка", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Record every moving expense once a week",
+          "kg": "Көчүүгө кеткен ар бир чыгымды жумасына бир жолу жазыңыз",
+          "ru": "Раз в неделю записывать все расходы на переезд",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Record one expense from today", "kg": "Бүгүнкү бир чыгымды жазыңыз", "ru": "Записать один сегодняшний расход" }
+        },
+        {
+          "en": "Sell or give away things you won't take",
+          "kg": "Ала кетпей турган буюмдарды сатыңыз же бериңиз",
+          "ru": "Продать или отдать вещи, которые не возьмёте",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Choose 5 things to sell", "kg": "Сата турган 5 буюмду тандаңыз", "ru": "Выбрать 5 вещей на продажу" },
+          "steps": [
+            { "en": "Sort things: take, sell, give, leave", "kg": "Буюмдарды бөлүңүз: алам, сатам, берем, калтырам", "ru": "Разобрать вещи: взять, продать, отдать, оставить", "minutes": 60 },
+            { "en": "Photograph the items for sale", "kg": "Сатыла турган буюмдарды сүрөткө тартыңыз", "ru": "Сфотографировать вещи на продажу", "minutes": 30 },
+            { "en": "Post them on a local classifieds site", "kg": "Аларды жергиликтүү жарнама сайтына жарыялаңыз", "ru": "Разместить их на местном сайте объявлений", "minutes": 30 },
+            { "en": "Give useful things to relatives or charity", "kg": "Пайдалуу нерселерди туугандарга же кайрымдуулукка бериңиз", "ru": "Отдать полезные вещи родным или на благотворительность", "minutes": 30 },
+            { "en": "Add the money to the moving fund", "kg": "Түшкөн акчаны көчүү фондуна кошуңуз", "ru": "Добавить вырученное в фонд переезда", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Never borrow money for the move",
+          "kg": "Көчүү үчүн эч качан карызга акча албаңыз",
+          "ru": "Никогда не занимать деньги на переезд",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Postpone a cost instead of borrowing", "kg": "Карыз алгандын ордуна чыгымды кийинкиге калтырыңыз", "ru": "Отложить расход вместо того, чтобы занимать" }
+        },
+        {
+          "en": "Keep a 3-month reserve untouched for emergencies",
+          "kg": "3 айлык запасты шашылыш учур үчүн тийбей сактаңыз",
+          "ru": "Держать запас на 3 месяца нетронутым на крайний случай",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Keep at least a 1-month reserve", "kg": "Жок дегенде 1 айлык запас кармаңыз", "ru": "Держать запас хотя бы на 1 месяц" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Energy & health", "kg": "Күч-кубат", "ru": "Энергия и здоровье" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Health check before moving done", "kg": "Көчөрдөн мурун ден соолук текшерилди", "ru": "Пройдено обследование перед переездом" }
+      ],
+      "actions": [
+        {
+          "en": "Do a general check-up and see a dentist before moving",
+          "kg": "Көчөрдөн мурун жалпы текшерүүдөн өтүп, тиш дарыгерине барыңыз",
+          "ru": "Пройти общий осмотр и стоматолога перед переездом",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Book one check-up before moving", "kg": "Көчөрдөн мурун бир текшерүүгө жазылыңыз", "ru": "Записаться на один осмотр перед переездом" },
+          "steps": [
+            { "en": "Book a visit to a family doctor", "kg": "Үй-бүлөлүк дарыгерге жазылыңыз", "ru": "Записаться к семейному врачу", "minutes": 10 },
+            { "en": "Pass the general check-up", "kg": "Жалпы текшерүүдөн өтүңүз", "ru": "Пройти общий осмотр", "minutes": 90 },
+            { "en": "Visit the dentist", "kg": "Тиш дарыгерине барыңыз", "ru": "Сходить к стоматологу", "minutes": 60 },
+            { "en": "Collect your medical records in one folder", "kg": "Медициналык кагаздарыңызды бир папкага чогултуңуз", "ru": "Собрать медицинские документы в одну папку", "minutes": 20 },
+            { "en": "Check health insurance rules on the official site", "kg": "Медициналык камсыздандыруу эрежесин расмий сайттан текшериңиз", "ru": "Проверить правила медстраховки на официальном сайте", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Walk at least 30 minutes a day",
+          "kg": "Күнүнө жок дегенде 30 мүнөт басыңыз",
+          "ru": "Ходить пешком минимум 30 минут в день",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 30,
+          "easy": { "en": "Walk 10 minutes today", "kg": "Бүгүн 10 мүнөт басыңыз", "ru": "Сегодня пройтись 10 минут" }
+        },
+        {
+          "en": "Go to bed by 23:00 during the busy months",
+          "kg": "Бош эмес айларда саат 23:00гө чейин жатыңыз",
+          "ru": "В напряжённые месяцы ложиться спать до 23:00",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Go to bed 15 minutes earlier tonight", "kg": "Бүгүн кечинде 15 мүнөт эрте жатыңыз", "ru": "Сегодня лечь на 15 минут раньше" }
+        },
+        {
+          "en": "Exercise 3 times a week to handle stress",
+          "kg": "Стресске туруштук берүү үчүн жумасына 3 жолу көнүгүү жасаңыз",
+          "ru": "Тренироваться 3 раза в неделю, чтобы снимать стресс",
+          "type": "habit",
+          "freq": "3w",
+          "minutes": 30,
+          "easy": { "en": "Do 10 minutes of exercise", "kg": "10 мүнөт көнүгүү жасаңыз", "ru": "Сделать 10 минут упражнений" }
+        },
+        {
+          "en": "Rate your mood and energy from 1 to 10 each evening",
+          "kg": "Ар кечте маанайыңызды жана күчүңүздү 1ден 10го чейин баалаңыз",
+          "ru": "Каждый вечер оценивать настроение и силы от 1 до 10",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Rate your energy once today", "kg": "Бүгүн күчүңүздү бир жолу баалаңыз", "ru": "Сегодня один раз оценить свои силы" }
+        },
+        {
+          "en": "Find the nearest clinic and pharmacy at the destination",
+          "kg": "Барчу жериңизге эң жакын клиника менен дарыкананы табыңыз",
+          "ru": "Найти ближайшие клинику и аптеку на новом месте",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Save one clinic address on the map", "kg": "Картага бир клиниканын дарегин сактаңыз", "ru": "Сохранить на карте адрес одной клиники" },
+          "steps": [
+            { "en": "Find your future address on the map", "kg": "Келечектеги дарегиңизди картадан табыңыз", "ru": "Найти будущий адрес на карте", "minutes": 5 },
+            { "en": "Find the 2 nearest clinics", "kg": "Эң жакын 2 клиниканы табыңыз", "ru": "Найти 2 ближайшие клиники", "minutes": 10 },
+            { "en": "Find the nearest pharmacy", "kg": "Эң жакын дарыкананы табыңыз", "ru": "Найти ближайшую аптеку", "minutes": 5 },
+            { "en": "Write down the local emergency number", "kg": "Ошол өлкөнүн тез жардам номерин жазып алыңыз", "ru": "Записать местный номер экстренной помощи", "minutes": 5 },
+            { "en": "Save everything in your phone", "kg": "Баарын телефонуңузга сактаңыз", "ru": "Сохранить всё в телефоне", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Rest fully one day a week, even when busy",
+          "kg": "Бош эмес болсоңуз да, жумасына бир күн толук эс алыңыз",
+          "ru": "Полностью отдыхать один день в неделю, даже в загрузке",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 120,
+          "easy": { "en": "Take half a day off this week", "kg": "Ушул жумада жарым күн эс алыңыз", "ru": "На этой неделе отдохнуть полдня" }
+        },
+        {
+          "en": "Talk to someone when homesickness gets strong",
+          "kg": "Мекенди сагынуу күчөгөндө бирөө менен сүйлөшүңүз",
+          "ru": "Говорить с кем-то, когда сильно тоскуете по дому",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Send a message to a friend today", "kg": "Бүгүн бир досуңузга билдирүү жазыңыз", "ru": "Сегодня написать другу" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Family & ties", "kg": "Үй-бүлө жана байланыш", "ru": "Семья и связи" },
+      "kind": "support",
+      "milestones": [
+        { "en": "Family supports the plan", "kg": "Үй-бүлө планды колдойт", "ru": "Семья поддерживает план" }
+      ],
+      "actions": [
+        {
+          "en": "Discuss the move with your parents and agree together",
+          "kg": "Көчүүнү ата-энеңиз менен талкуулап, чогуу макулдашыңыз",
+          "ru": "Обсудить переезд с родителями и договориться вместе",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Tell one family member about the plan", "kg": "Планды үй-бүлөнүн бир мүчөсүнө айтыңыз", "ru": "Рассказать о плане одному члену семьи" },
+          "steps": [
+            { "en": "Prepare your reasons and plan on one page", "kg": "Себептериңизди жана планыңызды бир баракка даярдаңыз", "ru": "Подготовить причины и план на одной странице", "minutes": 30 },
+            { "en": "Choose a calm time for the talk", "kg": "Сүйлөшүү үчүн тынч убакыт тандаңыз", "ru": "Выбрать спокойное время для разговора", "minutes": 5 },
+            { "en": "Listen to their worries without arguing", "kg": "Алардын тынчсызданууларын талашпай угуңуз", "ru": "Выслушать их тревоги, не споря", "minutes": 45 },
+            { "en": "Answer each worry with a concrete step", "kg": "Ар бир тынчсызданууга так кадам менен жооп бериңиз", "ru": "Ответить на каждую тревогу конкретным шагом", "minutes": 20 },
+            { "en": "Agree how often you will call", "kg": "Канча жолу чалып турарыңызды макулдашыңыз", "ru": "Договориться, как часто будете звонить", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Call your parents at least once a week",
+          "kg": "Ата-энеңизге жумасына жок дегенде бир жолу чалыңыз",
+          "ru": "Звонить родителям минимум раз в неделю",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 30,
+          "easy": { "en": "Send your parents a short message", "kg": "Ата-энеңизге кыска билдирүү жөнөтүңүз", "ru": "Отправить родителям короткое сообщение" }
+        },
+        {
+          "en": "Hand over the family duties you leave behind",
+          "kg": "Артыңызда калган үй-бүлөлүк милдеттерди бирөөгө өткөрүп бериңиз",
+          "ru": "Передать семейные обязанности, которые остаются",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "List the duties someone must take over", "kg": "Бирөө аткарышы керек болгон милдеттерди жазыңыз", "ru": "Выписать обязанности, которые кто-то возьмёт" },
+          "steps": [
+            { "en": "List what you do for the family now", "kg": "Азыр үй-бүлө үчүн эмне кыларыңызды жазыңыз", "ru": "Выписать, что вы сейчас делаете для семьи", "minutes": 15 },
+            { "en": "Agree who takes each duty", "kg": "Ар бир милдетти ким аларын макулдашыңыз", "ru": "Договориться, кто возьмёт каждую обязанность", "minutes": 30 },
+            { "en": "Show how to pay bills and do the tasks", "kg": "Төлөмдөрдү төлөп, иштерди кантип жасоону көрсөтүңүз", "ru": "Показать, как платить счета и делать дела", "minutes": 45 },
+            { "en": "Leave contacts of helpful people", "kg": "Керектүү адамдардын байланыштарын калтырыңыз", "ru": "Оставить контакты нужных людей", "minutes": 15 },
+            { "en": "Check after a month how it works", "kg": "Бир айдан кийин кандай болуп жатканын текшериңиз", "ru": "Через месяц проверить, как всё работает", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Visit elders and relatives before leaving",
+          "kg": "Кетерден мурун улууларга жана туугандарга барыңыз",
+          "ru": "Навестить старших и родных перед отъездом",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Visit one elder relative", "kg": "Бир улуу тууганыңызга барыңыз", "ru": "Навестить одного старшего родственника" },
+          "steps": [
+            { "en": "List the elders and relatives to visit", "kg": "Бара турган улууларды жана туугандарды тизмелеңиз", "ru": "Составить список старших и родных для визита", "minutes": 10 },
+            { "en": "Plan the visits over 2 weekends", "kg": "Барууну 2 дем алыш күнгө пландаңыз", "ru": "Распланировать визиты на 2 выходных", "minutes": 10 },
+            { "en": "Bring a small gift or treat", "kg": "Кичинекей белек же таттуу ала барыңыз", "ru": "Взять небольшой подарок или угощение", "minutes": 30 },
+            { "en": "Ask for their blessing and advice", "kg": "Алардан бата жана кеңеш сураңыз", "ru": "Попросить у них благословения и совета", "minutes": 60 },
+            { "en": "Note their numbers to call later", "kg": "Кийин чалуу үчүн номерлерин жазып алыңыз", "ru": "Записать их номера, чтобы потом звонить", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Send family one photo or piece of news every week",
+          "kg": "Ар жума үй-бүлөгө бир сүрөт же жаңылык жөнөтүңүз",
+          "ru": "Каждую неделю отправлять семье фото или новость",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Send one photo to your family", "kg": "Үй-бүлөңүзгө бир сүрөт жөнөтүңүз", "ru": "Отправить семье одно фото" }
+        },
+        {
+          "en": "Find a community of Central Asians at the destination",
+          "kg": "Барчу жериңизден Борбор Азиялыктардын коомчулугун табыңыз",
+          "ru": "Найти на новом месте сообщество выходцев из Центральной Азии",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Find one community chat online", "kg": "Онлайн бир коомчулук чатын табыңыз", "ru": "Найти один чат сообщества онлайн" },
+          "steps": [
+            { "en": "Search for chats of students or workers from KG", "kg": "Кыргызстандык студенттердин же жумушчулардын чаттарын издеңиз", "ru": "Поискать чаты студентов или работников из КР", "minutes": 20 },
+            { "en": "Ask friends for trusted contacts", "kg": "Достордон ишенимдүү байланыштарды сураңыз", "ru": "Спросить у друзей проверенные контакты", "minutes": 15 },
+            { "en": "Join 1–2 active groups", "kg": "1–2 активдүү топко кошулуңуз", "ru": "Вступить в 1–2 активные группы", "minutes": 10 },
+            { "en": "Introduce yourself politely", "kg": "Сылык түрдө өзүңүздү тааныштырыңыз", "ru": "Вежливо представиться", "minutes": 10 },
+            { "en": "Note useful advice from the group", "kg": "Топтогу пайдалуу кеңештерди жазып алыңыз", "ru": "Записать полезные советы из группы", "minutes": 15 }
+          ]
+        },
+        {
+          "en": "Keep family traditions and holidays abroad too",
+          "kg": "Чет өлкөдө да үй-бүлөлүк салттарды жана майрамдарды сактаңыз",
+          "ru": "И за границей хранить семейные традиции и праздники",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Call your family on the next holiday", "kg": "Кийинки майрамда үй-бүлөңүзгө чалыңыз", "ru": "Позвонить семье в ближайший праздник" }
+        },
+        {
+          "en": "Be careful with new contacts offering easy jobs or money",
+          "kg": "Жеңил жумуш же акча сунуштаган жаңы тааныштардан сак болуңуз",
+          "ru": "Остерегаться новых знакомых с «лёгкой работой» или деньгами",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Check one offer with a trusted person", "kg": "Бир сунушту ишенимдүү адам менен текшериңиз", "ru": "Проверить одно предложение с надёжным человеком" }
+        }
+      ]
+    },
+    {
+      "title": { "en": "Reliability", "kg": "Сөзгө бекемдик", "ru": "Надёжность" },
+      "kind": "character",
+      "milestones": [
+        { "en": "30 days on time for every meeting", "kg": "30 күн бою ар бир жолугушууга өз убагында", "ru": "30 дней вовремя на каждой встрече" }
+      ],
+      "actions": [
+        {
+          "en": "Arrive 10 minutes early to every appointment",
+          "kg": "Ар бир жолугушууга 10 мүнөт эрте келиңиз",
+          "ru": "Приходить на каждую встречу на 10 минут раньше",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Arrive on time to one meeting today", "kg": "Бүгүн бир жолугушууга өз убагында келиңиз", "ru": "Сегодня прийти вовремя на одну встречу" }
+        },
+        {
+          "en": "Reply to every official email within 24 hours",
+          "kg": "Ар бир расмий катка 24 сааттын ичинде жооп бериңиз",
+          "ru": "Отвечать на каждое официальное письмо в течение 24 часов",
+          "type": "quality",
+          "minutes": 10,
+          "easy": { "en": "Answer the oldest unread email", "kg": "Эң эски окула элек катка жооп бериңиз", "ru": "Ответить на самое старое непрочитанное письмо" }
+        },
+        {
+          "en": "Greet neighbours and staff first every day",
+          "kg": "Күн сайын кошуналар менен кызматкерлерге биринчи салам бериңиз",
+          "ru": "Каждый день первым здороваться с соседями и персоналом",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Greet one person first today", "kg": "Бүгүн бир адамга биринчи салам бериңиз", "ru": "Сегодня первым поздороваться с одним человеком" }
+        },
+        {
+          "en": "Pick up one piece of litter in your new area daily",
+          "kg": "Жаңы жериңизде күн сайын бир таштандыны жерден алыңыз",
+          "ru": "Каждый день поднимать один мусор в новом районе",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 5,
+          "easy": { "en": "Pick up one piece of litter today", "kg": "Бүгүн бир таштандыны жерден алыңыз", "ru": "Сегодня поднять с земли один мусор" }
+        },
+        {
+          "en": "Follow local rules even when nobody is watching",
+          "kg": "Эч ким карабаса да, жергиликтүү эрежелерди сактаңыз",
+          "ru": "Соблюдать местные правила, даже когда никто не видит",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Learn 3 local rules: transport, waste, noise", "kg": "3 жергиликтүү эрежени үйрөнүңүз: транспорт, таштанды, ызы-чуу", "ru": "Узнать 3 местных правила: транспорт, мусор, шум" }
+        },
+        {
+          "en": "Return borrowed things and pay small debts before leaving",
+          "kg": "Кетерден мурун алган буюмдарды кайтарып, майда карыздарды төлөңүз",
+          "ru": "Перед отъездом вернуть взятые вещи и мелкие долги",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Return one borrowed thing", "kg": "Алган бир буюмду кайтарыңыз", "ru": "Вернуть одну взятую вещь" },
+          "steps": [
+            { "en": "List what you borrowed and what you owe", "kg": "Эмне алганыңызды жана кимге карыз экениңизди жазыңыз", "ru": "Выписать, что брали и кому должны", "minutes": 15 },
+            { "en": "Return books and things in person", "kg": "Китептерди жана буюмдарды өзүңүз кайтарыңыз", "ru": "Лично вернуть книги и вещи", "minutes": 60 },
+            { "en": "Pay small debts and close bills", "kg": "Майда карыздарды төлөп, эсептерди жабыңыз", "ru": "Погасить мелкие долги и закрыть счета", "minutes": 30 },
+            { "en": "Cancel subscriptions you won't use", "kg": "Колдонбой турган жазылууларды токтотуңуз", "ru": "Отменить подписки, которыми не будете пользоваться", "minutes": 20 },
+            { "en": "Thank the people who helped you", "kg": "Сизге жардам бергендерге ыраазычылык айтыңыз", "ru": "Поблагодарить тех, кто вам помогал", "minutes": 20 }
+          ]
+        },
+        {
+          "en": "Check weekly: did I keep every promise?",
+          "kg": "Ар жума текшериңиз: ар бир убадамды аткардымбы?",
+          "ru": "Каждую неделю проверять: сдержал ли я все обещания?",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 15,
+          "easy": { "en": "Keep one promise you gave this week", "kg": "Ушул жумада берген бир убадаңызды аткарыңыз", "ru": "Выполнить одно обещание этой недели" }
+        },
+        {
+          "en": "Leave your room or desk cleaner than you found it",
+          "kg": "Бөлмөңүздү же столуңузду мурдагыдан таза калтырыңыз",
+          "ru": "Оставлять комнату или стол чище, чем было",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Tidy your desk before leaving today", "kg": "Бүгүн кетерден мурун столуңузду жыйнаңыз", "ru": "Сегодня перед уходом убрать стол" }
+        }
+      ]
+    }
+  ],
+  "spares": [
+    {
+      "title": { "en": "Housing", "kg": "Турак жай", "ru": "Жильё" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "Safe housing for the first month booked", "kg": "Биринчи айга коопсуз турак жай брондолду", "ru": "Забронировано безопасное жильё на первый месяц" }
+      ],
+      "actions": [
+        {
+          "en": "Find out how locals and students search for housing",
+          "kg": "Жергиликтүүлөр жана студенттер турак жайды кантип издешерин билиңиз",
+          "ru": "Узнать, как местные и студенты ищут жильё",
+          "type": "milestone",
+          "minutes": 90,
+          "easy": { "en": "Ask one person how they found housing", "kg": "Бир адамдан турак жайды кантип тапканын сураңыз", "ru": "Спросить одного человека, как он нашёл жильё" },
+          "steps": [
+            { "en": "Check the housing page of the university or employer", "kg": "Университеттин же иш берүүчүнүн турак жай барагын текшериңиз", "ru": "Проверить страницу жилья вуза или работодателя", "minutes": 20 },
+            { "en": "Find 2 well-known rental websites", "kg": "Белгилүү 2 ижара сайтын табыңыз", "ru": "Найти 2 известных сайта аренды", "minutes": 20 },
+            { "en": "Ask community chats about safe areas", "kg": "Коомчулук чаттарынан коопсуз аймактарды сураңыз", "ru": "Спросить в чатах сообщества о безопасных районах", "minutes": 15 },
+            { "en": "Note typical rent from real listings", "kg": "Чыныгы жарыялардан орточо ижара баасын жазыңыз", "ru": "Записать типичную аренду по реальным объявлениям", "minutes": 30 },
+            { "en": "Choose 2 areas to search in", "kg": "Издөө үчүн 2 аймакты тандаңыз", "ru": "Выбрать 2 района для поиска", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Book temporary housing for the first 2 weeks",
+          "kg": "Алгачкы 2 жумага убактылуу турак жай брондоңуз",
+          "ru": "Забронировать временное жильё на первые 2 недели",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Save 3 temporary housing options", "kg": "Убактылуу турак жайдын 3 вариантын сактаңыз", "ru": "Сохранить 3 варианта временного жилья" },
+          "steps": [
+            { "en": "Compare 3 options by price and reviews", "kg": "3 вариантты баасы жана пикирлери боюнча салыштырыңыз", "ru": "Сравнить 3 варианта по цене и отзывам", "minutes": 30 },
+            { "en": "Check the distance to study or work", "kg": "Окууга же жумушка чейинки аралыкты текшериңиз", "ru": "Проверить расстояние до учёбы или работы", "minutes": 10 },
+            { "en": "Book through a trusted platform only", "kg": "Ишенимдүү платформа аркылуу гана брондоңуз", "ru": "Бронировать только через надёжную платформу", "minutes": 15 },
+            { "en": "Save the confirmation offline", "kg": "Ырастоону интернетсиз ачылгыдай сактаңыз", "ru": "Сохранить подтверждение офлайн", "minutes": 5 },
+            { "en": "Send the address to your family", "kg": "Даректи үй-бүлөңүзгө жөнөтүңүз", "ru": "Отправить адрес семье", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Never send a deposit before seeing the contract",
+          "kg": "Келишимди көрмөйүнчө эч качан депозит жөнөтпөңүз",
+          "ru": "Никогда не отправлять залог, не увидев договор",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Ask for the contract before any payment", "kg": "Ар кандай төлөмдөн мурун келишимди сураңыз", "ru": "Просить договор перед любой оплатой" }
+        },
+        {
+          "en": "Read the rental contract fully before signing",
+          "kg": "Ижара келишимин кол коёрдон мурун толук окуңуз",
+          "ru": "Полностью прочитать договор аренды перед подписью",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Read the payment part of the contract", "kg": "Келишимдин төлөм бөлүгүн окуңуз", "ru": "Прочитать в договоре раздел об оплате" },
+          "steps": [
+            { "en": "Check rent, deposit and what is included", "kg": "Ижара, депозит жана эмнелер кирерин текшериңиз", "ru": "Проверить аренду, залог и что входит", "minutes": 15 },
+            { "en": "Check the notice period and leaving rules", "kg": "Эскертүү мөөнөтүн жана чыгуу эрежелерин текшериңиз", "ru": "Проверить срок уведомления и правила выезда", "minutes": 15 },
+            { "en": "Translate unclear parts with a dictionary", "kg": "Түшүнүксүз жерлерин сөздүк менен которуңуз", "ru": "Перевести непонятные места со словарём", "minutes": 30 },
+            { "en": "Ask a resident or adviser to check it", "kg": "Ал жакта жашаган адамга же кеңешчиге текшертиңиз", "ru": "Попросить живущего там или консультанта проверить", "minutes": 30 },
+            { "en": "Photograph the room before moving in", "kg": "Көчүп кирерден мурун бөлмөнү сүрөткө тартыңыз", "ru": "Сфотографировать комнату перед заселением", "minutes": 10 }
+          ]
+        },
+        {
+          "en": "Register your address as local rules require",
+          "kg": "Жергиликтүү эрежеге ылайык дарегиңизди каттатыңыз",
+          "ru": "Встать на учёт по адресу по местным правилам",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Check the registration rule on the official site", "kg": "Каттоо эрежесин расмий сайттан текшериңиз", "ru": "Проверить правило регистрации на официальном сайте" },
+          "steps": [
+            { "en": "Check the registration deadline on the official site", "kg": "Каттоо мөөнөтүн расмий сайттан текшериңиз", "ru": "Проверить срок регистрации на официальном сайте", "minutes": 15 },
+            { "en": "Prepare passport, contract and forms", "kg": "Паспорт, келишим жана бланктарды даярдаңыз", "ru": "Подготовить паспорт, договор и бланки", "minutes": 20 },
+            { "en": "Book a visit to the right office", "kg": "Тиешелүү мекемеге кабыл алууга жазылыңыз", "ru": "Записаться в нужное ведомство", "minutes": 20 },
+            { "en": "Submit the documents", "kg": "Документтерди тапшырыңыз", "ru": "Подать документы", "minutes": 60 },
+            { "en": "Keep the proof with your passport", "kg": "Тастыктаманы паспорт менен кошо сактаңыз", "ru": "Хранить подтверждение вместе с паспортом", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Clean your room fully once a week",
+          "kg": "Бөлмөңүздү жумасына бир жолу толук тазалаңыз",
+          "ru": "Раз в неделю делать полную уборку комнаты",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Clean one corner of the room", "kg": "Бөлмөнүн бир бурчун тазалаңыз", "ru": "Убрать один угол комнаты" }
+        },
+        {
+          "en": "Pay rent on the same day every month",
+          "kg": "Ижара акысын ар айда бир эле күнү төлөңүз",
+          "ru": "Платить аренду в один и тот же день месяца",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Set a monthly rent reminder", "kg": "Ижара үчүн айлык эскертме коюңуз", "ru": "Поставить ежемесячное напоминание об аренде" }
+        },
+        {
+          "en": "Agree house rules with flatmates in the first week",
+          "kg": "Биринчи жумада бирге жашагандар менен үй эрежелерин макулдашыңыз",
+          "ru": "В первую неделю договориться с соседями о правилах",
+          "type": "milestone",
+          "minutes": 30,
+          "easy": { "en": "Agree on one rule: cleaning or noise", "kg": "Бир эрежени макулдашыңыз: тазалык же ызы-чуу", "ru": "Договориться об одном правиле: уборка или шум" },
+          "steps": [
+            { "en": "List 5 topics: cleaning, noise, guests, bills, food", "kg": "5 теманы жазыңыз: тазалык, ызы-чуу, конок, төлөм, тамак", "ru": "Выписать 5 тем: уборка, шум, гости, счета, еда", "minutes": 10 },
+            { "en": "Pick a time when everyone is at home", "kg": "Баары үйдө боло турган убакытты тандаңыз", "ru": "Выбрать время, когда все дома", "minutes": 5 },
+            { "en": "Discuss each topic calmly", "kg": "Ар бир теманы тынч талкуулаңыз", "ru": "Спокойно обсудить каждую тему", "minutes": 30 },
+            { "en": "Write a short cleaning schedule", "kg": "Кыска тазалык графигин жазыңыз", "ru": "Составить короткий график уборки", "minutes": 15 },
+            { "en": "Post the rules in a shared chat", "kg": "Эрежелерди жалпы чатка жазыңыз", "ru": "Отправить правила в общий чат", "minutes": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "en": "Settling in", "kg": "Жаңы жерге көнүү", "ru": "Адаптация" },
+      "kind": "direct",
+      "milestones": [
+        { "en": "First month abroad completed", "kg": "Чет өлкөдөгү биринчи ай өттү", "ru": "Пройден первый месяц за границей" }
+      ],
+      "actions": [
+        {
+          "en": "Get a local SIM, bank card and transport card in week 1",
+          "kg": "Биринчи жумада жергиликтүү SIM, банк жана транспорт картасын алыңыз",
+          "ru": "В первую неделю оформить местную SIM, банковскую карту и проездной",
+          "type": "milestone",
+          "minutes": 120,
+          "easy": { "en": "Get a local SIM card", "kg": "Жергиликтүү SIM карта алыңыз", "ru": "Купить местную SIM-карту" },
+          "steps": [
+            { "en": "Buy a local SIM card", "kg": "Жергиликтүү SIM карта сатып алыңыз", "ru": "Купить местную SIM-карту", "minutes": 30 },
+            { "en": "Open a bank account or card", "kg": "Банктан эсеп же карта ачыңыз", "ru": "Открыть счёт или карту в банке", "minutes": 90 },
+            { "en": "Get a transport card or app", "kg": "Транспорт картасын же тиркемесин алыңыз", "ru": "Оформить проездной или приложение", "minutes": 30 },
+            { "en": "Save emergency and embassy numbers", "kg": "Шашылыш кызматтардын жана элчиликтин номерлерин сактаңыз", "ru": "Сохранить номера экстренных служб и посольства", "minutes": 10 },
+            { "en": "Send your new number to family", "kg": "Жаңы номериңизди үй-бүлөгө жөнөтүңүз", "ru": "Отправить новый номер семье", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Register with your consulate if this is advised",
+          "kg": "Сунушталса, өз өлкөңүздүн консулдугунда каттоодон өтүңүз",
+          "ru": "Встать на консульский учёт, если это рекомендуют",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Save the consulate address and phone", "kg": "Консулдуктун дарегин жана телефонун сактаңыз", "ru": "Сохранить адрес и телефон консульства" },
+          "steps": [
+            { "en": "Find the consulate's official site", "kg": "Консулдуктун расмий сайтын табыңыз", "ru": "Найти официальный сайт консульства", "minutes": 10 },
+            { "en": "Check if registration is advised and how", "kg": "Каттоо сунушталабы жана кантип өтөрүн текшериңиз", "ru": "Узнать, рекомендован ли учёт и как его пройти", "minutes": 15 },
+            { "en": "Prepare your passport and address", "kg": "Паспортуңузду жана дарегиңизди даярдаңыз", "ru": "Подготовить паспорт и адрес", "minutes": 10 },
+            { "en": "Register online or in person", "kg": "Онлайн же өзүңүз барып катталыңыз", "ru": "Встать на учёт онлайн или лично", "minutes": 60 },
+            { "en": "Save the consulate contacts", "kg": "Консулдуктун байланыштарын сактаңыз", "ru": "Сохранить контакты консульства", "minutes": 5 }
+          ]
+        },
+        {
+          "en": "Explore one new place in your city every week",
+          "kg": "Ар жума шаарыңыздагы бир жаңы жерди көрүңүз",
+          "ru": "Каждую неделю открывать одно новое место в городе",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Walk one new street near home", "kg": "Үйдүн жанындагы бир жаңы көчөнү басып көрүңүз", "ru": "Пройти по одной новой улице рядом с домом" }
+        },
+        {
+          "en": "Attend one local event or club every week",
+          "kg": "Ар жума бир жергиликтүү иш-чарага же клубга катышыңыз",
+          "ru": "Каждую неделю посещать одно местное событие или клуб",
+          "type": "habit",
+          "freq": "weekly",
+          "minutes": 60,
+          "easy": { "en": "Find one event for next week", "kg": "Кийинки жумага бир иш-чара табыңыз", "ru": "Найти одно событие на следующую неделю" }
+        },
+        {
+          "en": "Write 3 new things you learned each evening",
+          "kg": "Ар кечте билген 3 жаңы нерсеңизди жазыңыз",
+          "ru": "Каждый вечер записывать 3 новые вещи, которые узнали",
+          "type": "habit",
+          "freq": "daily",
+          "minutes": 10,
+          "easy": { "en": "Write 1 new thing you learned", "kg": "Билген 1 жаңы нерсеңизди жазыңыз", "ru": "Записать 1 новую вещь, которую узнали" }
+        },
+        {
+          "en": "Learn the local rules on work, study and stay",
+          "kg": "Иш, окуу жана жашоо боюнча жергиликтүү эрежелерди үйрөнүңүз",
+          "ru": "Изучить местные правила работы, учёбы и пребывания",
+          "type": "milestone",
+          "minutes": 60,
+          "easy": { "en": "Read one official page about your status", "kg": "Статусуңуз жөнүндө бир расмий баракты окуңуз", "ru": "Прочитать одну официальную страницу о своём статусе" },
+          "steps": [
+            { "en": "Find the official migration or student page", "kg": "Миграция же студенттер боюнча расмий баракты табыңыз", "ru": "Найти официальную страницу миграции или студентов", "minutes": 15 },
+            { "en": "Note how many hours you may work", "kg": "Канча саат иштөөгө болорун жазыңыз", "ru": "Записать, сколько часов можно работать", "minutes": 15 },
+            { "en": "Note when your permit must be extended", "kg": "Уруксатты качан узартуу керек экенин белгилеңиз", "ru": "Отметить, когда продлевать разрешение", "minutes": 10 },
+            { "en": "Add these dates to your calendar", "kg": "Бул даталарды календарыңызга кошуңуз", "ru": "Внести эти даты в календарь", "minutes": 5 },
+            { "en": "Ask the university or employer if unclear", "kg": "Түшүнүксүз болсо, университеттен же иш берүүчүдөн сураңыз", "ru": "Если неясно, спросить в вузе или у работодателя", "minutes": 30 }
+          ]
+        },
+        {
+          "en": "Ask for help early instead of hiding problems",
+          "kg": "Көйгөйдү жашырбай, жардамды эрте сураңыз",
+          "ru": "Просить помощи рано, а не скрывать проблемы",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Name one problem to a trusted person", "kg": "Бир көйгөйдү ишенимдүү адамга айтыңыз", "ru": "Рассказать об одной проблеме надёжному человеку" }
+        },
+        {
+          "en": "Respect local customs while keeping your own",
+          "kg": "Өз салтыңызды сактап, жергиликтүү салттарды урматтаңыз",
+          "ru": "Уважать местные обычаи, сохраняя свои",
+          "type": "quality",
+          "minutes": 5,
+          "easy": { "en": "Learn one local custom this week", "kg": "Ушул жумада бир жергиликтүү салтты үйрөнүңүз", "ru": "На этой неделе узнать один местный обычай" }
+        }
+      ]
+    }
+  ]
+}
